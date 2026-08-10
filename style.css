@@ -1,4 +1,5 @@
   :root{
+    color-scheme:dark;
     --accent:#00ef98;
     --accent-dark:#00c67d;
     --bg:#0b0f14;
@@ -18,15 +19,18 @@
   }
   @media (prefers-color-scheme: light){
     :root{
+      color-scheme:light;
       --bg:#f4f6f8; --bg-elevated:#ffffff; --bg-card:#ffffff; --border:#e1e7ea;
       --text:#12181c; --text-dim:#5b6870; --shadow:0 8px 24px rgba(20,30,40,0.08);
     }
   }
   :root[data-theme="dark"]{
+    color-scheme:dark;
     --bg:#0b0f14; --bg-elevated:#141a21; --bg-card:#171e26; --border:#262f39;
     --text:#eef2f4; --text-dim:#9aa7ad; --shadow:0 8px 28px rgba(0,0,0,0.4);
   }
   :root[data-theme="light"]{
+    color-scheme:light;
     --bg:#f4f6f8; --bg-elevated:#ffffff; --bg-card:#ffffff; --border:#e1e7ea;
     --text:#12181c; --text-dim:#5b6870; --shadow:0 8px 24px rgba(20,30,40,0.08);
   }
@@ -49,6 +53,7 @@
   .hero{padding:44px 0 8px;text-align:center;}
   .hero h1{
     font-size:2.6rem;margin:0 0 10px;letter-spacing:-0.03em;line-height:1.15;
+    color:var(--text);
     background:linear-gradient(100deg,var(--text) 30%,var(--accent) 90%);
     -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
   }
