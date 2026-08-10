@@ -48,6 +48,21 @@ export function extractDomains(studyGuideText) {
     const name = m[1].trim();
     const weight = m[2].replace('–', '-');
     if (seen.has(name)) break; // hit the detailed section repeating domain 1
+
+    // Confirmed on GH-300 (2026-08): Microsoft's own "Skills at a glance"
+    // list can contain a genuine duplicate-looking line right after a real
+    // domain — e.g. "Use GitHub Copilot features (25–30%)" immediately
+    // followed by "GitHub Copilot features (25–30%)" — same weight, no
+    // detailed section of its own anywhere on the page. That's a content
+    // artifact on their end, not a second domain. Skip a line whose name is
+    // a substring of (or contains) the immediately-preceding collected
+    // domain's name, when the weight also matches exactly.
+    const prev = domains[domains.length - 1];
+    if (prev && prev.weight === weight) {
+      const a = name.toLowerCase(), b = prev.name.toLowerCase();
+      if (a.includes(b) || b.includes(a)) continue;
+    }
+
     seen.add(name);
     domains.push({ name, weight });
   }

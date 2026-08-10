@@ -1990,14 +1990,14 @@ const EXAMS = {
       { label: "Microsoft Q&A", url: "https://learn.microsoft.com/en-us/answers/products/" }
     ],
     domains: [
-      { name: "Use GitHub Copilot responsibly", weight: "15–20%", mid: 17.5, link: "https://learn.microsoft.com/en-us/training/modules/responsible-ai-with-github-copilot/", skills: [
+      { name: "Use GitHub Copilot responsibly", weight: "15-20%", mid: 17.5, link: "https://learn.microsoft.com/en-us/training/modules/responsible-ai-with-github-copilot/", skills: [
         "Describe risks and limitations of Generative AI tools",
         "Describe ethical and responsible AI usage",
         "Identify potential harms and mitigation strategies of AI usage",
         "Explain the need to validate AI output",
         "Identify how to operate GitHub Copilot responsibly"
       ] },
-      { name: "Use GitHub Copilot features", weight: "25–30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/copilot/", skills: [
+      { name: "Use GitHub Copilot features", weight: "25-30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/copilot/", skills: [
         "Enable Copilot in the IDE",
         "Trigger Copilot through inline suggestions, chat, CLI, and agent mode",
         "Configure content exclusions for specific files or repositories (app knowledge)",
@@ -2014,14 +2014,14 @@ const EXAMS = {
         "Utilize audit log events",
         "Manage subscriptions using the REST API"
       ] },
-      { name: "Understand GitHub Copilot data and architecture", weight: "10–15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/modules/introduction-prompt-engineering-with-github-copilot/", skills: [
+      { name: "Understand GitHub Copilot data and architecture", weight: "10-15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/modules/introduction-prompt-engineering-with-github-copilot/", skills: [
         "Explain data usage, flow, and sharing",
         "Describe input processing and prompt building",
         "Explain proxy filtering and post-processing",
         "Visualize code suggestion lifecycle",
         "Describe limitations of LLMs and Copilot"
       ] },
-      { name: "Apply prompt engineering and context crafting", weight: "10–15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/modules/introduction-prompt-engineering-with-github-copilot/", skills: [
+      { name: "Apply prompt engineering and context crafting", weight: "10-15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/modules/introduction-prompt-engineering-with-github-copilot/", skills: [
         "Describe prompt structure and context",
         "Understand how context is determined",
         "Use zero-shot and few-shot prompting",
@@ -2029,7 +2029,7 @@ const EXAMS = {
         "Explain prompt engineering principles",
         "Describe prompt process flow and chat history usage"
       ] },
-      { name: "Improve developer productivity with GitHub Copilot", weight: "10–15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/modules/developer-use-cases-for-ai-with-github-copilot/", skills: [
+      { name: "Improve developer productivity with GitHub Copilot", weight: "10-15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/modules/developer-use-cases-for-ai-with-github-copilot/", skills: [
         "Use Copilot for code generation, refactoring, and documentation",
         "Accelerate learning and reduce context switching",
         "Generate sample data and modernize legacy code",
@@ -2037,7 +2037,7 @@ const EXAMS = {
         "Identify edge cases and write assertions",
         "Suggest security improvements and performance optimizations"
       ] },
-      { name: "Configure privacy, content exclusions, and safeguards", weight: "10–15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/modules/github-copilot-management-and-customizations/", skills: [
+      { name: "Configure privacy, content exclusions, and safeguards", weight: "10-15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/modules/github-copilot-management-and-customizations/", skills: [
         "Configure content exclusions and editor settings",
         "Describe ownership and limitations of outputs",
         "Enable suggestions matching public code filtering",
