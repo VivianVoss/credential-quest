@@ -2248,7 +2248,7 @@ const EXAMS = {
         "Identify how to use saved replies and assignees to streamline communication",
         "Describe how project insights can be used to track progress and productivity"
       ] },
-      { name: "Understand privacy, security, and administration", weight: "10–15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/modules/github-introduction-administration/", skills: [
+      { name: "Understand privacy, security, and administration", weight: "10-15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/modules/github-introduction-administration/", skills: [
         "Describe how to secure accounts with two-factor authentication (2FA) and passkeys",
         "Identify access permissions and roles for repositories and organizations",
         "Explain the purpose of Enterprise Managed Users (EMUs) and organization-wide Copilot policy management",
