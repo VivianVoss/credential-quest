@@ -171,9 +171,9 @@
   .tab.active{color:var(--text);border-bottom-color:var(--accent);}
 
   .domainCard{margin-bottom:16px;}
-  .domainHead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
+  .domainHead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px;}
   .domainHead .name{font-weight:700;}
-  .domainHead .weight{color:var(--accent);font-weight:700;font-size:.9rem;}
+  .domainHead .weight{color:var(--accent);font-weight:700;font-size:.9rem;white-space:nowrap;flex-shrink:0;}
   .barTrack{height:8px;border-radius:6px;background:var(--bg-elevated);overflow:hidden;margin-bottom:12px;}
   .barFill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-dark));border-radius:6px;}
   .skillList{margin:0;padding-left:18px;color:var(--text-dim);font-size:.92rem;line-height:1.7;}
