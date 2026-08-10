@@ -375,20 +375,65 @@ function matchCatalog(query){
   return CATALOG.filter(e => e.code.toLowerCase().includes(q) || e.title.toLowerCase().includes(q) || e.category.toLowerCase().includes(q)).slice(0, 8);
 }
 
-function goToExam(code){
-  code = (code || "").trim().toUpperCase();
+/* Each exam gets its own direct URL: /az-104 (defaults to the study guide
+   tab), or /az-104#studyguide / /az-104#practice to pick the tab explicitly.
+   urlForState() derives that URL from current state; syncUrl() writes it to
+   the address bar (pushState for real navigation, replaceState for in-place
+   tab switches so tab clicks don't pile up in browser history). */
+function urlForState(){
+  if (state.view !== "exam" || !state.examCode) return "/";
+  const hash = state.tab === "quiz" ? "#practice" : "#studyguide";
+  return "/" + state.examCode.toLowerCase() + hash;
+}
+function syncUrl(replace){
+  const url = urlForState();
+  if (replace) history.replaceState(null, "", url);
+  else history.pushState(null, "", url);
+}
+
+function showNotFound(code){
   const errEl = document.getElementById("errMsg");
-  if (!code) return;
-  if (EXAMS[code]){
-    state.view = "exam"; state.examCode = code; state.tab = "study"; state.quiz = null;
-    render();
-    return;
-  }
   const entry = CATALOG.find(e => e.code === code);
   if (errEl){
     if (entry) errEl.textContent = `${code} — ${entry.title} — is on the poster but not built out yet. Ask to have it added!`;
     else errEl.textContent = `"${code}" isn't on the certification poster. Try a code like AZ-900 or a keyword like "security".`;
   }
+}
+
+function goToExam(code, tab){
+  code = (code || "").trim().toUpperCase();
+  if (!code) return;
+  if (EXAMS[code]){
+    state.view = "exam"; state.examCode = code; state.tab = tab === "quiz" ? "quiz" : "study"; state.quiz = null;
+    render();
+    window.scrollTo(0, 0);
+    syncUrl(false);
+    return;
+  }
+  state.view = "home";
+  render();
+  showNotFound(code);
+}
+
+/* Reads the current URL (path = exam code, hash = tab) and applies it to
+   state. Used on first load and on browser back/forward (popstate) — never
+   pushes/replaces the URL itself, it only ever reacts to one. */
+function applyRoute(){
+  const code = window.location.pathname.replace(/^\/+|\/+$/g, "").toUpperCase();
+  if (!code){
+    state.view = "home"; state.examCode = null; state.quiz = null;
+    render();
+    return;
+  }
+  if (EXAMS[code]){
+    const tab = window.location.hash.replace("#", "") === "practice" ? "quiz" : "study";
+    state.view = "exam"; state.examCode = code; state.tab = tab; state.quiz = null;
+    render();
+    return;
+  }
+  state.view = "home"; state.examCode = null; state.quiz = null;
+  render();
+  showNotFound(code);
 }
 
 function wireEvents(){
@@ -442,10 +487,19 @@ function wireEvents(){
   });
 
   const backBtn = document.getElementById("backBtn");
-  if (backBtn) backBtn.addEventListener("click", () => { state.view = "home"; render(); });
+  if (backBtn) backBtn.addEventListener("click", () => {
+    state.view = "home"; state.examCode = null; state.quiz = null;
+    render();
+    window.scrollTo(0, 0);
+    history.pushState(null, "", "/");
+  });
 
   document.querySelectorAll(".tab").forEach(el => {
-    el.addEventListener("click", () => { state.tab = el.getAttribute("data-tab"); render(); });
+    el.addEventListener("click", () => {
+      state.tab = el.getAttribute("data-tab");
+      render();
+      syncUrl(true);
+    });
   });
 
   document.querySelectorAll("[data-opt]").forEach(el => {
@@ -519,8 +573,11 @@ function wireEvents(){
   });
   const studyAgainBtn = document.getElementById("studyAgainBtn");
   if (studyAgainBtn) studyAgainBtn.addEventListener("click", () => {
-    state.tab = "study"; state.quiz = null; render();
+    state.tab = "study"; state.quiz = null;
+    render();
+    syncUrl(true);
   });
 }
 
-render();
+window.addEventListener("popstate", applyRoute);
+applyRoute();
