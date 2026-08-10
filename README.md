@@ -20,13 +20,18 @@ A free, community-facing Microsoft certification study companion — every crede
 
 ## Running locally
 
-No build step, no dependencies. Clone the repo and open `index.html` directly in a browser:
+No build step, no dependencies — it's plain HTML/CSS/JS with no `fetch`, modules, or bundler, so opening the file directly works the same in any modern browser (Chrome, Firefox, Safari, Edge) on any OS.
 
 ```bash
 git clone https://github.com/VivianVoss/credential-quest.git
 cd credential-quest
-open index.html
 ```
+
+Then open `index.html`:
+- Easiest: double-click it in Finder / File Explorer / your file manager.
+- macOS: `open index.html`
+- Windows: `start index.html`
+- Linux: `xdg-open index.html`
 
 ## Structure
 
@@ -43,4 +48,6 @@ This is an independent community study tool. It is **not affiliated with, endors
 
 ## License
 
-No license is granted. All rights reserved — the code and question content here may not be copied, redistributed, or reused without permission.
+Copyright (C) 2026 Vivian Voss
+
+Licensed under the [GNU General Public License v3.0](LICENSE) — you're free to use, study, modify, and redistribute this code under the terms of the GPLv3, including for derivative works, as long as those derivatives are also released under GPLv3.

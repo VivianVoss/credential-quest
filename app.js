@@ -407,6 +407,12 @@ function wireEvents(){
         <span class="tag">${EXAMS[e.code] ? "Ready" : "Soon"}</span>
       </div>
     `).join("")}</div>`;
+    suggestBox.querySelectorAll("[data-goto]").forEach(el => {
+      el.addEventListener("click", () => {
+        suggestBox.innerHTML = "";
+        goToExam(el.getAttribute("data-goto"));
+      });
+    });
   }
 
   if (input){
