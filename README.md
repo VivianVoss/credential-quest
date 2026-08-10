@@ -1,6 +1,6 @@
 # Credential Quest
 
-**Live at [agreeable-meadow-0a6181e03.7.azurestaticapps.net](https://agreeable-meadow-0a6181e03.7.azurestaticapps.net)**
+**Live at [mscredentialquest.com](https://mscredentialquest.com)**
 
 A free, community-facing Microsoft certification study companion — every credential from Microsoft's official [certification poster](https://aka.ms/CertificationsPoster) (July 2026 edition), with a Learn-grounded skills breakdown and a practice quiz for each one.
 
