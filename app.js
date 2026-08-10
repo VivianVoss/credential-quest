@@ -141,7 +141,7 @@ function renderHome(){
     <div class="disclaimer">
       Skills-measured outlines and resource links are pulled from the official Microsoft Learn study guides. Practice questions are original — not reproductions of real exam questions, which Microsoft never publishes; question pools for practice-ready exams are written from the actual content of each exam's real Microsoft Learn training modules. Questions are AI-generated and have not been 100% human-verified, so occasional errors are possible — use this as a study aid alongside official Microsoft Learn material, not as a guaranteed-accurate source. Each practice run surfaces 50 questions that rotate through the full pool before repeating. Credential names, codes, and categories are drawn directly from Microsoft's official certification poster — this is an independent community study tool, not an official Microsoft product.
     </div>
-    <div class="footer">Not affiliated with or endorsed by Microsoft. All trademarks belong to their respective owners.</div>
+    <div class="footer">Not affiliated with or endorsed by Microsoft. All trademarks belong to their respective owners.<br>Built by <a href="https://vivian.tiiman.com" target="_blank" rel="noopener">Vivian Voss</a>.</div>
   `;
 }
 
