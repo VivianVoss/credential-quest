@@ -41,6 +41,17 @@ Then open `index.html`:
 | `style.css` | All styling, including light/dark theme support |
 | `data.js` | The credential catalog and every exam's domains + question pool |
 | `app.js` | App logic — rendering, search, quiz state, progress tracking |
+| `staticwebapp.config.json` | Azure Static Web Apps routing config (per-exam URLs need this to resolve) |
+| `scripts/freshness-check/` | CI-only tooling that checks the poster + live exam pages for drift — see below |
+
+## Keeping it up to date
+
+A monthly [GitHub Action](.github/workflows/freshness-check.yml) checks two things against the live Microsoft sources:
+
+1. **Does the poster still list exactly these 56 credentials?** New or retired codes get filed as a GitHub issue for review.
+2. **Has anything drifted on an existing exam's live page?** Level, beta status, or a domain's weight percentage — mechanical field changes get auto-patched and opened as a pull request. A domain being added or removed (which means the question pool itself needs new content, not just a data edit) gets filed as an issue instead of silently patched.
+
+See [`scripts/freshness-check/`](scripts/freshness-check/) for the implementation, or trigger a manual run (optionally scoped to specific codes) via the workflow's "Run workflow" button on GitHub.
 
 ## Disclaimer
 

@@ -1,0 +1,12 @@
+{
+  "name": "credential-quest-freshness-check",
+  "private": true,
+  "type": "module",
+  "description": "CI-only tooling that checks the live Microsoft certification poster and exam pages against data.js and flags/auto-fixes drift. Not part of the shipped site.",
+  "scripts": {
+    "check": "node run.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.47.0"
+  }
+}

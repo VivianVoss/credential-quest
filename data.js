@@ -133,7 +133,7 @@ const EXAMS = {
       { label: "Microsoft Q&A", url: "https://learn.microsoft.com/en-us/answers/products/" }
     ],
     domains: [
-      { name: "Identify AI concepts and capabilities", weight: "40–45%", mid: 42.5, link: "https://learn.microsoft.com/en-us/training/paths/ai-concepts/", skills: [
+      { name: "Identify AI concepts and capabilities", weight: "40-45%", mid: 42.5, link: "https://learn.microsoft.com/en-us/training/paths/ai-concepts/", skills: [
         "Describe principles of responsible AI",
         "Describe considerations for fairness in an AI solution",
         "Describe considerations for reliability and safety in an AI solution",
@@ -152,7 +152,7 @@ const EXAMS = {
         "Identify features and capabilities of computer vision and image-generation models",
         "Identify techniques to extract information from text, images, audio, and videos"
       ] },
-      { name: "Implement AI solutions by using Microsoft Foundry", weight: "55–60%", mid: 57.5, link: "https://learn.microsoft.com/en-us/training/paths/get-started-ai-apps-agents/", skills: [
+      { name: "Implement AI solutions by using Microsoft Foundry", weight: "55-60%", mid: 57.5, link: "https://learn.microsoft.com/en-us/training/paths/get-started-ai-apps-agents/", skills: [
         "Implement generative AI apps and agents by using Foundry",
         "Create effective system and user prompts for generative AI models",
         "Deploy a model and interact with it in the Foundry portal",
@@ -346,7 +346,7 @@ const EXAMS = {
       { label: "Power BI documentation", url: "https://learn.microsoft.com/en-us/power-bi/" }
     ],
     domains: [
-      { name: "Describe core data concepts", weight: "25–30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore-core-data-concepts/", skills: [
+      { name: "Describe core data concepts", weight: "25-30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore-core-data-concepts/", skills: [
         "Describe ways to represent data",
         "Describe the features of structured data",
         "Describe the features of semi-structured data",
@@ -363,7 +363,7 @@ const EXAMS = {
         "Describe responsibilities for data engineers",
         "Describe responsibilities for data analysts"
       ] },
-      { name: "Identify considerations for relational data on Azure", weight: "20–25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore-relational-data/", skills: [
+      { name: "Identify considerations for relational data on Azure", weight: "20-25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore-relational-data/", skills: [
         "Describe relational concepts",
         "Identify features of relational data",
         "Describe normalization and why it is used",
@@ -373,7 +373,7 @@ const EXAMS = {
         "Describe the Azure SQL family of products, including Azure SQL Database, Azure SQL Managed Instance, and SQL Server on Azure Virtual Machines",
         "Identify Azure database services for open-source database systems"
       ] },
-      { name: "Describe considerations for working with non-relational data on Azure", weight: "15–20%", mid: 17.5, link: "https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore-non-relational-data/", skills: [
+      { name: "Describe considerations for working with non-relational data on Azure", weight: "15-20%", mid: 17.5, link: "https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore-non-relational-data/", skills: [
         "Describe the capabilities of Azure storage",
         "Describe features of Azure Blob storage",
         "Describe features of Azure Files",
@@ -382,7 +382,7 @@ const EXAMS = {
         "Identify use cases for Azure Cosmos DB",
         "Describe Azure Cosmos DB APIs"
       ] },
-      { name: "Describe an analytics workload on Azure", weight: "25–30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore-data-warehouse-analytics/", skills: [
+      { name: "Describe an analytics workload on Azure", weight: "25-30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore-data-warehouse-analytics/", skills: [
         "Describe common elements of large-scale analytics",
         "Describe considerations for data ingestion and processing",
         "Describe options for analytical data stores",
@@ -565,7 +565,7 @@ const EXAMS = {
       { label: "Get started with the Microsoft Service Trust Portal", url: "https://learn.microsoft.com/en-us/microsoft-365/compliance/get-started-with-service-trust-portal?view=o365-worldwide" }
     ],
     domains: [
-      { name: "Describe the concepts of security, compliance, and identity", weight: "10–15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/paths/describe-concepts-of-security-compliance-identity/", skills: [
+      { name: "Describe the concepts of security, compliance, and identity", weight: "10-15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/paths/describe-concepts-of-security-compliance-identity/", skills: [
         "Describe security and compliance concepts",
         "Describe the shared responsibility model",
         "Describe defense-in-depth",
@@ -580,7 +580,7 @@ const EXAMS = {
         "Describe the concept of directory services and Active Directory",
         "Describe the concept of federation"
       ] },
-      { name: "Describe the capabilities of Microsoft Entra", weight: "25–30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/describe-capabilities-of-microsoft-identity-access/", skills: [
+      { name: "Describe the capabilities of Microsoft Entra", weight: "25-30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/describe-capabilities-of-microsoft-identity-access/", skills: [
         "Describe function and identity types of Microsoft Entra ID",
         "Describe Microsoft Entra ID",
         "Describe types of identities, including agent ID",
@@ -598,7 +598,7 @@ const EXAMS = {
         "Describe the capabilities of Microsoft Entra Privileged Identity Management",
         "Describe Microsoft Entra ID Protection"
       ] },
-      { name: "Describe the capabilities of Microsoft security solutions", weight: "35–40%", mid: 37.5, link: "https://learn.microsoft.com/en-us/training/paths/describe-capabilities-of-microsoft-security-solutions/", skills: [
+      { name: "Describe the capabilities of Microsoft security solutions", weight: "35-40%", mid: 37.5, link: "https://learn.microsoft.com/en-us/training/paths/describe-capabilities-of-microsoft-security-solutions/", skills: [
         "Describe core infrastructure security services in Azure",
         "Describe Azure DDoS Protection",
         "Describe Azure Firewall",
@@ -625,7 +625,7 @@ const EXAMS = {
         "Describe Microsoft Defender Threat Intelligence (Defender TI)",
         "Describe the Microsoft Defender portal"
       ] },
-      { name: "Describe the capabilities of Microsoft compliance solutions", weight: "20–25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/paths/describe-capabilities-of-microsoft-compliance-solutions/", skills: [
+      { name: "Describe the capabilities of Microsoft compliance solutions", weight: "20-25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/paths/describe-capabilities-of-microsoft-compliance-solutions/", skills: [
         "Describe Microsoft Service Trust Portal and privacy principles",
         "Describe the Service Trust Portal offerings",
         "Describe the privacy principles of Microsoft",
@@ -827,7 +827,7 @@ const EXAMS = {
     { label: "Power Platform Community", url: "https://powerusers.microsoft.com/" }
   ],
   domains: [
-    { name: "Describe the business value of Microsoft Power Platform", weight: "5–10%", mid: 7.5, link: "https://learn.microsoft.com/en-us/training/modules/describe-business-value-microsoft-power-platform/", skills: [
+    { name: "Describe the business value of Microsoft Power Platform", weight: "5-10%", mid: 7.5, link: "https://learn.microsoft.com/en-us/training/modules/describe-business-value-microsoft-power-platform/", skills: [
       "Describe the business value of Microsoft Power Platform services",
       "Describe the value of Microsoft Power Apps to build applications",
       "Describe the value of Microsoft Power Automate to automate processes",
@@ -837,7 +837,7 @@ const EXAMS = {
       "Describe the value of generative AI features in Microsoft Power Platform",
       "Describe the value of Copilot Studio to create agents"
     ] },
-    { name: "Manage the Microsoft Power Platform environment", weight: "20–25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/modules/describe-microsoft-dataverse/", skills: [
+    { name: "Manage the Microsoft Power Platform environment", weight: "20-25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/modules/describe-microsoft-dataverse/", skills: [
       "Describe Microsoft Dataverse",
       "Describe differences between traditional databases and Dataverse",
       "Describe tables, columns, and relationships",
@@ -851,7 +851,7 @@ const EXAMS = {
       "Describe the monitoring and analytics capabilities of the Microsoft Power Platform",
       "Describe application lifecycle management (ALM) with Microsoft Power Platform pipelines"
     ] },
-    { name: "Demonstrate the capabilities of Power Apps", weight: "20–25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/modules/identify-basic-microsoft-power-apps-capabilities/", skills: [
+    { name: "Demonstrate the capabilities of Power Apps", weight: "20-25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/modules/identify-basic-microsoft-power-apps-capabilities/", skills: [
       "Describe Power Apps capabilities and use cases",
       "Describe use cases for and capabilities of canvas apps",
       "Describe use cases for and capabilities of model-driven apps",
@@ -862,7 +862,7 @@ const EXAMS = {
       "Describe how to use AI to create a model-driven app",
       "Describe creating AI-powered apps by using the vibe experience"
     ] },
-    { name: "Demonstrate the capabilities of Power Automate", weight: "20–25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/modules/identify-microsoft-power-automate-components/", skills: [
+    { name: "Demonstrate the capabilities of Power Automate", weight: "20-25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/modules/identify-microsoft-power-automate-components/", skills: [
       "Describe Power Automate use cases and capabilities",
       "Describe use cases for cloud and desktop flows",
       "Describe Power Automate use cases for approvals, Microsoft Teams, Outlook, SharePoint, Forms, and document automation",
@@ -871,7 +871,7 @@ const EXAMS = {
       "Describe how to use AI to create and modify cloud flows",
       "Describe how to use AI to create and modify desktop flows"
     ] },
-    { name: "Describe features and capabilities of agents in Microsoft Copilot Studio", weight: "20–25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/modules/understand-features-copilot-studio-agents/", skills: [
+    { name: "Describe features and capabilities of agents in Microsoft Copilot Studio", weight: "20-25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/modules/understand-features-copilot-studio-agents/", skills: [
       "Describe how to build agents in Copilot Studio",
       "Describe use cases for agents",
       "Describe how to build agent conversation paths by using topics",
@@ -1068,7 +1068,7 @@ const EXAMS = {
     { label: "AZ-900 exam sandbox", url: "https://go.microsoft.com/fwlink/?linkid=2226877" }
   ],
   domains: [
-    { name: "Describe cloud concepts", weight: "25–30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/", skills: [
+    { name: "Describe cloud concepts", weight: "25-30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/", skills: [
       "Define cloud computing",
       "Describe the shared responsibility model",
       "Define cloud models, including public, private, and hybrid",
@@ -1085,7 +1085,7 @@ const EXAMS = {
       "Describe software as a service (SaaS)",
       "Identify appropriate use cases for each cloud service type (IaaS, PaaS, and SaaS)"
     ] },
-    { name: "Describe Azure architecture and services", weight: "35–40%", mid: 37.5, link: "https://learn.microsoft.com/en-us/training/paths/azure-fundamentals-describe-azure-architecture-services/", skills: [
+    { name: "Describe Azure architecture and services", weight: "35-40%", mid: 37.5, link: "https://learn.microsoft.com/en-us/training/paths/azure-fundamentals-describe-azure-architecture-services/", skills: [
       "Describe Azure regions, region pairs, and sovereign regions",
       "Describe availability zones",
       "Describe Azure datacenters",
@@ -1114,7 +1114,7 @@ const EXAMS = {
       "Describe the purpose of the defense-in-depth model",
       "Describe the purpose of Microsoft Defender for Cloud"
     ] },
-    { name: "Describe Azure management and governance", weight: "30–35%", mid: 32.5, link: "https://learn.microsoft.com/en-us/training/paths/describe-azure-management-governance/", skills: [
+    { name: "Describe Azure management and governance", weight: "30-35%", mid: 32.5, link: "https://learn.microsoft.com/en-us/training/paths/describe-azure-management-governance/", skills: [
       "Describe factors that can affect costs in Azure",
       "Explore the pricing calculator",
       "Describe cost management capabilities in Azure",
@@ -1757,7 +1757,7 @@ const EXAMS = {
       { label: "Microsoft Q&A", url: "https://learn.microsoft.com/en-us/answers/products/" }
     ],
     domains: [
-      { name: "Author and manage workflows", weight: "20–25%", mid: 22.5, link: "https://docs.github.com/en/actions", skills: [
+      { name: "Author and manage workflows", weight: "20-25%", mid: 22.5, link: "https://docs.github.com/en/actions", skills: [
         "Configure workflows to run for scheduled, manual, webhook, and repository events",
         "Choose appropriate scope, permissions, and events for workflow automation",
         "Define and validate workflow_dispatch inputs (types, required, defaults) and pass inputs to reusable workflows via workflow_call with inputs and secrets mapping",
@@ -1775,7 +1775,7 @@ const EXAMS = {
         "Generate job summaries using GITHUB_STEP_SUMMARY for rich Markdown reports (test results, coverage, links)",
         "Add workflow status badges and environment protections"
       ] },
-      { name: "Consume and troubleshoot workflows", weight: "15–20%", mid: 17.5, link: "https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions", skills: [
+      { name: "Consume and troubleshoot workflows", weight: "15-20%", mid: 17.5, link: "https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions", skills: [
         "Identify workflow triggers and effects from configuration and logs",
         "Diagnose failed workflow runs using logs and run history",
         "Expand and interpret YAML anchors, aliases, and merged mappings when analyzing workflow configuration",
@@ -1788,7 +1788,7 @@ const EXAMS = {
         "Differentiate starter workflows (copy scaffold, independent after creation) vs reusable workflows (central versioned definition invoked via workflow_call) vs composite actions (encapsulated step logic)",
         "Contrast disabling and deleting workflows"
       ] },
-      { name: "Author and maintain actions", weight: "15–20%", mid: 17.5, link: "https://docs.github.com/en/actions/sharing-automations/creating-actions/releasing-and-maintaining-actions", skills: [
+      { name: "Author and maintain actions", weight: "15-20%", mid: 17.5, link: "https://docs.github.com/en/actions/sharing-automations/creating-actions/releasing-and-maintaining-actions", skills: [
         "Identify and implement action types (JavaScript, Docker, composite); understand immutable actions rollout on hosted runners and implications for version pinning and registry sources",
         "Troubleshoot action execution and errors",
         "Specify required files, directory structure, and metadata",
@@ -1797,7 +1797,7 @@ const EXAMS = {
         "Publish actions to the GitHub Marketplace",
         "Apply versioning and release strategies"
       ] },
-      { name: "Manage GitHub Actions for the enterprise", weight: "20–25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/modules/manage-github-actions-enterprise/", skills: [
+      { name: "Manage GitHub Actions for the enterprise", weight: "20-25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/modules/manage-github-actions-enterprise/", skills: [
         "Define and manage reusable components and templates",
         "Control access to actions and workflows within the enterprise",
         "Configure organizational use policies",
@@ -1808,7 +1808,7 @@ const EXAMS = {
         "Define and scope encrypted secrets and variables at the organization, repository, and environment levels",
         "Access and use secrets and variables in workflows and actions; manage secrets and variables programmatically via REST APIs"
       ] },
-      { name: "Secure and optimize automation", weight: "10–15%", mid: 12.5, link: "https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions", skills: [
+      { name: "Secure and optimize automation", weight: "10-15%", mid: 12.5, link: "https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions", skills: [
         "Use environment protections and approval gates",
         "Identify and use trustworthy actions from the Marketplace",
         "Mitigate script injection (sanitize/validate inputs, least-privilege permissions, avoid untrusted data in run:, proper shell quoting, prefer vetted actions over inline scripts)",
@@ -2213,7 +2213,7 @@ const EXAMS = {
       { label: "Microsoft Q&A", url: "https://learn.microsoft.com/en-us/answers/products/" }
     ],
     domains: [
-      { name: "Understand Git and GitHub basics", weight: "25–30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/modules/intro-to-git/", skills: [
+      { name: "Understand Git and GitHub basics", weight: "25-30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/modules/intro-to-git/", skills: [
         "Describe the purpose and benefits of version control",
         "Explain the difference between Git and GitHub",
         "Identify key Git concepts such as repositories, commits, and branches",
@@ -2222,40 +2222,40 @@ const EXAMS = {
         "Identify uses of Markdown for clear communication in issues and pull requests",
         "Recognize when to use GitHub Desktop and GitHub Mobile"
       ] },
-      { name: "Work with GitHub repositories", weight: "10–15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github/", skills: [
+      { name: "Work with GitHub repositories", weight: "10-15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github/", skills: [
         "Describe the structure and key files of a GitHub repository (README, LICENSE, CONTRIBUTING, CODEOWNERS, SECURITY)",
         "Identify how to create, organize, and maintain repositories using templates and branches.",
         "Explain how to add and manage files within a repository",
         "Describe repository insights, stars, feature previews, repository metrics dashboards, and dependency insights for improved visibility",
         "Recognize best practices for repository maintenance and collaboration"
       ] },
-      { name: "Collaborate using GitHub", weight: "10–15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/modules/manage-changes-pull-requests-github/", skills: [
+      { name: "Collaborate using GitHub", weight: "10-15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/modules/manage-changes-pull-requests-github/", skills: [
         "Describe how to use issues, pull requests, and discussions for collaboration",
         "Explain how to link pull requests to issues and manage templates, filters, and assignments",
         "Identify the purpose of notifications and how to configure them for workflow management",
         "Describe how to use Gists, Wikis, and GitHub Pages to document and share information"
       ] },
-      { name: "Apply modern development practices", weight: "10–15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github-copilot/", skills: [
+      { name: "Apply modern development practices", weight: "10-15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github-copilot/", skills: [
         "Describe the purpose and capabilities of GitHub Actions",
         "Identify how GitHub Copilot assists with AI-powered code suggestions, including Copilot agents, Agent Mode, and multi‑model support",
         "Explain the differences between GitHub Copilot for Individuals, Business, and Enterprise",
         "Describe GitHub Codespaces and how to set up, customize, and use dev containers",
         "Explain when to use the github.dev editor and how it differs from Codespaces"
       ] },
-      { name: "Manage projects with GitHub", weight: "5–10%", mid: 7.5, link: "https://learn.microsoft.com/en-us/training/modules/manage-work-github-projects/", skills: [
+      { name: "Manage projects with GitHub", weight: "5-10%", mid: 7.5, link: "https://learn.microsoft.com/en-us/training/modules/manage-work-github-projects/", skills: [
         "Describe GitHub Projects and layout options",
         "Explain how to configure projects, labels, milestones, and workflows",
         "Identify how to use saved replies and assignees to streamline communication",
         "Describe how project insights can be used to track progress and productivity"
       ] },
-      { name: "Understand privacy, security, and administration", weight: "10–15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/modules/github-introduction-administration/", skills: [
+      { name: "Understand privacy, security, and administration", weight: "10-15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/modules/github-introduction-administration/", skills: [
         "Describe how to secure accounts with two-factor authentication (2FA) and passkeys",
         "Identify access permissions and roles for repositories and organizations",
         "Explain the purpose of Enterprise Managed Users (EMUs) and organization-wide Copilot policy management",
         "Describe repository privacy options, visibility settings, and branch protection rules",
         "Recognize how to manage organization settings, teams, and roles"
       ] },
-      { name: "Explore the GitHub community", weight: "5–10%", mid: 7.5, link: "https://learn.microsoft.com/en-us/training/modules/contribute-open-source/", skills: [
+      { name: "Explore the GitHub community", weight: "5-10%", mid: 7.5, link: "https://learn.microsoft.com/en-us/training/modules/contribute-open-source/", skills: [
         "Describe the benefits of open source and GitHub Sponsors",
         "Explain how GitHub supports and advances open-source projects.",
         "Identify how to follow users and organizations to stay informed about activity.",
@@ -2433,7 +2433,7 @@ const EXAMS = {
       { label: "Azure Virtual Desktop documentation", url: "https://learn.microsoft.com/en-us/azure/virtual-desktop/" }
     ],
     domains: [
-      { name: "Plan and implement an Azure Virtual Desktop infrastructure", weight: "40–45%", mid: 42.5, link: "https://learn.microsoft.com/en-us/training/paths/plan-azure-virtual-desktop-implementation/", skills: [
+      { name: "Plan and implement an Azure Virtual Desktop infrastructure", weight: "40-45%", mid: 42.5, link: "https://learn.microsoft.com/en-us/training/paths/plan-azure-virtual-desktop-implementation/", skills: [
         "Assess network capacity and speed requirements for Azure Virtual Desktop",
         "Design network configuration for session hosts to meet requirements for Azure Virtual Desktop",
         "Plan and implement Remote Desktop Protocol (RDP) Shortpath, RDP Multipath, and quality of service (QoS) policies",
@@ -2462,7 +2462,7 @@ const EXAMS = {
         "Create a session host by using a custom image",
         "Plan and implement image storage, including Azure Compute Gallery"
       ] },
-      { name: "Plan and implement identity and security", weight: "15–20%", mid: 17.5, link: "https://learn.microsoft.com/en-us/training/paths/manage-access-security/", skills: [
+      { name: "Plan and implement identity and security", weight: "15-20%", mid: 17.5, link: "https://learn.microsoft.com/en-us/training/paths/manage-access-security/", skills: [
         "Select an identity scenario for Azure Virtual Desktop, including Active Directory Domain Services (AD DS), Microsoft Entra ID, and Microsoft Entra Domain Services",
         "Specify requirements to configure the Azure Virtual Desktop session host for an identity scenario",
         "Plan and implement Azure role-based access control (Azure RBAC) for Azure Virtual Desktop",
@@ -2478,7 +2478,7 @@ const EXAMS = {
         "Plan and implement Windows threat protection features on Azure Virtual Desktop session hosts, including App Control for Business and Controlled Folder Access",
         "Plan for and implement Azure confidential VMs and Trusted Launch security features for Azure Virtual Desktop session hosts"
       ] },
-      { name: "Plan and implement user environments and apps", weight: "20–25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/paths/manage-user-environments-apps/", skills: [
+      { name: "Plan and implement user environments and apps", weight: "20-25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/paths/manage-user-environments-apps/", skills: [
         "Recommend FSLogix configuration",
         "Configure FSLogix Profile Containers",
         "Configure FSLogix ODFC containers",
@@ -2506,7 +2506,7 @@ const EXAMS = {
         "Configure dynamic application delivery by using App attach",
         "Create an application package for App attach"
       ] },
-      { name: "Monitor and maintain an Azure Virtual Desktop infrastructure", weight: "10–15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/paths/monitor-maintain-azure-virtual-desktop-infrastructure/", skills: [
+      { name: "Monitor and maintain an Azure Virtual Desktop infrastructure", weight: "10-15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/paths/monitor-maintain-azure-virtual-desktop-infrastructure/", skills: [
         "Configure log collection and analysis for Azure Virtual Desktop session hosts",
         "Monitor Azure Virtual Desktop by using Azure Monitor",
         "Customize Azure Monitor workbooks for Azure Virtual Desktop Insights",
@@ -2695,7 +2695,7 @@ const EXAMS = {
       { label: "Microsoft Q&A", url: "https://learn.microsoft.com/en-us/answers/products/" }
     ],
     domains: [
-      { name: "Prepare agent architecture and SDLC processes", weight: "15–20%", mid: 17.5, link: "https://docs.github.com/copilot/how-tos/administer-copilot/manage-for-organization/prepare-for-custom-agents", skills: [
+      { name: "Prepare agent architecture and SDLC processes", weight: "15-20%", mid: 17.5, link: "https://docs.github.com/copilot/how-tos/administer-copilot/manage-for-organization/prepare-for-custom-agents", skills: [
         "Identify steps for agents to perform",
         "Identify and mitigate common anti-patterns in agents",
         "Define inputs, outputs, and success criteria for agents",
@@ -2707,7 +2707,7 @@ const EXAMS = {
         "Configure agent to produce inspectable artifacts within standard development tooling",
         "Configure human intervention for autonomous agents without slowing delivery"
       ] },
-      { name: "Implement tool use and environment interaction", weight: "20–25%", mid: 22.5, link: "https://docs.github.com/copilot/how-tos/copilot-sdk/use-copilot-sdk/custom-agents", skills: [
+      { name: "Implement tool use and environment interaction", weight: "20-25%", mid: 22.5, link: "https://docs.github.com/copilot/how-tos/copilot-sdk/use-copilot-sdk/custom-agents", skills: [
         "Identify required tools",
         "Configure agent tools",
         "Configure agent tool permissions",
@@ -2727,7 +2727,7 @@ const EXAMS = {
         "Implement escalation paths",
         "Implement traceability and accountability for agent actions"
       ] },
-      { name: "Manage memory, state, and execution", weight: "10–15%", mid: 12.5, link: "https://docs.github.com/copilot/concepts/agents/copilot-memory", skills: [
+      { name: "Manage memory, state, and execution", weight: "10-15%", mid: 12.5, link: "https://docs.github.com/copilot/concepts/agents/copilot-memory", skills: [
         "Choose between short-term, long-term, and external memory",
         "Scope agent memory to task-relevant information",
         "Define memory expiration, pruning, and reset rules",
@@ -2738,7 +2738,7 @@ const EXAMS = {
         "Prevent conflicting context",
         "Prevent stale context"
       ] },
-      { name: "Perform evaluation, error analysis, and tuning", weight: "15–20%", mid: 17.5, link: "https://docs.github.com/copilot/tutorials/customization-library/custom-agents/implementation-planner", skills: [
+      { name: "Perform evaluation, error analysis, and tuning", weight: "15-20%", mid: 17.5, link: "https://docs.github.com/copilot/tutorials/customization-library/custom-agents/implementation-planner", skills: [
         "Specify expected outcomes and operational constraints for agent tasks",
         "Identify qualitative and quantitative evaluation signals to evaluate agents",
         "Align evaluation criteria with development intent",
@@ -2749,7 +2749,7 @@ const EXAMS = {
         "Refine memory usage",
         "Refine tool usage and tool access"
       ] },
-      { name: "Orchestrate multi-agent coordination", weight: "15–20%", mid: 17.5, link: "https://docs.github.com/copilot/how-tos/copilot-sdk/use-copilot-sdk/custom-agents", skills: [
+      { name: "Orchestrate multi-agent coordination", weight: "15-20%", mid: 17.5, link: "https://docs.github.com/copilot/how-tos/copilot-sdk/use-copilot-sdk/custom-agents", skills: [
         "Apply an orchestration pattern to coordinate multiple agents",
         "Configure agent isolation for parallel execution",
         "Detect and resolve agent conflicts, including overlapping code changes, duplicated effort, and contradictory outputs",
@@ -2763,7 +2763,7 @@ const EXAMS = {
         "Update, reconfigure, or replace agents without disrupting active workflows",
         "Retire agents while preserving auditability and workflow continuity"
       ] },
-      { name: "Implement guardrails and accountability", weight: "10–15%", mid: 12.5, link: "https://docs.github.com/copilot/tutorials/cloud-agent/build-guardrails", skills: [
+      { name: "Implement guardrails and accountability", weight: "10-15%", mid: 12.5, link: "https://docs.github.com/copilot/tutorials/cloud-agent/build-guardrails", skills: [
         "Classify agent actions by operational, security, and compliance risk to right-size human interventions",
         "Assign autonomy levels to maximize delivery speed while remaining compliant with organizational security and Responsible AI standards",
         "Identify the subset of actions that require human judgment",
@@ -2942,7 +2942,7 @@ const EXAMS = {
       { label: "SAP on Azure documentation", url: "https://learn.microsoft.com/en-us/azure/sap/" }
     ],
     domains: [
-      { name: "Migrate SAP workloads to Azure", weight: "25–30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/migrate-sap-workloads-to-azure/", skills: [
+      { name: "Migrate SAP workloads to Azure", weight: "25-30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/migrate-sap-workloads-to-azure/", skills: [
         "Estimate target sizing for SAP workloads",
         "Identify supported scenarios for SAP deployments on Azure",
         "Identify compute, storage, and network requirements for SAP workloads",
@@ -2964,7 +2964,7 @@ const EXAMS = {
         "Design and implement integration of data management services such as data archiving",
         "Design and implement integration of identity and security services with SAP RISE"
       ] },
-      { name: "Design and implement an infrastructure to support SAP workloads on Azure", weight: "25–30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/modules/explore-azure-compute/", skills: [
+      { name: "Design and implement an infrastructure to support SAP workloads on Azure", weight: "25-30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/modules/explore-azure-compute/", skills: [
         "Choose an SAP-certified Azure virtual machine for a given SAP workload",
         "Configure the Azure VM extension for SAP solutions",
         "Deploy an operating system by using an Azure Marketplace image",
@@ -2991,7 +2991,7 @@ const EXAMS = {
         "Design and implement volumes by using Azure NetApp Files",
         "Design and implement volumes by using Azure Files"
       ] },
-      { name: "Design and implement high availability and disaster recovery (HADR)", weight: "20–25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/paths/ensure-business-continuity-implement-disaster-recovery/", skills: [
+      { name: "Design and implement high availability and disaster recovery (HADR)", weight: "20-25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/paths/ensure-business-continuity-implement-disaster-recovery/", skills: [
         "Design for service-level agreement (SLA) considerations",
         "Design and deploy SAP workloads into availability sets and availability zones",
         "Design and implement load balancing for high availability",
@@ -3010,7 +3010,7 @@ const EXAMS = {
         "Perform backup and restore",
         "Test disaster recovery"
       ] },
-      { name: "Maintain SAP workloads on Azure", weight: "20–25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/modules/explore-monitoring-requirements-of-azure-for-sap-workloads/", skills: [
+      { name: "Maintain SAP workloads on Azure", weight: "20-25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/modules/explore-monitoring-requirements-of-azure-for-sap-workloads/", skills: [
         "Optimize performance and costs for an SAP workload by using Azure Advisor recommendations",
         "Analyze and optimize network performance",
         "Optimize costs by using Azure Savings Plans or Reserved Instances for SAP virtual machines",
@@ -3205,7 +3205,7 @@ const EXAMS = {
       { label: "Microsoft Q&A", url: "https://learn.microsoft.com/en-us/answers/products/" }
     ],
     domains: [
-      { name: "Design and implement data models", weight: "35–40%", mid: 37.5, link: "https://learn.microsoft.com/en-us/training/paths/implement-modeling-partitioning-azure-cosmos-db-sql-api/", skills: [
+      { name: "Design and implement data models", weight: "35-40%", mid: 37.5, link: "https://learn.microsoft.com/en-us/training/paths/implement-modeling-partitioning-azure-cosmos-db-sql-api/", skills: [
         "Develop a design by storing multiple entity types in the same container",
         "Develop a design by storing multiple related entities in the same document",
         "Develop a model that denormalizes data across documents",
@@ -3262,7 +3262,7 @@ const EXAMS = {
         "Implement and call triggers",
         "Implement a user-defined function"
       ] },
-      { name: "Design and implement data distribution", weight: "5–10%", mid: 7.5, link: "https://learn.microsoft.com/en-us/training/paths/design-implement-replication-strategy-cosmos-db-sql-api/", skills: [
+      { name: "Design and implement data distribution", weight: "5-10%", mid: 7.5, link: "https://learn.microsoft.com/en-us/training/paths/design-implement-replication-strategy-cosmos-db-sql-api/", skills: [
         "Choose when to distribute data",
         "Define automatic failover policies for regional failure for Azure Cosmos DB for NoSQL",
         "Perform manual failovers to move single-write regions",
@@ -3275,7 +3275,7 @@ const EXAMS = {
         "Implement multi-region writes",
         "Implement a custom conflict resolution policy for Azure Cosmos DB for NoSQL"
       ] },
-      { name: "Integrate an Azure Cosmos DB solution", weight: "5–10%", mid: 7.5, link: "https://learn.microsoft.com/en-us/training/modules/configure-azure-synapse-link-with-azure-cosmos-db/", skills: [
+      { name: "Integrate an Azure Cosmos DB solution", weight: "5-10%", mid: 7.5, link: "https://learn.microsoft.com/en-us/training/modules/configure-azure-synapse-link-with-azure-cosmos-db/", skills: [
         "Configure Azure Cosmos DB Mirroring for Microsoft Fabric",
         "Choose between Azure Cosmos DB Mirroring and the Azure Cosmos DB Spark connector",
         "Enable the analytical store on a container",
@@ -3291,7 +3291,7 @@ const EXAMS = {
         "Archive data by using Change Feed and Azure Functions",
         "Implement Azure AI Search for an Azure Cosmos DB solution"
       ] },
-      { name: "Optimize an Azure Cosmos DB solution", weight: "15–20%", mid: 17.5, link: "https://learn.microsoft.com/en-us/training/paths/optimize-query-performance-azure-cosmos-db-sql-api/", skills: [
+      { name: "Optimize an Azure Cosmos DB solution", weight: "15-20%", mid: 17.5, link: "https://learn.microsoft.com/en-us/training/paths/optimize-query-performance-azure-cosmos-db-sql-api/", skills: [
         "Adjust indexes on the database",
         "Calculate the cost of the query",
         "Retrieve request unit cost of a point operation or query",
@@ -3309,7 +3309,7 @@ const EXAMS = {
         "Implement a composite index",
         "Optimize index performance"
       ] },
-      { name: "Maintain an Azure Cosmos DB solution", weight: "25–30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/monitor-troubleshoot-azure-cosmos-db-sql-api-solution/", skills: [
+      { name: "Maintain an Azure Cosmos DB solution", weight: "25-30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/monitor-troubleshoot-azure-cosmos-db-sql-api-solution/", skills: [
         "Evaluate response status code and failure metrics",
         "Monitor the Normalized RU Consumption metric by using Azure Monitor",
         "Monitor server-side latency metrics by using Azure Monitor",
@@ -4032,7 +4032,7 @@ const EXAMS = {
       { label: "Microsoft Q&A", url: "https://learn.microsoft.com/en-us/answers/products/" }
     ],
     domains: [
-      { name: "Prepare the data", weight: "25–30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/prepare-data-power-bi/", skills: [
+      { name: "Prepare the data", weight: "25-30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/prepare-data-power-bi/", skills: [
         "Identify and connect to data sources or a shared semantic model",
         "Change data source settings, including credentials and privacy levels",
         "Choose between DirectLake, DirectQuery, and Import",
@@ -4051,7 +4051,7 @@ const EXAMS = {
         "Identify and create appropriate keys for relationships",
         "Configure data loading for queries"
       ] },
-      { name: "Model the data", weight: "25–30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/model-data-power-bi/", skills: [
+      { name: "Model the data", weight: "25-30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/model-data-power-bi/", skills: [
         "Configure table and column properties",
         "Implement role-playing dimensions",
         "Define a relationship's cardinality and cross-filter direction",
@@ -4069,7 +4069,7 @@ const EXAMS = {
         "Identify poorly performing measures, relationships, and visuals by using Performance Analyzer and DAX query view",
         "Improve performance by reducing granularity"
       ] },
-      { name: "Visualize and analyze the data", weight: "25–30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/power-bi-effective/", skills: [
+      { name: "Visualize and analyze the data", weight: "25-30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/power-bi-effective/", skills: [
         "Select an appropriate visual",
         "Format and configure visuals",
         "Create a narrative visual with Copilot",
@@ -4101,7 +4101,7 @@ const EXAMS = {
         "Detect outliers and anomalies",
         "Use Copilot to summarize the underlying semantic model"
       ] },
-      { name: "Manage and secure Power BI", weight: "15–20%", mid: 17.5, link: "https://learn.microsoft.com/en-us/training/paths/manage-secure-power-bi/", skills: [
+      { name: "Manage and secure Power BI", weight: "15-20%", mid: 17.5, link: "https://learn.microsoft.com/en-us/training/paths/manage-secure-power-bi/", skills: [
         "Create and configure a workspace",
         "Configure and update an app",
         "Publish, import, or update items in a workspace",
@@ -4293,7 +4293,7 @@ const EXAMS = {
       { label: "Microsoft Q&A", url: "https://learn.microsoft.com/en-us/answers/products/" }
     ],
     domains: [
-      { name: "Manage a security operations environment", weight: "40–45%", mid: 42.5, link: "https://learn.microsoft.com/en-us/azure/sentinel/automate-incident-handling-with-automation-rules", skills: [
+      { name: "Manage a security operations environment", weight: "40-45%", mid: 42.5, link: "https://learn.microsoft.com/en-us/azure/sentinel/automate-incident-handling-with-automation-rules", skills: [
         "Configure email notifications in Microsoft Defender XDR, including incidents, actions, and threat analytics",
         "Configure alert notifications in Microsoft Defender XDR, including tuning, suppression, and correlation",
         "Configure Microsoft Defender for Endpoint advanced features",
@@ -4322,7 +4322,7 @@ const EXAMS = {
         "Analyze attack vector coverage by using the MITRE ATT&CK matrix",
         "Configure anomalies in Microsoft Sentinel"
       ] },
-      { name: "Respond to security incidents", weight: "35–40%", mid: 37.5, link: "https://learn.microsoft.com/en-us/defender-xdr/investigate-incidents", skills: [
+      { name: "Respond to security incidents", weight: "35-40%", mid: 37.5, link: "https://learn.microsoft.com/en-us/defender-xdr/investigate-incidents", skills: [
         "Investigate and remediate threats by using Microsoft Defender for Office 365, including automatic attack disruption",
         "Investigate and remediate threats or compromised entities identified by Microsoft Purview",
         "Investigate and remediate alerts and incidents identified by Microsoft Defender for Cloud workload protections",
@@ -4341,7 +4341,7 @@ const EXAMS = {
         "Investigate threats by using Content search in Microsoft Purview eDiscovery",
         "Investigate threats by using Microsoft Graph activity logs"
       ] },
-      { name: "Perform threat hunting", weight: "20–25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-overview", skills: [
+      { name: "Perform threat hunting", weight: "20-25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-overview", skills: [
         "Identify the appropriate table to use in a KQL query",
         "Identify threats by using Kusto Query Language (KQL)",
         "Create Advanced Hunting queries",
@@ -4527,7 +4527,7 @@ const EXAMS = {
       { label: "Microsoft Q&A", url: "https://learn.microsoft.com/en-us/answers/products/" }
     ],
     domains: [
-      { name: "Implement and manage user identities", weight: "20–25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/paths/implement-identity-management-solution/", skills: [
+      { name: "Implement and manage user identities", weight: "20-25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/paths/implement-identity-management-solution/", skills: [
         "Configure and manage built-in and custom Microsoft Entra roles",
         "Recommend when to use administrative units",
         "Configure and manage administrative units",
@@ -4555,7 +4555,7 @@ const EXAMS = {
         "Migrate from AD FS to other authentication and authorization mechanisms",
         "Implement and manage Microsoft Entra Connect Health"
       ] },
-      { name: "Implement authentication and access management", weight: "25–30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/implement-authentication-access-management-solution/", skills: [
+      { name: "Implement authentication and access management", weight: "25-30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/implement-authentication-access-management-solution/", skills: [
         "Plan for authentication",
         "Implement and manage authentication methods, including certificate-based authentication, Temporary Access Pass, OAuth 2.0 tokens, Microsoft Authenticator, and passkeys (FIDO2)",
         "Implement and manage tenant-wide multifactor authentication (MFA) settings",
@@ -4584,7 +4584,7 @@ const EXAMS = {
         "Deploy and manage Internet Access",
         "Deploy and manage Internet Access for Microsoft 365"
       ] },
-      { name: "Plan and implement workload identities", weight: "20–25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/paths/implement-access-management-for-apps/", skills: [
+      { name: "Plan and implement workload identities", weight: "20-25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/paths/implement-access-management-for-apps/", skills: [
         "Select appropriate identities for applications and Azure workloads, including managed identities, service principals, user accounts, and managed service accounts",
         "Create managed identities",
         "Assign a managed identity to an Azure resource",
@@ -4609,7 +4609,7 @@ const EXAMS = {
         "Implement and manage policies for OAuth apps",
         "Manage the Cloud app catalog"
       ] },
-      { name: "Plan and automate identity governance", weight: "20–25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/paths/plan-implement-identity-governance-strategy/", skills: [
+      { name: "Plan and automate identity governance", weight: "20-25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/paths/plan-implement-identity-governance-strategy/", skills: [
         "Plan entitlements",
         "Create and configure catalogs",
         "Create and configure access packages",
@@ -4782,7 +4782,7 @@ const EXAMS = {
       { label: "Microsoft Q&A", url: "https://learn.microsoft.com/en-us/answers/products/" }
     ],
     domains: [
-      { name: "Prepare infrastructure for devices", weight: "20–25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/paths/prepare-infrastructure-devices-intune-microsoft-entra-id/", skills: [
+      { name: "Prepare infrastructure for devices", weight: "20-25%", mid: 22.5, link: "https://learn.microsoft.com/en-us/training/paths/prepare-infrastructure-devices-intune-microsoft-entra-id/", skills: [
         "Choose an appropriate device join type, including considerations such as device registration and Microsoft Entra join",
         "Join devices to Microsoft Entra ID",
         "Register devices to Microsoft Entra ID",
@@ -4802,7 +4802,7 @@ const EXAMS = {
         "Implement and manage Windows Local Administrator Password Solution (Windows LAPS) by using Microsoft Intune and Microsoft Entra ID",
         "Manage the membership of local groups on Windows devices by using Intune"
       ] },
-      { name: "Manage and maintain devices", weight: "25–30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/manage-maintain-devices-intune/", skills: [
+      { name: "Manage and maintain devices", weight: "25-30%", mid: 27.5, link: "https://learn.microsoft.com/en-us/training/paths/manage-maintain-devices-intune/", skills: [
         "Choose between Windows Autopilot deployment profiles and device preparation policies",
         "Choose between Windows Autopilot deployment modes, including user-driven, pre-provisioning, and self-deploying",
         "Apply a device name template by using Windows Autopilot",
@@ -4831,7 +4831,7 @@ const EXAMS = {
         "Run a device query by using KQL",
         "Collect device diagnostics and logs by using Microsoft Intune, including using the Troubleshooting blade for user-based diagnostics"
       ] },
-      { name: "Protect devices", weight: "15–20%", mid: 17.5, link: "https://learn.microsoft.com/en-us/training/paths/manage-endpoint-security/", skills: [
+      { name: "Protect devices", weight: "15-20%", mid: 17.5, link: "https://learn.microsoft.com/en-us/training/paths/manage-endpoint-security/", skills: [
         "Create antivirus policies by using Microsoft Intune",
         "Create and manage disk encryption policies by using Microsoft Intune, including managing BitLocker recovery keys, configuring user self-service recovery, and monitoring encryption compliance status",
         "Create firewall policies by using Microsoft Intune",
@@ -4848,7 +4848,7 @@ const EXAMS = {
         "Configure Windows client Delivery Optimization by using Intune",
         "Monitor device updates by using Intune"
       ] },
-      { name: "Manage and secure applications", weight: "15–20%", mid: 17.5, link: "https://learn.microsoft.com/en-us/training/paths/manage-applications-intune/", skills: [
+      { name: "Manage and secure applications", weight: "15-20%", mid: 17.5, link: "https://learn.microsoft.com/en-us/training/paths/manage-applications-intune/", skills: [
         "Prepare applications for deployment by using Intune",
         "Deploy apps by using Intune, including Win32 apps, line-of-business (LOB) apps, and Microsoft Store apps",
         "Configure Quiet Time policies for Android and iOS apps",
@@ -4862,7 +4862,7 @@ const EXAMS = {
         "Implement Microsoft Entra Conditional Access policies for app protection policies",
         "Plan and implement app configuration policies for managed apps and managed devices"
       ] },
-      { name: "Optimize endpoint operations by using automation, monitoring, and reporting", weight: "10–15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/paths/automate-optimize-endpoint-management-intune/", skills: [
+      { name: "Optimize endpoint operations by using automation, monitoring, and reporting", weight: "10-15%", mid: 12.5, link: "https://learn.microsoft.com/en-us/training/paths/automate-optimize-endpoint-management-intune/", skills: [
         "Automate Intune management tasks by using PowerShell and Microsoft Graph",
         "Investigate threats identified by Security Copilot agents in Intune",
         "Analyze device performance by using Security Copilot agents in Intune",
@@ -13952,7 +13952,7 @@ const EXAMS = {
   "domains": [
     {
       "name": "Describe Business Central",
-      "weight": "10–15%",
+      "weight": "10-15%",
       "mid": 12.5,
       "link": "https://learn.microsoft.com/en-us/training/modules/application-types/",
       "skills": [
@@ -13969,7 +13969,7 @@ const EXAMS = {
     },
     {
       "name": "Install, develop, and deploy for Business Central",
-      "weight": "10–15%",
+      "weight": "10-15%",
       "mid": 12.5,
       "link": "https://learn.microsoft.com/en-us/training/modules/intro-development-environment/",
       "skills": [
@@ -13988,7 +13988,7 @@ const EXAMS = {
     },
     {
       "name": "Develop by using AL objects",
-      "weight": "35–40%",
+      "weight": "35-40%",
       "mid": 37.5,
       "link": "https://learn.microsoft.com/en-us/training/paths/foundation-customize-business-central/",
       "skills": [
@@ -14029,7 +14029,7 @@ const EXAMS = {
     },
     {
       "name": "Develop by using AL",
-      "weight": "15–20%",
+      "weight": "15-20%",
       "mid": 17.5,
       "link": "https://learn.microsoft.com/en-us/training/paths/application-foundation-al-language/",
       "skills": [
@@ -14060,7 +14060,7 @@ const EXAMS = {
     },
     {
       "name": "Work with development tools",
-      "weight": "10–15%",
+      "weight": "10-15%",
       "mid": 12.5,
       "link": "https://learn.microsoft.com/en-us/training/modules/test-automation/",
       "skills": [
@@ -14076,7 +14076,7 @@ const EXAMS = {
     },
     {
       "name": "Integrate Business Central with other applications",
-      "weight": "10–15%",
+      "weight": "10-15%",
       "mid": 12.5,
       "link": "https://learn.microsoft.com/en-us/training/paths/interface-with-business-central/",
       "skills": [
@@ -26550,7 +26550,7 @@ const EXAMS = {
   "cert": "Microsoft Certified: Dynamics 365 Sales AI Consultant Associate",
   "title": "As a candidate for this Microsoft Certification, you design and configure AI-enhanced sales solutions by using Dynamics 365 Sales, Copilot in Dynamics 365 Sales, and agent capabilities to help sellers work more efficiently throughout the lead-to-cash process.",
   "level": "Intermediate",
-  "beta": false,
+  "beta": true,
   "passScore": 700,
   "certUrl": "https://learn.microsoft.com/en-us/credentials/certifications/d365-sales-ai-consultant-associate/",
   "studyGuideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ab-210",
@@ -30458,7 +30458,7 @@ const EXAMS = {
   "domains": [
     {
       "name": "Plan and design collaboration communications systems",
-      "weight": "20–25%",
+      "weight": "20-25%",
       "mid": 22.5,
       "link": "https://learn.microsoft.com/en-us/training/paths/plan-configure-teams-voice/",
       "skills": [
@@ -30482,7 +30482,7 @@ const EXAMS = {
     },
     {
       "name": "Configure and manage Teams meetings, webinars, and town halls",
-      "weight": "15–20%",
+      "weight": "15-20%",
       "mid": 17.5,
       "link": "https://learn.microsoft.com/en-us/training/paths/manage-teams-voice/",
       "skills": [
@@ -30504,7 +30504,7 @@ const EXAMS = {
     },
     {
       "name": "Configure and manage Teams Phone",
-      "weight": "30–35%",
+      "weight": "30-35%",
       "mid": 32.5,
       "link": "https://learn.microsoft.com/en-us/training/paths/manage-teams-voice/",
       "skills": [
@@ -30530,7 +30530,7 @@ const EXAMS = {
     },
     {
       "name": "Configure and manage Teams Rooms and devices",
-      "weight": "20–25%",
+      "weight": "20-25%",
       "mid": 22.5,
       "link": "https://learn.microsoft.com/en-us/training/paths/manage-teams-voice/",
       "skills": [
@@ -32420,7 +32420,7 @@ const EXAMS = {
   "domains": [
     {
       "name": "Deploy Dynamics 365 Contact Center",
-      "weight": "15–20%",
+      "weight": "15-20%",
       "mid": 17.5,
       "link": "https://learn.microsoft.com/en-us/training/paths/implement-dynamics-365-contact-center/",
       "skills": [
@@ -32446,7 +32446,7 @@ const EXAMS = {
     },
     {
       "name": "Implement channels",
-      "weight": "30–35%",
+      "weight": "30-35%",
       "mid": 32.5,
       "link": "https://learn.microsoft.com/en-us/training/paths/configure-channels-dynamics-365-contact-center/",
       "skills": [
@@ -32481,7 +32481,7 @@ const EXAMS = {
     },
     {
       "name": "Configure agents and AI capabilities",
-      "weight": "10–15%",
+      "weight": "10-15%",
       "mid": 12.5,
       "link": "https://learn.microsoft.com/en-us/training/modules/ai-copilot-contact-center/",
       "skills": [
@@ -32506,7 +32506,7 @@ const EXAMS = {
     },
     {
       "name": "Configure work distribution",
-      "weight": "10–15%",
+      "weight": "10-15%",
       "mid": 12.5,
       "link": "https://learn.microsoft.com/en-us/training/modules/configure-routing-contact-center/",
       "skills": [
@@ -32530,7 +32530,7 @@ const EXAMS = {
     },
     {
       "name": "Configure the Dynamics 365 Contact Center representative experience",
-      "weight": "15–20%",
+      "weight": "15-20%",
       "mid": 17.5,
       "link": "https://learn.microsoft.com/en-us/training/paths/empower-service-representatives-contact-center/",
       "skills": [
@@ -32554,7 +32554,7 @@ const EXAMS = {
     },
     {
       "name": "Manage analytics for the Dynamics 365 Contact Center",
-      "weight": "10–15%",
+      "weight": "10-15%",
       "mid": 12.5,
       "link": "https://learn.microsoft.com/en-us/training/paths/monitor-optimize-dynamics-365-contact-center/",
       "skills": [
@@ -36558,7 +36558,7 @@ const EXAMS = {
   "cert": "Microsoft Certified: Azure AI Cloud Developer Associate",
   "title": "This certification validates your ability to design, build, and implement AI solutions on Azure, with a focus on back-end services, scalable architectures, and the full development lifecycle.",
   "level": "Intermediate",
-  "beta": true,
+  "beta": false,
   "passScore": 700,
   "certUrl": "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-cloud-developer-associate/",
   "studyGuideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200",
@@ -47245,7 +47245,7 @@ const EXAMS = {
   "domains": [
     {
       "name": "Design and develop database solutions",
-      "weight": "35–40%",
+      "weight": "35-40%",
       "mid": 37.5,
       "link": "https://learn.microsoft.com/en-us/training/paths/design-develop-database-solutions/",
       "skills": [
@@ -47272,7 +47272,7 @@ const EXAMS = {
     },
     {
       "name": "Secure, optimize, and deploy database solutions",
-      "weight": "35–40%",
+      "weight": "35-40%",
       "mid": 37.5,
       "link": "https://learn.microsoft.com/en-us/training/paths/secure-optimize-deploy-database-solutions/",
       "skills": [
@@ -47297,7 +47297,7 @@ const EXAMS = {
     },
     {
       "name": "Implement AI capabilities in database solutions",
-      "weight": "25–30%",
+      "weight": "25-30%",
       "mid": 27.5,
       "link": "https://learn.microsoft.com/en-us/training/paths/implement-ai-capabilities-database-solutions/",
       "skills": [
