@@ -59562,7 +59562,7 @@ const EXAMS = {
     "cert": "Microsoft 365 Certified: AI Services Administrator Associate (beta)",
     "title": "This certification validates your ability to administer Microsoft 365 and AI services, enabling secure and compliant productivity across the organization.",
     "level": "Intermediate",
-    "beta": true,
+    "beta": false,
     "passScore": 700,
     "certUrl": "https://learn.microsoft.com/en-us/credentials/certifications/ai-services-administrator-associate/",
     "studyGuideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ab-650",
@@ -78676,8 +78676,8 @@ const EXAMS = {
     "domains": [
       {
         "name": "Plan AI-powered business solutions",
-        "weight": "25-30%",
-        "mid": 27.5,
+        "weight": "35-40%",
+        "mid": 37.5,
         "link": "https://learn.microsoft.com/en-us/training/paths/architect-agentic-ai-business-solutions/",
         "skills": [
           "Assess the use of agents in task automation, data analytics, and decision-making",
@@ -78695,8 +78695,8 @@ const EXAMS = {
       },
       {
         "name": "Design AI-powered business solutions",
-        "weight": "25-30%",
-        "mid": 27.5,
+        "weight": "30-35%",
+        "mid": 32.5,
         "link": "https://learn.microsoft.com/en-us/training/modules/design-ai-agents-business-solutions/",
         "skills": [
           "Design task agents",
@@ -78714,8 +78714,8 @@ const EXAMS = {
       },
       {
         "name": "Deploy AI-powered business solutions",
-        "weight": "40-45%",
-        "mid": 42.5,
+        "weight": "20-25%",
+        "mid": 22.5,
         "link": "https://learn.microsoft.com/en-us/training/modules/analyze-monitor-tune-ai-powered-business-solutions/",
         "skills": [
           "Recommend the process and tools required for monitoring agents",
@@ -98843,7 +98843,7 @@ const EXAMS = {
     "cert": "Microsoft Certified: Windows Server Administrator Associate",
     "title": "This certification validates your ability to deploy, implement, manage, and troubleshoot Windows Server workloads across on-premises, cloud, and hybrid environments, with expertise in identity, security, networking, storage, monitoring, and modern administration technologies.",
     "level": "Intermediate",
-    "beta": true,
+    "beta": false,
     "passScore": 700,
     "certUrl": "https://learn.microsoft.com/en-us/credentials/certifications/windows-server-administrator-associate/",
     "studyGuideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-802",
@@ -107308,7 +107308,7 @@ const EXAMS = {
     "cert": "Microsoft Certified: Multi-Agent AI Solutions Expert (beta)",
     "title": "Validates expert-level ability to design, build, and optimize scalable, production-ready multi-agent AI systems and workflows in Microsoft Foundry and Azure, from design through production.",
     "level": "Advanced",
-    "beta": true,
+    "beta": false,
     "passScore": 700,
     "certUrl": "https://learn.microsoft.com/en-us/credentials/certifications/multi-agent-ai-solutions-expert/",
     "studyGuideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-500",
