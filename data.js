@@ -83090,7 +83090,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which statement about Dataverse activity tables is correct?",
         "options": [
-          "Activity tables cannot have a primary column",
+          "Activity tables cannot have a primary column such as Subject",
           "Custom activity tables cannot be created",
           "Activity tables can be owned by an organization",
           "Activity tables can only be owned by a user or a team"
@@ -83198,7 +83198,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "How does Dataverse implement a many-to-many (N:N) relationship between two tables?",
         "options": [
-          "By adding a lookup column to each table that points at the other table",
+          "By adding one lookup column to each table that points directly at the other table",
           "By placing both tables in the same business unit",
           "By using a special intersect (relationship) table that links rows of both tables",
           "By duplicating every row between the two tables"
@@ -83347,7 +83347,7 @@ const EXAMS = {
         "options": [
           "Audit settings apply only to the environment where they were originally configured and are ignored elsewhere",
           "Audit settings never move with solutions and must be manually reconfigured in every environment",
-          "Auditing is automatically enabled at the environment level in test as part of the solution import",
+          "Auditing is automatically enabled at the environment level in test as part of the solution import, so the audit settings take effect with no further steps",
           "The audit settings transport with the solution, but auditing must still be separately enabled at the environment level in test for them to take effect"
         ],
         "correct": 3,
@@ -83371,7 +83371,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which statement accurately distinguishes Dataverse search from categorized search in a model-driven app?",
         "options": [
-          "Categorized search is the newer feature and provides AI-based relevance ranking that Dataverse search lacks",
+          "Categorized search is the newer feature and provides AI-based relevance ranking that Dataverse search lacks for results from multiple tables",
           "Dataverse search cannot search text stored inside documents such as PDFs",
           "Dataverse search replaces categorized search and returns relevance-sorted results from multiple searchable tables in a single list",
           "Dataverse search can search only one table at a time, while categorized search searches every table"
@@ -83398,7 +83398,7 @@ const EXAMS = {
         "q": "Which statement about Dataverse autonumber columns is correct?",
         "options": [
           "An autonumber column can be created by converting an existing single line of text column",
-          "Autonumber columns can only be created at the time the table itself is first created",
+          "Autonumber columns can only be created at the time the table itself is first created in Dataverse",
           "Autonumber columns can only ever store purely numeric values with no prefix text",
           "Autonumber values can be freely edited by any user at any time"
         ],
@@ -83504,7 +83504,7 @@ const EXAMS = {
           "Data can only be loaded through Power BI dataflows",
           "Importing data from a CSV, XML spreadsheet, or Excel worksheet using the Import Data wizard",
           "Data can only be loaded through Azure Data Factory",
-          "Dataverse only accepts data entered manually through model-driven app forms"
+          "Dataverse only accepts data entered manually through model-driven app forms or canvas app screens"
         ],
         "correct": 1,
         "explain": "Dataverse provides an Import Data wizard that supports importing from formats such as CSV, XML spreadsheets, and Excel worksheets, in addition to other integration options."
@@ -83546,7 +83546,7 @@ const EXAMS = {
         "options": [
           "The maximum number of security roles a single user can be assigned",
           "The number of teams a single user can belong to",
-          "How many child business units can be created under the root business unit",
+          "How many child business units can be created under the root business unit before hierarchy security stops applying",
           "How many levels deep a manager or higher position has read-only access to reports' or lower positions' data"
         ],
         "correct": 3,
@@ -83602,7 +83602,7 @@ const EXAMS = {
         "options": [
           "Quick create forms are only available on Dynamics 365 mobile apps, never on the web client",
           "Quick create forms support form scripts but not business rules",
-          "Multiple quick create forms can be actively used at the same time, selectable by the user",
+          "Multiple quick create forms can be actively used at the same time, selectable by the user from the form selector",
           "Only one quick create form per table can be designated for use, and security roles cannot be assigned to it"
         ],
         "correct": 3,
@@ -83615,7 +83615,7 @@ const EXAMS = {
         "options": [
           "Quick View forms support form scripts just like Main forms",
           "Quick View forms can only be used on Card forms",
-          "Users can edit the Account data directly inside the Quick View control",
+          "Users can edit the Account data directly inside the Quick View control without navigating away from the Contact form",
           "The Quick View control is associated with a lookup column, and is not visible if that lookup value isn't set"
         ],
         "correct": 3,
@@ -83665,7 +83665,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which capability does the Power Apps grid control add to views and subgrids in a model-driven app?",
         "options": [
-          "Automatic creation of duplicate detection rules",
+          "Automatic creation of duplicate detection rules for each column shown in a view or subgrid",
           "The ability to embed a canvas app directly inside a cell",
           "Built-in Power BI report rendering",
           "A data browsing experience with infinite scrolling and customizable column appearance"
@@ -83704,7 +83704,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which statement correctly distinguishes an embedded canvas app from a custom page in a model-driven app?",
         "options": [
-          "A custom page can only be placed on a model-driven form, while an embedded canvas app can be a full page",
+          "A custom page can only be placed on a model-driven form, while an embedded canvas app offers deeper integration and isn't limited to any form",
           "An embedded canvas app can only be placed on a model-driven form, while a custom page offers deeper integration and isn't limited to a form",
           "Custom pages cannot use Power Apps component framework controls, but embedded canvas apps can",
           "Embedded canvas apps and custom pages are functionally identical with no differences"
@@ -83720,7 +83720,7 @@ const EXAMS = {
           "No, only three embedded canvas apps can be enabled per form for the Web client type",
           "No, only one embedded canvas app is ever allowed per form",
           "Yes, there is no limit to embedded canvas apps per form",
-          "Yes, as long as the apps use different data sources"
+          "Yes, as long as the apps use different data sources and are each enabled for the Web client"
         ],
         "correct": 0,
         "explain": "Embedded canvas apps are supported only in Unified Interface model-driven apps, and a maximum of three can be enabled per form for the Web client type (one each for Tablet and Phone client types)."
@@ -83825,7 +83825,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which requirement must an existing Power Automate flow meet before a maker can add it to a canvas app from the Power Automate pane?",
         "options": [
-          "It must use the Dataverse connector exclusively",
+          "It must use the Dataverse connector exclusively for its trigger and all of its actions",
           "It must have a Power Apps trigger, and the maker must have access to it",
           "It must be a classic Dataverse workflow",
           "It must already be embedded in a model-driven app"
@@ -83919,7 +83919,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A website user belongs to two web roles: one grants Read access to a table via a table permission, and another grants Read and Write access to the same table for overlapping rows. What access does the user ultimately have to those overlapping rows?",
         "options": [
-          "Only Read, because permissions are evaluated using the most restrictive role",
+          "Only Read, because permissions are always evaluated using the most restrictive role",
           "Both Read and Write, because table permission rights are cumulative across roles",
           "Only Write, because the newest role assignment always wins",
           "No access at all, because conflicting permissions cancel each other out"
@@ -83933,7 +83933,7 @@ const EXAMS = {
         "q": "What must be true for a Power Pages table permission to actually take effect for any user?",
         "options": [
           "It must be marked as a system table permission",
-          "It must include a column permission",
+          "It must include a column permission for each column",
           "It must use the Custom access type",
           "It must be associated with at least one web role"
         ],
@@ -83945,7 +83945,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A Power Pages site has table permissions configured, and a maker also wants to restrict which individual columns a role can read or update through the Portals Web API. How are column permissions evaluated relative to table permissions?",
         "options": [
-          "Column permissions and table permissions are evaluated completely independently with no interaction",
+          "Column permissions and table permissions are evaluated completely independently with no interaction between the two checks",
           "Column permissions are evaluated first, and table permissions are ignored if they conflict",
           "Table permissions are evaluated first; if the user has table access, the table's column permissions are then applied",
           "Column permissions replace the need for table permissions entirely"
@@ -83971,7 +83971,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What happens to a table permission's child permissions when the parent table permission is deactivated in Power Pages?",
         "options": [
-          "The child permissions automatically become the new parent permissions",
+          "The child permissions automatically become the new parent permissions and stay in effect for their assigned web roles",
           "The child permissions remain active in status but have no effect because the parent permission is ineffective",
           "Deactivating a parent permission has no impact on any child permissions",
           "The child permissions are automatically deleted"
@@ -84010,7 +84010,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "A partner organization wants a Power Pages site with prebuilt case management, knowledge article access, and self-service capabilities that are tied directly to their existing Dynamics 365 app. Which Power Pages resource is designed for this scenario?",
         "options": [
-          "A basic single-step form with no relationships",
+          "A basic single-step form with no relationships to any Dynamics 365 app",
           "A custom page layout",
           "A Dynamics 365 app template (such as customer self-service)",
           "A plain web template used for an RSS feed"
@@ -84063,7 +84063,7 @@ const EXAMS = {
         "q": "A button's OnSelect property in a canvas app is set to OrderApproval.Run(RecordId). What must be true about the OrderApproval flow for this call to work?",
         "options": [
           "The flow must have been added to the app through the Power Automate pane and must have a Power Apps trigger",
-          "The flow must use a Scheduled trigger rather than any other trigger type",
+          "The flow must use a Scheduled trigger rather than any other trigger type so that it runs when the button is selected",
           "The flow must be a classic Dataverse workflow rather than a cloud flow",
           "The flow must be incapable of accepting any input parameters"
         ],
@@ -84158,7 +84158,7 @@ const EXAMS = {
         "q": "A maker wants to filter which rows trigger a flow based on a column value, without adding an extra Condition action as the flow's first step. Which trigger option should be used, and how is the filter expressed?",
         "options": [
           "Delay until, using an OData-style timestamp",
-          "Select columns, using a comma-separated list of table columns",
+          "Select columns, using a comma-separated list of table columns such as contoso_amountoverbudget",
           "Run as, set to Modifying user",
           "Filter rows, using an OData expression such as contoso_amountoverbudget gt 10000"
         ],
@@ -84214,7 +84214,7 @@ const EXAMS = {
         "q": "A functional consultant wants a Dataverse business rule to prevent a row from being saved unless a specific column has a value. Which action should be used, and where does the error message appear in a model-driven app form?",
         "options": [
           "Show Error Message; the message is displayed within the form and prevents the row from being saved",
-          "Recommendation; the user is shown a light bulb icon they can dismiss",
+          "Recommendation; the user is shown a light bulb icon they can dismiss and the row saves with the column empty",
           "Set Default Value; the message appears in the browser console only",
           "Set Business Required; this only changes label styling with no save restriction"
         ],
@@ -84241,7 +84241,7 @@ const EXAMS = {
         "options": [
           "Business rules only run once per day as a background job",
           "Business rules don't apply on editable grids, table-based view pages, or subgrids in model-driven apps",
-          "Editable grids automatically disable all business rules for the entire environment",
+          "Editable grids automatically disable all business rules for the entire environment, not just for that table",
           "The business rule needs to be converted into a classic workflow to work on grids"
         ],
         "correct": 1,
@@ -84358,7 +84358,7 @@ const EXAMS = {
         "options": [
           "Only one business process flow can ever be activated per table, so this scenario isn't supported",
           "Security roles can be associated with each business process flow to control which users can access which processes",
-          "Business process flow visibility is controlled solely by the user's business unit, not security roles",
+          "Business process flow visibility is controlled solely by the user's business unit, not by any security roles on the process",
           "Business process flows cannot be restricted by user; every user always sees every process on a table"
         ],
         "correct": 1,
@@ -84371,7 +84371,7 @@ const EXAMS = {
         "options": [
           "Column-level security, which can execute Power Fx expressions on save",
           "Business process flows, which support arbitrary Power Fx code execution",
-          "Classic Dataverse workflows, which are the current recommended approach for all new automation",
+          "Classic Dataverse workflows, which are the current recommended approach for all new automation and can run Power Fx directly on Dataverse data",
           "Dataverse low-code plug-ins, a preview capability using Power Fx; instant low-code plug-ins specifically are being replaced by functions"
         ],
         "correct": 3,
@@ -84440,7 +84440,7 @@ const EXAMS = {
         "options": [
           "No, because Business Unit scope requires the row to be organization-owned",
           "Yes, but only if the table also has a many-to-many relationship configured",
-          "No, Business Unit scope only ever matches the flow owner's own records",
+          "No, Business Unit scope only ever matches the flow owner's own records and never rows owned by a colleague in that unit",
           "Yes, because Business Unit scope triggers the flow if anyone within the same business unit owns the modified row"
         ],
         "correct": 3,
@@ -84587,7 +84587,7 @@ const EXAMS = {
         "q": "A functional consultant wants to run solution checker against a solution they've been developing. What type of solution does solution checker work with?",
         "options": [
           "Unmanaged solutions that can be exported from an environment",
-          "Only managed solutions that were imported from AppSource",
+          "Only managed solutions that were imported from AppSource or a partner",
           "Only solutions checked by Microsoft",
           "Only the default (system) solution"
         ],
@@ -84600,7 +84600,7 @@ const EXAMS = {
         "q": "In the solution checker's solution check status column, what does the state 'Checked by Microsoft' indicate?",
         "options": [
           "This is a Microsoft-managed solution, and solution analysis isn't permitted on it",
-          "The solution failed analysis and must be fixed before import",
+          "The solution failed analysis and must be fixed before import into any other environment",
           "The solution was analyzed and passed with zero issues",
           "The check is still running and has not finished"
         ],
@@ -84640,7 +84640,7 @@ const EXAMS = {
         "options": [
           "Managed solutions can never be uninstalled once imported",
           "Components can be freely added or removed by any user with the Basic User role",
-          "Managed solution components automatically sync in real time with the source development environment",
+          "Managed solution components automatically sync in real time with the source development environment whenever a maker changes them there",
           "Components can't be added or removed, although the solution can optionally allow further customization of existing components"
         ],
         "correct": 3,
@@ -84718,7 +84718,7 @@ const EXAMS = {
         "options": [
           "All licensed users in the tenant",
           "Only users with the System Administrator or System Customizer security role",
-          "No one; the environment becomes completely inaccessible",
+          "No one; the environment becomes completely inaccessible until the mode is turned off",
           "Only the environment's original creator"
         ],
         "correct": 1,
@@ -84823,7 +84823,7 @@ const EXAMS = {
           "A PowerShell cmdlet for renaming environments",
           "A tool that checks canvas app formulas (Power Fx) for errors and accessibility issues",
           "A tool that only validates SharePoint site permissions",
-          "A tool exclusively for reviewing classic Dataverse workflow XML"
+          "A tool exclusively for reviewing classic Dataverse workflow XML before a solution is exported"
         ],
         "correct": 1,
         "explain": "App checker analyzes a canvas app's Power Fx formulas and controls, helping makers fix errors and improve accessibility; solution checker incorporates app checker's findings when analyzing a solution that contains a canvas app."
