@@ -43119,7 +43119,7 @@ const EXAMS = {
           "A regular expression, keyword list, keyword dictionary, or function",
           "A retention label",
           "Only a regular expression",
-          "Only a built-in sensitive information type"
+          "Only a built-in sensitive information type, such as a credit card number"
         ],
         "correct": 0,
         "explain": "The Purview portal's pattern editor lets you choose a regular expression, keyword list, keyword dictionary, or one of the predefined functions as the Primary element when creating a custom sensitive information type."
@@ -43129,7 +43129,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What does the confidence level setting on a sensitive information type pattern control?",
         "options": [
-          "Whether the SIT can be used in retention labels",
+          "Whether the SIT can be used in retention labels or in auto-apply retention label policies",
           "The character encoding used for pattern matching",
           "How much supporting evidence is required before content is classified as sensitive",
           "How long the SIT rule package is cached"
@@ -43183,7 +43183,7 @@ const EXAMS = {
         "options": [
           "SharePoint and OneDrive require a separate SIT license",
           "Custom SITs don't retroactively scan existing content -- the search crawler must recrawl the content before matches appear",
-          "Custom SITs only work on content created after the tenant was provisioned",
+          "Custom SITs only work on content created after the tenant was provisioned, so older sites need to be migrated before matches appear",
           "The SIT must first be converted to an EDM classifier"
         ],
         "correct": 1,
@@ -43197,7 +43197,7 @@ const EXAMS = {
           "A retention label policy",
           "An existing sensitive information type that Microsoft Purview can already identify",
           "A trainable classifier",
-          "A Microsoft Defender for Cloud Apps file policy"
+          "A Microsoft Defender for Cloud Apps file policy created for the sensitive data columns"
         ],
         "correct": 1,
         "explain": "In an EDM SIT, the primary element is the key data point (such as an SSN or account number) and it must be matched to an existing SIT that Purview already recognizes; a secondary supporting element then increases confidence in the match."
@@ -43288,7 +43288,7 @@ const EXAMS = {
           "It returns the fewest false positives but risks more false negatives (missed documents)",
           "It automatically applies OCR to all matched files",
           "It disables exact matching completely",
-          "It returns the most false positives but eliminates false negatives entirely"
+          "It returns the most false positives but eliminates false negatives entirely (no missed documents)"
         ],
         "correct": 0,
         "explain": "A high confidence level in fingerprint partial matching detects only near-exact matches, minimizing false positives but risking missing sensitive documents (false negatives); low or medium confidence catches more documents at the cost of more false positives."
@@ -43340,7 +43340,7 @@ const EXAMS = {
           "An E5 license and Advanced classification scanning and protection enabled",
           "A retention label with a 7-year retention period",
           "A Microsoft Defender for Cloud Apps license only",
-          "A custom trainable classifier configured for source code"
+          "A custom trainable classifier configured for source code in the tenant's repositories"
         ],
         "correct": 0,
         "explain": "Credential scanning SITs are built-in, bundled sensitive information types that detect exposed secrets like API keys and passwords, but they require an E5 license and advanced classification scanning to be enabled."
@@ -43547,7 +43547,7 @@ const EXAMS = {
         "options": [
           "Up to 1,000 items, typically completing within 5 minutes",
           "Up to 100 items, typically completing instantly",
-          "There is no item limit, but simulations take 30 days",
+          "There is no item limit, but simulations take 30 days to complete",
           "Up to 1 million items, typically completing within 12 hours"
         ],
         "correct": 3,
@@ -43572,7 +43572,7 @@ const EXAMS = {
         "q": "In Microsoft Purview's Data explorer, what is the difference between the 'Content Explorer List Viewer' and 'Content Explorer Content Viewer' roles (which also govern Data explorer access)?",
         "options": [
           "List Viewer is for Exchange only; Content Viewer is for SharePoint only",
-          "List Viewer can edit labels; Content Viewer can only view them",
+          "List Viewer can edit labels on items; Content Viewer can only view them, and neither role can see item names or locations",
           "They grant identical access with different naming for legacy reasons",
           "List Viewer sees item names and locations only; Content Viewer can additionally view the contents of labeled items"
         ],
@@ -43586,7 +43586,7 @@ const EXAMS = {
         "options": [
           "Up to 14 days for SharePoint files (up to 7 days generally for other sources)",
           "It appears within seconds",
-          "It never appears until a manual export is triggered",
+          "It never appears until a manual export is triggered from Data explorer by an administrator",
           "Exactly 24 hours in all cases"
         ],
         "correct": 0,
@@ -43610,7 +43610,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which of these is described as a built-in 'filter set' in Activity explorer to help administrators quickly focus on a specific investigative scenario?",
         "options": [
-          "Azure Resource Manager deployment logs",
+          "Azure Resource Manager deployments created, changed, or removed",
           "Sensitivity labels applied, changed, or removed",
           "Conditional Access sign-in logs",
           "SQL query execution plans"
@@ -43649,7 +43649,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "If a SharePoint document library has a default sensitivity label configured, what happens to files that already existed in the library before the default label was set?",
         "options": [
-          "The library becomes read-only until every file is manually relabeled",
+          "The library becomes read-only until every file is manually relabeled with the default label by a site owner or administrator",
           "All existing files are immediately relabeled to match",
           "Existing files at rest are not automatically relabeled -- the default label only applies to newly created or edited files",
           "Existing files are automatically deleted"
@@ -43662,7 +43662,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What license is required for a user to apply sensitivity labels to their own Power BI reports and dashboards (outside of 'My workspace')?",
         "options": [
-          "Microsoft 365 E3 with no additional Power BI license",
+          "Microsoft 365 E3 with no additional Power BI license, since labels come with the Microsoft 365 plan",
           "Only a Fabric administrator can apply labels in Power BI",
           "A Power BI Free license is sufficient for any workspace",
           "A Power BI Pro or Premium Per User (PPU) license, plus Edit permission on the content"
@@ -43714,7 +43714,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What happens when Microsoft 365 Copilot encounters content protected with Double Key Encryption (DKE)?",
         "options": [
-          "DKE content is automatically re-encrypted with single-key encryption for Copilot access",
+          "DKE content is automatically re-encrypted with single-key encryption for Copilot access while the DKE item is open",
           "Copilot requests a one-time decryption key from the user",
           "Copilot summarizes DKE content normally since DKE keys are cached locally",
           "Copilot cannot access DKE-protected items at all, and is unavailable in the app while a DKE item is open"
@@ -43730,7 +43730,7 @@ const EXAMS = {
           "Copilot deletes the encryption to allow access",
           "Copilot can only reference the content with a link so the user opens it directly; it cannot summarize the content",
           "Copilot ignores the encryption and processes the content normally",
-          "Copilot can fully summarize the document as if the user had all rights"
+          "Copilot can fully summarize the document as if the user had all rights, including the Extract right on the content"
         ],
         "correct": 1,
         "explain": "Copilot checks a user's usage rights before working with encrypted labeled content. With View rights but no Extract right, Copilot is limited to referencing the content via a link; summarization requires the Extract right."
@@ -43768,7 +43768,7 @@ const EXAMS = {
         "options": [
           "Quarantine mode, which blocks all scanned files",
           "Discovery mode, which scans content without applying labels or enforcing protection",
-          "Enforcement mode, which immediately applies labels",
+          "Enforcement mode, which immediately applies labels and protection to every scanned file",
           "Offline mode, requiring manual policy import"
         ],
         "correct": 1,
@@ -43832,7 +43832,7 @@ const EXAMS = {
         "q": "Which Microsoft 365 licenses include Microsoft Purview Advanced Message Encryption by default?",
         "options": [
           "Advanced Message Encryption requires no license",
-          "Any license that includes Exchange Online Plan 1",
+          "Any license that includes Exchange Online Plan 1, with no compliance add-on",
           "Microsoft 365 Business Basic only",
           "Microsoft 365 E5, Office 365 E5, and Office 365 Education A5"
         ],
@@ -43859,7 +43859,7 @@ const EXAMS = {
         "options": [
           "Revocation is only available for messages under 25 MB",
           "Only if the recipient viewed the message through the encrypted message portal",
-          "Any encrypted message can be revoked regardless of how it was viewed",
+          "Any encrypted message can be revoked regardless of how it was viewed by the recipient",
           "Only messages sent to internal recipients can be revoked"
         ],
         "correct": 1,
