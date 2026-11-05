@@ -42082,7 +42082,7 @@ const EXAMS = {
         "q": "In Microsoft Entra multifactor authentication settings, the account lockout feature that temporarily locks accounts after repeated denied authentication attempts applies to which scenario?",
         "options": [
           "Conditional Access policy evaluation",
-          "Passwordless sign-in with the Authenticator app",
+          "Passwordless sign-in with the Authenticator app on a registered mobile device",
           "Users authenticating with MFA Server on-premises entering a PIN",
           "Any cloud-based MFA sign-in"
         ],
@@ -42136,7 +42136,7 @@ const EXAMS = {
           "Before any credentials are submitted",
           "Only during device enrollment",
           "After first-factor authentication is completed",
-          "Only when a risky sign-in is detected"
+          "Only when a risky sign-in is detected by Identity Protection"
         ],
         "correct": 2,
         "explain": "Conditional Access policies are enforced after first-factor authentication is completed; Conditional Access is not intended as an organization's first line of defense against attacks like denial-of-service."
@@ -42175,7 +42175,7 @@ const EXAMS = {
           "Eligible assignments never expire; active assignments always expire",
           "Eligible assignments require the member to activate the role before use; active assignments grant the privileges immediately",
           "There is no functional difference, only a display label",
-          "Eligible assignments apply only to Azure roles; active assignments apply only to Microsoft Entra roles"
+          "Eligible assignments apply only to Azure roles; active assignments apply only to Microsoft Entra roles across the whole tenant"
         ],
         "correct": 1,
         "explain": "PIM documentation states that eligible assignments require the member to perform an action, such as activation or requesting approval, before using the role, while active assignments grant the privileges of the role immediately without further action."
@@ -42227,7 +42227,7 @@ const EXAMS = {
           "No, but you can grant a service principal a time-limited active assignment",
           "No, service principals cannot be assigned any PIM role",
           "Yes, service principals can be made eligible the same as users",
-          "Yes, but only for Azure resource roles, never Microsoft Entra roles"
+          "Yes, but only for Azure resource roles, never Microsoft Entra roles or PIM for Groups"
         ],
         "correct": 0,
         "explain": "PIM documentation explicitly states you cannot assign service principals as eligible to Microsoft Entra roles, Azure roles, or PIM for Groups, but you can grant a time-limited active assignment to all three."
@@ -42330,7 +42330,7 @@ const EXAMS = {
         "options": [
           "They are functionally identical and interchangeable",
           "Microsoft Entra roles control access to Microsoft Entra resources such as users and groups via Microsoft Graph; Azure roles control access to Azure resources via Azure Resource Manager",
-          "Microsoft Entra roles control access to Azure resources; Azure roles control access to Microsoft Entra resources",
+          "Microsoft Entra roles control access to Azure resources via Azure Resource Manager; Azure roles control access to Microsoft Entra resources such as users and groups via the Microsoft Graph API",
           "Microsoft Entra roles can only be assigned to groups, never individual users"
         ],
         "correct": 1,
@@ -42341,7 +42341,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which Microsoft Entra ID license is required to create and assign custom Microsoft Entra roles?",
         "options": [
-          "No license is required, it is free like built-in roles",
+          "No license is required, it is free like built-in roles for all users",
           "Microsoft 365 E5 exclusively",
           "Microsoft Entra ID P2 only",
           "Microsoft Entra ID P1 for every user assigned a custom role"
@@ -42356,7 +42356,7 @@ const EXAMS = {
         "options": [
           "At least a Privileged Role Administrator with a Microsoft Entra ID P1 or P2 license",
           "Application Administrator role with Microsoft 365 Business",
-          "Global Reader role and Entra ID Free license",
+          "Global Reader role and Entra ID Free license assigned to every user of the custom role",
           "Security Reader role only, no license needed"
         ],
         "correct": 0,
@@ -42370,7 +42370,7 @@ const EXAMS = {
           "OAuth permission grants only, no license required",
           "Group-based assignment, which requires Microsoft Entra ID P1 or P2",
           "Individual assignment, available at no extra cost",
-          "Pass-through authentication, requiring Microsoft Entra ID Free"
+          "Pass-through authentication, requiring Microsoft Entra ID Free for each user"
         ],
         "correct": 1,
         "explain": "Group-based assignment to an enterprise application lets administrators assign a group so that membership determines access, and this capability requires Microsoft Entra ID P1 or P2, unlike individual assignment which has no such requirement."
@@ -42381,7 +42381,7 @@ const EXAMS = {
         "q": "When an application in Microsoft Entra ID requires user assignment, what happens to Microsoft Entra ID user consent for that application?",
         "options": [
           "User consent is not allowed, even if it would otherwise be permitted for that app",
-          "User consent still works normally alongside assignment",
+          "User consent still works normally alongside assignment, just as it does for any other app",
           "User consent becomes mandatory for every sign-in",
           "Assignment automatically disables the application"
         ],
@@ -42393,7 +42393,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "When you register a new application in Microsoft Entra ID through the portal, what happens automatically?",
         "options": [
-          "A managed identity is automatically created instead of a service principal",
+          "A managed identity is automatically created instead of a service principal for the app in the home tenant",
           "Only a service principal is created; no application object exists",
           "Both an application object and a service principal are automatically created in the home tenant",
           "Only an application object is created; a service principal must be created manually later"
@@ -42407,7 +42407,7 @@ const EXAMS = {
         "q": "How many service principals does a single-tenant application have, and where?",
         "options": [
           "One service principal in every tenant where any user signs in",
-          "Zero service principals; single-tenant apps use only the application object",
+          "Zero service principals; single-tenant apps use only the application object in the home tenant",
           "One service principal per registered redirect URI",
           "Exactly one service principal, created and consented for use in its home tenant only"
         ],
@@ -42472,7 +42472,7 @@ const EXAMS = {
         "q": "What happens to a system-assigned managed identity when the Azure resource it is attached to is deleted?",
         "options": [
           "Azure automatically deletes the service principal for the identity along with the resource",
-          "It is converted automatically into a user-assigned managed identity",
+          "It is converted automatically into a user-assigned managed identity that remains in the resource group",
           "It remains and must be deleted manually",
           "It becomes a legacy service principal"
         ],
@@ -42565,7 +42565,7 @@ const EXAMS = {
           "Azure load-balances traffic between both routes",
           "Neither route is used; traffic is dropped due to a conflict",
           "The user-defined route, because UDRs override default system routes with the same prefix",
-          "The default system route, because system routes always win"
+          "The default system route, because system routes always win over UDRs sharing the same prefix"
         ],
         "correct": 2,
         "explain": "When a UDR shares the same address prefix as a default system route, Azure marks the default route Invalid for that subnet because user-defined routes override default routes; Azure also prioritizes user-defined routes over BGP routes and system routes when multiple routes share the same prefix."
@@ -42617,7 +42617,7 @@ const EXAMS = {
           "It removes the 500 peering connection limit",
           "It lets a peered virtual network share an ExpressRoute or VPN gateway instead of deploying a new one for connectivity",
           "It allows peering across different Microsoft Entra tenants only",
-          "It automatically encrypts all peered traffic with IPsec"
+          "It automatically encrypts all peered traffic with IPsec instead of deploying a new VPN gateway for on-premises connectivity"
         ],
         "correct": 1,
         "explain": "Gateway transit enables a peered virtual network to use another virtual network's gateway (such as a hub's ExpressRoute or VPN gateway) for connectivity to on-premises, instead of creating and managing a separate gateway, reducing cost and management overhead."
@@ -42629,7 +42629,7 @@ const EXAMS = {
         "options": [
           "Peering supports transitive routing by default across all peered networks",
           "VPN Gateway setup is always faster than peering",
-          "Peering traffic is routed over the public internet while VPN Gateway traffic never leaves Azure",
+          "Peering traffic is routed over the public internet while VPN Gateway traffic never leaves Azure, so peering needs a custom IPsec/IKE policy and VPN Gateway does not use one",
           "Peering has no bandwidth limitations and provides software-level encryption recommendations, while VPN Gateway bandwidth varies by SKU and supports custom IPsec/IKE policy"
         ],
         "correct": 3,
@@ -42640,7 +42640,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What protocol does Azure Virtual WAN use to connect on-premises sites to a virtual hub over the internet?",
         "options": [
-          "Plain unencrypted GRE tunnel",
+          "Plain unencrypted GRE tunnel from the on-premises VPN device",
           "SMB 3.0 direct connection",
           "SSTP only",
           "IPsec/IKE (IKEv1 and IKEv2) VPN connection"
@@ -42681,7 +42681,7 @@ const EXAMS = {
         "options": [
           "An Azure Virtual WAN IPsec/IKE VPN connection established over the ExpressRoute circuit's private peering",
           "A Basic SKU Azure Firewall",
-          "A site-to-site VPN directly over the ExpressRoute public peering path",
+          "A site-to-site VPN directly over the ExpressRoute public peering path with public IP addresses on each side",
           "Azure Front Door with TLS termination"
         ],
         "correct": 0,
@@ -42758,7 +42758,7 @@ const EXAMS = {
         "q": "What limitation applies to virtual network service endpoints that does NOT apply to Azure Private Endpoints?",
         "options": [
           "Service endpoints require a dedicated subnet with a /27 minimum size",
-          "Service endpoints assign a private IP address to the Azure service itself",
+          "Service endpoints assign a private IP address to the Azure service itself inside the subnet, consuming address space in the virtual network",
           "Service endpoints cannot be used for traffic originating from on-premises networks reaching Azure services directly over the endpoint",
           "Service endpoints support only Azure SQL Database"
         ],
@@ -42875,7 +42875,7 @@ const EXAMS = {
         "q": "Azure Firewall Basic is designed for which scenario, and what is one of its key limitations compared to Standard?",
         "options": [
           "Small and medium businesses; it supports Threat Intel alert mode only and is fixed to two backend VM instances",
-          "Government clouds only; it cannot use threat intelligence at all",
+          "Government clouds only; it cannot use threat intelligence at all and runs on a single fixed backend VM instance",
           "Container workloads exclusively; it has no firewall policy support",
           "Large enterprises needing IDPS; it has no throughput limit"
         ],
@@ -42914,7 +42914,7 @@ const EXAMS = {
         "q": "What does enabling connection draining in an Application Gateway backend HTTP setting accomplish?",
         "options": [
           "It allows deregistering backend instances to complete existing connections without receiving new ones, up to a configured timeout of 1 to 3,600 seconds",
-          "It immediately terminates all connections to a backend the moment it's removed from the pool",
+          "It immediately terminates all connections to a backend the moment it's removed from the pool, so existing clients must reconnect to another backend instance",
           "It forces all traffic to bypass health probes",
           "It disables cookie-based session affinity"
         ],
@@ -42952,7 +42952,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is the difference between WAF Detection mode and Prevention mode on Application Gateway?",
         "options": [
-          "Detection mode blocks intrusions; Prevention mode only logs them",
+          "Detection mode actively blocks all matched requests and returns a 403 response; Prevention mode monitors and logs threats without blocking traffic",
           "Prevention mode is only available with Azure Front Door, not Application Gateway",
           "Both modes behave identically but write to different logs",
           "Detection mode monitors and logs threats without blocking traffic; Prevention mode actively blocks matched requests and returns a 403 response"
