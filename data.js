@@ -23357,9 +23357,9 @@ const EXAMS = {
         "q": "In the plan, act, evaluate agent lifecycle, what happens during the Act phase?",
         "options": [
           "The agent executes the plan in the repository, such as creating a branch and pushing commits",
-          "The agent reviews workflow run status checks",
+          "The agent reviews workflow run status checks and compares them with the success criteria",
           "The agent is retired from the workflow",
-          "The agent interprets the goal and determines needed steps"
+          "The agent interprets the goal and determines needed steps before any repository work begins"
         ],
         "correct": 0,
         "explain": "The action phase includes creating a branch, changing files and pushing commits, opening or updating a PR, and responding to review feedback."
@@ -23369,8 +23369,8 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Is the plan-act-evaluate lifecycle a one-time linear sequence or a loop?",
         "options": [
-          "A sequence that skips evaluation for trusted agents",
-          "A one-time linear sequence executed once",
+          "A sequence that skips evaluation for trusted agents once they've passed their first task",
+          "A one-time linear sequence executed once, ending when the first plan has been carried out",
           "A loop that repeats until the task meets defined success criteria",
           "A sequence controlled entirely by the MCP registry"
         ],
@@ -23435,8 +23435,8 @@ const EXAMS = {
         "q": "What is the purpose of CODEOWNERS in the context of agent-generated pull requests?",
         "options": [
           "It deletes stale branches",
-          "It automatically merges pull requests",
-          "It disables required status checks",
+          "It automatically merges pull requests once an owner of the changed path is assigned to them",
+          "It disables required status checks on paths that have a named team listed as the owner",
           "It routes review of changes to sensitive paths to the appropriate experts"
         ],
         "correct": 3,
@@ -23447,8 +23447,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "According to the least-privilege principle for GitHub Actions in agentic workflows, what should default workflow token permissions be set to?",
         "options": [
-          "No permissions at all, even for required jobs",
-          "Full write access to all repositories",
+          "No permissions at all, even for required jobs, with every job requesting a personal access token at run time instead",
+          "Full write access to all repositories, with lower permissions applied only to jobs that are known to be untrusted",
           "Conservatively, such as read-only where possible, with higher permissions granted only to jobs that need them",
           "Admin access for every job"
         ],
@@ -23501,8 +23501,8 @@ const EXAMS = {
         "options": [
           "A dedicated dashboard tracking the agent's token cost per request",
           "An inspectable plan",
-          "A clear outcome (merge, revert, or escalation)",
-          "A stated goal (issue link or PR description)"
+          "A clear outcome for the work, whether that's a merge, revert, or escalation",
+          "A stated goal, recorded as an issue link or written in the PR description"
         ],
         "correct": 0,
         "explain": "The minimum audit trail lists a stated goal, an inspectable plan, a bounded changeset, automated evidence, human judgment, and a clear outcome, not a token-cost dashboard."
@@ -23512,10 +23512,10 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Under the contributor model, how should agent-generated pull requests be evaluated?",
         "options": [
-          "With automatic approval because automation produced them",
+          "With automatic approval because automation produced them, as long as the agent reports that its own checks have passed",
           "Only by counting lines of code changed",
           "By the same standards used for any development contribution, such as scope, checks, ownership, and policy compliance",
-          "With automatic rejection because AI wrote them"
+          "With automatic rejection because AI wrote them, unless a maintainer rewrites the change by hand and resubmits the work"
         ],
         "correct": 2,
         "explain": "The contributor model says to evaluate the work by the standards of the workflow, not by the novelty of the author, avoiding both excessive suspicion and excessive trust."
@@ -23526,9 +23526,9 @@ const EXAMS = {
         "q": "Which practice does the contributor-model review rubric recommend when reviewing an agent's pull request?",
         "options": [
           "Only check whether the build passed",
-          "Skip evaluating scope since the agent already validated it",
+          "Skip evaluating scope since the agent already validated it, and focus only on style and naming",
           "Check intent, scope, evidence, ownership, policy, and fallback/rollback plan",
-          "Ignore CODEOWNERS since agents are trusted contributors"
+          "Ignore CODEOWNERS since agents are trusted contributors, and review only the final test results"
         ],
         "correct": 2,
         "explain": "The practical review rubric for agent PRs checks intent, scope, evidence, ownership, policy, and fallback/rollback."
@@ -23590,10 +23590,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is the key design choice between a Plan-first and a Plan plus execution pull request workflow?",
         "options": [
-          "Whether a plan is required at all",
+          "Whether a plan is required at all before the agent is allowed to begin working on the task",
           "Whether GitHub Actions runs at all",
           "When human validation is required relative to when code changes are introduced",
-          "Whether pull requests are used"
+          "Whether pull requests are used at all, or changes are committed straight to the default branch"
         ],
         "correct": 2,
         "explain": "The key design choice is not where the plan starts, but when human validation is required relative to code changes."
@@ -23603,9 +23603,9 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Which scenario is best suited to the Plan-first pull request workflow rather than Plan plus execution?",
         "options": [
-          "Low-risk documentation formatting changes",
+          "Low-risk documentation formatting changes, such as fixing typos or heading levels across a few Markdown files in the repo",
           "High-risk or difficult-to-reverse changes, such as production systems or security-sensitive areas",
-          "Any change that already passed automated tests",
+          "Any change that already passed automated tests, since passing checks show that the intent has been agreed before work starts",
           "Changes that don't require a pull request"
         ],
         "correct": 1,
@@ -23618,8 +23618,8 @@ const EXAMS = {
         "options": [
           "By deleting the repository after planning",
           "By limiting the planning agent to read-only tools as a capability boundary",
-          "By disabling pull requests entirely",
-          "By trusting the agent's instructions not to edit files"
+          "By disabling pull requests entirely for the repository until the planning phase has ended",
+          "By trusting the agent's instructions not to edit files, written as guidance in the prompt"
         ],
         "correct": 1,
         "explain": "A capability boundary (planning agents are read-only) ensures the agent cannot modify files during planning; tool allowlists/gates are enforcement while instructions are just guidance."
@@ -23631,8 +23631,8 @@ const EXAMS = {
         "options": [
           "It slows down all pull requests unnecessarily",
           "It ensures every agent PR provides consistent plan and evidence sections for reviewers",
-          "It replaces the need for required status checks",
-          "It automatically merges the PR"
+          "It replaces the need for required status checks, because the written plan serves as evidence that the change works",
+          "It automatically merges the PR as soon as every section of the template has been filled in by the agent"
         ],
         "correct": 1,
         "explain": "The PR template example ensures every agent PR includes a structured plan and evidence sections so reviewers have consistent information to evaluate."
@@ -23656,8 +23656,8 @@ const EXAMS = {
         "q": "A team places CODEOWNERS entries for /security/, /.github/workflows/, and /infra/. What is the primary purpose of this configuration for agent PRs?",
         "options": [
           "To disable required checks for those paths",
-          "To completely block agents from ever modifying those paths",
-          "To grant the agent admin permissions in those paths",
+          "To completely block agents from ever modifying those paths, regardless of who reviews the change",
+          "To grant the agent admin permissions in those paths so that it can approve its own changes there",
           "To automatically route review of changes in sensitive paths to the appropriate owning teams"
         ],
         "correct": 3,
@@ -23694,9 +23694,9 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What is the typical sequence an agent follows to make repository changes?",
         "options": [
-          "Directly edit files on the default branch",
+          "Directly edit files on the default branch, commit the changes there, and then open a pull request for later review",
           "Bypass GitHub entirely and edit the filesystem",
-          "Delete the repository, recreate it, commit directly",
+          "Delete the repository, recreate it from a template, commit directly to the default branch, and open an issue",
           "Select a base branch, create a new working branch, modify or create files, commit changes, open a pull request"
         ],
         "correct": 3,
@@ -23824,10 +23824,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "When configuring a custom MCP registry with Azure API Center, what should you enter in the MCP Registry URL field?",
         "options": [
-          "A local Docker container path",
+          "A local Docker container path that points at the API Center data",
           "The base API Center endpoint URL only, without /v0.1/servers",
           "The GITHUB_TOKEN value",
-          "The full endpoint including /v0.1/servers"
+          "The full endpoint URL including the /v0.1/servers path segment"
         ],
         "correct": 1,
         "explain": "If using Azure API Center, you should enter the base URL only and not include /v0.1/servers."
@@ -23839,8 +23839,8 @@ const EXAMS = {
         "options": [
           "To restrict which MCP servers are permitted for use, controlling access at the organization or enterprise level",
           "To speed up workflow execution times",
-          "To list which users can view a repository",
-          "To define which programming languages agents can use"
+          "To list which users can view a repository and which of them are allowed to invoke agents in it",
+          "To define which programming languages agents can use when they generate code at the organization or enterprise level"
         ],
         "correct": 0,
         "explain": "An allow list is a policy that controls which MCP servers are permitted, restricting server usage to approved entries at org/enterprise level."
@@ -23865,8 +23865,8 @@ const EXAMS = {
         "options": [
           "Only read and modify code within the specific repository it's working in, unless explicitly granted access elsewhere",
           "Bypass repository permissions entirely",
-          "Modify any public repository on GitHub",
-          "Read and modify code across all repositories in the organization"
+          "Modify any public repository on GitHub, since public code is outside the scope that repository settings control",
+          "Read and modify code across all repositories in the organization, as long as it opens a pull request for each change"
         ],
         "correct": 0,
         "explain": "Agents operate within a repository: they can only read/modify code within that repository and don't access other repositories unless explicitly granted."
@@ -23878,8 +23878,8 @@ const EXAMS = {
         "options": [
           "The MCP registry URL",
           "Which files or directories the agent focuses on",
-          "Which users can invoke the agent",
-          "The agent's memory expiration policy"
+          "Which users or teams in the organization can invoke the agent",
+          "The agent's memory expiration policy for stored facts"
         ],
         "correct": 1,
         "explain": "Inside a custom agent file, applyTo limits which files or directories the agent focuses on, while tools defines what actions it can perform."
@@ -23890,9 +23890,9 @@ const EXAMS = {
         "q": "Why do agents work on a separate branch instead of directly on the default branch such as main?",
         "options": [
           "Branches are required for billing purposes",
-          "main branches cannot accept commits at all",
+          "main branches cannot accept commits at all, so every change has to be created somewhere else and then copied over",
           "Branch-based isolation ensures all modifications go through review before being merged, containing changes safely",
-          "It has no safety purpose, it's just a convention"
+          "It has no safety purpose, it's just a convention that teams follow to keep the repository's branch list tidy"
         ],
         "correct": 2,
         "explain": "Branch-based isolation ensures changes are isolated and go through review (pull request) before merging into the base branch, a key safety mechanism."
@@ -23915,10 +23915,10 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "What do custom agents NOT control, since it's enforced by the execution system instead?",
         "options": [
-          "Which files they focus on (applyTo)",
+          "Which files or directories they focus on (applyTo)",
           "Branch creation and pull request behavior",
           "Their instructions/behavior",
-          "What tools they can use"
+          "What tools they're able to use during a task"
         ],
         "correct": 1,
         "explain": "Custom agents define applyTo, tools, and instructions, but they don't control branch creation or PR behavior; that's always enforced by the execution context, not the custom agent itself."
@@ -23941,9 +23941,9 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What permission-related default helps prevent unintended workflow loops when actions are performed using the GITHUB_TOKEN?",
         "options": [
-          "The GITHUB_TOKEN expires after every commit",
+          "The GITHUB_TOKEN expires after every commit, which stops any later steps from starting new runs",
           "The GITHUB_TOKEN always has admin access",
-          "GITHUB_TOKEN cannot be used by agents at all",
+          "GITHUB_TOKEN cannot be used by agents at all, so no agent action can ever start a workflow run",
           "Most actions performed with the GITHUB_TOKEN don't trigger additional workflow runs"
         ],
         "correct": 3,
@@ -23955,8 +23955,8 @@ const EXAMS = {
         "q": "What does Copilot cloud agent do when it finishes its work?",
         "options": [
           "It prepares the changes for review but does not automatically create or merge a pull request; the human decides",
-          "It automatically merges the pull request",
-          "It pushes directly to the production environment",
+          "It automatically merges the pull request once the checks pass, and the human is only notified of the result afterward",
+          "It pushes directly to the production environment after creating a pull request that records what the agent changed",
           "It deletes the branch immediately"
         ],
         "correct": 0,
@@ -23968,8 +23968,8 @@ const EXAMS = {
         "q": "What is an example retry pattern shown for handling transient failures in an agent workflow step?",
         "options": [
           "Escalating to a human on the very first failure",
-          "Disabling the step permanently after one failure",
-          "Immediately failing the entire pipeline with no retry",
+          "Disabling the step permanently after one failure and moving on to the next command without any further attempts",
+          "Immediately failing the entire pipeline with no retry, then rerunning it manually after the network error clears",
           "A loop that reruns the failed command a few times with a short sleep between attempts, breaking on success"
         ],
         "correct": 3,
@@ -24006,10 +24006,10 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "How can escalation paths be implemented for agent tasks the agent can't complete?",
         "options": [
-          "By automatically retrying forever with no notification",
+          "By automatically retrying forever with no notification, so that maintainers never need to review or assign the task",
           "By requiring pull request review, assigning reviewers automatically, or using workflow steps to notify maintainers",
           "By deleting the associated issue",
-          "By silently abandoning the task"
+          "By silently abandoning the task and closing its pull request without assigning reviewers or notifying any maintainers"
         ],
         "correct": 1,
         "explain": "Escalation ensures a human can step in via required PR review, automatic reviewer assignment, or workflow notification steps to maintainers."
@@ -24019,10 +24019,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which of these actions helps improve traceability and accountability for agent actions?",
         "options": [
-          "Squashing all commit history to a single anonymous commit",
+          "Squashing all commit history to a single anonymous commit, so that reviewers see only one change on the default branch",
           "Avoiding the use of pull requests",
           "Using clear commit messages, keeping changes scoped to a branch, and reviewing all actions through pull requests",
-          "Disabling workflow logs to reduce noise"
+          "Disabling workflow logs to reduce noise, keeping changes unscoped, and relying on the agent's final summary as a record"
         ],
         "correct": 2,
         "explain": "To improve traceability, use clear commit messages, keep changes scoped to a branch, and review all actions through pull requests, so every action can be inspected and attributed."
@@ -24033,9 +24033,9 @@ const EXAMS = {
         "q": "What is the purpose of environment protections for agent-generated changes used in deployments?",
         "options": [
           "They require approvals before jobs continue, restrict access to secrets, and control deployment targets",
-          "They automatically approve all deployments",
+          "They automatically approve all deployments, grant jobs access to every secret, and remove limits on deployment targets",
           "They disable all logging",
-          "They only apply to documentation changes"
+          "They only apply to documentation changes, where they check formatting before the content is published to a target"
         ],
         "correct": 0,
         "explain": "Environments can require approvals before jobs continue, restrict access to secrets, and control deployment targets, ensuring sensitive operations aren't executed automatically."
@@ -24045,10 +24045,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What three kinds of control does agent profile/tool configuration provide?",
         "options": [
-          "Speed boundary, cost boundary, and language boundary",
+          "Speed boundary, per-request cost boundary, and language boundary",
           "Capability boundary, visibility boundary, and delegation boundary",
           "Memory boundary, network boundary, and UI boundary",
-          "Billing boundary, licensing boundary, and export boundary"
+          "Billing boundary, software licensing boundary, and data export boundary"
         ],
         "correct": 1,
         "explain": "Agent profile configuration provides a capability boundary (which tools are allowed), a visibility boundary (whether the agent is user-selectable), and a delegation boundary (which subagents can be invoked)."
@@ -24084,10 +24084,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What guidance is given about MCP server authentication tokens?",
         "options": [
-          "Tokens should be shared across all environments equally",
+          "Tokens should be shared across all environments equally at deployment time",
           "MCP servers never require authentication",
           "Tokens should be injected at runtime via protected secret boundaries",
-          "Tokens should be hardcoded into the MCP server configuration file"
+          "Tokens should be hardcoded into the MCP server configuration file in the repo"
         ],
         "correct": 2,
         "explain": "For MCP servers, authentication guidance states tokens should be injected at runtime via protected secret boundaries, not hardcoded."
@@ -24111,8 +24111,8 @@ const EXAMS = {
         "q": "What step is required before a repository can use the Copilot cloud agent?",
         "options": [
           "The agent must be manually compiled from source",
-          "No configuration is needed; it's on by default everywhere",
-          "The repository must be made public",
+          "No configuration is needed; it's on by default everywhere, and an admin can only turn it off for an entire organization",
+          "The repository must be made public, because Settings only offers Copilot and Cloud agent options for public repositories",
           "An admin must go to repository Settings, Copilot, Cloud agent, and enable/configure it for that repository"
         ],
         "correct": 3,
@@ -24136,9 +24136,9 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "How does Copilot Memory validate stored repository-level facts before use?",
         "options": [
-          "It never validates facts once stored",
+          "It never validates facts once stored, because facts are assumed to stay accurate on every branch of the repository",
           "Facts are validated only once a year",
-          "Facts are validated by a human administrator every time",
+          "Facts are validated by a human administrator every time, who confirms each one in the repository's Copilot settings page",
           "Repository facts are checked against the current branch to confirm the information is still accurate"
         ],
         "correct": 3,
@@ -24175,10 +24175,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "According to Copilot Memory's feature-availability distinctions, which is true?",
         "options": [
-          "Neither facts nor preferences can be shared between Copilot features",
+          "Neither facts nor preferences can be shared between Copilot features, so each feature keeps its own separate set of both",
           "Both facts and preferences are always shared org-wide",
           "Repository facts are scoped to individual repositories, while user preferences follow users across codebases",
-          "User preferences are scoped to a single repository only"
+          "User preferences are scoped to a single repository only, while repository facts follow users across all of their codebases"
         ],
         "correct": 2,
         "explain": "Repository facts are scoped to individual repositories, while user preferences follow the user across codebases; feature availability also varies, for example code review uses facts only."
@@ -24203,8 +24203,8 @@ const EXAMS = {
         "options": [
           "Scoping agent memory to task-relevant information and defining expiration, pruning, and reset rules",
           "Disabling memory entirely for all agents",
-          "Sharing every user's full memory with every other user",
-          "Storing all historical data indefinitely with no scoping"
+          "Sharing every user's full memory with every other user, with no expiration, pruning, or reset rules defined by anyone",
+          "Storing all historical data indefinitely with no scoping, so the agent always has every past detail available to it"
         ],
         "correct": 0,
         "explain": "Scoping agent memory to task-relevant information and defining memory expiration, pruning, and reset rules directly reduces risk from stale or irrelevant memory."
@@ -24215,9 +24215,9 @@ const EXAMS = {
         "q": "A long-running agent task shows signs of context drift partway through execution. What is the recommended approach?",
         "options": [
           "Detect the drift and correct it, rather than letting the agent continue diverging from prior decisions",
-          "Ignore it since drift self-corrects automatically",
+          "Ignore it since drift self-corrects automatically once the agent has finished working through its remaining steps",
           "Disable all memory features permanently",
-          "Restart the entire organization's Copilot subscription"
+          "Restart the entire organization's Copilot subscription so that every agent discards its context and begins again"
         ],
         "correct": 0,
         "explain": "Detecting and correcting drift during extended agent execution is part of persisting agent state and managing context, rather than ignoring accumulated divergence."
@@ -24229,8 +24229,8 @@ const EXAMS = {
         "options": [
           "Avoid recording any decisions to keep the process lightweight",
           "Record task progress and key decisions in durable, inspectable artifacts (like PR descriptions or linked issues) so work can be resumed reliably",
-          "Store progress only in the agent's temporary in-memory buffer that resets on every session",
-          "Only the agent needs to know what it decided; humans don't need visibility"
+          "Store progress only in the agent's temporary in-memory buffer that resets on every session, so that each new run starts from a clean state without earlier decisions",
+          "Only the agent needs to know what it decided; humans don't need visibility, so progress can stay in internal reasoning that isn't recorded anywhere"
         ],
         "correct": 1,
         "explain": "Capturing task progress and decisions as durable artifacts ensures work can be resumed and audited without relying on ephemeral, unrecorded state."
@@ -24241,9 +24241,9 @@ const EXAMS = {
         "q": "Why is it important to resume agent work without repeating steps or diverging from prior decisions?",
         "options": [
           "To save compute cost by avoiding infinite loops and to preserve consistency with earlier decisions when execution continues",
-          "Because prior decisions should always be discarded when resuming",
+          "Because prior decisions should always be discarded when resuming, and repeating earlier steps is how the agent rebuilds its context",
           "Because repeating steps always improves output quality",
-          "Because agents are not allowed to resume work under any circumstances"
+          "Because agents are not allowed to resume work under any circumstances, so any repeated step is treated as a policy violation and stops the run"
         ],
         "correct": 0,
         "explain": "This skill focuses on efficient, consistent continuation of agent work, avoiding wasted repeated steps and preventing contradictions with decisions already made."
@@ -24254,9 +24254,9 @@ const EXAMS = {
         "q": "Which of these is explicitly listed as a strategy choice for agent memory?",
         "options": [
           "Choosing between short-term, long-term, and external memory",
-          "Choosing between GitHub Free and GitHub Enterprise",
+          "Choosing between GitHub Free and GitHub Enterprise plans for agents",
           "Choosing between YAML and JSON configuration",
-          "Choosing between public and private repositories"
+          "Choosing between public and private repositories for agent storage"
         ],
         "correct": 0,
         "explain": "Choosing between short-term, long-term, and external memory is listed as a core memory-strategy skill."
@@ -24267,8 +24267,8 @@ const EXAMS = {
         "q": "What problem does preventing conflicting context address when agent state must be shared across tools and environments?",
         "options": [
           "It has no practical impact on agent behavior",
-          "It prevents the agent from ever using more than one tool",
-          "It only applies to billing conflicts",
+          "It prevents the agent from ever using more than one tool or environment during a task, so that no shared state exists",
+          "It only applies to billing conflicts, where two environments report different usage totals for the same agent task",
           "It prevents two different tools/environments from acting on contradictory versions of task-relevant information"
         ],
         "correct": 3,
@@ -24279,9 +24279,9 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What problem does preventing stale context address in cross-environment agent state management?",
         "options": [
-          "Ensuring the agent always uses the oldest available data",
+          "Ensuring the agent always uses the oldest available data, so that decisions stay consistent even as the repository or task evolves",
           "Preventing agents from accessing GitHub Issues",
-          "Preventing any data from ever expiring",
+          "Preventing any data from ever expiring, so that agent state keeps every earlier version of the repository and the task",
           "Ensuring an agent doesn't act on outdated information that no longer reflects the current repository or task state"
         ],
         "correct": 3,
@@ -24293,9 +24293,9 @@ const EXAMS = {
         "q": "Which of the following best distinguishes short-term memory from long-term memory in an agentic system?",
         "options": [
           "Short-term memory only exists in MCP servers",
-          "Short-term memory persists indefinitely across all sessions while long-term memory is deleted immediately",
+          "Short-term memory persists indefinitely across all sessions while long-term memory is deleted immediately after each task",
           "Short-term memory is scoped to the current task/session while long-term memory persists across sessions or tasks",
-          "They are identical concepts with different names"
+          "They are identical concepts with different names, and both are scoped to the current task or session in every system"
         ],
         "correct": 2,
         "explain": "Short-term memory is generally scoped to a session/task, while long-term memory is designed to persist beyond a single session, a foundational distinction agents must choose between when implementing memory strategies."
@@ -24357,10 +24357,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What does citation validation refer to in Copilot Memory's repository-fact handling?",
         "options": [
-          "A method for citing external websites in pull requests",
+          "A method for citing external websites in pull requests and agent-written code comments",
           "A tool for validating MCP registry URLs",
           "A mechanism confirming facts remain accurate by referencing supporting code",
-          "A billing feature for enterprise licenses"
+          "A billing feature for enterprise licenses that tracks how often stored facts are cited"
         ],
         "correct": 2,
         "explain": "Citation validation is the mechanism that confirms repository facts remain accurate by referencing the supporting code, tying memory content back to verifiable source."
@@ -24384,9 +24384,9 @@ const EXAMS = {
         "q": "What does it mean to align evaluation criteria with development intent rather than relying on surface-level signals like a passing build?",
         "options": [
           "Development intent is irrelevant once CI is green",
-          "Evaluation criteria should be defined only after the PR is merged",
+          "Evaluation criteria should be defined only after the PR is merged, once a proxy signal like tests passed has shown what the task actually ended up achieving",
           "Success criteria should reflect what the task is actually meant to achieve (e.g., vulnerability resolved) rather than only a proxy signal like tests passed",
-          "Evaluation criteria should always match the agent's internal reasoning trace word-for-word"
+          "Evaluation criteria should always match the agent's internal reasoning trace word-for-word, so that a green build and a matching trace together prove that the task has been completed"
         ],
         "correct": 2,
         "explain": "CI passed is necessary but not sufficient; success criteria should reflect the real intent, such as vulnerability resolved rather than just tests passed."
@@ -24409,10 +24409,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which artifact types should be used together to identify an agent failure?",
         "options": [
-          "Only the final diff, ignoring all other context",
+          "Only the final diff, ignoring all other context, such as plans or logs",
           "Logs, plans, traces, outputs, and workflow artifacts collectively",
           "Only the commit message",
-          "Only the agent's marketing description"
+          "Only the agent's marketing description, compared with its output"
         ],
         "correct": 1,
         "explain": "Identifying failures requires using logs, plans, traces, outputs, and workflow artifacts together, not a single narrow source."
@@ -24422,9 +24422,9 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which three root-cause categories are called out for classifying agent failures?",
         "options": [
-          "Network latency, disk space, and CPU throttling",
+          "Network latency issues, disk space limits, and CPU throttling events",
           "Reasoning errors, tool misuse, and context or environment issues",
-          "Billing errors, license errors, and quota errors",
+          "Billing errors, license errors, and API quota errors on the account",
           "Font rendering, color contrast, and layout errors"
         ],
         "correct": 1,
@@ -24487,8 +24487,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What distinguishes qualitative from quantitative evaluation signals for agent tasks?",
         "options": [
-          "Only quantitative signals are valid for agent evaluation",
-          "Qualitative signals are numeric metrics like pass/fail counts, while quantitative signals are subjective judgments",
+          "Only quantitative signals are valid for agent evaluation, because reviewer judgment can't be measured and so is excluded from any assessment of an agent's task",
+          "Qualitative signals are numeric metrics like pass/fail counts and scan totals, while quantitative signals are subjective judgments such as the perceived quality of review feedback on a change",
           "Qualitative signals capture subjective/judgment-based assessment (e.g., review feedback quality), while quantitative signals are measurable metrics (e.g., checks passed, scan counts)",
           "They are the same thing with different names"
         ],
@@ -24528,8 +24528,8 @@ const EXAMS = {
         "options": [
           "Explicit scope boundaries, what is intentionally excluded from the plan",
           "The pricing of the tool",
-          "The team's vacation schedule",
-          "A list of banned dependencies"
+          "The team's vacation schedule and who is available during the plan",
+          "A list of banned dependencies that the plan must avoid during work"
         ],
         "correct": 0,
         "explain": "The plan documentation includes an explicit Not Included section defining scope boundaries, what work is intentionally excluded."
@@ -24565,8 +24565,8 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "An agent's evaluation reveals it is technically completing tasks but consistently exceeding the intended scope (touching unrelated files). Which combination of skills is most directly relevant to diagnosing and fixing this?",
         "options": [
-          "Configure MCP allow lists only",
-          "Increase the agent's memory retention window only",
+          "Configure MCP allow lists only, which limits the servers an agent can reach but leaves its task boundaries alone",
+          "Increase the agent's memory retention window only, so that it remembers more of the files it touched earlier",
           "Disable all required status checks",
           "Classify root causes (e.g., reasoning errors) and then revise instructions, workflows, or constraints"
         ],
@@ -24579,8 +24579,8 @@ const EXAMS = {
         "q": "Which of these best exemplifies generating evaluation signals by using automated scanning tools?",
         "options": [
           "Checking the repository's star count",
-          "A manager manually reading every line of a diff",
-          "Asking the agent whether it thinks the code is secure",
+          "A manager manually reading every line of a diff and noting any security concerns in a spreadsheet",
+          "Asking the agent whether it thinks the code is secure and recording its answer in the workflow log",
           "Running CodeQL code scanning or dependency/secret scanning as part of a required workflow check"
         ],
         "correct": 3,
@@ -24591,8 +24591,8 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which artifact type provides durable, reviewable evidence for evaluating an agent's task even after logs scroll away?",
         "options": [
-          "A verbal report from the agent",
-          "The agent's private chat history only",
+          "A verbal report from the agent, summarized by the reviewer",
+          "The agent's private chat history only, kept in its session",
           "Uploaded workflow artifacts (e.g., via actions/upload-artifact)",
           "The organization's billing invoice"
         ],
@@ -24645,8 +24645,8 @@ const EXAMS = {
         "options": [
           "The agent had access to a stale or incomplete view of the repository state, causing it to act on outdated assumptions",
           "The agent's pull request was approved by a reviewer",
-          "The agent misunderstood the goal and planned an illogical approach",
-          "The agent used the correct tool with the correct parameters"
+          "The agent misunderstood the goal and planned an illogical approach, even though it had an accurate and complete view of the repository",
+          "The agent used the correct tool with the correct parameters, and the pull request it produced did what the task had asked for"
         ],
         "correct": 0,
         "explain": "Context or environment issues involve the agent acting on stale, incomplete, or otherwise incorrect environmental information, distinct from reasoning errors (flawed logic) or tool misuse (wrong tool/parameters)."
@@ -24669,10 +24669,10 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A team wants evaluation criteria that reflect both automated check results and human judgment about whether the change was actually appropriate. Which combination best satisfies identifying qualitative and quantitative evaluation signals?",
         "options": [
-          "Relying solely on the agent's self-reported completion status",
+          "Relying solely on the agent's self-reported completion status, since it summarizes both its check results and its own judgment of the change",
           "Relying solely on whether the build succeeded",
           "Combining quantitative signals (checks, scan results) with qualitative signals (reviewer judgment, code review feedback)",
-          "Ignoring review feedback entirely since it is subjective"
+          "Ignoring review feedback entirely since it is subjective, and treating check results and scan counts as the only signal"
         ],
         "correct": 2,
         "explain": "Identifying qualitative and quantitative evaluation signals explicitly calls for combining both qualitative (judgment-based, e.g., review feedback) and quantitative (measurable, e.g., checks/scans) evaluation signals together."
@@ -24682,10 +24682,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Why does the training recommend combining CI results with CODEOWNERS-routed review rather than trusting CI alone, when evaluating agent output?",
         "options": [
-          "Because CODEOWNERS reviews replace the need for any automated checks",
+          "Because CODEOWNERS reviews replace the need for any automated checks, so CI results only need to be consulted after a code owner has already approved the change",
           "Because a CI passed, ship it mindset (blind trust in automation) is a known anti-pattern, and checks only validate what they were designed to detect",
           "Because CODEOWNERS is required by law",
-          "Because CI is always broken for agent-authored code"
+          "Because CI is always broken for agent-authored code, which means that passing results can't be relied on until an owner has rerun them by hand"
         ],
         "correct": 1,
         "explain": "Blind trust in automation is listed as a risk/anti-pattern; its mitigation combines checks with CODEOWNERS, required reviews, and risk-based approvals rather than relying on CI alone."
@@ -24710,7 +24710,7 @@ const EXAMS = {
         "options": [
           "The request is discarded",
           "The main session is terminated",
-          "The sub-agent takes over the entire organization's permissions",
+          "The sub-agent takes over the entire organization's permissions, running in the main session while the parent session is paused until the work completes",
           "The runtime delegates to it as a sub-agent, executing in isolated context while streaming lifecycle events back to the parent"
         ],
         "correct": 3,
@@ -24748,9 +24748,9 @@ const EXAMS = {
         "q": "What principle does tool scoping enforce for custom agents?",
         "options": [
           "Maximum throughput",
-          "Random tool assignment",
+          "Random tool assignment, so that no agent can predict what it may access",
           "Least privilege, by restricting which tools specific agents can access",
-          "Even distribution of workload"
+          "Even distribution of workload, by spreading tools evenly across all agents"
         ],
         "correct": 2,
         "explain": "Tool scoping enforces security through the principle of least privilege by restricting which tools specific agents can access."
@@ -24760,10 +24760,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is the recommended orchestration pattern described as reader-writer pairing?",
         "options": [
-          "Two identical agents running redundantly for fault tolerance",
+          "Two identical agents running redundantly for fault tolerance, each with write-capable tools and comparing results at the end",
           "A researcher agent (read-only) paired with an implementer agent (write-capable), dividing exploration from modification",
           "Pairing a human reviewer with no agent at all",
-          "A single agent that alternates between reading and writing every other request"
+          "A single agent that alternates between reading and writing every other request, combining exploration and modification in one context"
         ],
         "correct": 1,
         "explain": "Reader-writer pairing divides exploration and modification: a researcher agent restricted to read-only tools works alongside an implementer agent with write-capable tools."
@@ -24787,9 +24787,9 @@ const EXAMS = {
         "q": "What does the subagent.completed lifecycle event typically include?",
         "options": [
           "Duration, token counts, and tool call counts",
-          "Only a boolean success flag",
+          "Only a boolean success flag and nothing else",
           "Nothing; it's an empty event",
-          "The full source code diff"
+          "The full source code diff that the sub-agent made"
         ],
         "correct": 0,
         "explain": "The subagent.completed event includes duration, token counts, and tool call counts upon successful sub-agent execution."
@@ -24800,9 +24800,9 @@ const EXAMS = {
         "q": "How can teams prevent a dangerous custom agent from being auto-selected by the runtime's inference?",
         "options": [
           "Set infer: false so the agent is only invoked via explicit user requests",
-          "Remove the agent's description",
+          "Remove the agent's description, which also stops all explicit user requests",
           "Set tools: null",
-          "Delete the agent's prompt field"
+          "Delete the agent's prompt field so that the runtime has nothing to infer from"
         ],
         "correct": 0,
         "explain": "Setting infer: false for dangerous or sensitive agents ensures they are only invoked explicitly rather than being auto-selected by the runtime's inference."
@@ -24826,8 +24826,8 @@ const EXAMS = {
         "q": "What is the documented precedence order for tool filtering across session-level and agent-level configuration?",
         "options": [
           "Only the most recently defined agent's tools apply",
-          "There is no defined precedence; settings are applied randomly",
-          "Custom agent tools array first, then defaultAgent.excludedTools, then session-level settings",
+          "There is no defined precedence; settings are applied randomly, so session-level and custom agent tool lists may override each other from one run to the next",
+          "Custom agent tools arrays (per-agent) first, then defaultAgent.excludedTools (main agent only), then session-level availableTools/excludedTools (global) settings applied last",
           "Session-level availableTools/excludedTools (global), then defaultAgent.excludedTools (main agent only), then custom agent tools arrays (per-agent)"
         ],
         "correct": 3,
@@ -24838,10 +24838,10 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "In multi-agent orchestration, what does configuring agent isolation for parallel execution primarily protect against?",
         "options": [
-          "Agents having identical names",
+          "Agents having identical names, which makes their output hard to tell apart in logs",
           "Agents being too slow",
           "Agents interfering with each other's context or work when running simultaneously",
-          "Agents running out of storage space"
+          "Agents running out of storage space while working on separate tasks simultaneously"
         ],
         "correct": 2,
         "explain": "Agent isolation for parallel execution keeps each agent's context and work separate so that simultaneous execution doesn't cause interference between agents, a core orchestration skill in the multi-agent domain."
@@ -24851,8 +24851,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What kinds of conflicts does the multi-agent coordination domain call out to detect and resolve?",
         "options": [
-          "Licensing conflicts between repositories",
-          "Font mismatches and color scheme conflicts",
+          "Licensing conflicts between repositories, and duplicated dependency entries",
+          "Font mismatches and color scheme conflicts in the generated documentation",
           "Overlapping code changes, duplicated effort, and contradictory outputs",
           "Time zone conflicts between reviewers"
         ],
@@ -24864,10 +24864,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Why should multi-agent workflows be configured to produce artifacts suitable for review and audit?",
         "options": [
-          "Because it disables the need for pull requests",
+          "Because it disables the need for pull requests, since the artifacts already show reviewers everything that each agent changed",
           "So that reviewers and auditors can inspect what each agent did and why, supporting post-hoc analysis of multi-agent behavior",
           "Because it reduces the number of agents needed",
-          "Because artifacts are legally required for every repository"
+          "Because artifacts are legally required for every repository, regardless of whether anybody ever goes on to inspect what each of the agents did"
         ],
         "correct": 1,
         "explain": "Configuring multi-agent workflows to produce review/audit-suitable artifacts directly supports the domain's goal of enabling post-hoc analysis and documenting decisions, handoffs, and outcomes across agents."
@@ -24892,8 +24892,8 @@ const EXAMS = {
         "options": [
           "Disabling logging to reduce noise",
           "Monitoring and detecting when an agent has errored out completely, produced incomplete work, or stopped making progress without completing its task",
-          "Assuming all agents always succeed",
-          "Waiting indefinitely for every agent to finish regardless of state"
+          "Assuming all agents always succeed, and only checking the final merged output once every agent in the system has stopped making progress",
+          "Waiting indefinitely for every agent to finish regardless of state, then treating any agent that eventually stops as having completed its task in full"
         ],
         "correct": 1,
         "explain": "This domain skill requires distinguishing between agents that failed outright, completed only part of their work, or stalled without finishing, each requiring different responses."
@@ -24929,10 +24929,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What does retiring agents while preserving auditability and workflow continuity require?",
         "options": [
-          "Deleting all logs associated with the retired agent",
+          "Deleting all logs associated with the retired agent, so that its historical records can't be confused with those of the remaining active agents",
           "Immediately halting the entire multi-agent workflow",
           "Removing an agent from active use while still keeping historical records and ensuring the remaining workflow keeps functioning correctly",
-          "Preventing any future agent from taking over that agent's responsibilities"
+          "Preventing any future agent from taking over that agent's responsibilities, so that its part of the workflow is permanently left unfilled once it has been removed"
         ],
         "correct": 2,
         "explain": "Retiring an agent should preserve auditability (historical records remain available) and workflow continuity (the rest of the system keeps working) rather than abruptly breaking the system or erasing history."
@@ -24942,8 +24942,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What makes agent descriptions effective for inference-based delegation?",
         "options": [
-          "Descriptions written in a foreign language",
-          "Vague, generic descriptions like Helps with code",
+          "Descriptions written in a foreign language, so that each agent's specialty is kept separate from the user's requests",
+          "Vague, generic descriptions like Helps with code, which let the runtime match the agent to as many requests as possible",
           "Omitting descriptions entirely",
           "Specific descriptions like Analyzes Python test coverage that clearly communicate the agent's specialty"
         ],
@@ -24969,9 +24969,9 @@ const EXAMS = {
         "q": "What is the purpose of toolCallId fields included in sub-agent lifecycle events?",
         "options": [
           "They disable retries",
-          "They are used only for billing purposes",
+          "They are used only for billing purposes, to count each sub-agent's calls",
           "They enable reconstruction of execution trees for UI visualization",
-          "They replace the need for commit hashes"
+          "They replace the need for commit hashes when reviewing sub-agent work"
         ],
         "correct": 2,
         "explain": "toolCallId fields on lifecycle events (like subagent.started) enable reconstruction of execution trees so multi-agent behavior can be visualized and reviewed."
@@ -24982,8 +24982,8 @@ const EXAMS = {
         "q": "In multi-agent GitHub-based development, what is a practical example of duplicated effort that conflict detection should catch?",
         "options": [
           "Two different agents independently opening pull requests that both attempt to fix the same underlying issue",
-          "A pull request that passes all checks",
-          "A CODEOWNERS entry with two reviewers listed",
+          "A pull request that passes all checks on its first run, even though another agent's unrelated pull request is also open",
+          "A CODEOWNERS entry with two reviewers listed for the same path, both of whom are asked to approve one pull request",
           "A single agent finishing its task correctly"
         ],
         "correct": 0,
@@ -24994,10 +24994,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which MCP-related capability can be configured per custom agent?",
         "options": [
-          "MCP servers can only be configured once globally and shared identically by every agent",
+          "MCP servers can only be configured once globally and shared identically by every agent, with no way to give an individual custom agent a different mcpServers setup",
           "MCP servers must be disabled for sub-agents",
           "Each custom agent can attach its own specialized mcpServers configuration, distinct from other agents in the same session",
-          "Custom agents cannot use MCP servers at all"
+          "Custom agents cannot use MCP servers at all, because mcpServers is reserved for the default agent in the session"
         ],
         "correct": 2,
         "explain": "Custom agents can define their own mcpServers property (e.g., a database MCP server) distinct from other agents, allowing specialized tool access per agent."
@@ -25007,8 +25007,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is a parent session in the sub-agent orchestration model?",
         "options": [
-          "The GitHub organization's billing account",
-          "A session with no relationship to any sub-agent",
+          "The GitHub organization's billing account that the sub-agent's usage is charged to",
+          "A session with no relationship to any sub-agent, which runs alongside others without receiving their events",
           "A deprecated legacy concept no longer used",
           "The session that spawns the sub-agent and receives all lifecycle events from it"
         ],
@@ -25020,10 +25020,10 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which of the following best reflects the multi-agent domain's emphasis on post-hoc analysis of multi-agent behavior?",
         "options": [
-          "Preventing any logs from being generated during execution",
+          "Preventing any logs from being generated during execution, and relying on the final merged result alone to explain what the agents did",
           "Analyzing only successful runs and ignoring failures",
           "Reviewing logs, artifacts, and operational signals after execution to understand what multiple agents did and why",
-          "Predicting agent behavior before any execution occurs"
+          "Predicting agent behavior before any execution occurs, using the agents' descriptions to work out what each one will do and why"
         ],
         "correct": 2,
         "explain": "Post-hoc analysis relies on reviewing the observability artifacts (logs, artifacts, operational signals) generated during multi-agent execution, after the fact, to understand outcomes."
@@ -25033,9 +25033,9 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What does the session-level agent property enable in the custom agent configuration model?",
         "options": [
-          "Forcing every sub-agent to use the same tools regardless of scope",
+          "Forcing every sub-agent to use the same tools regardless of scope, by applying a single tool list across the session from the moment it starts",
           "Explicitly choosing a specific custom agent to be active from the start of a session, rather than relying on automatic inference",
-          "Disabling the parent session entirely",
+          "Disabling the parent session entirely, so that inference-based selection picks the custom agent for each individual request instead",
           "Preventing any agent from ever running"
         ],
         "correct": 1,
@@ -25085,9 +25085,9 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "How does GitHub mitigate the risk of information leakage from Copilot cloud agent's access to sensitive code?",
         "options": [
-          "GitHub disables the agent's read access to the repository",
+          "GitHub disables the agent's read access to the repository during sessions",
           "GitHub requires a VPN for all agent operations",
-          "GitHub deletes all repository data after each session",
+          "GitHub deletes all repository data after each session has finished",
           "GitHub restricts Copilot cloud agent's access to the internet"
         ],
         "correct": 3,
@@ -25098,8 +25098,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What mitigation addresses prompt injection attacks via hidden messages in issues or comments?",
         "options": [
-          "GitHub disables issues entirely for agent-enabled repositories",
-          "GitHub bans all issue comments containing links",
+          "GitHub disables issues entirely for agent-enabled repositories, so that no user input reaches the cloud agent",
+          "GitHub bans all issue comments containing links before passing user input to Copilot cloud agent",
           "GitHub filters hidden characters before passing user input to Copilot cloud agent",
           "GitHub requires CAPTCHAs on every issue comment"
         ],
@@ -25113,8 +25113,8 @@ const EXAMS = {
         "options": [
           "They bypass all commit history",
           "They mark the developer as co-author and are cryptographically signed as Verified, with commit messages linking to session logs",
-          "They are stored only in a private log invisible to administrators",
-          "They are unsigned and anonymous"
+          "They are stored only in a private log invisible to administrators, with the commit messages stripped of any links to the session logs for security reasons",
+          "They are unsigned and anonymous, so that a commit can't be linked to the developer who started the session or to the logs"
         ],
         "correct": 1,
         "explain": "For accountability, commits authored by Copilot mark the developer as co-author, are cryptographically signed as Verified, and commit messages link to session logs for review."
@@ -25137,7 +25137,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "By default, do GitHub Automations act on events triggered by users without write access?",
         "options": [
-          "Only if explicitly configured to allow it, which is the default",
+          "Only if explicitly configured to allow it, which is the default, so that events from users without write access are acted on",
           "Yes, always",
           "No, automations ignore events triggered by users without write access by default",
           "Only on weekends"
@@ -25164,9 +25164,9 @@ const EXAMS = {
         "q": "What runner type is preferred for Copilot cloud agent's GitHub Actions execution, and why?",
         "options": [
           "Runners with no isolation at all, to maximize speed",
-          "Only self-hosted, persistent runners for consistency",
+          "Only self-hosted, persistent runners for consistency, so that state carries over from one run to the next on the same machine",
           "GitHub-hosted runners, for fresh VMs; if self-hosted runners are used, ephemeral ones are preferred",
-          "Runners located on the agent's local developer machine only"
+          "Runners located on the agent's local developer machine only, since persistent state from earlier runs speeds up each new job"
         ],
         "correct": 2,
         "explain": "The guardrails guidance prefers GitHub-hosted runners for fresh VMs; if self-hosted runners are used, ephemeral options are recommended to avoid state persisting between runs."
@@ -25177,9 +25177,9 @@ const EXAMS = {
         "q": "By default, are GitHub Actions workflows in agent-created pull requests allowed to run automatically?",
         "options": [
           "Only on private repositories",
-          "Yes, always, with no approval needed",
+          "Yes, always, with no approval needed, and this policy can't be changed by an organization",
           "No, by default they are blocked until approval, though this policy can be changed",
-          "Only if the PR has zero file changes"
+          "Only if the PR has zero file changes, since any modified file blocks the workflows permanently"
         ],
         "correct": 2,
         "explain": "The guardrails documentation states organizations should decide whether to block workflows in agent-created PRs, noting the default is blocked until approval."
@@ -25203,9 +25203,9 @@ const EXAMS = {
         "q": "What is the purpose of classifying agent actions by operational, security, and compliance risk?",
         "options": [
           "To determine agent pricing tiers",
-          "To assign agents randomly to repositories",
+          "To assign agents randomly to repositories so that each has a similar risk profile",
           "To right-size human interventions based on how risky a given action is",
-          "To decide which programming language the agent should use"
+          "To decide which programming language the agent should use for each given action"
         ],
         "correct": 2,
         "explain": "Classifying actions by operational, security, and compliance risk is done to right-size human interventions, more oversight for riskier actions."
@@ -25217,8 +25217,8 @@ const EXAMS = {
         "options": [
           "To maximize delivery speed while remaining compliant with organizational security and Responsible AI standards",
           "To always minimize agent autonomy regardless of risk",
-          "To make every action require the same level of approval",
-          "To eliminate all human review permanently"
+          "To make every action require the same level of approval, so that delivery speed and compliance are treated identically for all agents",
+          "To eliminate all human review permanently, since autonomy matters more to delivery speed than security or Responsible AI standards"
         ],
         "correct": 0,
         "explain": "Assigning autonomy levels aims to maximize delivery speed while remaining compliant with organizational security and Responsible AI standards, balancing speed and safety rather than picking one extreme."
@@ -25228,8 +25228,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which principle is emphasized by scoping permissions and execution contexts to enforce least-privilege access?",
         "options": [
-          "Permissions should be scoped only for human users, never for agents",
-          "Agents should always have full admin access for simplicity",
+          "Permissions should be scoped only for human users, never for agents, since an agent's execution context inherits whatever access its task happens to need",
+          "Agents should always have full admin access for simplicity, with least-privilege scoping reserved for the people who review their output",
           "Agents and their execution contexts should be granted only the permissions necessary for their task, not broad or unnecessary access",
           "Least privilege only applies to production environments"
         ],
@@ -25241,10 +25241,10 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What does the guardrails domain require for irreversible or compliance-sensitive changes?",
         "options": [
-          "No special handling; they are treated like any other change",
+          "No special handling; they are treated like any other change that proceeds with no extra steps",
           "Explicit authorization or controlled paths before such changes can proceed",
           "Deletion of the associated audit trail",
-          "Automatic execution without review to save time"
+          "Automatic execution without review to save time, followed by a report once such changes have run"
         ],
         "correct": 1,
         "explain": "Requiring explicit authorization or controlled paths for irreversible or compliance-sensitive changes mandates extra safeguards specifically for high-stakes, hard-to-reverse actions."
@@ -25254,9 +25254,9 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Why does the guardrails domain call for preserving execution velocity by minimizing approvals that do not materially reduce risk?",
         "options": [
-          "To require approval for every single agent action without exception",
+          "To require approval for every single agent action without exception, so that all guardrails are kept identical however small the actual risk of any given change is",
           "To avoid adding approval steps that slow delivery without providing meaningful risk reduction, keeping guardrails proportionate to actual risk",
-          "To eliminate all approvals regardless of risk level",
+          "To eliminate all approvals regardless of risk level, since any approval step slows delivery and guardrails only need to log what the agents have done",
           "To ensure agents never need human review"
         ],
         "correct": 1,
@@ -25267,9 +25267,9 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A security-sensitive agent action would violate a defined Responsible AI policy if executed. What should the guardrail system do?",
         "options": [
-          "Log the action but allow it to proceed anyway",
+          "Log the action but allow it to proceed anyway, because guardrails exist to report on policy violations rather than to interrupt an agent's work",
           "Block the action, since guardrails should block actions that violate defined security, compliance, or Responsible AI policies",
-          "Escalate only after the action has already executed",
+          "Escalate only after the action has already executed, since guardrails should record violations of security, compliance, or Responsible AI policies for later review by a person",
           "Silently ignore the policy since agents are trusted"
         ],
         "correct": 1,
