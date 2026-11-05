@@ -57970,7 +57970,7 @@ const EXAMS = {
         "q": "In the Copilot Studio message node, which formatting options are available on the built-in toolbar?",
         "options": [
           "Markdown tables and code blocks",
-          "Strikethrough, font family, and font size",
+          "Strikethrough, font family, font size, and text highlight color",
           "Bold, italic, bulleted/numbered lists, and line breaks",
           "Custom CSS classes and inline styles"
         ],
@@ -57983,7 +57983,7 @@ const EXAMS = {
         "q": "In a Copilot Studio message node, which icon inserts a topic, global, or system variable into the text at runtime?",
         "options": [
           "The @ mention icon",
-          "The # hashtag icon",
+          "The # hashtag variable insertion icon",
           "The % percentage icon",
           "The {x} variable insertion icon"
         ],
@@ -57997,7 +57997,7 @@ const EXAMS = {
         "options": [
           "The image renders only in Microsoft Teams",
           "The agent cannot reach the image because images must be hosted at a publicly accessible URL",
-          "Copilot Studio automatically proxies the file through Dataverse",
+          "Copilot Studio automatically proxies the file through Dataverse so the agent can display it to users",
           "The agent prompts the user to authenticate to the file server"
         ],
         "correct": 1,
@@ -58010,7 +58010,7 @@ const EXAMS = {
         "options": [
           "Side by side in a fixed three-column grid",
           "Stacked vertically as a single scrollable list",
-          "Only the first image is shown; the others are discarded",
+          "Only the first image is shown; the others are discarded at runtime",
           "As a carousel showing one card at a time with navigation arrows"
         ],
         "correct": 3,
@@ -58023,7 +58023,7 @@ const EXAMS = {
         "options": [
           "Variations must be identical in wording but differ in tone",
           "Each variation should deliver the same core information in different words, not different guidance",
-          "Each variation must be a different language translation of the same text",
+          "Each variation must be a different language translation of the same text, chosen by the user's locale",
           "Only the first variation may include images or variables"
         ],
         "correct": 1,
@@ -58050,7 +58050,7 @@ const EXAMS = {
           "Open a URL",
           "Trigger an Application Insights export",
           "Send a hidden message",
-          "Send a message to the agent"
+          "Send a message to the agent when selected"
         ],
         "correct": 1,
         "explain": "Quick replies can send a message, open a URL, make a call, or send a hidden message. There's no quick-reply action that triggers an Application Insights export."
@@ -58115,7 +58115,7 @@ const EXAMS = {
           "In the card's JSON view, by setting \"wrap\": true on the TextBlock",
           "In the topic's Settings tab, under Response Formatting",
           "This behavior cannot be changed in Copilot Studio",
-          "In the designer's properties panel, under Font Size"
+          "In the designer's properties panel, under Font Size, for the TextBlock"
         ],
         "correct": 0,
         "explain": "Some styling options, like setting \"wrap\": true on a TextBlock, are only available by editing the card JSON directly — the visual designer doesn't expose every property."
@@ -58138,7 +58138,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Every Ask with Adaptive Card form needs which element to send the employee's entries back to the agent?",
         "options": [
-          "A hidden Input.Text field",
+          "A hidden Input.Text field holding the entries",
           "An Action.Submit element (the Submit button)",
           "A ColumnSet wrapping all inputs",
           "An Action.Execute element only"
@@ -58165,7 +58165,7 @@ const EXAMS = {
         "q": "A user opens the leave request Ask with Adaptive Card form but closes it without selecting Submit. What should the topic do immediately after that node to handle this safely?",
         "options": [
           "Add a Condition node checking whether the required output variables contain values, routing to a fallback if empty",
-          "Nothing is needed — Copilot Studio automatically re-prompts the card",
+          "Nothing is needed — Copilot Studio automatically re-prompts the card until the required output variables contain values",
           "Set the node's Required property to true, which blocks the topic from continuing",
           "Add a Delay node to wait for a late submission"
         ],
@@ -58180,7 +58180,7 @@ const EXAMS = {
           "Copilot Studio blocks publishing until the card is removed",
           "Teams supports only schema version 1.5, so the unsupported elements fail silently or the card falls back to plain text",
           "Teams automatically upgrades its renderer to match the card's version",
-          "The card displays correctly because Teams always uses the highest available schema"
+          "The card displays correctly because Teams always uses the highest available schema, so the 1.6 elements render as designed"
         ],
         "correct": 1,
         "explain": "Microsoft Teams and Live Chat (Omnichannel) support a maximum Adaptive Card schema version of 1.5, while the web channel supports 1.6. Elements from a newer schema either fail silently or cause a fallback to plain text in channels that don't support that version."
@@ -58323,7 +58323,7 @@ const EXAMS = {
           "Pass the token as a URL query parameter instead of a header",
           "Embed the token inside the topic's Adaptive Card JSON",
           "Store the token in an environment variable and reference it in the header value field, never hardcoding it on the canvas",
-          "Hardcode the token directly as a literal string in the header field for simplicity"
+          "Hardcode the token directly as a literal string in the header field for simplicity, so makers can see the value on the canvas"
         ],
         "correct": 2,
         "explain": "Never hardcode API keys, bearer tokens, or other credentials as literal strings in header fields — any maker with canvas access could see them. Store credentials in environment variables and reference them instead."
@@ -58334,7 +58334,7 @@ const EXAMS = {
         "q": "After a Send HTTP Request node receives a response, how does a maker define the shape of the response fields so they become usable Power Fx variables?",
         "options": [
           "Enable Auto-schema in the agent's Overview page",
-          "Manually write a Power Fx type definition in the topic's Settings tab",
+          "Manually write a Power Fx type definition in the topic's Settings tab for each field",
           "Response fields are always exposed as a single unstructured string",
           "Set Response data type to From Sample Data and use Get schema from sample JSON"
         ],
@@ -58400,7 +58400,7 @@ const EXAMS = {
         "options": [
           "The node retries the search with a broadened query automatically",
           "The topic throws an unhandled error and the conversation ends",
-          "The node automatically falls back to the model's general training knowledge",
+          "The node automatically falls back to the model's general training knowledge and answers from that instead",
           "The node returns a \"no information found\" response rather than falling back to general AI knowledge"
         ],
         "correct": 3,
@@ -58414,7 +58414,7 @@ const EXAMS = {
           "Only records where ContentLocation is populated",
           "Only the first three records — the selection is positional, not relevance-based",
           "All 7 records are used",
-          "The node uses whichever record has the longest Content field"
+          "The node uses whichever record has the longest Content field, ignoring the Table order"
         ],
         "correct": 1,
         "explain": "Only the first three records in the Table are used to generate the response, regardless of how many are supplied. Since selection is positional, the retrieval logic must filter and rank results before returning them."
@@ -58453,7 +58453,7 @@ const EXAMS = {
           "Neither works — formatting can only be controlled through Adaptive Cards",
           "Both are equally effective since the model infers formatting either way",
           "The second one, because it describes an observable, measurable behavior rather than a vague quality",
-          "The first one, because shorter instructions are always processed more reliably"
+          "The first one, because shorter instructions are always processed more reliably by the model at runtime"
         ],
         "correct": 2,
         "explain": "Effective custom instructions describe observable, measurable output behaviors. \"Be helpful and professional\" describes a quality with nothing observable to target, while the bullet-point instruction gives the AI a specific, verifiable behavior."
@@ -58505,7 +58505,7 @@ const EXAMS = {
           "The topic has fewer than five nodes, the agent is unpublished, and the response must include an image",
           "The output needs a specific structure, the reasoning should be isolated from knowledge retrieval, and a particular model capability matters",
           "The agent uses child agents, the topic has a Condition node, and the response includes Power Fx",
-          "The user is on an unauthenticated channel, the tool has a REST API, and the response is under 100 characters"
+          "The user is on an unauthenticated channel, the tool exposes a REST API with a published schema, and the response is under 100 characters in length"
         ],
         "correct": 1,
         "explain": "A custom prompt fits when the output needs a specific structure (a label, a fixed bullet count), when reasoning should be isolated from retrieval, or when a particular model capability (advanced reasoning, a specific frontier model) is required."
@@ -58557,7 +58557,7 @@ const EXAMS = {
           "Yes, as long as both are used in the same topic",
           "Yes, but only if the agent is published to an authenticated channel",
           "No — Business and Non-business connectors can each be used individually, but they can't be combined in the same agent",
-          "No connector combination is ever restricted by DLP; DLP only blocks entire connectors"
+          "No connector combination is ever restricted by DLP; DLP only blocks entire connectors placed in the policy's Blocked group"
         ],
         "correct": 2,
         "explain": "DLP policies classify connectors into Business, Non-business, and Blocked groups. Business and Non-business connectors can each be used individually, but an agent can't combine connectors from both groups together."
@@ -58719,7 +58719,7 @@ const EXAMS = {
           "Reduce the number of knowledge sources on the agent",
           "Redesign into a multi-agent architecture, letting each domain team own a specialist agent while an orchestrator routes requests",
           "Move all topics into a single very large topic to reduce node count",
-          "Disable generative orchestration entirely and route all requests through Condition nodes"
+          "Disable generative orchestration entirely and route all requests through Condition nodes maintained by a single central team of makers"
         ],
         "correct": 1,
         "explain": "This is exactly the signal for a multi-agent redesign: distributing responsibilities across agents lets each domain team own and maintain their specialist agent independently while an orchestrator routes requests to the right place."
@@ -58731,7 +58731,7 @@ const EXAMS = {
         "options": [
           "Splitting the FAQ bot into one child agent per knowledge source",
           "A connected agent architecture using the A2A protocol",
-          "A multi-agent architecture with at least three child agents for scalability",
+          "A multi-agent architecture with at least three child agents for scalability — splitting early avoids a later redesign",
           "A single-agent architecture — introducing multiple agents would add orchestration overhead without adding value"
         ],
         "correct": 3,
@@ -58757,7 +58757,7 @@ const EXAMS = {
         "options": [
           "Because Copilot Studio automatically revokes all permissions when a connected agent is added",
           "Because a connected agent runs its own orchestration layer and can have different privileges or data access than the parent agent",
-          "Because connected agents always inherit the parent's exact permission set with no way to differ",
+          "Because connected agents always inherit the parent's exact permission set with no way to differ from the parent agent's own data access",
           "Because connected agents cannot be secured independently in any way"
         ],
         "correct": 1,
@@ -58769,7 +58769,7 @@ const EXAMS = {
         "q": "What key characteristic distinguishes a child agent from a connected agent in terms of publishing?",
         "options": [
           "Neither child nor connected agents can be published independently of the orchestrator",
-          "A child agent must always be published separately, while a connected agent deploys with the parent",
+          "A child agent must always be published separately from the parent; a connected agent has no independent publishing lifecycle and deploys with the parent",
           "A child agent has no independent publishing lifecycle — it deploys as part of the parent; a connected agent is published and deployed independently",
           "Only connected agents appear on the parent's Agents page"
         ],
@@ -58781,7 +58781,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "According to Microsoft's own case study, redesigning its customer-facing web assistant from one broad agent into an orchestrator with domain-scoped child agents delivered what measured improvements?",
         "options": [
-          "A reduction in the number of supported channels",
+          "A reduction in the number of supported channels and in hosting costs",
           "No measurable change in latency, only in escalation rate",
           "A 10x increase in monthly active users only",
           "61% lower response latency and a 70% reduction in human escalations"
@@ -58834,7 +58834,7 @@ const EXAMS = {
         "q": "By default, are knowledge sources and tools added directly to a child agent visible to the parent orchestrator or to other child agents?",
         "options": [
           "No — they're scoped to that child agent only, keeping the orchestrator's own tool and knowledge list focused",
-          "Yes — all resources added anywhere in the solution are automatically shared across every agent",
+          "Yes — all resources added anywhere in the solution are automatically shared across every agent and the orchestrator",
           "Only tools are shared automatically; knowledge sources are always scoped",
           "Only knowledge sources are shared automatically; tools are always scoped"
         ],
@@ -58860,7 +58860,7 @@ const EXAMS = {
         "q": "During testing, a prompt is routed to the wrong child agent. What does enabling \"Show activity map when testing\" reveal that helps diagnose the problem?",
         "options": [
           "The exact Azure region that processed the request",
-          "A cost breakdown of Copilot Credits consumed by the request",
+          "A cost breakdown of Copilot Credits consumed by the request, listed for each child agent",
           "The full source code of the child agent's topics",
           "Which child agent was selected, what inputs were passed to it, and what it returned"
         ],
@@ -58874,7 +58874,7 @@ const EXAMS = {
         "options": [
           "Refine the descriptions of the overlapping child agents to remove the ambiguous overlap",
           "Delete and recreate the misrouted child agent from scratch",
-          "Disable the AI orchestrator and switch the entire solution to deterministic routing",
+          "Disable the AI orchestrator and switch the entire solution to deterministic routing instead",
           "Increase the number of tools on the correct child agent so it outranks the other"
         ],
         "correct": 0,
@@ -58900,7 +58900,7 @@ const EXAMS = {
         "options": [
           "Unpublish the entire parent agent",
           "Turn off the Enabled toggle for that child agent on the Agents page",
-          "Delete the child agent and recreate it after maintenance completes",
+          "Delete the child agent and then recreate it after maintenance completes",
           "Remove all of the child agent's tools temporarily"
         ],
         "correct": 1,
@@ -58913,7 +58913,7 @@ const EXAMS = {
         "options": [
           "Like a tool with a description — the orchestrator routes to it based on that description",
           "As a raw list of the connected agent's internal topics",
-          "As a required authentication step before the conversation can continue",
+          "As a required authentication step before the conversation can continue with the connected agent",
           "As an entry in the agent's knowledge source list"
         ],
         "correct": 0,
@@ -58965,7 +58965,7 @@ const EXAMS = {
         "options": [
           "The change applies only to this orchestrator's local copy and doesn't affect the connected agent itself or any other orchestrator connected to it",
           "The change requires the connected agent's owning team to approve it first",
-          "The change updates the connected agent's description everywhere it's used across the organization",
+          "The change updates the connected agent's description everywhere it's used across the organization, including in every other orchestrator connected to it",
           "The edit is rejected because connected agent descriptions can never be changed"
         ],
         "correct": 0,
@@ -58979,7 +58979,7 @@ const EXAMS = {
           "The connection succeeds but with reduced functionality",
           "The connection attempt returns a 404 error; the agent must be recreated in the new Microsoft Foundry portal first",
           "The connection works identically regardless of which portal built the agent",
-          "Copilot Studio automatically migrates the agent to the new portal"
+          "Copilot Studio automatically migrates the agent to the new portal and connects without any action from the Foundry team"
         ],
         "correct": 1,
         "explain": "Connecting to Microsoft Foundry agents requires the agent to be created and published in the new Microsoft Foundry portal. Agents created in the legacy Azure AI Studio portal return a 404 error, and the Foundry team must recreate the agent in the new portal."
@@ -59028,7 +59028,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "What Fabric capacity level is required before a Fabric Data agent can be connected to a Copilot Studio orchestrator?",
         "options": [
-          "No specific capacity is required; only a free Power BI account is needed",
+          "No specific capacity is required; only a free Power BI account is needed to connect it",
           "F64 exclusively — no lower SKU is supported",
           "F2 or higher Fabric capacity, or Power BI Premium P1 or higher with Fabric enabled",
           "Any Fabric capacity works, including trial-only capacities"
@@ -59054,7 +59054,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Refining connected agent descriptions still doesn't produce consistent routing for a particular recurring query type. What additional technique can supplement description-based routing?",
         "options": [
-          "Delete both connected agents and merge their functionality into a single child agent",
+          "Delete both connected agents and merge their functionality into a single child agent with one broad description for routing",
           "Increase the character limit on the connected agent descriptions",
           "Disable generative orchestration for the entire solution",
           "Add explicit routing guidance in the orchestrator's own instructions field, referencing the connected agent by name"
@@ -59083,7 +59083,7 @@ const EXAMS = {
           "The workflow-oriented pattern, which structures agent invocation as a predefined, deterministic sequence",
           "Direct HTTP calls between agents with no engine or orchestrator involved",
           "The A2A protocol used purely for discovery, without any workflow engine",
-          "The orchestrator/subagent pattern, using dynamic routing based on message content"
+          "The orchestrator/subagent pattern, using dynamic routing based on message content to choose each agent at runtime"
         ],
         "correct": 0,
         "explain": "The workflow-oriented pattern's defining strength is predictability: given the same inputs, the same steps run in the same order, which is exactly what compliance-sensitive, auditable processes need."
@@ -59094,7 +59094,7 @@ const EXAMS = {
         "q": "Which of the following is listed as a workflow engine capable of supporting the workflow-oriented multi-agent pattern?",
         "options": [
           "Power Automate, Logic Apps, Microsoft Foundry workflows, and Copilot Studio topics",
-          "Only Copilot Studio topics — no other engine is supported",
+          "Only Copilot Studio topics — no other engine is supported for the workflow-oriented pattern",
           "Azure Monitor alert rules",
           "Microsoft Teams channels exclusively"
         ],
@@ -59212,7 +59212,7 @@ const EXAMS = {
         "options": [
           "Recreate the same connection under the other maker's account manually",
           "Export the connection as a solution and email the resulting file",
-          "Connections are automatically shared with anyone who has agent editor access",
+          "Connections are automatically shared with anyone who has agent editor access, with no step needed in Power Apps",
           "Open Power Apps, go to Connections, select the connection, and share it with \"Can use + share\" permission"
         ],
         "correct": 3,
@@ -59263,7 +59263,7 @@ const EXAMS = {
         "q": "A bank agent needs to answer \"What's the current balance on account 4471?\" where regulated data cannot be copied into Microsoft Graph and freshness is critical. Which knowledge source type fits?",
         "options": [
           "A real-time Power Platform connector",
-          "File uploads to Dataverse",
+          "File uploads to Dataverse, refreshed nightly",
           "A Copilot connector",
           "A public website source"
         ],
@@ -59341,7 +59341,7 @@ const EXAMS = {
         "q": "When an MCP server owner updates a tool's parameters or deprecates a function, what happens to agents already connected to that server?",
         "options": [
           "Copilot Studio reflects the changes automatically across every connected agent — no per-agent updates or republication required",
-          "Connected agents continue using the old tool definition until manually refreshed by an admin",
+          "Connected agents continue using the old tool definition until manually refreshed by an admin on each agent's own tool settings page",
           "Each connected agent must be manually reconfigured to pick up the change",
           "The MCP connection breaks and must be recreated"
         ],
@@ -59353,7 +59353,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A maker wants a specific backend action to run at a precise, deterministic point in a topic's flow rather than being selected dynamically by the AI. Why is MCP unsuitable for this?",
         "options": [
-          "MCP servers do not support any form of action-oriented tools, only read-only resources",
+          "MCP servers do not support any form of action-oriented tools, only read-only resources exposed to the orchestrator",
           "MCP tools can only be invoked from a topic node, never from the orchestrator",
           "MCP requires the tool to be re-published every time it is called",
           "MCP tools are invoked exclusively through generative orchestration — topics can't call MCP servers directly"
@@ -59419,7 +59419,7 @@ const EXAMS = {
         "q": "With the Allow all toggle turned OFF on an MCP connection, what happens when the server publishes a brand-new tool?",
         "options": [
           "The new tool appears in the list but remains disabled until a maker explicitly reviews and enables it",
-          "The new tool is automatically enabled immediately, the same as with Allow all on",
+          "The new tool is automatically enabled immediately, the same as with Allow all on for every connected agent",
           "New tools can never appear once Allow all has been turned off",
           "The MCP connection is invalidated and must be reconfigured"
         ],
@@ -59526,7 +59526,7 @@ const EXAMS = {
           "Up to 10, fewer than conversational test sets",
           "Up to 100, compared to up to 20 for conversational test sets",
           "There is no cap for either test set type",
-          "Up to 20, the same limit as conversational test sets"
+          "Up to 20, which is the same limit as conversational test sets"
         ],
         "correct": 1,
         "explain": "A single response test set can hold up to 100 test cases, versus up to 20 for a conversational test set — single response evaluations test one unconnected question at a time rather than a full conversation."
@@ -59604,7 +59604,7 @@ const EXAMS = {
           "89 days, unless exported to CSV for longer retention",
           "7 days",
           "One year",
-          "Indefinitely, with no need to export"
+          "Indefinitely, with no need to export the results to CSV"
         ],
         "correct": 0,
         "explain": "Test results are available in Copilot Studio for 89 days. To retain them longer, they must be exported to a CSV file."
@@ -59656,7 +59656,7 @@ const EXAMS = {
           "Production should be a sandbox type environment to allow quick fixes",
           "Production should be a production type environment; development and test should be sandbox type environments",
           "Environment type has no bearing on ALM strategy",
-          "All three environments should be configured identically as production type"
+          "All three environments should be configured identically as production type to keep behavior the same at each stage"
         ],
         "correct": 1,
         "explain": "The guidance is to configure the production environment as a production type environment, while development and test (and any other pre-production environments) are configured as sandbox type environments."
@@ -59668,7 +59668,7 @@ const EXAMS = {
         "options": [
           "Avoid using environment variables since they add unnecessary complexity",
           "Don't customize outside of a development environment; always work in the context of solutions",
-          "Always customize directly in the production environment for the fastest turnaround",
+          "Always customize directly in the production environment for the fastest turnaround on urgent fixes",
           "Export and deploy solutions as unmanaged whenever possible"
         ],
         "correct": 1,
@@ -59681,7 +59681,7 @@ const EXAMS = {
         "options": [
           "Topics added to the agent",
           "Azure Application Insights settings",
-          "Adaptive Card JSON definitions",
+          "Adaptive Card JSON definitions inside topics",
           "Tool descriptions"
         ],
         "correct": 1,
@@ -59733,7 +59733,7 @@ const EXAMS = {
         "options": [
           "The solution explorer inherits the security role privileges the user has in the Power Apps admin center",
           "Every signed-in user automatically has full solution management rights",
-          "Solution management rights are set per-agent, unrelated to any admin center role",
+          "Solution management rights are set per-agent, unrelated to any admin center role the user has been assigned",
           "Only the tenant's Global Administrator can perform any solution task"
         ],
         "correct": 0,
@@ -59760,7 +59760,7 @@ const EXAMS = {
           "Recreate the agent from scratch in each environment",
           "Use environment variables for settings and secrets that change across environments",
           "Store all secrets as plain text in the agent's instructions field",
-          "Hardcode different values directly into each environment's topics"
+          "Hardcode different values directly into each environment's topics after each deployment"
         ],
         "correct": 1,
         "explain": "One of the ALM golden rules is to use environment variables for settings and secrets that change across environments, keeping configuration separate from solution components to support repeatable, secure deployments."
@@ -59771,7 +59771,7 @@ const EXAMS = {
         "q": "What must be configured in Azure before a secret (Key Vault-backed) environment variable can be used by Copilot Studio agents?",
         "options": [
           "A dedicated storage account with public blob access must be created",
-          "No Azure configuration is required — secrets are managed entirely inside Copilot Studio",
+          "No Azure configuration is required — secrets are managed entirely inside Copilot Studio and retrieved at runtime with no role assigned",
           "A Key Vault must be configured and the Key Vault Secrets User role assigned to the Microsoft Copilot Studio Service application",
           "The secret must be stored directly inside the agent's topic canvas"
         ],
