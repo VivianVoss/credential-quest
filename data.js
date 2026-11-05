@@ -38191,7 +38191,7 @@ const EXAMS = {
         "options": [
           "The person who signs up for the Microsoft Entra tenant",
           "A user chosen at random by Microsoft",
-          "The first user assigned an Microsoft 365 license",
+          "The first user assigned an Microsoft 365 license in that new tenant",
           "The Billing Administrator"
         ],
         "correct": 0,
@@ -38243,7 +38243,7 @@ const EXAMS = {
         "options": [
           "Only at the management group level",
           "Only at the Azure subscription level",
-          "Only globally across all Microsoft 365 tenants",
+          "Only globally across all Microsoft 365 tenants that share a directory",
           "Directory-level scope or an app registration resource scope only"
         ],
         "correct": 3,
@@ -38257,7 +38257,7 @@ const EXAMS = {
           "You can currently assign only one role at a time; you can't select multiple roles and assign them all at once",
           "PIM assignments cannot have an expiration date",
           "PIM cannot be used to assign the Global Administrator role",
-          "PIM only supports Azure resource roles, not Microsoft Entra roles"
+          "PIM only supports Azure resource roles, not Microsoft Entra roles, so directory roles must be assigned outside of PIM entirely"
         ],
         "correct": 0,
         "explain": "Microsoft Learn notes that when using PIM to manage roles, the feature is currently limited to assigning only one role at a time."
@@ -38267,7 +38267,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which capability does Security Defaults enforce for a Microsoft Entra tenant?",
         "options": [
-          "Automatically creating administrative units for every department",
+          "Automatically creating administrative units for every department and requiring each one to register a separate global admin",
           "Forcing all users onto FIDO2 keys only",
           "Requiring all users to register for and use multifactor authentication and blocking legacy authentication",
           "Disabling all guest user accounts"
@@ -38295,7 +38295,7 @@ const EXAMS = {
         "options": [
           "By the #EXT# extension in their user principal name",
           "By a mandatory .guest domain suffix",
-          "By membership in the Guests administrative unit",
+          "By membership in the Guests administrative unit in the tenant",
           "By a GUID prefix on their display name"
         ],
         "correct": 0,
@@ -38321,7 +38321,7 @@ const EXAMS = {
         "options": [
           "B2B collaboration is enabled by default and B2B direct connect is blocked by default",
           "Both are blocked by default",
-          "B2B collaboration is blocked and B2B direct connect is enabled",
+          "B2B collaboration is blocked by default and B2B direct connect is enabled by default",
           "Both are enabled by default"
         ],
         "correct": 0,
@@ -38372,7 +38372,7 @@ const EXAMS = {
         "q": "What is the key functional difference between the Application Administrator role and the Cloud Application Administrator role?",
         "options": [
           "Cloud Application Administrator grants the same abilities as Application Administrator except access to Application Proxy settings",
-          "Cloud Application Administrator can manage Conditional Access while Application Administrator cannot",
+          "Cloud Application Administrator can manage Conditional Access policies while Application Administrator cannot view or change them at all",
           "Application Administrator can only read application configuration, not change it",
           "Cloud Application Administrator role does not exist"
         ],
@@ -38502,7 +38502,7 @@ const EXAMS = {
         "q": "How many pass-through authentication (PTA) agents does Microsoft recommend for high availability, and where can they NOT be deployed?",
         "options": [
           "One agent, deployed in a perimeter network",
-          "Ten agents, deployed anywhere including the cloud",
+          "Ten agents, deployed anywhere including the cloud or a perimeter network",
           "Three agents, and they cannot be deployed in a perimeter network",
           "Two agents, deployed only inside a DMZ"
         ],
@@ -38568,7 +38568,7 @@ const EXAMS = {
         "options": [
           "Configuring AD FS federation for smartcard authentication",
           "Synchronizing from a multi-forest, disconnected Active Directory environment such as after a merger or acquisition",
-          "Deploying a single, tightly-managed sync engine with the Connector Space and Metaverse model",
+          "Deploying a single, tightly-managed sync engine with the Connector Space and Metaverse model for one on-premises forest only",
           "Synchronizing groups larger than 50,000 members without any scoping filter"
         ],
         "correct": 1,
@@ -38579,7 +38579,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In a Microsoft Entra Connect multiple-forest topology, what requirement applies to the sync server?",
         "options": [
-          "PTA agents must be installed in every forest separately from the sync server",
+          "PTA agents must be installed in every forest separately from the sync server, and each forest needs its own sync server joined to it",
           "The sync server must run on a domain controller",
           "Each forest requires its own dedicated Microsoft Entra tenant",
           "A single Microsoft Entra Connect sync server must be able to reach all forests and be joined to a domain"
@@ -38606,7 +38606,7 @@ const EXAMS = {
         "q": "What happens if a synchronized user's UPN suffix does not match a verified custom domain in Microsoft Entra ID?",
         "options": [
           "Microsoft Entra Connect replaces the UPN suffix with the tenant's default onmicrosoft.com domain",
-          "Microsoft Entra Connect automatically creates and verifies the domain",
+          "Microsoft Entra Connect automatically creates and verifies the domain using the on-premises UPN suffix",
           "The UPN is left unchanged and sign-in silently fails",
           "The user account fails to synchronize entirely"
         ],
@@ -38645,7 +38645,7 @@ const EXAMS = {
         "q": "Multifactor authentication factors typically fall into which three categories?",
         "options": [
           "Password strength, account age, and device type",
-          "Something you type, something you scan, and something you tap",
+          "Something you type, something you scan, and something you tap or swipe",
           "Something you know, something you owe, and something you buy",
           "Something you know, something you possess, and something you are"
         ],
@@ -38684,7 +38684,7 @@ const EXAMS = {
         "q": "Can the password authentication method be disabled entirely in Microsoft Entra ID?",
         "options": [
           "Yes, but only for guest accounts",
-          "Yes, once FIDO2 is enabled, password sign-in is automatically removed",
+          "Yes, once FIDO2 is enabled, password sign-in is automatically removed as a primary authentication method",
           "No, but only for the Global Administrator account",
           "No, password is always available as a primary authentication method and cannot be disabled"
         ],
@@ -38696,7 +38696,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In Windows Hello for Business, where is the private key stored when using a TPM, and does it ever leave the device?",
         "options": [
-          "It is stored in the user's Microsoft 365 mailbox",
+          "It is stored in the user's Microsoft 365 mailbox and copied to the TPM",
           "It is synchronized to all of the user's other devices",
           "It is uploaded to Microsoft Entra ID for backup",
           "It is protected by the TPM and never leaves the device"
@@ -38722,7 +38722,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which license is required to enable self-service password reset (SSPR) for cloud-based accounts?",
         "options": [
-          "Only Microsoft Entra ID Premium P2, never P1",
+          "Only Microsoft Entra ID Premium P2, never P1 or any Microsoft 365 Business plan",
           "No license is required for any SSPR capability",
           "Microsoft Entra ID Free only",
           "Microsoft Entra ID Premium P1 or P2 (or Microsoft 365 Business Standard)"
@@ -38736,7 +38736,7 @@ const EXAMS = {
         "q": "What two on-premises components make up a Microsoft Entra Password Protection deployment?",
         "options": [
           "An AD FS server and a federation proxy",
-          "Only a proxy service; no domain controller component is needed",
+          "Only a proxy service; no domain controller component is needed, since passwords are checked in Microsoft Entra",
           "A DC Agent installed on domain controllers and a proxy service that communicates with Microsoft Entra",
           "A single agent that replaces the domain controller entirely"
         ],
@@ -38751,7 +38751,7 @@ const EXAMS = {
           "Enforce mode immediately, with no audit period",
           "Audit mode, which logs blocked passwords without preventing their use",
           "Legacy mode using only the custom banned list",
-          "Disabled mode until a full pilot group is defined"
+          "Disabled mode until a full pilot group is defined and has registered"
         ],
         "correct": 1,
         "explain": "Microsoft recommends starting Password Protection deployments in audit mode, where would-be-blocked passwords are only recorded in the event log, before switching to Enforce."
@@ -38801,7 +38801,7 @@ const EXAMS = {
         "q": "What license is the minimum requirement to use standard Conditional Access policies?",
         "options": [
           "No license is required",
-          "Microsoft Entra ID Premium P2 only",
+          "Microsoft Entra ID Premium P2 only, with no bundled alternative in any plan",
           "Microsoft Entra ID Premium P1 (or Microsoft 365 E3 and up)",
           "Microsoft Entra ID Free"
         ],
@@ -38814,7 +38814,7 @@ const EXAMS = {
         "q": "Why is it a best practice to create emergency access ('break-glass') accounts before deploying Conditional Access policies?",
         "options": [
           "To automatically approve every access request",
-          "To satisfy a licensing requirement for Conditional Access",
+          "To satisfy a licensing requirement for Conditional Access in the tenant",
           "To prevent an administrator lockout if a policy is misconfigured",
           "To bypass MFA requirements permanently for all admins"
         ],
@@ -38828,7 +38828,7 @@ const EXAMS = {
         "options": [
           "To automatically enforce the policy only on weekends",
           "To permanently disable the policy while keeping a record of it",
-          "To grant report-only administrators full Global Administrator access",
+          "To grant report-only administrators full Global Administrator access to the policy",
           "To evaluate the impact of a policy on users before actually enforcing it"
         ],
         "correct": 3,
@@ -38907,7 +38907,7 @@ const EXAMS = {
           "Sessions never persist after the browser closes",
           "Sessions always persist for 90 days regardless of user choice",
           "Users are shown a 'Stay signed in?' prompt after successful authentication",
-          "Persistent sessions are only available on Microsoft Entra joined devices"
+          "Persistent sessions are only available on Microsoft Entra joined devices, never on personal ones"
         ],
         "correct": 2,
         "explain": "The Microsoft Entra ID default for browser session persistence lets users on personal devices choose via a 'Stay signed in?' prompt whether to persist the session."
@@ -38998,7 +38998,7 @@ const EXAMS = {
           "Require a password change for users who are high-risk",
           "Block all sign-ins from mobile devices",
           "Force all users to re-register MFA every day",
-          "Disable self-service password reset for all guests"
+          "Disable self-service password reset for all guests who are high-risk"
         ],
         "correct": 0,
         "explain": "The three default policies for responding to potentially compromised accounts include requiring MFA registration, requiring password change for high-risk users, and requiring MFA for medium or high sign-in risk."
@@ -39008,7 +39008,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What two services together make up Microsoft's Global Secure Access (Security Service Edge) solution?",
         "options": [
-          "Microsoft Entra Connect and Microsoft Entra Connect Health",
+          "Microsoft Entra Connect and Microsoft Entra Connect Health, together with its agents",
           "Microsoft Defender for Cloud Apps and Microsoft Sentinel",
           "Microsoft Entra Internet Access and Microsoft Entra Private Access",
           "Conditional Access and Identity Protection"
@@ -39061,7 +39061,7 @@ const EXAMS = {
         "q": "Which Global Secure Access capability specifically helps prevent stolen token replay attacks?",
         "options": [
           "Application Proxy connectors",
-          "Self-service password reset registration",
+          "Self-service password reset registration used at every sign-in",
           "Compliant network checks used in Conditional Access",
           "Custom banned password lists"
         ],
@@ -39074,7 +39074,7 @@ const EXAMS = {
         "q": "What is the main benefit of using a managed identity for an application that needs to access Azure resources?",
         "options": [
           "It grants Global Administrator rights automatically",
-          "It allows the application to bypass all Conditional Access policies",
+          "It allows the application to bypass all Conditional Access policies, since Azure treats it as trusted",
           "Developers do not need to manage or store credentials, since Azure handles them automatically",
           "It removes the need for any RBAC role assignment"
         ],
@@ -39114,7 +39114,7 @@ const EXAMS = {
         "options": [
           "An application object is a copy of a service principal, not the reverse",
           "One application object has a one-to-many relationship with corresponding service principal objects across tenants",
-          "Each application object can only ever have exactly one service principal",
+          "Each application object can only ever have exactly one service principal, which is shared by every tenant that uses the app",
           "Service principals are created independently of any application object"
         ],
         "correct": 1,
@@ -39126,7 +39126,7 @@ const EXAMS = {
         "q": "What happens to service principals in other tenants when a multitenant application's home-tenant application object is deleted?",
         "options": [
           "The application automatically becomes single-tenant",
-          "All service principals across every tenant are immediately deleted",
+          "All service principals across every tenant are immediately deleted along with the home-tenant application object",
           "Every tenant's admin is notified to manually recreate the app",
           "Service principals in other tenants remain independent and are unaffected"
         ],
@@ -39154,7 +39154,7 @@ const EXAMS = {
           "Storing client secrets in plain text configuration files",
           "Using managed identities, which eliminate the need to manage credentials entirely",
           "Rotating client secrets manually every 24 hours",
-          "Sharing one global service principal secret across every application"
+          "Sharing one global service principal secret across every application, which reduces the number of credentials to manage"
         ],
         "correct": 1,
         "explain": "For Azure workloads, managed identities are the preferred, Microsoft-recommended approach because they eliminate the need to manage credentials at all."
@@ -39164,7 +39164,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "By design, which entities can request tokens from Microsoft Entra ID using a system-assigned managed identity?",
         "options": [
-          "Any resource in the same Azure subscription",
+          "Any resource in the same Azure subscription as the instance the identity is enabled on",
           "Only the specific Azure resource instance the identity is enabled on",
           "Any user in the tenant with the Reader role",
           "Any resource in any tenant"
@@ -39177,7 +39177,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "How can an organization discover shadow IT applications in use across the environment as part of planning enterprise app integration?",
         "options": [
-          "By reviewing Azure Cost Management reports",
+          "By reviewing Azure Cost Management reports for each subscription's spending on software apps",
           "By checking the Identity Secure Score alone",
           "Using Microsoft Defender for Cloud Apps or the AD FS application report",
           "Only by manually surveying every employee"
@@ -39190,7 +39190,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is the significance of ownership on a per-enterprise-application basis?",
         "options": [
-          "Application ownership requires an Microsoft Entra ID Premium P2 license",
+          "Application ownership requires an Microsoft Entra ID Premium P2 license, and each owner can then manage all enterprise applications in the tenant",
           "Only one owner is allowed per application at any time",
           "A single owner is automatically granted Global Administrator",
           "An owner can manage only the specific enterprise applications they own, such as a Salesforce app, without affecting others"
@@ -39268,7 +39268,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What defines a delegated permission for a Microsoft Graph API call?",
         "options": [
-          "It lets the app act as itself with no user context at all",
+          "It lets the app act as itself with no user context at all, limited to whatever the app has been granted by an admin",
           "It only applies to daemon or background services",
           "It always grants tenant-wide administrative access",
           "It lets the app act on behalf of the signed-in user, limited to what that user could access themselves"
@@ -39282,7 +39282,7 @@ const EXAMS = {
         "q": "What is required for an administrator to grant consent to an application's requested permissions on behalf of every user in the organization?",
         "options": [
           "Approval from Microsoft support",
-          "Nothing; consent is automatic for every registered app",
+          "Nothing; consent is automatic for every registered app, so users never see an individual consent prompt in the organization",
           "A dedicated Microsoft Entra ID Governance license",
           "Admin consent, which an administrator can grant to eliminate individual user consent prompts"
         ],
@@ -39309,7 +39309,7 @@ const EXAMS = {
         "options": [
           "Requesting every available permission to avoid future consent prompts",
           "The principle of least privilege, requesting only the permissions the app needs to function",
-          "Always requesting application permissions instead of delegated permissions",
+          "Always requesting application permissions instead of delegated permissions, whatever the app needs to function",
           "Bypassing admin consent whenever possible"
         ],
         "correct": 1,
@@ -39362,7 +39362,7 @@ const EXAMS = {
           "To manage administrative units",
           "To reset user passwords in bulk",
           "To discover and analyze cloud app usage, including shadow IT, across the organization",
-          "To configure Microsoft Entra Connect sync rules"
+          "To configure Microsoft Entra Connect sync rules for cloud app usage across the entire organization"
         ],
         "correct": 2,
         "explain": "Cloud Discovery in Defender for Cloud Apps analyzes traffic logs to discover and assess cloud applications being used across the organization, including unsanctioned shadow IT apps."
@@ -39372,7 +39372,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What does connecting an app to Microsoft Defender for Cloud Apps as a 'connected app' provide?",
         "options": [
-          "Automatic single sign-on configuration with no further setup",
+          "Automatic single sign-on configuration with no further setup required by any of the app's admins",
           "Deeper visibility and control over the sanctioned SaaS app via API-based connectors",
           "A replacement for Conditional Access policies",
           "Removal of the app from the enterprise applications list"
@@ -39400,7 +39400,7 @@ const EXAMS = {
         "options": [
           "Creating a new Microsoft Entra tenant",
           "Grouping related enterprise applications together to organize and report on them",
-          "Storing custom security attribute definitions",
+          "Storing custom security attribute definitions for related enterprise applications in one place",
           "Registering a new managed identity"
         ],
         "correct": 1,
@@ -39413,7 +39413,7 @@ const EXAMS = {
         "options": [
           "To adjust claims and token content issued to the application to meet its specific requirements",
           "To change the tenant's default domain name",
-          "To convert a delegated permission into an application permission automatically",
+          "To convert a delegated permission into an application permission automatically for that specific application",
           "To disable password hash synchronization for that app only"
         ],
         "correct": 0,
@@ -39426,7 +39426,7 @@ const EXAMS = {
         "options": [
           "A set of Conditional Access policies grouped together",
           "A collection of banned passwords",
-          "A license bundle sold by the Microsoft 365 admin center",
+          "A license bundle sold by the Microsoft 365 admin center, always assigned to a user through a catalog",
           "A bundle of resources with associated access that a user needs, always contained in a catalog"
         ],
         "correct": 3,
@@ -39453,7 +39453,7 @@ const EXAMS = {
           "Their account is locked but never removed",
           "They are automatically promoted to a member user",
           "Their B2B guest account in the directory can be automatically removed",
-          "Nothing changes; the account remains indefinitely"
+          "Nothing changes; the account remains indefinitely in the directory, and only the assignment is removed"
         ],
         "correct": 2,
         "explain": "When a user from a connected organization's access expires and they hold no other access package assignments, their B2B account in the directory can be automatically removed."
@@ -39492,7 +39492,7 @@ const EXAMS = {
           "The non-administrator user authorized as a catalog creator who created it",
           "The Global Administrator only",
           "No one; catalogs have no owner concept",
-          "The user who requested the first access package"
+          "The user who requested the first access package from the catalog once it was published"
         ],
         "correct": 0,
         "explain": "When an authorized catalog creator (a non-administrator) creates a new catalog, they automatically become the owner of that catalog."
@@ -39502,7 +39502,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In which scenario are access packages most appropriate to use, rather than a static group assignment?",
         "options": [
-          "When every employee in the company needs the exact same permanent Exchange Online mailbox",
+          "When every employee in the company needs the exact same permanent Exchange Online mailbox, with no approval step or end date required for anyone",
           "When two or more organizations are collaborating on a project and need time-limited, approved access for external B2B users",
           "When configuring the tenant's default company branding",
           "When enabling Security Defaults tenant-wide"
@@ -39531,7 +39531,7 @@ const EXAMS = {
           "Only automated AI agents with no human oversight",
           "Resource owners, individually selected delegates, or the end users performing self-review",
           "Only Microsoft support engineers",
-          "Only the Global Administrator, with no delegation possible"
+          "Only the Global Administrator, with no delegation possible to resource owners or to any other users"
         ],
         "correct": 1,
         "explain": "Reviewers are represented by three personas: resource owners, a set of individually selected delegates, and end users who self-attest to their own continued need for access."
@@ -39570,7 +39570,7 @@ const EXAMS = {
           "No, access reviews can schedule and record reviews for synced groups, but changes must be made on-premises",
           "Yes, but only if Microsoft Entra Connect Cloud Sync is used",
           "No, synced groups cannot be reviewed at all",
-          "Yes, changes are written back to on-premises AD automatically"
+          "Yes, changes are written back to on-premises AD automatically when the review is completed and the results are applied"
         ],
         "correct": 0,
         "explain": "Access reviews cannot change the membership of groups synced from on-premises AD since the source of authority is on-premises; reviewers must act on the on-premises group instead."
@@ -39632,7 +39632,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What core capability does Privileged Identity Management (PIM) provide for administrative roles?",
         "options": [
-          "Permanent assignment of every role to every administrator",
+          "Permanent assignment of every role to every administrator, so that standing access is always on when needed",
           "Replacement of Conditional Access for all users",
           "Just-in-time, time-limited elevation to eligible roles instead of standing (always-on) access",
           "Automatic deletion of all admin roles after 24 hours"
@@ -39672,7 +39672,7 @@ const EXAMS = {
         "q": "What is the purpose of creating and managing emergency access (break-glass) accounts?",
         "options": [
           "To automatically rotate all user passwords weekly",
-          "To serve as the default account for entitlement management catalogs",
+          "To serve as the default account for entitlement management catalogs, so that every catalog has an owner during a major issue",
           "To provide guest access for external vendors",
           "To maintain access to the identity management store if there is an unexpected lockout or major issue"
         ],
@@ -39699,7 +39699,7 @@ const EXAMS = {
         "options": [
           "Sign-in logs record authentication events while audit logs record directory changes such as role or user modifications",
           "Audit logs are only available with Microsoft Entra ID Free",
-          "Sign-in logs record billing information, not authentication data",
+          "Sign-in logs record billing information, not authentication data, while audit logs record user sign-in events for each application",
           "Sign-in logs and audit logs contain exactly the same data"
         ],
         "correct": 0,
@@ -39711,7 +39711,7 @@ const EXAMS = {
         "q": "To which destinations can Microsoft Entra diagnostic settings send logs for long-term analysis?",
         "options": [
           "Only the Microsoft Entra admin center dashboard",
-          "Only a local file on the administrator's workstation",
+          "Only a local file on the administrator's workstation or a shared drive",
           "Only Microsoft Excel via manual export",
           "Log Analytics workspaces, storage accounts, and Azure Event Hubs"
         ],
@@ -39752,7 +39752,7 @@ const EXAMS = {
           "Because Microsoft Entra ID cannot store any logs natively",
           "To centralize security monitoring and correlate identity events with data from other systems",
           "Because it is required to enable Conditional Access",
-          "Because it replaces the need for Identity Protection entirely"
+          "Because it replaces the need for Identity Protection entirely, since a SIEM can block risky sign-ins on its own"
         ],
         "correct": 1,
         "explain": "Organizations often export Microsoft Entra logs to a third-party SIEM to centralize security monitoring and correlate identity events with signals from other systems."
@@ -39763,7 +39763,7 @@ const EXAMS = {
         "q": "What is a common first step for connecting Microsoft Entra ID sign-in and audit data to Microsoft Sentinel for advanced analysis?",
         "options": [
           "Deleting the existing diagnostic settings first",
-          "Manually re-typing every log entry into Sentinel",
+          "Manually re-typing every log entry into Sentinel, since sign-in and audit logs can't flow in on their own at all",
           "Connecting the Microsoft Entra data connector so logs flow into the Sentinel workspace",
           "Disabling Log Analytics entirely"
         ],
@@ -39778,7 +39778,7 @@ const EXAMS = {
           "A request to access the resources bundled in an access package, typically routed through an approval workflow",
           "A request to create a new administrative unit",
           "A request to reset a user's password via SSPR",
-          "A support ticket submitted to Microsoft for licensing issues"
+          "A support ticket submitted to Microsoft for licensing issues, typically routed to an administrator through an approval workflow"
         ],
         "correct": 0,
         "explain": "An access request is a request to access the resources in an access package; if approved through the workflow, the requester receives an access package assignment."
