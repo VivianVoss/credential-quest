@@ -77351,7 +77351,7 @@ const EXAMS = {
         "q": "What is the purpose of the Currency gender field on the Currencies page in General ledger?",
         "options": [
           "To determine which currencies can be used for triangulation",
-          "To classify whether a currency is a reporting currency or an accounting currency",
+          "To classify whether a currency is a reporting currency or an accounting currency in a legal entity",
           "To define the gender printed on checks and reports for Spanish-speaking countries or regions",
           "To control which legal entities can post in that currency"
         ],
@@ -77433,7 +77433,7 @@ const EXAMS = {
         "q": "A functional consultant sets up a derived dimension so that entering cost center 10 automatically enters department 20 and location 30. An end user later enters cost center 10 on a record that already has department 50 populated. By default, what happens to the department value?",
         "options": [
           "The existing value of department 50 is kept; derived dimensions don't override existing values by default",
-          "The transaction is blocked until the user manually resolves the conflict",
+          "The transaction is blocked until the user manually resolves the conflict between department 50 and department 20",
           "The department value is automatically changed to 20",
           "The derived dimension is ignored entirely because a conflicting value already exists"
         ],
@@ -77448,7 +77448,7 @@ const EXAMS = {
           "The system deletes the cost center value automatically",
           "The department value becomes optional and can be left blank",
           "The user cannot change the department value once it has been derived and displayed, because Prevent changes is set to Yes",
-          "The user can freely change the department value; Prevent changes only affects reporting, not data entry"
+          "The user can freely change the department value; Prevent changes only affects reporting, not data entry on the transaction page"
         ],
         "correct": 2,
         "explain": "When Prevent changes is set to Yes for a derived dimension segment, users can't change that dimension's value once it has been derived on the page, though the system still validates it against account structures when the entry is finalized."
@@ -77473,7 +77473,7 @@ const EXAMS = {
         "options": [
           "The system automatically splits the journal into two reversal journals of 100 lines or fewer",
           "The reversal always runs immediately regardless of line count",
-          "Reversals of more than 100 lines are not supported and must be done manually",
+          "Reversals of more than 100 lines are not supported and must be done manually, with each voucher line entered in a new journal",
           "Because the voucher exceeds 100 lines, the reversal runs as a batch process and the results appear in the batch job history"
         ],
         "correct": 3,
@@ -77714,7 +77714,7 @@ const EXAMS = {
         "q": "On the General ledger parameters page under Fiscal year close, the Delete close of year transactions option is set to No, and the year-end close is run a second time after posting some adjusting entries. What happens to the previously created Opening transaction?",
         "options": [
           "The system blocks the second run of year-end close entirely",
-          "The previous Opening transaction is deleted and replaced with a brand-new one based on current balances",
+          "The previous Opening transaction is deleted and replaced with a brand-new one based on current balances, which also picks up the later adjusting entries",
           "The adjusting entries are ignored until the next fiscal year",
           "The previous Opening transaction remains, and an additional Opening transaction is created to move forward the balances from the adjusting entries"
         ],
@@ -77740,7 +77740,7 @@ const EXAMS = {
         "q": "On a year-end close template, a legal entity's Department financial dimension is set to Close single with the value 100. If transactions during the year were posted to departments 200, 300, and 400 totaling 100,000 USD of income, what happens to the retained earnings opening balance for that legal entity?",
         "options": [
           "One consolidated opening balance is created for Retained earnings - Department 100, summarizing all the department transactions",
-          "Three separate opening balances are created, one for each of departments 200, 300, and 400",
+          "Three separate opening balances are created, one for each of departments 200, 300, and 400, keeping each original department value",
           "The transactions are excluded entirely from the opening balance",
           "The system throws a validation error because the departments don't match the template value"
         ],
@@ -77794,7 +77794,7 @@ const EXAMS = {
           "Positive pay file generation will fail with an error",
           "The first positive pay file will include every check ever created for that bank account",
           "The bank account will be excluded from positive pay entirely",
-          "The system will use today's date automatically with no negative effect"
+          "The system will use today's date automatically with no negative effect on the first file generated"
         ],
         "correct": 1,
         "explain": "It's important to enter a Positive pay start date; otherwise, the first positive pay file generated for the bank account will include all checks that have ever been created for that account."
@@ -77862,7 +77862,7 @@ const EXAMS = {
         "options": [
           "Both are attached only to ledger accounts",
           "Both are attached only to items",
-          "Sales tax groups are attached to items; item sales tax groups are attached to customers",
+          "Sales tax groups are attached to items or procurement categories; item sales tax groups are attached to customers or vendors",
           "Sales tax groups are attached to customers/vendors; item sales tax groups are attached to items or procurement categories"
         ],
         "correct": 3,
@@ -77927,7 +77927,7 @@ const EXAMS = {
         "options": [
           "Each code points back to 5D10% to form a loop",
           "5D10% points to 10D5%, which points to 14D2%, which is left blank",
-          "The Next discount code field is not used for cash discounts",
+          "The Next discount code field is not used for cash discounts; each code stands alone",
           "All three codes point independently to 14D2%"
         ],
         "correct": 1,
@@ -77953,7 +77953,7 @@ const EXAMS = {
         "options": [
           "Accounts receivable parameters, Settlement tab",
           "Sales tax groups page",
-          "Customer posting profiles, Table restriction FastTab",
+          "Customer posting profiles, Table restriction FastTab, Settlement check box",
           "General ledger parameters, Sales tax tab, Tax options FastTab"
         ],
         "correct": 3,
@@ -77966,7 +77966,7 @@ const EXAMS = {
         "options": [
           "On the Sales tax groups page",
           "On the applicable Customer posting profile, by selecting the Settlement check box on the Table restriction FastTab",
-          "On the Accounts receivable parameters Settlement tab, by disabling cash discount administration",
+          "On the Accounts receivable parameters Settlement tab, by disabling cash discount administration for each customer group",
           "On the Cash and bank management parameters page"
         ],
         "correct": 1,
@@ -77992,7 +77992,7 @@ const EXAMS = {
         "options": [
           "It releases at 9:00 PM Pacific Time on December 31, because release timing is based on the time zone of the user who last modified the release date",
           "It releases immediately regardless of time zone once any date is entered",
-          "It releases at midnight Pacific Time on January 1, matching the release date literally in every time zone",
+          "It releases at midnight Pacific Time on January 1, matching the release date literally in every time zone, because timing follows each viewer's own time zone",
           "Seattle users cannot view or process the transaction until a system administrator manually releases it"
         ],
         "correct": 0,
@@ -78111,7 +78111,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "On the Revenue allocation page for a billing schedule, if the Multiple element arrangement type field is set to Single instead of Multiple, what is the effect?",
         "options": [
-          "Each line automatically gets its own unique multiple element arrangement number",
+          "Each line automatically gets its own unique multiple element arrangement number and deferred contract revenue account",
           "Revenue allocation is disabled entirely for that billing schedule",
           "Only the first line of the billing schedule is deferred",
           "The same multiple element arrangement number and deferred contract revenue account apply to every line"
@@ -78166,7 +78166,7 @@ const EXAMS = {
           "The customer's new risk score",
           "A dollar amount to add directly to the credit limit",
           "An amount by which to adjust the current credit limit as a percentage",
-          "The number of days until the adjustment expires"
+          "The number of days until the adjustment expires for the group of customers"
         ],
         "correct": 2,
         "explain": "When Value type is set to Percent, the Adjustment value is treated as a percentage of the current credit limit to adjust by, rather than Fixed, which treats the value as a direct dollar amount to add to the limit."
@@ -78221,7 +78221,7 @@ const EXAMS = {
         "options": [
           "To control which fixed asset books post to which posting layer",
           "To adjust due dates that fall on non-business days according to defined rules",
-          "To configure how sales tax authorities are notified of settlements",
+          "To configure how sales tax authorities are notified of settlements on customer invoices",
           "To determine which currencies a customer can be invoiced in"
         ],
         "correct": 1,
@@ -78271,7 +78271,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Before you can generate positive pay files, which setup step must be completed to translate check information into a format your bank can process?",
         "options": [
-          "Enable three-way matching on the Accounts payable parameters page",
+          "Enable three-way matching on the Accounts payable parameters page for the bank account",
           "Set up a positive pay format using an XML-type transformation input file",
           "Configure a vendor posting profile",
           "Set up a per diem rule"
@@ -78325,7 +78325,7 @@ const EXAMS = {
         "options": [
           "The vendor invoice is recorded, and Match product receipts is used to complete the match",
           "The purchase order must be cancelled and recreated",
-          "The invoice must be manually journalized outside the purchase order",
+          "The invoice must be manually journalized outside the purchase order and posted to the ledger",
           "A budget register entry must first be created"
         ],
         "correct": 0,
@@ -78349,7 +78349,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A company doesn't want to closely track which purchase order a vendor prepayment applies to and does not receive a formal prepayment invoice from the vendor. Which prepayment approach fits this scenario, and where does the prepayment liability get held?",
         "options": [
-          "Three-way matching; the liability is held in the vendor's clearing account",
+          "Three-way matching; the liability is held in the vendor's clearing account until invoicing",
           "Prepayment journal voucher; the liability is held in the Accounts payable account",
           "Positive pay; the liability is held in a suspense account",
           "Prepayment invoicing; the liability is held in a prepayment account"
@@ -78416,7 +78416,7 @@ const EXAMS = {
         "options": [
           "Automatic exclusion of the first and last travel days from any per diem",
           "A doubling of the per diem rate for the first and last travel days",
-          "A fixed flat rate that ignores location for the first and last travel days",
+          "A fixed flat rate that ignores location for the first and last travel days of each business trip",
           "A percentage reduction applied to the per diem amount for the first and last travel days"
         ],
         "correct": 3,
@@ -78494,7 +78494,7 @@ const EXAMS = {
         "options": [
           "The cash discount is posted automatically to the specified ledger account",
           "The discount is only applied at year-end close",
-          "The vendor must manually issue a credit memo for the discount",
+          "The vendor must manually issue a credit memo for the discount before it can be posted",
           "No posting occurs; discounts are informational only"
         ],
         "correct": 0,
@@ -78506,7 +78506,7 @@ const EXAMS = {
         "q": "What is the primary function of the Centralized payments capability in accounts payable daily procedures?",
         "options": [
           "It aggregates all budget register entries across legal entities",
-          "It combines all customer and vendor balances into a single netting agreement",
+          "It combines all customer and vendor balances into a single netting agreement shared by every legal entity in the group",
           "It consolidates fixed asset depreciation across posting layers",
           "It lets a single legal entity make payments on behalf of one or more other legal entities for shared vendors"
         ],
@@ -78573,7 +78573,7 @@ const EXAMS = {
           "Positive pay combined with vendor posting profiles",
           "Budget transfer rules combined with a Budgeting workflow tied to the Transfer budget code",
           "Ledger allocation basis rules combined with derived dimensions",
-          "Risk scoring groups combined with credit limit adjustment workflows"
+          "Risk scoring groups combined with credit limit adjustment workflows tied to the Transfer budget code"
         ],
         "correct": 1,
         "explain": "Budget transfer rules define when transfers between financial dimension values are prohibited without approval, and pairing them with a Budgeting workflow (tied to a budget code of the Transfer type) routes prohibited transfers to a manager for review before the budget balance updates."
@@ -78598,7 +78598,7 @@ const EXAMS = {
         "options": [
           "Budget allocation across dimensions",
           "Creating recurring budget register entries",
-          "Positive pay generation",
+          "Positive pay generation for recurring expenses like rent",
           "Ledger settlement"
         ],
         "correct": 1,
@@ -78609,7 +78609,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "On the Transfer balances to budget page, the Factor field is set to 1.10 and the Minimum field is set to 1,000.00. What do these fields control when transferring a prior year's balances into a new budget?",
         "options": [
-          "Factor determines the depreciation rate, and Minimum sets the smallest fixed asset value to transfer",
+          "Factor determines the depreciation rate, and Minimum sets the smallest fixed asset value to transfer into the budget",
           "Factor sets the interest rate, and Minimum sets the smallest allowable budget model size",
           "Factor increases the transferred amount by 10%, and Minimum excludes balances below 1,000.00 from the transfer",
           "Factor and Minimum only apply to cash flow forecasting, not budget transfers"
@@ -78664,7 +78664,7 @@ const EXAMS = {
           "They are placed on hold pending manual review",
           "They are reversed and must be re-entered",
           "They are unaffected by the change until a new budget control configuration is activated",
-          "They are automatically reprocessed against the new calculation"
+          "They are automatically reprocessed against the new calculation as soon as the change is saved"
         ],
         "correct": 2,
         "explain": "Modifications to the Budget funds available calculation during a budget cycle don't impact documents that already passed budget control checks and are posted or completed; the system continues to display and monitor those existing documents under the prior configuration until a new configuration is activated."
@@ -78860,7 +78860,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A company sets up a primary depreciation book (used for accounting depreciation) and attaches a tax depreciation book as a derived book for the Acquisition transaction type. When an acquisition of 1,500.00 is posted in the primary book, what happens in the derived tax book?",
         "options": [
-          "The derived book receives a depreciation transaction instead of an acquisition transaction",
+          "The derived book receives a depreciation transaction instead of an acquisition transaction of 1,500.00 on the same posting date",
           "Only 50% of the amount posts automatically to the derived book",
           "An acquisition transaction for the same amount (1,500.00) is automatically generated and posted in the derived book as well",
           "Nothing posts automatically; the tax book must be updated manually"
@@ -78912,7 +78912,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which type of asset does NOT require a depreciation profile, since it is not considered depreciable?",
         "options": [
-          "Tangible fixed assets like machinery",
+          "Tangible fixed assets like machinery, vehicles, and buildings",
           "Leased assets under asset leasing",
           "Intangible assets such as patents",
           "Financial assets, such as shares of stock or bonds"
@@ -78928,7 +78928,7 @@ const EXAMS = {
           "Depreciation profiles can no longer use the Manual method",
           "Only one acquisition transaction is allowed for each asset for each book",
           "Fixed asset groups can no longer have a default book",
-          "Assets can no longer be transferred between financial dimensions"
+          "Assets can no longer be transferred between financial dimensions after acquisition"
         ],
         "correct": 1,
         "explain": "The Allow multiple acquisitions parameter, when turned off, limits an asset to one acquisition transaction per book; turning it on allows an unlimited number of acquisitions, useful when multiple transactions build up an asset's value (for example, a truck and its body purchased separately)."
@@ -78980,7 +78980,7 @@ const EXAMS = {
           "The full 10,000.00 USD is depreciated immediately in a single transaction",
           "Depreciation is calculated for 5,000.00 USD, covering the two quarters that elapsed since the Depreciation run date",
           "No depreciation is calculated because the asset wasn't placed in service until December 31",
-          "Depreciation is calculated only from December 31 forward, ignoring the earlier Depreciation run date entirely"
+          "Depreciation is calculated only from December 31 forward, ignoring the earlier Depreciation run date entirely for this asset"
         ],
         "correct": 1,
         "explain": "You can't calculate and post depreciation before the Placed in service date, but depreciation still begins accruing conceptually from the Depreciation run date; the first calculation after being placed in service (here, December 31) catches up the depreciation for the elapsed periods since the run date — in this example, two quarters totaling 5,000.00 USD."
@@ -79016,7 +79016,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "When a fixed asset is disposed of as scrap in the Fixed assets journal, what value should be entered on the disposal journal line, and how does the system determine which offset ledger account to use?",
         "options": [
-          "The current net book value is entered, and the offset account defaults to the Accounts payable account",
+          "The current net book value is entered, and the offset account defaults to the Accounts payable account defined on the vendor posting profile",
           "The insured value is entered, and the offset account defaults to a suspense account",
           "No value is entered (the disposal value is zero), and the offset account comes from the Fixed asset posting profile for Disposal - scrap",
           "The original acquisition price is entered, and the offset account is manually selected each time"
@@ -79032,7 +79032,7 @@ const EXAMS = {
           "Net book value is transferred to a new fixed asset automatically",
           "The fixed asset status changes to On hold pending manager review",
           "Net book value drops to zero and the fixed asset status changes to Scrapped",
-          "Net book value remains unchanged until the next fiscal year close"
+          "Net book value remains unchanged until the next fiscal year close is completed"
         ],
         "correct": 2,
         "explain": "After the scrap disposal journal is posted, the asset's Net book value becomes zero because it's no longer on the books, and the fixed asset status changes to Scrapped on the date the journal is posted."
