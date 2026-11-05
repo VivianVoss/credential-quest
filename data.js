@@ -62077,7 +62077,7 @@ const EXAMS = {
         "q": "A marketing manager wants to use generative AI without any programming experience. Which characteristic of modern generative AI tools makes this possible?",
         "options": [
           "They include intuitive interfaces and prebuilt templates for common tasks",
-          "They must be configured by a certified developer before first use",
+          "They must be configured by a certified developer before first use by any employee",
           "They require custom-built machine learning models per business",
           "They only work through command-line scripting"
         ],
@@ -62092,7 +62092,7 @@ const EXAMS = {
           "Sorting incoming emails into Spam, Promotions, or Primary folders",
           "Writing an email response using Copilot Chat",
           "Producing a summary report from meeting notes",
-          "Drafting a training module from a few key points"
+          "Drafting a training module from a few key points in a source document"
         ],
         "correct": 0,
         "explain": "Classification models identify and categorize information, such as sorting emails, while generative models create new content."
@@ -62102,7 +62102,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which of the following is a practical business application of generative AI described in the fundamentals training?",
         "options": [
-          "Replacing all human customer service without any oversight",
+          "Replacing all human customer service without any oversight or review",
           "Physically repairing office hardware",
           "Automating the generation of reports and summarizing meeting notes",
           "Manually auditing financial ledgers line by line"
@@ -62169,7 +62169,7 @@ const EXAMS = {
         "options": [
           "It is stored permanently on a local hard drive",
           "Its outputs are based on reliable sources and provide citations for transparency",
-          "It bypasses organizational permissions to gather more data",
+          "It bypasses organizational permissions to gather more data from restricted sources",
           "It refuses to answer any question about business data"
         ],
         "correct": 1,
@@ -62248,7 +62248,7 @@ const EXAMS = {
           "Disabling all citations to speed up review",
           "Sharing the response immediately without review",
           "Reviewing the cited sources to confirm they are trusted and accurate",
-          "Assuming all outputs are accurate without checking"
+          "Assuming all outputs are accurate without checking any cited sources first"
         ],
         "correct": 2,
         "explain": "Users should always review output to ensure sources are trusted and known, and that responses are accurate."
@@ -62261,7 +62261,7 @@ const EXAMS = {
           "Oversight is only needed for financial data",
           "Humans remain the final arbiters, monitoring outputs and validating decisions",
           "Oversight is handled entirely by the Analyst agent",
-          "Human review is unnecessary once Copilot is deployed"
+          "Human review is unnecessary once Copilot is deployed and validating its own decisions"
         ],
         "correct": 1,
         "explain": "Human oversight includes monitoring AI outputs, decision validation, and feedback mechanisms, with humans as final arbiters."
@@ -62328,7 +62328,7 @@ const EXAMS = {
         "q": "A financial analyst needs a mix of internal meeting notes and the latest external industry news for a report. Which approach best reflects how context affects Copilot's responses?",
         "options": [
           "Context has no effect on the accuracy of Copilot's responses",
-          "Use only web mode, since it automatically includes internal meeting notes",
+          "Use only web mode, since it automatically includes internal meeting notes along with the latest external industry news",
           "Use only work mode, since it automatically includes public web data",
           "Use work-grounded prompts for internal notes and web-grounded prompts for external news, then combine the results"
         ],
@@ -62507,7 +62507,7 @@ const EXAMS = {
         "options": [
           "AI systems must be free of charge for all users",
           "AI systems must be designed to avoid perpetuating biases present in training data",
-          "AI systems must be available in every country simultaneously",
+          "AI systems must be available in every country simultaneously on the same release date",
           "AI systems must generate responses in multiple languages by default"
         ],
         "correct": 1,
@@ -62558,7 +62558,7 @@ const EXAMS = {
         "q": "Which of the following capabilities is explicitly listed as something Microsoft 365 Copilot can do, thanks to its LLM and Microsoft Graph integration?",
         "options": [
           "Replace the need for Microsoft Teams entirely",
-          "Guarantee zero errors in every generated document",
+          "Guarantee zero errors in every generated document or workflow",
           "Physically sign legal documents",
           "Support decision-making with contextual recommendations"
         ],
@@ -62720,7 +62720,7 @@ const EXAMS = {
           "Switch to a different Microsoft 365 app",
           "Ask a follow-up prompt such as \"Write a shorter answer\"",
           "Disable the chat feature",
-          "Start an entirely new conversation with no context"
+          "Start an entirely new conversation with no context carried over"
         ],
         "correct": 1,
         "explain": "Users can refine answers with follow-up prompts like asking for a shorter answer or more detail."
@@ -62733,7 +62733,7 @@ const EXAMS = {
           "Permanently deletes chat history after each session",
           "Prevents users from editing prompts",
           "Remembers preferences and work context so instructions like \"use bullet points\" don't need to be repeated",
-          "Automatically shares all conversations with the entire organization"
+          "Automatically shares all conversations with the entire organization so that colleagues can reuse the same instructions"
         ],
         "correct": 2,
         "explain": "Copilot Memory remembers preferences and work context so instructions don't need to be repeated in future responses."
@@ -62849,7 +62849,7 @@ const EXAMS = {
         "options": [
           "Checking for accuracy",
           "Iterating and refining",
-          "Providing details",
+          "Providing details about the task and audience",
           "Giving conflicting instructions"
         ],
         "correct": 3,
@@ -63108,7 +63108,7 @@ const EXAMS = {
           "Removing all punctuation",
           "Using variable placeholders like [Meeting Date] or [Audience]",
           "Limiting the prompt to a single word",
-          "Writing the prompt entirely in uppercase"
+          "Writing the prompt entirely in uppercase so that it stands out in any context"
         ],
         "correct": 1,
         "explain": "Using variable placeholders like [Meeting Date] or [Audience] makes prompts reusable across contexts."
@@ -63119,7 +63119,7 @@ const EXAMS = {
         "q": "How can a user locate a previous Copilot Chat conversation?",
         "options": [
           "Browse past sessions from the Conversations menu or use the search bar",
-          "Only an IT administrator can retrieve past conversations",
+          "Only an IT administrator can retrieve past conversations for a user on request",
           "Conversations automatically delete after one use",
           "Conversations cannot be retrieved once closed"
         ],
@@ -63144,7 +63144,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "After a user deletes an individual chat conversation, what should they keep in mind?",
         "options": [
-          "The conversation is permanently unrecoverable by anyone including IT",
+          "The conversation is permanently unrecoverable by anyone including IT, whatever policies apply",
           "Deleted chats automatically reappear after 24 hours",
           "Their organization's retention policies may still affect what can actually be deleted",
           "Deleting a chat also deletes the associated Microsoft 365 account"
@@ -63157,7 +63157,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "How does a user rename a Copilot Chat conversation?",
         "options": [
-          "Delete the chat and create a new one with the desired name",
+          "Delete the chat and create a new one with the desired name, since the title is fixed once it is set",
           "Contact Microsoft support to rename a chat",
           "Renaming chats is not supported",
           "Select the three-dot menu next to the chat title, select Rename, enter a new name, and Save"
@@ -63173,7 +63173,7 @@ const EXAMS = {
           "Adding the conversation to a Copilot Notebook",
           "Disabling Copilot Memory",
           "Immediately deleting the conversation",
-          "Printing the conversation to paper only"
+          "Printing the conversation to paper only and filing it"
         ],
         "correct": 0,
         "explain": "Users can save a conversation to a Copilot Notebook, a flexible workspace to organize, edit, and build on thoughts over time."
@@ -63196,7 +63196,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "After a user deletes all of their Copilot activity history, which statement is accurate?",
         "options": [
-          "Shared conversation links are automatically revoked the moment history is deleted",
+          "Shared conversation links are automatically revoked the moment history is deleted, though conversations can still be restored",
           "The deletion can be undone within 24 hours by the user",
           "Deleting activity history also removes the organization's usage reports",
           "Deleted conversations cannot be restored, and previously shared conversation links may still be accessible to others"
@@ -63249,7 +63249,7 @@ const EXAMS = {
         "q": "A user wants Copilot to reference a specific project when asking a question in a prompt. Which prompting technique should they use?",
         "options": [
           "Avoid naming the project at all",
-          "Repeat the project name five times in the prompt",
+          "Repeat the project name five times in the prompt to emphasize it",
           "Use the \"#\" symbol followed by the project or topic name",
           "Use all capital letters for the project name"
         ],
@@ -63277,7 +63277,7 @@ const EXAMS = {
           "That documents can never be edited afterward",
           "Clear, structured, and impactful communication",
           "That all content is written in legal jargon",
-          "That only one draft option is ever generated"
+          "That only one draft option is ever generated per request"
         ],
         "correct": 1,
         "explain": "Copilot helps organize ideas, refine language, and ensure content is clear and impactful."
@@ -63315,7 +63315,7 @@ const EXAMS = {
         "options": [
           "Convert the paragraph into a table with defined columns",
           "Automatically email the paragraph to leadership",
-          "Translate the paragraph into another app format only",
+          "Translate the paragraph into another app format only, without any new layout",
           "Permanently delete the paragraph"
         ],
         "correct": 0,
@@ -63430,7 +63430,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "After receiving a structured report from the Researcher agent, a user wants a condensed version for a leadership slide. What should they do?",
         "options": [
-          "Manually copy every sentence into PowerPoint without editing",
+          "Manually copy every sentence into PowerPoint without editing, keeping the full report on the slide",
           "Start over with a completely new agent",
           "Disable citations before resharing",
           "Ask the Researcher agent to summarize the findings into a few bullet points for a slide"
@@ -63619,7 +63619,7 @@ const EXAMS = {
         "options": [
           "Summarize long email threads and create an agenda",
           "Permanently delete the user's calendar",
-          "Translate the user's name into another language",
+          "Translate the user's name into another language for each invite",
           "Automatically reject all meeting invites"
         ],
         "correct": 0,
@@ -63672,7 +63672,7 @@ const EXAMS = {
           "It is automatically deleted after 24 hours",
           "It must be manually retyped to share it",
           "Export it to Word or Excel for further collaboration",
-          "It can never leave the Teams app"
+          "It can never leave the Teams app, even for further collaboration"
         ],
         "correct": 2,
         "explain": "Users can export meeting summaries to Word or Excel for further collaboration."
@@ -63774,7 +63774,7 @@ const EXAMS = {
         "q": "After a Copilot Chat response is generated, how can a user turn it into an editable Page?",
         "options": [
           "Print the response and rescan it",
-          "Copy the response into a chat with a different colleague",
+          "Copy the response into a chat with a different colleague and edit it there",
           "Restart the Copilot Chat application",
           "Select the Pages icon below the response and choose \"Edit in Pages\""
         ],
@@ -63812,7 +63812,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "How can a user convert a completed Copilot Page into a Word document?",
         "options": [
-          "Print the page and manually retype it into Word",
+          "Print the page and manually retype it into Word from the printed copy",
           "Delete the page and start over in Word",
           "Pages cannot be converted to Word documents",
           "Select the Word icon in the upper right corner of the page"
@@ -63838,7 +63838,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A business development associate needs to build a client proposal deck quickly from scattered emails, a pricing spreadsheet, and notes. Which combination of tools reflects an approach shown in the training?",
         "options": [
-          "Asking Copilot to auto-send the deck without any review",
+          "Asking Copilot to auto-send the deck without any review by the associate or the client",
           "Summarizing client emails in Outlook, then building the deck directly in PowerPoint",
           "Ignoring all prior client communications",
           "Deleting the pricing spreadsheet to save time"
