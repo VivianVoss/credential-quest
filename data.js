@@ -15071,7 +15071,7 @@ const EXAMS = {
           "Via the secrets: key under the job that calls the reusable workflow",
           "Secrets are inherited automatically without any keys",
           "Via the with: key",
-          "Via the env: key"
+          "Via the env: key on the calling job, which the reusable workflow then inherits"
         ],
         "correct": 0,
         "explain": "Reusable workflows declare needed secrets under on.workflow_call.secrets, and the caller supplies them with the secrets: key (or secrets: inherit)."
@@ -15148,7 +15148,7 @@ const EXAMS = {
         "options": [
           "Via the github.service context",
           "Via localhost or 127.0.0.1 with the mapped port",
-          "Via the service's container hostname directly",
+          "Via the service's container hostname directly, with no port mapping",
           "Automatically without any host reference"
         ],
         "correct": 1,
@@ -15187,7 +15187,7 @@ const EXAMS = {
         "options": [
           "Only the failed job is retried automatically",
           "GitHub cancels all remaining in-progress and queued matrix jobs",
-          "They continue running to completion",
+          "They continue running to completion while only the failed job stops",
           "Nothing, fail-fast is disabled by default"
         ],
         "correct": 1,
@@ -15250,8 +15250,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What do YAML anchors and aliases let you do in a single workflow file?",
         "options": [
-          "Call an external workflow file",
-          "Import environment variables from another repository",
+          "Call an external workflow file from another repository, the way a job with uses: calls a reusable workflow",
+          "Import environment variables and steps from another repository by pointing an alias at its workflow file",
           "Define reusable steps or mappings once (with &) and reference them elsewhere (with *) to avoid duplication",
           "Define matrix combinations"
         ],
@@ -15341,10 +15341,10 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Which statement correctly distinguishes static from runtime expression evaluation in a workflow?",
         "options": [
-          "All expressions are evaluated only after the job starts running on the runner",
+          "All expressions are evaluated only after the job starts running on the runner, so matrix values, if conditions and every other expression resolve at runtime and none resolve during parsing",
           "Expressions are never evaluated; they are literal strings",
           "Some expressions (such as those in matrix or if at certain positions) can be evaluated when the workflow is parsed, before any job starts, while others are evaluated as the job runs",
-          "Only expressions inside run: steps are evaluated"
+          "Only expressions inside run: steps are evaluated, because the runner substitutes them into the script as it runs, while those under matrix or if keys stay unevaluated text"
         ],
         "correct": 2,
         "explain": "GitHub Actions evaluates some expressions statically during workflow parsing (for example, matrix generation) and others at runtime as steps execute, which affects what context data is available at each point."
@@ -15396,7 +15396,7 @@ const EXAMS = {
           "By editing the workflow YAML retention: key at runtime",
           "Programmatically via the REST API at the org or repo level",
           "It's not possible to change retention",
-          "Only by contacting GitHub Support"
+          "Only by contacting GitHub Support to change it at the org or repo level"
         ],
         "correct": 1,
         "explain": "GitHub's REST API lets organizations and repositories programmatically configure retention periods for logs, artifacts, and workflow runs."
@@ -15408,7 +15408,7 @@ const EXAMS = {
         "options": [
           "GITHUB_OUTPUT (with a step id) and the steps context",
           "GITHUB_STEP_SUMMARY and GITHUB_ENV",
-          "GITHUB_WORKSPACE and GITHUB_SHA",
+          "GITHUB_WORKSPACE (with a step id) and the GITHUB_SHA variable",
           "GITHUB_PATH and GITHUB_ENV"
         ],
         "correct": 0,
@@ -15433,7 +15433,7 @@ const EXAMS = {
         "q": "How does a reusable workflow expose a value back to the calling workflow?",
         "options": [
           "Through the on.workflow_call.outputs section, mapped from a job output",
-          "Only through GITHUB_ENV",
+          "Only through GITHUB_ENV, which the caller reads once the reusable workflow ends",
           "Through the strategy.matrix key",
           "It cannot expose outputs"
         ],
@@ -15500,7 +15500,7 @@ const EXAMS = {
           "Expand the failed step's log output in the run details to see the error and annotations",
           "Contact GitHub Support before checking logs",
           "Rerun the entire repository's workflows at once",
-          "Delete and recreate the workflow file"
+          "Delete and recreate the workflow file so the next run starts from a clean copy with the error cleared"
         ],
         "correct": 0,
         "explain": "Expanding the failed step in the run's log view shows the command output, error messages, and any ::error:: annotations that explain the failure."
@@ -15510,10 +15510,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "You need to understand exactly which steps a workflow file will run because it heavily uses YAML anchors and aliases. What should you do?",
         "options": [
-          "Assume anchors always duplicate the first job",
+          "Assume anchors always duplicate the first job, so every alias simply runs a copy of that job's steps in the same order",
           "Anchors cannot be used in workflow files so this isn't possible",
           "Mentally (or with a tool) expand each alias (*) back to its anchor (&) definition to see the fully merged steps/mappings",
-          "Ignore the anchors since they have no runtime effect"
+          "Ignore the anchors since they have no runtime effect, and read only the steps written out in full under each job's steps key"
         ],
         "correct": 2,
         "explain": "Since aliases reference anchored content, correctly interpreting a workflow with anchors/aliases requires expanding each alias to see the actual merged steps or mappings that will run."
@@ -15524,7 +15524,7 @@ const EXAMS = {
         "q": "A matrix job is named 'build (ubuntu-latest, 18)' in the Actions UI. What does this tell you?",
         "options": [
           "It indicates the job failed",
-          "The job ran on a runner named ubuntu-latest-18",
+          "The job ran on a runner named ubuntu-latest-18, which the runner group assigned to that particular job run",
           "The job name reflects the matrix axis values (OS and version) for that particular matrix combination",
           "It is a reusable workflow output"
         ],
@@ -15538,7 +15538,7 @@ const EXAMS = {
         "options": [
           "Use 'Re-run failed jobs' or select and re-run that specific matrix job from the run's UI",
           "Manually edit the YAML to remove the matrix",
-          "Re-run the entire workflow from scratch",
+          "Re-run the entire workflow from scratch, repeating every matrix combination that already passed",
           "Delete the workflow and matrix entirely"
         ],
         "correct": 0,
@@ -15562,7 +15562,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What must you do to retrieve a workflow artifact after a run completes?",
         "options": [
-          "Artifacts are automatically emailed to the repo owner",
+          "Artifacts are automatically emailed to the repo owner as an attachment once the run has finished successfully",
           "Download it from the run summary page or via the REST API before it expires per the retention policy",
           "Artifacts are kept forever with no action needed",
           "Artifacts can only be viewed, never downloaded"
@@ -15604,7 +15604,7 @@ const EXAMS = {
           "In a dedicated public-only repository accessible to anyone",
           "In the GitHub Marketplace",
           "In the organization's .github repository's workflow-templates directory",
-          "Inside every repository individually"
+          "Inside every repository individually, in its own .github/workflows directory"
         ],
         "correct": 2,
         "explain": "Organization workflow templates live in the workflow-templates directory of the organization's special .github repository, and can be scoped for internal/non-public consumption."
@@ -15641,7 +15641,7 @@ const EXAMS = {
         "q": "What is the practical difference between disabling and deleting a workflow?",
         "options": [
           "They are identical actions",
-          "Deleting a workflow only removes future runs but keeps the file",
+          "Deleting a workflow only removes future runs but keeps the file, whereas disabling removes the file and its run history",
           "Disabling stops the workflow from running while preserving its run history and file, whereas deleting removes it",
           "Disabling permanently deletes all workflow history"
         ],
@@ -15679,7 +15679,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "You need to consume a reusable workflow that lives in a private repository from a different repository in the same organization. What must be true?",
         "options": [
-          "Nothing special is required; private reusable workflows can always be called cross-repo",
+          "Nothing special is required; private reusable workflows can always be called cross-repo by anyone in the same organization",
           "The calling repository must have access permitted through the reusable workflow's repository access settings",
           "Only public reusable workflows can be invoked at all",
           "Reusable workflows can never be shared across repositories"
@@ -15708,7 +15708,7 @@ const EXAMS = {
           "Only the most recent run",
           "Only artifacts, not logs",
           "Past runs' durations, statuses, triggering actors, and logs over time",
-          "Nothing useful for troubleshooting"
+          "Nothing useful for troubleshooting, since past runs keep no status or logs"
         ],
         "correct": 2,
         "explain": "The run history view lists past runs with their status, duration, trigger, and actor, letting you compare current failures against historical successful runs."
@@ -15720,7 +15720,7 @@ const EXAMS = {
         "options": [
           "The repository Wiki",
           "The Actions tab's filter controls",
-          "The Issues tab",
+          "The Issues tab's search filter controls",
           "The Insights > Community tab"
         ],
         "correct": 1,
@@ -15732,7 +15732,7 @@ const EXAMS = {
         "q": "What happens to a matrix job's logs when fail-fast cancels other combinations after one fails?",
         "options": [
           "Cancelled jobs are automatically retried",
-          "All logs for the entire matrix are deleted immediately",
+          "All logs for the entire matrix are deleted immediately, even for the job that failed",
           "Cancelled combinations show as cancelled and their partial logs remain viewable",
           "The whole workflow file is deleted"
         ],
@@ -15783,7 +15783,7 @@ const EXAMS = {
         "options": [
           "Downloading via the GitHub CLI",
           "Viewing them directly in the workflow's YAML file",
-          "Downloading from the run summary page",
+          "Downloading from the run summary page in the Actions tab",
           "Downloading via the REST API"
         ],
         "correct": 1,
@@ -15795,8 +15795,8 @@ const EXAMS = {
         "q": "Your organization published both a reusable workflow and a composite action that accomplish similar dependency-install logic. When would you prefer the composite action?",
         "options": [
           "When you need to encapsulate a handful of steps as a single reusable step inside many different jobs across many different workflows",
-          "When you need an entire versioned job graph invoked once per workflow",
-          "Composite actions cannot be reused across repositories",
+          "When you need an entire versioned job graph invoked once per workflow, with its own runners, jobs and needs dependencies defined in a single called file",
+          "Composite actions cannot be reused across repositories, so prefer one only for steps that stay inside the workflows of a single repository",
           "There's never a reason to prefer one over the other"
         ],
         "correct": 0,
@@ -15823,7 +15823,7 @@ const EXAMS = {
           "It re-executes every job in that workflow run from scratch",
           "It deletes the run",
           "It disables the workflow",
-          "It only re-runs failed jobs"
+          "It only re-runs failed jobs and leaves the jobs that succeeded untouched"
         ],
         "correct": 0,
         "explain": "'Re-run all jobs' restarts the entire set of jobs in that workflow run, as opposed to 'Re-run failed jobs,' which only restarts jobs that did not succeed."
@@ -15926,7 +15926,7 @@ const EXAMS = {
         "options": [
           "Under the env key in action.yml",
           "Under the inputs key in action.yml, with required: true",
-          "By hardcoding it in the workflow that calls it",
+          "By hardcoding it in the workflow that calls it, with no entry in action.yml",
           "In a separate inputs.yml file"
         ],
         "correct": 1,
@@ -15938,7 +15938,7 @@ const EXAMS = {
         "q": "How does a JavaScript action set an output value that later steps can reference?",
         "options": [
           "Outputs cannot be set by JavaScript actions",
-          "By modifying action.yml at runtime",
+          "By modifying action.yml at runtime so the outputs section holds the new value for later steps",
           "By writing to GITHUB_OUTPUT (directly or via the Actions Toolkit's core.setOutput)",
           "By printing to stderr"
         ],
@@ -15965,7 +15965,7 @@ const EXAMS = {
         "options": [
           "It can only be published by GitHub employees",
           "It must have zero inputs",
-          "It must be written in Docker only",
+          "It must be written in Docker only, with a Dockerfile at the root of a private repository",
           "It must live in a public repository with an action.yml file at the repository root"
         ],
         "correct": 3,
@@ -16003,7 +16003,7 @@ const EXAMS = {
         "q": "What distribution model keeps a custom action usable only within your own organization's repositories, not the public Marketplace?",
         "options": [
           "There is no way to restrict an action's audience",
-          "Publishing as a Docker Hub image",
+          "Publishing as a Docker Hub image that workflows in any organization can pull by name",
           "Private action distribution (private repository, internal/org-scoped access)",
           "Publishing to Marketplace"
         ],
@@ -16093,10 +16093,10 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "You're auditing a third-party Docker container action before adopting it. Which is a legitimate security concern specific to this action type?",
         "options": [
-          "There is no meaningful difference in risk from JavaScript actions",
+          "There is no meaningful difference in risk from JavaScript actions, because both types are fully reviewed by reading the action.yml file and its declared inputs alone",
           "The container image build process and base image supply chain could introduce vulnerabilities or malicious code not visible from the action.yml alone",
           "Docker container actions are always safer than JavaScript actions",
-          "Docker actions cannot access secrets so there is no risk"
+          "Docker actions cannot access secrets so there is no risk, since the container runs in isolation from the job and nothing from the workflow ever reaches it"
         ],
         "correct": 1,
         "explain": "Because Docker container actions run a full container image, the security review needs to cover the Dockerfile, base image, and build process, not just the action's YAML, since vulnerabilities can be hidden in the image layers."
@@ -16108,7 +16108,7 @@ const EXAMS = {
         "options": [
           "It sets default values",
           "It documents what each input/output does, shown to users of the action and in Marketplace listings",
-          "It enforces type validation strictly",
+          "It enforces type validation strictly, rejecting any with: value that does not match the declared input or output",
           "It has no functional or documentation purpose"
         ],
         "correct": 1,
@@ -16122,7 +16122,7 @@ const EXAMS = {
           "By printing ::error file={name},line={line}::{message} to stdout, which GitHub parses into an annotation",
           "By calling the GitHub REST API directly with no workflow command",
           "Workflow commands cannot include a file or line",
-          "By writing to a special errors.yml file"
+          "By writing to a special errors.yml file in the workspace, which GitHub parses into an annotation after the job"
         ],
         "correct": 0,
         "explain": "Workflow commands such as ::error:: accept optional parameters like file and line, and printing the formatted string produces an annotation displayed in the run's UI at that location."
@@ -16135,7 +16135,7 @@ const EXAMS = {
           "Never change any behavior once v1 is published",
           "Publish every commit as a new major version",
           "Follow semantic versioning, document breaking changes, and update the major-version tag deliberately",
-          "Delete old tags whenever a new version is released"
+          "Delete old tags whenever a new version is released so that consumers are always moved to the latest major version"
         ],
         "correct": 2,
         "explain": "Well-maintained actions follow semantic versioning and clearly document breaking changes, moving major-version tags deliberately so consumers on that tag don't get silently broken."
@@ -16160,7 +16160,7 @@ const EXAMS = {
         "options": [
           "The input name in the workflow's with: doesn't match the input key defined in the action's action.yml",
           "JavaScript actions cannot receive inputs at all",
-          "The workflow needs a matrix strategy to pass inputs",
+          "The workflow needs a matrix strategy to pass inputs, because with: values only reach an action through matrix axes",
           "Inputs only work for Docker actions"
         ],
         "correct": 0,
@@ -16185,7 +16185,7 @@ const EXAMS = {
         "q": "Why might a team choose to distribute an internal action privately rather than publishing it publicly?",
         "options": [
           "Private actions run faster than public ones",
-          "Private distribution is required for all Docker actions",
+          "Private distribution is required for all Docker actions that run inside an organization's repositories",
           "To keep proprietary automation logic restricted to their own organization's repositories",
           "Private actions don't need an action.yml"
         ],
@@ -16198,7 +16198,7 @@ const EXAMS = {
         "q": "A JavaScript action needs to call the GitHub REST API on behalf of the workflow. Which approach is idiomatic for authoring the action?",
         "options": [
           "Always require a separate Docker container just to call the API",
-          "Hardcode a personal access token into the action's source code",
+          "Hardcode a personal access token into the action's source code and send requests to the REST API with a plain HTTP client",
           "Use the @actions/github package (Octokit client) bundled with a token passed as an input, typically GITHUB_TOKEN",
           "Actions cannot call the GitHub API"
         ],
@@ -16210,7 +16210,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which two runner types can execute a GitHub Actions job?",
         "options": [
-          "Public runners and private runners only",
+          "Public runners and private runners only, set per repository",
           "Cloud runners and edge runners",
           "Docker runners and VM runners",
           "GitHub-hosted runners and self-hosted runners"
@@ -16226,7 +16226,7 @@ const EXAMS = {
           "They provide a clean instance for every job execution and receive automatic OS/tool updates from GitHub",
           "They require the customer to patch the OS",
           "They are only available on GitHub Enterprise Server",
-          "They persist state between jobs by default"
+          "They persist state between jobs by default, and installed tools and files carry over from one job execution to the next"
         ],
         "correct": 0,
         "explain": "GitHub-hosted runners are provisioned fresh for every job and GitHub automatically updates the operating system, preinstalled tools, and the runner application; GitHub-hosted runners are only available on Enterprise Cloud, not Enterprise Server."
@@ -16239,7 +16239,7 @@ const EXAMS = {
           "They persist state between jobs, and the customer is responsible for OS and software updates",
           "GitHub automatically updates their OS and tools",
           "They cannot access internal/private network resources",
-          "They always run in a clean, ephemeral VM per job by default"
+          "They always run in a clean, ephemeral VM per job by default, with GitHub applying the OS and software updates"
         ],
         "correct": 0,
         "explain": "Self-hosted runners don't necessarily reset between jobs (allowing persistent caches) and require the runner owner to maintain the OS and installed software, unlike GitHub-hosted runners."
@@ -16276,9 +16276,9 @@ const EXAMS = {
         "q": "Why do self-hosted runners on public repositories carry meaningful security risk?",
         "options": [
           "Anyone can submit a pull request that triggers workflow execution, potentially letting an attacker run arbitrary code on the self-hosted infrastructure",
-          "They don't; public repositories never trigger workflows",
+          "They don't; public repositories never trigger workflows, so a pull request can never start any code on the self-hosted infrastructure",
           "Self-hosted runners cannot run on repositories at all",
-          "Public repositories block all self-hosted runner usage automatically"
+          "Public repositories block all self-hosted runner usage automatically, so the only risk is that workflows stall and leave the self-hosted infrastructure sitting idle"
         ],
         "correct": 0,
         "explain": "Because anyone can open a pull request against a public repository, enabling self-hosted runners there risks letting an attacker's PR trigger workflow code execution on infrastructure the organization controls, which can lead to RCE, cryptomining, or credential theft."
@@ -16288,9 +16288,9 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Which mitigation is recommended to reduce the risk of self-hosted runners on public repositories?",
         "options": [
-          "Give every self-hosted runner administrator privileges",
+          "Give every self-hosted runner administrator privileges so it can block suspicious workflows from external contributors",
           "Disable all logging on self-hosted runners",
-          "Always auto-run workflows from any fork without review",
+          "Always auto-run workflows from any fork without review, so that external contributors get fast feedback from the self-hosted runners",
           "Restrict self-hosted runners to private repositories and require approval for workflows from external/forked contributors"
         ],
         "correct": 3,
@@ -16330,7 +16330,7 @@ const EXAMS = {
           "By consulting the runner image release notes / GitHub's toolcache documentation for that image",
           "Only by trial and error at runtime",
           "Preinstalled software cannot be discovered",
-          "Preinstalled software is identical across all images and never changes"
+          "Preinstalled software is identical across all images and never changes, so no documentation for it exists"
         ],
         "correct": 0,
         "explain": "GitHub publishes runner image release notes (and toolcache listings) documenting exactly which languages, tools, and versions are preinstalled on each hosted runner image."
@@ -16407,7 +16407,7 @@ const EXAMS = {
         "options": [
           "Secrets are auto-generated and cannot be set manually",
           "Secrets can only ever be set through the UI",
-          "By editing action.yml directly",
+          "By editing action.yml directly and committing the secret value to the repository",
           "Programmatically via the REST API (or the gh CLI, e.g. gh secret set)"
         ],
         "correct": 3,
@@ -16432,7 +16432,7 @@ const EXAMS = {
         "q": "Which allowed-actions policy option is the most restrictive?",
         "options": [
           "Allow only actions created by GitHub",
-          "Allow only actions created within the organization",
+          "Allow only actions created within the organization's own repositories",
           "Allow all actions and reusable workflows",
           "Block all actions except those on an explicit allowlist"
         ],
@@ -16457,7 +16457,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which organization setting can require manual approval before workflows run for pull requests submitted from forks?",
         "options": [
-          "The branch protection rules only",
+          "The branch protection rules only, applied to the default branch",
           "The Marketplace listing settings",
           "The 'Fork pull request workflows' approval policy",
           "The repository visibility setting"
@@ -16472,7 +16472,7 @@ const EXAMS = {
         "options": [
           "Only through the Marketplace",
           "GitHub does not support centralizing shared automation",
-          "Each repository must maintain its own independent copy with no sharing possible",
+          "Each repository must maintain its own independent copy with no sharing possible, so every update has to be repeated by hand across repositories",
           "By hosting them in dedicated repositories with controlled access and referencing them from other repos via workflow_call or uses:"
         ],
         "correct": 3,
@@ -16522,7 +16522,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "An enterprise wants log retention for its audit logs to meet a 90-day compliance requirement. Where is this configured?",
         "options": [
-          "It cannot be configured; retention is fixed at 30 days for everyone",
+          "It cannot be configured; retention is fixed at 30 days for everyone, including enterprise accounts",
           "Only GitHub Support can change retention",
           "Organization Settings > Security > Audit Log retention settings (or via the API)",
           "Inside each workflow YAML file"
@@ -16549,7 +16549,7 @@ const EXAMS = {
         "q": "What is a repository deploy key primarily used for compared to a GitHub App installation token?",
         "options": [
           "Providing read or write Git access to a single repository, but not REST/GraphQL API access",
-          "Providing full REST and GraphQL API access to multiple repositories",
+          "Providing full REST and GraphQL API access to multiple repositories, with no read or write Git access",
           "Providing organization-wide administrative access",
           "Automatically rotating every hour"
         ],
@@ -16575,7 +16575,7 @@ const EXAMS = {
         "q": "Which of these is a valid reason to configure IP allow lists for self-hosted runners?",
         "options": [
           "To make the runner run faster",
-          "To bypass the need for encrypted secrets",
+          "To bypass the need for encrypted secrets by trusting known IP addresses instead",
           "To restrict network access to the runner to known, trusted IP addresses",
           "To automatically update the runner's OS"
         ],
@@ -16587,10 +16587,10 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "How can enterprise administrators enforce that reusable workflows referenced by repositories come only from vetted, internal sources?",
         "options": [
-          "By requiring every workflow file to be renamed",
+          "By requiring every workflow file to be renamed with an internal prefix before any repository is able to reference it",
           "Only by deleting all other repositories",
           "By configuring the allowed actions and reusable workflows policy to permit only organization-created or explicitly allowlisted workflows",
-          "There is no way to control which reusable workflows are called"
+          "There is no way to control which reusable workflows are called, because the allowed actions policy governs only third-party actions and never any workflows"
         ],
         "correct": 2,
         "explain": "The same allowed-actions/reusable-workflows policy that governs third-party actions also governs which reusable workflows repositories are permitted to call, letting admins restrict usage to internal or allowlisted sources."
@@ -16601,9 +16601,9 @@ const EXAMS = {
         "q": "Which of the following is true about environment-level secrets compared to repository-level secrets?",
         "options": [
           "Environment secrets cannot be referenced in workflows at all",
-          "Environment secrets replace the need for repository secrets entirely",
+          "Environment secrets replace the need for repository secrets entirely, so repository-level secrets are ignored by any workflow that references a deployment environment",
           "Environment secrets apply only to jobs referencing that specific deployment environment, offering finer-grained scoping such as separating staging and production credentials",
-          "Environment secrets are always visible to all jobs regardless of environment"
+          "Environment secrets are always visible to all jobs regardless of environment, so staging and production jobs in the same repository share one set of credentials with no finer-grained scoping"
         ],
         "correct": 2,
         "explain": "Environment-level secrets are scoped to jobs that declare that specific environment (for example, 'production'), allowing different credentials for different deployment stages within the same repository."
@@ -16628,7 +16628,7 @@ const EXAMS = {
         "options": [
           "Ephemeral runners are always GitHub-hosted",
           "Ephemeral runners are torn down after each job, reducing the risk that a compromised job affects subsequent jobs",
-          "Ephemeral runners never need any configuration",
+          "Ephemeral runners never need any configuration, so an enterprise can adopt them without registering, provisioning or securing anything",
           "Ephemeral runners can only run one workflow ever"
         ],
         "correct": 1,
@@ -16641,7 +16641,7 @@ const EXAMS = {
         "options": [
           "Fork the action into a private repo and rename it",
           "Ask GitHub Support to whitelist it globally for every customer",
-          "Nothing; all third-party actions are always blocked permanently",
+          "Nothing; all third-party actions are always blocked permanently, with no exceptions allowed",
           "Explicitly add that action's repository to the organization's actions allowlist"
         ],
         "correct": 3,
@@ -16653,9 +16653,9 @@ const EXAMS = {
         "q": "Which of these best describes 'managing runners at scale' in an enterprise context?",
         "options": [
           "Configuring, monitoring, grouping, and troubleshooting many GitHub-hosted and self-hosted runners across the organization consistently",
-          "Only applies to organizations with fewer than 5 repositories",
+          "Only applies to organizations with fewer than 5 repositories, where a single administrator can configure, monitor and troubleshoot each runner individually",
           "Has nothing to do with runner groups",
-          "Manually SSHing into a single runner once"
+          "Manually SSHing into a single runner once to configure and troubleshoot it, then leaving every other runner in the organization unmanaged"
         ],
         "correct": 0,
         "explain": "Managing runners at scale involves configuring and monitoring both runner types, organizing them into runner groups, applying network/security controls, and troubleshooting issues across many repositories consistently."
@@ -16668,7 +16668,7 @@ const EXAMS = {
           "An administrator must explicitly add the new repository to that organization secret's repository access list",
           "Secrets scoped to 'selected repositories' can never be extended",
           "The repository must be renamed to match the secret",
-          "The secret automatically becomes available to every new repository"
+          "The secret automatically becomes available to every new repository in the organization, with no change to its access list"
         ],
         "correct": 0,
         "explain": "When an organization secret's access policy is set to 'selected repositories,' an administrator must explicitly add each additional repository to that access list before workflows in that repository can use the secret."
@@ -16706,7 +16706,7 @@ const EXAMS = {
         "options": [
           "Assign the untrusted value to an intermediate environment variable first, then reference the environment variable in the script",
           "Disable all logging",
-          "Interpolate the value with ${{ }} directly into the shell command",
+          "Interpolate the value with ${{ }} directly into the shell command, wrapped in double quotes so the shell treats the untrusted text as one string",
           "Always use a Docker container action instead"
         ],
         "correct": 0,
@@ -16733,7 +16733,7 @@ const EXAMS = {
           "It's created once per repository and never expires",
           "It is a long-lived credential valid indefinitely",
           "It's created at the start of a job and expires when the job completes",
-          "It must be manually generated and rotated by an admin"
+          "It must be manually generated and rotated by an admin before each job runs"
         ],
         "correct": 2,
         "explain": "GITHUB_TOKEN is automatically generated for each job, scoped to the triggering repository, and expires once the job finishes, making it a short-lived, ephemeral credential."
@@ -16797,7 +16797,7 @@ const EXAMS = {
         "options": [
           "The workflow will fail the policy check because it isn't pinned to a full commit SHA",
           "Nothing changes; tags are automatically treated as SHAs",
-          "The workflow runs but the action is silently skipped",
+          "The workflow runs but the action is silently skipped, and the remaining steps carry on as usual",
           "The policy only applies to Docker actions"
         ],
         "correct": 0,
@@ -16808,7 +16808,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What do artifact attestations (build provenance attestations) help verify?",
         "options": [
-          "The billing cost of a workflow run",
+          "The billing cost of a workflow run, establishing what each build consumed for budget reporting",
           "The number of collaborators on a repository",
           "The runtime performance of a workflow",
           "What was built, where, and how, establishing provenance for supply-chain security"
@@ -16862,7 +16862,7 @@ const EXAMS = {
         "options": [
           "Requiring reviewers to approve unverified actions before they can be adopted in workflows",
           "Disabling all code review entirely",
-          "Automatically allowing all Marketplace actions",
+          "Automatically allowing all Marketplace actions, including unverified ones, to be adopted in workflows",
           "Removing the concept of actions altogether"
         ],
         "correct": 0,
@@ -16873,7 +16873,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Which practice most directly reduces GitHub Actions cost and runtime for a large matrix build?",
         "options": [
-          "Always running every possible OS and version combination regardless of need",
+          "Always running every possible OS and version combination regardless of need, with max-parallel raised to run them all at once",
           "Right-sizing the matrix (removing unnecessary OS/version combinations) and using max-parallel and caching effectively",
           "Disabling all caching to keep runs 'clean'",
           "Increasing fail-fast timeouts indefinitely"
@@ -16913,9 +16913,9 @@ const EXAMS = {
         "q": "A workflow currently grants GITHUB_TOKEN broad read/write permissions by default and calls several third-party actions. Which combination of changes best improves its security posture without breaking functionality?",
         "options": [
           "Disable the workflow",
-          "Switch every action to a Docker container action",
+          "Switch every action to a Docker container action, keep the broad default permissions, and rebuild the images at the workflow level for each job",
           "Set default permissions to read-only at the workflow level, elevate specific jobs' permissions only as needed, and pin third-party actions to commit SHAs",
-          "Remove all permissions entirely so the token can't be used at all"
+          "Remove all permissions entirely so the token can't be used at all, and leave third-party actions on their current tags so that existing job steps carry on exactly as they do today"
         ],
         "correct": 2,
         "explain": "Defaulting to read-only permissions and elevating only where a job genuinely needs write access, combined with SHA-pinning third-party actions, applies least privilege and reduces the impact of a potentially compromised dependency, without breaking the workflow's functionality."
@@ -16925,9 +16925,9 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which of these is a legitimate strategy for scaling GitHub Actions workflows across a large organization while controlling cost?",
         "options": [
-          "Only ever using the most expensive runner size for every job regardless of need",
+          "Only ever using the most expensive runner size for every job regardless of need, so that caching and right-sized matrices become unnecessary",
           "Combining reusable workflows/composite actions for consistency with caching, right-sized matrices, and tuned runner selection (hosted vs. self-hosted)",
-          "Giving every repository unlimited concurrent self-hosted runners with no governance",
+          "Giving every repository unlimited concurrent self-hosted runners with no governance, so teams can copy workflows freely and each run picks whatever machine is free",
           "Disabling all workflows above a certain repository size"
         ],
         "correct": 1,
