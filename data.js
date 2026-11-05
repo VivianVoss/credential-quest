@@ -101833,7 +101833,7 @@ const EXAMS = {
         "q": "A table has a clustered index on OrderID. A developer wants to add a second clustered index on OrderDate to speed up date-range reports. What should you tell them?",
         "options": [
           "Clustered indexes must be nonunique",
-          "This is supported and recommended for range queries",
+          "This is supported and recommended for range queries, as each clustered index stores its own row order",
           "A table can have only one clustered index because it defines the physical row order",
           "Clustered indexes cannot be created on date columns"
         ],
@@ -101871,7 +101871,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A team needs a table that keeps all data exclusively in RAM for microsecond-latency trading calculations, while still surviving a server restart without losing committed data. Which table configuration meets this requirement?",
         "options": [
-          "A standard disk-based table with a clustered columnstore index",
+          "A standard disk-based table with a clustered columnstore index held on durable storage",
           "A table created WITH (MEMORY_OPTIMIZED = ON, DURABILITY = SCHEMA_AND_DATA)",
           "A temporal table with SYSTEM_VERSIONING = ON",
           "An external table pointing to a data lake"
@@ -101956,7 +101956,7 @@ const EXAMS = {
           "CHECK constraints are not enforced on INSERT",
           "The constraint syntax is incorrect",
           "NULL evaluates to UNKNOWN, and UNKNOWN doesn't fail the CHECK expression the way FALSE does",
-          "CHECK constraints only apply to UPDATE statements"
+          "CHECK constraints only apply to UPDATE statements, so a row inserted with a NULL salary is never tested"
         ],
         "correct": 2,
         "explain": "Because NULL evaluates to UNKNOWN in a logical expression rather than FALSE, a row with a NULL value in the constrained column doesn't violate the CHECK constraint and is allowed through."
@@ -102007,7 +102007,7 @@ const EXAMS = {
         "options": [
           "NVARCHAR(MAX) cannot store valid JSON text",
           "It stores JSON in binary format that is already parsed, improving read/write efficiency and compression",
-          "It is the only type JSON_VALUE can be used with",
+          "It is the only type JSON_VALUE can be used with, so NVARCHAR(MAX) documents must be converted before they are queried",
           "It removes the need for JSON path expressions"
         ],
         "correct": 1,
@@ -102034,7 +102034,7 @@ const EXAMS = {
           "Convert the entire column to XML",
           "Add a computed column using JSON_VALUE to extract the property, then index that computed column",
           "Increase the column's MAX size",
-          "Create a full-text index directly on the JSON column"
+          "Create a full-text index directly on the JSON column, then filter on the category property with JSON_VALUE"
         ],
         "correct": 1,
         "explain": "Because a json/NVARCHAR(MAX) column can't directly be an index key, you add a computed column (optionally PERSISTED) that extracts the property with JSON_VALUE, then create an index on that computed column to enable index seeks instead of full scans."
@@ -102059,7 +102059,7 @@ const EXAMS = {
         "options": [
           "A multi-terabyte table needing tiered storage",
           "A table where most queries scan the entire table or filter on varying columns",
-          "Needing to rebuild indexes on only the most recent data",
+          "Needing to rebuild indexes on only the most recent data, one partition at a time",
           "Regular monthly archival of old data"
         ],
         "correct": 1,
@@ -102110,7 +102110,7 @@ const EXAMS = {
         "q": "A view named HighValueOrders filters WHERE TotalAmount > 1000 and includes WITH CHECK OPTION. What happens if an application tries to INSERT a row through this view with TotalAmount = 500?",
         "options": [
           "The database rejects the insert because the new row would not satisfy the view's WHERE condition",
-          "WITH CHECK OPTION only applies to UPDATE statements, so the insert succeeds",
+          "WITH CHECK OPTION only applies to UPDATE statements, so the insert succeeds but the view hides the new row",
           "The insert succeeds but TotalAmount is silently changed to 1000",
           "The row is inserted normally"
         ],
@@ -102123,7 +102123,7 @@ const EXAMS = {
         "q": "Why should you avoid naming a custom stored procedure with the sp_ prefix, such as sp_GetCustomerOrders?",
         "options": [
           "The prefix is reserved for system procedures, and SQL Server searches the master database first, adding overhead",
-          "It is a purely cosmetic convention with no performance impact",
+          "It is a purely cosmetic convention with no performance impact, since SQL Server resolves every name in the current database first",
           "sp_ procedures cannot use TRY...CATCH",
           "sp_ prefixed procedures cannot accept parameters"
         ],
@@ -102160,8 +102160,8 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A scalar function is used in the WHERE clause of a query against a table with 10 million rows. What performance problem is likely, and what is a recommended alternative?",
         "options": [
-          "Scalar functions can only be used in SELECT lists, not WHERE clauses",
-          "No problem exists; scalar functions are always optimized away",
+          "Scalar functions can only be used in SELECT lists, not WHERE clauses, so the query must be rewritten to compute the value first and filter it in an outer query",
+          "No problem exists; scalar functions are always optimized away, so the function never runs per row and an inline table-valued function would offer no advantage at all",
           "The query will fail with a syntax error",
           "SQL Server may execute the function once per row, significantly degrading performance; an inline table-valued function is often a better alternative"
         ],
@@ -102243,7 +102243,7 @@ const EXAMS = {
         "q": "A recursive CTE has an anchor member and a recursive member joined with UNION ALL. What is the purpose of the anchor member?",
         "options": [
           "It provides the initial result set that the recursive member builds upon",
-          "It defines the termination condition only",
+          "It defines the termination condition only, ending the recursion when it is met",
           "It must always return zero rows",
           "It disables recursion"
         ],
@@ -102335,7 +102335,7 @@ const EXAMS = {
         "options": [
           "Both modes return NULL silently",
           "Strict mode raises an error for the missing path; lax mode (the default) returns NULL",
-          "Strict mode returns an empty string; lax mode raises an error",
+          "Strict mode returns an empty string for the missing path; lax mode (the default) raises an error",
           "Path modes only affect JSON_QUERY, not JSON_VALUE"
         ],
         "correct": 1,
@@ -102411,7 +102411,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Running fuzzy matching functions like EDIT_DISTANCE_SIMILARITY against every row of a 1,000,000-row table is slow. What is the recommended optimization strategy?",
         "options": [
-          "Fuzzy matching cannot be optimized and should be avoided entirely",
+          "Fuzzy matching cannot be optimized and should be avoided entirely, using only exact comparisons against every row in its place",
           "Only run fuzzy matching once per day",
           "Convert all columns to computed columns first",
           "Pre-filter the candidate set with indexed exact or LIKE-based conditions before applying the fuzzy match"
@@ -102426,7 +102426,7 @@ const EXAMS = {
         "options": [
           "Person1 and Person2 must be identical nodes",
           "This syntax is only valid for DELETE statements",
-          "Person2 manages Person1",
+          "Person2 manages Person1, since the edge runs against the arrow",
           "An edge in the Manages table goes from Person1 to Person2"
         ],
         "correct": 3,
@@ -102439,7 +102439,7 @@ const EXAMS = {
         "options": [
           "PARTITION BY with a graph hint",
           "SHORTEST_PATH with the FOR PATH keyword on participating tables",
-          "JSON_PATH_EXISTS with a quantifier",
+          "JSON_PATH_EXISTS with a quantifier like {1,3} on the participating tables",
           "A recursive CTE; no special keyword needed"
         ],
         "correct": 1,
@@ -102451,7 +102451,7 @@ const EXAMS = {
         "q": "A correlated subquery in a WHERE clause references a column from the outer query, such as p2.ProductCategoryID = p.ProductCategoryID. How does this differ in execution from a non-correlated subquery?",
         "options": [
           "Correlated subqueries can never appear in a WHERE clause",
-          "It behaves identically and executes only once",
+          "It behaves identically and executes only once, computing a single fixed value before the outer query processes any rows",
           "It logically executes once for each row processed by the outer query, since it depends on that row's values",
           "It is always faster than a non-correlated subquery"
         ],
@@ -102479,7 +102479,7 @@ const EXAMS = {
           "Add a TOP 1 to the outer query",
           "Move the subquery into the FROM clause instead",
           "Wrap the subquery in an aggregate function like MAX(), MIN(), or SUM() so it always returns exactly one value",
-          "Rewrite the subquery to reference no outer columns"
+          "Rewrite the subquery to reference no outer columns, so that it no longer depends on the row being processed by the outer query"
         ],
         "correct": 2,
         "explain": "A correlated subquery placed in the SELECT clause must return exactly one value per row. If the underlying query could return multiple rows, wrapping it in an aggregate function like MAX() or SUM() guarantees a single scalar result."
@@ -102557,7 +102557,7 @@ const EXAMS = {
           "Credentials are automatically redacted by Copilot, so no precaution is needed",
           "Paste them into prompts so Copilot can generate accurate connection strings",
           "Never paste credentials into prompts; use environment variables or parameterized approaches instead",
-          "Store them directly in .github/copilot-instructions.md for convenience"
+          "Store them directly in .github/copilot-instructions.md for convenience, where Copilot can read them for every prompt"
         ],
         "correct": 2,
         "explain": "Guidance is explicit: never paste credentials into prompts, and instead store connection information in environment variables or use parameterized approaches, then review AI-generated code before committing it to source control."
@@ -102582,7 +102582,7 @@ const EXAMS = {
         "options": [
           "Inside each individual .sql file as a comment header",
           "In a .vscode/settings.json file",
-          "A file named instructions.json in the root directory",
+          "A file named instructions.json in the root directory of the repository, beside the .github folder",
           "A file named copilot-instructions.md in the .github folder at the repository root"
         ],
         "correct": 3,
@@ -102672,7 +102672,7 @@ const EXAMS = {
         "q": "A support team should see customer emails as 'jXXX@XXXX.com' rather than the full address, while the underlying data stays unchanged. Which feature and function accomplish this?",
         "options": [
           "Always Encrypted with RANDOMIZED encryption",
-          "Row-Level Security filter predicate",
+          "Row-Level Security filter predicate on the email column",
           "Transparent Data Encryption",
           "Dynamic Data Masking using the email() function"
         ],
@@ -102797,9 +102797,9 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "According to guidance on securing MCP endpoints for AI agents, what should you do with AI-generated queries before executing them against a database?",
         "options": [
-          "Only validate queries that modify data, not read queries",
+          "Only validate queries that modify data, not read queries, since a read query cannot reach tables outside the permitted operations",
           "Disable all logging to improve performance",
-          "Trust them automatically since MCP servers are inherently secure",
+          "Trust them automatically since MCP servers are inherently secure, and rely on a blocklist of malicious patterns to catch anything harmful that gets through",
           "Never trust them without validation; use allow lists for permitted tables and operations rather than trying to block malicious patterns"
         ],
         "correct": 3,
@@ -102850,7 +102850,7 @@ const EXAMS = {
         "q": "What is the default MAXDOP (max degree of parallelism) setting for new Azure SQL Database databases, and why does this default exist?",
         "options": [
           "8, chosen to prevent a single query from consuming every available thread and starving other workloads",
-          "0 (unlimited), to maximize performance for every query",
+          "0 (unlimited), to maximize performance for every query by letting any single query use every available thread",
           "1, to force strictly serial execution",
           "16, matching the maximum vCore count"
         ],
@@ -102888,8 +102888,8 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "What does Accelerated Database Recovery (ADR) use to store row versions, and what is a notable side effect on write-intensive workloads?",
         "options": [
-          "It stores versions in tempdb; there is no performance impact",
-          "It requires manual configuration to enable, unlike traditional recovery",
+          "It stores versions in tempdb; there is no performance impact on write-heavy workloads, because page splits and log generation stay the same as they were without row versioning",
+          "It requires manual configuration to enable, unlike traditional recovery, and it keeps versions in the transaction log, which lowers log generation for write-heavy workloads",
           "It disables logging entirely to speed up recovery",
           "It stores versions in a persistent version store (PVS) inside the database; write-heavy workloads can see increased page splits and higher log generation"
         ],
@@ -102930,7 +102930,7 @@ const EXAMS = {
           "SERIALIZABLE, with no additional configuration",
           "SNAPSHOT isolation, after enabling ALLOW_SNAPSHOT_ISOLATION on the database",
           "READ UNCOMMITTED, for the fastest performance",
-          "READ COMMITTED; no changes needed"
+          "READ COMMITTED; no changes needed, since each statement already sees its own snapshot"
         ],
         "correct": 1,
         "explain": "SNAPSHOT isolation gives every read in the transaction a consistent view from the start of the transaction (not just the start of each statement, as RCSI provides). You must enable ALLOW_SNAPSHOT_ISOLATION on the database and explicitly set the isolation level in the session; concurrent modifications to the same row raise an update conflict rather than silently overwriting."
@@ -102996,9 +102996,9 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "In Query Store, what is the effect of running sp_query_store_force_plan for a specific query_id and plan_id?",
         "options": [
-          "It permanently deletes all other plans for that query",
+          "It permanently deletes all other plans for that query from Query Store, leaving the chosen plan as the only plan on record",
           "It disables Query Store data collection for that query",
-          "It forces a full statistics update on all tables in the query",
+          "It forces a full statistics update on all tables in the query, so the optimizer compiles a fresh plan on each future execution of the query",
           "It tells the optimizer to use that specific plan for future executions of the query, without modifying the query or application code"
         ],
         "correct": 3,
@@ -103051,7 +103051,7 @@ const EXAMS = {
           "Disabling automatic tuning",
           "Accessing tables in a consistent order across all transactions",
           "Always using READ UNCOMMITTED isolation",
-          "Increasing the deadlock monitor's polling interval"
+          "Increasing the deadlock monitor's polling interval across all transactions"
         ],
         "correct": 1,
         "explain": "If every transaction accesses tables in the same consistent order (e.g., always Table A before Table B), circular wait dependencies can't form, which prevents deadlocks by design rather than just reacting to them with retry logic."
@@ -103076,7 +103076,7 @@ const EXAMS = {
         "options": [
           "The SDK-style format based on the Microsoft.Build.Sql project SDK",
           "The legacy .dtsx format",
-          "The original MSBuild-based format from SQL Server Data Tools",
+          "The original MSBuild-based format from SQL Server Data Tools, with manual file entries",
           "The XML-only schema format"
         ],
         "correct": 0,
@@ -103100,7 +103100,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A post-deployment script seeds a lookup table using plain INSERT statements, and the second deployment run fails with duplicate key violations. What is the recommended fix?",
         "options": [
-          "Change the script to a predeployment script instead",
+          "Change the script to a predeployment script instead, so the plain INSERT statements run ahead of the schema changes",
           "Disable constraint checking during deployment",
           "Delete the post-deployment script entirely",
           "Rewrite the script to use MERGE statements so it can run safely and idempotently on every deployment"
@@ -103158,7 +103158,7 @@ const EXAMS = {
         "options": [
           "Basic authentication with a shared API key",
           "SQL authentication with a hardcoded password",
-          "Storing the connection string as plain text in the YAML file",
+          "Storing the connection string as plain text in the YAML file and passing it to the azure/login step at run time",
           "OpenID Connect (OIDC) with azure/login using AZURE_CLIENT_ID, AZURE_TENANT_ID, and AZURE_SUBSCRIPTION_ID"
         ],
         "correct": 3,
@@ -103261,7 +103261,7 @@ const EXAMS = {
         "options": [
           "The relationship requires a junction table",
           "The entity cannot be queried through GraphQL",
-          "The relationship returns exactly one related item, such as a product's category",
+          "The relationship returns exactly one related item, such as the single category of a product (a many-to-one relationship)",
           "The relationship returns multiple related items, such as a category's list of products (a one-to-many relationship)"
         ],
         "correct": 3,
@@ -103350,7 +103350,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Why does the number of tokens a model can accept in a single request matter when designing a RAG solution in SQL?",
         "options": [
-          "Tokens only affect embedding generation, never chat completions",
+          "Tokens only affect embedding generation, never chat completions, so database content passed as context is not limited by them",
           "It limits how much database content you can include as context, and providers typically charge per token processed",
           "It has no practical effect on design",
           "Token limits apply only to image inputs"
@@ -103418,7 +103418,7 @@ const EXAMS = {
           "It regenerates all previously stored embeddings automatically",
           "It has no effect until the database is restarted",
           "It updates the model's metadata centrally without requiring dependent queries or functions that reference it to be rewritten",
-          "It drops and silently recreates every dependent AI function call"
+          "It drops and silently recreates every dependent AI function call, so each query that references the model has to be rewritten afterwards"
         ],
         "correct": 2,
         "explain": "ALTER EXTERNAL MODEL updates the external model's metadata (such as endpoint or configuration) in place, so queries and AI functions referencing that model by name continue to work without being rewritten."
@@ -103429,7 +103429,7 @@ const EXAMS = {
         "q": "Which columns should generally be excluded when designing what data to include in embeddings for semantic search?",
         "options": [
           "Any NVARCHAR column regardless of content",
-          "Free-form descriptions and titles",
+          "Free-form descriptions and titles, since long text wastes tokens and dilutes similarity results",
           "Columns referenced by foreign keys",
           "Identifiers, numeric values, and operational metadata that carry no semantic meaning"
         ],
@@ -103511,7 +103511,7 @@ const EXAMS = {
         "q": "In Reciprocal Rank Fusion, using the standard constant k = 60, what RRF score would a document ranked #1 in full-text search but absent from the vector search results receive?",
         "options": [
           "1/60 = 0.0167 approximately, using only the full-text term since the vector term contributes 0",
-          "0, because it must appear in both lists to receive any score",
+          "0, because it must appear in both lists to receive any score, so the full-text rank is discarded",
           "1/(60+1) + 1/(60+1) = 0.0328",
           "2/60 = 0.0333"
         ],
@@ -103576,7 +103576,7 @@ const EXAMS = {
         "q": "A table has 30,000 product embeddings and queries occasionally filter to a handful of rows first. Which vector search approach is recommended for this size and pattern?",
         "options": [
           "Exact nearest neighbor search using VECTOR_DISTANCE, since the table is well under the ~50,000-vector general guideline",
-          "Approximate nearest neighbor search using VECTOR_SEARCH with a mandatory DiskANN index",
+          "Approximate nearest neighbor search using VECTOR_SEARCH with a mandatory DiskANN index, since exact search cannot scale to 30,000 rows",
           "A separate external vector database is required",
           "Full-text search only, since vector search never applies below 100,000 rows"
         ],
@@ -103588,7 +103588,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "What algorithm does SQL Server's CREATE VECTOR INDEX use to enable fast approximate nearest neighbor (ANN) search, and what happens to the table while the index exists?",
         "options": [
-          "K-means clustering; the table is automatically partitioned",
+          "K-means clustering; the table is automatically partitioned by cluster",
           "Bloom filter; write performance improves",
           "DiskANN; the table becomes read-only until the index is dropped",
           "B-tree; the table becomes append-only"
@@ -103668,8 +103668,8 @@ const EXAMS = {
         "options": [
           "RAG retrieves current data from your database at request time and supplies it as context; fine-tuning bakes knowledge into the model permanently through retraining",
           "They are two names for exactly the same technique",
-          "RAG retrains the model's weights permanently; fine-tuning retrieves data per request",
-          "Fine-tuning is always faster to implement than RAG"
+          "RAG retrains the model's weights permanently on your database content; fine-tuning retrieves current data per request and supplies it to the model as context at request time",
+          "Fine-tuning is always faster to implement than RAG, because retraining on your organization's data needs no retrieval step or grounding context at request time"
         ],
         "correct": 0,
         "explain": "RAG keeps your data in the database and retrieves only what's needed for each request, so answers reflect current data immediately (e.g., inventory changes). Fine-tuning retrains the model on your data, baking it in permanently — it can't easily keep pace with frequently changing data."
@@ -103733,7 +103733,7 @@ const EXAMS = {
         "options": [
           "Temperature must always be set to exactly 1.0",
           "Temperature has no effect on RAG output",
-          "A high value like 1.8 to 2.0 for maximum creativity",
+          "A high value like 1.8 to 2.0 for maximum creativity and varied responses",
           "A low value, roughly 0.3 to 0.5, for consistent factual responses"
         ],
         "correct": 3,
@@ -103760,7 +103760,7 @@ const EXAMS = {
           "429 indicates success with a warning; no action is needed",
           "429 indicates the service is throttling/rate-limiting requests; the @retry_count parameter can automatically retry the call",
           "429 means authentication failed; use a different credential",
-          "429 means the JSON payload was malformed; there is no retry option"
+          "429 means the JSON payload was malformed; there is no retry option, so the request body must be corrected and the call submitted again by hand"
         ],
         "correct": 1,
         "explain": "The return value from sp_invoke_external_rest_endpoint is 0 on success (2xx) or the actual HTTP status code on failure. 429 specifically indicates rate limiting/throttling. The @retry_count parameter (e.g., set to 3) makes the procedure automatically retry transient failures before giving up."
