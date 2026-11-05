@@ -91163,7 +91163,7 @@ const EXAMS = {
           "Enable geo-replication on the registry",
           "Pull the image by the 'latest' tag",
           "Pull the image by its digest (registry/repository@sha256:hash)",
-          "Pull the image by a mutable stable tag such as v1"
+          "Pull the image by a mutable stable tag such as v1 on every node in the cluster"
         ],
         "correct": 2,
         "explain": "Digests are immutable SHA-256 identifiers of the image manifest. Tags are mutable and can be repointed to a new image, so only digest-based addressing guarantees every node retrieves the exact same image."
@@ -91201,7 +91201,7 @@ const EXAMS = {
         "options": [
           "A multi-step task defined in a YAML file with build, push, and cmd steps",
           "An admin-enabled registry with content trust",
-          "A quick task using az acr build with a Git repository context",
+          "A quick task using az acr build with a Git repository context and a Dockerfile",
           "A scheduled task triggered by a cron expression"
         ],
         "correct": 0,
@@ -91267,7 +91267,7 @@ const EXAMS = {
           "A Microsoft Entra ID application registration with a client secret",
           "A user-assigned managed identity created as an independent resource and assigned to each web app",
           "A system-assigned managed identity on each web app",
-          "The registry's admin username and password shared across all apps"
+          "The registry's admin username and password shared across all apps and stored in each app's settings"
         ],
         "correct": 1,
         "explain": "A user-assigned managed identity exists independently of any single web app, so you can configure its registry role assignment ahead of time and attach the same identity to multiple web apps. A system-assigned identity is tied to one app's lifecycle."
@@ -91331,7 +91331,7 @@ const EXAMS = {
         "options": [
           "True — only settings named SECRET_* are encrypted",
           "False — all app settings are encrypted at rest regardless of whether they contain sensitive data",
-          "False — only connection strings are encrypted, not app settings",
+          "False — only connection strings are encrypted at rest, while ordinary app settings stay in plain text",
           "True — encryption must be manually enabled per setting"
         ],
         "correct": 1,
@@ -91369,7 +91369,7 @@ const EXAMS = {
         "q": "An App Service app setting references a secret using the syntax @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/api-key). What must be true for this reference to resolve successfully?",
         "options": [
           "The app setting name must start with KEYVAULT_",
-          "The Key Vault must be in the same resource group as the App Service plan",
+          "The Key Vault must be in the same resource group as the App Service plan that hosts the web app's container",
           "The web app must have a managed identity enabled and granted permission to read secrets from the Key Vault",
           "The secret must be base64-encoded before storing it in Key Vault"
         ],
@@ -91498,7 +91498,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In a Kubernetes Deployment manifest on AKS, what connects a Deployment to the Pods it manages?",
         "options": [
-          "The Deployment's replicas field must equal the number of nodes in the cluster",
+          "The Deployment's replicas field must equal the number of nodes in the cluster so each node runs one managed Pod",
           "The Deployment's selector.matchLabels must match the labels defined in the Pod template's metadata.labels",
           "The Deployment's namespace must match the Pod's namespace only",
           "The container image tag must match the Deployment name"
@@ -91527,7 +91527,7 @@ const EXAMS = {
           "'port' is the port clients connect to on the Service; 'targetPort' is the port the application listens on inside the container",
           "They must always be the same value",
           "'targetPort' only applies to LoadBalancer Services",
-          "'port' is the container's internal port; 'targetPort' is the external load balancer port"
+          "'port' is the port the application listens on inside the container; 'targetPort' is the port clients connect to on the load balancer"
         ],
         "correct": 0,
         "explain": "The Service's 'port' is what clients connect to; 'targetPort' is the port your application actually listens on inside the Pod's container. The Service forwards traffic received on 'port' to 'targetPort'."
@@ -91540,7 +91540,7 @@ const EXAMS = {
           "The ConfigMap must be marked immutable first",
           "Only the kubelet needs to sync; no Pod restart is required",
           "The Pods must be restarted, because environment variables are set once at container start and are not automatically refreshed",
-          "Nothing — environment variables sourced from a ConfigMap update automatically within seconds"
+          "Nothing — environment variables sourced from a ConfigMap update automatically within seconds of the next kubelet sync interval"
         ],
         "correct": 2,
         "explain": "ConfigMap values injected as environment variables are read once when the container starts and are not automatically refreshed. Only ConfigMaps mounted as volume files update automatically (on the kubelet's sync interval); environment-variable-based consumption requires a Pod restart to pick up changes."
@@ -91563,7 +91563,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A Pod on AKS is stuck in the ImagePullBackOff state. What is the most likely cause?",
         "options": [
-          "The Pod is waiting for available node resources",
+          "The Pod is waiting for available node resources such as CPU and memory",
           "The Pod's memory limit was exceeded",
           "A liveness probe is failing repeatedly",
           "The container image reference or registry credentials are incorrect"
@@ -91704,7 +91704,7 @@ const EXAMS = {
           "Microsoft Entra ID authentication using role-based access control (RBAC)",
           "The primary account key hardcoded in application code",
           "Anonymous access with network-level firewall rules only",
-          "The secondary account key stored in a source-controlled config file"
+          "The secondary account key stored in a source-controlled config file shared by the team"
         ],
         "correct": 0,
         "explain": "Microsoft Entra ID authentication grants roles (such as Cosmos DB Built-in Data Contributor) to identities like managed identities, integrating with RBAC, conditional access, and audit logging — unlike account keys, which are shared secrets granting full access."
@@ -91717,7 +91717,7 @@ const EXAMS = {
           "It prevents the application from ever using point reads",
           "It discards cached connection pools and routing information, adding latency for every request",
           "It disables request unit billing",
-          "It causes every request to use eventual consistency automatically"
+          "It causes every request to use eventual consistency automatically, overriding the account default"
         ],
         "correct": 1,
         "explain": "A CosmosClient maintains connection pools and cached routing information. Creating a new client per request discards this warmed-up state, adding connection-establishment latency to every request. Best practice is to reuse a single client instance (e.g., as a singleton) for the application's lifetime."
@@ -91741,7 +91741,7 @@ const EXAMS = {
         "q": "Why should values that originate from user input be passed into a Cosmos DB SQL query using parameters (e.g., @category) rather than concatenated directly into the query string?",
         "options": [
           "Parameters bypass the need for a partition key",
-          "Parameters are required for every Cosmos DB query, even ones with no variable values",
+          "Parameters are required for every Cosmos DB query, even ones with no variable values, or the query is rejected",
           "Parameterized queries prevent injection risks and allow Azure Cosmos DB to cache and reuse query plans",
           "Parameters automatically convert the query to a stored procedure"
         ],
@@ -91792,7 +91792,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What happens if you run a Cosmos DB vector similarity query using VectorDistance in the ORDER BY clause without a TOP N clause?",
         "options": [
-          "The query automatically limits itself to the 10 most similar results",
+          "The query automatically limits itself to the 10 most similar results, returning them in ranked order",
           "The query fails immediately with a syntax error",
           "The query attempts to return all documents, consuming excessive RUs and causing high latency",
           "The query switches to brute-force search regardless of the configured vector index"
@@ -91819,7 +91819,7 @@ const EXAMS = {
         "q": "Why must change feed processing logic for regenerating embeddings be idempotent?",
         "options": [
           "Idempotency is required only when using the pull model, never the push model",
-          "The change feed guarantees every change is delivered exactly zero or one times, never more",
+          "The change feed guarantees every change is delivered exactly zero or one times, never more, so a missed change must be replayed manually",
           "Cosmos DB automatically deduplicates all change feed events server-side",
           "Certain failure scenarios can cause the same change to be delivered more than once, and reprocessing it should produce the same result"
         ],
@@ -91844,7 +91844,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "After you remove a range index from a Cosmos DB container's indexing policy, when do queries stop benefiting from that index?",
         "options": [
-          "Only after the asynchronous index transformation fully completes",
+          "Only after the asynchronous index transformation fully completes across all physical partitions",
           "Only after the account's consistency level is changed to strong",
           "Never — removed indexes continue to be used until the container is deleted",
           "Immediately — queries fall back to a scan even before the index transformation completes"
@@ -91923,7 +91923,7 @@ const EXAMS = {
         "q": "A composite B-tree index in PostgreSQL is created as CREATE INDEX ON messages(conversation_id, created_at). Which query can this index fully satisfy?",
         "options": [
           "A query that filters on conversation_id alone, or on both conversation_id and created_at",
-          "A query that filters on any column in the messages table, regardless of order",
+          "A query that filters on any column in the messages table, regardless of index column order",
           "A query that filters only on created_at, without referencing conversation_id",
           "Only queries that use SELECT *"
         ],
@@ -91949,7 +91949,7 @@ const EXAMS = {
         "q": "A developer creates a pgvector column as embedding vector(1536) but then tries to insert embeddings generated by a model that outputs 768-dimensional vectors. What happens?",
         "options": [
           "The insert succeeds, but similarity search is disabled for that row only",
-          "PostgreSQL automatically pads the vector with zeros to reach 1536 dimensions",
+          "PostgreSQL automatically pads the vector with zeros to reach 1536 dimensions and stores the padded row",
           "PostgreSQL silently truncates the column to 768 dimensions",
           "The insert fails because the vector's dimension count doesn't match the column's declared dimensions"
         ],
@@ -92002,7 +92002,7 @@ const EXAMS = {
         "options": [
           "Splitting each sentence into its own chunk regardless of context",
           "Semantic chunking that splits at natural boundaries such as paragraphs or sections",
-          "Fixed-size chunking that splits every N characters regardless of content",
+          "Fixed-size chunking that splits every N characters regardless of content or structure",
           "Storing the entire document as a single chunk with no splitting"
         ],
         "correct": 1,
@@ -92031,7 +92031,7 @@ const EXAMS = {
         "q": "An Azure Database for PostgreSQL server has PgBouncer enabled in transaction pooling mode. Which PostgreSQL feature is most likely to break under this configuration?",
         "options": [
           "Simple SELECT statements with a WHERE clause",
-          "The pgvector extension entirely, which requires session mode",
+          "The pgvector extension entirely, which requires session mode and fails on any pooled connection",
           "INSERT statements using parameterized queries",
           "Named prepared statements and session-level SET variables that aren't scoped with SET LOCAL"
         ],
@@ -92046,7 +92046,7 @@ const EXAMS = {
           "Running each INSERT inside its own separate transaction",
           "Disabling the primary key before loading data",
           "The COPY command, which streams data directly into the table in binary or text format",
-          "Using SELECT * before every INSERT to check for duplicates"
+          "Using SELECT * before every INSERT to check for duplicates so that no row is ever rejected"
         ],
         "correct": 2,
         "explain": "The COPY command streams data directly into a table, bypassing the overhead of parsing individual SQL statements. It can load hundreds of thousands of rows per second, while individual INSERT statements are limited to thousands per second."
@@ -92137,7 +92137,7 @@ const EXAMS = {
           "Use XCLAIM to reassign the pending task to a different, active consumer",
           "Use XACK to immediately discard the task without processing it",
           "Switch the Stream to pub/sub mode",
-          "Delete the entire Stream and recreate the consumer group"
+          "Delete the entire Stream and recreate the consumer group so that every worker starts clean"
         ],
         "correct": 0,
         "explain": "XPENDING identifies tasks that have been claimed but not acknowledged for a long time (likely due to a crashed consumer). XCLAIM reassigns such a stuck task to a different, active consumer so processing can be retried."
@@ -92173,7 +92173,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Before storing a NumPy embedding array as a field in a Redis Hash for vector search, what must the application do to the array?",
         "options": [
-          "Convert it to a Python list and store it as a JSON string",
+          "Convert it to a Python list and store it as a JSON string, since Redis stores vectors as plain text",
           "Round every value to the nearest integer",
           "Normalize it to exactly 100 dimensions regardless of the embedding model",
           "Convert it to bytes using a method such as .tobytes(), since Redis stores vectors as binary blobs"
@@ -92186,7 +92186,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A Redis vector search needs to find the most similar support documents but only within the 'documentation' category. What kind of query combines a metadata filter with a KNN vector search in a single RediSearch query?",
         "options": [
-          "A plain KNN query with no filter, followed by manual filtering in application code only",
+          "A plain KNN query with no filter, followed by manual filtering of results in application code only",
           "A pub/sub query using PSUBSCRIBE 'documentation:*'",
           "A hybrid query, such as @category:{documentation}=>[KNN 3 @embedding $query_vec AS score]",
           "An XRANGE query against a Stream named documentation"
@@ -92202,7 +92202,7 @@ const EXAMS = {
           "It converts the index from HNSW to FLAT for that single query",
           "It explores more of the graph, improving accuracy at the cost of slower query latency",
           "It reduces the number of dimensions the query vector must have",
-          "It permanently rebuilds the vector index with a new distance metric"
+          "It permanently rebuilds the vector index with a new distance metric for all later queries"
         ],
         "correct": 1,
         "explain": "EF_RUNTIME controls how many graph nodes Redis examines during an HNSW search. Higher values mean more thorough graph exploration and better accuracy, but slower queries; the default favors speed, and you can raise it per-query when accuracy matters more."
@@ -92269,7 +92269,7 @@ const EXAMS = {
         "q": "Multiple worker instances all read from the same Azure Service Bus queue to process inference requests. What guarantee does Service Bus provide in this scenario?",
         "options": [
           "Every worker receives a copy of every message",
-          "Messages are broadcast to workers in round-robin order regardless of availability",
+          "Messages are broadcast to workers in round-robin order regardless of availability or current worker load",
           "Each message is delivered to exactly one of the competing workers, not duplicated across all of them",
           "Only the first worker that connects will ever receive messages"
         ],
@@ -92284,7 +92284,7 @@ const EXAMS = {
           "Basic, which is optimized for large binary payloads",
           "Standard, which supports unlimited message size",
           "Premium, which supports messages up to 100 MB over AMQP and provides dedicated resources",
-          "Standard, because tier has no effect on message size limits"
+          "Standard, because tier has no effect on message size limits or on the latency the workload sees"
         ],
         "correct": 2,
         "explain": "The Standard tier caps messages at 256 KB and shares broker capacity across tenants. The Premium tier provides dedicated resources, predictable latency, and supports messages up to 100 MB via AMQP (1 MB via HTTP), better suiting larger payloads like images."
@@ -92320,7 +92320,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A multi-step document pipeline requires that extraction messages for the same document always be processed in order by a single consumer, even though many documents are processed concurrently. Which Service Bus queue feature enables this?",
         "options": [
-          "Dead-lettering, which enforces ordered delivery automatically",
+          "Dead-lettering, which enforces ordered delivery automatically for each document's messages",
           "Sessions, grouping related messages by a session ID for FIFO, single-receiver processing",
           "Switching to receive-and-delete mode",
           "Increasing max_delivery_count to a higher value"
@@ -92336,7 +92336,7 @@ const EXAMS = {
           "Peek-lock provides at-least-once delivery — if a worker crashes before settling the message, it becomes available again for another worker",
           "Peek-lock is faster because it skips the settlement round trip entirely",
           "Receive-and-delete mode is not supported on Service Bus queues",
-          "Peek-lock automatically retries messages an unlimited number of times with no dead-letter queue"
+          "Peek-lock automatically retries messages an unlimited number of times with no dead-letter queue, so a failed request simply runs until it succeeds"
         ],
         "correct": 0,
         "explain": "In receive-and-delete mode, the message is removed immediately on delivery, so a crash during processing loses it permanently. Peek-lock locks the message until the consumer explicitly settles it, so a crash leaves the message available for redelivery — at-least-once delivery, which is essential when losing an inference request is unacceptable."
@@ -92424,7 +92424,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A moderation-review subscriber should only receive Event Grid events where data.confidence is below 0.5. Which Event Grid feature supports routing based on values inside the event payload itself?",
         "options": [
-          "subjectBeginsWith / subjectEndsWith, which only match the subject field",
+          "subjectBeginsWith / subjectEndsWith, which only match the subject field of each event",
           "includedEventTypes, which only matches the type field",
           "Advanced filters, using an operator such as NumberLessThan on the data attribute",
           "Output batching"
@@ -92437,7 +92437,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "An Event Grid subscriber endpoint occasionally receives the same event more than once. Why does this happen, and what must the handler do?",
         "options": [
-          "Duplicate delivery only happens when using the proprietary Event Grid schema, never with CloudEvents",
+          "Duplicate delivery only happens when using the proprietary Event Grid schema, never with CloudEvents, so the handler must adopt the CloudEvents schema",
           "The subscriber should ignore the id field entirely since it changes on redelivery",
           "This indicates a bug in Event Grid that requires a support ticket",
           "Event Grid provides at-least-once delivery, so handlers must be idempotent and use the event id to detect and deduplicate repeated deliveries"
@@ -92492,7 +92492,7 @@ const EXAMS = {
           "The entire batch is retried, because batching uses all-or-none delivery semantics",
           "The batch size automatically reduces to 1 for all future deliveries",
           "Event Grid disables batching permanently for that subscription",
-          "Only the failed event is retried; the rest of the batch is considered delivered"
+          "Only the failed event is retried; the rest of the batch is considered delivered successfully"
         ],
         "correct": 0,
         "explain": "Batched delivery uses all-or-none semantics: the handler must return success for the entire batch, and if any event fails, the entire batch is retried. Handlers must be designed to process (or reject) the whole batch accordingly."
@@ -92505,7 +92505,7 @@ const EXAMS = {
           "Microsoft Entra ID authentication using a managed identity granted the Event Grid Data Sender role",
           "SAS tokens with no expiration",
           "Basic authentication with a shared username and password",
-          "Embedding the topic's access key directly in client-side JavaScript"
+          "Embedding the topic's access key directly in client-side JavaScript that is served to every browser"
         ],
         "correct": 0,
         "explain": "Microsoft Entra ID authentication (via a managed identity granted the Event Grid Data Sender role on the topic) is the recommended production approach — it eliminates the need to manage and rotate shared secrets and supports Conditional Access policies, unlike access-key authentication."
@@ -92708,7 +92708,7 @@ const EXAMS = {
           "ManagedIdentityCredential, using the identity attached to the compute resource",
           "AzurePowerShellCredential, based on a Connect-AzAccount session",
           "EnvironmentCredential, requiring AZURE_CLIENT_SECRET to be set",
-          "AzureCliCredential, based on a local az login session"
+          "AzureCliCredential, based on a local az login session cached inside the container"
         ],
         "correct": 0,
         "explain": "DefaultAzureCredential tries credentials in order: EnvironmentCredential, WorkloadIdentityCredential, ManagedIdentityCredential, then developer credentials like AzureCliCredential. On Azure compute resources with a managed identity assigned and no environment-variable service principal configured, ManagedIdentityCredential is the one that succeeds, requiring no stored secrets."
@@ -92757,7 +92757,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "When an application calls set_secret() with the name of a secret that already exists in Key Vault, what happens?",
         "options": [
-          "The previous secret value is immediately and permanently overwritten with no history retained",
+          "The previous secret value is immediately and permanently overwritten with no history retained, so older versions cannot be retrieved",
           "The call fails with a conflict error because the secret name already exists",
           "Key Vault automatically merges the old and new values into one string",
           "Key Vault creates a new version of the secret; the previous version remains accessible unless explicitly disabled or deleted"
@@ -92797,7 +92797,7 @@ const EXAMS = {
         "q": "An AI inference service calls Key Vault's get_secret() on every single incoming request instead of caching the value. Under high traffic, what is the most likely consequence?",
         "options": [
           "The application risks HTTP 429 throttling responses once it exceeds Key Vault's per-vault GET transaction limits",
-          "Key Vault automatically caches all values server-side, so there is no real consequence",
+          "Key Vault automatically caches all values server-side, so there is no real consequence even under sustained high traffic",
           "Key Vault disables the secret permanently after repeated reads",
           "Each call after the first is free of charge and has no rate limit"
         ],
@@ -92809,7 +92809,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "An AI service fleet has 10 replicas, each independently caching secrets in memory with a 15-minute TTL. What caching scope is this, and what is its main trade-off compared to a shared distributed cache?",
         "options": [
-          "Shared distributed cache — it reduces Key Vault calls to exactly one per refresh cycle across the whole fleet",
+          "Shared distributed cache — it reduces Key Vault calls to exactly one per refresh cycle across the whole fleet of replicas",
           "Per-process cache — Key Vault call volume scales linearly with instance count, but it requires no shared infrastructure",
           "Startup preloading — secrets are fetched once at process start and never refreshed",
           "There is no meaningful difference between per-process and shared distributed caching"
@@ -92837,7 +92837,7 @@ const EXAMS = {
         "options": [
           "The order of selectors has no effect on which values win",
           "Only the first selector's values are ever used; the second is ignored",
-          "The two selectors must have identical results or the load() call throws an error",
+          "The two selectors must have identical results or the load() call throws an error when the provider composes the key-values",
           "Default (null-labeled) values load first, and any matching keys in the environment-specific label override them"
         ],
         "correct": 3,
@@ -92849,7 +92849,7 @@ const EXAMS = {
         "q": "What is the main benefit of implementing a 'kill switch' as an App Configuration feature flag for a malfunctioning AI pipeline stage, compared to a code rollback?",
         "options": [
           "Feature flags require redeploying the application to take effect",
-          "Feature flags can only be toggled by directly editing application source code",
+          "Feature flags can only be toggled by directly editing application source code and redeploying every replica",
           "Feature flags automatically fix the underlying bug in the code",
           "An operator can disable the stage in seconds by toggling the flag, without a code deployment or rollback"
         ],
@@ -92888,7 +92888,7 @@ const EXAMS = {
         "q": "Why is storing a secret's value independently in BOTH App Configuration and Key Vault (rather than using a Key Vault reference) considered an anti-pattern?",
         "options": [
           "It's not an anti-pattern; duplicating values across both services is the recommended approach",
-          "App Configuration cannot technically store any string value that also exists in Key Vault",
+          "App Configuration cannot technically store any string value that also exists in Key Vault, so the write is rejected",
           "The two copies can drift apart over time, so the application might end up reading a stale value from one of them",
           "It doubles the encryption cost of the secret with no other consequence"
         ],
@@ -92902,7 +92902,7 @@ const EXAMS = {
         "options": [
           "It requires manually calling span.end() or the span never closes",
           "It creates a new OpenTelemetry tracer provider from scratch on every call",
-          "It permanently disables automatic instrumentation for the rest of the application",
+          "It permanently disables automatic instrumentation for the rest of the application, even after the 'with' block exits",
           "It starts a custom span that automatically ends when the 'with' block exits, whether normally or via an exception"
         ],
         "correct": 3,
@@ -92929,7 +92929,7 @@ const EXAMS = {
           "Nesting has no effect; all spans in a trace are always treated as siblings",
           "Parent-child relationships must be configured separately in a YAML file",
           "Automatically, using Python's context variable mechanism to track whichever span is currently active when a new span starts",
-          "The developer must manually pass the parent span object into every child span's constructor"
+          "The developer must manually pass the parent span object into every child span's constructor before that child span can be started"
         ],
         "correct": 2,
         "explain": "When a new span starts while another is active, the OpenTelemetry SDK automatically sets the currently active span as the parent, using Python's context variable mechanism — no explicit parent references need to be passed by the developer."
@@ -92955,7 +92955,7 @@ const EXAMS = {
           "Telemetry is silently redirected to a public, unauthenticated endpoint",
           "The application process crashes until connectivity is restored",
           "Telemetry is cached locally and automatically retried for up to 48 hours",
-          "All unsent telemetry is immediately and permanently discarded"
+          "All unsent telemetry is immediately and permanently discarded by the exporter"
         ],
         "correct": 2,
         "explain": "The Azure Monitor exporter caches telemetry locally when connectivity is lost and retries sending for up to 48 hours, providing resilience against temporary network issues or ingestion outages without permanent data loss (unless volume exceeds the storage window)."
@@ -93007,7 +93007,7 @@ const EXAMS = {
           "sum(itemCount), because each sampled record's itemCount reflects how many actual events it represents",
           "dcount(timestamp), which ignores sampling entirely",
           "avg(itemCount), which averages away the effect of sampling",
-          "count(), because it always reflects the true underlying event volume"
+          "count(), because it always reflects the true underlying event volume, whether or not sampling is active"
         ],
         "correct": 0,
         "explain": "When sampling is active, Application Insights keeps a representative subset of telemetry, and each sampled record's itemCount reflects the actual number of events it represents. Using count() under sampling undercounts the true volume, while sum(itemCount) correctly accounts for sampling to produce totals reflecting real application behavior."
@@ -93018,7 +93018,7 @@ const EXAMS = {
         "q": "A KQL query calculates avg(duration) for a dependency and finds it well within acceptable limits, yet users still report intermittent slow responses. What analysis would better reveal this issue?",
         "options": [
           "Using dcount() on the duration column",
-          "Removing the time filter so the query scans the entire telemetry history",
+          "Removing the time filter so the query scans the entire telemetry history and recalculates avg(duration) across all of it",
           "Calculating percentile(duration, 95) and percentile(duration, 99) to reveal outlier latency the average conceals",
           "Switching from avg() to min(), which always shows the best case"
         ],
@@ -93045,7 +93045,7 @@ const EXAMS = {
         "options": [
           "Rate limiting — address it by adjusting throughput or implementing retry policies",
           "An unauthenticated request that always requires a new API key",
-          "A permanent DNS failure that requires re-provisioning the endpoint",
+          "A permanent DNS failure that requires re-provisioning the endpoint under a new hostname",
           "A successful call that was merely logged incorrectly"
         ],
         "correct": 0,
@@ -93085,7 +93085,7 @@ const EXAMS = {
           "Smart detection uses machine learning to learn normal behavior and flag deviations, catching unexpected problems that static thresholds wouldn't anticipate",
           "Smart detection can only be used for metric alerts, never for failure or performance anomalies",
           "Smart detection and manual alerts are mutually exclusive and cannot be used together",
-          "Smart detection requires the developer to manually specify the exact numeric threshold for every metric"
+          "Smart detection requires the developer to manually specify the exact numeric threshold for every metric, so it flags only problems the developer anticipated"
         ],
         "correct": 0,
         "explain": "Smart detection uses machine learning to establish a baseline of normal application behavior and alerts on significant deviations, catching novel problems (like a gradually degrading dependency) that a developer wouldn't think to write a static threshold for. It complements — rather than replaces — manual log search alerts, which are better suited for enforcing known SLA thresholds."
