@@ -13045,7 +13045,7 @@ const EXAMS = {
         "q": "Under GitHub Enterprise Managed Users (EMU), which action is a managed user restricted from performing?",
         "options": [
           "Being assigned to an enterprise team",
-          "Being deprovisioned when they leave the company",
+          "Being deprovisioned through the IdP when they leave the company",
           "Pushing code to or forking repositories outside the enterprise",
           "Authenticating through the enterprise's IdP"
         ],
@@ -13059,7 +13059,7 @@ const EXAMS = {
         "options": [
           "EMU requires no identity provider integration",
           "EMU accounts support membership in unlimited external organizations",
-          "EMU users control their own account metadata such as email and username",
+          "EMU users control their own account metadata such as email and username, not the enterprise or its IdP",
           "EMU-enabled enterprises cannot create public repositories, while standard enterprise users can"
         ],
         "correct": 3,
@@ -13189,7 +13189,7 @@ const EXAMS = {
         "options": [
           "They bypass SAML SSO enforcement entirely",
           "They restrict access to specific repositories and scopes and support automatic expiration",
-          "They automatically grant organization owner permissions",
+          "They automatically grant organization owner permissions to whichever user creates the token",
           "They never expire, once created"
         ],
         "correct": 1,
@@ -13267,7 +13267,7 @@ const EXAMS = {
         "options": [
           "Audit logs are only available to billing managers",
           "Organization audit logs include billing information but enterprise ones do not",
-          "Enterprise audit logs only exist for GitHub Enterprise Server, never for GitHub Enterprise Cloud",
+          "Enterprise audit logs only exist for GitHub Enterprise Server, never for GitHub Enterprise Cloud, so Cloud customers can only ever review each organization's own log",
           "The enterprise account's audit log tracks changes across all organizations, while an organization's audit log only covers changes within that single organization"
         ],
         "correct": 3,
@@ -13319,7 +13319,7 @@ const EXAMS = {
         "options": [
           "Only billing invoices",
           "Application logs, system diagnostics, configuration settings, and network errors",
-          "Only the organization's public repository list",
+          "Only the organization's public repository list and the owner of each listed repository",
           "Only user email addresses"
         ],
         "correct": 1,
@@ -13423,7 +13423,7 @@ const EXAMS = {
         "options": [
           "Rulesets replace the need for pull request reviews entirely",
           "Rulesets can only be created by GitHub Support",
-          "Rulesets are hidden from anyone without admin rights",
+          "Rulesets are hidden from anyone without admin rights, keeping a branch's rules private to repository admins",
           "Rulesets can be enabled, disabled, or evaluated without being deleted, and multiple rulesets can coexist"
         ],
         "correct": 3,
@@ -13434,7 +13434,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "When considering whether to structure a GitHub Enterprise with a single organization versus multiple organizations, which is a documented con of the single-organization approach?",
         "options": [
-          "It requires duplicating settings across each organization",
+          "It requires duplicating policy settings across each organization",
           "It cannot use SAML SSO",
           "It prevents any resource sharing between teams",
           "A single security breach could impact the entire organization"
@@ -13502,7 +13502,7 @@ const EXAMS = {
           "Emailing the bundle in plain text",
           "Posting the bundle as a public GitHub Gist",
           "A one-time, secure upload link provided after submitting a support ticket",
-          "Uploading it to the organization's public repository"
+          "Uploading it to the organization's public repository for support to download"
         ],
         "correct": 2,
         "explain": "After submitting a ticket indicating the need to share a bundle, GitHub Support provides a one-time, secure upload link as the recommended method."
@@ -13525,7 +13525,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What best describes the difference in support availability days between standard GitHub Enterprise Support and Premium/Premium Plus Support?",
         "options": [
-          "Standard support operates every day, while Premium only operates on weekdays",
+          "Standard support operates every day, while Premium/Premium Plus operates Monday through Friday only",
           "Standard support operates Monday through Friday, while Premium/Premium Plus operates every day",
           "Only Premium Plus offers any support at all",
           "Both operate identically with no difference"
@@ -13669,7 +13669,7 @@ const EXAMS = {
         "q": "What is the purpose of a CODEOWNERS file in a repository?",
         "options": [
           "To define which branches can be force-pushed",
-          "To list all repository collaborators for billing purposes",
+          "To list all repository collaborators for billing purposes so each seat is charged to the right team",
           "To configure GitHub Actions secrets",
           "To require designated individuals or teams to review pull requests that change specific file paths"
         ],
@@ -13681,7 +13681,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which of these is a recommended technique to remove sensitive data, such as an exposed API key, that has already been committed to a repository's history?",
         "options": [
-          "Simply delete the file in a new commit",
+          "Simply delete the file in a new commit and push to the main branch",
           "Use the BFG Repo-Cleaner or git filter-branch, then force-push",
           "Disable Dependabot alerts",
           "Rename the repository"
@@ -13696,7 +13696,7 @@ const EXAMS = {
         "options": [
           "GitHub deletes the entire repository automatically",
           "Overwriting a commit is technically impossible on GitHub",
-          "GitHub automatically emails the exposed secret to all collaborators",
+          "GitHub automatically emails the exposed secret to all collaborators as soon as that commit gets overwritten",
           "You should assume any data ever committed has been compromised, since cached data may still be accessible"
         ],
         "correct": 3,
@@ -13709,7 +13709,7 @@ const EXAMS = {
         "options": [
           "To configure SAML SSO",
           "To grant repository access to specific users",
-          "To define required status checks for a branch",
+          "To define required status checks for a branch before commits can be merged into it",
           "To instruct Git to ignore specified paths and patterns when committing files"
         ],
         "correct": 3,
@@ -13735,7 +13735,7 @@ const EXAMS = {
         "options": [
           "Only the ruleset applies; branch protection is ignored",
           "GitHub applies the most restrictive combination of all applicable rules",
-          "Only the branch protection rule applies; the ruleset is ignored",
+          "Only the branch protection rule applies; the ruleset is ignored entirely",
           "GitHub throws an error and blocks all merges"
         ],
         "correct": 1,
@@ -13785,7 +13785,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Which API is used to query the audit log on GitHub Enterprise Server, and what is a key limitation of that API?",
         "options": [
-          "The REST API, which only returns billing data",
+          "The REST API, which only returns billing data for the enterprise's organizations",
           "The Webhooks API, which requires a paid add-on",
           "The GraphQL API, which does not include Git events like pushes and pulls",
           "The SCIM API, which cannot filter by date"
@@ -13876,7 +13876,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "At what organizational scope can policy settings override organization-level settings for repository policies?",
         "options": [
-          "Organization-level settings always take precedence over enterprise policies",
+          "Organization-level settings always take precedence over enterprise policies set under Your enterprises > Policies",
           "Enterprise-level policies under Your enterprises > Policies > Repository policies override org-level settings",
           "Policies cannot be layered between enterprise and organization at all",
           "Only individual repository owners can set final policy"
@@ -13902,7 +13902,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is the recommended action for developers who want to avoid accidentally exposing secrets in a repository going forward?",
         "options": [
-          "Store secrets directly in the README.md file",
+          "Store secrets directly in the README.md file so every developer can find them easily",
           "Rename the branch containing the secret",
           "Use GitHub Secrets or a dedicated secret manager instead of hardcoding credentials",
           "Email the secret to the security team as plaintext"
@@ -13916,7 +13916,7 @@ const EXAMS = {
         "q": "What information does a well-written GitHub security advisory typically include?",
         "options": [
           "The organization's billing plan",
-          "A list of all repository collaborators",
+          "A list of all repository collaborators and their permission levels",
           "Only the reporter's contact email",
           "Affected versions, severity, patch status, and CVE references"
         ],
@@ -14006,7 +14006,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which type of PAT should be preferred when a workflow needs access to only specific repositories with automatic expiration?",
         "options": [
-          "An SSH key on a personal account",
+          "An SSH key on a developer's personal account",
           "A fine-grained personal access token",
           "A classic personal access token",
           "A device token"
@@ -14019,7 +14019,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Under the security control-level framework, which policies characterize Moderate Control, aimed at teams needing governance with developer autonomy?",
         "options": [
-          "Enforced SAML SSO and mandatory PR approvals for every repository",
+          "Enforced SAML SSO and mandatory PR approvals for every repository in the enterprise",
           "Required branch protection, commit signing, and org-wide security policies",
           "No security tooling at all",
           "Only Dependabot alerts with no branch protection"
@@ -14048,7 +14048,7 @@ const EXAMS = {
           "It reviews audit log retention settings",
           "It reviews which teams have push access",
           "It reviews dependency changes introduced in a pull request before merge",
-          "It reviews billing changes for the organization"
+          "It reviews billing changes for the organization before each invoice is issued"
         ],
         "correct": 2,
         "explain": "Dependency review is a Configure and Review/Remediate feature focused on evaluating dependency changes introduced within a pull request, complementing ongoing Dependabot alerts."
@@ -14061,7 +14061,7 @@ const EXAMS = {
           "Only organization owners",
           "Anyone who has pushed at least one commit to a GHAS-enabled repository within the last 90 days",
           "Anyone with a GitHub Copilot license",
-          "Anyone who has ever pushed a single commit to any repository"
+          "Anyone who has ever pushed a single commit to any repository, with or without GHAS enabled on it"
         ],
         "correct": 1,
         "explain": "An active committer is anyone who has pushed at least one commit to a repository with GHAS enabled within the last 90 days, regardless of when the commit was originally authored."
@@ -14126,7 +14126,7 @@ const EXAMS = {
           "GitHub-hosted runners require manual OS updates",
           "GitHub-hosted runners provide a clean instance for every job; self-hosted runners don't need to",
           "Self-hosted runners cannot run Linux jobs",
-          "Self-hosted runners are always faster than GitHub-hosted runners"
+          "Self-hosted runners are always faster than GitHub-hosted runners for every job on any runner hardware"
         ],
         "correct": 1,
         "explain": "GitHub-hosted runners provide a clean instance for every job execution, while self-hosted runners don't need a clean instance for every job and can persist state between jobs."
@@ -14136,7 +14136,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which GitHub plans include support for runner groups?",
         "options": [
-          "All plans including GitHub Free",
+          "All plans including GitHub Free and GitHub Pro",
           "GitHub Team and GitHub Enterprise",
           "GitHub Free and GitHub Pro",
           "Only GitHub Enterprise Server"
@@ -14188,7 +14188,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What is GitHub's recommended default workflow permission setting for security, versus the platform's actual out-of-the-box default?",
         "options": [
-          "Read and Write is recommended, and it is also the default",
+          "Read and Write is recommended for security, and it is also GitHub's actual default",
           "Admin is both recommended and default",
           "There is no configurable default",
           "Read-only is recommended for security, but GitHub's default is Read and Write"
@@ -14241,7 +14241,7 @@ const EXAMS = {
         "q": "At which levels can encrypted secrets be scoped in GitHub Actions?",
         "options": [
           "Only enterprise-wide",
-          "Only repository and organization",
+          "Only repository and organization, never enterprise or environment",
           "Enterprise, organization, repository, and environment",
           "Only per individual user"
         ],
@@ -14255,7 +14255,7 @@ const EXAMS = {
         "options": [
           "By hardcoding them directly in the YAML",
           "Using the secrets context, for example secrets.MY_SECRET",
-          "Using the env block only, with no special context",
+          "Using the env block only, with no special context needed at all",
           "Using the github.token context"
         ],
         "correct": 1,
@@ -14266,7 +14266,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which third-party secret management solutions are explicitly mentioned as integrable with GitHub Actions?",
         "options": [
-          "GitHub does not support any third-party vaults",
+          "GitHub does not support any third-party vaults with GitHub Actions",
           "Only LastPass",
           "Only 1Password",
           "HashiCorp Vault, AWS Secrets Manager, and Azure Key Vault"
@@ -14383,7 +14383,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is a documented risk of enabling self-hosted runners on public repositories?",
         "options": [
-          "Public repositories cannot use any runners at all",
+          "Public repositories cannot use any runners at all, so their workflows fail before any job starts",
           "Self-hosted runners on public repos are always free",
           "GitHub disables Actions entirely on public repos",
           "Attackers can submit malicious pull requests that execute arbitrary code on the runner"
@@ -14399,7 +14399,7 @@ const EXAMS = {
           "Restrict self-hosted runners to private repositories and require workflow approval for external contributors",
           "Disable all monitoring and logging to reduce noise",
           "Allow all pull requests to run automatically without review",
-          "Grant self-hosted runners full administrative access to the corporate network"
+          "Grant self-hosted runners full administrative access to the corporate network so administrators can inspect each job"
         ],
         "correct": 0,
         "explain": "Mitigation strategies include restricting self-hosted runners to private repositories, requiring workflow approval for pull requests from external contributors, and running runners in isolated environments."
@@ -14462,7 +14462,7 @@ const EXAMS = {
         "q": "What is the recommended approach for handling untrusted, potentially attacker-controlled input, like a pull request title, in an inline shell script step to prevent script injection?",
         "options": [
           "Assign the value to an intermediate environment variable before referencing it in the script",
-          "Directly interpolate the value into the shell command",
+          "Directly interpolate the value into the shell command so the script receives the exact PR title",
           "Use only JavaScript actions and never inline scripts",
           "Disable all workflow triggers from pull requests"
         ],
@@ -14516,7 +14516,7 @@ const EXAMS = {
           "macOS runner minutes cost significantly more per minute than Linux runner minutes",
           "All operating systems cost exactly the same per minute",
           "GitHub-hosted runners are always free regardless of OS",
-          "Windows runner minutes are the cheapest"
+          "Windows runner minutes are the cheapest per minute of any supported operating system"
         ],
         "correct": 0,
         "explain": "Documented per-minute pricing shows Linux at $0.008 per minute, Windows at $0.016 per minute, and macOS at $0.08 per minute; macOS costs significantly more per minute than Linux."
@@ -14527,7 +14527,7 @@ const EXAMS = {
         "q": "For GitHub Enterprise's included Actions minutes, how does the enterprise-wide runner cost multiplier compare for Windows and macOS relative to Linux?",
         "options": [
           "Windows and macOS both cost the same as Linux",
-          "Windows costs 10x and macOS costs 2x the Linux rate",
+          "Windows costs 10x the Linux rate and macOS costs only 2x the Linux rate",
           "Windows costs 2x the Linux rate and macOS costs 10x the Linux rate",
           "macOS is cheaper than Linux"
         ],
@@ -14579,7 +14579,7 @@ const EXAMS = {
         "q": "How does GitHub Packages manage permissions for a published package relative to its source repository?",
         "options": [
           "Packages require entirely separate, manually configured permissions",
-          "Packages are always public regardless of repository visibility",
+          "Packages are always public regardless of repository visibility or any access settings",
           "Packages inherit the visibility and permissions assigned at the repository level",
           "Packages have no relationship to repository permissions"
         ],
@@ -14604,7 +14604,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What information can an administrator find in the GHEC Admin Console under Billing & plans, License usage?",
         "options": [
-          "Only the enterprise's public repository count",
+          "Only the enterprise's public repository count across its organizations",
           "Total seats assigned, active seats in use, and pending invitations",
           "Only GitHub Copilot suggestions accepted",
           "Only the enterprise's audit log"
@@ -14631,7 +14631,7 @@ const EXAMS = {
         "q": "Do machine accounts used for CI/CD automation and integrations consume a GitHub Enterprise license?",
         "options": [
           "No, machine accounts are always free",
-          "Only if the machine account has admin rights",
+          "Only if the machine account has admin rights on at least one enterprise repository",
           "Only during a grace period after creation",
           "Yes, each machine account consumes a license just like a standard human user"
         ],
@@ -14643,7 +14643,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is a recommended best practice for controlling license costs associated with machine accounts and peripheral services?",
         "options": [
-          "Grant machine accounts unrestricted permissions to simplify management",
+          "Grant machine accounts unrestricted permissions to simplify management of their licenses",
           "Regularly audit and deactivate unused machine accounts and idle self-hosted runners",
           "Disable all automation entirely",
           "Never review third-party API integrations once configured"
@@ -14710,7 +14710,7 @@ const EXAMS = {
         "options": [
           "Free only on private repositories",
           "Never free under any circumstance",
-          "Free for all enterprise users regardless of role",
+          "Free for all enterprise users regardless of role or seat type",
           "Free for students and verified open-source maintainers"
         ],
         "correct": 3,
@@ -14737,7 +14737,7 @@ const EXAMS = {
           "The user is granted a free trial month",
           "Billing is deferred to the following quarter",
           "The organization is charged a pro rata amount for that user's partial-month usage",
-          "The organization is charged for a full month regardless of start date"
+          "The organization is charged for a full month regardless of that user's actual start date"
         ],
         "correct": 2,
         "explain": "With usage-based (metered) license billing, pro rata charges apply when a user starts consuming a license partway through the month, so organizations pay only for the portion of the month used."
@@ -14776,7 +14776,7 @@ const EXAMS = {
           "The number of organization billing seats",
           "The number of lines added and deleted over time",
           "The list of enterprise security managers",
-          "The Actions minutes consumed per workflow"
+          "The number of Actions minutes consumed per workflow"
         ],
         "correct": 1,
         "explain": "The Code Frequency insight tracks the number of lines added and deleted over time, helping administrators understand development activity trends."
@@ -14815,7 +14815,7 @@ const EXAMS = {
           "Convert all users to billing managers",
           "Disable the entire organization's billing dashboard",
           "Audit inactive users and reclaim or reallocate their unused seats",
-          "Purchase additional prepaid seats without auditing usage"
+          "Purchase additional prepaid seats without auditing usage for future hires"
         ],
         "correct": 2,
         "explain": "A best practice for license usage management is to reclaim unused seats by identifying inactive users and freeing up licenses for reallocation, reducing unnecessary cost."
@@ -14839,7 +14839,7 @@ const EXAMS = {
         "q": "What does GitHub recommend as an optimization strategy to reduce GitHub Actions minute costs for high-volume workflows?",
         "options": [
           "Remove all status checks from pull requests",
-          "Switch every workflow to macOS runners",
+          "Switch every workflow to macOS runners so jobs finish in fewer billed minutes",
           "Disable all workflows permanently",
           "Use self-hosted runners and cache dependencies to reduce redundant jobs"
         ],
