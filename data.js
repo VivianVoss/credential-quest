@@ -99641,7 +99641,7 @@ const EXAMS = {
         "options": [
           "Specifying the forest functional level",
           "Configuring the domain controller as a Read-Only Domain Controller (RODC)",
-          "Setting the Directory Services Restore Mode (DSRM) password",
+          "Setting the Directory Services Restore Mode (DSRM) password for the server",
           "Making the domain controller a DNS server"
         ],
         "correct": 1,
@@ -99667,7 +99667,7 @@ const EXAMS = {
         "options": [
           "Configure the domain controller as a DNS secondary zone only",
           "Promote the domain controller using the Install from Media option with a recent AD DS backup",
-          "Disable the KCC on the remote domain controller before promotion",
+          "Disable the KCC on the remote domain controller before promotion and schedule replication off-peak",
           "Increase the DHCP lease time at the remote site"
         ],
         "correct": 1,
@@ -99691,7 +99691,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Why can't you rely on Azure's built-in DNS service to support an AD DS domain hosted entirely on Azure VMs?",
         "options": [
-          "Azure's built-in DNS requires a paid tier for zone hosting",
+          "Azure's built-in DNS requires a paid tier for zone hosting before any AD DS domain can use it",
           "Azure's built-in DNS doesn't support Dynamic DNS updates and SRV records that AD DS requires",
           "Azure's built-in DNS only resolves public internet names",
           "Azure's built-in DNS cannot be reached from an ExpressRoute connection"
@@ -99719,7 +99719,7 @@ const EXAMS = {
         "options": [
           "SID filtering must be disabled on all three forests",
           "Forest trusts require Microsoft Entra Connect to be transitive",
-          "The forests must be joined into a single tree before resources can be shared",
+          "The forests must be joined into a single tree before resources can be shared between Forest A and Forest C directly",
           "Forest trusts are not transitive across three or more forests, so Forest A does not implicitly trust Forest C"
         ],
         "correct": 3,
@@ -99759,7 +99759,7 @@ const EXAMS = {
           "The production forest and the ESAE forest establish a two-way transitive trust",
           "The ESAE forest is configured as a one-way trust in which the production forest trusts the ESAE forest, and the ESAE forest is limited to hosting only privileged accounts",
           "The ESAE forest hosts line-of-business applications so admins can manage them separately",
-          "The ESAE forest uses the same domain functional level as the production forest but a different forest functional level"
+          "The ESAE forest uses the same domain functional level as the production forest but a different forest functional level, so the two forests need no trust between them at all"
         ],
         "correct": 1,
         "explain": "In the ESAE model, the production forest trusts the ESAE (admin) forest one-way, accounts from the ESAE forest can be used in production, but production accounts cannot be used in the ESAE forest. The ESAE forest should host only privileged accounts and workstations, with no other applications or resources."
@@ -99808,7 +99808,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "You want a GPO to apply only to computers running a specific Windows version, based on a query evaluated against each target computer's WMI repository. You also need to understand a constraint on how many such filters a single GPO can use. Which statement is correct?",
         "options": [
-          "A GPO can be linked to multiple WMI filters simultaneously",
+          "A GPO can be linked to multiple WMI filters simultaneously, but each filter can be linked to only one GPO",
           "WMI filters can only target computer objects, never be based on OS version",
           "A GPO can be linked to only one WMI filter, but that same filter can be linked to many GPOs",
           "WMI filters replace the need for security filtering entirely"
@@ -99835,7 +99835,7 @@ const EXAMS = {
         "q": "A GPO's settings appear inconsistent immediately after being edited: some domain controllers show the old behavior. What underlying architectural fact about GPO storage explains why this can temporarily happen?",
         "options": [
           "Group Policy templates only replicate once every 24 hours regardless of AD DS replication settings",
-          "GPOs are stored entirely within the Group Policy container in AD DS, and there is no separate SYSVOL component",
+          "GPOs are stored entirely within the Group Policy container in AD DS, and there is no separate SYSVOL component to replicate, so each domain controller updates on its own",
           "The Group Policy container replicates via AD DS replication while the Group Policy template replicates via DFS-R in SYSVOL, so the two can briefly fall out of sync",
           "GPOs never replicate between domain controllers; only the PDC emulator ever holds a copy"
         ],
@@ -99863,7 +99863,7 @@ const EXAMS = {
           ".admx files replicate via DFS-R; .adml files replicate via AD DS replication",
           ".admx files store user settings; .adml files store computer settings",
           ".admx files define the settings and are language-neutral; .adml files provide the language-specific display text",
-          ".admx files are used only for Windows clients; .adml files are used only for Windows Server"
+          ".admx files are used only for Windows clients; .adml files are used only for Windows Server and domain controllers"
         ],
         "correct": 2,
         "explain": ".admx files define the policy settings themselves in a language-neutral XML format, while .adml files supply the localized display strings, stored in per-language subfolders such as en-US."
@@ -99938,7 +99938,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Where do newly domain-joined computer accounts appear by default, and why is it generally recommended to relocate them to a custom organizational unit (OU)?",
         "options": [
-          "They appear in the Users container, where GPOs targeting only user objects would incorrectly apply",
+          "They appear in the Users container, where GPOs targeting only user objects would incorrectly apply to those computers",
           "They appear directly under the domain root, which cannot be secured with delegation",
           "They appear in the Domain Controllers OU, which enforces stricter password policies",
           "They appear in the built-in Computers container, which is not an OU and cannot have a GPO linked to it directly"
@@ -99980,7 +99980,7 @@ const EXAMS = {
           "The computer's built-in Local System account",
           "The user's own domain account",
           "A privileged, temporary virtual account scoped to the local system",
-          "A shared service account used by all JEA sessions"
+          "A shared service account used by all JEA sessions on the target server"
         ],
         "correct": 2,
         "explain": "JEA sessions run using a privileged virtual account rather than the connecting user's own credentials. Because the user's credentials never touch the remote system, they can't be harvested if that system is compromised, and the virtual account itself cannot be used to reach other systems."
@@ -100117,7 +100117,7 @@ const EXAMS = {
         "options": [
           "Azure Policy guest configuration auditing",
           "Automatic conversion of the physical server into an Azure VM",
-          "Collecting security events with Microsoft Sentinel",
+          "Collecting security events with Microsoft Sentinel from the server",
           "Onboarding to Microsoft Defender for Cloud"
         ],
         "correct": 1,
@@ -100197,7 +100197,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which local resource can you redirect into a Hyper-V VM session by using Enhanced Session Mode with VMConnect?",
         "options": [
-          "Another VM's virtual hard disk without copying it",
+          "Another VM's virtual hard disk without copying it to the management computer",
           "A USB device or local printer connected to the management computer",
           "The physical host's network adapter driver",
           "The Hyper-V host's BIOS settings"
@@ -100373,7 +100373,7 @@ const EXAMS = {
         "options": [
           "It eliminates the need for AD DS delegation to be configured for remote administration",
           "It automatically encrypts VHD files at rest",
-          "It removes the requirement for the administrator account to have local admin rights",
+          "It removes the requirement for the administrator account to have local admin rights on the host",
           "It allows connections over UDP instead of TCP"
         ],
         "correct": 0,
@@ -100554,7 +100554,7 @@ const EXAMS = {
         "q": "You configure a DHCP Failover relationship between two servers and accept the default mode. How do the two servers behave, and what is the default traffic distribution?",
         "options": [
           "One server handles only DHCPDISCOVER messages while the other handles only DHCPREQUEST messages",
-          "One server is active and one is a cold standby that never responds to clients; a ratio doesn't apply",
+          "One server is active and one is a cold standby that never responds to clients; a load ratio doesn't apply",
           "Both servers respond only during scheduled maintenance windows",
           "Both servers respond to client requests simultaneously, splitting the load using a default 50:50 ratio"
         ],
@@ -100744,7 +100744,7 @@ const EXAMS = {
         "q": "Contoso is provisioning an ExpressRoute circuit to connect its on-premises network to Azure. As part of configuring Azure private peering, what must Contoso reserve and provide for the primary and secondary links?",
         "options": [
           "A single public IP address for the whole circuit",
-          "A Class A address block registered with a regional internet registry",
+          "A Class A address block registered with a regional internet registry for the peering link",
           "A primary and secondary /30 subnet (or a shared /29) dedicated to the peering link",
           "Two /24 subnets from their internal address space"
         ],
@@ -100809,7 +100809,7 @@ const EXAMS = {
         "q": "Which of the following is a documented limitation of Windows Server Storage Spaces?",
         "options": [
           "Storage Spaces volumes can't be used as boot or system volumes",
-          "Storage Spaces can't be managed with Windows PowerShell",
+          "Storage Spaces can't be managed with Windows PowerShell or the MMC",
           "Storage Spaces requires a hardware RAID controller",
           "Storage Spaces can't use SAS disks"
         ],
@@ -100889,7 +100889,7 @@ const EXAMS = {
           "Virtualization libraries storing VHD/VHDX files (80-95%)",
           "Software deployment shares (70-80%)",
           "User documents and home folders (30-50%)",
-          "General file shares with mixed data (50-60%)"
+          "General file shares with mixed user and team data (50-60%)"
         ],
         "correct": 0,
         "explain": "Virtualization libraries used for provisioning VHD/VHDX files to hypervisors typically see the highest Data Deduplication savings, in the range of 80 to 95 percent, because many of those files share large amounts of duplicate data."
@@ -101087,7 +101087,7 @@ const EXAMS = {
         "options": [
           "Credentials aren't cached locally, and the user can no longer sign in offline",
           "Credentials are cached locally exactly as with any other account",
-          "Credentials are cached locally but encrypted with a stronger algorithm",
+          "Credentials are cached locally but encrypted with a stronger algorithm on that device",
           "Credentials are cached only if Credential Guard is disabled"
         ],
         "correct": 0,
@@ -101436,7 +101436,7 @@ const EXAMS = {
         "q": "You want to consolidate specific events from several member servers into a central log on one collector server using Event Viewer subscriptions. Which prerequisite must be configured on the source computers for this to work?",
         "options": [
           "The source servers must be domain controllers",
-          "Storage Replica must be enabled between the source and collector",
+          "Storage Replica must be enabled between the source and collector computers",
           "An inbound Windows Firewall rule permitting Windows Event Log Management",
           "IPAM must be deployed to track the source computers"
         ],
@@ -101462,7 +101462,7 @@ const EXAMS = {
         "q": "A workstation shows an IPv4 address in the 169.254.0.0/16 range and can only communicate with other devices on its local subnet. What does this indicate?",
         "options": [
           "The workstation's DNS suffix search list is misconfigured",
-          "The workstation successfully leased an address from a DHCP server on a remote subnet via a relay agent",
+          "The workstation successfully leased an address from a DHCP server on a remote subnet via a relay agent on the local router",
           "The workstation is configured with a static IP address in the DHCP exclusion range",
           "The workstation failed to contact a DHCP server and fell back to an Automatic Private IP Addressing (APIPA) address"
         ],
@@ -101545,7 +101545,7 @@ const EXAMS = {
         "options": [
           "Reinstall the guest OS and hope the problem doesn't recur",
           "Increase the VM size, which automatically resolves blue screen errors",
-          "Delete the VM and redeploy from the last Azure Backup restore point without further investigation",
+          "Delete the VM and redeploy from the last Azure Backup restore point without further investigation of the blue screen or its dump file",
           "Take a snapshot of the OS disk, attach it to a separate recovery VM, and look for the memory dump file in the \\Windows folder"
         ],
         "correct": 3,
