@@ -68566,7 +68566,7 @@ const EXAMS = {
           "Set Access = Internal on the module's facade codeunit",
           "Set the module's Target property to OnPrem and wrap the unsafe operation with safe APIs",
           "Disable the Extensibility property on the module's tables",
-          "Move the operation into the Base Application layer instead"
+          "Move the operation into the Base Application layer instead, leaving the module's Target set to Cloud"
         ],
         "correct": 1,
         "explain": "Every module must initially target the most restrictive environment (Cloud). If unsafe operations are required, they should result in a System Application module where the unsafe operations are wrapped with safe APIs, achieved by setting Target to OnPrem for that module."
@@ -68579,7 +68579,7 @@ const EXAMS = {
           "It can be referenced from any layer, including extensions",
           "It must contain all of the module's implementation logic for easier testing",
           "Its Access property must be explicitly set to Public, and it can't contain logic or local functions",
-          "Its Access property must be Internal so nothing outside the module can call it"
+          "Its Access property must be set explicitly to Internal so that nothing outside the module can call its methods"
         ],
         "correct": 2,
         "explain": "A module facade must have Access = Public (set explicitly), expose all external methods, and can't contain logic or local functions. Internal implementation details, such as *Impl codeunits, are marked Access = Internal instead."
@@ -68629,7 +68629,7 @@ const EXAMS = {
         "q": "How does a dependency app differ from a library app in Business Central's AppSource app model?",
         "options": [
           "A dependency app must be written as a Connect app",
-          "A dependency app can never be auto-installed, while a library app always can",
+          "A dependency app can never be auto-installed, while a library app always can be auto-installed",
           "A dependency app has its own offer/listing on AppSource, while a library app does not",
           "A dependency app is only supported on-premises"
         ],
@@ -68695,7 +68695,7 @@ const EXAMS = {
         "options": [
           "They are required in exactly the same way as for AppSource apps",
           "They are not required, but strongly recommended (for example, using 'pte') to avoid naming conflicts",
-          "They must be registered with Microsoft before the extension can be published",
+          "They must be registered with Microsoft before the per-tenant extension can be published to an environment",
           "They are strictly forbidden"
         ],
         "correct": 1,
@@ -68720,7 +68720,7 @@ const EXAMS = {
         "q": "What is the primary purpose of the 'process of bringing an app to AppSource' content that developers are expected to know for Business Central?",
         "options": [
           "Understanding the technical and marketing validation an app must pass before it can be published to AppSource",
-          "Configuring SQL Server clustered indexes for on-premises deployments",
+          "Configuring SQL Server clustered indexes for on-premises deployments before an app can be published to AppSource",
           "Configuring Azure Active Directory conditional access policies",
           "Designing RDLC report layouts"
         ],
@@ -68795,7 +68795,7 @@ const EXAMS = {
           "Docker Compose profiles",
           "Git submodules",
           "Multi-root workspaces (.code-workspace files)",
-          "The AL: Go to Definition command"
+          "The AL: Go to Definition command in each project folder"
         ],
         "correct": 2,
         "explain": "Visual Studio Code's multi-root workspace feature, supported by the AL Language extension, lets you add multiple AL project folders to one workspace using File > Add Folder to Workspace, saved as a .code-workspace file."
@@ -68805,7 +68805,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which statement about AL namespaces is correct?",
         "options": [
-          "A single AL object can belong to more than one namespace at the same time",
+          "A single AL object can belong to more than one namespace at the same time, as long as each namespace is declared in its own AL file",
           "Declaring a namespace removes the need for object prefixes or suffixes on AppSource apps",
           "Renaming a namespace never affects apps that depend on it",
           "The same namespace can be used across multiple AL files and objects, but a given object belongs to exactly one namespace"
@@ -68820,7 +68820,7 @@ const EXAMS = {
         "options": [
           "Only the caption changes; code references are unaffected",
           "The dependent extension breaks, because renaming a namespace is treated as a breaking change",
-          "The dependent extension is automatically updated to the new namespace",
+          "The dependent extension is automatically updated to the new namespace the next time it is compiled",
           "Nothing changes; namespaces are purely cosmetic"
         ],
         "correct": 1,
@@ -68949,7 +68949,7 @@ const EXAMS = {
         "q": "A developer has \"features\": [\"TranslationFile\"] set in app.json, but also has Incremental Build enabled in the AL Language extension configuration. What is the effect on translations?",
         "options": [
           "All translations are ignored during that build, even though the feature flag is set",
-          "Translation files from all languages get merged into one file",
+          "Translation files from all languages get merged into one file during that incremental build",
           "Only locked labels get translated",
           "Translations build twice as fast"
         ],
@@ -68964,7 +68964,7 @@ const EXAMS = {
           "A numeric Windows locale ID",
           "\"<language code>-<country code>\", e.g. \"da-DK\"",
           "A two-letter ISO code only, e.g. \"da\"",
-          "The full English language name, e.g. \"Danish\""
+          "The full English language name only, e.g. \"Danish\""
         ],
         "correct": 1,
         "explain": "The target-language attribute must be specified as \"<language code>-<country code>\", for example \"da-DK\", \"es-ES\", or \"de-DE\"."
@@ -69075,7 +69075,7 @@ const EXAMS = {
         "options": [
           "The primary key can be disabled to save index maintenance overhead",
           "Secondary keys always enforce uniqueness of their field values",
-          "A table can have multiple primary keys as long as each is marked Clustered",
+          "A table can have multiple primary keys as long as each is marked Clustered and defined before any secondary key",
           "There can be only one primary key per table, and it is always the first key defined and always active"
         ],
         "correct": 3,
@@ -69206,7 +69206,7 @@ const EXAMS = {
           "It is always linked to a single source table, like a Card page",
           "It replaces the need for List pages entirely",
           "It is never linked to a source table; instead it's built from parts, each linked to their own source table",
-          "It can only contain CardPart pages, not ListParts or HeadlineParts"
+          "It can only contain CardPart pages, not ListParts or HeadlineParts, and all of its parts share one source table"
         ],
         "correct": 2,
         "explain": "A RoleCenter page is never linked to a source table itself — it's assembled from parts (ListParts, CardParts, HeadlineParts), each of which is linked to its own source table."
@@ -69230,7 +69230,7 @@ const EXAMS = {
         "q": "For a table extension object (as opposed to a table object), which statement about defining keys is correct as of Business Central 2021 release wave 1 and later?",
         "options": [
           "A single key in a table extension can include fields from the base table object or the table extension object, but not both in the same key",
-          "Keys in a table extension can include fields from both the base table object and the table extension object within the same key",
+          "Keys in a table extension can include fields from both the base table object and the table extension object together within the same single key",
           "Table extensions can never define new keys at all",
           "Any key defined in a table extension automatically becomes the new primary key"
         ],
@@ -69258,7 +69258,7 @@ const EXAMS = {
           "A data item is always a calculated expression, never a table",
           "A data item corresponds to a page, not a table",
           "A data item corresponds to a table, and when the report runs, the data item is iterated for all records in that underlying table",
-          "A data item can only be used once per report, regardless of how many tables the report needs"
+          "A data item can only be used once per report, regardless of how many tables the report needs, because it is not tied to any underlying table"
         ],
         "correct": 2,
         "explain": "A data item corresponds to a table; when a report runs, each data item is iterated over all records of its underlying table. Reports based on more than one table establish a hierarchy of data items by indenting them."
@@ -69269,7 +69269,7 @@ const EXAMS = {
         "q": "To build a report's dataset from a Query object instead of directly from tables, what must the report's data item definition include?",
         "options": [
           "The report must be marked ProcessingOnly = true",
-          "A DataItemLink property pointing directly at the query's name, with no other setup required",
+          "A DataItemLink property pointing directly at the query's name, with no global variable or other trigger setup required",
           "A global variable pointing to the query object, an Integer data item, and OnPreDataItem/OnAfterGetRecord triggers",
           "A separate XMLport that wraps the query results"
         ],
@@ -69334,7 +69334,7 @@ const EXAMS = {
         "q": "A query groups and totals revenue by year using a Date method on a DateTime field, and the Business Central environment uses a non-UTC time zone. What issue can occur?",
         "options": [
           "Queries cannot use date methods at all — only reports can",
-          "The query automatically converts the result back to local time with no risk of discrepancy",
+          "The query automatically converts the result back to local time with no risk of discrepancy, since SQL Server uses the environment's time zone",
           "The day/month/year returned can differ from the actual calendar date, because SQL Server calculates it from the UTC-converted value",
           "The date method will always throw a compile error on DateTime fields"
         ],
@@ -69347,7 +69347,7 @@ const EXAMS = {
         "q": "How do you access the other (non-OnRun) functions of a codeunit that is invoked from a page action's RunObject property?",
         "options": [
           "Codeunit functions cannot be called from page actions under any circumstances",
-          "RunObject alone provides full access to every function in the codeunit",
+          "RunObject alone provides full access to every function in the codeunit, so no OnAction trigger or codeunit variable is needed",
           "You must use the OnAction trigger to declare a codeunit variable and call the specific function directly",
           "You need to create a separate table extension to expose the function"
         ],
@@ -69385,7 +69385,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "In a permission set object, what does setting the property 'IncludedPermissionSets = \"Sales Person\";' do?",
         "options": [
-          "It restricts the permission set so it can only be assigned to salespeople",
+          "It restricts the permission set so it can only be assigned to salespeople, regardless of any other permissions it contains",
           "It removes any permissions granted by the 'Sales Person' permission set",
           "It renames the permission set to 'Sales Person'",
           "It adds all the permissions from the 'Sales Person' permission set into the current permission set as well"
@@ -69400,7 +69400,7 @@ const EXAMS = {
         "options": [
           "It can add permissions to an existing permission set, but it can't remove permissions from it",
           "It can only be used with System-type permission sets, never User-Defined ones",
-          "It can both add and remove permissions from an existing permission set",
+          "It can both add and remove permissions from an existing permission set, in the same extension object",
           "It replaces the base permission set entirely once installed"
         ],
         "correct": 0,
@@ -69601,7 +69601,7 @@ const EXAMS = {
         "q": "When a Business Central report is built from more than one table, how does the developer control the order in which data is collected and how the data items relate to each other?",
         "options": [
           "Multi-table reports are not supported in AL",
-          "By creating a separate query object for every table",
+          "By creating a separate query object for every table in the report",
           "By writing custom SQL inside the report object",
           "By indenting the data items to establish a hierarchy"
         ],
@@ -69629,7 +69629,7 @@ const EXAMS = {
           "It allows the permission set to be assigned directly to a user through the Permission Sets page",
           "It marks the permission set as read-only",
           "It restricts the permission set to a single table",
-          "It converts the permission set into an entitlement automatically"
+          "It converts the permission set into an entitlement automatically when it is assigned to a user or group"
         ],
         "correct": 0,
         "explain": "Setting Assignable = true on a permission set makes it discoverable and assignable to users through the Permission Sets page in Business Central; non-assignable permission sets act only as building blocks for other permission sets."
@@ -69679,7 +69679,7 @@ const EXAMS = {
         "q": "When extension B extends a base enum that extension A has already extended (both adding new values), in what order are the enum values displayed in the UI?",
         "options": [
           "Values are sorted by declaration order, with values added by extension A shown before those added by extension B",
-          "Alphabetically by caption, regardless of which extension added them",
+          "Alphabetically by caption, regardless of which extension added them or the order in which the values were declared",
           "Only the base enum's original values are shown; extension values are hidden by default",
           "Randomly, based on installation order"
         ],
@@ -69704,7 +69704,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "When you pass a parameter to an AL procedure by value (the default for fundamental types), what happens to the caller's original variable if the procedure changes the parameter inside its body?",
         "options": [
-          "The caller's original variable is also changed, because AL always passes by reference",
+          "The caller's original variable is also changed, because AL always passes parameters by reference",
           "The caller's original variable is unaffected — only the local copy inside the procedure changes",
           "AL throws a runtime error",
           "It depends on whether the variable is Global or Local, not on how it's passed"
@@ -69744,7 +69744,7 @@ const EXAMS = {
         "q": "Which three participants are involved in AL's event-based architecture, according to Microsoft's training content?",
         "options": [
           "The codeunit, the table, and the page",
-          "The trigger, the handler, and the listener",
+          "The trigger, the handler, and the event listener",
           "The publisher, the event, and the subscriber",
           "The sender, the receiver, and the broker"
         ],
@@ -69756,10 +69756,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is the key difference between a Business event and an Integration event in AL?",
         "options": [
-          "Integration events can only be subscribed to once per app, while Business events can be subscribed to unlimited times",
+          "Integration events can only be subscribed to once per app, while Business events can be subscribed to unlimited times, which is the formal contract that Business events promise to subscribing ISVs",
           "Business events cannot include sender information, while Integration events always do",
           "Business events carry a formal contract that promises the event signature will not change in future releases; Integration events don't carry that same promise and can change over time",
-          "Business events are only raised on tables, while Integration events are only raised on pages"
+          "Business events are only raised on tables, while Integration events are only raised on pages, and that placement is what decides how each event can change over time"
         ],
         "correct": 2,
         "explain": "Business events are custom events, published by ISVs including Microsoft, that define a formal contract promising their signature won't change in future releases. Integration events don't carry that same promise and can change over time."
@@ -69784,7 +69784,7 @@ const EXAMS = {
         "options": [
           "It disables the event for per-tenant extensions",
           "It allows subscribers to access the publishing object instance and its other functions",
-          "It automatically makes the event a Business event instead of an Integration event",
+          "It automatically makes the event a Business event instead of an Integration event for all subscribers",
           "It allows the event to run twice for redundancy"
         ],
         "correct": 1,
@@ -69886,7 +69886,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Which statement about try methods (TryFunction) in AL is correct?",
         "options": [
-          "Any database write transactions performed inside a try method are automatically rolled back if the try method fails",
+          "Any database write transactions performed inside a try method are automatically rolled back if the try method fails, so the default server configuration allows them in try methods",
           "Try methods can return any user-defined data type",
           "Try methods always throw the error, even when their return value is used in an if-statement",
           "Database write transactions inside a try method are NOT rolled back, and by default the server configuration even prevents including a write transaction in a try method"
@@ -69901,8 +69901,8 @@ const EXAMS = {
         "options": [
           "Execution continues past errors, collecting them so they can be inspected and shown together at the end, instead of stopping on the first one",
           "It converts every Error() call into a Message() call",
-          "The procedure stops immediately on the first error, exactly like normal AL error handling",
-          "All errors inside the procedure are silently discarded and never shown to the user"
+          "The procedure stops immediately on the first error, exactly like normal AL error handling, and none of the later errors can be retrieved with GetCollectedErrors",
+          "All errors inside the procedure are silently discarded and never shown to the user, even after the procedure runs to the end"
         ],
         "correct": 0,
         "explain": "The ErrorBehavior(ErrorBehavior::Collect) attribute enables collectible errors: instead of stopping on the first error, AL code implementation continues to the end and gathers errors as they occur, which can then be retrieved with System.GetCollectedErrors()."
@@ -70161,7 +70161,7 @@ const EXAMS = {
           "The SQL Server connection string",
           "The Azure subscription ID",
           "The Application Insights resource's instrumentation key",
-          "The tenant's Microsoft Entra ID application secret"
+          "The tenant's Microsoft Entra ID application client secret"
         ],
         "correct": 2,
         "explain": "After creating an Application Insights resource in Azure (which is assigned an instrumentation key), you enter that instrumentation key on the Application Insights Key page for the environment in the Business Central administration center, which triggers a required environment restart."
@@ -70322,7 +70322,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "An integration currently polls the Business Central API every few minutes to check for changes. Which approach does Microsoft's API-limits guidance recommend to reduce call volume and get near-real-time updates instead?",
         "options": [
-          "Increase the polling frequency to every few seconds",
+          "Increase the polling frequency to every few seconds to get near-real-time updates",
           "Disable the API rate limits for that integration",
           "Switch from the API to SOAP web services",
           "Convert the integration from a pull model to a push model using webhooks"
@@ -70427,7 +70427,7 @@ const EXAMS = {
         "q": "Which statement correctly reflects a difference between regular OData web services and the Business Central API, as covered in the 'Work with the API' training module's learning objectives?",
         "options": [
           "The API can only be used for read operations, never for create or update",
-          "The API and OData web services are functionally identical with no meaningful differences",
+          "The API and OData web services are functionally identical with no meaningful differences, so the module has no need to define any difference between them",
           "OData supports OAuth authentication while the API only supports Basic authentication",
           "The module explicitly covers defining the difference between regular OData web services and the API, and working around API limits"
         ],
