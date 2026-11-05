@@ -17064,7 +17064,7 @@ const EXAMS = {
         "q": "How does Microsoft Learn define Responsible AI?",
         "options": [
           "A checklist run once before an AI model's initial release",
-          "A legal contract that transfers liability for AI output to the end user",
+          "A legal contract that transfers liability for AI output to the end user who deploys or assesses it",
           "A certification that only applies to enterprise-tier AI products",
           "An approach to developing, assessing, and deploying AI systems in a safe, trustworthy, and ethical way"
         ],
@@ -17091,7 +17091,7 @@ const EXAMS = {
         "options": [
           "Adversarial debiasing and testing with balanced demographic samples",
           "Removing the model's chat interface",
-          "Increasing the model's context window size",
+          "Increasing the model's context window size and removing demographic data",
           "Disabling all logging for the model"
         ],
         "correct": 0,
@@ -17104,7 +17104,7 @@ const EXAMS = {
         "options": [
           "It should randomize outcomes to ensure unpredictability",
           "It should provide consistent recommendations, avoiding differential impact on similarly situated groups",
-          "It should defer entirely to the first response a human reviewer gives",
+          "It should defer entirely to the first response a human reviewer gives, even when similar applicants get different results",
           "It should prioritize whichever group generates the most revenue"
         ],
         "correct": 1,
@@ -17118,7 +17118,7 @@ const EXAMS = {
           "That it operates reliably, safely, and consistently, minimizing unintended harm",
           "That it never requires human review",
           "That it is only usable by certified administrators",
-          "That it always produces the fastest possible response time"
+          "That it always produces the fastest possible response time, whatever the risk of harm"
         ],
         "correct": 0,
         "explain": "Reliability and safety means AI systems must function as designed, respond safely to unexpected conditions, resist manipulation, and minimize unintended physical, emotional, or financial harm."
@@ -17130,7 +17130,7 @@ const EXAMS = {
         "options": [
           "The user's permission should be obtained, with clear explanation of how the data will be used",
           "Nothing; consent is implied by product usage",
-          "The data should be collected first and consent requested afterward",
+          "The data should be collected first and consent requested afterward, with a clear explanation sent later",
           "Consent is only required for enterprise customers"
         ],
         "correct": 0,
@@ -17156,7 +17156,7 @@ const EXAMS = {
         "options": [
           "To store encryption keys in a tamper-proof environment",
           "To speed up code completion suggestions",
-          "To translate code between programming languages",
+          "To translate code between programming languages in a secure environment",
           "To generate unit tests automatically"
         ],
         "correct": 0,
@@ -17170,7 +17170,7 @@ const EXAMS = {
           "A method of compressing training data before encryption",
           "Encrypting only the subject line of emails",
           "An encryption approach that uses two keys for added security",
-          "Encrypting data using a single master key only"
+          "Encrypting data using a single master key only, shared by all users"
         ],
         "correct": 2,
         "explain": "The Responsible AI module describes envelope encryption as an approach that uses two keys for added security when protecting sensitive data."
@@ -17180,7 +17180,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What does the Inclusiveness principle require of AI systems like GitHub Copilot?",
         "options": [
-          "That they exclude historically underrepresented communities from testing",
+          "That they exclude historically underrepresented communities from testing to keep results simple and consistent",
           "That they empower everyone and are accessible regardless of ability, language, or geography",
           "That they are only available in English",
           "That they require a paid subscription to access any feature"
@@ -17222,7 +17222,7 @@ const EXAMS = {
           "That they must be understandable and interpretable, with honesty about capabilities and limitations",
           "That they must never be audited",
           "That their source code must always be open-source",
-          "That they should hide their decision-making process to protect trade secrets"
+          "That they should hide their decision-making process to protect trade secrets, while being honest about pricing"
         ],
         "correct": 0,
         "explain": "Transparency emphasizes that AI systems must be understandable and interpretable; creators should explain how systems operate, justify design choices, and be honest about capabilities and limitations."
@@ -17235,7 +17235,7 @@ const EXAMS = {
           "Hiding model limitations from users",
           "Enabling logging, reporting, and auditing capabilities",
           "Disabling all audit logs to reduce noise",
-          "Removing documentation to simplify the interface"
+          "Removing documentation to simplify the interface for users"
         ],
         "correct": 1,
         "explain": "Implementing transparency involves documenting data and models, creating explanatory interfaces, using AI debugging tools, and enabling logging and auditing capabilities to support trust and accountability."
@@ -17284,7 +17284,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which of these is listed as a potential unintended harmful outcome of AI systems?",
         "options": [
-          "Reduced electricity usage",
+          "Reduced electricity usage across data center workloads",
           "Increased test coverage",
           "Biased decision-making or privacy violations",
           "Faster compile times"
@@ -17311,7 +17311,7 @@ const EXAMS = {
         "q": "Why is it important to validate GitHub Copilot's output before using it in production code?",
         "options": [
           "Because Copilot suggestions can sometimes contain bugs, security issues, or misinterpret the broader project context",
-          "Because Copilot output is randomly generated and unrelated to your code",
+          "Because Copilot output is randomly generated and unrelated to your code, so it can't reflect the broader project context",
           "Because validation is only a legal requirement outside the United States",
           "Because Copilot never compiles the code it suggests"
         ],
@@ -17324,7 +17324,7 @@ const EXAMS = {
         "q": "A developer notices Copilot suggested code using string interpolation directly in a database query. What responsible practice should they follow?",
         "options": [
           "Ignore the review since it's only a suggestion, not final code",
-          "Accept the suggestion immediately since Copilot output is always secure",
+          "Accept the suggestion immediately since Copilot output is always secure and follows current security best practices",
           "Disable Copilot permanently for the whole team",
           "Validate the output, recognizing that generated code may not always adhere to best security practices"
         ],
@@ -17339,7 +17339,7 @@ const EXAMS = {
           "Sharing API keys with Copilot Chat to speed up responses",
           "Combining Copilot's suggestions with human judgment, testing, and review before merging",
           "Merging every suggestion without review to maximize speed",
-          "Disabling all content exclusions to give Copilot maximum context"
+          "Disabling all content exclusions to give Copilot maximum context, then merging suggestions as they appear"
         ],
         "correct": 1,
         "explain": "Responsible operation of Copilot means applying its suggestions responsibly by combining them with human judgment and testing, not merging AI output blindly."
@@ -17349,7 +17349,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is one limitation of GitHub Copilot related to its training data, discussed as a responsible-use concern?",
         "options": [
-          "It requires a dedicated GPU on the developer's machine",
+          "It requires a dedicated GPU on the developer's machine, in addition to a local copy of its training data",
           "It cannot run inside Visual Studio Code",
           "It only works with the Python programming language",
           "Its suggestions can reflect biases or outdated practices present in the training data"
@@ -17362,7 +17362,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What ongoing debate is mentioned regarding code generated by AI models like GitHub Copilot?",
         "options": [
-          "Whether AI-generated code compiles faster than human-written code",
+          "Whether AI-generated code compiles faster than human-written code from public source repositories",
           "Whether AI-generated code should be indented with tabs or spaces",
           "The copyright implications of code generated from models trained on public source code",
           "Whether GitHub Copilot should support dark mode"
@@ -17468,7 +17468,7 @@ const EXAMS = {
         "options": [
           "Only Enterprise excludes data, Business does not",
           "Yes, data is excluded from training by default on Business and Enterprise",
-          "No, Business and Enterprise always use customer data for training",
+          "No, Business and Enterprise always use customer data for training by default, with no opt-out",
           "This setting does not exist on any plan"
         ],
         "correct": 1,
@@ -17545,7 +17545,7 @@ const EXAMS = {
         "q": "How can a developer cycle through multiple alternative suggestions that Copilot offers for a complex snippet?",
         "options": [
           "Multiple suggestions are not supported",
-          "By disabling and re-enabling the extension",
+          "By disabling and re-enabling the extension each time, using Alt+] to do so",
           "By selecting the light bulb icon or using Alt+] (Option+] on Mac)",
           "By restarting VS Code"
         ],
@@ -17560,7 +17560,7 @@ const EXAMS = {
           "The 'Explain This' feature accessed via the right-click context menu",
           "Copilot Spaces attachments",
           "Automated test generation",
-          "The command palette's Diagnostics command"
+          "The command palette's Diagnostics command, which explains the selected code block"
         ],
         "correct": 0,
         "explain": "Selecting a code block and choosing 'Copilot: Explain This' from the right-click context menu provides an explanation of the selected code, useful for learning or reviewing unfamiliar code."
@@ -17570,7 +17570,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Where in VS Code can a developer find diagnostic information to troubleshoot a GitHub Copilot connection problem?",
         "options": [
-          "By emailing GitHub support with no other troubleshooting steps",
+          "By emailing GitHub support with no other troubleshooting steps, then waiting for them to send you the diagnostics to review",
           "By reinstalling the operating system",
           "By opening the command palette, entering 'Diagnostics', and selecting 'GitHub Copilot: Collect Diagnostics'",
           "Only in the GitHub web UI"
@@ -17585,7 +17585,7 @@ const EXAMS = {
         "options": [
           "Disable completions globally, or disable completions for the current file's language only",
           "Disable for weekdays only, or disable for weekends only",
-          "Disable for the current file only, or disable permanently and uninstall",
+          "Disable for the current file only, or disable permanently and uninstall the extension from VS Code",
           "There is no scope option; disabling always applies to the whole machine"
         ],
         "correct": 0,
@@ -17663,7 +17663,7 @@ const EXAMS = {
         "options": [
           "It only works with JetBrains IDEs",
           "It eliminates the need for Docker or manual configuration files and offers one-click OAuth login",
-          "It requires Docker and manual token management for every session",
+          "It requires Docker and manual token management for every session, which avoids the need for OAuth login",
           "It disables enterprise identity provider integration"
         ],
         "correct": 1,
@@ -17729,7 +17729,7 @@ const EXAMS = {
           "By using an 'applyTo' frontmatter field with glob syntax, e.g. applyTo: \"app/models/**/*.rb\"",
           "By placing the file inside a .gitignore entry",
           "By naming the file exactly 'instructions.md' in the repo root",
-          "Path targeting is not supported; instructions always apply repo-wide"
+          "Path targeting is not supported; instructions always apply repo-wide, whatever frontmatter fields the file uses"
         ],
         "correct": 0,
         "explain": "Path-specific instruction files live in .github/instructions and use an applyTo frontmatter field with glob syntax, such as applyTo: \"app/models/**/*.rb\", to scope guidance to specific paths."
@@ -17806,7 +17806,7 @@ const EXAMS = {
         "options": [
           "Via Homebrew (brew install copilot-cli) or the official install script",
           "It cannot be installed on macOS or Linux",
-          "By compiling it manually from source every time",
+          "By compiling it manually from source every time, using the official install script",
           "Only through the Microsoft Store"
         ],
         "correct": 0,
@@ -17895,7 +17895,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "On GitHub.com, what can Copilot generate to help explain a workflow run that failed in GitHub Actions?",
         "options": [
-          "Nothing; Copilot does not integrate with GitHub Actions",
+          "Nothing; Copilot does not integrate with GitHub Actions, so failed workflow runs must be diagnosed by hand",
           "A pull request title only",
           "An explanation of the error's root cause and suggestions to resolve the workflow issue",
           "A new billing invoice"
@@ -17961,7 +17961,7 @@ const EXAMS = {
         "q": "When configuring GitHub MCP Server in VS Code with a Personal Access Token instead of OAuth, what JSON field is used to securely prompt for and store the token reference in the server configuration?",
         "options": [
           "A plaintext 'password' field committed directly to the repository",
-          "An environment variable named SECRET_KEY with no other configuration",
+          "An environment variable named SECRET_KEY with no other configuration, referenced via ${env:SECRET_KEY} in the server settings file",
           "There is no way to use a PAT with the MCP Server in VS Code",
           "An 'inputs' array with a promptString entry marked as a password, referenced via ${input:github_token}"
         ],
@@ -17975,7 +17975,7 @@ const EXAMS = {
         "options": [
           "Publishing the prompt publicly on GitHub",
           "Secure transmission of the prompt over HTTPS along with context gathering",
-          "Immediate deletion of the user's IDE settings",
+          "Immediate deletion of the user's IDE settings, followed by context gathering",
           "Training a brand-new model from scratch"
         ],
         "correct": 1,
@@ -18015,7 +18015,7 @@ const EXAMS = {
           "To a third-party ad network",
           "To a proxy server hosted in a GitHub-owned Microsoft Azure tenant, which filters traffic",
           "Directly to a public GitHub repository",
-          "Nowhere; it goes straight to the user's local disk"
+          "Nowhere; it goes straight to the user's local disk, which filters traffic before the LLM reads it"
         ],
         "correct": 1,
         "explain": "Once the prompt is built, it passes securely to a proxy server hosted in a GitHub-owned Microsoft Azure tenant, which filters traffic and blocks attempts to hack the prompt or manipulate the system."
@@ -18038,7 +18038,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In GitHub Copilot's architecture, what happens after the toxicity filter and before a suggestion is delivered to the user?",
         "options": [
-          "The suggestion is emailed to the repository owner",
+          "The suggestion is emailed to the repository owner, who passes it on to the user",
           "A new GitHub account is created",
           "The filtered prompt is passed to LLM models to generate code suggestions",
           "The request is automatically canceled"
@@ -18092,7 +18092,7 @@ const EXAMS = {
         "options": [
           "Retention depends solely on the developer's operating system",
           "No, it discards prompts once a suggestion is returned; it does not retain them for training",
-          "Yes, all prompts are permanently stored and used for training by default",
+          "Yes, all prompts are permanently stored and used for training by default, once a suggestion has been returned to the editor",
           "Only prompts written in English are retained"
         ],
         "correct": 1,
@@ -18103,7 +18103,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Can GitHub Copilot Individual subscribers control whether their prompts are used to fine-tune GitHub's foundational model?",
         "options": [
-          "Only Enterprise admins can opt out on behalf of individuals",
+          "Only Enterprise admins can opt out on behalf of individuals, by changing a setting for the whole team",
           "This setting only affects the CLI, not the IDE",
           "Yes, Individual subscribers can opt out of sharing their prompts for fine-tuning",
           "No, Individual subscribers have no such control"
@@ -18129,7 +18129,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Approximately what is GitHub Copilot's typical context window size, as described in the 'GitHub Copilot data' unit?",
         "options": [
-          "Unlimited, spanning the entire GitHub organization",
+          "Unlimited, spanning the entire GitHub organization's code and every repository in it",
           "Approximately 200-500 lines of code or up to a few thousand tokens",
           "Exactly 1 million tokens with no limit",
           "A single line of code only"
@@ -18155,7 +18155,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What are Large Language Models (LLMs), as introduced in the GitHub Copilot LLMs unit?",
         "options": [
-          "Databases that only store structured tabular data",
+          "Databases that only store structured tabular data about how people use human language",
           "A type of compiler for C++",
           "AI models designed and trained to understand, generate, and manipulate human language",
           "A version control protocol"
@@ -18184,7 +18184,7 @@ const EXAMS = {
           "LoRA only works for image-generation models, not code models",
           "LoRA removes the need for any pretrained model at all",
           "LoRA adds smaller trainable parts to each layer instead of retraining the entire model, saving time and resources",
-          "LoRA requires retraining every parameter in the network, just like full fine-tuning"
+          "LoRA requires retraining every parameter in the network, just like full fine-tuning, but runs the training on fewer pieces of data"
         ],
         "correct": 2,
         "explain": "LoRA adds smaller trainable components to each layer of the pretrained model instead of changing everything, keeping the original model intact and saving significant time and resources compared to full fine-tuning."
@@ -18197,7 +18197,7 @@ const EXAMS = {
           "It ignores the IDE entirely and only reads a configuration file",
           "It considers the current file plus other open files and tabs in the IDE to generate more accurate completions",
           "It requires manual context input via a form before every suggestion",
-          "It considers only the current file and ignores all other open files"
+          "It considers only the current file and ignores all other open files and tabs, to keep its completions focused and more accurate in the IDE"
         ],
         "correct": 1,
         "explain": "GitHub Copilot utilizes LLMs to provide context-aware code suggestions, considering not just the current file but also other open files and tabs in the IDE to generate accurate, relevant completions."
@@ -18222,7 +18222,7 @@ const EXAMS = {
         "options": [
           "The model can only understand binary code",
           "Suggestions may reflect biases or outdated practices present in the training data",
-          "Suggestions are always identical regardless of context",
+          "Suggestions are always identical regardless of context, because the training data is fixed",
           "The model cannot process any programming language"
         ],
         "correct": 1,
@@ -18298,7 +18298,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is 'zero-shot learning' in the context of GitHub Copilot generating code?",
         "options": [
-          "Copilot requires exactly zero lines of existing code to function at all",
+          "Copilot requires exactly zero lines of existing code to function at all, and it deletes any examples that it's given",
           "Copilot refuses to generate any code until given ten examples",
           "Copilot generates code without any specific examples, relying solely on its foundational training",
           "Copilot only works with zero-indexed arrays"
@@ -18324,7 +18324,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What distinguishes 'few-shot learning' from zero-shot and one-shot approaches when prompting Copilot?",
         "options": [
-          "Few-shot learning means providing zero examples but a very long prompt",
+          "Few-shot learning means providing zero examples but a very long prompt, which balances precision with the unpredictability of one-shot approaches",
           "Few-shot learning is only available in the Enterprise plan",
           "Few-shot learning disables Copilot's context window entirely",
           "Copilot is presented with several examples, balancing zero-shot unpredictability with the precision of fine-tuning"
@@ -18363,7 +18363,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Why does the module recommend summarizing context or resetting a long Copilot Chat conversation rather than letting it grow indefinitely?",
         "options": [
-          "Because resetting the conversation deletes the developer's GitHub account",
+          "Because resetting the conversation deletes the developer's GitHub account unless it's done before the history grows too long",
           "Because Copilot Chat has a hard limit of exactly 5 messages per day",
           "Because long prompts with full conversation history can consume more Premium Request Units (PRUs) per turn",
           "Because long conversations are automatically made public"
@@ -18378,7 +18378,7 @@ const EXAMS = {
         "options": [
           "Disabling Copilot Chat after three turns",
           "Summarizing context when conversations become lengthy instead of repeating the full history each turn",
-          "Always repeating every previous message verbatim in each new prompt",
+          "Always repeating every previous message verbatim in each new prompt, so that the full history stays in view on each turn",
           "Switching to a completely different IDE mid-conversation"
         ],
         "correct": 1,
@@ -18391,7 +18391,7 @@ const EXAMS = {
         "options": [
           "Providing well-crafted examples helps Copilot understand patterns quickly, leading to more accurate suggestions with fewer revision cycles",
           "Examples only work for documentation generation, never for code",
-          "Providing examples always increases the number of PRUs consumed to an unlimited degree",
+          "Providing examples always increases the number of PRUs consumed to an unlimited degree, so they should be saved for the final revision cycle only",
           "Examples should never be included because they confuse the model"
         ],
         "correct": 0,
@@ -18415,7 +18415,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What benefit does role prompting with a 'performance optimization expert' persona typically provide?",
         "options": [
-          "Guaranteed removal of all bugs with zero developer review needed",
+          "Guaranteed removal of all bugs with zero developer review needed, along with faster builds",
           "A list of unrelated marketing slogans",
           "Automatic infrastructure provisioning in Azure",
           "Optimized algorithms, memory-efficient implementations, and scalability considerations"
@@ -18429,7 +18429,7 @@ const EXAMS = {
         "q": "Why does adding comments describing desired functionality above a function signature help Copilot generate better code?",
         "options": [
           "Comments are required before Copilot can even be installed",
-          "Comments are compiled directly into machine code by Copilot",
+          "Comments are compiled directly into machine code by Copilot, following the 'Surround' and 'Short' principles for each function",
           "Comments disable Copilot's toxicity filter",
           "It gives Copilot more contextual detail about requirements, following the 'Surround' and 'Short' principles"
         ],
@@ -18441,7 +18441,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "In a multi-turn conversation about building a user authentication function (add error handling, then tests, then docs, then optimization), what risk does the module warn about regarding chat history?",
         "options": [
-          "Copilot forgets the entire conversation after exactly two turns, with no way to extend it",
+          "Copilot forgets the entire conversation after exactly two turns, with no way to extend it, so each new request must restate the whole authentication function from the start",
           "Each new turn automatically deletes the previous code",
           "Maintaining long conversation histories can become inefficient and costly in terms of processing/PRUs as each turn adds to the growing context",
           "Chat history is shared publicly with all GitHub users by default"
@@ -18480,7 +18480,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Why might a developer choose few-shot prompting over zero-shot prompting when asking Copilot to generate a function that must handle multiple time-of-day greeting scenarios?",
         "options": [
-          "Zero-shot prompting always produces better results for every scenario, so few-shot is never useful",
+          "Zero-shot prompting always produces better results for every scenario, so few-shot is never useful, except when a developer wants to reduce manual testing of edge cases",
           "Few-shot prompting excels at generating sophisticated implementations that handle multiple scenarios and edge cases, reducing manual testing",
           "Few-shot prompting disables the toxicity filter",
           "Few-shot prompting is required before Copilot can be installed"
@@ -18507,7 +18507,7 @@ const EXAMS = {
         "q": "How does GitHub Copilot help developers when learning a new programming language or framework?",
         "options": [
           "By preventing the developer from writing any code in the new language",
-          "By automatically switching the developer's IDE to a different language",
+          "By automatically switching the developer's IDE to a different language and removing any need to read external documentation at all",
           "By disabling code completion until the language is fully learned",
           "By offering context-aware code snippet suggestions and reducing the need to constantly refer to external documentation"
         ],
@@ -18521,7 +18521,7 @@ const EXAMS = {
         "options": [
           "The 'Explain this' option in the context menu",
           "The GitHub billing dashboard",
-          "The Copilot content exclusion settings",
+          "The Copilot content exclusion settings in the context menu",
           "A network firewall rule"
         ],
         "correct": 0,
@@ -18548,7 +18548,7 @@ const EXAMS = {
           "Generating contextually relevant inline comments and suggesting function descriptions including parameters and return values",
           "Removing all existing documentation from a repository",
           "Translating documentation into machine code",
-          "Automatically publishing documentation to a public wiki without review"
+          "Automatically publishing documentation to a public wiki without review, including any inline comments and function descriptions it finds in the code"
         ],
         "correct": 0,
         "explain": "Copilot enhances documentation by generating relevant inline comments, suggesting function descriptions with parameter and return value details, assisting with README generation, and maintaining consistent style."
@@ -18586,7 +18586,7 @@ const EXAMS = {
         "options": [
           "By enabling rapid prototyping and transforming user stories into initial function or class definitions",
           "By automatically scheduling stakeholder meetings",
-          "By writing the entire product requirements document without human input",
+          "By writing the entire product requirements document without human input, directly from the initial user stories",
           "By deleting requirements it considers unnecessary"
         ],
         "correct": 0,
@@ -18637,7 +18637,7 @@ const EXAMS = {
         "q": "During Maintenance & support, how can GitHub Copilot help a developer working with unfamiliar legacy code?",
         "options": [
           "By refusing to interact with code older than one year",
-          "By converting all code into a single unreadable minified file",
+          "By converting all code into a single unreadable minified file, which removes the need to understand the legacy code",
           "By automatically deleting the legacy code",
           "By providing explanations and modern equivalents to help developers understand legacy code"
         ],
@@ -18704,7 +18704,7 @@ const EXAMS = {
           "Ensuring survey responses are anonymized and cannot be traced back to individual developers",
           "Sharing raw survey data with competitors",
           "Publishing every individual response publicly with names attached",
-          "Requiring developers to sign their responses with their full legal name"
+          "Requiring developers to sign their responses with their full legal name so that results can be traced back to them"
         ],
         "correct": 0,
         "explain": "The module emphasizes that survey responses should be anonymized and cannot be traced back to individual developers, meeting privacy obligations when analyzing results."
@@ -18768,7 +18768,7 @@ const EXAMS = {
         "options": [
           "Organization Settings > Copilot > Content exclusion",
           "A personal GitHub profile README",
-          "The organization's billing page only",
+          "The organization's billing page only, under Content exclusion",
           "GitHub Discussions settings"
         ],
         "correct": 0,
@@ -18807,7 +18807,7 @@ const EXAMS = {
         "options": [
           "The repository from being cloned",
           "The developer from logging into GitHub",
-          "Any other files in the repository from being edited at all",
+          "Any other files in the repository from being edited at all, including in Copilot Chat or by code completion suggestions",
           "The excluded content from informing code completion suggestions in other files or Copilot Chat responses"
         ],
         "correct": 3,
@@ -18818,7 +18818,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "In VS Code and Visual Studio, which specific Copilot Chat interaction is noted as NOT respecting content exclusions?",
         "options": [
-          "The command palette's Explain This command",
+          "The command palette's Explain This command used in a question",
           "Using the @github chat participant in a question",
           "Automated test generation only",
           "Standard inline code completions only"
@@ -18831,7 +18831,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "How can semantic information from an excluded file still leak into Copilot's suggestions, despite content exclusion being configured?",
         "options": [
-          "Only if the developer manually copies and pastes the excluded code",
+          "Only if the developer manually copies and pastes the excluded code into a non-excluded file, since the IDE can't provide any information from it",
           "Only through the GitHub mobile app",
           "If the IDE provides type information or hover-over definitions for symbols from the excluded file via a non-excluded file",
           "Semantic leakage is impossible once exclusion is configured"
@@ -18846,7 +18846,7 @@ const EXAMS = {
         "options": [
           "Content exclusions only work for public repositories",
           "Content exclusions apply to all GitHub users worldwide automatically",
-          "Yes, content exclusions are enforced globally for anyone who can view the repository",
+          "Yes, content exclusions are enforced globally for anyone who can view the repository, whichever organization they belong to or configured the settings",
           "No; content exclusion settings apply only to members of the organization that configured them, not to anyone else with file access"
         ],
         "correct": 3,
@@ -18872,7 +18872,7 @@ const EXAMS = {
         "options": [
           "The 'Matching public code' / 'Suggestions matching public code' setting must be blocked",
           "The Copilot Free plan's usage limit",
-          "The organization's two-factor authentication requirement",
+          "The organization's two-factor authentication requirement must be blocked for all of its members",
           "The repository's default branch protection rule"
         ],
         "correct": 0,
@@ -18884,7 +18884,7 @@ const EXAMS = {
         "q": "Where does an individual paying for their own Copilot Pro license (not org-provided) manage the 'Suggestions matching public code' toggle?",
         "options": [
           "Personal account Settings > Copilot > Features > Privacy",
-          "The repository's branch protection rules",
+          "The repository's branch protection rules, under Settings > Copilot",
           "The organization's audit log",
           "GitHub Marketplace billing page"
         ],
@@ -18964,7 +18964,7 @@ const EXAMS = {
           "The GitHub Copilot icon shows a diagonal line through it",
           "The icon turns bright green",
           "The file tab turns red",
-          "The icon disappears completely with no indicator"
+          "The icon disappears completely with no indicator on the status bar"
         ],
         "correct": 0,
         "explain": "When a content exclusion applies to a file, the GitHub Copilot icon on the status bar has a diagonal line through it; hovering over the icon shows whether the organization or parent repository disabled Copilot for that file."
@@ -18975,7 +18975,7 @@ const EXAMS = {
         "q": "If GitHub Copilot suggestions are missing entirely in the editor, which of these is a recommended first troubleshooting step?",
         "options": [
           "Check the internet connection and confirm the Copilot extension is up to date",
-          "Immediately uninstall and reinstall the entire operating system",
+          "Immediately uninstall and reinstall the entire operating system, then the Copilot extension",
           "Delete the whole repository and start a new one",
           "Switch to a completely different programming language"
         ],
@@ -18987,7 +18987,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "If GitHub Copilot's code suggestions are technically working but consistently unsatisfactory, what technique does the module recommend to improve them?",
         "options": [
-          "Switching the operating system's display language",
+          "Switching the operating system's display language and using shorter variable names",
           "Disabling Copilot permanently",
           "Renaming the project repository",
           "Providing clearer context through descriptive comments and meaningful variable names"
