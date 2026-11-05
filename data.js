@@ -40,7 +40,7 @@ const CATALOG = [
   { code:"PL-300", title:"Power BI Data Analyst Associate", category:"Cloud & AI Platforms", tier:"Role-based" },
   // Cloud & AI Platforms — Specialty
   { code:"AZ-120", title:"Azure for SAP Workloads Specialty", category:"Cloud & AI Platforms", tier:"Specialty" },
-  { code:"DP-420", title:"Azure Cosmos DB Developer Specialty", category:"Cloud & AI Platforms", tier:"Specialty" },
+  { code:"DP-420", title:"Azure Cosmos DB AI Developer Associate", category:"Cloud & AI Platforms", tier:"Specialty" },
   { code:"AZ-140", title:"Azure Virtual Desktop Specialty", category:"Cloud & AI Platforms", tier:"Specialty" },
   { code:"GH-100", title:"GitHub Administration", category:"Cloud & AI Platforms", tier:"Specialty", provider:"GitHub" },
   { code:"GH-300", title:"GitHub Copilot", category:"Cloud & AI Platforms", tier:"Specialty", provider:"GitHub" },
@@ -68,7 +68,7 @@ const CATALOG = [
   { code:"AB-100", title:"Agentic AI Business Solutions Architect", category:"AI Business Solutions", tier:"Role-based", expert:true },
   { code:"AB-250", title:"Dynamics 365 Contact Center AI Engineer Associate", category:"AI Business Solutions", tier:"Role-based", isNew:true },
   { code:"AB-620", title:"AI Agent Builder Associate", category:"AI Business Solutions", tier:"Role-based" },
-  { code:"AB-650", title:"AI Services Administrator Associate", category:"AI Business Solutions", tier:"Role-based", isNew:true },
+  { code:"AB-650", title:"Microsoft 365 and AI Services Administrator Associate", category:"AI Business Solutions", tier:"Role-based", isNew:true },
   { code:"AB-210", title:"Dynamics 365 Sales AI Consultant Associate", category:"AI Business Solutions", tier:"Role-based", isNew:true },
   // AI Business Solutions — Business
   { code:"AB-730", title:"AI Business Professional", category:"AI Business Solutions", tier:"Business" },
@@ -27391,20 +27391,21 @@ const EXAMS = {
   },
   "DP-420": {
     "code": "DP-420",
-    "cert": "Microsoft Certified: Azure Cosmos DB Developer Specialty",
-    "title": "Write efficient queries, create indexing policies, manage, and provision resources in the SQL API and SDK with Microsoft Azure Cosmos DB.",
+    "cert": "Microsoft Certified: Azure Cosmos DB AI Developer Associate",
+    "title": "Design, build, and optimize high-performance, scalable AI applications with Azure Cosmos DB.",
     "level": "Intermediate",
     "beta": false,
     "passScore": 700,
     "certUrl": "https://learn.microsoft.com/en-us/credentials/certifications/azure-cosmos-db-developer-specialty/",
     "studyGuideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/dp-420",
     "prereqs": [
-      "Developing apps for Azure",
-      "Working with Azure Cosmos DB database technologies",
-      "Creating server-side objects with JavaScript",
-      "Writing efficient SQL queries for Azure Cosmos DB for NoSQL",
-      "Creating appropriate indexing policies",
-      "Interpreting JSON, reading C# or Java code, and using PowerShell"
+      "Designing and implementing data models and data distribution",
+      "Ingesting and querying data with Azure Cosmos DB",
+      "Optimizing application performance, scalability, and cost",
+      "Implementing secure and production-ready applications",
+      "Building AI retrieval and RAG solutions",
+      "Designing and implementing agent memory systems",
+      "Integrating Azure Cosmos DB with Microsoft Fabric for analytical querying"
     ],
     "resources": [
       {
@@ -27430,181 +27431,89 @@ const EXAMS = {
     ],
     "domains": [
       {
-        "name": "Design and implement data models",
-        "weight": "35-40%",
-        "mid": 37.5,
+        "name": "Design and develop database solutions",
+        "weight": "40-45%",
+        "mid": 42.5,
         "link": "https://learn.microsoft.com/en-us/training/paths/implement-modeling-partitioning-azure-cosmos-db-sql-api/",
         "skills": [
-          "Develop a design by storing multiple entity types in the same container",
-          "Develop a design by storing multiple related entities in the same document",
-          "Develop a model that denormalizes data across documents",
-          "Develop a design by referencing between documents",
-          "Identify partition key, id, and unique keys",
-          "Identify data and associated access patterns",
-          "Specify a default time to live (TTL) on a container for a transactional store",
-          "Develop a design for versioning documents",
-          "Develop a design for document schema versioning",
-          "Choose a partitioning strategy based on a specific workload",
-          "Choose a partition key",
-          "Plan for transactions when choosing a partition key",
-          "Evaluate the cost of using a cross-partition query",
-          "Calculate and evaluate data distribution based on partition key selection",
-          "Calculate and evaluate throughput distribution based on partition key selection",
-          "Construct and implement a synthetic partition key",
-          "Design and implement a hierarchical partition key",
-          "Design partitioning for workloads that require multiple partition keys",
-          "Evaluate the throughput and data storage requirements for a specific workload",
-          "Choose between serverless and provisioned throughput; determine when free tier is applicable",
-          "Choose when to use database-level provisioned throughput",
-          "Design for granular scale units and resource governance",
-          "Evaluate the cost of the global distribution of data",
-          "Configure throughput for Azure Cosmos DB by using the Azure portal",
-          "Choose a connectivity mode (gateway versus direct)",
-          "Implement a connectivity mode",
-          "Create a connection to a database",
-          "Enable offline development by using the Azure Cosmos DB emulator",
-          "Handle connection errors",
-          "Implement a singleton for the client",
-          "Specify a region for global distribution",
-          "Configure client-side threading and parallelism options",
-          "Enable SDK logging",
-          "Implement queries that use arrays, nested objects, aggregation, and ordering",
-          "Implement a correlated subquery",
-          "Implement queries that use array and type-checking functions",
-          "Implement queries that use mathematical, string, and date functions",
-          "Implement queries based on variable data",
-          "Choose when to use a point operation versus a query operation",
-          "Implement a point operation that creates, updates, and deletes items",
-          "Implement an update by using a patch operation",
-          "Manage multi-item transactions using SDK Transactional Batch",
-          "Perform a multi-item load using Bulk Support in the SDK",
-          "Implement optimistic concurrency control using ETags",
-          "Override default consistency by using query request options",
-          "Implement session consistency by using session tokens",
-          "Implement a query operation that includes pagination",
-          "Implement a query operation by using a continuation token",
-          "Handle transient errors and 429s",
-          "Specify TTL for an item",
-          "Retrieve and use query metrics",
-          "Write, deploy, and call a stored procedure",
-          "Design stored procedures to work with multiple items within the same logical partition transactionally",
-          "Implement and call triggers",
-          "Implement a user-defined function"
+          "Evaluate consistency levels",
+          "Evaluate Request Unit (RU) consumption requirements",
+          "Evaluating and configuring appropriate throughput",
+          "Configure account-level and container-level settings",
+          "Create and manage database and containers",
+          "Initialize SDK clients and connections",
+          "Implement queries, parameterized queries, paging, and continuation tokens",
+          "Implement point read operations",
+          "Implement create, replace, update, patch and delete operations",
+          "Implement bulk, batch, and transactional operations",
+          "Configure Time to Live (TTL)",
+          "Implement concurrency control mechanisms",
+          "Design data models for access patterns and operational requirements",
+          "Design and select partition keys based on cardinality, access patterns, and write distribution requirements",
+          "Determine when to embed or reference related data",
+          "Evaluate the impact of partition key selection on scalability and performance",
+          "Implement hierarchical partition keys (HPKs) and multi-tenant partitioning strategies",
+          "Implement synthetic partition keys",
+          "Identify partitioning anti-patterns and partitioning issues during solution reviews",
+          "Estimate workload cost requirements",
+          "Implement change feed operations",
+          "Differentiate between change feed processor and pull mode models",
+          "Configure lease containers",
+          "Implement change feed processing using latest mode or all versions and delete",
+          "Implement copy container jobs",
+          "Implement Agent Kit to follow Azure Cosmos DB development recommended solutions",
+          "Implement Agent Kit to accelerate AI application development"
         ]
       },
       {
-        "name": "Design and implement data distribution",
-        "weight": "5-10%",
-        "mid": 7.5,
-        "link": "https://learn.microsoft.com/en-us/training/paths/design-implement-replication-strategy-cosmos-db-sql-api/",
-        "skills": [
-          "Choose when to distribute data",
-          "Define automatic failover policies for regional failure for Azure Cosmos DB for NoSQL",
-          "Perform manual failovers to move single-write regions",
-          "Choose a consistency model",
-          "Identify use cases for different consistency models",
-          "Evaluate the impact of consistency model choices on availability and associated request unit (RU) cost",
-          "Evaluate the impact of consistency model choices on performance and latency",
-          "Specify application connections to replicated data",
-          "Choose when to use multi-region writes",
-          "Implement multi-region writes",
-          "Implement a custom conflict resolution policy for Azure Cosmos DB for NoSQL"
-        ]
-      },
-      {
-        "name": "Integrate an Azure Cosmos DB solution",
-        "weight": "5-10%",
-        "mid": 7.5,
-        "link": "https://learn.microsoft.com/en-us/training/modules/configure-azure-synapse-link-with-azure-cosmos-db/",
-        "skills": [
-          "Configure Azure Cosmos DB Mirroring for Microsoft Fabric",
-          "Choose between Azure Cosmos DB Mirroring and the Azure Cosmos DB Spark connector",
-          "Enable the analytical store on a container",
-          "Enable a connection to an analytical store and query from Azure Synapse Spark or Azure Synapse SQL serverless",
-          "Perform a query against the transactional store from Spark",
-          "Write data back to the transactional store from Spark",
-          "Implement Change Data Capture in the Azure Cosmos DB analytical store",
-          "Implement time travel in Warehouse in Microsoft Fabric",
-          "Integrate events with other applications by using Azure Functions and Azure Event Hubs",
-          "Denormalize data by using Change Feed and Azure Functions",
-          "Enforce referential integrity by using Change Feed and Azure Functions",
-          "Aggregate data by using Change Feed and Azure Functions, including reporting",
-          "Archive data by using Change Feed and Azure Functions",
-          "Implement Azure AI Search for an Azure Cosmos DB solution"
-        ]
-      },
-      {
-        "name": "Optimize an Azure Cosmos DB solution",
-        "weight": "15-20%",
-        "mid": 17.5,
+        "name": "Secure, optimize, and deploy database solutions",
+        "weight": "30-35%",
+        "mid": 32.5,
         "link": "https://learn.microsoft.com/en-us/training/paths/optimize-query-performance-azure-cosmos-db-sql-api/",
         "skills": [
-          "Adjust indexes on the database",
-          "Calculate the cost of the query",
-          "Retrieve request unit cost of a point operation or query",
-          "Implement Azure Cosmos DB integrated cache",
-          "Develop an Azure Functions trigger to process a change feed",
-          "Consume a change feed from within an application by using the SDK",
-          "Manage the number of change feed instances by using the change feed estimator",
-          "Implement denormalization by using a change feed",
-          "Implement referential enforcement by using a change feed",
-          "Implement aggregation persistence by using a change feed",
-          "Implement data archiving by using a change feed",
-          "Choose when to use a read-heavy versus write-heavy index strategy",
-          "Choose an appropriate index type",
-          "Configure a custom indexing policy by using the Azure portal",
-          "Implement a composite index",
-          "Optimize index performance"
+          "Configure authentication mechanisms",
+          "Configure authorization controls",
+          "Configure network security",
+          "Configure dynamic data masking",
+          "Configure backup and restore solutions",
+          "Implement multi-region read and write configurations",
+          "Configure partition failover solutions",
+          "Optimize query performance",
+          "Analyze query performance metrics",
+          "Analyze index performance metrics",
+          "Monitor end-to-end latency against service objectives",
+          "Configure Azure Monitor alerts",
+          "Analyze diagnostic logs in Log Analytics",
+          "Configure Fleet level throughput management",
+          "Configure Fleet monitoring with fleet analytics"
         ]
       },
       {
-        "name": "Maintain an Azure Cosmos DB solution",
-        "weight": "25-30%",
-        "mid": 27.5,
-        "link": "https://learn.microsoft.com/en-us/training/paths/monitor-troubleshoot-azure-cosmos-db-sql-api-solution/",
+        "name": "Implement AI and Analytics capabilities in database solutions",
+        "weight": "20-25%",
+        "mid": 22.5,
+        "link": "https://learn.microsoft.com/en-us/azure/cosmos-db/gen-ai/vector-search-overview",
         "skills": [
-          "Evaluate response status code and failure metrics",
-          "Monitor the Normalized RU Consumption metric by using Azure Monitor",
-          "Monitor server-side latency metrics by using Azure Monitor",
-          "Monitor data replication in relation to latency and availability",
-          "Configure Azure Monitor alerts for Azure Cosmos DB",
-          "Implement and query Azure Monitor resource logs for Azure Cosmos DB",
-          "Monitor throughput across partitions",
-          "Monitor distribution of data across partitions",
-          "Monitor security by using logging and auditing",
-          "Choose between periodic and continuous backup",
-          "Configure periodic backup",
-          "Configure continuous backup and point-in-time restore",
-          "Locate a restore point for a point-in-time restore",
-          "Restore a database or container from a restore point",
-          "Choose between platform-managed and customer-managed encryption keys",
-          "Configure network-level access control for Azure Cosmos DB",
-          "Configure data encryption for Azure Cosmos DB",
-          "Manage control plane access to Azure Cosmos DB by using Azure role-based access control (RBAC)",
-          "Manage control plane access to Azure Cosmos DB Data Explorer by using Azure role-based access control (RBAC)",
-          "Manage data plane access to Azure Cosmos DB by using Microsoft Entra ID",
-          "Configure cross-origin resource sharing (CORS) settings",
-          "Manage account keys by using Azure Key Vault",
-          "Implement customer-managed keys for encryption",
-          "Implement Always Encrypted",
-          "Choose a data movement strategy",
-          "Move data by using client SDK bulk operations",
-          "Move data by using Azure Data Factory and Azure Synapse pipelines",
-          "Move data by using a Kafka connector",
-          "Move data by using Azure Stream Analytics",
-          "Move data by using the Azure Cosmos DB Spark connector",
-          "Configure Azure Cosmos DB as a custom endpoint for an Azure IoT Hub",
-          "Choose when to use declarative versus imperative operations",
-          "Provision and manage Azure Cosmos DB resources by using Azure Resource Manager templates",
-          "Migrate between standard and autoscale throughput by using PowerShell or Azure CLI",
-          "Initiate a regional failover by using PowerShell or Azure CLI",
-          "Maintain indexing policies in production by using Azure Resource Manager templates"
+          "Design and implement full-text search",
+          "Design for vector data, including vector data type, vector indexes, and size",
+          "Design and implement vector partitioning and sharded DiskANN implementations",
+          "Implement vector search",
+          "Design and implement hybrid search",
+          "Optimize full-text and vector performance",
+          "Design and implement Retrieval-Augmented Generation (RAG)",
+          "Design durable memory stores",
+          "Implement conversation state",
+          "Implement semantic memory",
+          "Choose between Azure Cosmos DB and Cosmos DB in Microsoft Fabric",
+          "Configure and monitor data mirroring into Microsoft Fabric",
+          "Query Azure Cosmos DB mirrored JSON data in Microsoft Fabric with T-SQL and Spark",
+          "Read and write data into Azure Cosmos DB from Microsoft Fabric with Cosmos DB Spark connector"
         ]
       }
     ],
     "questions": [
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "A Customer entity and a CustomerPassword entity have a strict 1:1 relationship and are always read and updated together. What is the recommended modeling approach in Azure Cosmos DB for NoSQL?",
         "options": [
@@ -27617,7 +27526,7 @@ const EXAMS = {
         "explain": "Data that has a 1:1 relationship and is read or updated together is nearly always modeled as a single, embedded document to minimize the number of requests."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "A customer in an e-commerce app typically has only two or three shipping addresses. How should the Customer-to-CustomerAddress relationship be modeled?",
         "options": [
@@ -27630,7 +27539,7 @@ const EXAMS = {
         "explain": "A bounded 1:Many relationship, such as a customer having a handful of addresses, is a 1:Few relationship and is best embedded in the parent document."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "A product document has a small set of properties that change on every write (inventory count) alongside a large set of static properties (description, specs). Why should these be split into two documents?",
         "options": [
@@ -27643,7 +27552,7 @@ const EXAMS = {
         "explain": "Because updates require replacing the whole item, mixing frequently-changing fields with large static fields in one document increases the RU cost and latency of every update; splitting them is more efficient."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "An order document can reference an unbounded, ever-growing number of shipment tracking events over its lifetime. What relationship type is this, and how should it typically be modeled?",
         "options": [
@@ -27656,7 +27565,7 @@ const EXAMS = {
         "explain": "When a document could grow an unknown or unlimited number of times, it is an unbounded 1:Many relationship, which should be referenced as separate documents rather than embedded."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "Products and Tags have a many-to-many relationship (each product can have many tags, and each tag applies to many products). What is the recommended approach?",
         "options": [
@@ -27669,7 +27578,7 @@ const EXAMS = {
         "explain": "Many:Many relationships are generally modeled by referencing between documents, sometimes combined with selective denormalization of frequently read fields."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "In an e-commerce data model, category name and tag name are denormalized (copied) into every product document. What is the primary benefit of this approach?",
         "options": [
@@ -27682,7 +27591,7 @@ const EXAMS = {
         "explain": "Because Azure Cosmos DB for NoSQL cannot perform cross-document joins, denormalizing frequently accessed reference data into the document that needs it avoids extra round trips at read time."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "After denormalizing category name into every product document, how can referential integrity be maintained when a category's name changes?",
         "options": [
@@ -27695,7 +27604,7 @@ const EXAMS = {
         "explain": "Change feed is a persistent, ordered record of inserts and updates on a container; listening to it on the productCategory container lets an application propagate changes into the denormalized product container."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "What is a key benefit of storing multiple related entity types (for example, Product and ProductReview) in the same container?",
         "options": [
@@ -27708,7 +27617,7 @@ const EXAMS = {
         "explain": "Mixing related entity types in a single container, using a shared or compatible partition key, lets an application retrieve related data efficiently within the same logical partition."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "hard",
         "q": "A container is created without specifying a default time to live (TTL) value at all (the DefaultTimeToLive property is left unset/null). What is the effect?",
         "options": [
@@ -27721,7 +27630,7 @@ const EXAMS = {
         "explain": "If DefaultTimeToLive is not set on the container, TTL is off for the whole container, and per-item TTL values are ignored; setting it to -1 (not leaving it unset) is what enables items to live forever unless they specify their own TTL."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "What value must every item in an Azure Cosmos DB for NoSQL container have, in addition to a partition key?",
         "options": [
@@ -27734,7 +27643,7 @@ const EXAMS = {
         "explain": "Every item requires an id property, which together with the partition key must be unique within the logical partition."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "What is a logical partition in Azure Cosmos DB for NoSQL?",
         "options": [
@@ -27747,7 +27656,7 @@ const EXAMS = {
         "explain": "A logical partition is the collection of all items in a container that have the same partition key value; logical partitions are then distributed across physical partitions."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "A container needs a partition key, but no single property provides enough cardinality to avoid hot partitions. What technique constructs a partition key by concatenating two or more property values, such as deviceId and date?",
         "options": [
@@ -27760,7 +27669,7 @@ const EXAMS = {
         "explain": "A synthetic partition key is constructed by concatenating multiple property values (for example, deviceId-date) to create a key with higher cardinality and better distribution."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "Which feature lets you define up to three levels of partition key properties (for example, /tenantId, /userId, /sessionId) so that queries filtering on a prefix of those levels can avoid a full fan-out?",
         "options": [
@@ -27773,7 +27682,7 @@ const EXAMS = {
         "explain": "A hierarchical partition key lets you specify multiple partition key paths, allowing efficient queries that filter on the first one or more levels without scanning every physical partition."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "A query does not include an equality filter on the partition key and therefore Azure Cosmos DB must send the query to every physical partition. What is this called, and what is its cost implication?",
         "options": [
@@ -27786,7 +27695,7 @@ const EXAMS = {
         "explain": "Queries without a partition key filter fan out to all physical partitions (cross-partition query), which is typically more expensive in RU than a query scoped to a single partition."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "hard",
         "q": "A write-heavy IoT workload uses deviceId as the partition key, but a small number of devices generate far more telemetry than others, creating hot partitions. Which change would best resolve this?",
         "options": [
@@ -27799,7 +27708,7 @@ const EXAMS = {
         "explain": "When a chosen partition key produces uneven request distribution (hot partitions), combining it with another attribute into a synthetic key spreads writes more evenly across logical and physical partitions."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "How is provisioned throughput (RU/s) distributed when a container has multiple physical partitions?",
         "options": [
@@ -27812,7 +27721,7 @@ const EXAMS = {
         "explain": "Provisioned throughput is divided evenly among a container's physical partitions, which is why an imbalanced partition key can cause some partitions to be throttled while others sit idle."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "hard",
         "q": "Why must all operations inside a single TransactionalBatch share the same partition key value?",
         "options": [
@@ -27825,7 +27734,7 @@ const EXAMS = {
         "explain": "Azure Cosmos DB provides multi-item transactional guarantees only within a single logical partition, so every operation in a TransactionalBatch must target the same partition key value."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "Why is a property with high cardinality (many distinct values) generally preferred as a partition key over one with only a few possible values?",
         "options": [
@@ -27838,7 +27747,7 @@ const EXAMS = {
         "explain": "A partition key with many distinct values distributes data and throughput more evenly, reducing the chance of a hot, throttled partition."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "A workload needs efficient access patterns filtered by both tenantId and, within a tenant, by userId, and cardinality at the tenant level alone is too low. Which design addresses both requirements without resorting to string concatenation?",
         "options": [
@@ -27851,7 +27760,7 @@ const EXAMS = {
         "explain": "A hierarchical partition key lets a workload requiring multiple partition key levels (such as tenantId then userId) achieve good distribution and efficient queries without hand-built synthetic keys."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "In the serverless capacity mode for Azure Cosmos DB for NoSQL, how is billing calculated?",
         "options": [
@@ -27864,7 +27773,7 @@ const EXAMS = {
         "explain": "In serverless mode you don't provision RU/s ahead of time; you are billed only for the RUs your operations consume and for the storage used."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "What must you configure ahead of time when using provisioned throughput mode, unlike serverless mode?",
         "options": [
@@ -27877,7 +27786,7 @@ const EXAMS = {
         "explain": "Provisioned throughput mode requires you to configure a specific number of request units per second (RU/s) for a database or container in advance."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "A team has many containers, each with unpredictable and bursty but generally low individual usage. Which throughput approach lets the containers share a single provisioned RU/s pool?",
         "options": [
@@ -27890,7 +27799,7 @@ const EXAMS = {
         "explain": "Database-level provisioned throughput is shared across all containers in the database, which suits scenarios with many containers that have unpredictable, complementary usage patterns."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "What does autoscale throughput provide that standard (manual) provisioned throughput does not?",
         "options": [
@@ -27903,7 +27812,7 @@ const EXAMS = {
         "explain": "Autoscale throughput automatically scales RU/s up and down between 10% of the configured maximum and that maximum, providing granular scale units and resource governance without manual changes."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "hard",
         "q": "When you add an additional read region to an Azure Cosmos DB account, what is the throughput and storage cost implication?",
         "options": [
@@ -27916,7 +27825,7 @@ const EXAMS = {
         "explain": "Distributing data globally means each additional region gets its own replica of the data and provisioned throughput, so both storage and RU/s costs scale with the number of regions."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "In the Azure portal, where do you configure the throughput (RU/s) for a database or container?",
         "options": [
@@ -27929,7 +27838,7 @@ const EXAMS = {
         "explain": "Throughput for a database or container is configured from the Scale (or Scale & Settings) section of Data Explorer in the Azure portal."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "Which SDK connectivity mode communicates over the standard HTTPS port using a single DNS endpoint, making it the best choice behind strict corporate firewalls?",
         "options": [
@@ -27942,7 +27851,7 @@ const EXAMS = {
         "explain": "Gateway mode is a RESTful model over HTTPS with a single DNS endpoint, making it the best option when a client sits behind strict firewall rules, at the cost of an extra network hop."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "Which connectivity mode allows the client to open TCP connections directly to the backend partitions for the lowest latency?",
         "options": [
@@ -27955,7 +27864,7 @@ const EXAMS = {
         "explain": "Direct mode uses TCP (with TLS for authentication and encryption) to connect straight to backend partitions, avoiding the extra hop that gateway mode requires."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "Which SDK platforms support Direct connectivity mode for Azure Cosmos DB for NoSQL?",
         "options": [
@@ -27968,7 +27877,7 @@ const EXAMS = {
         "explain": "Direct mode is currently supported only on the .NET and Java SDK platforms; other SDKs use gateway mode."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "When using Direct connectivity mode, what additional network requirement must a client satisfy beyond the gateway ports?",
         "options": [
@@ -27981,7 +27890,7 @@ const EXAMS = {
         "explain": "Direct mode requires the client to reach dynamic TCP ports (typically in the 10000–20000 range) in addition to the standard gateway ports."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "What is the primary purpose of the Azure Cosmos DB emulator?",
         "options": [
@@ -27994,7 +27903,7 @@ const EXAMS = {
         "explain": "The Azure Cosmos DB emulator provides a local environment with an experience similar to the Azure Cosmos DB service, enabling offline development without incurring cloud costs or requiring an Azure subscription."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "Why is it recommended to create a single CosmosClient instance and reuse it as a singleton for the lifetime of an application?",
         "options": [
@@ -28007,7 +27916,7 @@ const EXAMS = {
         "explain": "CosmosClient instances manage connection pooling and internal caching; creating a new instance per operation is wasteful, so the SDK is designed to be used as a long-lived singleton."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "In a query written against Azure Cosmos DB for NoSQL, which clause retrieves every property of matching items?",
         "options": [
@@ -28020,7 +27929,7 @@ const EXAMS = {
         "explain": "The SQL query language for Azure Cosmos DB for NoSQL uses SELECT * FROM <alias> to return the full JSON of matching items, similar to standard SQL syntax."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "What distinguishes a correlated subquery from a non-correlated subquery in the Cosmos DB SQL query language?",
         "options": [
@@ -28033,7 +27942,7 @@ const EXAMS = {
         "explain": "A correlated subquery references values from the outer query and is evaluated once for each item the outer query processes, unlike a non-correlated subquery, which is independent."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "Which built-in function would you use to check whether an optional property exists on an item before referencing its value in a query?",
         "options": [
@@ -28046,7 +27955,7 @@ const EXAMS = {
         "explain": "IS_DEFINED is a type-checking function used to test whether a given property is present on an item, which matters in a schema-flexible NoSQL store."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "Because Azure Cosmos DB for NoSQL does not support cross-document JOINs, what does the JOIN keyword do within a single SQL query?",
         "options": [
@@ -28059,7 +27968,7 @@ const EXAMS = {
         "explain": "JOIN in the Cosmos DB SQL query language performs an intra-document self-join, most commonly used to flatten or filter on nested arrays within a single document."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "Which function tests whether a specific value exists inside an array property on a document?",
         "options": [
@@ -28072,7 +27981,7 @@ const EXAMS = {
         "explain": "ARRAY_CONTAINS checks whether a specified value is present within an array property, and is commonly used to filter documents that have array-typed fields such as tags."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "Which of the following is a valid built-in aggregate function supported by the Azure Cosmos DB for NoSQL query language?",
         "options": [
@@ -28085,7 +27994,7 @@ const EXAMS = {
         "explain": "The query language supports standard aggregate functions such as COUNT, SUM, AVG, MIN, and MAX."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "hard",
         "q": "A query orders results by two different properties, category and then price. What must generally be defined on the container to run this query efficiently at scale?",
         "options": [
@@ -28098,7 +28007,7 @@ const EXAMS = {
         "explain": "Ordering, or filtering and sorting, on more than one property together typically requires a composite index that lists the properties in the same order used by the query."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "hard",
         "q": "Which built-in string function would you use in a SQL query to check whether a property's value begins with a given prefix?",
         "options": [
@@ -28111,7 +28020,7 @@ const EXAMS = {
         "explain": "STARTSWITH is a built-in string function in the Cosmos DB query language used to test whether a string value begins with a specified prefix."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "What is a point operation in Azure Cosmos DB for NoSQL?",
         "options": [
@@ -28124,7 +28033,7 @@ const EXAMS = {
         "explain": "A point operation addresses a single item directly by its unique id and partition key value, and is generally the cheapest and fastest way to read or write that item."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "hard",
         "q": "An application knows the exact id and partition key of the item it needs. Why should it use a point read instead of a SELECT query with a WHERE clause on id?",
         "options": [
@@ -28137,7 +28046,7 @@ const EXAMS = {
         "explain": "A direct point read (ReadItemAsync using id and partition key) avoids the overhead of the query engine, typically making it cheaper in RUs and faster than an equivalent SELECT query."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "Which .NET SDK method is used to insert a brand-new item into a container, failing if an item with the same id and partition key already exists?",
         "options": [
@@ -28150,7 +28059,7 @@ const EXAMS = {
         "explain": "CreateItemAsync inserts a new item and returns a conflict error if an item with the same id and partition key already exists, unlike UpsertItemAsync, which would overwrite it."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "hard",
         "q": "What is the main advantage of using a patch operation instead of ReplaceItemAsync to update a single property on a document?",
         "options": [
@@ -28163,7 +28072,7 @@ const EXAMS = {
         "explain": "A patch operation lets you modify specific fields (such as add, set, remove, replace) without needing to read and resend the whole document, reducing payload size and RU cost for partial updates."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "hard",
         "q": "In the .NET SDK, how do you build a multi-item transaction against several items that share the same partition key?",
         "options": [
@@ -28176,7 +28085,7 @@ const EXAMS = {
         "explain": "The .NET SDK exposes Container.CreateTransactionalBatch(partitionKey), which returns a TransactionalBatch object supporting fluent chained operations that are executed atomically via ExecuteAsync."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "hard",
         "q": "What must be set to true on CosmosClientOptions to enable the SDK to automatically group large numbers of concurrent point operations into efficient server-side batches by physical partition?",
         "options": [
@@ -28189,7 +28098,7 @@ const EXAMS = {
         "explain": "Setting AllowBulkExecution to true on CosmosClientOptions enables the SDK's bulk execution support, which groups concurrent operations by physical partition to improve throughput."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "hard",
         "q": "Which .NET pattern is recommended when issuing a very large number of concurrent bulk create operations?",
         "options": [
@@ -28202,7 +28111,7 @@ const EXAMS = {
         "explain": "For bulk workloads, the recommended pattern is to collect the unawaited Tasks from calls like CreateItemAsync into a list and then await them together with Task.WhenAll, letting the SDK's bulk executor group them efficiently."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "hard",
         "q": "How does Azure Cosmos DB for NoSQL implement optimistic concurrency control on an item update?",
         "options": [
@@ -28215,7 +28124,7 @@ const EXAMS = {
         "explain": "Every item has a system-generated ETag; supplying that ETag as an IfMatch condition on a replace/update request lets the server reject the write with a 412 Precondition Failed if the item changed since it was read, implementing optimistic concurrency."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "Which consistency-related SDK mechanism allows a client to guarantee 'read your own writes' when using Session consistency?",
         "options": [
@@ -28228,7 +28137,7 @@ const EXAMS = {
         "explain": "Session consistency is implemented using a session token, which is passed between the client and the service so subsequent reads on that session see the client's own prior writes."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "hard",
         "q": "In the .NET SDK, how can a session token obtained from one client be reused on a different CosmosClient instance to preserve session-consistency guarantees?",
         "options": [
@@ -28241,7 +28150,7 @@ const EXAMS = {
         "explain": "The session token can be read from a response's Headers.Session property and manually supplied via ItemRequestOptions.SessionToken (or QueryRequestOptions) on another client to preserve session consistency between clients."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "hard",
         "q": "When a query result set is too large to return in a single response, what mechanism allows the client to resume retrieving results where it left off?",
         "options": [
@@ -28254,7 +28163,7 @@ const EXAMS = {
         "explain": "Azure Cosmos DB returns a continuation token with paged results; the client passes that token back on the next request to continue retrieving the remaining results."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "What does an HTTP 429 status code returned by Azure Cosmos DB indicate?",
         "options": [
@@ -28267,7 +28176,7 @@ const EXAMS = {
         "explain": "A 429 (Request Rate Too Large) response means the operation exceeded the container's provisioned RU/s and was throttled; the SDK typically retries automatically after the suggested backoff."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "hard",
         "q": "When the SDK receives a 429 response, which response header tells it how long to wait before retrying the request?",
         "options": [
@@ -28280,7 +28189,7 @@ const EXAMS = {
         "explain": "The x-ms-retry-after-ms header on a 429 response specifies the recommended delay before retrying, and the SDK's built-in retry policy uses this value automatically."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "How can a client override a container's default TTL behavior for a single specific item?",
         "options": [
@@ -28293,7 +28202,7 @@ const EXAMS = {
         "explain": "An individual item can specify its own ttl property, which overrides the container's DefaultTimeToLive setting for that item."
       },
       {
-        "domain": "Design and implement data models",
+        "domain": "Design and develop database solutions",
         "difficulty": "hard",
         "q": "Which property on an ItemResponse or FeedResponse from the .NET SDK reports the request unit charge incurred by that operation?",
         "options": [
@@ -28306,59 +28215,7 @@ const EXAMS = {
         "explain": "The RequestCharge property on the SDK's response object reports the RU cost consumed by that specific point operation or query, which is useful for retrieving and analyzing query metrics."
       },
       {
-        "domain": "Design and implement data models",
-        "difficulty": "easy",
-        "q": "In what language are Azure Cosmos DB for NoSQL stored procedures, triggers, and user-defined functions written?",
-        "options": [
-          "Python",
-          "JavaScript",
-          "C#",
-          "T-SQL"
-        ],
-        "correct": 1,
-        "explain": "Server-side programming objects in Azure Cosmos DB for NoSQL — stored procedures, triggers, and UDFs — are written in JavaScript and executed inside the database engine."
-      },
-      {
-        "domain": "Design and implement data models",
-        "difficulty": "hard",
-        "q": "What execution guarantee do Azure Cosmos DB stored procedures provide when operating on multiple items?",
-        "options": [
-          "They can only read data, never write it",
-          "They execute outside of any transaction scope",
-          "They run asynchronously across all partitions with eventual consistency",
-          "They execute transactionally within the scope of a single logical partition"
-        ],
-        "correct": 3,
-        "explain": "Stored procedures execute with ACID transactional guarantees, but only within the scope of a single logical partition key — they cannot span multiple logical partitions in one transaction."
-      },
-      {
-        "domain": "Design and implement data models",
-        "difficulty": "hard",
-        "q": "What is the key functional difference between a pre-trigger and a post-trigger in Azure Cosmos DB for NoSQL?",
-        "options": [
-          "There is no functional difference, only naming",
-          "Post-triggers can modify the partition key; pre-triggers cannot",
-          "Pre-triggers only work on deletes; post-triggers only work on creates",
-          "A pre-trigger runs before the associated operation completes and can modify the request; a post-trigger runs after the operation and can act on the result"
-        ],
-        "correct": 3,
-        "explain": "A pre-trigger executes before a database operation completes (and can, for example, validate or modify the request), while a post-trigger executes after the operation and can perform follow-up actions using the operation's result."
-      },
-      {
-        "domain": "Design and implement data models",
-        "difficulty": "hard",
-        "q": "How does a user-defined function (UDF) in Azure Cosmos DB for NoSQL differ from a stored procedure?",
-        "options": [
-          "A UDF automatically triggers on the change feed",
-          "A UDF can only be called from within a SQL query to extend query logic and cannot read or write other items, unlike a stored procedure",
-          "A UDF replaces the need for indexing",
-          "A UDF can write to any container"
-        ],
-        "correct": 1,
-        "explain": "UDFs are invoked from within a SQL query to add custom, read-only computation logic and cannot access or modify other items, whereas stored procedures can perform transactional reads and writes."
-      },
-      {
-        "domain": "Design and implement data distribution",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "Which Azure Cosmos DB consistency level provides linearizability, guaranteeing that a read always returns the most recent committed write?",
         "options": [
@@ -28371,7 +28228,7 @@ const EXAMS = {
         "explain": "Strong consistency provides linearizable reads: a write is not acknowledged as committed until it has been replicated to all configured regions, so clients never see stale data."
       },
       {
-        "domain": "Design and implement data distribution",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "Which consistency level is the weakest offered by Azure Cosmos DB, trading consistency guarantees for the lowest write latency and highest availability?",
         "options": [
@@ -28384,7 +28241,7 @@ const EXAMS = {
         "explain": "Eventual consistency is the weakest of the five levels: reads may lag behind writes and appear out of order, but it offers the lowest latency and highest availability and read scalability."
       },
       {
-        "domain": "Design and implement data distribution",
+        "domain": "Design and develop database solutions",
         "difficulty": "medium",
         "q": "Which consistency level guarantees that reads will never see writes out of order, even though they may lag behind the most recent write?",
         "options": [
@@ -28397,7 +28254,7 @@ const EXAMS = {
         "explain": "Consistent Prefix allows reads to lag behind writes but guarantees they are never observed out of order, which suits applications where write order matters more than latency."
       },
       {
-        "domain": "Design and implement data distribution",
+        "domain": "Design and develop database solutions",
         "difficulty": "medium",
         "q": "A Bounded Staleness consistency policy can be configured with which two types of thresholds?",
         "options": [
@@ -28410,7 +28267,7 @@ const EXAMS = {
         "explain": "Bounded Staleness lets you configure staleness either as a maximum number of item versions (K) or a maximum time interval (T) that reads may lag behind writes."
       },
       {
-        "domain": "Design and implement data distribution",
+        "domain": "Design and develop database solutions",
         "difficulty": "medium",
         "q": "Within the region where data is written, what consistency guarantee does Bounded Staleness provide?",
         "options": [
@@ -28423,7 +28280,7 @@ const EXAMS = {
         "explain": "Bounded Staleness provides strong consistency guarantees within the region in which the data was written, while allowing bounded lag in other regions."
       },
       {
-        "domain": "Design and implement data distribution",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "Which consistency level provides 'read your own writes' guarantees for a single client session, while relaxing to consistent prefix or eventual consistency for other clients?",
         "options": [
@@ -28436,7 +28293,7 @@ const EXAMS = {
         "explain": "Session consistency guarantees that within a single client session (tracked via a session token), a client will always read its own writes, making it well suited to applications where users expect to see their own changes immediately."
       },
       {
-        "domain": "Design and implement data distribution",
+        "domain": "Design and develop database solutions",
         "difficulty": "medium",
         "q": "Generally speaking, how does moving from Eventual toward Strong consistency affect RU cost and latency for read operations?",
         "options": [
@@ -28449,7 +28306,7 @@ const EXAMS = {
         "explain": "Stronger consistency levels require more coordination and replication guarantees before a response is returned, which generally increases RU cost and latency compared to weaker levels like Eventual."
       },
       {
-        "domain": "Design and implement data distribution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "What is the difference between an automatic failover policy and a manual failover for Azure Cosmos DB regional failure?",
         "options": [
@@ -28462,7 +28319,7 @@ const EXAMS = {
         "explain": "Automatic failover policies let Azure Cosmos DB automatically promote a new region to be the write region during a regional outage, while a manual failover is explicitly initiated by an administrator (for example, from the Azure portal, CLI, or PowerShell) to change the write region on demand."
       },
       {
-        "domain": "Design and implement data distribution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "When configuring a multi-region Azure Cosmos DB for NoSQL account, in what order should regions typically be prioritized to control automatic failover?",
         "options": [
@@ -28475,7 +28332,7 @@ const EXAMS = {
         "explain": "Regions in a Cosmos DB account have a configurable failover priority order; in a single-write-region account, the region with priority 0 is the current write region, and automatic failover promotes the next region in priority order."
       },
       {
-        "domain": "Design and implement data distribution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "easy",
         "q": "In a multi-region write (multi-master) configuration, what type of conflict occurs when two clients concurrently insert an item with the same unique identifier in two different regions?",
         "options": [
@@ -28488,7 +28345,7 @@ const EXAMS = {
         "explain": "An insert conflict occurs when more than one item with the same id is inserted simultaneously in different regions; Azure Cosmos DB has automatic conflict management to resolve this."
       },
       {
-        "domain": "Design and implement data distribution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "By default, how does Azure Cosmos DB resolve write conflicts under the Last-Writer-Wins (LWW) policy?",
         "options": [
@@ -28501,7 +28358,7 @@ const EXAMS = {
         "explain": "The default Last-Writer-Wins policy uses the _ts (or a configured custom numeric property, the conflict resolution path) to determine the winner — the item with the largest value wins."
       },
       {
-        "domain": "Design and implement data distribution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "hard",
         "q": "You want the Last-Writer-Wins conflict policy to use a custom numeric property named sortableTimestamp instead of the default _ts. When can this ConflictResolutionPolicy be configured?",
         "options": [
@@ -28514,72 +28371,7 @@ const EXAMS = {
         "explain": "A conflict resolution policy, including a custom LastWriterWins ResolutionPath, can only be set when a container is first created; it cannot be modified afterward."
       },
       {
-        "domain": "Integrate an Azure Cosmos DB solution",
-        "difficulty": "easy",
-        "q": "What is the primary purpose of the Azure Cosmos DB analytical store enabled via Azure Synapse Link?",
-        "options": [
-          "To provide the only way to run a change feed",
-          "To provide a separate, column-oriented store optimized for large-scale analytics without impacting the transactional workload or requiring ETL",
-          "To replace the transactional store entirely",
-          "To increase the consistency level to Strong automatically"
-        ],
-        "correct": 1,
-        "explain": "The analytical store is a separate, columnar representation of your data optimized for large-scale analytics, kept automatically in sync with the transactional store with no ETL jobs or change feed pipelines required."
-      },
-      {
-        "domain": "Integrate an Azure Cosmos DB solution",
-        "difficulty": "medium",
-        "q": "What does the term HTAP (Hybrid Transactional/Analytical Processing) describe in the context of Azure Synapse Link for Azure Cosmos DB?",
-        "options": [
-          "Running only analytical workloads, never transactional ones",
-          "A billing model exclusive to serverless accounts",
-          "Running near real-time analytics directly against the same data as the operational (transactional) workload, without impacting it, via the analytical store",
-          "Running transactional and analytical workloads on completely separate accounts synced nightly"
-        ],
-        "correct": 2,
-        "explain": "HTAP means analytical queries can run near real time against operational data (via the isolated analytical store) without contending for the transactional workload's provisioned throughput."
-      },
-      {
-        "domain": "Integrate an Azure Cosmos DB solution",
-        "difficulty": "medium",
-        "q": "From which Azure Synapse Analytics engines can you query the Azure Cosmos DB analytical store once Synapse Link is enabled?",
-        "options": [
-          "Only Power BI DirectQuery",
-          "Azure Synapse Spark and Azure Synapse SQL serverless",
-          "Only Azure Data Factory pipelines",
-          "Only Synapse dedicated SQL pools"
-        ],
-        "correct": 1,
-        "explain": "Once Synapse Link and the analytical store are enabled, you can connect and query the analytical store from either Azure Synapse Spark pools or Azure Synapse serverless SQL pools."
-      },
-      {
-        "domain": "Integrate an Azure Cosmos DB solution",
-        "difficulty": "medium",
-        "q": "What must be enabled at the container level before Azure Synapse Link can maintain a near real-time analytical copy of that container's data?",
-        "options": [
-          "The integrated cache",
-          "Multi-region writes",
-          "Always Encrypted",
-          "The analytical store"
-        ],
-        "correct": 3,
-        "explain": "The analytical store must be explicitly enabled on a container (in addition to enabling Synapse Link at the account level) before its data is mirrored into the analytical, column-oriented store."
-      },
-      {
-        "domain": "Integrate an Azure Cosmos DB solution",
-        "difficulty": "medium",
-        "q": "Which capability lets Azure Synapse Spark write data back from the analytical store's associated processing pipeline into the Azure Cosmos DB transactional store?",
-        "options": [
-          "Writing back is only possible through stored procedures",
-          "The analytical store is always read-only in every direction",
-          "The Spark connector can write back to the transactional store from Spark",
-          "Only Azure Data Factory can write back to the transactional store"
-        ],
-        "correct": 2,
-        "explain": "Using the Azure Cosmos DB Spark connector, a Synapse Spark job can both query the analytical store (or transactional store) and write results back to the transactional store."
-      },
-      {
-        "domain": "Integrate an Azure Cosmos DB solution",
+        "domain": "Implement AI and Analytics capabilities in database solutions",
         "difficulty": "medium",
         "q": "For integrating Azure Cosmos DB data into Microsoft Fabric, what is Azure Cosmos DB Mirroring an alternative to?",
         "options": [
@@ -28592,7 +28384,7 @@ const EXAMS = {
         "explain": "Azure Cosmos DB Mirroring for Microsoft Fabric and the Azure Cosmos DB Spark connector are two different approaches for making Cosmos DB data available for analytics in Fabric, and a solution architect must choose between them based on requirements."
       },
       {
-        "domain": "Integrate an Azure Cosmos DB solution",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "Which Azure Cosmos DB feature underpins reacting to inserts and updates for downstream integration scenarios like denormalization, referential integrity enforcement, and archiving?",
         "options": [
@@ -28605,7 +28397,7 @@ const EXAMS = {
         "explain": "The change feed is a persistent, ordered log of item inserts and updates within a container, and is the mechanism used to build denormalization, referential-integrity, aggregation, and archiving integrations."
       },
       {
-        "domain": "Integrate an Azure Cosmos DB solution",
+        "domain": "Design and develop database solutions",
         "difficulty": "medium",
         "q": "Which Azure service provides a built-in trigger binding that listens to an Azure Cosmos DB container's change feed and invokes a function automatically for new and updated items?",
         "options": [
@@ -28618,7 +28410,7 @@ const EXAMS = {
         "explain": "The Azure Functions Cosmos DB trigger uses the change feed processor under the hood to invoke a function automatically whenever items are inserted or updated, without requiring you to build and scale your own worker infrastructure."
       },
       {
-        "domain": "Integrate an Azure Cosmos DB solution",
+        "domain": "Design and develop database solutions",
         "difficulty": "medium",
         "q": "An architecture needs to fan out change events from a Cosmos DB container to multiple independent downstream applications for further processing. Which combination best supports this?",
         "options": [
@@ -28631,20 +28423,7 @@ const EXAMS = {
         "explain": "Integrating change feed-driven Azure Functions with Azure Event Hubs lets change events be published and fanned out to multiple downstream applications and applications outside the immediate solution."
       },
       {
-        "domain": "Integrate an Azure Cosmos DB solution",
-        "difficulty": "medium",
-        "q": "Which Azure Cosmos DB integration lets applications add fast, rich full-text and semantic search capabilities over data stored in Cosmos DB containers?",
-        "options": [
-          "The Cosmos DB emulator",
-          "Azure AI Search integration",
-          "Periodic backup",
-          "The integrated cache"
-        ],
-        "correct": 1,
-        "explain": "Implementing Azure AI Search for an Azure Cosmos DB solution lets you index Cosmos DB data (often via change feed-driven indexers) to provide advanced search experiences beyond the native SQL query language."
-      },
-      {
-        "domain": "Integrate an Azure Cosmos DB solution",
+        "domain": "Design and develop database solutions",
         "difficulty": "easy",
         "q": "Which change feed-driven integration pattern is used to keep a running total or summary (for example, daily order totals) up to date as new items arrive?",
         "options": [
@@ -28657,7 +28436,7 @@ const EXAMS = {
         "explain": "Aggregating data by using change feed and Azure Functions lets a function incrementally recompute or update aggregate values (such as running reports) as new or changed items arrive."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "easy",
         "q": "In Azure Cosmos DB for NoSQL, what data structure underlies the default automatic indexing of every property in a container?",
         "options": [
@@ -28670,7 +28449,7 @@ const EXAMS = {
         "explain": "Azure Cosmos DB automatically maintains an inverted index that represents each item's JSON structure as a tree, allowing the query engine to efficiently traverse it for matching filters."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "A SQL query filters on an exact equality match against an indexed property (p.name = 'Touring-1000 Blue'). Which index lookup method does the query engine use, and what is its RU characteristic?",
         "options": [
@@ -28683,7 +28462,7 @@ const EXAMS = {
         "explain": "An exact equality match on an indexed property uses an index seek, which is a constant RU charge for the lookup itself, plus a linear charge based on the number of items returned."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "A SQL query filters using a range comparison (p.price >= 500 AND p.price <= 1000). What index lookup method does the engine typically use for this kind of filter?",
         "options": [
@@ -28696,7 +28475,7 @@ const EXAMS = {
         "explain": "Range comparisons and certain string functions typically require an index scan — the engine performs something like a binary search across the index's values, which is still much cheaper than a full scan of every item's JSON."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "hard",
         "q": "Under what circumstance does the Cosmos DB query engine perform a full scan, loading every item's JSON content into the transactional store to evaluate a filter?",
         "options": [
@@ -28709,7 +28488,7 @@ const EXAMS = {
         "explain": "A full scan happens on edge-case filters that the index cannot evaluate, forcing the engine to load and inspect every item's JSON; its RU charge scales linearly with the total number of items in the container, unlike an index seek or scan."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "easy",
         "q": "What is the default indexing mode for a newly created Azure Cosmos DB for NoSQL container?",
         "options": [
@@ -28722,7 +28501,7 @@ const EXAMS = {
         "explain": "By default, new containers use consistent indexing mode, automatically indexing all properties synchronously as items are written, with no extra configuration required."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "For a write-heavy, bulk-ingestion scenario where queries are not needed until later, what indexing mode setting can reduce write RU cost, at the cost of disabling querying (leaving only point reads) until re-enabled?",
         "options": [
@@ -28735,7 +28514,7 @@ const EXAMS = {
         "explain": "Setting a container's indexingMode to none disables indexing entirely, which speeds up bulk writes but means only point reads (by id and partition key) work until indexing is turned back on and rebuilt."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "Which indexing policy setting explicitly lists property paths that should NOT be indexed, to reduce write RU cost for properties that are never queried?",
         "options": [
@@ -28748,7 +28527,7 @@ const EXAMS = {
         "explain": "The excludedPaths section of an indexing policy lets you exclude specific property paths from indexing, which lowers the RU cost of writes for properties that will never be used in query filters."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "Which index kind is used by default for geospatial (GeoJSON) properties, enabling queries like ST_DISTANCE or ST_WITHIN?",
         "options": [
@@ -28761,7 +28540,7 @@ const EXAMS = {
         "explain": "Spatial indexes support efficient geospatial queries (such as proximity or containment checks) against GeoJSON-typed properties, distinct from the default Range index kind used for strings and numbers."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "You need a query to both filter on category and order results by price in the same query. What index type should you add to the container's indexing policy to support this efficiently?",
         "options": [
@@ -28774,7 +28553,7 @@ const EXAMS = {
         "explain": "Composite indexes are required to efficiently support queries that filter and/or sort on more than one property together, such as filtering by category while ordering by price."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "easy",
         "q": "Which of the following is a typical read-heavy indexing strategy consideration?",
         "options": [
@@ -28787,7 +28566,7 @@ const EXAMS = {
         "explain": "For read-heavy workloads, it typically pays to keep broad indexing coverage (and add composite indexes for common filter/sort combinations) since the RU savings on reads outweigh the modest write RU overhead of maintaining the index."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "easy",
         "q": "Which service in the Azure Cosmos DB SDK response tells a developer the RU charge of a specific point operation or query, useful for calculating query cost?",
         "options": [
@@ -28800,7 +28579,7 @@ const EXAMS = {
         "explain": "The RequestCharge value returned with every operation's response reports exactly how many request units that specific point operation or query consumed, letting developers calculate and optimize cost."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "What is the Azure Cosmos DB integrated cache, and what infrastructure does it require?",
         "options": [
@@ -28813,7 +28592,7 @@ const EXAMS = {
         "explain": "The integrated cache is an in-memory cache provided through a Dedicated Gateway; requests routed through the dedicated gateway can be served from the cache without hitting the backend, if the data isn't stale."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "What are the two types of caching provided by the Azure Cosmos DB integrated cache?",
         "options": [
@@ -28826,7 +28605,7 @@ const EXAMS = {
         "explain": "The integrated cache provides an item cache that serves point-read results and a query cache that serves query results, both backed by the dedicated gateway."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "easy",
         "q": "By default, how long does the Azure Cosmos DB integrated cache retain (consider fresh) cached data before it is treated as stale?",
         "options": [
@@ -28839,7 +28618,7 @@ const EXAMS = {
         "explain": "By default the integrated cache keeps data for five minutes; this staleness window is configurable via the MaxIntegratedCacheStaleness property."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "Which .NET SDK property, set within DedicatedGatewayRequestOptions or QueryRequestOptions, lets you override the default cache staleness window for a specific request?",
         "options": [
@@ -28852,7 +28631,7 @@ const EXAMS = {
         "explain": "MaxIntegratedCacheStaleness, set inside DedicatedGatewayRequestOptions (for point reads) or QueryRequestOptions (for queries), lets a request specify how stale cached data is allowed to be before it must be refreshed from the backend."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "hard",
         "q": "For a repeated query that consumes a large number of RUs and is executed identically many times by a read-heavy workload, what is the RU benefit of the integrated cache on cache hits?",
         "options": [
@@ -28865,7 +28644,7 @@ const EXAMS = {
         "explain": "Once a query or item has been cached, subsequent identical requests that hit the cache (and are not stale) do not consume any request units, unlike the first request which incurs the normal RU charge."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Design and develop database solutions",
         "difficulty": "medium",
         "q": "Which tool helps you determine how many compute instances are needed to process a container's change feed at a given rate, based on the current backlog of unprocessed changes?",
         "options": [
@@ -28878,7 +28657,7 @@ const EXAMS = {
         "explain": "The change feed estimator measures how many changes are pending processing (the backlog) so you can size the number of change feed processor instances needed to keep up with the workload."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Design and develop database solutions",
         "difficulty": "medium",
         "q": "When consuming the change feed directly from application code via the SDK (rather than through Azure Functions), what pattern does the change feed processor use to track progress across restarts?",
         "options": [
@@ -28891,7 +28670,7 @@ const EXAMS = {
         "explain": "The SDK's change feed processor uses a separate lease container to persist checkpoints per partition key range, allowing processing to resume correctly after an application restart or when scaling across multiple instances."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Design and develop database solutions",
         "difficulty": "medium",
         "q": "Which operations does the Azure Cosmos DB change feed capture?",
         "options": [
@@ -28904,7 +28683,7 @@ const EXAMS = {
         "explain": "The standard change feed publishes inserts and updates to items but does not natively capture deletes; soft-delete patterns (such as a status flag plus TTL) are commonly used to represent deletions in the feed."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Design and develop database solutions",
         "difficulty": "medium",
         "q": "Which change feed-based pattern is used to keep referential integrity when a lookup value (such as a category name) changes in its source container and must be propagated into documents that denormalized a copy of it?",
         "options": [
@@ -28917,7 +28696,7 @@ const EXAMS = {
         "explain": "Implementing referential enforcement by using a change feed listens for changes to the source-of-truth container and propagates the updates into any documents that denormalized a copy of that data, keeping them consistent."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "hard",
         "q": "A container's indexing policy needs to be tuned based on observed query patterns to reduce both write and read RU cost. What is a recommended approach for a workload with a mix of frequent, well-known query shapes and rarely-queried properties?",
         "options": [
@@ -28930,7 +28709,7 @@ const EXAMS = {
         "explain": "Tuning an indexing policy by including the paths and composite indexes that match real query patterns, and excluding properties that are never queried, reduces unnecessary write RU cost while keeping the read paths that matter fast."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "Which unit of a change feed-based archiving solution is responsible for moving items that are no longer actively needed out of the primary container into cheaper, long-term storage?",
         "options": [
@@ -28943,7 +28722,7 @@ const EXAMS = {
         "explain": "Archiving data by using change feed and Azure Functions lets a function react to new or changed items and move eligible data into long-term storage (such as Blob Storage), separate from simply expiring data via TTL."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "easy",
         "q": "Which of these actions would you take specifically to reduce the RU cost of a point read operation that is executed repeatedly for the same item?",
         "options": [
@@ -28956,7 +28735,7 @@ const EXAMS = {
         "explain": "The integrated cache's item cache is designed exactly for this scenario — repeated point reads for the same item can be served from cache at no RU cost as long as the data isn't stale."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "In an indexing policy, what is the purpose of setting the 'kind' of an index path to Range for a numeric or string property?",
         "options": [
@@ -28969,7 +28748,7 @@ const EXAMS = {
         "explain": "A Range index (the default kind for strings and numbers) supports equality and range comparisons, ORDER BY, and JOIN efficiently for that property."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "hard",
         "q": "A workload issues the exact same expensive aggregate query hundreds of times per minute with identical parameters, but the underlying data changes only once every few minutes. Which single change gives the largest RU reduction with the least implementation effort?",
         "options": [
@@ -28982,7 +28761,7 @@ const EXAMS = {
         "explain": "Since the query is repeated identically and the underlying data changes infrequently, routing the query through the dedicated gateway's integrated query cache with a matching staleness window eliminates most of the repeated RU cost, with minimal code change."
       },
       {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "How is throughput consumption metered when a query is served entirely from the integrated cache versus when it must go to the backend?",
         "options": [
@@ -28995,7 +28774,7 @@ const EXAMS = {
         "explain": "A request that must be served from the backend (a cache miss, or the first execution) is charged RUs as normal, while a subsequent request served from a fresh cache entry (a cache hit) does not consume RUs."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "easy",
         "q": "What does the Normalized RU Consumption metric in Azure Monitor represent for an Azure Cosmos DB container?",
         "options": [
@@ -29008,7 +28787,7 @@ const EXAMS = {
         "explain": "Normalized RU Consumption expresses throughput utilization as a percentage (0–100%) of the provisioned RU/s, making it a key metric for spotting hot partitions or near-throttling conditions."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "If the Normalized RU Consumption metric for one physical partition consistently sits near 100% while others are much lower, what does this most likely indicate?",
         "options": [
@@ -29021,7 +28800,7 @@ const EXAMS = {
         "explain": "Since provisioned RU/s is divided evenly across physical partitions, one partition sitting near 100% while others are idle points to an uneven, 'hot' partition key distribution driving disproportionate traffic to it."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "easy",
         "q": "Which Azure Cosmos DB metric measures the backend time taken to process a request, as opposed to total client-observed latency (which also includes network time)?",
         "options": [
@@ -29034,7 +28813,7 @@ const EXAMS = {
         "explain": "Server-side latency metrics, available through Azure Monitor, isolate the backend processing time for requests, helping distinguish backend performance issues from network or client-side delays."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "How can you be notified automatically when an Azure Cosmos DB account's throttled request count exceeds a defined threshold?",
         "options": [
@@ -29047,7 +28826,7 @@ const EXAMS = {
         "explain": "Azure Monitor alerts can be configured against Cosmos DB metrics (for example, filtering total requests by status code 429) to notify operators automatically when a threshold, such as excessive throttling, is crossed."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "What must be enabled on an Azure Cosmos DB account before you can run KQL queries against detailed per-request diagnostic data (such as individual request charges and status codes) in Log Analytics?",
         "options": [
@@ -29060,7 +28839,7 @@ const EXAMS = {
         "explain": "Configuring diagnostic settings to route Azure Cosmos DB's resource (diagnostic) logs to a Log Analytics workspace enables querying detailed request-level data with Kusto Query Language (KQL)."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "easy",
         "q": "Which category of Azure Cosmos DB response status code family generally indicates client-side issues, such as 400 (bad request) or 429 (rate limited)?",
         "options": [
@@ -29073,7 +28852,7 @@ const EXAMS = {
         "explain": "4xx status codes represent client-side conditions such as 400 Bad Request, 404 Not Found, 409 Conflict, or 429 Request Rate Too Large, which are important to monitor and evaluate as failure metrics."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "Which monitoring concern specifically evaluates whether data is spread evenly, both in storage size and RU consumption, across a container's physical partitions?",
         "options": [
@@ -29086,7 +28865,7 @@ const EXAMS = {
         "explain": "Monitoring the distribution of data and throughput across partitions helps detect skewed partition key selection that leads to storage or RU hotspots on specific physical partitions."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "Which Azure Cosmos DB monitoring capability lets administrators review who accessed data or performed control-plane operations, supporting security auditing requirements?",
         "options": [
@@ -29099,7 +28878,7 @@ const EXAMS = {
         "explain": "Enabling and reviewing Azure Cosmos DB's logging and auditing (through diagnostic/resource logs) supports monitoring security-relevant activity, such as control-plane changes and data access patterns."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "hard",
         "q": "In a multi-region Azure Cosmos DB account, which metrics would you monitor together to assess whether replication lag is affecting availability or read consistency for users in a secondary region?",
         "options": [
@@ -29112,7 +28891,7 @@ const EXAMS = {
         "explain": "Monitoring data replication in relation to latency and availability across regions helps determine whether users reading from a secondary region are experiencing meaningful staleness or outages relative to the write region."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "easy",
         "q": "By default, how often does Azure Cosmos DB take a periodic backup, and how many backups are retained at no extra cost?",
         "options": [
@@ -29125,7 +28904,7 @@ const EXAMS = {
         "explain": "The default periodic backup policy takes a full backup every 4 hours (240 minutes) and retains the last 2 backups (8 hours' worth) at no additional cost."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "For periodic backup mode, what is the maximum retention period that can be configured, and what is the minimum allowed relationship between interval and retention?",
         "options": [
@@ -29138,7 +28917,7 @@ const EXAMS = {
         "explain": "Periodic backup retention can be configured up to 720 hours (30 days), and the retention period must be set to at least two times the configured backup interval."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "What is the default backup storage redundancy for periodic backup mode, and what does it provide?",
         "options": [
@@ -29151,7 +28930,7 @@ const EXAMS = {
         "explain": "Periodic backups default to geo-redundant backup storage, which asynchronously replicates snapshots to the paired Azure region to protect against regional disasters; zone-redundant and locally-redundant options can be selected instead."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "How does a customer actually restore data from a periodic backup?",
         "options": [
@@ -29164,7 +28943,7 @@ const EXAMS = {
         "explain": "Periodic backups can't be accessed directly by the customer; a restore requires opening an Azure support request, and the requester needs Owner, Contributor, or the Cosmos DB Operator (CosmosdbBackupOperator) role."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "hard",
         "q": "When you restore a periodic backup, into what does the data get restored?",
         "options": [
@@ -29177,7 +28956,7 @@ const EXAMS = {
         "explain": "Restoring a periodic backup always creates a new Azure Cosmos DB account (named with a '-restored#' suffix); data cannot be restored directly into an existing account."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "For continuous backup mode, what are the two available retention tiers, and which one is free?",
         "options": [
@@ -29190,7 +28969,7 @@ const EXAMS = {
         "explain": "Continuous backup offers a free Continuous (7 days) tier and a paid Continuous (30 days) tier, both allowing point-in-time restore to any moment within the retention window."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "hard",
         "q": "Which of the following is a documented limitation of continuous backup mode?",
         "options": [
@@ -29203,7 +28982,7 @@ const EXAMS = {
         "explain": "Continuous backup mode has several documented limitations, including no support for multi-region write accounts or customer-managed keys, and it cannot be enabled in the same account as Azure Synapse Link."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "When performing a point-in-time restore, what consistency level is applied to the newly restored account by default, regardless of the source account's original consistency setting?",
         "options": [
@@ -29216,7 +28995,7 @@ const EXAMS = {
         "explain": "A point-in-time restore does not carry over the original account's consistency settings; the restored account defaults to session consistency."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "Which Azure Cosmos DB resources are explicitly NOT restored when you recover an account from either a periodic or a continuous backup?",
         "options": [
@@ -29229,7 +29008,7 @@ const EXAMS = {
         "explain": "Both periodic and continuous backup/restore explicitly exclude server-side programming objects — stored procedures, triggers, and UDFs — which must be redeployed manually after a restore."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "easy",
         "q": "Which network security feature limits which public IP addresses or CIDR ranges can connect to an Azure Cosmos DB account?",
         "options": [
@@ -29242,7 +29021,7 @@ const EXAMS = {
         "explain": "Azure Cosmos DB supports an IP-based firewall, configured via a single IPv4 address or CIDR range (the ipRangeFilter property), that restricts inbound connections to approved clients."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "A team enabled an IP firewall on their Cosmos DB account and now cannot browse containers or run queries from Data Explorer in the Azure portal. What setting resolves this?",
         "options": [
@@ -29255,7 +29034,7 @@ const EXAMS = {
         "explain": "When an IP firewall is enabled, you must also select 'Allow access from Azure Portal' for Data Explorer operations like browsing containers and running queries to keep working from the Azure portal."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "A request from an Azure service without a static IP, such as Azure Stream Analytics, needs to reach a Cosmos DB account that has an IP firewall configured. Which firewall option addresses this, understanding its tradeoff?",
         "options": [
@@ -29268,7 +29047,7 @@ const EXAMS = {
         "explain": "The 'Accept connections from within Azure datacenters' option allows services without a static IP (like Stream Analytics or Functions) to connect, but it broadly permits traffic from all of Azure, weakening the firewall's effectiveness."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "Azure Cosmos DB's built-in Azure RBAC roles like 'Cosmos DB Operator' and 'DocumentDB Account Contributor' apply to which scope of access?",
         "options": [
@@ -29281,7 +29060,7 @@ const EXAMS = {
         "explain": "Azure RBAC role assignments for Cosmos DB (built-in roles such as Cosmos DB Operator) are scoped to control plane operations only — such as accounts, databases, containers, and offers — and are not used to grant data plane access to item data."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "Which mechanism is used to grant fine-grained data plane access (reading or writing items) to a security principal using Microsoft Entra ID, separate from the control-plane Azure RBAC roles?",
         "options": [
@@ -29294,7 +29073,7 @@ const EXAMS = {
         "explain": "Azure Cosmos DB has its own native data plane RBAC system, separate from the control-plane Azure RBAC roles, which lets you grant Microsoft Entra ID identities fine-grained permissions to read or write item data."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "easy",
         "q": "Which Azure Cosmos DB built-in role is specifically designed to allow requesting a restore for a periodic-backup-enabled account, but not to access or view any data?",
         "options": [
@@ -29307,7 +29086,7 @@ const EXAMS = {
         "explain": "The Cosmos Backup Operator role can submit a restore request and modify backup interval/retention from the Azure portal but cannot access data or use Data Explorer."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "easy",
         "q": "By default, how does Azure Cosmos DB encrypt data at rest?",
         "options": [
@@ -29320,7 +29099,7 @@ const EXAMS = {
         "explain": "Azure Cosmos DB automatically encrypts all data at rest using platform-managed keys by default, and customers can optionally switch to customer-managed keys (CMK) stored in Azure Key Vault for more control."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "What is the benefit of using customer-managed keys (CMK) instead of platform-managed keys for Azure Cosmos DB encryption at rest?",
         "options": [
@@ -29333,7 +29112,7 @@ const EXAMS = {
         "explain": "Customer-managed keys let the customer control and manage the key used to encrypt data at rest — including rotation and revocation — typically by storing the key in Azure Key Vault, giving more governance over encryption than the platform-managed default."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "hard",
         "q": "What does Always Encrypted for Azure Cosmos DB provide that server-side (platform- or customer-managed key) encryption at rest does not?",
         "options": [
@@ -29346,7 +29125,7 @@ const EXAMS = {
         "explain": "Always Encrypted performs client-side encryption of specified sensitive fields before they are sent to the service, so the plaintext values are never visible to Azure Cosmos DB itself — a stronger guarantee than standard server-side encryption at rest."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "Which setting controls whether a web application running in a browser at a different origin is allowed to make requests directly to the Azure Cosmos DB REST API?",
         "options": [
@@ -29359,7 +29138,7 @@ const EXAMS = {
         "explain": "Cross-origin resource sharing (CORS) settings on the Azure Cosmos DB account control whether browser-based JavaScript applications hosted on a different origin are permitted to call the Cosmos DB REST API directly."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "easy",
         "q": "Where is it recommended to store an Azure Cosmos DB account's primary/secondary keys to avoid embedding them directly in application configuration or code?",
         "options": [
@@ -29372,111 +29151,7 @@ const EXAMS = {
         "explain": "Storing Azure Cosmos DB account keys in Azure Key Vault, rather than embedding them in app config or code, is a recommended practice for securely managing and rotating those secrets."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
-        "difficulty": "medium",
-        "q": "Which Azure service can move data on a scheduled or triggered basis between Azure Cosmos DB and a wide range of other data stores using pipeline-based copy activities?",
-        "options": [
-          "Azure Monitor",
-          "Azure Key Vault",
-          "Azure Data Factory (and Azure Synapse pipelines)",
-          "The integrated cache"
-        ],
-        "correct": 2,
-        "explain": "Azure Data Factory and Azure Synapse pipelines provide copy activities that can move data into or out of Azure Cosmos DB as part of a broader data movement or ETL strategy."
-      },
-      {
-        "domain": "Maintain an Azure Cosmos DB solution",
-        "difficulty": "medium",
-        "q": "Which integration lets an existing Apache Kafka-based streaming pipeline read from or write to Azure Cosmos DB without custom code?",
-        "options": [
-          "The change feed estimator",
-          "Always Encrypted",
-          "The Azure Cosmos DB Kafka connector, providing source and sink connectors",
-          "CORS settings"
-        ],
-        "correct": 2,
-        "explain": "The Azure Cosmos DB Kafka connector provides both a source connector (Cosmos DB to Kafka) and a sink connector (Kafka to Cosmos DB), letting Kafka pipelines move data without custom integration code."
-      },
-      {
-        "domain": "Maintain an Azure Cosmos DB solution",
-        "difficulty": "medium",
-        "q": "Which Azure service is commonly used as an output sink for real-time streaming data (for example, from IoT telemetry) being written into Azure Cosmos DB?",
-        "options": [
-          "Azure Traffic Manager",
-          "The integrated cache",
-          "Azure Key Vault",
-          "Azure Stream Analytics"
-        ],
-        "correct": 3,
-        "explain": "Azure Stream Analytics jobs support Azure Cosmos DB as an output, letting real-time streaming data be written directly into a container as part of a data movement or streaming pipeline."
-      },
-      {
-        "domain": "Maintain an Azure Cosmos DB solution",
-        "difficulty": "medium",
-        "q": "Which connector allows Apache Spark workloads to perform large-scale bulk reads and writes against Azure Cosmos DB containers?",
-        "options": [
-          "The Cosmos DB emulator",
-          "Always Encrypted",
-          "The IP firewall",
-          "The Azure Cosmos DB Spark connector"
-        ],
-        "correct": 3,
-        "explain": "The Azure Cosmos DB Spark connector enables Spark jobs (for example, on Azure Synapse or Azure Databricks) to perform efficient bulk reads and writes against Cosmos DB containers."
-      },
-      {
-        "domain": "Maintain an Azure Cosmos DB solution",
-        "difficulty": "hard",
-        "q": "How can Azure Cosmos DB be configured to directly receive telemetry messages routed from an Azure IoT Hub, without an intermediate compute layer?",
-        "options": [
-          "By enabling the integrated cache",
-          "By enabling Always Encrypted",
-          "It is not possible; Azure Functions must always sit in between",
-          "By configuring Azure Cosmos DB as a custom endpoint for the IoT Hub's message routing"
-        ],
-        "correct": 3,
-        "explain": "Azure IoT Hub message routing supports configuring an Azure Cosmos DB container as a custom endpoint, allowing device telemetry to be routed directly into Cosmos DB based on routing rules."
-      },
-      {
-        "domain": "Maintain an Azure Cosmos DB solution",
-        "difficulty": "medium",
-        "q": "Why would a team choose declarative (Azure Resource Manager template) provisioning over imperative (SDK/CLI script) provisioning for their Cosmos DB resources?",
-        "options": [
-          "Declarative templates guarantee lower RU cost",
-          "Declarative templates are required to enable multi-region writes",
-          "Imperative provisioning is not supported at all by Azure Cosmos DB",
-          "Declarative templates describe the desired end state and support consistent, repeatable, auditable infrastructure-as-code deployments, which imperative scripts don't guarantee as easily"
-        ],
-        "correct": 3,
-        "explain": "Choosing declarative ARM (or Bicep) templates over imperative scripting is generally about achieving consistent, repeatable, and auditable infrastructure-as-code deployments that describe the desired end state."
-      },
-      {
-        "domain": "Maintain an Azure Cosmos DB solution",
-        "difficulty": "medium",
-        "q": "Which Azure Cosmos DB container settings can be provisioned and managed through Azure Resource Manager templates?",
-        "options": [
-          "Only the account's region list",
-          "Only stored procedures",
-          "Only backup retention",
-          "Throughput and indexing policies, among other container-level properties"
-        ],
-        "correct": 3,
-        "explain": "ARM templates (JSON or Bicep) can provision and manage Azure Cosmos DB resources including throughput settings and indexing policies as part of infrastructure-as-code deployments."
-      },
-      {
-        "domain": "Maintain an Azure Cosmos DB solution",
-        "difficulty": "hard",
-        "q": "Can you migrate a container between manual (standard) and autoscale throughput using only an Azure Resource Manager template?",
-        "options": [
-          "No — migrating between standard and autoscale throughput is a POST operation and is instead done using the SDK, PowerShell, or Azure CLI",
-          "Yes, but only for serverless accounts",
-          "Yes, ARM templates fully support this migration",
-          "No, this migration is not supported by any tool"
-        ],
-        "correct": 0,
-        "explain": "Migrating between manual and autoscale throughput is implemented as a POST operation and is not supported directly through ARM templates; it's performed via the client SDKs, PowerShell, or Azure CLI instead."
-      },
-      {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "Which tools can be used to initiate a manual regional failover for an Azure Cosmos DB account as part of routine operations or DevOps automation?",
         "options": [
@@ -29489,20 +29164,7 @@ const EXAMS = {
         "explain": "A manual regional failover, changing which region is currently the write region, can be initiated using PowerShell or Azure CLI commands (as well as the Azure portal), supporting DevOps and operational automation."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
-        "difficulty": "medium",
-        "q": "In a CI/CD pipeline, how can indexing policy changes be consistently promoted from a test environment to production for an Azure Cosmos DB container?",
-        "options": [
-          "Indexing policies cannot be automated",
-          "By maintaining indexing policies as part of Azure Resource Manager templates that are applied consistently across environments",
-          "By manually editing the indexing policy in the Azure portal for each environment",
-          "By disabling indexing in production only"
-        ],
-        "correct": 1,
-        "explain": "Maintaining indexing policies in production by using Azure Resource Manager templates lets teams apply and promote consistent, version-controlled indexing configuration across environments as part of a DevOps process."
-      },
-      {
-        "domain": "Optimize an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "When deciding between a read-heavy and a write-heavy indexing strategy for a container, what is the fundamental tradeoff being balanced?",
         "options": [
@@ -29515,7 +29177,7 @@ const EXAMS = {
         "explain": "A read-heavy strategy favors indexing more properties and composite indexes to speed up queries, accepting higher write RU cost, while a write-heavy strategy narrows the indexing policy (using excludedPaths) to minimize write RU cost at the expense of some read efficiency."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "When performing a point-in-time restore, how do you locate the correct restore point to use?",
         "options": [
@@ -29528,7 +29190,7 @@ const EXAMS = {
         "explain": "For a point-in-time restore, you locate a restore point by choosing a timestamp within the retention period; Azure Cosmos DB guarantees the restored data and indexes are consistent up to that specified time."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "Which built-in Azure RBAC role allows a principal to read an Azure Cosmos DB account's properties and metadata, without granting access to item data or Data Explorer?",
         "options": [
@@ -29541,7 +29203,7 @@ const EXAMS = {
         "explain": "The Cosmos DB Account Reader built-in role can read Azure Cosmos DB account data (such as configuration and metadata) at the control-plane level, distinct from the data-plane access needed to read item data."
       },
       {
-        "domain": "Maintain an Azure Cosmos DB solution",
+        "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
         "q": "Beyond the two free periodic backups, how does Azure Cosmos DB charge for additional retained backups?",
         "options": [
@@ -29552,6 +29214,487 @@ const EXAMS = {
         ],
         "correct": 2,
         "explain": "Azure Cosmos DB includes retention of two periodic backups at no extra cost; any additional backups resulting from a longer retention period or shorter interval are charged using region-based backup-storage pricing for the extra backup size."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "easy",
+        "q": "Which Azure Cosmos DB vector index type performs an exact k-nearest neighbors search and can provide 100% retrieval recall?",
+        "options": [
+          "flat",
+          "diskANN",
+          "sharded diskANN",
+          "quantizedFlat"
+        ],
+        "correct": 0,
+        "explain": "A flat index is an exact, brute-force kNN search, so it can provide 100% recall for smaller, focused vector searches."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "medium",
+        "q": "A team filters vector queries down to a small set of vectors and wants lower RU cost than a flat index, accepting accuracy slightly below 100%. Which index type fits?",
+        "options": [
+          "A range index on the vector path",
+          "quantizedFlat",
+          "A composite index",
+          "diskANN with a shard key"
+        ],
+        "correct": 1,
+        "explain": "quantizedFlat is still a brute-force search over compressed vectors. It costs fewer RUs than flat, and suits queries that filters narrow to a small set."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "medium",
+        "q": "According to the Azure Cosmos DB guidance, when is DiskANN generally the most performant vector index type?",
+        "options": [
+          "When the search query is scoped to more than 50,000 vectors",
+          "When exact 100% recall is required",
+          "When vectors are stored inside nested arrays",
+          "When the container holds fewer than 1,000 vectors"
+        ],
+        "correct": 0,
+        "explain": "DiskANN is generally the most performant index type when a search query is scoped to more than 50,000 vectors."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "medium",
+        "q": "Why might a DiskANN index return slightly less accurate results than a flat index?",
+        "options": [
+          "It samples a random subset of partitions",
+          "It rounds vectors to whole numbers",
+          "It's an approximate nearest neighbors index",
+          "It only indexes the first 100 dimensions"
+        ],
+        "correct": 2,
+        "explain": "DiskANN is an approximate nearest neighbors (ANN) index, so accuracy might be lower than quantizedFlat or flat in exchange for low latency and RU cost."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "hard",
+        "q": "You increase quantizationByteSize on a vector index. What trade-off should you expect?",
+        "options": [
+          "Faster index builds, with no effect on queries",
+          "Lower storage cost, with no effect on accuracy",
+          "Potentially higher accuracy, with higher RU cost and latency",
+          "Lower accuracy, with lower RU cost and latency"
+        ],
+        "correct": 2,
+        "explain": "A larger quantizationByteSize can give higher accuracy vector searches at the expense of higher RU cost and higher latency."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "hard",
+        "q": "You increase indexingSearchListSize on a DiskANN index. What trade-off should you expect?",
+        "options": [
+          "Potentially higher accuracy, with longer index builds and higher ingest latency",
+          "Lower query accuracy, with shorter index builds",
+          "Wider vector dimensions, with no effect on accuracy",
+          "Lower RU cost per query, with no effect on ingest"
+        ],
+        "correct": 0,
+        "explain": "indexingSearchListSize sets how many vectors are searched during index construction. Larger values can raise accuracy, at the cost of longer builds and higher ingest latency."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "medium",
+        "q": "A multitenant app always filters vector searches by tenant. Which indexing policy setting creates a separate DiskANN index for each tenant value?",
+        "options": [
+          "compositeIndexes",
+          "quantizationByteSize",
+          "vectorIndexShardKey",
+          "indexingSearchListSize"
+        ],
+        "correct": 2,
+        "explain": "vectorIndexShardKey points to a document property and creates a distinct DiskANN index for each unique value of it."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "medium",
+        "q": "You defined a DiskANN index without a vectorIndexShardKey. How is the index organized?",
+        "options": [
+          "One DiskANN index per physical partition",
+          "One DiskANN index per account",
+          "One DiskANN index per item",
+          "One DiskANN index per logical partition"
+        ],
+        "correct": 0,
+        "explain": "The shard key is optional. Omitting it creates one DiskANN index per physical partition as usual."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "medium",
+        "q": "How do you focus a vector search on one shard of a sharded DiskANN index?",
+        "options": [
+          "Filter on the shard key value with a WHERE clause",
+          "Pass the shard name in a request header",
+          "Create a separate container for that value",
+          "Add the shard key to the TOP clause"
+        ],
+        "correct": 0,
+        "explain": "To focus a query on a shard key value, filter the path to that value with a WHERE clause."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "easy",
+        "q": "Which system function performs vector similarity search in an Azure Cosmos DB for NoSQL query?",
+        "options": [
+          "FullTextContains",
+          "VectorDistance",
+          "ARRAY_CONTAINS",
+          "ST_DISTANCE"
+        ],
+        "correct": 1,
+        "explain": "Vector search queries use the VectorDistance system function, usually in both the projection and the ORDER BY clause."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "medium",
+        "q": "Why should a vector search query always include a TOP N clause?",
+        "options": [
+          "Without it, the query tries to return many more results, costing more RUs and latency",
+          "It decides which distance function is used",
+          "It's what turns on the vector index",
+          "The query fails to compile without it"
+        ],
+        "correct": 0,
+        "explain": "Microsoft's guidance is to always use TOP N. Otherwise the search tries to return many more results, with higher RU cost and latency."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "hard",
+        "q": "A vector embedding is stored at /chunks/[]/embedding. Why can't you add this path to the vector indexing policy?",
+        "options": [
+          "Vector indexes only support top-level numeric arrays with 3 values",
+          "Vector paths nested inside arrays aren't supported",
+          "Vector paths must start with /vector",
+          "Vector paths must match the partition key"
+        ],
+        "correct": 1,
+        "explain": "Wildcard characters and vector paths nested inside arrays aren't currently supported in the vector policy or vector index."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "easy",
+        "q": "Which function combines vector and full-text scores in an Azure Cosmos DB hybrid search?",
+        "options": [
+          "BM25",
+          "RANKX",
+          "RRF",
+          "AVG"
+        ],
+        "correct": 2,
+        "explain": "Hybrid search fuses the rankings from VectorDistance and FullTextScore with the Reciprocal Rank Fusion (RRF) function."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "medium",
+        "q": "Which clause must a hybrid search query use with the RRF function?",
+        "options": [
+          "HAVING",
+          "ORDER BY RANK",
+          "OFFSET LIMIT",
+          "GROUP BY"
+        ],
+        "correct": 1,
+        "explain": "RRF can only be used in an ORDER BY RANK clause, and can't be combined with ORDER BY on other property paths."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "hard",
+        "q": "A hybrid query ends with RRF(VectorDistance(...), FullTextScore(...), [2, 1]). What does [2, 1] do?",
+        "options": [
+          "Limits the query to 2 partitions and 1 replica",
+          "Makes the vector score twice as important as the BM25 score",
+          "Searches 2 regions, then 1 fallback region",
+          "Returns 2 vector results and 1 text result"
+        ],
+        "correct": 1,
+        "explain": "The optional weights array sets the importance of each component score, so [2, 1] weights the vector search twice as heavily."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "easy",
+        "q": "Which scoring algorithm does FullTextScore return?",
+        "options": [
+          "TF-IDF cosine similarity",
+          "PageRank",
+          "Levenshtein distance",
+          "BM25"
+        ],
+        "correct": 3,
+        "explain": "FullTextScore returns a BM25 score, which rates documents on the presence and frequency of terms."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "hard",
+        "q": "A developer writes SELECT FullTextScore(c.text, \"keyword\") AS Score FROM c. What happens?",
+        "options": [
+          "It returns the score as a number for every item",
+          "It returns the score only for items that match",
+          "It runs, but always returns 0 without an index",
+          "The query is invalid, because FullTextScore can't be part of a projection"
+        ],
+        "correct": 3,
+        "explain": "FullTextScore can only be used in ORDER BY RANK or as an RRF argument. It can't be part of a projection."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "medium",
+        "q": "Which configuration does a container need for hybrid search?",
+        "options": [
+          "A full text index and analytical store only",
+          "A composite index and a spatial index only",
+          "A vector policy and a stored procedure",
+          "A vector policy, a full text policy, a vector index, and a full text index"
+        ],
+        "correct": 3,
+        "explain": "The documented steps are to create a container with a vector policy, full text policy, vector index, and full text index."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "medium",
+        "q": "What does a full text index apply so a search for \"running\" can also match \"runs\"?",
+        "options": [
+          "Vector quantization of each word",
+          "A wildcard on every indexed path",
+          "Exact byte-level comparison",
+          "Linguistic processing such as tokenization and stemming"
+        ],
+        "correct": 3,
+        "explain": "Full text indexing applies tokenization, stemming, and case normalization, so queries match variations of a word."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "medium",
+        "q": "What's the recommended data model for storing chat history and agent memories in Azure Cosmos DB?",
+        "options": [
+          "One database per conversation",
+          "One document per turn",
+          "One document per user, holding all history",
+          "One container per message"
+        ],
+        "correct": 1,
+        "explain": "One document per turn is the recommended model. It balances small item size with the value held in each memory item."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "medium",
+        "q": "In agent memory design, which is an example of long-term memory?",
+        "options": [
+          "A temporary step in the current plan",
+          "A stored preference, such as a user wanting bullet-list responses",
+          "A partial result from a tool call in the current task",
+          "The last five dialogue turns in a thread"
+        ],
+        "correct": 1,
+        "explain": "Long-term memory persists across threads, such as user preferences and summaries. Recent turns and intermediate state are short-term memory."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "medium",
+        "q": "Which Azure Cosmos DB feature is suggested for removing short-term agent memory after a period of time?",
+        "options": [
+          "Analytical store",
+          "Time to Live (TTL)",
+          "Bounded staleness",
+          "Conflict resolution policy"
+        ],
+        "correct": 1,
+        "explain": "Short-term memory can be deleted after some time by using TTL, or summarized into long-term memory."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "hard",
+        "q": "An agent needs past turns that are related in meaning to the current question, even if they share no exact words. Which retrieval pattern fits?",
+        "options": [
+          "Order by VectorDistance against a query vector",
+          "Filter with a CONTAINS keyword match",
+          "Read the most recent item with a point read",
+          "Order by timestamp descending"
+        ],
+        "correct": 0,
+        "explain": "Semantic retrieval finds turns with similar embeddings, even without shared words. It suits cases where relevance matters more than recency."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "easy",
+        "q": "Which language do you use to query mirrored Azure Cosmos DB data through the SQL analytics endpoint in Microsoft Fabric?",
+        "options": [
+          "MDX",
+          "KQL",
+          "T-SQL",
+          "DAX"
+        ],
+        "correct": 2,
+        "explain": "The SQL analytics endpoint exposes mirrored containers as tables that you query with T-SQL."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "medium",
+        "q": "Which T-SQL function do you use to expand a nested JSON array from a mirrored Azure Cosmos DB item?",
+        "options": [
+          "PIVOT",
+          "FORMATMESSAGE",
+          "STRING_SPLIT",
+          "OPENJSON"
+        ],
+        "correct": 3,
+        "explain": "OPENJSON parses nested JSON arrays, typically used with CROSS APPLY or OUTER APPLY."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "hard",
+        "q": "You expand an items array with OPENJSON and need to keep documents that have no items array. Which operator should you use?",
+        "options": [
+          "UNION ALL",
+          "INNER JOIN",
+          "CROSS APPLY",
+          "OUTER APPLY"
+        ],
+        "correct": 3,
+        "explain": "OUTER APPLY includes rows that might not have an items array. CROSS APPLY only returns rows that have one."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "hard",
+        "q": "When you define OPENJSON column types over mirrored data, which choice can help query performance?",
+        "options": [
+          "Use nvarchar(max) with a collation override",
+          "Use varchar(n) with a small n instead of varchar(max)",
+          "Use varchar(max) for every string",
+          "Cast every string column to sql_variant"
+        ],
+        "correct": 1,
+        "explain": "Using varchar(max) for strings could worsen performance. A lower n in varchar(n) is more likely to perform better."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "medium",
+        "q": "What must be enabled on an Azure Cosmos DB account before you mirror it to Microsoft Fabric?",
+        "options": [
+          "Continuous backup",
+          "Multi-region writes",
+          "Strong consistency",
+          "Periodic backup with 2 copies"
+        ],
+        "correct": 0,
+        "explain": "The tutorial's first step is to ensure continuous backup is enabled on the source account."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "medium",
+        "q": "How do applications authenticate to Cosmos DB in Microsoft Fabric?",
+        "options": [
+          "With resource tokens from a mid-tier",
+          "With Microsoft Entra identities",
+          "With connection strings that embed keys",
+          "With primary and secondary keys"
+        ],
+        "correct": 1,
+        "explain": "Primary and secondary keys aren't supported. You must use Microsoft Entra identities, such as users, service principals, or managed identities."
+      },
+      {
+        "domain": "Implement AI and Analytics capabilities in database solutions",
+        "difficulty": "hard",
+        "q": "A .NET app can't connect to Cosmos DB in Microsoft Fabric with its default client settings. Which connection mode must you configure explicitly?",
+        "options": [
+          "Direct mode",
+          "Serverless mode",
+          "Bulk mode",
+          "Gateway mode"
+        ],
+        "correct": 3,
+        "explain": "Cosmos DB in Fabric only supports Gateway mode. SDKs such as .NET and Java don't default to Gateway, so you must configure it."
+      },
+      {
+        "domain": "Secure, optimize, and deploy database solutions",
+        "difficulty": "easy",
+        "q": "Where does Azure Cosmos DB dynamic data masking take effect?",
+        "options": [
+          "During backup, on the restored copy only",
+          "In the client SDK, before the query is sent",
+          "At write time, replacing the stored values",
+          "At query time, leaving the stored data unchanged"
+        ],
+        "correct": 3,
+        "explain": "Masking occurs at query time for nonprivileged users. The underlying data remains unchanged."
+      },
+      {
+        "domain": "Secure, optimize, and deploy database solutions",
+        "difficulty": "medium",
+        "q": "With the Default masking strategy in Azure Cosmos DB, what does a nonprivileged user see for a numeric value of 95?",
+        "options": [
+          "XXXX",
+          "0",
+          "95",
+          "null"
+        ],
+        "correct": 1,
+        "explain": "The Default strategy masks strings as XXXX, numeric values as 0, and Boolean values as false."
+      },
+      {
+        "domain": "Secure, optimize, and deploy database solutions",
+        "difficulty": "hard",
+        "q": "A MaskSubstring(3,5) policy applies to the value Washington. What does a nonprivileged user see?",
+        "options": [
+          "WashiXXXXX",
+          "XXXXXngton",
+          "WasXXXXXon",
+          "XXXhingXXX"
+        ],
+        "correct": 2,
+        "explain": "MaskSubstring(Start, Length) masks a defined portion of the string, so MaskSubstring(3,5) turns Washington into WasXXXXXon."
+      },
+      {
+        "domain": "Secure, optimize, and deploy database solutions",
+        "difficulty": "medium",
+        "q": "A B2B app gives each tenant its own Azure Cosmos DB account across several subscriptions. Which capability lets those accounts share spare RU/s?",
+        "options": [
+          "Serverless capacity mode",
+          "Autoscale on each container",
+          "Fleet pools",
+          "Database-level shared throughput"
+        ],
+        "correct": 2,
+        "explain": "Pools share RU/s at the fleetspace level, even for accounts in different subscriptions and resource groups."
+      },
+      {
+        "domain": "Secure, optimize, and deploy database solutions",
+        "difficulty": "medium",
+        "q": "Where can fleet analytics send usage data for accounts in an Azure Cosmos DB fleet?",
+        "options": [
+          "Microsoft Fabric or an Azure Storage account",
+          "Only the Azure Cosmos DB analytical store",
+          "Only an on-premises SQL Server",
+          "Only Azure Event Hubs"
+        ],
+        "correct": 0,
+        "explain": "Fleet analytics exports usage data to Microsoft Fabric or an Azure Storage account for long-term analysis."
+      },
+      {
+        "domain": "Secure, optimize, and deploy database solutions",
+        "difficulty": "easy",
+        "q": "In Azure Cosmos DB fleets, what does one fleet correspond to?",
+        "options": [
+          "One container",
+          "One multitenant application",
+          "One subscription",
+          "One Azure region"
+        ],
+        "correct": 1,
+        "explain": "A fleet maps to one multitenant application, and an account maps to one tenant."
+      },
+      {
+        "domain": "Secure, optimize, and deploy database solutions",
+        "difficulty": "hard",
+        "q": "An account already belongs to a fleetspace, and you want it in a different fleet. What must happen first?",
+        "options": [
+          "Remove it from its current fleetspace",
+          "Convert it to serverless",
+          "Enable multi-region writes on it",
+          "Move it to a new resource group"
+        ],
+        "correct": 0,
+        "explain": "Accounts belong to only one fleetspace and one fleet, and can't be added to another fleet unless they're removed first."
       }
     ]
   },
@@ -45292,74 +45435,98 @@ const EXAMS = {
     ],
     "domains": [
       {
-        "name": "Maintain a data analytics solution",
-        "weight": "25-30%",
-        "mid": 27,
+        "name": "Plan, implement, and manage a solution for data analytics",
+        "weight": "10-15%",
+        "mid": 12.5,
         "link": "https://learn.microsoft.com/en-us/training/paths/secure-govern-analytics-data/",
         "skills": [
-          "Implement workspace-level access controls",
-          "Implement item-level access controls",
-          "Implement row-level, column-level, object-level, and file-level access control",
-          "Apply sensitivity labels to items",
-          "Endorse items",
-          "Configure version control for a workspace",
+          "Identify requirements for a solution, including components, features, performance, and capacity stock-keeping units (SKUs)",
+          "Recommend settings in the Fabric admin portal",
+          "Choose a data gateway type",
+          "Create a custom Power BI report theme",
+          "Implement workspace and item-level access controls for Fabric items",
+          "Implement data sharing for workspaces, warehouses, and lakehouses",
+          "Manage sensitivity labels in semantic models and lakehouses",
+          "Configure Fabric-enabled workspace settings",
+          "Manage Fabric capacity",
+          "Implement version control for a workspace",
           "Create and manage a Power BI Desktop project (.pbip)",
-          "Create and configure deployment pipelines",
-          "Perform impact analysis of downstream dependencies from lakehouses, warehouses, dataflows, and semantic models",
+          "Plan and implement deployment solutions",
+          "Perform impact analysis of downstream dependencies from lakehouses, data warehouses, dataflows, and semantic models",
           "Deploy and manage semantic models by using the XMLA endpoint",
           "Create and update reusable assets, including Power BI template (.pbit) files, Power BI data source (.pbids) files, and shared semantic models"
         ]
       },
       {
-        "name": "Prepare data",
-        "weight": "45-50%",
-        "mid": 46,
+        "name": "Prepare and serve data",
+        "weight": "40-45%",
+        "mid": 42.5,
         "link": "https://learn.microsoft.com/en-us/training/paths/design-transform-analytics-data/",
         "skills": [
-          "Create a data connection",
-          "Discover data by using OneLake catalog and Real-Time hub",
-          "Ingest or access data as needed",
-          "Choose between different data stores",
-          "Implement OneLake integration for Eventhouse and semantic models",
+          "Ingest data by using a data pipeline, dataflow, or notebook",
+          "Create and manage shortcuts",
+          "Implement file partitioning for analytics workloads in a lakehouse",
           "Create views, functions, and stored procedures",
           "Enrich data by adding new columns or tables",
-          "Implement a star schema for a lakehouse or warehouse",
+          "Choose an appropriate method for copying data from a Fabric data source to a lakehouse or warehouse",
+          "Copy data by using a data pipeline, dataflow, or notebook",
+          "Add stored procedures, notebooks, and dataflows to a data pipeline",
+          "Schedule data pipelines",
+          "Schedule dataflows and notebooks",
+          "Implement a data cleansing process",
+          "Implement a star schema for a lakehouse or warehouse, including Type 1 and Type 2 slowly changing dimensions",
+          "Implement bridge tables for a lakehouse or a warehouse",
           "Denormalize data",
-          "Aggregate data",
+          "Aggregate or de-aggregate data",
           "Merge or join data",
           "Identify and resolve duplicate data, missing data, or null values",
-          "Convert column data types",
+          "Convert data types by using SQL or PySpark",
           "Filter data",
-          "Select, filter, and aggregate data by using the Visual Query Editor",
-          "Select, filter, and aggregate data by using SQL",
-          "Select, filter, and aggregate data by using KQL",
-          "Select, filter, and aggregate data by using DAX"
+          "Identify and resolve data loading performance bottlenecks in dataflows, notebooks, and SQL queries",
+          "Implement performance improvements in dataflows, notebooks, and SQL queries",
+          "Identify and resolve issues with Delta table file sizes"
         ]
       },
       {
         "name": "Implement and manage semantic models",
-        "weight": "25-30%",
-        "mid": 27,
+        "weight": "20-25%",
+        "mid": 22.5,
         "link": "https://learn.microsoft.com/en-us/training/paths/design-manage-semantic-models-fabric/",
         "skills": [
-          "Choose a storage mode",
+          "Choose a storage mode, including Direct Lake",
+          "Identify use cases for DAX Studio and Tabular Editor 2",
           "Implement a star schema for a semantic model",
           "Implement relationships, such as bridge tables and many-to-many relationships",
           "Write calculations that use DAX variables and functions, such as iterators, table filtering, windowing, and information functions",
-          "Implement calculation groups, dynamic format strings, and field parameters",
-          "Identify use cases for and configure large semantic model storage format",
-          "Design and build composite models",
+          "Implement calculation groups, dynamic strings, and field parameters",
+          "Design and build a large format dataset",
+          "Design and build composite models that include aggregations",
+          "Implement dynamic row-level security and object-level security",
+          "Validate row-level security and object-level security",
           "Implement performance improvements in queries and report visuals",
-          "Improve DAX performance",
-          "Configure Direct Lake, including default fallback and refresh behavior",
-          "Choose between Direct Lake on OneLake and Direct Lake on SQL analytics endpoint",
-          "Implement incremental refresh for semantic models"
+          "Improve DAX performance by using DAX Studio",
+          "Optimize a semantic model by using Tabular Editor 2",
+          "Implement incremental refresh"
+        ]
+      },
+      {
+        "name": "Explore and analyze data",
+        "weight": "20-25%",
+        "mid": 22.5,
+        "link": "https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-sql-analytics-endpoint",
+        "skills": [
+          "Implement descriptive and diagnostic analytics",
+          "Integrate prescriptive and predictive analytics into a visual or report",
+          "Profile data",
+          "Query a lakehouse in Fabric by using SQL queries or the visual query editor",
+          "Query a warehouse in Fabric by using SQL queries or the visual query editor",
+          "Connect to and query datasets by using the XMLA endpoint"
         ]
       }
     ],
     "questions": [
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "easy",
         "q": "In what order does Microsoft Fabric evaluate access when a user tries to query a table?",
         "options": [
@@ -45372,7 +45539,7 @@ const EXAMS = {
         "explain": "Fabric evaluates access sequentially: first whether the user can authenticate with Microsoft Entra ID, then whether the user can access Fabric, and finally whether the user can perform the requested action on a table or file (data security)."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "easy",
         "q": "A user is assigned the Viewer role on a workspace and has no other permissions configured. What is their default access to OneLake data in that workspace?",
         "options": [
@@ -45385,7 +45552,7 @@ const EXAMS = {
         "explain": "Users with only the Viewer workspace role (or only Read item permission) have no OneLake data access by default; you must create a OneLake security role and add them as a member to grant access to specific tables or folders."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "medium",
         "q": "Which workspace roles already have full read and write access to all OneLake data, meaning OneLake security roles do not restrict them?",
         "options": [
@@ -45398,7 +45565,7 @@ const EXAMS = {
         "explain": "Users with Admin, Member, or Contributor workspace roles already have full read and write access to all OneLake data; OneLake security roles are used to grant restricted access to Viewer-role or Read-permission users, not to further restrict higher roles."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "medium",
         "q": "What are the four components you define when creating a OneLake security role?",
         "options": [
@@ -45411,7 +45578,7 @@ const EXAMS = {
         "explain": "Each OneLake security role has four components: Data (the tables/folders users can access), Permission (Read or ReadWrite), Members (users or groups assigned), and Constraints (optional row or column filters)."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "hard",
         "q": "You create a custom OneLake security role that restricts a user to only the Orders table. The user was previously given the 'Read all Apache Spark and subscribe to events' sharing permission on the lakehouse. What must you also do?",
         "options": [
@@ -45424,7 +45591,7 @@ const EXAMS = {
         "explain": "Every new lakehouse automatically includes a DefaultReader role, and sharing with 'Read all Apache Spark and subscribe to events' adds the recipient to it. If you restrict that user to a custom role but leave them in DefaultReader, they still have full read access through the default role."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "medium",
         "q": "Which T-SQL statements are used to apply granular compute permissions on lakehouse data through the SQL analytics endpoint?",
         "options": [
@@ -45437,7 +45604,7 @@ const EXAMS = {
         "explain": "T-SQL granular permissions are applied using Data Control Language (DCL) commands: GRANT, DENY, and REVOKE, alongside row-level security, column-level security, and dynamic data masking."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "easy",
         "q": "How does dynamic data masking (DDM) protect a column in a Fabric warehouse?",
         "options": [
@@ -45450,7 +45617,7 @@ const EXAMS = {
         "explain": "Dynamic data masking obscures column values in query results without altering the underlying data; the real values stay intact in storage, and masking is applied at query time for nonprivileged users."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "medium",
         "q": "Which dynamic data masking function would show only the last four digits of a credit card number, like XXXX-XXXX-XXXX-3456?",
         "options": [
@@ -45463,7 +45630,7 @@ const EXAMS = {
         "explain": "The partial() masking function exposes a specified number of characters at the start and end with custom padding in between, which is exactly the pattern used to reveal only the last four digits of a credit card number."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "medium",
         "q": "By default, which users can see unmasked values in a column protected by dynamic data masking?",
         "options": [
@@ -45476,7 +45643,7 @@ const EXAMS = {
         "explain": "By default, only users with the CONTROL permission (Admins, Members, and Contributors) can view unmasked data. To let a specific non-admin user see real values, you must grant them the UNMASK permission."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "medium",
         "q": "A data engineer needs to be able to add or remove masking rules on warehouse columns, but should not be granted full admin rights. Which permission should you grant?",
         "options": [
@@ -45489,7 +45656,7 @@ const EXAMS = {
         "explain": "The ALTER ANY MASK permission lets a user add or remove masks from columns without requiring full admin or table-owner rights, separate from the UNMASK permission which only lets someone view already-masked data unmasked."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "easy",
         "q": "Sensitivity labels applied to Fabric items originate from which service?",
         "options": [
@@ -45502,7 +45669,7 @@ const EXAMS = {
         "explain": "Sensitivity labels are metadata tags from Microsoft Purview Information Protection that classify Fabric items (Public, General, Confidential, Highly Confidential, etc.) and can enforce protection policies."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "medium",
         "q": "A lakehouse is labeled Confidential. A semantic model and report are later built on top of it through a SQL analytics endpoint. What happens to the sensitivity label?",
         "options": [
@@ -45515,7 +45682,7 @@ const EXAMS = {
         "explain": "Fabric provides downstream inheritance: labels propagate automatically from upstream items to downstream items, so labeling a lakehouse at ingestion protects the entire chain of dependent items."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "medium",
         "q": "A user exports labeled Fabric data to a CSV file instead of Excel or PDF. What happens to the sensitivity label protection?",
         "options": [
@@ -45528,7 +45695,7 @@ const EXAMS = {
         "explain": "Sensitivity labels and their protections travel with exports through supported paths like Excel, PDF, PowerPoint, and .pbix files, but exports to CSV or TXT don't carry label protection, and Fabric displays a warning to the user."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "easy",
         "q": "What does enabling mandatory labeling do in a Fabric tenant?",
         "options": [
@@ -45541,7 +45708,7 @@ const EXAMS = {
         "explain": "When mandatory labeling is enabled, users can't save Power BI items without applying a label, which prevents unlabeled content from reaching consumers (support for non-Power BI Fabric items is limited)."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "easy",
         "q": "Which endorsement level can any user with write permissions apply, without administrator involvement?",
         "options": [
@@ -45554,7 +45721,7 @@ const EXAMS = {
         "explain": "Promotion is a low-friction signal: any user with write permissions can promote an item to indicate it is ready for team-level sharing and reuse, unlike Certified or Master data which require administrator-authorized reviewers."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "medium",
         "q": "Which endorsement level is reserved for core organizational reference data, such as a single customer master list, and can only be applied by users the Fabric administrator specifies?",
         "options": [
@@ -45567,7 +45734,7 @@ const EXAMS = {
         "explain": "Master data is applied only by users specified by the Fabric administrator, and only to items that contain data such as lakehouses and semantic models; it signals the item is the single source of truth for that data."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "medium",
         "q": "Nearly every Fabric and Power BI item type supports endorsement. Which item type is the notable exception?",
         "options": [
@@ -45580,7 +45747,7 @@ const EXAMS = {
         "explain": "Nearly all Fabric and Power BI items can be promoted or certified, including lakehouses, warehouses, semantic models, reports, notebooks, pipelines, and dataflows — the only exception is Power BI dashboards, which don't support endorsement."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "medium",
         "q": "Which tab of the OneLake catalog would you use to view governance recommendations, such as items missing descriptions or sensitivity labels, for data you own?",
         "options": [
@@ -45593,7 +45760,7 @@ const EXAMS = {
         "explain": "The OneLake catalog has three tabs: Explore (browse and filter items), Govern (view governance posture and recommendations for data you own), and Secure (manage workspace roles and OneLake security roles centrally)."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "medium",
         "q": "In a Power BI Desktop project (.pbip), what format is the semantic model definition stored in, enabling text-based diffing?",
         "options": [
@@ -45606,7 +45773,7 @@ const EXAMS = {
         "explain": "The <name>.SemanticModel folder in a .pbip project stores the model in Tabular Model Definition Language (TMDL) format, with each table, measure, and relationship as a separate readable text file, unlike the binary .pbix format."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "easy",
         "q": "Why do teams prefer .pbip over .pbix for source control?",
         "options": [
@@ -45619,7 +45786,7 @@ const EXAMS = {
         "explain": "Because every .pbip definition is a text file (TMDL for the model, JSON-based .pbir for the report), standard diff tools reveal exactly what changed — a renamed column or modified measure appears as a clear text change rather than an opaque binary difference."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "medium",
         "q": "When a Fabric workspace is connected to Git and another team member's changes are newer than the workspace, what action brings the workspace in sync?",
         "options": [
@@ -45632,7 +45799,7 @@ const EXAMS = {
         "explain": "Selecting 'Update all' pulls newer changes from the connected Git repository into the workspace, syncing it with the latest repository state; 'Commit' instead pushes local workspace changes to the repository."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "easy",
         "q": "What is the default access level of the XMLA endpoint for a Fabric or Power BI Premium workspace?",
         "options": [
@@ -45645,7 +45812,7 @@ const EXAMS = {
         "explain": "By default the XMLA endpoint is enabled for read-only access, letting you query model data and metadata; capacity administrators can enable read-write access for a workspace to unlock deployment and scripted operations."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "medium",
         "q": "What must be enabled on a semantic model before XMLA endpoint read-write access or query scaleout can be used?",
         "options": [
@@ -45658,7 +45825,7 @@ const EXAMS = {
         "explain": "The large semantic model storage format is a prerequisite for both XMLA endpoint read/write access and query scaleout. Direct Lake models enable it automatically; Import or DirectQuery models must enable it explicitly."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "medium",
         "q": "Which SemPy function would you use in a Fabric notebook to detect orphaned foreign keys before a semantic model goes to production?",
         "options": [
@@ -45671,7 +45838,7 @@ const EXAMS = {
         "explain": "fabric.list_relationship_violations() takes a dictionary of table DataFrames and the model's relationship metadata to find rows where a foreign key has no matching primary key, returning an empty result if all relationships are intact."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "hard",
         "q": "Which external tool is specifically used to compare the schema of a development semantic model against a production model before deployment?",
         "options": [
@@ -45684,7 +45851,7 @@ const EXAMS = {
         "explain": "ALM Toolkit compares schemas between two semantic models (for example, development and production) so you can review structural differences before deployment, complementing DAX Studio (query testing) and Tabular Editor (model editing and Best Practice Analyzer)."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "medium",
         "q": "By default, how many stages does a new Fabric deployment pipeline have, and what is the customizable range?",
         "options": [
@@ -45697,7 +45864,7 @@ const EXAMS = {
         "explain": "The default pipeline has three stages — Development, Test, and Production — but you can customize the number of stages between two and 10 and rename them to match your team's workflow."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "hard",
         "q": "A deployment pipeline needs development to connect to a test database while production connects to the live database, all without changing the underlying report or model. Which feature should you configure?",
         "options": [
@@ -45710,7 +45877,7 @@ const EXAMS = {
         "explain": "Deployment rules, specifically data source rules, let you change the server, database, or connection path when content moves between pipeline stages, so each stage automatically points to the correct environment without manual reconfiguration."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "medium",
         "q": "Before modifying a widely used lakehouse table, what should you check to see which downstream items would be affected?",
         "options": [
@@ -45723,7 +45890,7 @@ const EXAMS = {
         "explain": "Impact analysis lets you identify downstream items that would be affected before changing an item, and Fabric's lineage view visualizes how data flows from source to destination across dependent lakehouses, warehouses, dataflows, and semantic models."
       },
       {
-        "domain": "Maintain a data analytics solution",
+        "domain": "Plan, implement, and manage a solution for data analytics",
         "difficulty": "easy",
         "q": "What is the purpose of a Power BI data source (.pbids) file, as distinct from a Power BI template (.pbit)?",
         "options": [
@@ -45736,7 +45903,7 @@ const EXAMS = {
         "explain": "A .pbids file is a reusable asset that stores data source connection details (not visuals or a data model), letting users quickly open Power BI Desktop already connected to the right source, while a .pbit template captures the report and model structure without the data."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "easy",
         "q": "In a Microsoft Fabric lakehouse, which storage area contains Delta Lake tables that support SQL queries and enforce schema?",
         "options": [
@@ -45749,7 +45916,7 @@ const EXAMS = {
         "explain": "The Tables folder contains Delta Lake tables that support SQL queries through the SQL analytics endpoint, enforce schemas, support ACID transactions, and can be accessed in Power BI, while the Files folder stores raw or semi-structured data without schema enforcement."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "easy",
         "q": "When you create a new Fabric lakehouse, which schema is created automatically?",
         "options": [
@@ -45762,7 +45929,7 @@ const EXAMS = {
         "explain": "When you create a lakehouse, schemas are enabled by default and a schema named dbo is created automatically; you can create additional schemas such as sales or marketing to organize tables by business domain."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "What four-part namespace does a schema-enabled lakehouse support for cross-workspace queries?",
         "options": [
@@ -45775,7 +45942,7 @@ const EXAMS = {
         "explain": "Schema-enabled lakehouses support schema-level permissions and cross-workspace queries using the four-part namespace workspace.lakehouse.schema.table."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "What is a key limitation of the SQL analytics endpoint when working with lakehouse data?",
         "options": [
@@ -45788,7 +45955,7 @@ const EXAMS = {
         "explain": "The SQL analytics endpoint lets you query Delta tables using T-SQL in read-only mode — you can create views, functions, and apply SQL security, but you cannot modify the underlying data through it; use Lakehouse explorer or notebooks for that."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "easy",
         "q": "Which no-code lakehouse ingestion option lets you select a Parquet or CSV file in the explorer and create a Delta table without writing code?",
         "options": [
@@ -45801,7 +45968,7 @@ const EXAMS = {
         "explain": "Load to Table lets you select a file or folder in the lakehouse explorer and choose Load to Table to create a Delta table without code, supporting Parquet and CSV files with the option to append or overwrite."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "What is the defining characteristic of a OneLake shortcut?",
         "options": [
@@ -45814,7 +45981,7 @@ const EXAMS = {
         "explain": "Shortcuts let you integrate data into your lakehouse without copying it — a shortcut references data in external storage (or another Fabric item) and makes it appear as a folder in your lakehouse, with OneLake using your identity to authorize access to the target."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "What does a schema shortcut do that a regular table shortcut does not?",
         "options": [
@@ -45827,20 +45994,7 @@ const EXAMS = {
         "explain": "A schema shortcut maps an entire schema to a folder of Delta tables in another lakehouse or in Azure Data Lake Storage Gen2, and all referenced tables then appear as local tables within that schema — without copying data."
       },
       {
-        "domain": "Prepare data",
-        "difficulty": "easy",
-        "q": "Which Fabric data store is purpose-built for real-time analytics on streaming, time-series data like IoT telemetry, using KQL as its primary query language?",
-        "options": [
-          "Eventhouse",
-          "Dataflow Gen2",
-          "Lakehouse",
-          "Warehouse"
-        ],
-        "correct": 0,
-        "explain": "An eventhouse is a workspace of KQL databases optimized for append-heavy, streaming ingestion of event-based and time-series data, with Kusto Query Language (KQL) as the primary query language, ideal for IoT telemetry and log analytics."
-      },
-      {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "A team needs to build traditional star-schema dimensional models with T-SQL and expects data to update only once per day in batch. Which data store best fits this scenario?",
         "options": [
@@ -45853,46 +46007,7 @@ const EXAMS = {
         "explain": "The warehouse provides better support for traditional dimensional modeling with fact and dimension tables and full T-SQL transactional capabilities, whereas an eventhouse is optimized for flat, append-only event data rather than normalized relational models."
       },
       {
-        "domain": "Prepare data",
-        "difficulty": "medium",
-        "q": "Which KQL function would you use to detect outliers in streaming time-series data as events arrive?",
-        "options": [
-          "make-series only",
-          "PIVOT",
-          "ROW_NUMBER",
-          "series_decompose_anomalies"
-        ],
-        "correct": 3,
-        "explain": "series_decompose_anomalies is a built-in KQL time-series function that identifies outliers in time-series data as events arrive, enabling automated alerts; series_decompose_forecast projects future values similarly."
-      },
-      {
-        "domain": "Prepare data",
-        "difficulty": "medium",
-        "q": "What write pattern is an eventhouse optimized for, compared to a lakehouse or warehouse?",
-        "options": [
-          "Batch-only nightly loads exclusively",
-          "Frequent UPDATE and DELETE of individual records",
-          "Append-heavy streaming ingestion with data rarely modified after ingestion",
-          "In-place row versioning with full ACID rollback"
-        ],
-        "correct": 2,
-        "explain": "Unlike the lakehouse and warehouse, the eventhouse is optimized for append-heavy workloads where new events stream in continuously and existing data is rarely modified; it isn't designed for heavy UPDATE/DELETE patterns."
-      },
-      {
-        "domain": "Prepare data",
-        "difficulty": "hard",
-        "q": "An eventhouse includes an 'Always-On' option. What is its purpose?",
-        "options": [
-          "It automatically certifies the eventhouse item",
-          "It disables autoscaling to save cost",
-          "It forces daily full reloads of KQL databases",
-          "It keeps the service continuously available with no startup latency for time-sensitive systems"
-        ],
-        "correct": 3,
-        "explain": "The Always-On option keeps the eventhouse service available continuously and scales according to the autoscale mechanism, intended for time-sensitive systems that can't tolerate any startup latency."
-      },
-      {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "easy",
         "q": "Dataflows Gen2 in Microsoft Fabric use which interface for building transformation logic?",
         "options": [
@@ -45905,7 +46020,7 @@ const EXAMS = {
         "explain": "Dataflows Gen2 use Power Query Online, letting you visually build multi-step data ingestion and transformation logic without writing code, similar to Power Query in Excel or Power BI Desktop."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "Which of the following is a documented limitation of Dataflows Gen2?",
         "options": [
@@ -45918,7 +46033,7 @@ const EXAMS = {
         "explain": "A documented limitation of Dataflows Gen2 is that row-level security isn't supported; other limitations include that dataflows aren't a replacement for a data warehouse and they require a Fabric capacity workspace."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "In an ELT (Extract, Load, Transform) pattern using Fabric, what is the typical role of a Dataflow Gen2 relative to a pipeline?",
         "options": [
@@ -45931,7 +46046,7 @@ const EXAMS = {
         "explain": "In an ELT approach, a pipeline extracts and loads data into a destination like the lakehouse first, and then a Dataflow Gen2 connects to that lakehouse data to cleanse and transform it, offering the result as a curated semantic model for analysts."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "You need to remove exact duplicate rows from a Spark DataFrame in a Fabric notebook while keeping all columns. Which PySpark call does this?",
         "options": [
@@ -45944,7 +46059,7 @@ const EXAMS = {
         "explain": "df.dropDuplicates() removes exact duplicate rows across all columns; passing a column list like df.dropDuplicates(['order_id']) instead deduplicates by a specific business key."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "easy",
         "q": "In Spark SQL, which function replaces null values in a column with a specified default, such as replacing a null region with 'Unknown'?",
         "options": [
@@ -45957,7 +46072,7 @@ const EXAMS = {
         "explain": "COALESCE(region, 'Unknown') returns the first non-null value in the list, which is the standard way to replace nulls with a meaningful default in Spark SQL; the PySpark equivalent is df.fillna({'region': 'Unknown'})."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "Which PySpark method drops rows where a required column, such as customer_id, is null?",
         "options": [
@@ -45970,7 +46085,7 @@ const EXAMS = {
         "explain": "df.dropna(subset=['customer_id']) drops rows where the specified column is null, useful when a row is unusable without that value (for example, a sales record that can't be joined to customer data)."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "In PySpark, how should you combine multiple filter conditions to avoid operator precedence issues, such as filtering to year 2024 AND amount greater than 0?",
         "options": [
@@ -45983,7 +46098,7 @@ const EXAMS = {
         "explain": "In PySpark you wrap each condition in parentheses and use & for AND and | for OR, e.g. df.filter((year(col('order_date'))==2024) & (col('amount')>0)), which avoids Python operator precedence issues that Boolean 'and'/'or' would cause."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "easy",
         "q": "Which PySpark DataFrame method adds a new derived column, such as line_total computed from quantity times unit_price?",
         "options": [
@@ -45996,7 +46111,7 @@ const EXAMS = {
         "explain": "withColumn() adds (or replaces) a column in a DataFrame; multiplying two existing columns and aliasing the result as line_total is a standard calculated-column pattern used before loading data into a Delta table."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "Which PySpark function lets you build conditional (CASE WHEN-style) columns, such as categorizing orders into High/Medium/Low value tiers?",
         "options": [
@@ -46009,7 +46124,7 @@ const EXAMS = {
         "explain": "The when().otherwise() chain implements CASE WHEN-style conditional logic in PySpark, e.g. when(col('line_total')>500,'High').when(col('line_total')>100,'Medium').otherwise('Low'), equivalent to a Spark SQL CASE expression."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "A CSV-sourced column of amounts is read as a string. Which PySpark call correctly converts it to a decimal type for financial calculations?",
         "options": [
@@ -46022,7 +46137,7 @@ const EXAMS = {
         "explain": "The .cast() method explicitly converts a column's data type, e.g. col('amount').cast('decimal(10,2)'), which is necessary because CSV-sourced columns often load as strings and need explicit conversion for accurate downstream math."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "Which Spark join type returns all rows from both tables, with nulls where no match exists on either side?",
         "options": [
@@ -46035,7 +46150,7 @@ const EXAMS = {
         "explain": "A FULL OUTER join returns all rows from both tables, filling in nulls where no match exists on either side, unlike INNER (only matches) or LEFT/RIGHT (all rows from one side plus matches from the other)."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "After grouping sales by region with SUM(amount), you only want regions whose total exceeds 10,000. In Spark SQL, which clause filters on the aggregated result?",
         "options": [
@@ -46048,7 +46163,7 @@ const EXAMS = {
         "explain": "HAVING filters rows after aggregation (e.g. HAVING SUM(amount) > 10000), while WHERE filters rows before grouping; the PySpark equivalent is calling .filter() after .groupBy().agg()."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "hard",
         "q": "You need a running total of sales per customer, ordered by order date, without collapsing the individual order rows. Which approach is correct?",
         "options": [
@@ -46061,7 +46176,7 @@ const EXAMS = {
         "explain": "Window functions like SUM(amount) OVER (PARTITION BY customer_id ORDER BY order_date) calculate a value across related rows without collapsing the detail rows, unlike GROUP BY which reduces multiple rows into one summary row per group."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "Which window function assigns a sequential number within each partition, useful for numbering each customer's orders in date order?",
         "options": [
@@ -46074,7 +46189,7 @@ const EXAMS = {
         "explain": "ROW_NUMBER() assigns a sequential number within each partition based on the ORDER BY clause; RANK() assigns rank with gaps for ties, and LAG()/LEAD() access values from previous/next rows instead."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "What is the purpose of a common table expression (CTE) using WITH in Spark SQL?",
         "options": [
@@ -46087,7 +46202,7 @@ const EXAMS = {
         "explain": "A CTE defined with WITH lets you break a complex query into named, readable steps, each defining a temporary result set referenced by later parts of the query — in PySpark, the equivalent is chaining DataFrame operations across intermediate variables."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "What is the benefit of specifying explicit pivot values, like FOR quarter IN ('Q1','Q2','Q3','Q4'), in a Spark SQL PIVOT statement?",
         "options": [
@@ -46100,7 +46215,7 @@ const EXAMS = {
         "explain": "Specifying the pivot values explicitly improves performance because Spark doesn't need to scan the data first to discover the distinct values it would otherwise have to pivot on."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "easy",
         "q": "What is a warehouse view in Microsoft Fabric?",
         "options": [
@@ -46113,7 +46228,7 @@ const EXAMS = {
         "explain": "A view is a named SELECT statement stored as a database object; it does not store data itself, so it always reflects the current state of the underlying source tables when queried."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "Which of these is NOT listed as a benefit of using views for reusable transformation logic in a Fabric warehouse?",
         "options": [
@@ -46126,7 +46241,7 @@ const EXAMS = {
         "explain": "Views provide reusability, abstraction, and security benefits, but they do not guarantee faster performance than querying underlying tables directly — since a view runs its underlying query live, performance depends on the complexity of that query."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "When is materializing a transformation into a table generally preferred over defining it as a view?",
         "options": [
@@ -46139,7 +46254,7 @@ const EXAMS = {
         "explain": "If a transformation is expensive to compute, produces a large result set, or is queried frequently by performance-critical dashboards, materializing it into a table (for example via a stored procedure) is preferred over a live view."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "Which SQL statement modifies the definition of an existing warehouse view, such as adding a new column to its SELECT list?",
         "options": [
@@ -46152,7 +46267,7 @@ const EXAMS = {
         "explain": "ALTER VIEW followed by AS and a new SELECT statement redefines an existing view; after altering, every consumer of the view automatically gets the updated logic without needing to change their own queries."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "easy",
         "q": "In dimensional modeling for a lakehouse or warehouse, what role does a fact table typically play?",
         "options": [
@@ -46165,7 +46280,7 @@ const EXAMS = {
         "explain": "In a star schema, fact tables store measurable transactional data (such as sales amounts) along with foreign keys linking to dimension tables, which store descriptive attributes like product, customer, or date details."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "What does 'denormalizing' data typically mean when preparing data for analytics in a lakehouse or warehouse?",
         "options": [
@@ -46178,7 +46293,7 @@ const EXAMS = {
         "explain": "Denormalizing combines or flattens related tables (often through joins baked into a view or table) to reduce the number of joins reporting tools need to perform, trading some redundancy for simpler, faster analytical queries."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Explore and analyze data",
         "difficulty": "medium",
         "q": "In the Fabric Visual Query Editor for a warehouse, what action lets you persist a visual query as a reusable database object without writing T-SQL?",
         "options": [
@@ -46191,20 +46306,7 @@ const EXAMS = {
         "explain": "You can save a query built in the Visual Query Editor directly as a view by selecting the Save as view button, letting you persist a visual, no-code query for reuse without hand-writing T-SQL."
       },
       {
-        "domain": "Prepare data",
-        "difficulty": "easy",
-        "q": "Which query language is the primary way to select, filter, and aggregate data in a Fabric eventhouse?",
-        "options": [
-          "KQL (Kusto Query Language)",
-          "M (Power Query)",
-          "DAX",
-          "PySpark only"
-        ],
-        "correct": 0,
-        "explain": "Kusto Query Language (KQL) is the primary query language for the eventhouse, purpose-built for time-series analysis with operators for aggregations over time windows, anomaly detection, and pattern matching; a subset of T-SQL is also supported."
-      },
-      {
-        "domain": "Prepare data",
+        "domain": "Explore and analyze data",
         "difficulty": "medium",
         "q": "Which DAX statement type is used to run an ad hoc query against a semantic model, such as through the XMLA endpoint or SemPy's evaluate_dax()?",
         "options": [
@@ -46217,7 +46319,7 @@ const EXAMS = {
         "explain": "DAX queries begin with EVALUATE and commonly use SUMMARIZECOLUMNS to group and aggregate data for a query result, as shown in SemPy's evaluate_dax() examples for testing measures against a published semantic model."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "Which method would a data analyst use to discover existing certified or master data items across the Fabric estate before building a new dataset from scratch?",
         "options": [
@@ -46230,7 +46332,7 @@ const EXAMS = {
         "explain": "The OneLake catalog is the centralized experience for finding, exploring, and governing data assets; its Explore tab lets you browse and filter by domain, item type, endorsement, and keyword to find and reuse existing certified or master data items."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "easy",
         "q": "Which Data Factory pipeline activity is used to move data from an external source into a Fabric lakehouse or warehouse?",
         "options": [
@@ -46243,7 +46345,7 @@ const EXAMS = {
         "explain": "Data Factory pipelines in Fabric use the Copy data activity to move data from external sources into a destination such as a lakehouse, as part of orchestrating ingestion and transformation tasks."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "In Lakehouse explorer, what does adding a 'reference lakehouse' let you do?",
         "options": [
@@ -46256,7 +46358,7 @@ const EXAMS = {
         "explain": "Lakehouse explorer lets you add reference lakehouses to the explorer pane so you can browse and manage tables across multiple lakehouses side by side, without leaving the current lakehouse view."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "What distinguishes a Fabric warehouse from a lakehouse in terms of query and transaction capabilities?",
         "options": [
@@ -46269,7 +46371,7 @@ const EXAMS = {
         "explain": "A Fabric warehouse provides full T-SQL transactional capabilities, including inserts, updates, and deletes, while a lakehouse's SQL analytics endpoint only supports read-only T-SQL querying of its Delta tables."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "When loading data into a Fabric warehouse, which loading strategies are commonly used to handle changing source data over time?",
         "options": [
@@ -46282,7 +46384,7 @@ const EXAMS = {
         "explain": "Warehouse loading strategies commonly include full loads (reload everything), incremental loads (load only new or changed data), and slowly changing dimension (SCD) patterns for tracking historical changes to dimension attributes, using data pipelines, T-SQL, or Dataflow Gen2."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "easy",
         "q": "Can a Dataflow Gen2 be included as a step within a Data Factory pipeline in Fabric?",
         "options": [
@@ -46295,7 +46397,7 @@ const EXAMS = {
         "explain": "You can integrate a Dataflow Gen2 into a pipeline by adding the Dataflow Gen2 activity to the orchestration, letting a pipeline trigger the dataflow's extract-and-transform logic as one step in a larger workflow."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "easy",
         "q": "In a Fabric notebook with a default lakehouse pinned, which PySpark call reads a table by name without specifying a full path?",
         "options": [
@@ -46308,7 +46410,7 @@ const EXAMS = {
         "explain": "With a default lakehouse pinned to the notebook, spark.table(\"raw_sales\") references a table by name without needing a full path, making the code portable across environments."
       },
       {
-        "domain": "Prepare data",
+        "domain": "Prepare and serve data",
         "difficulty": "medium",
         "q": "Which Spark join type returns every combination of rows from both tables, regardless of any matching condition?",
         "options": [
@@ -46722,6 +46824,214 @@ const EXAMS = {
         ],
         "correct": 0,
         "explain": "HASONEVALUE checks whether the filter context contains exactly one value for a column. Wrapping RANKX in IF(HASONEVALUE(...), RANKX(...)) ensures the Total row (which aggregates all products, so HASONEVALUE is false) returns BLANK instead of a misleading rank."
+      },
+      {
+        "domain": "Explore and analyze data",
+        "difficulty": "easy",
+        "q": "What kind of access does a lakehouse's SQL analytics endpoint provide over Delta tables?",
+        "options": [
+          "Read and write T-SQL access",
+          "KQL access only",
+          "Read-only T-SQL access",
+          "Write-only Spark access"
+        ],
+        "correct": 2,
+        "explain": "The SQL analytics endpoint is a read-only T-SQL surface. To modify data, you switch to the lakehouse and use Spark."
+      },
+      {
+        "domain": "Explore and analyze data",
+        "difficulty": "medium",
+        "q": "You need to query a CSV file in a lakehouse through the SQL analytics endpoint, but it doesn't appear. What should you do?",
+        "options": [
+          "Refresh the lakehouse's semantic model",
+          "Enable the XMLA endpoint",
+          "Convert it to a Delta table",
+          "Rename the file to .sql"
+        ],
+        "correct": 2,
+        "explain": "Only Delta tables appear in the SQL analytics endpoint. Parquet, CSV, and other formats can't be queried through it."
+      },
+      {
+        "domain": "Explore and analyze data",
+        "difficulty": "hard",
+        "q": "An external Delta table created with Spark code isn't visible in the SQL analytics endpoint. How do you make it visible?",
+        "options": [
+          "Rebuild the table as Parquet",
+          "Turn on large semantic model storage",
+          "Create a shortcut in the Tables section",
+          "Grant the Viewer role on the workspace it belongs to"
+        ],
+        "correct": 2,
+        "explain": "External Delta tables created with Spark code aren't visible. Use shortcuts in the Tables section to expose them."
+      },
+      {
+        "domain": "Explore and analyze data",
+        "difficulty": "medium",
+        "q": "Which objects can you create in a lakehouse's SQL analytics endpoint?",
+        "options": [
+          "KQL databases",
+          "Spark notebooks",
+          "Views, functions, and stored procedures",
+          "New Delta tables that you load with INSERT"
+        ],
+        "correct": 2,
+        "explain": "Within its read-only boundary, the endpoint lets you create views, functions, and stored procedures."
+      },
+      {
+        "domain": "Explore and analyze data",
+        "difficulty": "medium",
+        "q": "You need to run INSERT and UPDATE statements with T-SQL in Fabric. Which item supports that?",
+        "options": [
+          "A lakehouse SQL analytics endpoint",
+          "A semantic model",
+          "A report",
+          "A warehouse"
+        ],
+        "correct": 3,
+        "explain": "A Fabric warehouse provides full transactional DDL and DML support. The SQL analytics endpoint is read-only."
+      },
+      {
+        "domain": "Explore and analyze data",
+        "difficulty": "easy",
+        "q": "Which tool gives a no-code way to build queries against a warehouse in the Fabric portal?",
+        "options": [
+          "The Spark job definition",
+          "The XMLA endpoint",
+          "The visual query editor",
+          "Tabular Editor"
+        ],
+        "correct": 2,
+        "explain": "The visual query editor provides a no-code experience. You drag tables onto the canvas and design queries visually."
+      },
+      {
+        "domain": "Explore and analyze data",
+        "difficulty": "medium",
+        "q": "How many rows does the Data preview show in the SQL analytics endpoint?",
+        "options": [
+          "A random 1% sample",
+          "The top 1,000 rows",
+          "Every row in the table",
+          "The top 10 rows"
+        ],
+        "correct": 1,
+        "explain": "Data preview shows sample data from tables or views, limited to the top 1,000 rows."
+      },
+      {
+        "domain": "Explore and analyze data",
+        "difficulty": "medium",
+        "q": "Which tools can connect to a warehouse by using a T-SQL connection string?",
+        "options": [
+          "Only Excel",
+          "Only the Fabric portal",
+          "SQL Server Management Studio and Visual Studio Code with the MSSQL extension",
+          "Only Power BI Desktop"
+        ],
+        "correct": 2,
+        "explain": "You can use tools such as SSMS and Visual Studio Code with the MSSQL extension through a T-SQL connection string."
+      },
+      {
+        "domain": "Explore and analyze data",
+        "difficulty": "medium",
+        "q": "An analyst wants to find the root cause of a metric by drilling through dimensions in any order. Which visual fits?",
+        "options": [
+          "Card with a trend line",
+          "Gauge",
+          "Slicer",
+          "Decomposition tree"
+        ],
+        "correct": 3,
+        "explain": "The decomposition tree aggregates data, lets you drill in any order, and is valuable for root-cause analysis."
+      },
+      {
+        "domain": "Explore and analyze data",
+        "difficulty": "medium",
+        "q": "Which two inputs does a decomposition tree need?",
+        "options": [
+          "Legend and Tooltips",
+          "Source and Destination",
+          "Rows and Columns",
+          "Analyze and Explain by"
+        ],
+        "correct": 3,
+        "explain": "Analyze is the measure to examine, and Explain by holds the dimensions to drill into."
+      },
+      {
+        "domain": "Explore and analyze data",
+        "difficulty": "hard",
+        "q": "In a decomposition tree, what does selecting High value do?",
+        "options": [
+          "It sorts the root node alphabetically",
+          "It exports the highest row to Excel",
+          "AI picks the dimension that gives the highest value of the measure",
+          "It filters out all low values, and keeps only the rows above the average"
+        ],
+        "correct": 2,
+        "explain": "High value uses AI to analyze the Explain by categories and pick the one to drill into for the highest value."
+      },
+      {
+        "domain": "Explore and analyze data",
+        "difficulty": "medium",
+        "q": "You want to see which factors drive a metric such as customer rating. Which visual fits?",
+        "options": [
+          "Slicer with a date range",
+          "Table",
+          "Key influencers",
+          "Treemap"
+        ],
+        "correct": 2,
+        "explain": "Key influencers charts display the major contributors to a selected result or value."
+      },
+      {
+        "domain": "Explore and analyze data",
+        "difficulty": "medium",
+        "q": "Which visual type supports the anomaly detection feature in Power BI?",
+        "options": [
+          "Card",
+          "Pie chart",
+          "Matrix with subtotals",
+          "Line chart"
+        ],
+        "correct": 3,
+        "explain": "Anomaly detection works on time-series data in line charts, and is enabled on the Analytics tab."
+      },
+      {
+        "domain": "Explore and analyze data",
+        "difficulty": "hard",
+        "q": "You raise the sensitivity of anomaly detection on a chart. What's the effect?",
+        "options": [
+          "Even slight deviations are more likely to be marked as anomalies",
+          "Fewer points are marked as anomalies, because only the largest deviations count",
+          "The forecast length doubles",
+          "The expected range is hidden"
+        ],
+        "correct": 0,
+        "explain": "Higher sensitivity detects more anomalies. Lower sensitivity flags only the most significant deviations."
+      },
+      {
+        "domain": "Explore and analyze data",
+        "difficulty": "medium",
+        "q": "You want Power BI to explain an anomaly by using only the Seller and City fields. Where do you add them?",
+        "options": [
+          "In the Explain by field well",
+          "In the Legend field well",
+          "In the Tooltips page of the report",
+          "In the report theme"
+        ],
+        "correct": 0,
+        "explain": "Dragging fields into Explain by restricts the analysis to those fields."
+      },
+      {
+        "domain": "Explore and analyze data",
+        "difficulty": "medium",
+        "q": "You want to add a predictive element to a report by projecting a time series forward. Which feature fits?",
+        "options": [
+          "Bookmarks",
+          "Conditional formatting on a table with a date column",
+          "Sync slicers",
+          "Forecast on a line chart, in the Analytics pane"
+        ],
+        "correct": 3,
+        "explain": "Forecasting is available in the Analytics pane, and only for line chart visuals."
       }
     ]
   },
@@ -59559,7 +59869,7 @@ const EXAMS = {
   },
   "AB-650": {
     "code": "AB-650",
-    "cert": "Microsoft 365 Certified: AI Services Administrator Associate",
+    "cert": "Microsoft 365 Certified: Microsoft 365 and AI Services Administrator Associate",
     "title": "This certification validates your ability to administer Microsoft 365 and AI services, enabling secure and compliant productivity across the organization.",
     "level": "Intermediate",
     "beta": false,
@@ -61666,54 +61976,71 @@ const EXAMS = {
         "mid": 27.5,
         "link": "https://learn.microsoft.com/en-us/training/paths/transform-business-workflows-with-ai/",
         "skills": [
-          "Understand generative AI capabilities across Microsoft 365 experiences",
-          "Understand how Copilot works to keep your organization's information private and secure",
-          "Understand how the context, like your work files, web data, or the app you're using, can affect Copilot responses",
-          "Understand the difference between a chat experience and an agent experience",
-          "Understand the use case for creating your own agent",
-          "Understand the differences in features and capabilities of the Copilot experience in various Microsoft 365 apps",
-          "Identify responsible AI and data protection practices",
-          "Identify common risks, including fabrications, prompt injection, and over-reliance",
+          "Understand how Copilot works to keep your organization’s information private and secure",
+          "Understand how the context, like Work IQ, web data, or the app you’re using, can affect Copilot responses",
+          "Understand when to use Microsoft 365 Copilot Chat, agents, and Microsoft Copilot Cowork",
+          "Understand the differences in features and capabilities across Copilot experiences and Microsoft 365 apps",
+          "Identify common risks, including inaccuracies, prompt injection, and over-reliance",
           "Select verification steps appropriate to the task, including citation checks and human review",
           "Recognize and mitigate risks to sensitive data",
           "Understand how data protection restricts prompt results"
         ]
       },
       {
-        "name": "Manage prompts and conversations by using AI",
-        "weight": "35-40%",
-        "mid": 37.5,
+        "name": "Manage prompts and chats by using Microsoft 365 Copilot",
+        "weight": "20-25%",
+        "mid": 22.5,
         "link": "https://learn.microsoft.com/en-us/training/paths/transform-business-workflows-with-ai/",
         "skills": [
-          "Understand how to create an effective prompt",
+          "Understand how to create an effective prompt, including model selection",
           "Select appropriate resources to reference in a prompt",
           "Save a prompt",
           "Schedule a prompt",
           "Share a prompt",
-          "Understand how to find previous conversations",
+          "Refine prompts based on generated responses",
+          "Describe how Copilot uses memory and instructions",
+          "Find a previous chat",
           "Delete a chat",
           "Rename a chat",
-          "Add a conversation to a notebook",
-          "Understand when to use Agent Store versus creating a new agent",
-          "Create an agent by using a template",
-          "Configure an agent that has knowledge",
-          "Configure agent settings such as instructions, capabilities and suggested prompts",
-          "Share an agent with team members"
+          "Organize and share information by using Notebooks"
         ]
       },
       {
-        "name": "Draft and analyze business content by using AI",
-        "weight": "25-30%",
-        "mid": 27.5,
+        "name": "Manage business content and collaboration by using Microsoft 365 Copilot",
+        "weight": "20-25%",
+        "mid": 22.5,
         "link": "https://learn.microsoft.com/en-us/training/paths/transform-business-workflows-with-ai/",
         "skills": [
-          "Create a new document from a prompt",
-          "Generate a document from an existing document",
-          "Generate a management summary based on a document",
-          "Move data and insights between Microsoft 365 apps",
-          "Describe how to use Microsoft 365 Copilot for meetings",
-          "Describe how to use Copilot Pages for collaboration",
-          "Describe how Copilot uses memory and instructions"
+          "Connect to sources beyond Microsoft 365 Copilot by using connectors",
+          "Generate or analyze content based on specific business context, including Work IQ and connectors",
+          "Generate images, visuals, and charts to support business content",
+          "Generate or analyze content across multiple Microsoft 365 applications such as Microsoft Word, Microsoft Excel, and Microsoft PowerPoint",
+          "Derive insights across Work IQ",
+          "Interpret and validate that AI-generated content meets business goals",
+          "Prepare for a meeting",
+          "Use the Facilitator agent",
+          "Use real-time catchup",
+          "Use Intelligent recap",
+          "Collaborate on business content by using Copilot Pages"
+        ]
+      },
+      {
+        "name": "Drive business outcomes by using agents",
+        "weight": "20-25%",
+        "mid": 22.5,
+        "link": "https://learn.microsoft.com/en-us/copilot/cowork/",
+        "skills": [
+          "Identify scenarios where a prebuilt agent can improve a business workflow",
+          "Choose between using a prebuilt agent or creating a custom agent for a business task",
+          "Apply an agent to a business process from within various Microsoft 365 Copilot experiences",
+          "Filter chats by agents",
+          "Describe how Microsoft Copilot Cowork helps carry out multi-step business tasks",
+          "Understand how Cowork uses skills to complete parts of a task",
+          "Recognize security considerations and known limitations when using Cowork",
+          "Choose between prebuilt skills and custom skills",
+          "Delegate a piece of work to Cowork and a prebuilt skill",
+          "Review Cowork’s plan, progress, and results",
+          "Manage scheduled tasks or prompts"
         ]
       }
     ],
@@ -62022,7 +62349,7 @@ const EXAMS = {
         "explain": "Agents are specialized AI assistants focused on a specific type of work, like expert teammates embedded in the Copilot experience."
       },
       {
-        "domain": "Understand generative AI fundamentals",
+        "domain": "Drive business outcomes by using agents",
         "difficulty": "medium",
         "q": "Which business scenario best illustrates a valid use case for creating a custom agent rather than relying on standard Copilot Chat?",
         "options": [
@@ -62074,7 +62401,7 @@ const EXAMS = {
         "explain": "Copilot Chat works across apps and content, while in-app Copilot like Word is designed for use within that specific app."
       },
       {
-        "domain": "Understand generative AI fundamentals",
+        "domain": "Drive business outcomes by using agents",
         "difficulty": "hard",
         "q": "A business user is unsure whether to use the Agent Store or create a new custom agent for a recurring task. Which factor should most influence this decision?",
         "options": [
@@ -62282,7 +62609,7 @@ const EXAMS = {
         "explain": "Copilot's features and capabilities differ across Microsoft 365 apps, each tailored to that app's context."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "What is Copilot Chat within Microsoft 365 Copilot?",
         "options": [
@@ -62295,7 +62622,7 @@ const EXAMS = {
         "explain": "Copilot Chat is the shared chat experience in Microsoft 365 Copilot, enabling cross-app intelligence."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "Which of the following best describes the difference between Copilot Chat and Copilot within an individual app like Word?",
         "options": [
@@ -62308,7 +62635,7 @@ const EXAMS = {
         "explain": "Copilot Chat works across apps and content, while Copilot in Word or PowerPoint is designed for use within that individual app."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "Is Microsoft 365 Copilot Chat included at additional cost beyond a standard Microsoft 365 subscription?",
         "options": [
@@ -62321,7 +62648,7 @@ const EXAMS = {
         "explain": "Microsoft 365 Copilot Chat is enterprise-ready AI chat available at no extra cost to a Microsoft 365 subscription."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "Which of the following is included as part of Microsoft 365 Copilot Chat's feature set?",
         "options": [
@@ -62334,7 +62661,7 @@ const EXAMS = {
         "explain": "Copilot Chat includes features like Copilot Pages, Notebooks, file upload, and image generation."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "From which of the following can a user access Microsoft 365 Copilot Chat?",
         "options": [
@@ -62347,7 +62674,7 @@ const EXAMS = {
         "explain": "Copilot Chat is accessible through the Microsoft 365 Copilot app, the web, Microsoft 365 apps, and Microsoft Edge."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "A user wants Copilot Chat to base its answer on the public web rather than internal company files. Which Copilot Chat tab should they select?",
         "options": [
@@ -62360,7 +62687,7 @@ const EXAMS = {
         "explain": "The Web tab grounds Copilot Chat responses in public web data rather than organizational work data."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "What is the first step listed for chatting effectively with Copilot Chat?",
         "options": [
@@ -62373,7 +62700,7 @@ const EXAMS = {
         "explain": "The first step in the documented three-step process is entering your prompt in the prompt box."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "Why does Microsoft recommend checking the sources listed beneath a Copilot Chat answer?",
         "options": [
@@ -62386,7 +62713,7 @@ const EXAMS = {
         "explain": "Copilot Chat lists sources beneath its answers so users can vet and validate them."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "A user receives a Copilot Chat response that's too long. What is a recommended way to refine it?",
         "options": [
@@ -62399,7 +62726,7 @@ const EXAMS = {
         "explain": "Users can refine answers with follow-up prompts like asking for a shorter answer or more detail."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "What does Copilot Memory do for a user?",
         "options": [
@@ -62412,7 +62739,7 @@ const EXAMS = {
         "explain": "Copilot Memory remembers preferences and work context so instructions don't need to be repeated in future responses."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "A user wants to have a single conversation with Copilot Chat without it being saved to memory. What should they do?",
         "options": [
@@ -62425,7 +62752,7 @@ const EXAMS = {
         "explain": "Switching to a temporary chat ensures nothing from that conversation is saved to memory."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "At an organizational level, how can administrators manage Copilot Memory settings?",
         "options": [
@@ -62438,7 +62765,7 @@ const EXAMS = {
         "explain": "Admins can manage Memory through Enhanced Personalization settings, ensuring compliance and privacy."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "What is the main difference between Copilot Chat and Copilot Search?",
         "options": [
@@ -62451,7 +62778,7 @@ const EXAMS = {
         "explain": "Use Chat when you want Copilot to create or reason over content; use Search when you need to locate information quickly."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "Unlike traditional keyword search, Copilot Search uses which technology to understand a user's work context and permissions?",
         "options": [
@@ -62464,7 +62791,7 @@ const EXAMS = {
         "explain": "Copilot Search uses the Microsoft Graph to understand work context and permissions, unlike traditional keyword search."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "Which four elements make up the essentials of an effective Copilot prompt?",
         "options": [
@@ -62477,7 +62804,7 @@ const EXAMS = {
         "explain": "The four prompt essentials are Context, Goal, Source, and Expectations."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "In the four essentials of prompt writing, which element addresses \"why do you need this, and who's involved\"?",
         "options": [
@@ -62490,7 +62817,7 @@ const EXAMS = {
         "explain": "Context addresses why you need the output and who is involved."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "In the four essentials of prompt writing, which element addresses \"where should Copilot look for information\"?",
         "options": [
@@ -62503,7 +62830,7 @@ const EXAMS = {
         "explain": "Source addresses where Copilot should look for information."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "Which of the following is a recommended prompting best practice?",
         "options": [
@@ -62516,7 +62843,7 @@ const EXAMS = {
         "explain": "Being clear and specific is a documented prompting do."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "Which of the following is listed as something to avoid when writing prompts?",
         "options": [
@@ -62529,7 +62856,7 @@ const EXAMS = {
         "explain": "Giving conflicting instructions is listed as a prompting don't."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "Which special symbol should a user type in a Copilot prompt to reference a specific file, person, or location?",
         "options": [
@@ -62542,7 +62869,7 @@ const EXAMS = {
         "explain": "The \"/\" symbol is used to reference a person, file, or location directly in a prompt."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "Which special symbol should a user type in a Copilot prompt to reference a topic, meeting, or recurring event?",
         "options": [
@@ -62555,7 +62882,7 @@ const EXAMS = {
         "explain": "The \"#\" symbol is used to tag a topic, meeting name, or recurring event."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "Which special symbol should a user type in a Copilot prompt to mention or employ an agent's functionality?",
         "options": [
@@ -62568,7 +62895,7 @@ const EXAMS = {
         "explain": "The \"@\" symbol is used to mention people or agents."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "type": "multi",
         "q": "Which two symbols can be used within a Copilot prompt to make it more specific and actionable by referencing content? (Select two.)",
@@ -62585,7 +62912,7 @@ const EXAMS = {
         "explain": "The \"/\" and \"@\" symbols, along with \"#\", let users reference files, people, topics, and agents directly in prompts."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "Which Copilot voice feature allows a user to compose messages or documents hands-free by speaking?",
         "options": [
@@ -62598,7 +62925,7 @@ const EXAMS = {
         "explain": "Dictation lets users compose messages, documents, or notes using their voice."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "Which Copilot voice feature reads Copilot's responses aloud directly from the chat pane in Word and PowerPoint?",
         "options": [
@@ -62611,7 +62938,7 @@ const EXAMS = {
         "explain": "Read Aloud lets Copilot read responses aloud directly from the chat pane in Word and PowerPoint."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "Which Copilot voice feature allows a natural, two-way spoken conversation and can be started with Win+C or the Copilot key?",
         "options": [
@@ -62624,7 +62951,7 @@ const EXAMS = {
         "explain": "Voice Chat allows natural, two-way spoken conversations, started with Win+C or the Copilot key."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "type": "order",
         "q": "Put the following steps for saving a prompt in Copilot Chat in the correct order.",
@@ -62638,7 +62965,7 @@ const EXAMS = {
         "explain": "This matches the documented Save a Prompt workflow: run the prompt, hover to reveal the bookmark icon, save it, name it, then find it in the Prompt Gallery."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "Where can a user find a prompt they previously saved in Copilot Chat?",
         "options": [
@@ -62651,7 +62978,7 @@ const EXAMS = {
         "explain": "Saved prompts are stored in the Prompt Gallery under Your prompts."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "A user wants to update a prompt they previously saved. What is the correct way to do this?",
         "options": [
@@ -62664,7 +62991,7 @@ const EXAMS = {
         "explain": "You cannot edit a saved prompt in place; instead, run or copy it, edit in the chat input, and save as a new prompt."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "type": "order",
         "q": "Put the following steps for scheduling a recurring prompt in Copilot Chat in the correct order.",
@@ -62678,7 +63005,7 @@ const EXAMS = {
         "explain": "This matches the documented Schedule a Prompt workflow."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "What is the maximum number of scheduled prompts a user can create in Copilot Chat?",
         "options": [
@@ -62691,7 +63018,7 @@ const EXAMS = {
         "explain": "A user can create up to 10 scheduled prompts."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "How many times per day can a single scheduled prompt run, and how many total runs are allowed, according to the training?",
         "options": [
@@ -62704,7 +63031,7 @@ const EXAMS = {
         "explain": "Scheduled prompts can run once a day, a total of 15 times, on work-grounded data."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "What happens to scheduled prompts if an organization disables optional connected experiences?",
         "options": [
@@ -62717,7 +63044,7 @@ const EXAMS = {
         "explain": "If an organization disables optional connected experiences, scheduled prompts will no longer be available."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "In the Conversations menu, how do scheduled prompts visually appear compared to regular conversations?",
         "options": [
@@ -62730,7 +63057,7 @@ const EXAMS = {
         "explain": "Scheduled prompts appear bolded in the Conversations section of the Copilot window."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "type": "multi",
         "q": "Which three actions can a user take from the \"Scheduled prompts\" menu in Copilot Chat? (Select three.)",
@@ -62748,7 +63075,7 @@ const EXAMS = {
         "explain": "From the Scheduled prompts menu, users can run a prompt now, turn it off, or delete it."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "type": "order",
         "q": "Put the following steps for sharing a saved prompt with a team in the correct order.",
@@ -62761,7 +63088,7 @@ const EXAMS = {
         "explain": "This matches the documented Share a Prompt workflow."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "Once a prompt is shared with a team, where does it appear for team members?",
         "options": [
@@ -62774,7 +63101,7 @@ const EXAMS = {
         "explain": "The shared prompt appears under the Team tab in the Prompt Gallery for all members to access."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "What technique makes a shared prompt reusable across different contexts, according to the training tip?",
         "options": [
@@ -62787,7 +63114,7 @@ const EXAMS = {
         "explain": "Using variable placeholders like [Meeting Date] or [Audience] makes prompts reusable across contexts."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "How can a user locate a previous Copilot Chat conversation?",
         "options": [
@@ -62800,7 +63127,7 @@ const EXAMS = {
         "explain": "Copilot Chat keeps a searchable history; users can browse the Conversations menu or use the search bar."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "What is the correct sequence of actions to delete an individual chat conversation?",
         "options": [
@@ -62813,7 +63140,7 @@ const EXAMS = {
         "explain": "To delete a chat, locate it, select the three-dot menu, select Delete, and confirm."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "After a user deletes an individual chat conversation, what should they keep in mind?",
         "options": [
@@ -62826,7 +63153,7 @@ const EXAMS = {
         "explain": "Organizational retention policies may still affect what can be deleted, even after a user deletes a chat."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "How does a user rename a Copilot Chat conversation?",
         "options": [
@@ -62839,7 +63166,7 @@ const EXAMS = {
         "explain": "To rename a chat, select the three-dot menu, select Rename, enter a new name, and Save."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "A valuable idea emerges during a quick Copilot Chat conversation. What feature allows the user to preserve and build on it in a flexible workspace over time?",
         "options": [
@@ -62852,7 +63179,7 @@ const EXAMS = {
         "explain": "Users can save a conversation to a Copilot Notebook, a flexible workspace to organize, edit, and build on thoughts over time."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "hard",
         "q": "A user wants to permanently remove all of their Copilot conversation history across every device, not just a single chat. Where should they go to do this?",
         "options": [
@@ -62865,7 +63192,7 @@ const EXAMS = {
         "explain": "Users can delete all Copilot conversations across devices through the My Account Privacy Portal's Copilot app activity history."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "hard",
         "q": "After a user deletes all of their Copilot activity history, which statement is accurate?",
         "options": [
@@ -62878,7 +63205,7 @@ const EXAMS = {
         "explain": "Once deleted, conversations can't be restored; deleting history doesn't affect the organization's usage reports; and shared conversation links remain accessible to others."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Drive business outcomes by using agents",
         "difficulty": "easy",
         "q": "What are agents in Microsoft 365 Copilot best described as?",
         "options": [
@@ -62891,7 +63218,7 @@ const EXAMS = {
         "explain": "Agents are specialized AI assistants designed to automate tasks, answer questions, and streamline processes, like expert teammates."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Drive business outcomes by using agents",
         "difficulty": "medium",
         "q": "Where can a user browse a curated marketplace of prebuilt agents from Microsoft, partners, and internal teams?",
         "options": [
@@ -62904,154 +63231,7 @@ const EXAMS = {
         "explain": "The Agent Store provides a curated marketplace of prebuilt agents validated for enterprise use."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
-        "difficulty": "medium",
-        "type": "order",
-        "q": "Put the following steps for creating a new custom agent in Copilot Chat in the correct order.",
-        "items": [
-          "Open Copilot Chat",
-          "Select Create Agent from the left navigation or Agents tab",
-          "Describe your agent or choose a template",
-          "Configure the agent's settings"
-        ],
-        "explain": "This matches the documented How to create an agent workflow."
-      },
-      {
-        "domain": "Manage prompts and conversations by using AI",
-        "difficulty": "medium",
-        "type": "multi",
-        "q": "Which two options are available when starting to build a new custom agent? (Select two.)",
-        "options": [
-          "Uploading a video tutorial",
-          "Describing the agent in natural language",
-          "Requiring administrator approval before any configuration",
-          "Choosing a predefined template"
-        ],
-        "correct": [
-          1,
-          3
-        ],
-        "explain": "You can describe your agent in natural language or choose from predefined templates."
-      },
-      {
-        "domain": "Manage prompts and conversations by using AI",
-        "difficulty": "medium",
-        "q": "In the agent configuration Instructions section, what is the purpose of defining \"who the agent is\"?",
-        "options": [
-          "It configures the agent's icon color only",
-          "It establishes the agent's persona, such as \"Act as a financial analyst\"",
-          "It determines which Microsoft 365 license the user has",
-          "It sets the agent's billing plan"
-        ],
-        "correct": 1,
-        "explain": "Custom instructions define the agent's identity, or persona, such as \"Act as a financial analyst\"."
-      },
-      {
-        "domain": "Manage prompts and conversations by using AI",
-        "difficulty": "medium",
-        "q": "How many knowledge sources can be attached to a custom agent to help it give accurate, context-aware answers?",
-        "options": [
-          "Up to 20",
-          "Only 1",
-          "Exactly 5",
-          "Unlimited"
-        ],
-        "correct": 0,
-        "explain": "You can attach up to 20 knowledge sources, such as SharePoint pages, OneDrive files, Teams chats, and public websites."
-      },
-      {
-        "domain": "Manage prompts and conversations by using AI",
-        "difficulty": "medium",
-        "q": "Which capability, when enabled for a custom agent, lets it run Python code for calculations, data analysis, or automation?",
-        "options": [
-          "Copilot Memory",
-          "Code Interpreter",
-          "Image Creator",
-          "Voice Chat"
-        ],
-        "correct": 1,
-        "explain": "Code Interpreter lets the agent run Python code for calculations, data analysis, or automation."
-      },
-      {
-        "domain": "Manage prompts and conversations by using AI",
-        "difficulty": "medium",
-        "q": "Which capability, when enabled for a custom agent, generates visuals such as charts, diagrams, or concept art based on prompts?",
-        "options": [
-          "Copilot Search",
-          "Image Creator",
-          "Code Interpreter",
-          "Dictation"
-        ],
-        "correct": 1,
-        "explain": "Image Creator generates visuals such as charts, diagrams, or concept art based on prompts."
-      },
-      {
-        "domain": "Manage prompts and conversations by using AI",
-        "difficulty": "easy",
-        "q": "After a custom agent is created, is it automatically visible to the entire organization?",
-        "options": [
-          "Yes, it is shared organization-wide by default",
-          "Agents cannot be shared under any circumstances",
-          "No, it remains private until the creator chooses to share it",
-          "Yes, but only administrators can see it"
-        ],
-        "correct": 2,
-        "explain": "The agent remains private until you choose to share it."
-      },
-      {
-        "domain": "Manage prompts and conversations by using AI",
-        "difficulty": "medium",
-        "q": "When sharing a custom agent, which role allows a person to only use the agent, without modifying its instructions or sources?",
-        "options": [
-          "Editor",
-          "Administrator",
-          "Viewer",
-          "Owner"
-        ],
-        "correct": 2,
-        "explain": "The Viewer role can use the agent, while Editor can modify instructions, prompts, and sources."
-      },
-      {
-        "domain": "Manage prompts and conversations by using AI",
-        "difficulty": "medium",
-        "q": "When sharing a custom agent, which role allows a person to modify its instructions, prompts, and sources?",
-        "options": [
-          "Reader",
-          "Editor",
-          "Guest",
-          "Viewer"
-        ],
-        "correct": 1,
-        "explain": "The Editor role can modify the agent's instructions, prompts, and sources."
-      },
-      {
-        "domain": "Manage prompts and conversations by using AI",
-        "difficulty": "hard",
-        "q": "A team lead edits the suggested prompts of an agent after it has already been shared with colleagues. What must those colleagues do to see the updated suggested prompts?",
-        "options": [
-          "Request a new Microsoft 365 Copilot license",
-          "Nothing; changes apply automatically to everyone instantly",
-          "Delete and recreate their own copy of the agent from scratch",
-          "Reinstall the agent"
-        ],
-        "correct": 3,
-        "explain": "If suggested prompts are edited after sharing, any user with access must reinstall the agent to see the updated prompts."
-      },
-      {
-        "domain": "Manage prompts and conversations by using AI",
-        "difficulty": "easy",
-        "q": "When creating a custom agent, does sharing it within your organization require administrator approval?",
-        "options": [
-          "No, but only administrators are allowed to create agents in the first place",
-          "Yes, but only for agents with Code Interpreter enabled",
-          "No, you do not need administrator approval to share an agent within your organization",
-          "Yes, every share requires a help desk ticket"
-        ],
-        "correct": 2,
-        "explain": "You can share the agent within your organization, and don't need administrator approval to do so."
-      },
-      {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "Which of the following is one of the four essential elements to include when writing an effective Copilot prompt?",
         "options": [
@@ -63064,7 +63244,7 @@ const EXAMS = {
         "explain": "Expectations covers how Copilot should deliver the answer, one of the four prompt essentials alongside Context, Goal, and Source."
       },
       {
-        "domain": "Manage prompts and conversations by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "A user wants Copilot to reference a specific project when asking a question in a prompt. Which prompting technique should they use?",
         "options": [
@@ -63077,7 +63257,7 @@ const EXAMS = {
         "explain": "The \"#\" symbol is used to reference a topic, project, or meeting directly in a prompt."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "Which Microsoft 365 apps does the \"Draft and refine business content\" training focus on for drafting, refining, and enhancing content?",
         "options": [
@@ -63090,7 +63270,7 @@ const EXAMS = {
         "explain": "The module focuses on using Copilot to draft, refine, and enhance content in Word, PowerPoint, and Outlook."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "According to the training, what does Copilot help ensure when drafting business content?",
         "options": [
@@ -63103,7 +63283,7 @@ const EXAMS = {
         "explain": "Copilot helps organize ideas, refine language, and ensure content is clear and impactful."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "A user wants Copilot in Word to base a draft on internal organizational content such as emails and past documents. Which grounding option should they choose?",
         "options": [
@@ -63116,7 +63296,7 @@ const EXAMS = {
         "explain": "Work-grounded data refers to internal organizational content such as emails, documents, meetings, and chats."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "A user wants Copilot in Word to research current industry trends from public sources for a report. Which grounding option should they choose?",
         "options": [
@@ -63129,7 +63309,7 @@ const EXAMS = {
         "explain": "Web-grounded data draws from public internet sources via Bing search, ideal for external research and trends."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "A user has drafted a paragraph of team performance metrics in Word and wants to present it more visually. What can Copilot do?",
         "options": [
@@ -63142,7 +63322,7 @@ const EXAMS = {
         "explain": "Copilot can convert a selected paragraph into a table, for example with columns for team name, KPI, and result."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "When referencing an existing Word document while drafting a PowerPoint deck with Copilot, which symbol should be used before the document title in the prompt?",
         "options": [
@@ -63155,7 +63335,7 @@ const EXAMS = {
         "explain": "To reference the Word document, start the prompt with a slash (/) followed by the document title."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "A user has a completed Word report and needs to quickly turn it into a leadership presentation. What is a recommended Copilot approach?",
         "options": [
@@ -63168,7 +63348,7 @@ const EXAMS = {
         "explain": "Copilot in PowerPoint can reference a Word document and summarize its content into bullet points for slides."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "A team has had a long email exchange about a report, and a user wants Copilot in Outlook to condense it before drafting a status update. What should the user ask Copilot to do first?",
         "options": [
@@ -63181,7 +63361,7 @@ const EXAMS = {
         "explain": "Copilot in Outlook can summarize a lengthy email thread before drafting a status update based on it."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "Which statement best reflects how Copilot supports moving data and insights between Microsoft 365 apps?",
         "options": [
@@ -63194,7 +63374,7 @@ const EXAMS = {
         "explain": "The training walks through moving from drafting in Word, to visualizing data, to building a presentation, to communicating progress in Outlook, all with Copilot."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Drive business outcomes by using agents",
         "difficulty": "easy",
         "q": "What is the primary purpose of the Researcher agent?",
         "options": [
@@ -63207,7 +63387,7 @@ const EXAMS = {
         "explain": "The Researcher agent gathers, analyzes, and summarizes information from work and web sources into a structured, cited report."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Drive business outcomes by using agents",
         "difficulty": "medium",
         "q": "What license is required to use the Researcher agent?",
         "options": [
@@ -63220,7 +63400,7 @@ const EXAMS = {
         "explain": "To use the Researcher agent, you must have a Microsoft 365 Copilot license."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Drive business outcomes by using agents",
         "difficulty": "medium",
         "q": "How many combined queries per month can a user run across the Researcher and Analyst agents, according to the training?",
         "options": [
@@ -63233,7 +63413,7 @@ const EXAMS = {
         "explain": "Users can currently run up to 25 combined queries per month across Researcher and Analyst agents."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Drive business outcomes by using agents",
         "difficulty": "medium",
         "q": "During a Researcher agent session, what might the agent do if a request is broad or unclear?",
         "options": [
@@ -63246,7 +63426,7 @@ const EXAMS = {
         "explain": "The Researcher agent may ask for more clarity on how to present content, similar to a human colleague."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Drive business outcomes by using agents",
         "difficulty": "medium",
         "q": "After receiving a structured report from the Researcher agent, a user wants a condensed version for a leadership slide. What should they do?",
         "options": [
@@ -63259,7 +63439,7 @@ const EXAMS = {
         "explain": "Users can ask the Researcher agent to format results differently, such as summarizing into bullet points for a slide."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Drive business outcomes by using agents",
         "difficulty": "hard",
         "q": "How does the Researcher agent differ from standard Copilot Chat?",
         "options": [
@@ -63272,7 +63452,7 @@ const EXAMS = {
         "explain": "Unlike standard Copilot Chat, which focuses on drafting and editing, the Researcher agent is optimized for discovery, synthesis, and insight generation."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "Where must a file be saved for Copilot in Excel to analyze it?",
         "options": [
@@ -63285,7 +63465,7 @@ const EXAMS = {
         "explain": "Copilot in Excel can only work with files that are saved on OneDrive."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "What format must data be in for Copilot in Excel to read and analyze it?",
         "options": [
@@ -63298,7 +63478,7 @@ const EXAMS = {
         "explain": "Data must be formatted as a table or a supported range for Copilot in Excel to read it."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "A user wants Copilot in Excel to search the public web for a table of country exchange rates and insert it into a new sheet. Which grounding option should they choose?",
         "options": [
@@ -63311,7 +63491,7 @@ const EXAMS = {
         "explain": "Selecting the globe icon and choosing web-grounded content lets Copilot in Excel search public web sources."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "After Copilot in Excel identifies insights such as trends or outliers in a dataset, what can the user do with a generated chart?",
         "options": [
@@ -63324,7 +63504,7 @@ const EXAMS = {
         "explain": "Users can select Add to a new sheet to move a generated chart or insight into the workbook."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "A user wants Copilot in Excel to generate a bar chart showing sales by region. What is this an example of?",
         "options": [
@@ -63337,7 +63517,7 @@ const EXAMS = {
         "explain": "Users can ask Copilot Chat in Excel with a prompt like \"Create a bar chart showing sales by region\" to generate visuals."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "What can a user ask Copilot in Excel to help create for individual cells, along with plain-language explanations of how they work?",
         "options": [
@@ -63350,7 +63530,7 @@ const EXAMS = {
         "explain": "Copilot in Excel can generate formulas for individual cells and explain what they do in plain language."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Drive business outcomes by using agents",
         "difficulty": "easy",
         "q": "What is the primary purpose of the Analyst agent?",
         "options": [
@@ -63363,7 +63543,7 @@ const EXAMS = {
         "explain": "The Analyst agent analyzes organizational data and provides insights using chain-of-thought reasoning."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Drive business outcomes by using agents",
         "difficulty": "medium",
         "q": "Which file types can the Analyst agent use for statistical analysis, data visualization, and reporting?",
         "options": [
@@ -63376,7 +63556,7 @@ const EXAMS = {
         "explain": "The Analyst agent is ideal for statistical analysis and reporting on data files including Excel, CSV, and JSON."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Drive business outcomes by using agents",
         "difficulty": "medium",
         "q": "Which file types can the Analyst agent use for content analysis, keyword extraction, and summarization?",
         "options": [
@@ -63389,7 +63569,7 @@ const EXAMS = {
         "explain": "The Analyst agent can also be used for content analysis and summarization in .txt, .doc, and .pdf files."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Drive business outcomes by using agents",
         "difficulty": "medium",
         "q": "How does the Analyst agent differ from standard Copilot Chat prompting on the same data?",
         "options": [
@@ -63402,7 +63582,7 @@ const EXAMS = {
         "explain": "Unlike standard Copilot Chat, which focuses on drafting and editing, the Analyst agent is optimized for data analysis, visualization, and insight generation."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Drive business outcomes by using agents",
         "difficulty": "medium",
         "type": "multi",
         "q": "Which two file types can be attached to the Analyst agent for statistical analysis? (Select two.)",
@@ -63419,7 +63599,7 @@ const EXAMS = {
         "explain": "Excel and CSV files are supported data formats for the Analyst agent's statistical analysis."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Drive business outcomes by using agents",
         "difficulty": "medium",
         "type": "order",
         "q": "Put the following steps for using the Analyst agent to analyze an attached data file in the correct order.",
@@ -63433,7 +63613,7 @@ const EXAMS = {
         "explain": "This matches the documented How to prompt using the Analyst agent workflow."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "What can Copilot in Outlook help a user do before a weekly team meeting?",
         "options": [
@@ -63446,7 +63626,7 @@ const EXAMS = {
         "explain": "Copilot in Outlook helps by summarizing email threads about a project and creating an agenda for a meeting."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "What is required for Copilot in Teams to provide full meeting insights, including summaries and action items after the meeting?",
         "options": [
@@ -63459,7 +63639,7 @@ const EXAMS = {
         "explain": "Copilot requires transcription to provide full meeting insights."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "If transcription is not enabled for a Teams meeting, what is Copilot's functionality limited to?",
         "options": [
@@ -63472,7 +63652,7 @@ const EXAMS = {
         "explain": "Without transcription, Copilot's functionality is limited to chat-based data."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "Where can a user find a post-meeting summary generated by Copilot in Teams?",
         "options": [
@@ -63485,7 +63665,7 @@ const EXAMS = {
         "explain": "Users can open the Recap tab in the meeting chat and select Copilot to view summarized content."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "What can a user do with a Copilot-generated meeting summary after a Teams meeting?",
         "options": [
@@ -63498,7 +63678,7 @@ const EXAMS = {
         "explain": "Users can export meeting summaries to Word or Excel for further collaboration."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "Which prompt is an appropriate example for generating a meeting follow-up email using Copilot?",
         "options": [
@@ -63511,7 +63691,7 @@ const EXAMS = {
         "explain": "The training gives this exact example prompt for drafting a follow-up email summarizing decisions and next steps."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "What is Copilot Notebooks best described as?",
         "options": [
@@ -63524,7 +63704,7 @@ const EXAMS = {
         "explain": "Copilot Notebooks is a smart workspace that brings project content into one place to organize, explore, and act on it with AI."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "How many references added to a Copilot Notebook are actually used for grounding, even if more than that number are added?",
         "options": [
@@ -63537,7 +63717,7 @@ const EXAMS = {
         "explain": "While you can add more than 20 references to a notebook, only up to the first 20 are used for grounding."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "hard",
         "q": "A user adds a file stored on SharePoint and another stored in a local folder as references in a Notebook. What is the key difference in how Notebooks handles updates to each?",
         "options": [
@@ -63550,7 +63730,7 @@ const EXAMS = {
         "explain": "When a SharePoint reference is updated, Notebooks references the current version; a reference stored in a local folder is not updated when the file changes."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "What Notebooks feature transforms the content of a notebook into a dynamic, conversational audio experience?",
         "options": [
@@ -63563,7 +63743,7 @@ const EXAMS = {
         "explain": "Copilot Notebooks can create an AI-powered audio overview that transforms notebook content into a conversational audio experience."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "What is Copilot Pages best described as?",
         "options": [
@@ -63576,7 +63756,7 @@ const EXAMS = {
         "explain": "Copilot Pages is a flexible workspace that turns AI-generated responses into editable, shareable content."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "What underlying Microsoft technology is Copilot Pages built on?",
         "options": [
@@ -63589,7 +63769,7 @@ const EXAMS = {
         "explain": "Copilot Pages is built on Microsoft Loop and available in Teams, Outlook, and the Microsoft 365 app."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "After a Copilot Chat response is generated, how can a user turn it into an editable Page?",
         "options": [
@@ -63602,7 +63782,7 @@ const EXAMS = {
         "explain": "Below Copilot's response, users select the Pages icon and then Edit in Pages to create an editable Page."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "A colleague shares a Copilot Page using \"Copy component\" instead of a page link. What is the key benefit of this sharing method?",
         "options": [
@@ -63615,7 +63795,7 @@ const EXAMS = {
         "explain": "Copy component pastes the page as a live component, where changes made within Microsoft 365 apps update the page in real time."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "How can a user see who contributed specific edits within a shared Copilot Page?",
         "options": [
@@ -63628,7 +63808,7 @@ const EXAMS = {
         "explain": "Selecting text on a Page shows a profile picture or initials for the contributor(s) who edited it."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "easy",
         "q": "How can a user convert a completed Copilot Page into a Word document?",
         "options": [
@@ -63641,7 +63821,7 @@ const EXAMS = {
         "explain": "Selecting the Word icon in the upper right corner of a Page lets Copilot prepare a Word draft to open."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "hard",
         "q": "A project coordinator needs a weekly status report by pulling scattered updates from emails, chat, and a shared Excel tracker. Based on the workflow scenarios in the training, which approach reflects a valid way to accomplish this with Copilot?",
         "options": [
@@ -63654,7 +63834,7 @@ const EXAMS = {
         "explain": "The scenario training shows three different valid workflows for the same status report task, emphasizing there's no single 'right' way."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "q": "A business development associate needs to build a client proposal deck quickly from scattered emails, a pricing spreadsheet, and notes. Which combination of tools reflects an approach shown in the training?",
         "options": [
@@ -63667,7 +63847,7 @@ const EXAMS = {
         "explain": "One demonstrated workflow summarizes client preferences from Outlook emails, then builds the proposal deck in PowerPoint."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Drive business outcomes by using agents",
         "difficulty": "hard",
         "q": "A strategy analyst needs an executive summary combining internal discussions with external industry research. Which described workflow accomplishes this using the Researcher agent specifically?",
         "options": [
@@ -63680,7 +63860,7 @@ const EXAMS = {
         "explain": "One workflow uses the Researcher agent to gather external insights on trends, then adds internal context via Copilot Chat, then drafts the summary in Word."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "type": "order",
         "q": "Put the following steps for creating a Copilot Page from a chat response in the correct order.",
@@ -63694,7 +63874,7 @@ const EXAMS = {
         "explain": "This matches the documented How to use Copilot Pages workflow."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "type": "order",
         "q": "Put the following steps for enabling full Copilot meeting insights in Microsoft Teams in the correct order.",
@@ -63707,7 +63887,7 @@ const EXAMS = {
         "explain": "This matches the documented steps to enable Copilot in Teams Meetings for full functionality."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage prompts and chats by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "type": "multi",
         "q": "Which two of the following are supported reference file types for grounding a Copilot Notebook? (Select two.)",
@@ -63724,7 +63904,7 @@ const EXAMS = {
         "explain": "Supported Notebook reference file types include .docx, .pptx, .xlsx, .pdf, .loop, and OneNote pages."
       },
       {
-        "domain": "Draft and analyze business content by using AI",
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
         "difficulty": "medium",
         "type": "multi",
         "q": "Which two actions can a user take with a Copilot-generated chart in Excel after it's created? (Select two.)",
@@ -63739,6 +63919,305 @@ const EXAMS = {
           2
         ],
         "explain": "Users can add generated charts to a new sheet and refine them with follow-up prompts such as changing the chart type or adding labels."
+      },
+      {
+        "domain": "Drive business outcomes by using agents",
+        "difficulty": "easy",
+        "q": "What's the main purpose of Microsoft Copilot Cowork?",
+        "options": [
+          "Carrying out multi-step tasks across Microsoft 365 on your behalf",
+          "Translating live meetings only",
+          "Replacing the Microsoft 365 admin center with an automated admin service",
+          "Storing files on your local device"
+        ],
+        "correct": 0,
+        "explain": "Cowork is an agentic system that you delegate multi-step work to, such as sending emails, creating documents, and conducting research."
+      },
+      {
+        "domain": "Drive business outcomes by using agents",
+        "difficulty": "medium",
+        "q": "How does Copilot Cowork complete a complex request?",
+        "options": [
+          "It breaks the request into steps and runs them across Microsoft 365 services",
+          "It passes the request to a human assistant in your organization's IT support team",
+          "It runs one single step in Word",
+          "It creates a new Teams channel for each request"
+        ],
+        "correct": 0,
+        "explain": "Cowork decomposes complex requests into individual steps and executes them, and you can follow along in the conversation."
+      },
+      {
+        "domain": "Drive business outcomes by using agents",
+        "difficulty": "medium",
+        "q": "What happens before Cowork sends an email for you?",
+        "options": [
+          "It saves a draft and ends the task",
+          "It asks your manager to approve",
+          "It shows an approval dialog with a preview of the content",
+          "It sends the message right away and notifies you after it's delivered"
+        ],
+        "correct": 2,
+        "explain": "Sensitive actions such as sending email show an approval dialog with a preview, and a risk level for medium and high risk actions."
+      },
+      {
+        "domain": "Drive business outcomes by using agents",
+        "difficulty": "easy",
+        "q": "Which data can Cowork access?",
+        "options": [
+          "Any file your admin can open",
+          "All data in your organization, including mailboxes you can't normally open",
+          "Only the data and services you're already permitted to use",
+          "Any public and private Teams channel"
+        ],
+        "correct": 2,
+        "explain": "Every Cowork action is authorized through your Microsoft 365 account, so it stays within your existing permissions."
+      },
+      {
+        "domain": "Drive business outcomes by using agents",
+        "difficulty": "medium",
+        "q": "Which limitation applies to Copilot Cowork?",
+        "options": [
+          "It can't access files stored locally on your device",
+          "It can't schedule meetings",
+          "It can't work with SharePoint files or anything stored in OneDrive",
+          "It can't create Word documents"
+        ],
+        "correct": 0,
+        "explain": "Cowork works with files in OneDrive, SharePoint, and connected cloud services, not files stored locally."
+      },
+      {
+        "domain": "Drive business outcomes by using agents",
+        "difficulty": "hard",
+        "q": "You ask Cowork to clean up a SharePoint folder by deleting old files. What should you expect?",
+        "options": [
+          "It deletes them after an approval dialog",
+          "It deletes them right away, without showing any approval dialog",
+          "It can't delete files or folders in OneDrive or SharePoint",
+          "It moves them to your local device"
+        ],
+        "correct": 2,
+        "explain": "By design, Cowork can't delete files or folders in OneDrive or SharePoint."
+      },
+      {
+        "domain": "Drive business outcomes by using agents",
+        "difficulty": "medium",
+        "q": "What's the maximum size of a file you can attach to Cowork?",
+        "options": [
+          "Less than 2 GB",
+          "Less than 200 MB",
+          "There's no limit",
+          "Less than 5 MB"
+        ],
+        "correct": 1,
+        "explain": "Attached files must be less than 200 MB."
+      },
+      {
+        "domain": "Drive business outcomes by using agents",
+        "difficulty": "medium",
+        "q": "How should you treat documents and emails that Cowork generates?",
+        "options": [
+          "As read-only records",
+          "As final content, since Cowork verifies every source before it writes",
+          "As drafts to review before you approve sending or sharing",
+          "As content Microsoft has validated"
+        ],
+        "correct": 2,
+        "explain": "AI-generated content should be treated as drafts. Always review it before approving send or share actions."
+      },
+      {
+        "domain": "Drive business outcomes by using agents",
+        "difficulty": "hard",
+        "q": "Your colleague shares a custom Cowork skill they wrote. Which statement is accurate?",
+        "options": [
+          "Custom skills can bypass approval dialogs",
+          "Custom skills only run in Excel",
+          "Microsoft reviews and certifies each custom skill before anyone in your tenant can use it",
+          "Microsoft doesn't validate custom skills, so review their outputs carefully"
+        ],
+        "correct": 3,
+        "explain": "Custom skills authored by users or organizations aren't validated by Microsoft, so review their outputs carefully."
+      },
+      {
+        "domain": "Drive business outcomes by using agents",
+        "difficulty": "medium",
+        "q": "Which is an example of a built-in Cowork skill?",
+        "options": [
+          "Device Management",
+          "Deep Research",
+          "Payroll Processing",
+          "Tenant Administration"
+        ],
+        "correct": 1,
+        "explain": "Built-in skills include Word, Excel, PowerPoint, PDF, Email, Scheduling, Daily Briefing, Enterprise Search, and Deep Research."
+      },
+      {
+        "domain": "Drive business outcomes by using agents",
+        "difficulty": "medium",
+        "q": "When should you create a custom Cowork skill instead of using a prebuilt one?",
+        "options": [
+          "When you want to skip all approvals",
+          "Whenever a task involves Excel, because prebuilt skills don't cover spreadsheets",
+          "Whenever you want to send an email",
+          "When you need a repeatable approach that built-in skills don't cover"
+        ],
+        "correct": 3,
+        "explain": "Prebuilt skills cover common work such as Email and Excel. Custom skills extend Cowork for work specific to you or your organization."
+      },
+      {
+        "domain": "Drive business outcomes by using agents",
+        "difficulty": "medium",
+        "q": "Where are your custom Cowork skills stored?",
+        "options": [
+          "In your Outlook drafts folder",
+          "On your local desktop",
+          "In a SharePoint site that your tenant admin manages for you",
+          "In your OneDrive, under Documents/Cowork/skills"
+        ],
+        "correct": 3,
+        "explain": "Custom skills are stored in OneDrive at Documents/Cowork/skills/{name}/SKILL.md."
+      },
+      {
+        "domain": "Drive business outcomes by using agents",
+        "difficulty": "medium",
+        "q": "Cowork's task status shows Needs user input. What does that mean?",
+        "options": [
+          "It's waiting for your answer to a question",
+          "It has run out of usage for the month",
+          "It's waiting for your admin to approve the task",
+          "It has failed and must restart"
+        ],
+        "correct": 0,
+        "explain": "Cowork sometimes needs more information. You can pick an option, type an answer, or select Skip."
+      },
+      {
+        "domain": "Drive business outcomes by using agents",
+        "difficulty": "medium",
+        "q": "Cowork is partway through a task, and you realize it's going in the wrong direction. What can you do?",
+        "options": [
+          "Wait for it to finish, then undo its actions from the task history",
+          "Close the browser, which undoes its actions",
+          "Ask your admin to stop the session",
+          "Send a message to adjust its approach, or pause or cancel the task"
+        ],
+        "correct": 3,
+        "explain": "You can send messages while Cowork works to change course, and you can pause, resume, or cancel at any time."
+      },
+      {
+        "domain": "Drive business outcomes by using agents",
+        "difficulty": "hard",
+        "q": "You start a new Cowork conversation. What happens to the context and approval preferences from your last one?",
+        "options": [
+          "They're saved into your custom skills",
+          "They're shared with your whole team",
+          "They always carry over, because Cowork saves them to your OneDrive",
+          "They don't carry over, because memory is conversation-scoped"
+        ],
+        "correct": 3,
+        "explain": "Cowork keeps context and approval preferences within a single conversation. That memory doesn't persist across conversations."
+      },
+      {
+        "domain": "Drive business outcomes by using agents",
+        "difficulty": "hard",
+        "q": "A scheduled Cowork task runs while you're away. Whose permissions does it use?",
+        "options": [
+          "Those of the last person to edit the file",
+          "Those of a tenant administrator",
+          "Those of the user who created it",
+          "Those of a shared service account"
+        ],
+        "correct": 2,
+        "explain": "Each automated task runs as the user who created it, and sees only the data that user can see."
+      },
+      {
+        "domain": "Drive business outcomes by using agents",
+        "difficulty": "medium",
+        "q": "By default, what does Cowork do before an automated task sends an email?",
+        "options": [
+          "It sends it with no prompt",
+          "It sends it to your manager first",
+          "It skips the email",
+          "It asks for your approval"
+        ],
+        "correct": 3,
+        "explain": "By default, Cowork asks for approval before an automated task sends email, unless you pre-authorized the action."
+      },
+      {
+        "domain": "Understand generative AI fundamentals",
+        "difficulty": "medium",
+        "q": "Which layers make up Work IQ?",
+        "options": [
+          "Storage, compute, and network infrastructure",
+          "Prompts, chats, and notebooks",
+          "Data, context, and skills and tools",
+          "Word, Excel, and PowerPoint"
+        ],
+        "correct": 2,
+        "explain": "Work IQ combines data, context, and skills and tools layers, which ground Copilot in how work actually happens."
+      },
+      {
+        "domain": "Understand generative AI fundamentals",
+        "difficulty": "easy",
+        "q": "What does Work IQ do for Microsoft 365 Copilot?",
+        "options": [
+          "It stores your passwords for agents",
+          "It replaces your Microsoft 365 permissions with a single shared agent identity",
+          "It personalizes Copilot with your work context, relationships, and patterns",
+          "It trains a public model on your files"
+        ],
+        "correct": 2,
+        "explain": "Work IQ is the intelligence layer that personalizes Copilot, and it runs within the signed-in user's permissions."
+      },
+      {
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
+        "difficulty": "easy",
+        "q": "Where do users find intelligent meeting recap after a Teams meeting?",
+        "options": [
+          "In the Teams admin center, under Meetings and then Meeting settings",
+          "On the Files tab in OneDrive",
+          "On the Recap tab in the Teams calendar and chat",
+          "In the Outlook junk folder"
+        ],
+        "correct": 2,
+        "explain": "After the meeting ends, the AI-powered features are available on the Recap tab in the Teams calendar and chat."
+      },
+      {
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
+        "difficulty": "medium",
+        "q": "Which feature of intelligent recap lets a user jump to the point where a topic was discussed?",
+        "options": [
+          "Sensitivity labels",
+          "Meeting chapters",
+          "Meeting polls",
+          "Breakout rooms"
+        ],
+        "correct": 1,
+        "explain": "Meeting chapters divide a meeting into topics, so users can jump to the point when a topic was discussed."
+      },
+      {
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
+        "difficulty": "medium",
+        "q": "You want a podcast-like summary of a meeting. Which intelligent recap feature fits?",
+        "options": [
+          "Video recap",
+          "AI recommended tasks",
+          "Audio recap",
+          "Speaker timeline markers"
+        ],
+        "correct": 2,
+        "explain": "Audio recap gives a podcast-like summary. Video recap is a narrated summary with short clips."
+      },
+      {
+        "domain": "Manage business content and collaboration by using Microsoft 365 Copilot",
+        "difficulty": "medium",
+        "q": "A meeting recap needs to reach an external attendee. How can a user share it?",
+        "options": [
+          "Download the transcript to a USB drive",
+          "Forward the link to the Teams chat, which grants guests access",
+          "Add the attendee as a tenant admin",
+          "On the Recap tab, select Share, and then Share via Outlook"
+        ],
+        "correct": 3,
+        "explain": "To share with specified external attendees, select Share > Share via Outlook on the Recap tab."
       }
     ]
   },
@@ -78644,7 +79123,7 @@ const EXAMS = {
   },
   "AB-100": {
     "code": "AB-100",
-    "cert": "Microsoft Certified: Agentic AI Business Solutions Architect",
+    "cert": "Microsoft Certified: Agentic AI Business Solutions Architect Expert",
     "title": "Design, deliver, and govern AI-driven, agentic business solutions across Microsoft 365 Copilot, Copilot Studio, Microsoft Foundry, and Dynamics 365 that transform business processes and align with enterprise architecture and Responsible AI standards.",
     "level": "Advanced",
     "beta": false,
@@ -88642,114 +89121,101 @@ const EXAMS = {
     ],
     "domains": [
       {
-        "name": "Create a technical design",
-        "weight": "10-15%",
-        "mid": 12.5,
+        "name": "Build Microsoft Power Platform solutions",
+        "weight": "15-20%",
+        "mid": 17.5,
         "link": "https://learn.microsoft.com/training/paths/introduction-development-power-platform/",
         "skills": [
           "Analyze the technical architecture to identify solution components and their implementation approach",
-          "Design the authentication and authorization strategy for solution components",
+          "Design authentication and authorization for solution components",
           "Determine whether requirements can be met with out-of-the-box functionality",
-          "Determine where to implement business logic including cloud computing, client-side processing, business rules, plug-ins, and Power Automate",
+          "Determine where to implement business logic including cloud services, client-side processing, business rules, plug-ins, and automation",
           "Determine when to use standard tables, virtual tables, elastic tables, or connectors",
-          "Assess the impact of Microsoft Power Platform security features on solution components including data loss prevention (DLP) policies, security roles, teams, business units, and row sharing",
-          "Design Power Apps reusable components including canvas components, code components (Power Apps component framework), and client scripting",
-          "Design custom connectors",
-          "Design Dataverse code components including Power Fx functions, plug-ins, and custom APIs",
-          "Design automations including Power Automate cloud flows",
-          "Design inbound and outbound integrations using Dataverse and Azure"
-        ]
-      },
-      {
-        "name": "Build Power Platform solutions",
-        "weight": "10-15%",
-        "mid": 12.5,
-        "link": "https://learn.microsoft.com/training/paths/basic-application-lifecycle-management-microsoft-power-platform/",
-        "skills": [
-          "Troubleshoot operational security issues",
-          "Configure Dataverse security roles to support code components including the principle of least privilege",
-          "Manage Microsoft Power Platform environments for development",
-          "Implement application lifecycle management (ALM)",
+          "Assess the impact of Microsoft Power Platform security features on solution components, including managed environments, data policies, security roles, teams, business units, and row sharing",
+          "Determine when to use deterministic or non-deterministic methods to implement business logic",
+          "Determine when to use code apps, generative pages, Power Apps component frameworks (PCFs), web resources, interactive agents, and Model Context Protocol (MCP) app widgets to implement the user experience",
+          "Determine when to use Microsoft Foundry or Microsoft Copilot Studio to build agents",
+          "Design Power Apps reusable components including generative pages, code components (PCF), and client scripting",
+          "Design custom connectors and MCP servers for use with Microsoft Power Platform solutions",
+          "Design Dataverse code components, including plug-ins and custom APIs",
+          "Design automations, including Power Automate cloud flows and Copilot Studio workflows",
+          "Design inbound and outbound integrations using Dataverse and Microsoft Azure",
+          "Design custom interfaces by using Power Apps code apps",
+          "Design custom agents that integrate with Microsoft Power Platform",
+          "Design monitoring and alerting, including Azure Monitor Application Insights and Microsoft Power Platform monitor alerts",
           "Manage solution dependencies",
           "Create and use environment variables",
           "Manage solution layers",
-          "Implement and extend Power Platform Pipelines",
-          "Create Continuous Integration/Continuous Deployment (CI/CD) automations using Power Platform Build Tools"
-        ]
-      },
-      {
-        "name": "Implement Power Apps improvements",
-        "weight": "10-15%",
-        "mid": 12.5,
-        "link": "https://learn.microsoft.com/training/paths/use-advance-techniques-canvas-apps-custom-updates-optimization/",
-        "skills": [
-          "Implement complex Power Fx formulas and functions",
-          "Build reusable component libraries",
-          "Utilize Power Automate cloud flows to implement business logic from a canvas app",
-          "Troubleshoot canvas and model-driven app issues by using Monitor and other browser-based debugging tools",
-          "Optimize canvas app performance including pre-loading data and query delegation",
-          "Optimize model-driven app performance including forms and views"
+          "Implement and extend Microsoft Power Platform Pipelines",
+          "Create Continuous Integration/Continuous Deployment (CI/CD) automations using Microsoft Power Platform Build Tools"
         ]
       },
       {
         "name": "Extend the user experience",
-        "weight": "10-15%",
-        "mid": 12.5,
-        "link": "https://learn.microsoft.com/training/paths/extend-user-experience-client-scripting-command-bar-customization/",
+        "weight": "25-30%",
+        "mid": 27.5,
+        "link": "https://learn.microsoft.com/en-us/power-apps/developer/code-apps/overview",
         "skills": [
-          "Build JavaScript code that targets the Client API object model",
-          "Determine event handler registration approach",
+          "Build code that targets the Client API object model",
+          "Determine an event handler registration approach",
           "Create client scripting that targets the Dataverse Web API",
-          "Configure commands and buttons using Power Fx and JavaScript",
-          "Implement navigation to custom pages using the Client API",
-          "Demonstrate the use of the different lifecycle events (PCF)",
+          "Configure commands and buttons by using Power Fx and JavaScript",
+          "Implement navigation, dialogs, and notifications by using the Client API",
+          "Demonstrate the use of the different lifecycle events",
           "Configure a code component manifest",
           "Implement component interfaces",
           "Package, deploy, and consume a component",
-          "Configure and use Device, Utility, and Web API features in component logic"
+          "Configure and use Device, Utility, and Web API features in component logic",
+          "Configure code apps to use Microsoft Power Platform connections",
+          "Configure code apps to use Dataverse tables",
+          "Perform table and metadata operations on Dataverse data",
+          "Perform Dataverse actions and functions",
+          "Configure code apps to use Power Automate cloud flows",
+          "Configure code apps to use agents built in Copilot Studio",
+          "Configure code apps to use environment variables",
+          "Configure Content Security Policy (CSP) settings",
+          "Implement monitoring by using Azure Application Insights",
+          "Package, deploy, and share code apps",
+          "Troubleshoot code apps by using Monitor and other browser-based debugging tools",
+          "Optimize code app performance and resource usage"
         ]
       },
       {
-        "name": "Extend the platform",
-        "weight": "30-35%",
-        "mid": 32.5,
+        "name": "Extend Microsoft Power Platform",
+        "weight": "35-40%",
+        "mid": 37.5,
         "link": "https://learn.microsoft.com/training/paths/extend-power-platform-dataverse/",
         "skills": [
           "Demonstrate the use of the different event execution pipeline stages",
           "Develop a plug-in that uses the execution context",
           "Develop a plug-in that implements business logic",
-          "Implement Pre Images and Post Images to support plug-in logic",
+          "Implement images to support plug-in logic",
           "Perform operations in plug-ins by using the Organization service",
           "Optimize plug-in performance",
           "Configure a Dataverse custom API message",
           "Register plug-in components by using the Plug-in Registration Tool",
           "Develop a plug-in that implements a custom API",
           "Configure Dataverse business events",
-          "Create an Open API definition for an existing REST API",
-          "Implement authentication for custom connectors",
-          "Configure policy templates to modify connector behavior at runtime",
-          "Import definitions from existing APIs including Open API definitions, Azure services, and GitHub",
-          "Create a custom connector for an Azure service",
-          "Develop an Azure Function to be used in a custom connector",
-          "Extend the Open API definition for a custom connector",
-          "Develop code for a custom connector to transform data",
-          "Perform operations with the Dataverse Web API",
-          "Perform operations with the Organization service",
+          "Configure Microsoft Power Platform managed identity for plug-ins",
+          "Perform operations by using the Dataverse Web API",
+          "Perform operations by using the Organization service",
           "Implement API limit retry policies",
-          "Optimize for performance, concurrency, transactions, and bulk operations",
-          "Perform authentication by using OAuth",
-          "Process workloads by using Azure Functions",
+          "Optimize solution components for performance, concurrency, transactions, and bulk operations",
+          "Implement and troubleshoot authentication by using OAuth",
+          "Perform asynchronous logic by using background operations",
+          "Perform operations by using Dataverse SDKs for .NET and Python",
           "Process long-running operations by using Azure Functions for Microsoft Power Platform solutions",
           "Implement scheduled and event-driven triggers in Azure Functions for Microsoft Power Platform solutions",
           "Authenticate to Microsoft Power Platform by using managed identities",
-          "Configure Dataverse connector actions and triggers",
           "Implement complex expressions in flow steps",
-          "Manage sensitive input and output parameters",
-          "Utilize Azure Key Vault",
           "Implement flow control actions including error handling",
           "Configure trigger filter and retry policies",
           "Develop reuseable logic by using child flows",
-          "Implement Microsoft Entra ID service principles"
+          "Implement authentication for the Dataverse connector by using service principals",
+          "Integrate custom agents by using Microsoft Power Platform MCP servers",
+          "Connect custom agents to Copilot Studio agents",
+          "Integrate custom agents with Dataverse data by using Work IQ",
+          "Consume Copilot Studio agents by using the Copilot Studio client library"
         ]
       },
       {
@@ -88763,14 +89229,21 @@ const EXAMS = {
           "Register service endpoints including webhooks, Azure Service Bus, and Azure Event Hub",
           "Recommend options for listening to Dataverse events",
           "Perform data synchronization by using change tracking",
-          "Develop code that utilizes alternate keys",
-          "Utilize the UpsertRequest message to synchronize data"
+          "Develop code that uses alternate keys",
+          "Synchronize data by using the UpsertRequest message",
+          "Implement authentication for custom connectors",
+          "Configure policy templates to modify connector behavior at runtime",
+          "Import definitions from existing APIs including Open API definitions, Azure services, and GitHub",
+          "Create a custom connector for an Azure service",
+          "Develop an Azure Function to be used in a custom connector",
+          "Extend the Open API definition for a custom connector",
+          "Develop code for a custom connector to transform data"
         ]
       }
     ],
     "questions": [
       {
-        "domain": "Create a technical design",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "easy",
         "q": "Your team previously stored application configuration values, such as an API endpoint URL, in a custom Dataverse table and deployed the data using custom code. Management wants a way to declare these values, include them in a solution, and set per-environment values without writing any code. What should you use?",
         "options": [
@@ -88783,7 +89256,7 @@ const EXAMS = {
         "explain": "Environment variables let you declare configuration values, package them in a solution, and set environment-specific values without custom code or deployment scripts, replacing the older pattern of custom configuration tables."
       },
       {
-        "domain": "Create a technical design",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "easy",
         "q": "A developer needs Dataverse to display and query data that physically resides in an external line-of-business system in near real time, without copying the data into Dataverse. Which Dataverse table type should the developer use?",
         "options": [
@@ -88796,7 +89269,7 @@ const EXAMS = {
         "explain": "Virtual tables map data from an external data source so it appears to exist in Dataverse, letting Dataverse execute real-time operations against the external source through a custom data provider, without duplicating the data."
       },
       {
-        "domain": "Create a technical design",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "medium",
         "q": "A solution requires strong data consistency, relational modeling with complex joins across multiple tables, and transactional plug-in execution. Which table type best fits these requirements?",
         "options": [
@@ -88809,7 +89282,7 @@ const EXAMS = {
         "explain": "Microsoft guidance recommends standard tables when an application requires strong data consistency, relational modeling with complex joins, or transactional capability across tables or during plug-in execution; elastic tables trade some of this off for horizontal scale."
       },
       {
-        "domain": "Create a technical design",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "medium",
         "q": "An application will ingest a high volume of semi-structured telemetry data whose schema changes frequently, with bursty and unpredictable write throughput. Which Dataverse table type is designed for this scenario?",
         "options": [
@@ -88822,7 +89295,7 @@ const EXAMS = {
         "explain": "Elastic tables, built on Azure Cosmos DB, automatically scale horizontally and work well for unstructured or semi-structured data with unpredictable, spiky, or rapidly growing workloads and high volumes of reads and writes."
       },
       {
-        "domain": "Create a technical design",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "medium",
         "q": "A model-driven app form must show a dynamic notification to the user based on a condition — a capability that Dataverse business rules do not support. What should the developer implement instead?",
         "options": [
@@ -88835,7 +89308,7 @@ const EXAMS = {
         "explain": "Business rules are easy for non-developers to author, but scenarios like form notifications and filtering choice values aren't achievable with business rules, so developers fall back to client script."
       },
       {
-        "domain": "Create a technical design",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "medium",
         "q": "A requirement states that when an account record is updated, custom logic must run synchronously and be included in the same database transaction as the update, so the update rolls back if the logic fails. What should the developer choose, given that Power Automate cloud flows only ever run asynchronously?",
         "options": [
@@ -88848,7 +89321,7 @@ const EXAMS = {
         "explain": "Plug-ins can run synchronously within the same database transaction as the triggering operation, which is required whenever an operation must be treated as a single unit of work; Power Automate cloud flows only run asynchronously."
       },
       {
-        "domain": "Create a technical design",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "hard",
         "type": "multi",
         "q": "Which two extension mechanisms can execute business logic on both the Before and After stages of the Dataverse event pipeline, per Microsoft's platform capability comparison? (Select two.)",
@@ -88865,7 +89338,7 @@ const EXAMS = {
         "explain": "Per the platform capability comparison, classic workflows and plug-ins can both execute on the Before or After stage; Power Automate cloud flows execute only After, and PCF components run client-side, not in the server-side event pipeline."
       },
       {
-        "domain": "Create a technical design",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "medium",
         "q": "A team wants to consolidate a multi-step customer-search sequence, currently duplicated across several apps, into a single reusable Dataverse operation that can be invoked identically from code, canvas apps, and Power Automate, with its own defined request and response parameters. What should the developer design?",
         "options": [
@@ -88878,7 +89351,7 @@ const EXAMS = {
         "explain": "Custom APIs provide a code-first way to define new Dataverse messages with custom request and response parameters; once implemented and registered, they can be invoked consistently from the Dataverse APIs, Power Apps, and Power Automate."
       },
       {
-        "domain": "Create a technical design",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "easy",
         "q": "An integration written in Node.js needs to call Dataverse using plain HTTP requests and OAuth 2.0, with no dependency on the .NET SDK. Which Dataverse API should the technical design specify?",
         "options": [
@@ -88891,33 +89364,7 @@ const EXAMS = {
         "explain": "The Dataverse Web API is an OData v4 RESTful endpoint intended for any programming language that supports HTTP requests and OAuth 2.0 authentication; the Organization Service, by contrast, is a .NET SDK."
       },
       {
-        "domain": "Create a technical design",
-        "difficulty": "easy",
-        "q": "Which Power Platform environment type is intended primarily as an isolated workspace for a single developer to build assets?",
-        "options": [
-          "Sandbox",
-          "Trial",
-          "Production",
-          "Developer"
-        ],
-        "correct": 3,
-        "explain": "Developer environments are primarily intended for a solo developer to isolate their own work, as distinct from sandbox or production environments where teams may collaborate."
-      },
-      {
-        "domain": "Create a technical design",
-        "difficulty": "medium",
-        "q": "An architect configures an environment with the type set to Production, but the team plans to use it purely for testing before go-live. What determines the features and capabilities available in that environment?",
-        "options": [
-          "The purpose the team assigns to the environment",
-          "The Dataverse database region",
-          "The security roles assigned to the administrator",
-          "The environment type, regardless of how the team intends to use it"
-        ],
-        "correct": 3,
-        "explain": "Environment type determines the features and capabilities available in an environment, not the purpose it's put to — so a Production-type environment used for testing still behaves like a production environment feature-wise."
-      },
-      {
-        "domain": "Create a technical design",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "medium",
         "q": "A design requires that certain users be able to access records owned by peers across different business units, not only within their own reporting chain. Which Dataverse hierarchy security model supports this?",
         "options": [
@@ -88930,7 +89377,7 @@ const EXAMS = {
         "explain": "The position hierarchy allows data access across business units based on organizational position, whereas the manager hierarchy only grants access when the manager is in the same or a parent business unit as the report."
       },
       {
-        "domain": "Create a technical design",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "easy",
         "q": "Under Dataverse's manager hierarchy security model, what condition must be true for a manager to gain access to a report's records purely through that hierarchy?",
         "options": [
@@ -88943,7 +89390,7 @@ const EXAMS = {
         "explain": "The manager hierarchy grants access only when the manager is within the same business unit as the report, or in the parent business unit of the report's business unit."
       },
       {
-        "domain": "Create a technical design",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "medium",
         "q": "A table contains a column holding sensitive salary data that only a subset of users, regardless of their record-level access, should be able to view or edit. Which Dataverse feature addresses this at the field level?",
         "options": [
@@ -88956,7 +89403,7 @@ const EXAMS = {
         "explain": "Column-level security allows more granular control at the individual column level, complementing role-based row-level security when row access alone isn't sufficiently granular."
       },
       {
-        "domain": "Create a technical design",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "hard",
         "q": "A design calls for complex, variable multi-currency price-list calculations on Dynamics 365 Sales opportunities. Per Microsoft's configure-vs-code guidance, what should the developer do first?",
         "options": [
@@ -88969,7 +89416,7 @@ const EXAMS = {
         "explain": "Microsoft's guidance is to first check whether Power Platform or Dynamics 365 already implements the requirement, citing multi-currency price-list invoice calculations in Dynamics 365 Sales as a well-implemented, time-tested built-in capability that shouldn't be rebuilt with custom code."
       },
       {
-        "domain": "Create a technical design",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "medium",
         "q": "An administrator updates a tenant data loss prevention (DLP) policy to block a connector that an existing canvas app depends on. What happens to that previously working app as a result?",
         "options": [
@@ -88982,7 +89429,7 @@ const EXAMS = {
         "explain": "When a data policy changes, Power Platform cascades the configuration to environments, evaluates existing apps, flows, and chatbots against it, and puts any that violate the policy into a suspended or quarantined state; violating connections are also disabled."
       },
       {
-        "domain": "Create a technical design",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "hard",
         "q": "Inside a Dataverse plug-in's Execute method, a developer needs an instance of the Organization Service to create a new row. Which approach matches Microsoft's documented pattern for obtaining it?",
         "options": [
@@ -88995,7 +89442,7 @@ const EXAMS = {
         "explain": "Inside a plug-in, the Organization Service is obtained via the IOrganizationServiceFactory retrieved from the IServiceProvider passed to Execute — no separate authentication is needed since the plug-in already runs in an authenticated context. The ServiceClient/connection-string pattern is for code running outside the plug-in pipeline, such as console apps or Azure Functions."
       },
       {
-        "domain": "Create a technical design",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "medium",
         "q": "A Power Automate maker wants to query Dataverse using the same proprietary query language that supports complex conditions across related tables that developers use in code. Which query language is also supported by the Power Automate Dataverse connector?",
         "options": [
@@ -89008,7 +89455,7 @@ const EXAMS = {
         "explain": "FetchXML is Dataverse's proprietary query language for crafting complex queries across related tables using Dataverse-specific conditions and operators, and it is also supported by the Power Automate Dataverse connector, not just code-based APIs."
       },
       {
-        "domain": "Build Power Platform solutions",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "easy",
         "q": "What is the primary role of a Dataverse solution in application lifecycle management (ALM)?",
         "options": [
@@ -89021,7 +89468,7 @@ const EXAMS = {
         "explain": "Solutions are containers for apps and other components such as tables, processes, web resources, and flows, used to transport customizations from one environment to another and to implement ALM."
       },
       {
-        "domain": "Build Power Platform solutions",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "medium",
         "q": "Two managed solutions are installed in the same environment and both customize the same component. According to Dataverse solution layering, which one takes effect at runtime?",
         "options": [
@@ -89034,7 +89481,7 @@ const EXAMS = {
         "explain": "In managed layering, each newly installed managed solution is layered above the ones installed before it; for conflicting definitions the runtime behavior is generally 'last one wins,' except for components with defined merge logic."
       },
       {
-        "domain": "Build Power Platform solutions",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "medium",
         "q": "An administrator uninstalls the topmost managed solution layer that was customizing a form. What happens to that form's behavior?",
         "options": [
@@ -89047,7 +89494,7 @@ const EXAMS = {
         "explain": "If you uninstall a managed solution, the managed solution layer below it takes effect; if all managed solutions are uninstalled, the default behavior defined in the system solution applies."
       },
       {
-        "domain": "Build Power Platform solutions",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "easy",
         "q": "How many distinct unmanaged layers exist in a given Dataverse environment, regardless of how many unmanaged solutions are imported?",
         "options": [
@@ -89060,7 +89507,7 @@ const EXAMS = {
         "explain": "All imported unmanaged solutions and any impromptu customizations exist together in a single, shared unmanaged layer within the environment."
       },
       {
-        "domain": "Build Power Platform solutions",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "medium",
         "q": "For most conflicting managed-layer component definitions the runtime uses 'last one wins.' Which types of components instead combine definitions from every layer using merge logic?",
         "options": [
@@ -89073,7 +89520,7 @@ const EXAMS = {
         "explain": "Certain components, such as site maps and forms, have defined merge behavior where each layer is merged together to produce the runtime result, instead of the simple 'last layer wins' rule that applies to most other components."
       },
       {
-        "domain": "Build Power Platform solutions",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "easy",
         "q": "What does the Power Platform CLI's solution unpack command do to an exported solution .zip file?",
         "options": [
@@ -89086,7 +89533,7 @@ const EXAMS = {
         "explain": "Solution unpack reversibly decomposes a solution .zip file into a logical folder structure, producing output that source control systems can meaningfully track file by file, rather than as one opaque archive."
       },
       {
-        "domain": "Build Power Platform solutions",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "medium",
         "q": "A team checks the exported solution .zip file directly into Git without unpacking it first. What limitation does this create for their source control history?",
         "options": [
@@ -89099,7 +89546,7 @@ const EXAMS = {
         "explain": "A solution .zip file packs everything into one large file; checked into source control as-is, it can only reveal that something changed, not what changed within each component — hence the practice of unpacking the solution into separate files first."
       },
       {
-        "domain": "Build Power Platform solutions",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "medium",
         "q": "Which Power Platform Build Tools task breaks a compressed solution.zip file into individual component files so they can be checked into source control?",
         "options": [
@@ -89112,7 +89559,7 @@ const EXAMS = {
         "explain": "The Unpack Solution task breaks a compressed solution file into individual files for each component, enabling them to be checked into source control; Pack Solution does the reverse."
       },
       {
-        "domain": "Build Power Platform solutions",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "medium",
         "q": "Which Power Platform Build Tools task exports a solution from an environment, with the option to export it as unmanaged, managed, or both?",
         "options": [
@@ -89125,7 +89572,7 @@ const EXAMS = {
         "explain": "The Export Solution task exports a solution as unmanaged, managed, or both from an environment, as part of a CI/CD pipeline."
       },
       {
-        "domain": "Build Power Platform solutions",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "medium",
         "q": "As part of a release pipeline, a team wants to enforce a consistent version-numbering strategy across every build. Which Power Platform Build Tools task is designed for this?",
         "options": [
@@ -89138,7 +89585,7 @@ const EXAMS = {
         "explain": "The Set Solution Version task lets automation update the solution's version number, enabling a team to implement a consistent versioning strategy across builds."
       },
       {
-        "domain": "Build Power Platform solutions",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "medium",
         "q": "Which Power Platform Build Tools task runs static analysis against a solution to catch quality problems early in the pipeline?",
         "options": [
@@ -89151,7 +89598,7 @@ const EXAMS = {
         "explain": "Power Platform Checker runs static analysis on a solution, allowing quality problems to be caught early when added to an automated pipeline."
       },
       {
-        "domain": "Build Power Platform solutions",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "easy",
         "q": "With Power Platform pipelines, how does a citizen maker typically deploy their solution from a development environment to a target environment?",
         "options": [
@@ -89164,7 +89611,7 @@ const EXAMS = {
         "explain": "Once pipelines are configured, makers can initiate in-product deployments with a few clicks directly within their development environment, with no prior knowledge of ALM processes or systems required."
       },
       {
-        "domain": "Build Power Platform solutions",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "medium",
         "q": "Before a Power Platform pipeline deployment actually runs, what does it do to reduce the chance of a failed or broken deployment?",
         "options": [
@@ -89177,7 +89624,7 @@ const EXAMS = {
         "explain": "Pipeline deployments are prevalidated against the target environment to prevent mistakes: missing dependencies and other issues are detected before deployment, and makers are guided to resolve them."
       },
       {
-        "domain": "Build Power Platform solutions",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "medium",
         "q": "Besides the solution itself, what other environment-specific configuration can a Power Platform pipeline deploy?",
         "options": [
@@ -89190,7 +89637,7 @@ const EXAMS = {
         "explain": "Pipelines deploy solutions as well as configuration for the target environment, such as connections, connection references, and environment variables — any Power Platform customization contained in the solution."
       },
       {
-        "domain": "Build Power Platform solutions",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "hard",
         "q": "A professional developer wants to list available pipeline stages and trigger a solution deployment programmatically rather than clicking through the pipelines UI. What should they use?",
         "options": [
@@ -89203,7 +89650,7 @@ const EXAMS = {
         "explain": "Professional developers can extend and drive pipelines using the Power Platform CLI's pac pipeline command group, listing pipelines and deploying solutions with a single command instead of manually executing each underlying task."
       },
       {
-        "domain": "Build Power Platform solutions",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "hard",
         "q": "An Azure Function authenticates to Dataverse using a Microsoft Entra app registration (a non-interactive service principal) rather than a named user's credentials. Following the principle of least privilege for this code component, what should the developer configure in the target environment?",
         "options": [
@@ -89216,7 +89663,7 @@ const EXAMS = {
         "explain": "A service principal calling Dataverse needs a dedicated, unlicensed application user created for its Microsoft Entra app registration in the environment; per the principle of least privilege, it should be assigned only the custom security role(s) covering the operations it actually performs, not broad roles like System Administrator."
       },
       {
-        "domain": "Build Power Platform solutions",
+        "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "hard",
         "type": "multi",
         "q": "According to Microsoft's guidance on automating solution management with DevOps tools, which two of the following are commonly automated tasks on Power Platform projects? (Select two.)",
@@ -89233,7 +89680,7 @@ const EXAMS = {
         "explain": "Common Power Platform DevOps automations include running solution checker to catch quality issues and provisioning/de-provisioning environments, along with tasks like exporting/importing solutions and running automated tests — not generating business logic code or manually assigning individual user roles."
       },
       {
-        "domain": "Build Power Platform solutions",
+        "domain": "Build Microsoft Power Platform solutions",
         "type": "order",
         "difficulty": "medium",
         "q": "Put the following steps of a source-control-driven ALM workflow for a Power Platform solution in the correct order, from making a change to deploying it downstream.",
@@ -89244,244 +89691,6 @@ const EXAMS = {
           "Pack the solution from source control and import the resulting managed solution into the downstream environment"
         ],
         "explain": "The documented flow is: build/test in a development environment, export the solution, unpack it into source control for change tracking, then later pack it back into a solution.zip from source control and import it as a managed solution into test or production."
-      },
-      {
-        "domain": "Implement Power Apps improvements",
-        "difficulty": "easy",
-        "q": "In a Power Apps canvas app, what does 'delegation' allow the app to do with a large data source?",
-        "options": [
-          "Hand off filtering, sorting, and searching work to the data source itself instead of pulling all rows locally",
-          "Delegate authentication to Microsoft Entra ID",
-          "Split a formula's execution across multiple environments",
-          "Automatically create a backup copy of the data source"
-        ],
-        "correct": 0,
-        "explain": "Delegation lets Power Apps send supported operations, such as filtering, searching, and sorting, to the data source to be processed there, so only the matching results are returned instead of moving the entire data set into the app."
-      },
-      {
-        "domain": "Implement Power Apps improvements",
-        "difficulty": "medium",
-        "q": "A gallery is bound to a 5,000-item SharePoint list using Search(SharePointList, \"Rob\", \"FirstName\", \"LastName\"), and Search isn't delegable against SharePoint. With default settings, what does the user actually see?",
-        "options": [
-          "Only the first 500 records are sent from SharePoint and searched locally, so matches beyond that set are missed",
-          "The formula fails to save until it's rewritten as a Filter()",
-          "All 5,000 records are searched, since Power Apps always processes the full list",
-          "Power Apps automatically switches to a delegable equivalent function"
-        ],
-        "correct": 0,
-        "explain": "When a function like Search isn't delegable to the data source, Power Apps retrieves only the first 500 records (the default) from SharePoint and processes the formula locally, so records beyond that default limit aren't evaluated."
-      },
-      {
-        "domain": "Implement Power Apps improvements",
-        "difficulty": "medium",
-        "q": "In Power Apps Studio's advanced app settings, what is the valid range for the 'Data row limit for non-delegable queries' setting?",
-        "options": [
-          "100 to 5000",
-          "1 to 2000",
-          "It cannot be changed from 500",
-          "1 to 500"
-        ],
-        "correct": 1,
-        "explain": "Power Apps allows the non-delegable query row limit to be adjusted from 1 to a maximum of 2000 in the app's advanced settings, up from the default of 500."
-      },
-      {
-        "domain": "Implement Power Apps improvements",
-        "difficulty": "medium",
-        "q": "Which of the following functions is documented as never delegable, regardless of data source, meaning adding it to a formula can make an otherwise-delegable formula stop being delegated?",
-        "options": [
-          "Filter",
-          "LookUp",
-          "Sort",
-          "GroupBy"
-        ],
-        "correct": 3,
-        "explain": "GroupBy (along with functions like First/FirstN, Last/LastN, Choices, Concat, Collect/ClearCollect, CountIf/RemoveIf/UpdateIf, and Ungroup) is not delegable; including it in a formula can cause an otherwise-delegable expression to fall back to local processing."
-      },
-      {
-        "domain": "Implement Power Apps improvements",
-        "difficulty": "hard",
-        "type": "multi",
-        "q": "Which two of the following functions are documented as non-delegable in Power Apps? (Select two.)",
-        "options": [
-          "Filter",
-          "Concat",
-          "CountIf",
-          "LookUp"
-        ],
-        "correct": [
-          1,
-          2
-        ],
-        "explain": "CountIf/RemoveIf/UpdateIf and Concat are listed among the non-delegable functions, while Filter and LookUp are delegable to supported data sources."
-      },
-      {
-        "domain": "Implement Power Apps improvements",
-        "difficulty": "medium",
-        "q": "AddColumns, DropColumns, ShowColumns, and RenameColumns are described as 'partially delegable.' What does that mean in practice?",
-        "options": [
-          "They automatically convert the data source into a collection",
-          "They can only be used inside App.OnStart",
-          "Formulas used in their arguments can be delegated, but the function's overall output is still capped at the non-delegation record limit",
-          "They are fully delegable only on Dataverse, never on other data sources"
-        ],
-        "correct": 2,
-        "explain": "For these table-shaping functions, delegable formulas used as arguments (like a LookUp inside AddColumns) can still be delegated, but the shaping function's own output remains constrained to the non-delegation record limit."
-      },
-      {
-        "domain": "Implement Power Apps improvements",
-        "difficulty": "medium",
-        "q": "A maker sees a delegation warning underline only under the FirstName argument of Search(SharePointList, \"Rob\", \"FirstName\", \"LastName\") and assumes LastName is fine. Why might this assumption be wrong?",
-        "options": [
-          "LastName never causes delegation issues by definition",
-          "The warning is purely cosmetic and doesn't reflect a real issue",
-          "The warning indicator only marks the first thing that causes the delegation issue, so LastName could be an equally valid source of the same problem",
-          "Only string columns trigger delegation warnings"
-        ],
-        "correct": 2,
-        "explain": "Power Apps' delegation warning only highlights the first element that triggers the issue; here it's really the non-delegable Search function itself, and LastName would cause the same problem even though it isn't underlined."
-      },
-      {
-        "domain": "Implement Power Apps improvements",
-        "difficulty": "medium",
-        "q": "A maker relies on the yellow delegation warning triangle in Power Apps Studio to catch data-completeness bugs before shipping. What blind spot does this approach have?",
-        "options": [
-          "The warning also appears for fully delegable formulas",
-          "End users running the published app receive no equivalent notification that they might only be seeing partial results",
-          "The warning only appears in the mobile player, not the web player",
-          "Delegation warnings block publishing entirely"
-        ],
-        "correct": 1,
-        "explain": "The delegation warning indicator is shown only in the maker portal while building the app; a user running the published app gets no notification that a non-delegable formula might be returning only partial results."
-      },
-      {
-        "domain": "Implement Power Apps improvements",
-        "difficulty": "easy",
-        "q": "Which Power Apps variable type is scoped only to the screen where it was created, using the UpdateContext function?",
-        "options": [
-          "Environment variable",
-          "Context variable",
-          "Collection",
-          "Global variable"
-        ],
-        "correct": 1,
-        "explain": "Context variables are created with UpdateContext and are only available on the screen where they were created — useful for things like reusing the same variable name across multiple screens to control a popup independently on each."
-      },
-      {
-        "domain": "Implement Power Apps improvements",
-        "difficulty": "medium",
-        "q": "A canvas app needs the same popup-visibility variable name reused independently on several different screens, each screen maintaining its own value. Which variable type and function should be used?",
-        "options": [
-          "A context variable set with UpdateContext()",
-          "A global variable set with Set()",
-          "A collection created with Collect()",
-          "An environment variable"
-        ],
-        "correct": 0,
-        "explain": "Context variables, created with UpdateContext, are scoped to the screen where they're set, so the same variable name can be reused on multiple screens while each screen keeps its own independent value — a common pattern for popups."
-      },
-      {
-        "domain": "Implement Power Apps improvements",
-        "difficulty": "medium",
-        "q": "An older canvas app uses conditional Navigate() calls inside App.OnStart to choose the first screen a user sees. What is the currently recommended replacement for this pattern?",
-        "options": [
-          "Use the App.StartScreen property",
-          "Move the logic into every screen's OnVisible property",
-          "Call Navigate() from a Power Automate flow instead",
-          "Use a PCF component to control navigation"
-        ],
-        "correct": 0,
-        "explain": "Using Navigate() in App.OnStart has been retired and is blocked for new apps; the replacement is the App.StartScreen property, which can hold a conditional formula (optionally using IfError) to choose the initial screen."
-      },
-      {
-        "domain": "Implement Power Apps improvements",
-        "difficulty": "hard",
-        "q": "A developer tries to reference a collection created in App.OnStart from within the App.StartScreen property formula, but it doesn't behave as expected. What is the documented limitation causing this?",
-        "options": [
-          "StartScreen can only reference Dataverse tables, never collections",
-          "Collections can never be referenced outside of galleries",
-          "StartScreen formulas run before OnStart, so the collection doesn't exist yet, and global variables/collections created in OnStart aren't available to StartScreen",
-          "StartScreen is deprecated and ignored by the runtime"
-        ],
-        "correct": 2,
-        "explain": "The StartScreen property is a data-flow property that can't contain behavior functions, and global variables and collections — including ones created in OnStart — aren't available within the StartScreen property formula."
-      },
-      {
-        "domain": "Implement Power Apps improvements",
-        "difficulty": "medium",
-        "q": "App.OnStart currently loads three independent data sets sequentially with three separate ClearCollect/Set calls, slowing app startup. Which Power Fx function lets these run in parallel instead?",
-        "options": [
-          "Concurrent()",
-          "Batch()",
-          "Parallel()",
-          "Await()"
-        ],
-        "correct": 0,
-        "explain": "The Concurrent() function runs its independent arguments (such as several ClearCollect and Set calls) in parallel instead of the default sequential execution, reducing overall startup time when the preload operations don't depend on each other."
-      },
-      {
-        "domain": "Implement Power Apps improvements",
-        "difficulty": "medium",
-        "q": "A screen's OnVisible property runs ClearCollect(colDesks, Desks) to preload data, but this refreshes the collection every single time the user navigates back to that screen. Which change avoids the unnecessary reload while still loading the data the first time?",
-        "options": [
-          "Wrap it as If(IsEmpty(colDesks), ClearCollect(colDesks, Desks)) so it only loads when the collection is empty",
-          "Set the Data row limit app setting to 1",
-          "Move the ClearCollect call to a button's OnSelect instead",
-          "Replace ClearCollect with Collect"
-        ],
-        "correct": 0,
-        "explain": "Checking If(IsEmpty(colDesks), ClearCollect(colDesks, Desks)) ensures the collection is only (re)loaded the first time, since OnVisible otherwise re-runs — and therefore re-clears and reloads the collection — on every navigation back to that screen."
-      },
-      {
-        "domain": "Implement Power Apps improvements",
-        "difficulty": "medium",
-        "q": "A gallery's Items property is bound directly to a Dataverse table expression (direct data source binding) rather than a preloaded collection. What is a key behavioral consequence of this choice?",
-        "options": [
-          "The app can never show more than 500 rows under any circumstance",
-          "A loading indicator can be shown while the initial rows load",
-          "The formula must use Collect() instead of Filter()",
-          "Data shown in the gallery is automatically refreshed when the underlying data changes elsewhere, and the app isn't limited by the Data row limit setting when the connector supports delegation"
-        ],
-        "correct": 3,
-        "explain": "With direct data source binding, Power Apps automatically keeps displayed data in sync as it changes elsewhere and, for delegation-capable connectors, isn't capped by the Data row limit setting (it pages with getRows/getMoreRows) — but you lose the ability to show a loading indicator, which preloading into a collection provides."
-      },
-      {
-        "domain": "Implement Power Apps improvements",
-        "difficulty": "hard",
-        "q": "On a model-driven app main form, controls placed on the default (first expanded) tab behave differently from controls on a secondary tab during initial page load. What is that difference?",
-        "options": [
-          "Default-tab controls and secondary-tab controls always initialize simultaneously",
-          "Secondary tabs load first to prioritize background data",
-          "There is no measurable performance difference between tabs",
-          "Default-tab control initialization (including data retrieval) always runs when the record opens, while a secondary tab's controls aren't initialized until the user opens that tab"
-        ],
-        "correct": 3,
-        "explain": "The default tab's controls are always rendered and initialized, including data retrieval, as soon as a record is opened. A secondary tab's controls only initialize when the user actually opens that tab (or it's forced via setFocus), which is why moving heavy controls off the default tab improves initial load responsiveness."
-      },
-      {
-        "domain": "Implement Power Apps improvements",
-        "difficulty": "medium",
-        "q": "A model-driven main form's default tab contains a Timeline, two Subgrids, and a Quick view form, all of which fetch extra data over the network on load. Per Microsoft's form-performance guidance, what should the developer do?",
-        "options": [
-          "Convert every control to a PCF component to fix the issue automatically",
-          "Move the less-frequently-used data-driven controls to secondary tabs so the default tab loads faster",
-          "Replace all of them with iframes",
-          "Leave them as-is; data-driven controls don't materially affect load time"
-        ],
-        "correct": 1,
-        "explain": "Quick view forms, subgrids, timelines, and the Assistant control are called out as data-driven controls that strain form responsiveness; guidance is to keep only the most frequently used ones on the default tab and move the rest to secondary tabs so they load on demand instead of on initial page load."
-      },
-      {
-        "domain": "Implement Power Apps improvements",
-        "difficulty": "easy",
-        "q": "A JavaScript customization calls the openForm client API with a parameter that forces the record to open in a brand-new browser window. Why does Microsoft's form-performance guidance recommend against this?",
-        "options": [
-          "It always triggers a business rule validation error",
-          "It disables Power Fx entirely in the new window",
-          "Opening a new window forces all page resources to be fetched and loaded from scratch, losing the in-memory client caching benefit from the previously loaded form",
-          "New windows are blocked by default in all modern browsers"
-        ],
-        "correct": 2,
-        "explain": "Opening a form in a new window means the page can't leverage in-memory data caching from the previously loaded form, so every resource must be fetched and loaded again; the guidance is to leave the newWindow parameter false and use the multisession experience instead if multiple concurrently open records are needed."
       },
       {
         "domain": "Extend the user experience",
@@ -89735,7 +89944,7 @@ const EXAMS = {
         "explain": "The pac pcf push command builds and pushes the component into the connected Dataverse environment as a temporary solution, which is well suited to rapid iterative testing during development; pac solution init plus msbuild is the path used to produce a real, deployable solution package, for example for a build pipeline."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "type": "order",
         "difficulty": "hard",
         "q": "Put the four Dataverse event execution pipeline stages in the order a message passes through them.",
@@ -89748,7 +89957,7 @@ const EXAMS = {
         "explain": "Each Dataverse message is processed through four stages in this order: PreValidation (before security checks and before the database transaction begins), PreOperation (within the transaction, before the core operation), MainOperation (reserved for internal use except custom APIs and custom virtual table data providers), and PostOperation (within the transaction, after the core operation, and optionally asynchronous)."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "medium",
         "q": "A plug-in is registered on the PreValidation stage of the Create message to reject invalid data before it's saved. What is distinctive about this stage compared to PreOperation?",
         "options": [
@@ -89761,7 +89970,7 @@ const EXAMS = {
         "explain": "PreValidation occurs before the main system operation and before any security checks verifying the calling user's permissions, and outside the database transaction — making it well suited to canceling an operation cheaply before any transactional work begins."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "medium",
         "q": "A plug-in needs to modify the values that are actually returned to the caller after a Create operation completes. Which execution context collection must it use, and on which stage must it be registered?",
         "options": [
@@ -89774,7 +89983,7 @@ const EXAMS = {
         "explain": "OutputParameters are only populated after the operation has occurred, so they're only usable when handling the PostOperation stage; to change what's returned to the caller, a plug-in edits OutputParameters (for example, the Target for Create) at that stage."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "medium",
         "q": "A plug-in needs to log both the pre-change and post-change values of a record for custom auditing, without issuing an extra Retrieve request through the Organization service. What should it use?",
         "options": [
@@ -89787,7 +89996,7 @@ const EXAMS = {
         "explain": "Registering PreEntityImages and PostEntityImages provides immutable snapshots of the record's data before and after the operation; retrieving values this way is documented as far more efficient than issuing a separate Retrieve request via the Organization service from inside the plug-in."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "hard",
         "q": "A plug-in registered on Update of a table accidentally performs its own Update inside its logic, which re-triggers the same plug-in, risking infinite recursion. Which execution context mechanism is the documented pattern for guarding against this?",
         "options": [
@@ -89800,7 +90009,7 @@ const EXAMS = {
         "explain": "The documented safeguard pattern uses a shared variable (such as a RunCount) passed along the pipeline to count executions, throwing an InvalidPluginExecutionException once a defined limit (for example, five) is exceeded — an extra safeguard on top of Dataverse's own built-in runaway-plug-in protections."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "medium",
         "q": "Per Microsoft's comparison of workflows, plug-ins, and client scripts, which of the three can a business user trigger on demand, independent of any data change?",
         "options": [
@@ -89813,7 +90022,7 @@ const EXAMS = {
         "explain": "In the workflow/plug-in/client-script comparison, only the workflow supports being run on demand; plug-ins cannot be run on demand, and client scripts trigger only from field change or form load events."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "medium",
         "type": "multi",
         "q": "Per Microsoft's comparison table, which two of the following extension approaches can access external data (at least with some limitations)? (Select two.)",
@@ -89830,7 +90039,7 @@ const EXAMS = {
         "explain": "The comparison table shows plug-ins can access external data using APIs (with some security restrictions), and client scripts can as well, but with limitations; classic workflows are documented as unable to access external data at all."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "easy",
         "q": "What authentication protocol does Microsoft Dataverse use as its standard for the Web API?",
         "options": [
@@ -89843,7 +90052,7 @@ const EXAMS = {
         "explain": "Dataverse uses OAuth 2.0 as its authentication standard, with Microsoft Entra ID acting as the identity provider that verifies user or process identity."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "medium",
         "q": "A design distinguishes 'authentication' from 'authorization' for a Dataverse integration. Which statement correctly maps these concepts to the platform?",
         "options": [
@@ -89856,7 +90065,7 @@ const EXAMS = {
         "explain": "Authentication — verifying who the user or process is — is handled by Microsoft Entra ID; authorization — what that authenticated identity may do inside Dataverse — is governed separately by Dataverse security roles assigned to the user or application user."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "hard",
         "q": "An Azure service accesses Dataverse using server-to-server (S2S), application-only authentication rather than acting on behalf of a signed-in user. What must be configured in Dataverse for this to work, and what does it not require?",
         "options": [
@@ -89869,7 +90078,7 @@ const EXAMS = {
         "explain": "For S2S (application-only) access, an Application User tied to the Entra ID app registration must be created in Dataverse, and — unlike the interactive/delegated pattern — S2S authentication doesn't require configuring Dataverse API delegated permissions on the app registration."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "medium",
         "q": "An integration service account needs to create Dataverse records that show a specific end user as the actual originator of the action, for auditing, even though the service account technically executes the Web API call. Which header and field pairing supports this?",
         "options": [
@@ -89882,7 +90091,7 @@ const EXAMS = {
         "explain": "Supplying a CallerObjectId header (the Entra ID object ID of the user to impersonate) lets the request run in that user's context; querying the resulting record's createdonbehalfby value (alongside createdby) reveals which user actually performed the operation via impersonation."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "easy",
         "q": "When configuring a custom connector's security, which authentication scheme requires the connection to always use HTTPS, since the user name and password are sent with every request?",
         "options": [
@@ -89895,7 +90104,7 @@ const EXAMS = {
         "explain": "Basic authentication sends the user's credentials on every request, so Microsoft's guidance is that it must always be used over secure HTTPS to avoid transmitting unencrypted credentials."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Develop integrations",
         "difficulty": "medium",
         "q": "A custom connector wraps an Azure Function that expects its key as a 'code' query string parameter, matching the Azure Functions default template. Which custom connector authentication type, and which configuration, fits this scenario?",
         "options": [
@@ -89908,7 +90117,7 @@ const EXAMS = {
         "explain": "API Key authentication lets you define the parameter name (matching the API's expected name, such as code, for the default Azure Functions template) and choose whether it's sent in the header or the query string — Query, in this case, to match the function's expected ?code= parameter."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Develop integrations",
         "difficulty": "medium",
         "q": "Which custom connector authentication scheme is documented as available only for online connectors, never for on-premises data gateway connections?",
         "options": [
@@ -89921,7 +90130,7 @@ const EXAMS = {
         "explain": "OAuth 2.0 authentication is documented as available only for online connectors; Windows authentication, by contrast, is available only for connections that go through an on-premises data gateway."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Develop integrations",
         "difficulty": "medium",
         "type": "multi",
         "q": "Which two custom connector authentication schemes are explicitly recommended to be used only over HTTPS, since credentials or keys travel with the request? (Select two.)",
@@ -89938,7 +90147,7 @@ const EXAMS = {
         "explain": "Both Basic authentication (user name and password) and API Key authentication (a key value) transmit sensitive values with each request, so Microsoft's guidance recommends using both only over HTTPS to avoid sending them unencrypted."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Develop integrations",
         "difficulty": "hard",
         "q": "A team builds a custom connector directly against Azure API Management (APIM), creating a dependency where any APIM change requires the connector to be updated. What is the documented advantage of instead building the connector from an OpenAPI document?",
         "options": [
@@ -89951,7 +90160,7 @@ const EXAMS = {
         "explain": "An OpenAPI document specifies the contract of the API's surface area independent of implementation details, so the connector doesn't need to know where the API is hosted or whether it's running; this removes the dependency on Azure API Management and increases development agility, though APIM does offer centralized control, an extra security layer, and usage control that a plain OpenAPI-based connector doesn't."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Develop integrations",
         "difficulty": "hard",
         "q": "A custom connector needs its host URL determined at runtime — for example, an Azure Key Vault-style scenario where each user supplies only their vault name and the rest of the URL is static. Which custom connector policy template is designed for this?",
         "options": [
@@ -89964,7 +90173,7 @@ const EXAMS = {
         "explain": "The Set host URL policy template lets you replace the full host URL with one built dynamically, for example combining a static domain suffix with a connection parameter the user supplies (like a vault name), rather than using a single statically configured host URL for every connection."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Develop integrations",
         "difficulty": "medium",
         "q": "Two custom connector actions, List Invoices and List Big Invoices, both need to call the same underlying REST endpoint (/ListInvoices) but with different default parameter values, so they can't share one path definition in the connector. Which policy template solves this?",
         "options": [
@@ -89977,7 +90186,7 @@ const EXAMS = {
         "explain": "The Route request policy template lets an action's own path (like a made-up /ListBigInvoices, which doesn't exist on the real API) be routed to a different actual path (/ListInvoices) at runtime, solving the conflict of two actions that would otherwise need to point at the identical path."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Develop integrations",
         "difficulty": "hard",
         "q": "A custom connector's OAuth 2.0 authentication settings aren't exposed for direct editing in the online Swagger editor the way its OpenAPI-defined API Key and Basic authentication settings are. What tool does Microsoft document for scripting changes to these extended connector properties?",
         "options": [
@@ -89990,7 +90199,7 @@ const EXAMS = {
         "explain": "Authentication schemes beyond API Key and Basic (which are part of the OpenAPI specification) are stored as extended properties of the connector and aren't directly editable online; the paconn CLI tool is documented as the way to script and automate changes to a connector's deployment, including these extended properties."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "easy",
         "q": "In Azure Functions, what is the maximum number of triggers a single function may have?",
         "options": [
@@ -90003,7 +90212,7 @@ const EXAMS = {
         "explain": "A trigger defines how a function is invoked and a function must have exactly one trigger; bindings (input and/or output), by contrast, are optional and a function can have zero, one, or many of them."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "medium",
         "q": "A scheduled Azure Function needs to run nightly to read Blob Storage and write a document to Azure Cosmos DB, entirely on a fixed schedule with no external event. Which trigger type fits this scenario?",
         "options": [
@@ -90016,7 +90225,7 @@ const EXAMS = {
         "explain": "A scheduled job is a documented example of a Timer-triggered function, commonly combined with a Blob Storage input binding and an Azure Cosmos DB output binding, matching the scenario of a nightly scheduled read-and-write job."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "medium",
         "q": "An Azure Function must run immediately whenever a new image lands in Blob Storage, rather than on a fixed schedule. Which trigger type is documented for this kind of event-driven scenario?",
         "options": [
@@ -90029,7 +90238,7 @@ const EXAMS = {
         "explain": "An Event Grid trigger is documented for scenarios such as reacting the moment an image lands in Blob Storage, in contrast to a Timer trigger, which runs on a fixed schedule rather than in response to an event."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "hard",
         "q": "A workload run from a custom connector or flow needs to execute for well beyond the limits of a normal request/response Azure Function call, with reliable state, checkpointing, and automatic retry across a long-running multi-step process. What should the developer build?",
         "options": [
@@ -90042,7 +90251,7 @@ const EXAMS = {
         "explain": "Durable Functions is an extension of Azure Functions purpose-built for stateful workflows in a serverless environment: its runtime manages state, checkpoints, retries, and recovery so orchestrator and activity functions can reliably run long-running processes."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "hard",
         "q": "A Dataverse plug-in needs to retrieve a secret from Azure Key Vault without the developer having to store or manage any credentials for that connection inside the plug-in. What Power Platform capability is designed for exactly this?",
         "options": [
@@ -90055,7 +90264,7 @@ const EXAMS = {
         "explain": "Power Platform managed identity relies on federated identity credentials (FIC) configured on a user-assigned managed identity or app registration, letting enterprises securely connect Dataverse plug-ins to Azure resources that support managed identity — such as retrieving secrets from Azure Key Vault — without managing credentials."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "medium",
         "q": "A Dataverse trigger on the Power Automate connector is set to fire When a row is added, modified or deleted, scoped to a table where rows can be owned by a user or a team. A maker wants the flow to fire only for rows owned by anyone in their own business unit, including child business units. Which scope setting should they choose?",
         "options": [
@@ -90068,7 +90277,7 @@ const EXAMS = {
         "explain": "The Parent: Child Business Unit scope includes users in any child business units when determining whose row-owning actions can trigger the flow, unlike plain Business Unit scope, which only considers users directly in that one business unit."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "medium",
         "q": "A flow's Dataverse trigger uses the Select columns option set to 'firstname,lastname' so it only fires when those columns change. Which of the following column types is documented as unsupported in this filter?",
         "options": [
@@ -90081,7 +90290,7 @@ const EXAMS = {
         "explain": "Lookup columns aren't supported in the Select columns trigger filter — changes to a lookup column won't trigger the flow even if listed there; only scalar column types such as text, number, date/time, and choice columns are supported."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "hard",
         "q": "A flow triggers on 'row modified' for the Project table and, later in the flow, updates that same row's Status column. To avoid an infinite trigger loop, what guidance applies to the trigger's Select columns setting?",
         "options": [
@@ -90094,7 +90303,7 @@ const EXAMS = {
         "explain": "Because the trigger fires again whenever a listed column changes, if a flow's own update action changes a column that's also listed in Select columns, the flow can re-trigger itself; guidance is to exclude any columns the flow itself updates from that Select columns list."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "medium",
         "q": "A maker wants a Dataverse trigger to only fire for Project rows that are over budget, and considers either an OData Filter rows expression on the trigger or a Condition action as the first step inside the flow. Which approach is described as more efficient?",
         "options": [
@@ -90107,7 +90316,7 @@ const EXAMS = {
         "explain": "Using the Filter rows OData expression directly on the trigger (for example, contoso_amountoverbudget gt 10000) is described as more efficient than adding an equivalent Condition action inside the flow, since the flow never even runs for rows that don't match the filter."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "hard",
         "q": "A flow needs to pause until a specific future UTC timestamp before continuing, potentially for a very long duration (weeks or more). Comparing the Dataverse trigger's Delay until property to a standard Delay until action mid-flow, what is the key advantage of the trigger property?",
         "options": [
@@ -90120,7 +90329,7 @@ const EXAMS = {
         "explain": "The Dataverse trigger's Delay until property is documented as never expiring, which specifically allows the flow run to wait for very long periods — a key benefit over a standard Delay action mid-flow, which is subject to normal time-based limits."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "hard",
         "q": "A flow is configured with Run as set to Modifying user, and its Dataverse Add a new row action has Use invoker's connection enabled on the Settings tab. What privilege must the flow owner hold for this to work, and what is the effect?",
         "options": [
@@ -90133,7 +90342,7 @@ const EXAMS = {
         "explain": "Running Dataverse actions as a different user (via Run as plus Use invoker's connection) requires the flow owner to hold the Act on Behalf of Another User Dataverse privilege — included in the Delegate security role by default — and results in the action's records reflecting the actual triggering/modifying user instead of the flow owner."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "medium",
         "q": "A Power Automate expression needs to format the number 12.5 as US currency for display. Which expression accomplishes this?",
         "options": [
@@ -90146,7 +90355,7 @@ const EXAMS = {
         "explain": "The formatNumber function converts a number into a string using a specified numeric format string; 'C' represents the currency format, so formatNumber(12.5,'C') renders it as currency (optionally with a locale parameter for a different currency symbol)."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "medium",
         "q": "A flow step receives several values, some of which might be null, and needs the first non-null value among them. Which Power Automate function is designed for exactly this?",
         "options": [
@@ -90159,7 +90368,7 @@ const EXAMS = {
         "explain": "The coalesce function returns the first non-null value from a specified set of values, for example coalesce(null, 'Power Automate', 'Power Apps') returns 'Power Automate' — useful when you have several possible sources and want the first one that's actually populated."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "hard",
         "q": "An expression needs to add three numbers together: 12, 13, and 15. Because Power Automate's add function only accepts two arguments and (unlike some formula languages) doesn't support subtraction by adding a negative number, how should the expression be written?",
         "options": [
@@ -90172,7 +90381,7 @@ const EXAMS = {
         "explain": "Power Automate's add function takes two arguments, so combining three or more values requires nesting: add(add(12,13),15) evaluates the inner add first (25) and then adds 15, returning 40 — a common pattern of nesting functions to build up more complex expressions."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "medium",
         "q": "An action in a flow fails intermittently, and the team wants a separate 'Send failure email' step to run only when that specific action fails, is skipped, or times out — not when it succeeds. Which flow feature should configure this?",
         "options": [
@@ -90185,7 +90394,7 @@ const EXAMS = {
         "explain": "Configure run after lets you define which outcome(s) of a prior step cause a given step to execute; the default is is successful, but selecting has failed, is skipped, and has timed out on a notification step turns it into a targeted error-handling branch tied to that specific action."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "medium",
         "q": "A flow step passes a customer's password to an HTTP action as part of a legacy migration process. The team is worried the value will be visible to anyone who can view the flow's run history. What Power Automate action setting addresses this directly?",
         "options": [
@@ -90198,7 +90407,7 @@ const EXAMS = {
         "explain": "Turning on the Secure Inputs and Secure Outputs toggles on an action's Settings ensures that sensitive information isn't visible in the flow's run history or audit logs, directly addressing the concern about a password value being exposed to anyone with access to the flow's history."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "medium",
         "q": "Rather than hardcoding an API key into a flow's HTTP action, a developer wants to retrieve it dynamically at runtime from a centrally managed, access-controlled store, without exposing the value in the flow's design. What should they use?",
         "options": [
@@ -90211,7 +90420,7 @@ const EXAMS = {
         "explain": "Azure Key Vault provides centralized, encrypted secret storage; Power Automate flows can retrieve secrets dynamically at runtime via the Azure Key Vault connector or environment variables referencing Key Vault secrets, with access controlled through Microsoft Entra ID role-based access control, avoiding hardcoded values in the flow design."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "medium",
         "q": "A team wants to break a flow with hundreds of steps into smaller, reusable pieces that can also be called from multiple parent flows. What trigger must the reusable child flow use, and where must both flows live for the Run a Child Flow action to see it?",
         "options": [
@@ -90224,7 +90433,7 @@ const EXAMS = {
         "explain": "A child flow must use the Manually trigger a flow trigger, and the Run a Child Flow action only lists child flows that the maker has access to and that are located in a solution, so both the parent and child flow need to live together in a solution."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "hard",
         "q": "A parent flow calls a child flow that itself uses a premium connector's connection. The maker configures the child flow's Run only users settings but leaves the connection as 'Provided by run-only user.' What happens?",
         "options": [
@@ -90237,7 +90446,7 @@ const EXAMS = {
         "explain": "Connections can't currently be passed from a parent flow into a child flow; if a child flow's connections are left as 'Provided by run-only user' instead of being embedded (by selecting 'Use this connection' for each one on the child flow's properties page), the flow reports an error stating it can't be used as a child workflow because child workflows only support embedded connections."
       },
       {
-        "domain": "Extend the platform",
+        "domain": "Extend Microsoft Power Platform",
         "difficulty": "medium",
         "q": "A team exposes a flow with the When an HTTP request is received trigger as a webhook endpoint and wants to ensure only specific authorized principals in their tenant can invoke it, rather than anyone who discovers the URL. What should they configure?",
         "options": [
@@ -90512,6 +90721,318 @@ const EXAMS = {
         ],
         "correct": 1,
         "explain": "Service endpoint steps for Azure-aware integrations (webhooks, Azure Service Bus, Azure Event Hubs) are registered using the Plug-in Registration Tool, the same tool used to register standard plug-in steps against the event pipeline."
+      },
+      {
+        "domain": "Extend the user experience",
+        "difficulty": "easy",
+        "q": "Which command adds a Dataverse table as a data source to a Power Apps code app?",
+        "options": [
+          "pa app init --dataverse <name>",
+          "pa app add data-source --connector dataverse --table <name>",
+          "pa connection list --table <name>",
+          "pa app push --table <name>"
+        ],
+        "correct": 1,
+        "explain": "From the project root, pa app add data-source adds the table and generates the service code."
+      },
+      {
+        "domain": "Extend the user experience",
+        "difficulty": "medium",
+        "q": "After you add Dataverse as a data source to a code app, where do the generated functions appear?",
+        "options": [
+          "src/generated/services",
+          "dist/dataverse",
+          "node_modules/@microsoft/power-apps",
+          "public/connectors"
+        ],
+        "correct": 0,
+        "explain": "When you add Dataverse with the Power Apps CLI, the generated functions are placed under src/generated/services."
+      },
+      {
+        "domain": "Extend the user experience",
+        "difficulty": "easy",
+        "q": "Which command runs a code app locally during development?",
+        "options": [
+          "pa app share",
+          "pa auth status",
+          "pa app push",
+          "pa app run"
+        ],
+        "correct": 3,
+        "explain": "pa app run starts the Power Apps local host. You then open the URL labeled Local Play."
+      },
+      {
+        "domain": "Extend the user experience",
+        "difficulty": "medium",
+        "q": "What's the correct way to publish a new version of a code app?",
+        "options": [
+          "Run pa app run, and then pa auth login",
+          "Run npm run build, and then pa app push",
+          "Run pa app push, and then npm run build",
+          "Run pa app init, and then pa app share"
+        ],
+        "correct": 1,
+        "explain": "Build the app with npm run build, then use pa app push to publish the compiled app to Power Apps."
+      },
+      {
+        "domain": "Extend the user experience",
+        "difficulty": "easy",
+        "q": "Which command adds a Power Automate flow to a code app?",
+        "options": [
+          "pa app add flow",
+          "pa app list-flows",
+          "pa app add data-source",
+          "pa app find-dataverse-api"
+        ],
+        "correct": 0,
+        "explain": "pa app add flow adds a flow to the code app. pa app list-flows only lists solution-aware flows in the environment."
+      },
+      {
+        "domain": "Extend the user experience",
+        "difficulty": "medium",
+        "q": "A code app must call a Dataverse custom action. Which command adds it to the app?",
+        "options": [
+          "pa connection create",
+          "pa app add dataverse-api",
+          "pa app set-setting",
+          "pa app add flow"
+        ],
+        "correct": 1,
+        "explain": "pa app add dataverse-api adds a Dataverse action or function. pa app find-dataverse-api finds what's available."
+      },
+      {
+        "domain": "Extend the user experience",
+        "difficulty": "medium",
+        "q": "Which command lets you grant other users access to a code app?",
+        "options": [
+          "pa app push",
+          "pa auth switch",
+          "pa app get-settings",
+          "pa app share"
+        ],
+        "correct": 3,
+        "explain": "pa app share shares the code app with users or service principals."
+      },
+      {
+        "domain": "Extend the user experience",
+        "difficulty": "hard",
+        "q": "Which Dataverse capability is listed as not yet supported in code apps?",
+        "options": [
+          "Retrieving option set labels",
+          "Filter delegation",
+          "FetchXML",
+          "Paging"
+        ],
+        "correct": 2,
+        "explain": "FetchXML, polymorphic lookups, schema definition CRUD, and alternate keys aren't yet supported."
+      },
+      {
+        "domain": "Extend the user experience",
+        "difficulty": "medium",
+        "q": "Which queries can a code app delegate to Dataverse?",
+        "options": [
+          "Union, Distinct, and Sum",
+          "Filter, Sort, and Top",
+          "Only Top",
+          "GroupBy, Join, and Pivot"
+        ],
+        "correct": 1,
+        "explain": "The Power Apps client library supports delegation for Filter, Sort, and Top queries."
+      },
+      {
+        "domain": "Extend the user experience",
+        "difficulty": "hard",
+        "q": "For code apps, a CSP directive defaults to 'self' and you add https://contoso.com. What's the resulting behavior?",
+        "options": [
+          "Your value is appended to the default",
+          "The default is kept and your value is ignored",
+          "The directive is turned off",
+          "Your value replaces the default"
+        ],
+        "correct": 0,
+        "explain": "Custom values are appended to the default. They only replace it when the default is 'none'."
+      },
+      {
+        "domain": "Extend the user experience",
+        "difficulty": "hard",
+        "q": "The worker-src directive for code apps defaults to 'none'. What happens when you supply a custom value?",
+        "options": [
+          "Your value replaces the default",
+          "Your value is appended to 'none'",
+          "Your value is ignored",
+          "The app stops loading workers entirely"
+        ],
+        "correct": 0,
+        "explain": "When a directive's default value is 'none', your custom values replace it."
+      },
+      {
+        "domain": "Extend the user experience",
+        "difficulty": "medium",
+        "q": "Who can configure Content Security Policy settings for code apps?",
+        "options": [
+          "Any user the app is shared with",
+          "The app's end users, per session",
+          "An administrator of the environment",
+          "Only Microsoft Support"
+        ],
+        "correct": 2,
+        "explain": "You must be an administrator of the environment to configure CSP settings."
+      },
+      {
+        "domain": "Extend the user experience",
+        "difficulty": "hard",
+        "q": "You update code app CSP directives through the REST API by sending only one changed directive. What's the risk?",
+        "options": [
+          "The change applies only to canvas apps",
+          "The request succeeds but changes nothing",
+          "The change applies only after 30 days",
+          "The update replaces the entire directive collection"
+        ],
+        "correct": 3,
+        "explain": "Updating directives replaces the whole collection, so first retrieve the existing directives and update them in place."
+      },
+      {
+        "domain": "Extend the user experience",
+        "difficulty": "medium",
+        "q": "A developer's locally running code app fails to connect in Microsoft Edge. Which restriction is a likely cause?",
+        "options": [
+          "The browser blocks requests from public origins to local endpoints",
+          "Code apps can't run on a developer's machine",
+          "Local Play needs a canvas app license",
+          "Edge doesn't support TypeScript"
+        ],
+        "correct": 0,
+        "explain": "Chrome and Edge block public origins from reaching local endpoints by default, so you might need to grant permission."
+      },
+      {
+        "domain": "Extend Microsoft Power Platform",
+        "difficulty": "easy",
+        "q": "Which package do you install to use the Dataverse SDK for Python?",
+        "options": [
+          "dataverse-webapi-tools",
+          "pyxrm-client",
+          "azure-dataverse-core",
+          "PowerPlatform-Dataverse-Client"
+        ],
+        "correct": 3,
+        "explain": "The SDK is published on PyPI as PowerPlatform-Dataverse-Client."
+      },
+      {
+        "domain": "Extend Microsoft Power Platform",
+        "difficulty": "medium",
+        "q": "What does the Dataverse SDK for Python client require for authentication?",
+        "options": [
+          "A SAS token",
+          "A username and password in the URL",
+          "An Azure Identity TokenCredential implementation",
+          "A plug-in assembly key"
+        ],
+        "correct": 2,
+        "explain": "The client requires any Azure Identity TokenCredential implementation for OAuth authentication with Dataverse."
+      },
+      {
+        "domain": "Extend Microsoft Power Platform",
+        "difficulty": "medium",
+        "q": "Which Dataverse SDK for Python namespace provides pandas DataFrame support?",
+        "options": [
+          "client.dataframe",
+          "client.query",
+          "client.files",
+          "client.tables"
+        ],
+        "correct": 0,
+        "explain": "client.dataframe provides pandas DataFrame support. client.tables manages table and column metadata."
+      },
+      {
+        "domain": "Extend Microsoft Power Platform",
+        "difficulty": "medium",
+        "q": "A plug-in must read a secret from Azure Key Vault without storing credentials. What should you use?",
+        "options": [
+          "A hard-coded client secret",
+          "A secure configuration string",
+          "Power Platform managed identity",
+          "An environment variable holding the key"
+        ],
+        "correct": 2,
+        "explain": "Power Platform managed identity connects plug-ins to Azure resources that support managed identity, with no credentials to manage."
+      },
+      {
+        "domain": "Extend Microsoft Power Platform",
+        "difficulty": "hard",
+        "q": "What does Power Platform managed identity for plug-ins rely on?",
+        "options": [
+          "Basic authentication over HTTPS",
+          "A shared key stored in Dataverse",
+          "A certificate uploaded to each plug-in step",
+          "Federated identity credentials on a managed identity or app registration"
+        ],
+        "correct": 3,
+        "explain": "It relies on workload identities based on federated identity credentials (FIC), configured on a user-assigned managed identity or app registration."
+      },
+      {
+        "domain": "Extend Microsoft Power Platform",
+        "difficulty": "hard",
+        "q": "Which Power Platform CLI command group links a managed identity to a Dataverse component such as a plug-in assembly?",
+        "options": [
+          "pac pipeline",
+          "pac connector",
+          "pac solution",
+          "pac managed-identity"
+        ],
+        "correct": 3,
+        "explain": "pac managed-identity create links a managed identity to a Dataverse component, by component type and ID."
+      },
+      {
+        "domain": "Build Microsoft Power Platform solutions",
+        "difficulty": "medium",
+        "q": "What's the URL format of the Dataverse MCP remote server?",
+        "options": [
+          "https://mcp.dynamics.com/{dataverseOrgName}",
+          "https://{dataverseOrgName}.powerapps.com/sse",
+          "https://{dataverseOrgName}.crm.dynamics.com/api/mcp",
+          "https://{dataverseOrgName}.api.powerplatform.com/mcp/v1"
+        ],
+        "correct": 2,
+        "explain": "The Dataverse MCP server URL follows the format https://{dataverseOrgName}.crm.dynamics.com/api/mcp."
+      },
+      {
+        "domain": "Build Microsoft Power Platform solutions",
+        "difficulty": "medium",
+        "q": "When is an MCP server a better fit than adding an API directly to each Copilot Studio agent?",
+        "options": [
+          "When you need to add extra context on when to invoke each tool",
+          "When one agent needs one simple call",
+          "When many agents need centrally managed tools they can discover automatically",
+          "When a topic must call the tool directly"
+        ],
+        "correct": 2,
+        "explain": "MCP gives a standardized, centrally managed way to expose tools to multiple agents, without per-client configuration."
+      },
+      {
+        "domain": "Build Microsoft Power Platform solutions",
+        "difficulty": "hard",
+        "q": "You're designing an agent with MCP tools in Copilot Studio. Which limitation should the design account for?",
+        "options": [
+          "MCP servers can't expose Dataverse data",
+          "An agent can only use one MCP tool",
+          "Topics can't call MCP servers directly",
+          "MCP tools work only in canvas apps"
+        ],
+        "correct": 2,
+        "explain": "Documented limitations are that topics can't call MCP servers directly, and you can't enrich tool descriptions with more context."
+      },
+      {
+        "domain": "Build Microsoft Power Platform solutions",
+        "difficulty": "medium",
+        "q": "Which data sources can a generative page for a model-driven app use?",
+        "options": [
+          "Only local CSV files",
+          "Only Dataverse tables",
+          "Only SharePoint lists",
+          "Dataverse tables, Power Platform connectors, and Dataverse custom APIs"
+        ],
+        "correct": 3,
+        "explain": "Generative pages can use Dataverse tables, plus Power Platform connectors and Dataverse custom APIs in preview."
       }
     ]
   },

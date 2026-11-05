@@ -3,6 +3,7 @@
 // Writes two artifacts for the GitHub Actions workflow to act on:
 //   report/patch-summary.md  – human-readable body for the auto-PR (empty file if no patches)
 //   report/issues.json       – array of {title, body} for structural findings (empty array if none)
+//   report/deferred.json     – array of strings for outline changes not in effect yet
 // Exit code is always 0 (a "nothing to do" run is a success, not a failure) —
 // the workflow decides what to do based on the artifact contents, not the exit code.
 // Scraper/parse failures are reported as issues, not thrown, so one broken
@@ -22,6 +23,23 @@ const execFileAsync = promisify(execFile);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_JS_PATH = path.join(__dirname, '..', '..', 'data.js');
 const REPORT_DIR = path.join(__dirname, 'report');
+const POSTER_STATE_PATH = path.join(__dirname, 'poster-state.json');
+
+// Remembers the last poster fingerprint. The first run only records a baseline.
+async function checkPosterEdition(textSha256, allIssues, allPatchLines) {
+  const stored = await fs.readFile(POSTER_STATE_PATH, 'utf8').then(JSON.parse).catch(() => null);
+  if (stored?.textSha256 === textSha256) return;
+  await fs.writeFile(POSTER_STATE_PATH, `${JSON.stringify({ textSha256 }, null, 2)}\n`);
+  if (!stored) {
+    allPatchLines.push('- Recorded a baseline fingerprint of the current poster');
+    return;
+  }
+  allPatchLines.push('- Updated the stored poster fingerprint');
+  allIssues.push({
+    title: `Freshness check: new poster edition (${textSha256.slice(0, 8)})`,
+    body: `The text of the official poster changed since the last run, even if no exam code did.\n\nCompare it with \`CATALOG\` by hand: titles, categories, tiers and the retirement notes in \`check-poster.mjs\`, then update the "last updated" note at the top of \`data.js\`.`
+  });
+}
 
 function loadData(dataJsPath, source) {
   // Fresh require each time (no caching across old/new reads).
@@ -46,6 +64,7 @@ async function main() {
 
   const allPatchLines = [];
   const allIssues = [];
+  const allDeferred = [];
 
   // ---- Problem A: poster membership ----
   const initialSource = await fs.readFile(DATA_JS_PATH, 'utf8');
@@ -54,6 +73,7 @@ async function main() {
   if (posterResult.error) {
     allIssues.push({ title: 'Freshness check: could not read the poster PDF', body: posterResult.error });
   } else {
+    await checkPosterEdition(posterResult.textSha256, allIssues, allPatchLines);
     if (posterResult.added.length) {
       allIssues.push({
         title: `Freshness check: possible new poster credential(s): ${posterResult.added.join(', ')}`,
@@ -89,7 +109,8 @@ async function main() {
     const stored = EXAMS[code];
 
     const live = await scrapeExam(page, stored);
-    const { patches, issues, unverified } = diffExam(stored, live);
+    const { patches, issues, unverified, deferred } = diffExam(stored, live);
+    allDeferred.push(...deferred);
 
     if (patches.length) {
       try {
@@ -126,12 +147,13 @@ async function main() {
   if (allPatchLines.length) {
     await fs.writeFile(
       path.join(REPORT_DIR, 'patch-summary.md'),
-      `## Freshness check — auto-patched fields\n\nThese are mechanical field updates from Microsoft's live pages (level/beta status, or a weight percentage on an unchanged domain). Nothing structural — review and merge if they look right.\n\n${allPatchLines.join('\n')}\n`
+      `## Freshness check — auto-patched fields\n\nThese are mechanical field updates from Microsoft's live pages (level/beta status, or a weight percentage on an unchanged domain). Nothing structural, so this PR merges automatically.\n\n${allPatchLines.join('\n')}\n`
     );
   }
   await fs.writeFile(path.join(REPORT_DIR, 'issues.json'), JSON.stringify(allIssues, null, 2));
+  await fs.writeFile(path.join(REPORT_DIR, 'deferred.json'), JSON.stringify(allDeferred, null, 2));
 
-  console.log(`Done. ${allPatchLines.length} field patch(es), ${allIssues.length} issue(s) to file.`);
+  console.log(`Done. ${allPatchLines.length} field patch(es), ${allIssues.length} issue(s) to file, ${allDeferred.length} deferred.`);
 }
 
 main().catch(e => {

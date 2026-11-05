@@ -34,6 +34,47 @@ function normalizeText(s) {
     .trim();
 }
 
+// Study guides can publish a future outline early ("Skills measured as of
+// November 16, 2026"). Returns that date, or null when the guide has none.
+export function extractEffectiveDate(studyGuideText) {
+  const m = studyGuideText.match(/Skills measured as of\s+([A-Z][a-z]+ \d{1,2}, \d{4})/);
+  if (!m) return null;
+  const date = new Date(`${m[1]} UTC`);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+// Learn pages can stall on background requests, so wait for the content
+// itself rather than network idle, and retry before reporting a failure.
+async function loadMainText(page, url, attempts = 3) {
+  let lastError;
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+      const main = page.locator('main').first();
+      await main.waitFor({ timeout: 15000 });
+      return await main.innerText();
+    } catch (e) {
+      lastError = e;
+      if (attempt < attempts) await new Promise(r => setTimeout(r, attempt * 5000));
+    }
+  }
+  throw lastError;
+}
+
+// A page this short didn't render properly, so its missing "beta" wording
+// proves nothing.
+const MIN_PAGE_TEXT_LENGTH = 500;
+
+// Midpoints of a real outline add up to roughly 100. Anything far off means
+// the scrape misread the page, so it must not become an auto-merged patch.
+function weightsLookPlausible(domains) {
+  const total = domains.reduce((sum, d) => {
+    const m = d.weight.match(/(\d+)\D+(\d+)/);
+    return sum + (m ? (Number(m[1]) + Number(m[2])) / 2 : 0);
+  }, 0);
+  return total >= 85 && total <= 115;
+}
+
 export function extractDomains(studyGuideText) {
   const idx = studyGuideText.indexOf('Skills at a glance');
   if (idx === -1) return null;
@@ -70,17 +111,16 @@ export function extractDomains(studyGuideText) {
 }
 
 export async function scrapeExam(page, exam) {
-  const result = { code: exam.code, level: null, beta: null, domains: null, error: null };
+  const result = { code: exam.code, level: null, beta: null, domains: null, effectiveDate: null, error: null };
   try {
-    await page.goto(exam.certUrl, { waitUntil: 'networkidle', timeout: 30000 });
-    const certText = await page.locator('main').first().innerText();
+    const certText = await loadMainText(page, exam.certUrl);
     const titleText = certText.slice(0, 300);
     result.level = extractLevel(certText);
-    result.beta = extractBeta(certText, titleText);
+    if (certText.length >= MIN_PAGE_TEXT_LENGTH) result.beta = extractBeta(certText, titleText);
 
-    await page.goto(exam.studyGuideUrl, { waitUntil: 'networkidle', timeout: 30000 });
-    const guideText = await page.locator('main').first().innerText();
+    const guideText = await loadMainText(page, exam.studyGuideUrl);
     result.domains = extractDomains(guideText);
+    result.effectiveDate = extractEffectiveDate(guideText);
   } catch (e) {
     result.error = e.message;
   }
@@ -91,14 +131,16 @@ export async function scrapeExam(page, exam) {
 //   patches   – confident, mechanical field updates (safe to auto-apply)
 //   issues    – structural changes that need human/LLM judgment
 //   unverified – fields the scraper couldn't confirm this run (informational only)
-export function diffExam(stored, live) {
+//   deferred  – outline changes that aren't in effect yet (reported, not applied)
+export function diffExam(stored, live, now = new Date()) {
   const patches = [];
   const issues = [];
   const unverified = [];
+  const deferred = [];
 
   if (live.error) {
     issues.push(`Could not load live pages for ${stored.code}: ${live.error}`);
-    return { patches, issues, unverified };
+    return { patches, issues, unverified, deferred };
   }
 
   if (live.level === null) unverified.push('level');
@@ -106,13 +148,16 @@ export function diffExam(stored, live) {
     patches.push({ field: 'level', from: stored.level, to: live.level });
   }
 
-  if (live.beta !== stored.beta) {
+  if (live.beta === null) unverified.push('beta');
+  else if (live.beta !== stored.beta) {
     patches.push({ field: 'beta', from: stored.beta, to: live.beta });
   }
 
   if (live.domains === null) {
     unverified.push('domains');
   } else {
+    const domainPatches = [];
+    const domainIssues = [];
     const storedNames = stored.domains.map(d => normalizeText(d.name));
     const liveNames = live.domains.map(d => normalizeText(d.name));
     const sameNamesSameOrder = storedNames.length === liveNames.length
@@ -127,20 +172,34 @@ export function diffExam(stored, live) {
       // trivial drift this is supposed to catch and patch, not paper over.
       live.domains.forEach((d, i) => {
         if (d.weight !== stored.domains[i].weight) {
-          patches.push({ field: `domains[${i}].weight`, domainName: stored.domains[i].name, from: stored.domains[i].weight, to: d.weight });
+          domainPatches.push({ field: `domains[${i}].weight`, domainName: stored.domains[i].name, from: stored.domains[i].weight, to: d.weight });
         }
       });
     } else {
       const added = liveNames.filter(n => !storedNames.includes(n));
       const removed = storedNames.filter(n => !liveNames.includes(n));
-      issues.push(
+      domainIssues.push(
         `${stored.code}: domain structure changed.\n` +
         (added.length ? `  Added on live page: ${added.join('; ')}\n` : '') +
         (removed.length ? `  No longer on live page: ${removed.join('; ')}\n` : '') +
         `  This needs real content work (new/removed domains mean the question pool coverage is out of date), not just a data patch.`
       );
     }
+
+    if (domainPatches.length && !weightsLookPlausible(live.domains)) {
+      domainPatches.length = 0;
+      domainIssues.push(`${stored.code}: scraped domain weights don't add up to about 100%, so they were not applied. Check the study guide by hand.`);
+    }
+
+    const changed = domainPatches.length || domainIssues.length;
+    if (changed && live.effectiveDate && live.effectiveDate > now) {
+      const date = live.effectiveDate.toISOString().slice(0, 10);
+      deferred.push(`${stored.code}: new skills outline takes effect on ${date}. It will be picked up by the first run after that date.`);
+    } else {
+      patches.push(...domainPatches);
+      issues.push(...domainIssues);
+    }
   }
 
-  return { patches, issues, unverified };
+  return { patches, issues, unverified, deferred };
 }

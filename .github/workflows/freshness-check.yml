@@ -2,10 +2,12 @@ name: Freshness check
 
 # Checks the official poster + every built exam's live Microsoft Learn pages
 # for drift against data.js. Mechanical field changes (level, beta status, a
-# weight percentage on an unchanged domain) get auto-patched and opened as a
-# PR. Anything structural (a domain added/removed, a brand-new poster
+# weight percentage on an unchanged domain) get auto-patched, merged and
+# deployed. Outline changes dated in the future wait until they take effect.
+# Anything structural (a domain added/removed, a brand-new poster
 # credential, a page the scraper couldn't parse) gets filed as an issue
-# instead — those need real content judgment, not just a data patch.
+# instead — those need real content judgment, not just a data patch. Each
+# full run ends with a digest issue assigned to the repo owner.
 # See scripts/freshness-check/ for the implementation.
 
 on:
@@ -19,6 +21,7 @@ on:
         default: ""
 
 permissions:
+  actions: write
   contents: write
   pull-requests: write
   issues: write
@@ -53,6 +56,7 @@ jobs:
         run: node run.mjs
 
       - name: Open PR for auto-patched fields
+        id: patch_pr
         if: hashFiles('scripts/freshness-check/report/patch-summary.md') != ''
         uses: peter-evans/create-pull-request@v6
         with:
@@ -61,12 +65,30 @@ jobs:
           body-path: scripts/freshness-check/report/patch-summary.md
           branch: freshness-check/auto-patch
           delete-branch: true
-          add-paths: data.js
+          add-paths: |
+            data.js
+            scripts/freshness-check/poster-state.json
 
-      - name: Open issues for structural findings
+      # A merge made with GITHUB_TOKEN doesn't fire the deploy workflow's push
+      # trigger, so the deploy has to be started explicitly.
+      - name: Merge and deploy auto-patched fields
+        id: merge
+        if: steps.patch_pr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ steps.patch_pr.outputs.pull-request-number }}
+        run: |
+          gh pr merge "$PR_NUMBER" --squash --delete-branch
+          gh workflow run azure-static-web-apps-agreeable-meadow-0a6181e03.yml --ref main
+
+      - name: Open issues and post the monthly digest
         if: always()
         working-directory: scripts/freshness-check
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+          FRESHNESS_ONLY: ${{ github.event.inputs.only }}
+          MERGE_OUTCOME: ${{ steps.merge.outcome }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: node create-issues.mjs
