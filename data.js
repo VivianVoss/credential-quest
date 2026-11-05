@@ -27557,7 +27557,7 @@ const EXAMS = {
         "q": "An order document can reference an unbounded, ever-growing number of shipment tracking events over its lifetime. What relationship type is this, and how should it typically be modeled?",
         "options": [
           "1:1; embed the events",
-          "1:Few; embed the events",
+          "1:Few; embed the events as an array inside the parent order document",
           "1:Many, unbounded; reference the events in separate documents",
           "Many:Many; use a synthetic partition key"
         ],
@@ -27572,7 +27572,7 @@ const EXAMS = {
           "Use a stored procedure to enforce the relationship at write time",
           "Store tags and products in the same logical partition only",
           "Reference tags from products (and optionally denormalize a subset of tag data for read efficiency)",
-          "Embed the full tag documents inside every product document"
+          "Embed the full tag documents inside every product document so that no separate tag lookup is needed on reads"
         ],
         "correct": 2,
         "explain": "Many:Many relationships are generally modeled by referencing between documents, sometimes combined with selective denormalization of frequently read fields."
@@ -27597,7 +27597,7 @@ const EXAMS = {
         "options": [
           "Recreate the entire container",
           "Enable strong consistency on the account",
-          "Referential integrity cannot be maintained in Cosmos DB",
+          "Referential integrity cannot be maintained in Cosmos DB, so denormalized category names simply stay out of date",
           "Use change feed on the productCategory container to propagate the update to the product container"
         ],
         "correct": 3,
@@ -27608,8 +27608,8 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What is a key benefit of storing multiple related entity types (for example, Product and ProductReview) in the same container?",
         "options": [
-          "It disables indexing for better write throughput",
-          "It is required because a Cosmos DB account can only have one container",
+          "It disables indexing on the shared container, which gives better write throughput when the entity types are stored side by side",
+          "It is required because a Cosmos DB account can only have one container, so every entity type must share that container whatever its partition key",
           "It allows related data to be retrieved together efficiently and can reduce cross-partition queries when the entities share a partition key",
           "It automatically enables multi-region writes"
         ],
@@ -27624,7 +27624,7 @@ const EXAMS = {
           "All items expire immediately",
           "TTL is disabled for the container; items will not expire even if an individual item specifies a TTL",
           "All items expire after 24 hours",
-          "TTL defaults to -1, meaning items live forever unless overridden per item"
+          "TTL defaults to -1, meaning items live forever unless an individual item overrides the default with its own TTL"
         ],
         "correct": 1,
         "explain": "If DefaultTimeToLive is not set on the container, TTL is off for the whole container, and per-item TTL values are ignored; setting it to -1 (not leaving it unset) is what enables items to live forever unless they specify their own TTL."
@@ -27686,7 +27686,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "A query does not include an equality filter on the partition key and therefore Azure Cosmos DB must send the query to every physical partition. What is this called, and what is its cost implication?",
         "options": [
-          "A point operation; it is the cheapest possible operation",
+          "A point operation; it is the cheapest possible operation, whichever physical partitions the query has to reach",
           "A synthetic query; it is free of charge",
           "A composite query; it requires a stored procedure",
           "A cross-partition (fan-out) query; it generally costs more RU than a single-partition query"
@@ -27727,7 +27727,7 @@ const EXAMS = {
         "options": [
           "Because partition keys are recalculated during the batch",
           "Because transactional batches are limited to read-only operations",
-          "Because the SDK requires it for serialization purposes only, with no server-side reason",
+          "Because the SDK requires it for client-side serialization purposes only, with no server-side reason behind the limit",
           "Because Azure Cosmos DB only supports multi-item ACID transactions within a single logical partition"
         ],
         "correct": 3,
@@ -27779,7 +27779,7 @@ const EXAMS = {
         "options": [
           "The consistency level only",
           "The stored procedures",
-          "The SDK connectivity mode",
+          "The SDK connectivity mode used by client applications",
           "The number of RU/s for the database or container"
         ],
         "correct": 3,
@@ -27791,7 +27791,7 @@ const EXAMS = {
         "q": "A team has many containers, each with unpredictable and bursty but generally low individual usage. Which throughput approach lets the containers share a single provisioned RU/s pool?",
         "options": [
           "Serverless mode only",
-          "Container-level dedicated throughput",
+          "Container-level dedicated throughput for each container",
           "The integrated cache",
           "Database-level (shared) provisioned throughput"
         ],
@@ -27816,7 +27816,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "When you add an additional read region to an Azure Cosmos DB account, what is the throughput and storage cost implication?",
         "options": [
-          "Only storage cost increases; throughput is shared globally at no extra cost",
+          "Only storage cost increases; provisioned throughput (RU/s) is shared globally across every added region at no extra cost",
           "Provisioned throughput (RU/s) and storage are both effectively replicated to and billed in each additional region",
           "There is no additional cost for extra regions",
           "Only throughput cost increases; storage is free in secondary regions"
@@ -27910,7 +27910,7 @@ const EXAMS = {
           "The client manages connections and caches internally; repeatedly creating clients wastes resources and hurts performance",
           "A new client is required for every operation for security reasons",
           "Singletons are required to use gateway mode",
-          "The SDK does not support creating more than one client per subscription"
+          "The SDK does not support creating more than one client per subscription, so a second instance in the same application fails at startup"
         ],
         "correct": 0,
         "explain": "CosmosClient instances manage connection pooling and internal caching; creating a new instance per operation is wasteful, so the SDK is designed to be used as a long-lived singleton."
@@ -27962,7 +27962,7 @@ const EXAMS = {
           "It is not a supported keyword at all",
           "It performs a self-join against arrays nested inside the same document",
           "It joins two different databases",
-          "It joins two different containers together"
+          "It joins two different containers together, matching items across them on a shared property"
         ],
         "correct": 1,
         "explain": "JOIN in the Cosmos DB SQL query language performs an intra-document self-join, most commonly used to flatten or filter on nested arrays within a single document."
@@ -28000,7 +28000,7 @@ const EXAMS = {
         "options": [
           "A unique key policy on both properties",
           "A composite index that includes both properties in the same order used by ORDER BY",
-          "A synthetic partition key on both properties",
+          "A synthetic partition key on both properties, concatenated in the same order used by ORDER BY",
           "A stored procedure"
         ],
         "correct": 1,
@@ -28024,7 +28024,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What is a point operation in Azure Cosmos DB for NoSQL?",
         "options": [
-          "A query that scans every item in a container",
+          "A query that scans every item in a container and returns whichever ones match its filter, whatever their id or partition key",
           "An operation limited to stored procedures",
           "An operation that only works with the change feed",
           "A single-item read, create, replace, upsert, patch, or delete identified by its id and partition key"
@@ -28040,7 +28040,7 @@ const EXAMS = {
           "Point reads are the only operation that supports TTL",
           "A point read is typically cheaper in RU and lower latency than the equivalent query because it bypasses the query engine",
           "Queries cannot filter on id",
-          "Point reads and equivalent queries cost the same, so it never matters"
+          "Point reads and equivalent queries cost the same in RU and latency, because both run through the same query engine, so it never matters"
         ],
         "correct": 1,
         "explain": "A direct point read (ReadItemAsync using id and partition key) avoids the overhead of the query engine, typically making it cheaper in RUs and faster than an equivalent SELECT query."
@@ -28105,7 +28105,7 @@ const EXAMS = {
           "Wrap every operation inside a TransactionalBatch",
           "Add each CreateItemAsync Task to a list without awaiting it individually, then call Task.WhenAll on the list",
           "Disable the indexing policy before every insert",
-          "Issue each CreateItemAsync call sequentially with await"
+          "Issue each CreateItemAsync call sequentially with await, waiting for one Task to finish before the next call starts in the loop"
         ],
         "correct": 1,
         "explain": "For bulk workloads, the recommended pattern is to collect the unawaited Tasks from calls like CreateItemAsync into a list and then await them together with Task.WhenAll, letting the SDK's bulk executor group them efficiently."
@@ -28194,7 +28194,7 @@ const EXAMS = {
         "q": "How can a client override a container's default TTL behavior for a single specific item?",
         "options": [
           "By creating a new container",
-          "By disabling indexing on that item",
+          "By disabling indexing on that item in the indexing policy",
           "TTL cannot be set per item",
           "By setting the ttl property on that individual item"
         ],
@@ -28298,7 +28298,7 @@ const EXAMS = {
         "q": "Generally speaking, how does moving from Eventual toward Strong consistency affect RU cost and latency for read operations?",
         "options": [
           "Only write RU cost is affected; read RU cost never changes",
-          "RU cost and latency both decrease as consistency gets stronger",
+          "RU cost and latency both decrease as consistency gets stronger, since fewer replicas have to be consulted before a response is returned",
           "There is no relationship between consistency level and RU cost or latency",
           "RU cost and latency both tend to increase as consistency gets stronger, since more replication guarantees must be satisfied"
         ],
@@ -28350,7 +28350,7 @@ const EXAMS = {
         "q": "By default, how does Azure Cosmos DB resolve write conflicts under the Last-Writer-Wins (LWW) policy?",
         "options": [
           "The item with the largest value of the _ts system property (or a custom numeric conflict resolution path) wins",
-          "The item written in the primary region always wins, regardless of timestamp",
+          "The item written in the primary region always wins, regardless of the _ts system property or any custom numeric conflict resolution path",
           "Conflicts are queued for manual review before any resolution",
           "The first write always wins"
         ],
@@ -28363,7 +28363,7 @@ const EXAMS = {
         "q": "You want the Last-Writer-Wins conflict policy to use a custom numeric property named sortableTimestamp instead of the default _ts. When can this ConflictResolutionPolicy be configured?",
         "options": [
           "Only at container creation time — the ResolutionPath cannot be changed on an existing container",
-          "At any time, even on containers that already have data and conflicts",
+          "At any time, even on containers that already have data and conflicts, by updating the ResolutionPath",
           "Only for single-region accounts",
           "Only through the Azure CLI, never the SDK"
         ],
@@ -28417,7 +28417,7 @@ const EXAMS = {
           "A synthetic partition key",
           "Always Encrypted alone",
           "Azure Functions and Azure Event Hubs integrated with change feed events",
-          "Increasing the consistency level to Strong"
+          "Increasing the consistency level to Strong for all downstream applications"
         ],
         "correct": 2,
         "explain": "Integrating change feed-driven Azure Functions with Azure Event Hubs lets change events be published and fanned out to multiple downstream applications and applications outside the immediate solution."
@@ -28428,7 +28428,7 @@ const EXAMS = {
         "q": "Which change feed-driven integration pattern is used to keep a running total or summary (for example, daily order totals) up to date as new items arrive?",
         "options": [
           "Archiving with change feed",
-          "Referential enforcement with change feed",
+          "Referential enforcement with change feed and Azure Functions",
           "Aggregation with change feed and Azure Functions",
           "Denormalization with change feed"
         ],
@@ -28440,7 +28440,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "In Azure Cosmos DB for NoSQL, what data structure underlies the default automatic indexing of every property in a container?",
         "options": [
-          "A hash table keyed only on id",
+          "A hash table keyed only on id, with one entry for each item",
           "An inverted index over the JSON tree of each item",
           "A B-tree per property",
           "A relational foreign-key index"
@@ -28456,7 +28456,7 @@ const EXAMS = {
           "Index seek; a flat/constant RU charge for the lookup, plus linear cost to load and return matched items",
           "Index scan; RU scales exponentially",
           "No index is used for equality filters",
-          "Full scan; RU scales with total items in the container"
+          "Full scan; RU scales linearly with the total items in the container, because each one is loaded to check the filter"
         ],
         "correct": 0,
         "explain": "An exact equality match on an indexed property uses an index seek, which is a constant RU charge for the lookup itself, plus a linear charge based on the number of items returned."
@@ -28467,8 +28467,8 @@ const EXAMS = {
         "q": "A SQL query filters using a range comparison (p.price >= 500 AND p.price <= 1000). What index lookup method does the engine typically use for this kind of filter?",
         "options": [
           "Index seek only",
-          "A composite index is mandatory for any range filter to work at all",
-          "No indexing is possible for range comparisons",
+          "A composite index is mandatory for any range filter to work at all, so without one the engine has to reject the filter on p.price outright",
+          "No indexing is possible for range comparisons, so the engine must load every item and evaluate p.price directly",
           "Index scan, which performs a binary search over the possible indexed values and is still far more efficient than loading every item"
         ],
         "correct": 3,
@@ -28493,7 +28493,7 @@ const EXAMS = {
         "q": "What is the default indexing mode for a newly created Azure Cosmos DB for NoSQL container?",
         "options": [
           "None — indexing must be turned on manually",
-          "Lazy — indexing happens on a background schedule only",
+          "Lazy — indexing happens on a background schedule only, after items are written",
           "Consistent — every property is automatically indexed as items are written",
           "Manual — indexes are built only when queried"
         ],
@@ -28547,7 +28547,7 @@ const EXAMS = {
           "A spatial index on price",
           "A composite index on category and price",
           "An excluded path on category",
-          "A unique key policy on price"
+          "A unique key policy on category and price"
         ],
         "correct": 1,
         "explain": "Composite indexes are required to efficiently support queries that filter and/or sort on more than one property together, such as filtering by category while ordering by price."
@@ -28557,10 +28557,10 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which of the following is a typical read-heavy indexing strategy consideration?",
         "options": [
-          "Disabling indexing entirely on all containers",
+          "Disabling indexing entirely on all containers so that read queries never have to pay any index maintenance cost",
           "Keeping most or all properties indexed (or adding targeted composite indexes) since read queries benefit most from the index, and write cost is a secondary concern",
           "Always using indexingMode none",
-          "Excluding as many properties as possible to speed up writes, even if it slows queries"
+          "Excluding as many properties as possible to speed up writes, even if it slows queries, since in a read-heavy workload the write cost is the primary concern to optimize"
         ],
         "correct": 1,
         "explain": "For read-heavy workloads, it typically pays to keep broad indexing coverage (and add composite indexes for common filter/sort combinations) since the RU savings on reads outweigh the modest write RU overhead of maintaining the index."
@@ -28573,7 +28573,7 @@ const EXAMS = {
           "The ETag property",
           "The ConsistencyLevel property",
           "The RequestCharge property on the operation's response",
-          "The PartitionKeyRangeId property"
+          "The PartitionKeyRangeId property on the operation's response"
         ],
         "correct": 2,
         "explain": "The RequestCharge value returned with every operation's response reports exactly how many request units that specific point operation or query consumed, letting developers calculate and optimize cost."
@@ -28584,7 +28584,7 @@ const EXAMS = {
         "q": "What is the Azure Cosmos DB integrated cache, and what infrastructure does it require?",
         "options": [
           "A feature only available in serverless accounts",
-          "A client-side .NET in-memory dictionary requiring no special setup",
+          "A client-side .NET in-memory dictionary, requiring no special setup, that caches item and query results inside the application",
           "A feature that requires Always Encrypted to be enabled first",
           "An in-memory cache built into the Dedicated Gateway that transparently caches item and query results"
         ],
@@ -28664,7 +28664,7 @@ const EXAMS = {
           "A lease container that stores checkpoints for each partition range being processed",
           "A synthetic partition key",
           "The consistency level of the account",
-          "An in-memory-only checkpoint that resets on every restart"
+          "An in-memory-only checkpoint for each partition range that resets on every application restart"
         ],
         "correct": 0,
         "explain": "The SDK's change feed processor uses a separate lease container to persist checkpoints per partition key range, allowing processing to resume correctly after an application restart or when scaling across multiple instances."
@@ -28715,7 +28715,7 @@ const EXAMS = {
         "options": [
           "A composite index",
           "The integrated cache",
-          "TTL alone, with no change feed involved",
+          "TTL alone, with no change feed or Azure Functions involved",
           "Data archiving using change feed and Azure Functions"
         ],
         "correct": 3,
@@ -28729,7 +28729,7 @@ const EXAMS = {
           "Switch the account to a different consistency level only",
           "Serve it from the integrated cache's item cache through the dedicated gateway",
           "Add a composite index",
-          "Increase the backup retention period"
+          "Increase the backup retention period for the account that holds the repeatedly read item"
         ],
         "correct": 1,
         "explain": "The integrated cache's item cache is designed exactly for this scenario — repeated point reads for the same item can be served from cache at no RU cost as long as the data isn't stale."
@@ -28755,7 +28755,7 @@ const EXAMS = {
           "Enable the query cache via the integrated cache and set an appropriate MaxIntegratedCacheStaleness",
           "Move to a different consistency level",
           "Add a synthetic partition key to the container",
-          "Rewrite the query to avoid all aggregate functions"
+          "Rewrite the query to avoid all aggregate functions and compute the totals in every client application instead"
         ],
         "correct": 0,
         "explain": "Since the query is repeated identically and the underlying data changes infrequently, routing the query through the dedicated gateway's integrated query cache with a matching staleness window eliminates most of the repeated RU cost, with minimal code change."
@@ -28767,7 +28767,7 @@ const EXAMS = {
         "options": [
           "Both cost the same amount of RU",
           "A cache miss (served from backend) consumes the normal RU charge; a cache hit is not charged in RU",
-          "Neither a cache hit nor a cache miss ever consumes RU",
+          "Neither a cache hit nor a cache miss ever consumes RU, because the dedicated gateway absorbs every backend charge",
           "A cache hit costs more RU than a cache miss"
         ],
         "correct": 1,
@@ -28792,7 +28792,7 @@ const EXAMS = {
         "q": "If the Normalized RU Consumption metric for one physical partition consistently sits near 100% while others are much lower, what does this most likely indicate?",
         "options": [
           "A billing error",
-          "That the account has exceeded its storage quota",
+          "That the account has exceeded its storage quota in the current region",
           "That indexing is disabled",
           "A hot partition caused by an uneven partition key distribution"
         ],
@@ -28857,7 +28857,7 @@ const EXAMS = {
         "q": "Which monitoring concern specifically evaluates whether data is spread evenly, both in storage size and RU consumption, across a container's physical partitions?",
         "options": [
           "Monitoring distribution of data and throughput across partitions",
-          "Monitoring server-side latency only",
+          "Monitoring server-side latency only, with no view of individual partitions",
           "Monitoring backup retention",
           "Monitoring CORS settings"
         ],
@@ -28882,7 +28882,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "In a multi-region Azure Cosmos DB account, which metrics would you monitor together to assess whether replication lag is affecting availability or read consistency for users in a secondary region?",
         "options": [
-          "Only the number of stored procedures deployed",
+          "Only the number of stored procedures deployed to each of the account's regions",
           "Data replication latency and availability metrics for the account's regions",
           "Only the CORS configuration",
           "Only the Available Storage metric"
@@ -28895,7 +28895,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "By default, how often does Azure Cosmos DB take a periodic backup, and how many backups are retained at no extra cost?",
         "options": [
-          "Every 24 hours, with 7 backups retained",
+          "Every 24 hours, with the last 7 backups retained",
           "Every hour, with 24 backups retained",
           "Every 4 hours, with the last 2 backups retained",
           "Every 30 minutes, with 48 backups retained"
@@ -28911,7 +28911,7 @@ const EXAMS = {
           "Maximum 7 days; no minimum relationship",
           "There is no maximum retention period",
           "Maximum 720 hours (30 days); retention must be at least twice the backup interval",
-          "Maximum 90 days; retention must equal the interval exactly"
+          "Maximum 2160 hours (90 days); retention must equal the configured backup interval exactly"
         ],
         "correct": 2,
         "explain": "Periodic backup retention can be configured up to 720 hours (30 days), and the retention period must be set to at least two times the configured backup interval."
@@ -28923,7 +28923,7 @@ const EXAMS = {
         "options": [
           "No redundancy by default",
           "Geo-redundant storage (GRS), which asynchronously copies the backup to the paired region for resiliency against regional disasters",
-          "Locally-redundant storage, copied three times within one physical location",
+          "Locally-redundant storage (LRS), which copies the backup three times within one physical location for resiliency against local hardware failures",
           "Zone-redundant storage only"
         ],
         "correct": 1,
@@ -28961,7 +28961,7 @@ const EXAMS = {
         "q": "For continuous backup mode, what are the two available retention tiers, and which one is free?",
         "options": [
           "Continuous (1 day) free and Continuous (7 days) paid",
-          "Continuous (30 days) free and Continuous (90 days) paid",
+          "Continuous (30 days), which is free, and Continuous (90 days), which incurs additional cost",
           "Both tiers are always free",
           "Continuous (7 days), which is free, and Continuous (30 days), which incurs additional cost"
         ],
@@ -28973,7 +28973,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Which of the following is a documented limitation of continuous backup mode?",
         "options": [
-          "It cannot be combined with point-in-time restore",
+          "It cannot be combined with point-in-time restore, so an account in this mode can only be recovered by asking Azure support to restore its latest periodic backup copy",
           "Multi-region write accounts and accounts using customer-managed keys are not supported, and it cannot coexist with Azure Synapse Link in the same account",
           "It only works with the MongoDB API",
           "It fully supports customer-managed keys (CMK) and multi-region write accounts"
@@ -29000,7 +29000,7 @@ const EXAMS = {
         "q": "Which Azure Cosmos DB resources are explicitly NOT restored when you recover an account from either a periodic or a continuous backup?",
         "options": [
           "The database name",
-          "The container's partition key definition",
+          "The container's partition key definition and indexing policy",
           "Stored procedures, triggers, and user-defined functions",
           "The item data itself"
         ],
@@ -29117,7 +29117,7 @@ const EXAMS = {
         "q": "What does Always Encrypted for Azure Cosmos DB provide that server-side (platform- or customer-managed key) encryption at rest does not?",
         "options": [
           "It encrypts data client-side so that sensitive values are never seen in plaintext by the Cosmos DB service itself",
-          "It is identical in behavior to platform-managed encryption at rest",
+          "It is identical in behavior to platform-managed encryption at rest, so the service can still read the sensitive values",
           "It replaces the need for RBAC",
           "It only works with the MongoDB API"
         ],
@@ -29181,7 +29181,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "When performing a point-in-time restore, how do you locate the correct restore point to use?",
         "options": [
-          "You must contact Azure support for every restore point, even under continuous backup",
+          "You must contact Azure support for every restore point, even under continuous backup, since timestamps within the retention window cannot be self-selected",
           "Restore points are limited to midnight UTC each day",
           "Specify a timestamp within the account's backup retention window, since the restore is guaranteed consistent up to that specified time",
           "Restore points cannot be chosen; only the latest state can be restored"
@@ -29249,7 +29249,7 @@ const EXAMS = {
           "When the search query is scoped to more than 50,000 vectors",
           "When exact 100% recall is required",
           "When vectors are stored inside nested arrays",
-          "When the container holds fewer than 1,000 vectors"
+          "When the container holds fewer than 1,000 vectors across all partitions"
         ],
         "correct": 0,
         "explain": "DiskANN is generally the most performant index type when a search query is scoped to more than 50,000 vectors."
@@ -29259,7 +29259,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Why might a DiskANN index return slightly less accurate results than a flat index?",
         "options": [
-          "It samples a random subset of partitions",
+          "It samples a random subset of partitions per query",
           "It rounds vectors to whole numbers",
           "It's an approximate nearest neighbors index",
           "It only indexes the first 100 dimensions"
@@ -29275,7 +29275,7 @@ const EXAMS = {
           "Faster index builds, with no effect on queries",
           "Lower storage cost, with no effect on accuracy",
           "Potentially higher accuracy, with higher RU cost and latency",
-          "Lower accuracy, with lower RU cost and latency"
+          "Potentially lower accuracy, with lower RU cost and lower latency"
         ],
         "correct": 2,
         "explain": "A larger quantizationByteSize can give higher accuracy vector searches at the expense of higher RU cost and higher latency."
@@ -29286,7 +29286,7 @@ const EXAMS = {
         "q": "You increase indexingSearchListSize on a DiskANN index. What trade-off should you expect?",
         "options": [
           "Potentially higher accuracy, with longer index builds and higher ingest latency",
-          "Lower query accuracy, with shorter index builds",
+          "Potentially lower query accuracy, with shorter index builds and lower ingest latency",
           "Wider vector dimensions, with no effect on accuracy",
           "Lower RU cost per query, with no effect on ingest"
         ],
@@ -29314,7 +29314,7 @@ const EXAMS = {
           "One DiskANN index per physical partition",
           "One DiskANN index per account",
           "One DiskANN index per item",
-          "One DiskANN index per logical partition"
+          "One DiskANN index per logical partition key value"
         ],
         "correct": 0,
         "explain": "The shard key is optional. Omitting it creates one DiskANN index per physical partition as usual."
@@ -29326,7 +29326,7 @@ const EXAMS = {
         "options": [
           "Filter on the shard key value with a WHERE clause",
           "Pass the shard name in a request header",
-          "Create a separate container for that value",
+          "Create a separate container for that shard key value",
           "Add the shard key to the TOP clause"
         ],
         "correct": 0,
@@ -29351,7 +29351,7 @@ const EXAMS = {
         "q": "Why should a vector search query always include a TOP N clause?",
         "options": [
           "Without it, the query tries to return many more results, costing more RUs and latency",
-          "It decides which distance function is used",
+          "It decides which distance function is used, so the query cannot rank vectors without it",
           "It's what turns on the vector index",
           "The query fails to compile without it"
         ],
@@ -29405,7 +29405,7 @@ const EXAMS = {
           "Limits the query to 2 partitions and 1 replica",
           "Makes the vector score twice as important as the BM25 score",
           "Searches 2 regions, then 1 fallback region",
-          "Returns 2 vector results and 1 text result"
+          "Returns 2 vector results and 1 BM25 text result from the search"
         ],
         "correct": 1,
         "explain": "The optional weights array sets the importance of each component score, so [2, 1] weights the vector search twice as heavily."
@@ -29430,7 +29430,7 @@ const EXAMS = {
         "options": [
           "It returns the score as a number for every item",
           "It returns the score only for items that match",
-          "It runs, but always returns 0 without an index",
+          "It runs, but always returns 0 for every item unless a full text index exists",
           "The query is invalid, because FullTextScore can't be part of a projection"
         ],
         "correct": 3,
@@ -29443,7 +29443,7 @@ const EXAMS = {
         "options": [
           "A full text index and analytical store only",
           "A composite index and a spatial index only",
-          "A vector policy and a stored procedure",
+          "A vector policy, a full text policy, a stored procedure, and a composite index",
           "A vector policy, a full text policy, a vector index, and a full text index"
         ],
         "correct": 3,
@@ -29455,7 +29455,7 @@ const EXAMS = {
         "q": "What does a full text index apply so a search for \"running\" can also match \"runs\"?",
         "options": [
           "Vector quantization of each word",
-          "A wildcard on every indexed path",
+          "A wildcard appended to every indexed path in the container",
           "Exact byte-level comparison",
           "Linguistic processing such as tokenization and stemming"
         ],
@@ -29482,7 +29482,7 @@ const EXAMS = {
         "options": [
           "A temporary step in the current plan",
           "A stored preference, such as a user wanting bullet-list responses",
-          "A partial result from a tool call in the current task",
+          "A partial result from a tool call made earlier in the current task",
           "The last five dialogue turns in a thread"
         ],
         "correct": 1,
@@ -29507,7 +29507,7 @@ const EXAMS = {
         "q": "An agent needs past turns that are related in meaning to the current question, even if they share no exact words. Which retrieval pattern fits?",
         "options": [
           "Order by VectorDistance against a query vector",
-          "Filter with a CONTAINS keyword match",
+          "Filter with a CONTAINS keyword match on the question",
           "Read the most recent item with a point read",
           "Order by timestamp descending"
         ],
@@ -29558,7 +29558,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "When you define OPENJSON column types over mirrored data, which choice can help query performance?",
         "options": [
-          "Use nvarchar(max) with a collation override",
+          "Use nvarchar(max) with a collation override on each string",
           "Use varchar(n) with a small n instead of varchar(max)",
           "Use varchar(max) for every string",
           "Cast every string column to sql_variant"
@@ -29611,7 +29611,7 @@ const EXAMS = {
         "q": "Where does Azure Cosmos DB dynamic data masking take effect?",
         "options": [
           "During backup, on the restored copy only",
-          "In the client SDK, before the query is sent",
+          "In the client SDK, before the query is sent to the service",
           "At write time, replacing the stored values",
           "At query time, leaving the stored data unchanged"
         ],
@@ -29663,7 +29663,7 @@ const EXAMS = {
         "q": "Where can fleet analytics send usage data for accounts in an Azure Cosmos DB fleet?",
         "options": [
           "Microsoft Fabric or an Azure Storage account",
-          "Only the Azure Cosmos DB analytical store",
+          "Only the Azure Cosmos DB analytical store of each account",
           "Only an on-premises SQL Server",
           "Only Azure Event Hubs"
         ],
@@ -29691,7 +29691,7 @@ const EXAMS = {
           "Remove it from its current fleetspace",
           "Convert it to serverless",
           "Enable multi-region writes on it",
-          "Move it to a new resource group"
+          "Move it to a new resource group in the subscription"
         ],
         "correct": 0,
         "explain": "Accounts belong to only one fleetspace and one fleet, and can't be added to another fleet unless they're removed first."
