@@ -95264,7 +95264,7 @@ const EXAMS = {
         "q": "Your organization already owns SQL Server licenses under Software Assurance and wants to apply them to new Azure VMs instead of paying per-minute for a Marketplace image that includes a SQL Server license. Which licensing approach should you use, and what must you do within 10 days of deploying the VM?",
         "options": [
           "Use the Pay-as-you-go model; no additional reporting is required",
-          "Use a reserved instance; submit a support ticket to transfer the license",
+          "Use a reserved instance; submit a support ticket to Microsoft to transfer the existing license to the new VM",
           "Use Azure Hybrid Benefit for SQL Server only, with no reporting requirement",
           "Bring Your Own License (BYOL); report usage to Microsoft using the License Mobility verification form"
         ],
@@ -95410,7 +95410,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "You're evaluating Azure Site Recovery to protect a transactional SQL Server VM workload. What should you keep in mind about its recovery characteristics compared to a dedicated SQL Server HA/DR feature?",
         "options": [
-          "It is purpose-built for transactional database workloads and outperforms Always On availability groups",
+          "It is purpose-built for transactional database workloads and outperforms Always On availability groups on both recovery point and RTO",
           "Because it uses block-level replication with a higher recovery point, your effective RTO becomes essentially equal to your RPO",
           "It guarantees zero data loss for transactional workloads",
           "It cannot be used with SQL Server workloads at all"
@@ -95438,7 +95438,7 @@ const EXAMS = {
         "options": [
           "Manual PowerShell without templates",
           "Azure Resource Manager (ARM) templates",
-          "SQL Server Management Studio wizard",
+          "SQL Server Management Studio wizard for each server",
           "Azure portal only"
         ],
         "correct": 1,
@@ -95515,7 +95515,7 @@ const EXAMS = {
         "q": "By default, how often does Azure SQL Managed Instance take differential backups, and how often does it take transaction log backups?",
         "options": [
           "Differential weekly; log backups hourly",
-          "Differential daily; log backups every 30 minutes",
+          "Differential every 24 hours; log backups every 30-60 minutes",
           "Differential every 12 hours; log backups every 5-10 minutes",
           "Differential every hour; log backups every hour"
         ],
@@ -95530,7 +95530,7 @@ const EXAMS = {
           "Move the database out of the managed instance",
           "Convert the backup to use FILESTREAM",
           "Disable TDE for that specific database before taking the copy-only backup",
-          "Nothing extra is required; copy-only backups work regardless of TDE"
+          "Nothing extra is required; copy-only backups to a URL work regardless of TDE"
         ],
         "correct": 2,
         "explain": "Because manual copy-only backups on Managed Instance must be written to a URL and local storage access isn't permitted, you must disable TDE for the specific database before you can take a user-initiated copy-only backup."
@@ -95675,7 +95675,7 @@ const EXAMS = {
         "q": "A user runs `SELECT name FROM customers` without qualifying the schema, and no object named 'customers' exists in the user's default schema. What does SQL Server do next?",
         "options": [
           "It searches every schema in the database alphabetically",
-          "It immediately returns an error with no further lookup",
+          "It immediately returns an error with no further lookup in the dbo schema or any other schema",
           "It automatically creates the object in the dbo schema",
           "It checks whether the object exists in the predefined dbo schema before returning an error"
         ],
@@ -95754,7 +95754,7 @@ const EXAMS = {
         "options": [
           "sysadmin server role membership",
           "db_owner membership, for maximum flexibility",
-          "SELECT, INSERT, UPDATE, and DELETE directly on every table the procedures touch",
+          "SELECT, INSERT, UPDATE, and DELETE directly on every table that the stored procedures touch",
           "EXECUTE permission on the required stored procedures only, with no direct table access"
         ],
         "correct": 3,
@@ -95768,7 +95768,7 @@ const EXAMS = {
           "A firewall misconfiguration; add a new IP firewall rule",
           "A transient fault; implement retry logic with an increasing delay rather than surfacing an error to the user",
           "A TDE key rotation failure; restore the database encryption key",
-          "A permanent authentication failure; the login should be recreated"
+          "A permanent authentication failure; the login should be recreated and the application credentials reset before it reconnects"
         ],
         "correct": 1,
         "explain": "Transient faults occur during brief planned or unplanned reconfiguration events (typically under 60 seconds) and are expected in cloud services. Applications should implement retry logic (waiting a minimum of 5 seconds, increasing exponentially up to 60 seconds) rather than immediately failing or surfacing raw errors to users."
@@ -95819,7 +95819,7 @@ const EXAMS = {
         "options": [
           "The encrypted database becomes inaccessible, since the key vault administrator can revoke access to make it so",
           "Nothing changes; TDE always falls back to a Microsoft-managed key automatically",
-          "Only new connections are blocked, but existing sessions continue indefinitely",
+          "Only new connections are blocked, but existing sessions continue indefinitely, since the key is only checked at login",
           "The database remains fully accessible using a cached copy of the key"
         ],
         "correct": 0,
@@ -95857,7 +95857,7 @@ const EXAMS = {
         "q": "Which stored procedure is used to configure a database-level firewall rule for Azure SQL Database, and where must it be executed?",
         "options": [
           "sp_configure, executed in the master database",
-          "sp_set_database_firewall_rule, executed only through the Azure portal",
+          "sp_set_database_firewall_rule, executed only through the Azure portal (never T-SQL)",
           "sp_set_database_firewall_rule, executed within the user database (T-SQL only)",
           "sp_set_firewall_rule, executed in the master database"
         ],
@@ -95895,7 +95895,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In Always Encrypted, where should the column master key ideally be stored, and where should it never be generated?",
         "options": [
-          "It should always be embedded directly in the application's connection string",
+          "It should always be embedded directly in the application's connection string, and should be generated on the database server for convenience",
           "It should be stored inside the database engine for fastest access",
           "It should be stored in a third-party key store like Azure Key Vault, and should never be generated on the database server itself",
           "It should be stored in the same table as the encrypted columns"
@@ -95963,7 +95963,7 @@ const EXAMS = {
           "The audit log gains a data_sensitivity_information field showing the sensitivity labels of returned data",
           "Sensitivity labels have no relationship to auditing",
           "Data classification automatically blocks queries against labeled columns",
-          "Auditing must be manually cross-referenced with sys.sensitivity_classifications using a separate tool"
+          "Auditing must be manually cross-referenced with sys.sensitivity_classifications using a separate reporting tool"
         ],
         "correct": 0,
         "explain": "Azure SQL Auditing includes a data_sensitivity_information field in the audit log that records the sensitivity labels of the data returned by a query, making it much easier to track access to classified/sensitive columns."
@@ -95988,7 +95988,7 @@ const EXAMS = {
         "options": [
           "An obfuscated/masked version of the value, since masking is enforced at the presentation layer for users without UNMASK permission",
           "A permission error preventing the query from running at all",
-          "The actual plaintext email address, because SELECT permission is sufficient",
+          "The actual plaintext email address, because SELECT permission is sufficient and masking only applies to users with no SELECT permission at all",
           "A NULL value in every row"
         ],
         "correct": 0,
@@ -96094,7 +96094,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "You want to enable the Ledger feature so that all future tables created in an Azure SQL database automatically become tamper-evident ledger tables. When must you configure this, and can it be changed later?",
         "options": [
-          "It's enabled by default on all Azure SQL databases and can't be disabled",
+          "It's enabled by default on all Azure SQL databases, and can't be disabled during or after database creation",
           "It can be toggled at any time using ALTER DATABASE",
           "It can only be enabled during database creation, and cannot be modified after the database is created",
           "It only applies to Azure SQL Managed Instance, not Azure SQL Database"
@@ -96263,7 +96263,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "sys.dm_db_index_physical_stats reports 22% fragmentation on a frequently queried nonclustered index. According to common index maintenance guidance, what action is typically recommended?",
         "options": [
-          "Rebuild the index immediately, as it's beyond repair",
+          "Rebuild the index immediately, as it's beyond repair at 22% fragmentation",
           "Reorganize the index (fragmentation is above 5% but below 30%)",
           "Drop the index permanently",
           "No action needed below 30%"
@@ -96276,7 +96276,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "You rebuild a heavily fragmented index versus simply reorganizing it. What additional side benefit does an index rebuild provide that a reorganize does not?",
         "options": [
-          "A rebuild automatically enables Query Store",
+          "A rebuild automatically enables Query Store on the database that holds the index",
           "A rebuild can never be performed online",
           "A rebuild also updates the statistics on the index, while a reorganize does not",
           "A rebuild uses less transaction log space than a reorganize"
@@ -96393,7 +96393,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Approximate Count Distinct offers a faster alternative to an exact DISTINCT COUNT on large tables. What accuracy guarantee does it provide?",
         "options": [
-          "A 50% error rate with no confidence guarantee",
+          "A 50% error rate with no confidence interval at all",
           "Accuracy depends entirely on manual tuning",
           "Exactly accurate, just computed faster",
           "A 2% error rate with a 97% confidence interval"
@@ -96461,7 +96461,7 @@ const EXAMS = {
           "No, it must always be manually enabled in Azure SQL Database",
           "Yes, it's enabled by default in Azure SQL Database and for new databases in SQL Server 2022+",
           "Query Store isn't available in Azure SQL Database at all",
-          "It's enabled only when Business Critical tier is selected"
+          "It's enabled only when Business Critical tier is selected for the new database in Azure SQL Database"
         ],
         "correct": 1,
         "explain": "Query Store is enabled by default for new databases in Azure SQL Database and for new databases in SQL Server 2022 and later. For SQL Server 2016 through 2019, it must be manually enabled with ALTER DATABASE ... SET QUERY_STORE = ON."
@@ -96526,7 +96526,7 @@ const EXAMS = {
           "Per session, using SET TRANSACTION ISOLATION LEVEL",
           "Per database",
           "Per login, permanently",
-          "Globally for the entire instance"
+          "Globally for the entire instance, across all sessions"
         ],
         "correct": 0,
         "explain": "There's no global or database-wide isolation level setting that applies to all queries; isolation level is a session-level setting configured with SET TRANSACTION ISOLATION LEVEL (except for database-level RCSI/Snapshot enablement, which changes the default behavior of READ COMMITTED)."
@@ -96537,7 +96537,7 @@ const EXAMS = {
         "q": "A table has no clustered index defined. What is this table called, and what is it typically best suited for?",
         "options": [
           "A covering table; best for reporting",
-          "A columnstore table; best for OLTP workloads",
+          "A columnstore table; typically best for OLTP workloads",
           "A heap; typically used only as a staging table",
           "A filtered table; best for archival data"
         ],
@@ -96601,7 +96601,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "You want to change a problematic query's execution plan to use a Hash Join instead of a Nested Loops join, but you can't modify the hardcoded application query text. Which feature lets you apply this hint out-of-band, keyed to the query's Query Store query_id?",
         "options": [
-          "Resource Governor classifier function",
+          "Resource Governor classifier function keyed to the query_id",
           "Query Store hints via sp_query_store_set_hints",
           "Automatic tuning FORCE_LAST_GOOD_PLAN",
           "Extended Events causality tracking"
@@ -96666,7 +96666,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In SQL Server Agent, what is the relationship between jobs and schedules?",
         "options": [
-          "One-to-one: each job can only ever have one schedule",
+          "One-to-one: each job can only ever have one schedule, and a schedule can only ever be applied to one job",
           "Many-to-many: a job can have multiple schedules, and a schedule can be applied to multiple jobs",
           "Schedules can only be created by the Maintenance Plan Wizard",
           "Jobs cannot be scheduled; they must be run manually"
@@ -96718,7 +96718,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "You want SQL Server Agent to automatically run a database consistency check whenever a storage-related error (823, 824, or 825) is logged, without requiring a human to react first. How should you configure this?",
         "options": [
-          "This isn't possible; alerts can only send email notifications",
+          "This isn't possible; alerts can only send email notifications to an operator, never execute a SQL Server Agent job",
           "Configure a maintenance plan with no schedule",
           "Create an alert for those error numbers configured to execute a SQL Server Agent job automatically",
           "Enable Query Store automatic tuning"
@@ -96746,7 +96746,7 @@ const EXAMS = {
         "options": [
           "An Azure Automation account and a runbook",
           "An Elastic Job agent and a dedicated job database",
-          "A Log Analytics workspace and a storage account",
+          "A Log Analytics workspace and a dedicated storage account",
           "A Managed Instance and an availability group"
         ],
         "correct": 1,
@@ -96810,7 +96810,7 @@ const EXAMS = {
         "q": "What is the maximum number of tags supported per Azure resource, and what important restriction applies to tag values?",
         "options": [
           "Up to 15 tags per resource; tag values are stored as plain text and should never contain sensitive information",
-          "Up to 5 tags per resource; tags are visible only to subscription owners",
+          "Up to 5 tags per resource; tags are visible only to subscription owners and never appear in cost reports or exported templates",
           "Up to 50 tags per resource; tag values are automatically encrypted",
           "Unlimited tags; tags can safely store credentials"
         ],
@@ -96874,7 +96874,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Where would you look in the Azure portal to review the execution history and status (succeeded/failed) of an Azure Automation runbook?",
         "options": [
-          "The Azure Policy compliance dashboard",
+          "The Azure Policy compliance dashboard scoped to the Automation account",
           "The Jobs section under Process Automation in the Automation account",
           "The SQL Server Agent job history in SSMS",
           "The Query Store Regressed Queries view"
@@ -96888,7 +96888,7 @@ const EXAMS = {
         "q": "You want advanced Kusto queries across multiple Azure Automation runbook job runs, and the ability to trigger an alert based on job status. What must you configure first before this data becomes available?",
         "options": [
           "An elastic job agent",
-          "Nothing; this is available by default with no configuration",
+          "Nothing; this is available by default, since job streams reach Log Analytics with no configuration",
           "Diagnostic settings for the Automation account, forwarding logs to a Log Analytics workspace",
           "A hybrid runbook worker"
         ],
@@ -96954,7 +96954,7 @@ const EXAMS = {
         "options": [
           "12.5 minutes (the average)",
           "5 minutes",
-          "There is no defined overall RTO in this scenario",
+          "There is no defined overall RTO in this scenario, only a separate RTO per component",
           "20 minutes, since overall RTO is determined by the slowest component"
         ],
         "correct": 3,
@@ -97046,7 +97046,7 @@ const EXAMS = {
           "A requirement to disable Always On entirely",
           "No extra requirement; DTC works without shared storage",
           "A requirement for a shared disk, even though the AG itself wouldn't otherwise need one",
-          "A requirement to switch to a Failover Cluster Instance instead"
+          "A requirement to switch to a Failover Cluster Instance instead of keeping the availability group"
         ],
         "correct": 2,
         "explain": "While an availability group doesn't inherently require shared storage, if the application uses MSDTC and it needs to be clustered, clustering DTC requires a shared disk — introducing a shared-storage dependency into an otherwise storage-independent AG deployment."
@@ -97098,7 +97098,7 @@ const EXAMS = {
           "An elastic job agent",
           "A Managed Instance link",
           "An internal Azure load balancer (ILB)",
-          "An Azure Site Recovery vault"
+          "An Azure Site Recovery vault for the replicas"
         ],
         "correct": 2,
         "explain": "An internal Azure load balancer (ILB) must be configured for the AG listener, since applications and users can't otherwise reach the listener unless directly connected to the VM hosting the primary replica. Each IP address on the listener requires its own unique probe port (typically a high port number like 59999) for the listener to work."
@@ -97174,7 +97174,7 @@ const EXAMS = {
         "q": "You need to configure a secondary geo-replica for an Azure SQL Database in a different Azure subscription than the primary. How is this accomplished?",
         "options": [
           "This isn't possible under any circumstances",
-          "By converting the database to Azure SQL Managed Instance first",
+          "By converting the database to Azure SQL Managed Instance first, then adding the secondary through the Azure portal UI",
           "By using an elastic job agent",
           "Cross subscription geo-replication, which is only available programmatically (not via the Azure portal UI)"
         ],
@@ -97200,7 +97200,7 @@ const EXAMS = {
         "q": "Comparing active geo-replication to auto-failover groups for Azure SQL Database, which capability is available with failover groups but NOT with geo-replication alone?",
         "options": [
           "Support for read-scale",
-          "The ability to place the secondary in the same region as the primary",
+          "The ability to place the secondary in the same region as the primary without updating the application connection string",
           "Automatic failover of multiple databases simultaneously without updating the application connection string",
           "The ability to have multiple readable replicas"
         ],
@@ -97279,7 +97279,7 @@ const EXAMS = {
         "options": [
           "Ensure the target database name doesn't already exist, since restore in place isn't supported for Azure SQL Database or Managed Instance",
           "Convert the database to Managed Instance first",
-          "Nothing; restore in place is supported and will overwrite the existing database",
+          "Nothing; restore in place is supported and will overwrite the existing database, keeping its name once the point-in-time restore has completed",
           "Disable Accelerated Database Recovery"
         ],
         "correct": 0,
@@ -97306,7 +97306,7 @@ const EXAMS = {
           "They're automatically moved to a new server",
           "They convert automatically to long-term retention backups",
           "They're deleted at the same time as the server, with no way to recover them",
-          "They're retained indefinitely on a separate storage account"
+          "They're retained indefinitely on a separate storage account, ready for a later restore"
         ],
         "correct": 2,
         "explain": "If the server containing a database is deleted, all of that database's automated backups are deleted at the same time and cannot be recovered. If only the database (not the server) is deleted, it can still be restored normally from the deleted-databases list."
@@ -97318,7 +97318,7 @@ const EXAMS = {
         "options": [
           "In an on-premises backup archive",
           "In read-access geo-redundant storage (RA-GRS) blobs replicated to a paired datacenter",
-          "On the same VM disk as the database, with no redundancy",
+          "On the same VM disk as the database, with no redundancy or copy to a paired datacenter",
           "On local SSD only, never replicated"
         ],
         "correct": 1,
