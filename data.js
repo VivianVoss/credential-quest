@@ -54666,7 +54666,7 @@ const EXAMS = {
         "options": [
           "Add a DNS TXT (or MX) verification record at the domain registrar",
           "Enable Microsoft Entra Connect Cloud Sync",
-          "Create a retention label for the domain",
+          "Create a retention label for the domain and publish it to all users",
           "Assign an Exchange Administrator role"
         ],
         "correct": 0,
@@ -54691,7 +54691,7 @@ const EXAMS = {
         "q": "An administrator needs to restore a user account that was deleted 20 days ago. What is required for this to succeed using the Microsoft 365 admin center?",
         "options": [
           "The account must be restored within the 30-day deleted user retention window",
-          "The tenant must have Microsoft 365 Backup enabled",
+          "The tenant must have Microsoft 365 Backup enabled before the account was deleted",
           "The account can never be restored after deletion",
           "The account must be restored using IdFix"
         ],
@@ -54703,7 +54703,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "An admin needs to bulk-update the department attribute for thousands of Microsoft Entra ID user accounts in a single automated operation. Which tool set does the training path recommend for this bulk maintenance?",
         "options": [
-          "The Microsoft 365 admin center guest invitation wizard",
+          "The Microsoft 365 admin center guest invitation wizard, run once for each user account in the tenant",
           "Microsoft Graph PowerShell or Microsoft Entra PowerShell cmdlets with a CSV input file",
           "Content explorer bulk edit",
           "Safe Attachments bulk policy editor"
@@ -54730,7 +54730,7 @@ const EXAMS = {
         "q": "What is the primary purpose of creating a mail contact in the Microsoft 365 admin center?",
         "options": [
           "To add an external email address to the address book so users can email that person without creating a mailbox",
-          "To grant PIM eligible role assignments to an external partner",
+          "To grant PIM eligible role assignments to an external partner so that person can sign in and administer the tenant",
           "To create a shared mailbox for a department",
           "To register a device for Conditional Access"
         ],
@@ -54771,7 +54771,7 @@ const EXAMS = {
           "Shared mailboxes can only be created via Microsoft Entra Connect Sync",
           "Shared mailboxes automatically become Microsoft 365 Groups",
           "Shared mailboxes do not require their own license as long as they stay under the storage limit for free shared mailboxes",
-          "Every shared mailbox always requires its own full Microsoft 365 license"
+          "Every shared mailbox always requires its own full Microsoft 365 license, regardless of how little storage it uses or how few people share it"
         ],
         "correct": 2,
         "explain": "Shared mailboxes, covered alongside group management in the tenant configuration path, don't require a separate license by default provided they remain under the applicable storage threshold."
@@ -54875,7 +54875,7 @@ const EXAMS = {
           "The Message center",
           "The Content explorer",
           "The Privileged Identity Management audit history",
-          "Attack simulation training reports"
+          "Attack simulation training reports for each role holder"
         ],
         "correct": 2,
         "explain": "The PIM module covers reviewing audit history for role activations, which records requestor, approver, justification, and time window for every eligible role activation."
@@ -54901,7 +54901,7 @@ const EXAMS = {
           "Microsoft Graph PowerShell (and Microsoft Entra PowerShell)",
           "Windows PowerShell ISE",
           "Exchange Online Management module only",
-          "SharePoint Online Management Shell only"
+          "SharePoint Online Management Shell (and Exchange Online module)"
         ],
         "correct": 0,
         "explain": "The bulk user maintenance skill explicitly names Microsoft Graph PowerShell and Microsoft Entra PowerShell as the current tools for these administrative tasks."
@@ -54912,7 +54912,7 @@ const EXAMS = {
         "q": "What must an administrator configure so that a new custom domain works correctly for Exchange Online mail flow after domain verification?",
         "options": [
           "A retention label policy",
-          "A Conditional Access named location",
+          "A Conditional Access named location covering Microsoft 365 mail servers",
           "A PIM eligible assignment",
           "MX, SPF, and Autodiscover DNS records pointing to Microsoft 365"
         ],
@@ -54926,7 +54926,7 @@ const EXAMS = {
         "options": [
           "Assign Global Administrator to the helpdesk team",
           "Add the helpdesk team to the Compliance Administrator role group",
-          "Create a Conditional Access policy targeting the West Region",
+          "Create a Conditional Access policy targeting the West Region so that only the helpdesk team can sign in to those user accounts",
           "Scope a Helpdesk Administrator role assignment to the West Region administrative unit rather than assigning it tenant-wide"
         ],
         "correct": 3,
@@ -54939,7 +54939,7 @@ const EXAMS = {
         "options": [
           "Avoid using PIM because it adds unnecessary complexity",
           "Limit the number of Global Administrators and use least-privilege, task-specific roles instead",
-          "Assign every IT staff member the Global Administrator role for convenience",
+          "Assign every IT staff member the Global Administrator role for convenience during routine support work",
           "Disable MFA for all administrator accounts to simplify sign-in"
         ],
         "correct": 1,
@@ -55002,7 +55002,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Users report that recent password changes made on-premises are not being reflected in Microsoft Entra ID sign-in within the expected timeframe. Which area should the administrator investigate first according to the synchronization troubleshooting guidance?",
         "options": [
-          "Whether Conditional Access session controls are misconfigured",
+          "Whether Conditional Access session controls are misconfigured and rejecting the new passwords at cloud sign-in",
           "Whether password hash synchronization is enabled and running on schedule in Microsoft Entra Connect Sync",
           "Whether the user's sensitivity label has expired",
           "Whether the DLP policy is blocking the sync"
@@ -55015,7 +55015,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which authentication option lets Microsoft Entra ID validate a user's password by sending an encrypted hash of it to the cloud, without ever sending the plaintext password over the network for validation?",
         "options": [
-          "Passwordless FIDO2 authentication",
+          "Passwordless FIDO2 security key sign-in",
           "Password hash synchronization (PHS)",
           "Pass-through authentication (PTA)",
           "Federation with AD FS"
@@ -55030,7 +55030,7 @@ const EXAMS = {
         "options": [
           "To set the tenant's default password expiration interval",
           "To require that only certain combinations of authentication methods (such as phishing-resistant MFA) satisfy the policy",
-          "To determine which users are eligible for PIM activation",
+          "To determine which users are eligible for PIM activation of their assigned administrator roles and for how many hours at a time",
           "To configure DLP sensitivity thresholds"
         ],
         "correct": 1,
@@ -55067,7 +55067,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In a hybrid environment, what additional component must be deployed on-premises for SSPR password changes made in the cloud to be written back to on-premises Active Directory?",
         "options": [
-          "Microsoft Defender for Cloud Apps app connector",
+          "Microsoft Defender for Cloud Apps app connector, deployed on-premises",
           "Microsoft Entra Connect Health only",
           "Password writeback, enabled through Microsoft Entra Connect",
           "IdFix"
@@ -55095,7 +55095,7 @@ const EXAMS = {
         "options": [
           "Microsoft Defender for Identity sensor",
           "AD FS federation servers",
-          "Microsoft Entra Cloud Sync provisioning agent only",
+          "Microsoft Entra Cloud Sync provisioning agent only, installed on a member server in the domain",
           "The Microsoft Entra Password Protection proxy and DC agent installed on domain controllers"
         ],
         "correct": 3,
@@ -55121,7 +55121,7 @@ const EXAMS = {
         "options": [
           "Group-based licensing",
           "Password writeback",
-          "An administrative unit assignment",
+          "An administrative unit assignment scoped to high-risk users in the tenant",
           "A risk-based remediation policy in Microsoft Entra Identity Protection"
         ],
         "correct": 3,
@@ -55174,7 +55174,7 @@ const EXAMS = {
           "Smart lockout",
           "Password writeback",
           "Continuous access evaluation (CAE)",
-          "Named locations"
+          "Named locations (trusted IP ranges)"
         ],
         "correct": 2,
         "explain": "The session management unit covers continuous access evaluation, which allows critical events (like risk changes or account disablement) to revoke access near-instantly instead of waiting for token expiry."
@@ -55237,9 +55237,9 @@ const EXAMS = {
         "q": "In Privileged Identity Management, what is the difference between an 'eligible' and an 'active' role assignment?",
         "options": [
           "An eligible assignment requires the user to activate the role (often with MFA, justification, or approval) before it becomes usable; an active assignment is usable immediately",
-          "Eligible assignments never expire while active assignments always expire after 24 hours",
+          "Eligible assignments never expire while active assignments always expire after 24 hours; an active role must then be renewed by an administrator each day before it can be used again",
           "There is no functional difference between the two",
-          "Active assignments require approval while eligible assignments do not"
+          "Active assignments require approval while eligible assignments do not, so an eligible role is usable immediately with no activation step"
         ],
         "correct": 0,
         "explain": "PIM core capabilities distinguish eligible assignments, which require just-in-time activation, from active assignments, which grant standing access without an activation step."
@@ -55277,7 +55277,7 @@ const EXAMS = {
         "options": [
           "Deleting the user's account and recreating it",
           "Disabling Conditional Access tenant-wide",
-          "Manually editing the user's password hash in Microsoft Entra Connect",
+          "Manually editing the user's password hash in Microsoft Entra Connect, then forcing a full synchronization cycle so the stored MFA methods are cleared in the cloud",
           "Requiring the user to re-register authentication methods, using admin-initiated actions such as 'require re-register MFA' in the Entra admin center"
         ],
         "correct": 3,
@@ -55395,7 +55395,7 @@ const EXAMS = {
           "Safe Links only applies to links inside Word documents, not email",
           "Safe Links rewrites and re-checks the URL at time-of-click, blocking access if the destination is now malicious",
           "Safe Links blocks all hyperlinks in every email by default",
-          "Safe Links only scans URLs once, at the moment the email is delivered"
+          "Safe Links only scans URLs once, at the moment the email is delivered, so a link weaponized later is never checked again when users click it"
         ],
         "correct": 1,
         "explain": "The 'Manage Safe Links' unit covers time-of-click URL verification, which is what allows Safe Links to catch a link that becomes malicious after delivery, unlike a delivery-time-only scan."
@@ -55408,7 +55408,7 @@ const EXAMS = {
           "Attack simulation training",
           "Safe Attachments policy priority",
           "The Tenant Allow/Block List with a time-limited allow entry",
-          "Data Loss Prevention exceptions"
+          "Data Loss Prevention exceptions added for that specific sender"
         ],
         "correct": 2,
         "explain": "The Tenant Allow/Block List, part of Defender for Office 365's protection stack, lets admins create scoped allow or block entries (including for senders/domains/URLs) rather than disabling protection broadly."
@@ -55446,7 +55446,7 @@ const EXAMS = {
         "options": [
           "Named locations",
           "Restricted entities (blocked users)",
-          "Administrative units",
+          "Administrative units (scoped admin roles)",
           "Role groups"
         ],
         "correct": 1,
@@ -55473,7 +55473,7 @@ const EXAMS = {
           "Onboarding the device using a supported method, such as via Microsoft Intune or a local onboarding script",
           "Creating a Conditional Access named location",
           "Assigning a sensitivity label to the device",
-          "Enabling Microsoft Entra Password Protection on the device"
+          "Enabling Microsoft Entra Password Protection on the device before any Defender for Endpoint sensor is started"
         ],
         "correct": 0,
         "explain": "The skill 'Onboard devices to Microsoft Defender for Endpoint' and the endpoint protection module both cover onboarding — via Intune, Group Policy, or a local script — as the prerequisite step before protection begins."
@@ -55536,7 +55536,7 @@ const EXAMS = {
         "q": "What must be configured first before Microsoft Defender for Cloud Apps can monitor a specific first-party cloud service like Microsoft 365 in more depth than Cloud Discovery alone provides?",
         "options": [
           "An administrative unit",
-          "A Conditional Access named location",
+          "A Conditional Access named location for that cloud app",
           "The app connector (API connector) for that cloud app",
           "A retention label"
         ],
@@ -55589,7 +55589,7 @@ const EXAMS = {
         "options": [
           "Shadow IT — cloud apps being used in the organization that IT has not sanctioned or is unaware of",
           "Which retention labels apply to a document",
-          "Which devices failed onboarding to Defender for Endpoint",
+          "Which devices failed onboarding to Defender for Endpoint and still need the onboarding package applied",
           "Which Conditional Access policy blocked a sign-in"
         ],
         "correct": 0,
@@ -55602,7 +55602,7 @@ const EXAMS = {
         "options": [
           "Disable Cloud App Discovery entirely",
           "Tag the app as unsanctioned and optionally block it (e.g., via a Conditional Access App Control or network integration)",
-          "Ignore it since Cloud Discovery is read-only and cannot inform any action",
+          "Ignore it since Cloud Discovery is read-only and cannot inform any action, so employees simply keep using the app as before",
           "Immediately delete all company data across the tenant"
         ],
         "correct": 1,
@@ -55615,7 +55615,7 @@ const EXAMS = {
         "options": [
           "Log files are in an unsupported format or firewall/proxy log collector configuration is incorrect",
           "The user hasn't completed attack simulation training",
-          "The tenant has too many Microsoft Secure Score points",
+          "The tenant has too many Microsoft Secure Score points, which pauses parsing of any newly uploaded traffic logs",
           "Safe Attachments policies are disabled"
         ],
         "correct": 0,
@@ -55655,7 +55655,7 @@ const EXAMS = {
           "Detecting and controlling senders that are spoofing your domain or other domains in the From address",
           "Detecting malware hidden in attachments",
           "Detecting oversharing of SharePoint files",
-          "Detecting risky sign-ins from unfamiliar locations"
+          "Detecting risky sign-ins from unfamiliar locations and prompting those users for multifactor authentication"
         ],
         "correct": 0,
         "explain": "Spoof intelligence, part of Defender for Office 365's enhanced protection, identifies senders spoofing domains in email headers and lets admins allow or block them explicitly."
@@ -55668,7 +55668,7 @@ const EXAMS = {
           "A Conditional Access named location exclusion",
           "A retention label applied to the distribution list",
           "A mail flow (transport) rule that disables the Safe Links policy for that specific scenario",
-          "An administrative unit scoped to the distribution list"
+          "An administrative unit scoped to the distribution list that removes its members from the Safe Links policy"
         ],
         "correct": 2,
         "explain": "The 'Manage Safe Links' unit explicitly covers using transport rules to disable a Safe Links policy from applying in certain scenarios, such as excluding specific recipients."
@@ -55681,7 +55681,7 @@ const EXAMS = {
           "All incidents have identical severity regardless of impact",
           "Severity can only be assigned manually by a Global Administrator",
           "Defender XDR automatically assigns severity to correlated incidents, helping analysts prioritize which incidents to investigate and respond to first",
-          "Incident severity is determined solely by the number of devices in the tenant"
+          "Incident severity is determined solely by the number of devices in the tenant, so larger organizations see every incident rated higher than smaller ones do"
         ],
         "correct": 2,
         "explain": "Defender XDR automatically scores and assigns severity to incidents based on the correlated alerts and their potential impact, supporting the exam skill of reviewing and responding to incidents and alerts."
@@ -55693,7 +55693,7 @@ const EXAMS = {
         "options": [
           "They replace the need for Conditional Access entirely",
           "They aggregate trends across incidents, threat protection, and device health so admins can spot patterns and prioritize remediation",
-          "They are limited to Microsoft Defender for Cloud Apps data only",
+          "They are limited to Microsoft Defender for Cloud Apps data only, so incidents, threat protection, and device health have to be reviewed in other portals",
           "They only display billing information"
         ],
         "correct": 1,
@@ -55704,7 +55704,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A phishing simulation campaign run through Attack simulation training shows a high click-through rate in the Finance department. What is the recommended next step covered by the training campaign management skill?",
         "options": [
-          "Escalate directly to Microsoft Support without further tenant action",
+          "Escalate directly to Microsoft Support without further tenant action, as the same simulation workflow cannot follow up with users who clicked",
           "Delete the Finance department's mailboxes",
           "Disable Safe Links for the whole tenant",
           "Assign targeted training content to the users who clicked or entered credentials, as part of the same simulation workflow"
@@ -55733,7 +55733,7 @@ const EXAMS = {
           "Retention labels",
           "Sensitive information types (SITs)",
           "Content explorer",
-          "Insider Risk Management"
+          "Insider Risk Management policies (IRM)"
         ],
         "correct": 1,
         "explain": "The skill 'Implement and manage sensitive information types by using keywords, keyword lists, or regular expressions' names SITs as the mechanism for pattern-based detection of sensitive data, which DLP and other Purview features then reference."
@@ -55744,9 +55744,9 @@ const EXAMS = {
         "q": "What is the key difference between a retention label and a retention policy in Microsoft Purview data lifecycle management?",
         "options": [
           "There is no functional difference between the two",
-          "Retention policies require a sensitivity label to function, while retention labels do not",
+          "Retention policies require a sensitivity label to function, while retention labels do not, so a location such as a mailbox or site is covered only after a sensitivity label has been applied to every item in it",
           "A retention label is applied at the item level (manually or automatically) and can travel with content, while a retention policy applies broadly to a location such as a mailbox or site",
-          "Retention labels only apply to Teams chats, while retention policies only apply to email"
+          "Retention labels only apply to Teams chats, while retention policies only apply to email, so neither one can be used for a site or for documents stored in SharePoint"
         ],
         "correct": 2,
         "explain": "The module comparing capabilities of retention policies and retention labels explains that labels are item-level and portable, while policies are typically scoped to a container or workload."
@@ -55785,7 +55785,7 @@ const EXAMS = {
           "'Retention wins over deletion' — if any rule says to keep content, it's retained, even if another rule says to delete it",
           "Deletion always takes priority over retention",
           "The most recently applied rule always wins",
-          "eDiscovery holds are ignored if a retention label exists"
+          "eDiscovery holds are ignored if a retention label exists, so the item is deleted on schedule even while the hold is in place"
         ],
         "correct": 0,
         "explain": "The 'Examine the principles of retention' unit covers key principles including that retention (preservation) always takes precedence over deletion when multiple retention settings conflict on the same content."
@@ -55808,7 +55808,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Once sensitivity labels are created, how are they made available to users in apps like Word, Excel, and Outlook?",
         "options": [
-          "Sensitivity labels are automatically available tenant-wide with no policy needed",
+          "Sensitivity labels are automatically available tenant-wide with no label policy needed",
           "By configuring them as Conditional Access grant controls",
           "By publishing them to specific users or groups through a sensitivity label policy",
           "By assigning them directly via Microsoft Entra Connect Sync"
@@ -55835,8 +55835,8 @@ const EXAMS = {
         "q": "What distinguishes Activity explorer from Content explorer in Microsoft Purview?",
         "options": [
           "They are two names for the exact same feature",
-          "Content explorer requires Endpoint DLP to be enabled, while Activity explorer does not",
-          "Activity explorer only works with retention labels, while Content explorer only works with sensitivity labels",
+          "Content explorer requires Endpoint DLP to be enabled, while Activity explorer does not, so it only shows content on onboarded devices",
+          "Activity explorer only works with retention labels, while Content explorer only works with sensitivity labels, so the two tools can never be used together to review the same labeled item or location",
           "Activity explorer shows a timeline of actions taken on labeled content (e.g., label changed, file copied), while Content explorer shows a current snapshot of where labeled content is located"
         ],
         "correct": 3,
@@ -55847,7 +55847,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "When creating a DLP policy that must cover Exchange Online, SharePoint Online, OneDrive, Teams, and Power BI in one place, what is the recommended approach described in the DLP planning module?",
         "options": [
-          "Create a completely separate DLP policy for each workload since cross-workload policies aren't supported",
+          "Create a completely separate DLP policy for each workload since cross-workload policies aren't supported by Purview",
           "DLP can only be applied to one location at a time",
           "Use a single DLP policy with multiple selected locations, rather than creating a separate policy per workload",
           "Only Exchange Online supports DLP; the others require Conditional Access instead"
@@ -55886,7 +55886,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Where would a compliance administrator go to review triggered DLP matches, false positives, and overall policy match trends across the organization?",
         "options": [
-          "Microsoft Defender Vulnerability Management dashboard",
+          "Microsoft Defender Vulnerability Management dashboard in the Defender portal",
           "Cloud Discovery dashboard",
           "Message center",
           "DLP alerts, events, and reports in the Microsoft Purview compliance portal"
