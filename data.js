@@ -60061,7 +60061,7 @@ const EXAMS = {
         "options": [
           "It automatically enables Conditional Access for the domain",
           "It disables the onmicrosoft.com fallback domain",
-          "It automatically migrates all mailboxes to Exchange Online",
+          "It automatically migrates all mailboxes to Exchange Online once the domain is added",
           "It automatically confirms domain ownership and adds the required DNS records"
         ],
         "correct": 3,
@@ -60075,7 +60075,7 @@ const EXAMS = {
           "They receive a trial license instead of the full license",
           "They do not receive the license, because group-based licensing does not support nested groups",
           "License assignment fails for the entire outer group",
-          "They receive the license automatically, along with all first-level members"
+          "They receive the license automatically, along with all first-level members of the outer security group"
         ],
         "correct": 1,
         "explain": "Group-based licensing does not currently support nested groups; only users in the first-level group are assigned the license."
@@ -60216,7 +60216,7 @@ const EXAMS = {
         "options": [
           "Only users with an active Copilot license",
           "Service Support Administrator and Helpdesk Administrator",
-          "Anyone in the organization, including guests",
+          "Anyone in the organization, including guests and unlicensed users",
           "Teams Administrator and Exchange Administrator only"
         ],
         "correct": 1,
@@ -60267,7 +60267,7 @@ const EXAMS = {
         "q": "A user has Send As permission, but not Send on Behalf, on the shared mailbox 'Marketing Department'. When this user sends an email from that mailbox, how does the recipient see the sender?",
         "options": [
           "It appears as 'User on behalf of Marketing Department'",
-          "The recipient sees both the user's name and the mailbox name side by side",
+          "The recipient sees both the user's name and the mailbox name side by side, with a note naming the individual user",
           "It appears the email was sent directly by Marketing Department, with no reference to the individual user",
           "The email fails to send without Send on Behalf permission"
         ],
@@ -60309,7 +60309,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "An admin wants a shared mailbox to appear automatically in members' Outlook without manually adding it. Automapping is set on which object, and what does this mean for access managed through a security group?",
         "options": [
-          "Automapping is set on the shared mailbox itself and always works regardless of how permissions are assigned",
+          "Automapping is set on the shared mailbox itself and always works regardless of how permissions are assigned, even through a security group alone",
           "Automapping requires Exchange Online Plan 2 on every member",
           "Automapping is set on the user's mailbox, so if access to the shared mailbox is granted only via a security group, automapping will not work",
           "Automapping only works for Outlook on the web, never for desktop Outlook"
@@ -60403,7 +60403,7 @@ const EXAMS = {
           "The encryption keys used for each sensitivity label",
           "A count of DLP policy violations per label",
           "A snapshot of sensitivity label distribution across all SharePoint and OneDrive sites",
-          "A list of every user who has ever opened a labeled document"
+          "A list of every user who has ever opened a labeled document on SharePoint and OneDrive sites"
         ],
         "correct": 2,
         "explain": "The sensitivity label snapshot report gives a snapshot of sensitivity label distribution across all SharePoint and OneDrive sites, helping identify oversharing risk related to sensitive content."
@@ -60468,7 +60468,7 @@ const EXAMS = {
           "It can be done directly from the Groups page with one click",
           "It's not possible to migrate a shared mailbox to a Microsoft 365 Group",
           "It only works if the shared mailbox has fewer than 25 members",
-          "It requires PowerShell but is fully supported"
+          "It requires PowerShell but is fully supported, keeping all mailbox content"
         ],
         "correct": 1,
         "explain": "According to Microsoft's group comparison guidance, it is not possible to migrate a shared mailbox to a Microsoft 365 group."
@@ -60511,7 +60511,7 @@ const EXAMS = {
           "Nothing at all, until each user is separately added to the administrative unit",
           "Only view the group, with no management rights at all",
           "Manage the group's name and membership, but not the individual user properties or passwords of its members",
-          "Fully manage every property, including passwords, of each user in the group"
+          "Fully manage every property, including passwords and authentication methods, of each individual user in the group"
         ],
         "correct": 2,
         "explain": "Adding a group to an administrative unit brings the group itself into scope, but not the members of the group. A scoped admin can manage the group's name/membership, but cannot manage individual members' properties, authentication methods, or passwords unless those users are separately added to the administrative unit."
@@ -60536,7 +60536,7 @@ const EXAMS = {
         "options": [
           "The user has the privileges of the role at all times with no additional action required",
           "The user can never use the role, only view its permissions",
-          "The role assignment automatically expires after 24 hours regardless of configuration",
+          "The role assignment automatically expires after 24 hours regardless of configuration or activation",
           "The user must perform one or more actions, such as activation, before they can use the role"
         ],
         "correct": 3,
@@ -60651,7 +60651,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Can the global banned password list used by Microsoft Entra Password Protection be disabled by an admin?",
         "options": [
-          "Yes, but only during a break-glass emergency access scenario",
+          "Yes, but only during a break-glass emergency access scenario for admins",
           "No, it is automatically applied to all users and cannot be disabled",
           "Yes, but only for cloud-only users",
           "Yes, from the Authentication methods policy"
@@ -60718,7 +60718,7 @@ const EXAMS = {
         "options": [
           "Yes, but only for users assigned an admin role",
           "No, SSPR is not enabled by default and must be turned on by an admin",
-          "Yes, it is enabled by default for all licensed users",
+          "Yes, it is enabled by default for all licensed users and needs no admin setup",
           "It is only available if Conditional Access is disabled"
         ],
         "correct": 1,
@@ -60742,7 +60742,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What does enabling SSPR writeback accomplish in a hybrid identity environment?",
         "options": [
-          "It syncs on-premises password policies into Microsoft Entra ID",
+          "It syncs on-premises password policies into Microsoft Entra ID, replacing the cloud password rules",
           "It automatically unlocks on-premises accounts every 24 hours",
           "It writes password change events back from Microsoft Entra ID to the on-premises directory",
           "It disables SSPR for federated users"
@@ -60757,7 +60757,7 @@ const EXAMS = {
         "options": [
           "Authenticator cannot be used at all when only one method is required",
           "Verification code only; push notification is not available when just one method is required",
-          "Either push notification or verification code, identical to the two-method policy",
+          "Either push notification or verification code, identical to the options of the two-method policy",
           "Push notification only"
         ],
         "correct": 1,
@@ -60971,7 +60971,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What is the purpose of the 'How-to Guide' social engineering technique in Attack simulation training?",
         "options": [
-          "It sends a fake phishing email that tests whether the user clicks a malicious link",
+          "It sends a fake phishing email that tests whether the user clicks a malicious link inside the message body",
           "It's a lightweight teaching guide viewed directly in the inbox; it does not attempt to test the user",
           "It automatically disables the user's mailbox until training is completed",
           "It is used only for QR code payloads and nothing else"
@@ -60985,7 +60985,7 @@ const EXAMS = {
         "q": "What does the Predicted Compromise Rate (PCR) in Attack simulation training indicate?",
         "options": [
           "The financial cost of running a given simulation",
-          "The percentage of users who reported the phishing simulation as suspicious",
+          "The percentage of users who reported the phishing simulation as suspicious, measured after the simulation has ended",
           "The number of times a payload has been reused across simulations",
           "The potential effectiveness of a payload, predicting the percentage of people likely to be compromised by it"
         ],
@@ -61030,7 +61030,7 @@ const EXAMS = {
           "To notify all users in the tenant about the upcoming policy",
           "To generate a compliance certificate for auditors",
           "To evaluate the policy's impact and tune it without enforcing any of its configured actions",
-          "To automatically train an AI model on the organization's sensitive data patterns"
+          "To automatically train an AI model on the organization's sensitive data patterns before enforcement"
         ],
         "correct": 2,
         "explain": "Simulation mode lets an admin implement a policy and observe its outcomes without applying the configured protective actions, so they can fine-tune scope and conditions before turning on enforcement."
@@ -61162,7 +61162,7 @@ const EXAMS = {
         "q": "A user is subject to two sensitivity label policies with conflicting default label settings. Which policy's setting is applied?",
         "options": [
           "The policy that was created first",
-          "The policy with the fewest published labels",
+          "The policy with the fewest published labels assigned to the user",
           "The policy with the highest priority (highest order number)",
           "Both settings are merged automatically"
         ],
@@ -61239,7 +61239,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In the Microsoft 365 Copilot readiness report, what does the 'Suggested candidate for Copilot' column identify?",
         "options": [
-          "Users ranked individually from most to least likely to adopt Copilot",
+          "Users ranked individually from most to least likely to adopt Copilot, based on their app usage each week",
           "Only users who already have a Copilot license assigned",
           "Every user who has requested a Copilot license",
           "The top 25% of nonlicensed users, based on their usage of apps where Copilot adds the most value"
@@ -61268,7 +61268,7 @@ const EXAMS = {
           "It runs continuously in real time against a single selected site",
           "It runs weekly against the top 100 SharePoint sites based on usage",
           "It only runs when manually triggered by an admin",
-          "It runs once per year against every SharePoint site in the tenant"
+          "It runs once per year against every SharePoint site in the tenant by default"
         ],
         "correct": 1,
         "explain": "A default data risk assessment automatically runs weekly for the top 100 SharePoint sites based on usage in the organization."
@@ -61278,7 +61278,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "An admin wants Copilot and agents to be prevented from summarizing content that carries a specific sensitivity label, without removing users' existing SharePoint permissions. Which DSPM oversharing remediation action should they use?",
         "options": [
-          "Create an auto-labeling policy for unlabeled files",
+          "Create an auto-labeling policy for unlabeled files so Copilot and agents pick up the selected sensitivity label automatically",
           "Restrict all items (Restricted Content Discovery to exempt the whole site)",
           "Create a retention policy to auto-delete the content",
           "Restrict access by label (a DLP policy that blocks Copilot and agents from summarizing labeled content)"
@@ -61307,7 +61307,7 @@ const EXAMS = {
           "It's currently restricted to a maximum of 10 SharePoint sites, and OneDrive isn't supported",
           "It requires disabling all sensitivity labels first",
           "It's only available for Fabric workspaces, not SharePoint or OneDrive",
-          "It supports unlimited SharePoint sites but not Exchange"
+          "It supports unlimited SharePoint sites but not Exchange, and OneDrive is scanned alongside them at item level"
         ],
         "correct": 0,
         "explain": "Item-level scanning and remediation for data risk assessments is currently restricted to SharePoint sites, with a maximum of 10 sites, and OneDrive currently isn't supported for item-level scanning."
@@ -61422,7 +61422,7 @@ const EXAMS = {
         "q": "What is the general purpose of Copilot connectors in Microsoft 365 Copilot?",
         "options": [
           "To connect a user's personal Microsoft account to their work account",
-          "To connect two Microsoft 365 tenants together for cross-tenant Copilot access",
+          "To connect two Microsoft 365 tenants together for cross-tenant Copilot access to each other's users and mailboxes",
           "To bring external or third-party data sources into Copilot so it can search and reference that content",
           "To link Copilot licenses to a specific device"
         ],
@@ -61475,7 +61475,7 @@ const EXAMS = {
         "options": [
           "The action executes immediately with no notice",
           "Cowork prepares the action and asks the user for approval before it happens",
-          "An admin must approve every automated action, not the user",
+          "An admin must approve every automated action, not the user, in the admin center",
           "The task is silently canceled"
         ],
         "correct": 1,
@@ -61519,7 +61519,7 @@ const EXAMS = {
           "A one-time flat license fee",
           "Usage-based billing (consumption of Copilot Credits)",
           "Free of charge for all licensed Copilot users",
-          "Billed only per agent created, not per activity"
+          "Billed only per agent created, not per activity or credit"
         ],
         "correct": 1,
         "explain": "Cowork uses a usage-based billing model; activities such as model responses, tool and skill calls, image generation, and browser tasks all count toward the organization's Copilot Credit consumption."
@@ -61529,7 +61529,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "If an admin makes Cowork discoverable to end users but does not enable usage-based billing, what happens when a user tries to access Cowork?",
         "options": [
-          "The user is redirected to purchase a personal Copilot subscription",
+          "The user is redirected to purchase a personal Copilot subscription before Cowork can be opened in the app",
           "The user is granted access automatically with a 30-day trial",
           "The user can request access directly in the app, and an admin must review and approve the request",
           "Cowork remains completely invisible to the user"
@@ -61679,7 +61679,7 @@ const EXAMS = {
           "Microsoft agents, external partner-built agents, agents published by your org, and agents shared by creator",
           "Bot Framework, Power Virtual Agents, Copilot Studio, and Azure AI Studio agents",
           "Preview, GA, deprecated, and retired agents",
-          "Free agents, paid agents, trial agents, and enterprise agents"
+          "Free agents, paid agents, trial agents, and enterprise agents, classified by how your organization licensed each one"
         ],
         "correct": 0,
         "explain": "The Registry classifies agents into four types: Microsoft agents (built by Microsoft), external partner-built agents, agents published by your org (approved LOB agents), and shared by creator (individual user-shared agents)."
@@ -61715,7 +61715,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What situation typically causes a shared agent to become 'ownerless' in the Agent Registry?",
         "options": [
-          "The agent was published by Microsoft rather than by the organization",
+          "The agent was published by Microsoft rather than by a user in the organization",
           "The user who created and shared the agent is deleted from the organization",
           "The agent's ZIP package expired after 90 days",
           "The agent has not been used in the last 24 hours"
@@ -61800,7 +61800,7 @@ const EXAMS = {
           "Microsoft-pinned and administrator-pinned agents",
           "Only agents they created themselves",
           "User-pinned agents only",
-          "None; users can always unpin any agent"
+          "None; users can always unpin any agent from their own list"
         ],
         "correct": 0,
         "explain": "End users usually can't unpin Microsoft-pinned or administrator-pinned agents — those remain fixed in the pinned list — while user-pinned agents remain fully under the individual user's control."
@@ -61889,7 +61889,7 @@ const EXAMS = {
         "q": "Where can an admin track per-app and per-feature Copilot adoption trends over time, delivered as insights for IT leaders?",
         "options": [
           "The Adoption tab of the Copilot Dashboard in Viva Insights",
-          "The SharePoint admin center storage report",
+          "The SharePoint admin center storage report, broken down by site",
           "The Defender portal Incidents queue",
           "The Exchange admin center message trace tool"
         ],
@@ -61928,7 +61928,7 @@ const EXAMS = {
         "q": "When exporting the agent list from the Agent Registry to Excel, what scope options can an admin choose from?",
         "options": [
           "Only agents without owners",
-          "Only Microsoft-published agents",
+          "Only Microsoft-published agents, with no other scope available",
           "Only agents created in the last 30 days",
           "All agents or only the currently filtered agents"
         ],
