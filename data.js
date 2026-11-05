@@ -85150,7 +85150,7 @@ const EXAMS = {
         "options": [
           "Bypass proxy servers for Teams traffic whenever possible",
           "Use only TCP-based proxies for Teams media",
-          "Route all Teams traffic through a proxy for security",
+          "Route all Teams traffic through a proxy for security inspection",
           "Proxies are required for Teams meeting traffic"
         ],
         "correct": 0,
@@ -85217,7 +85217,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "For locations with a large number of Teams town hall attendees, what does Microsoft recommend to optimize bandwidth usage?",
         "options": [
-          "Splitting attendees across multiple simultaneous town halls",
+          "Splitting attendees across multiple simultaneous town halls at each site",
           "Reducing video resolution for all attendees to 240p",
           "Deploying an Enterprise Content Delivery Network (eCDN) solution",
           "Disabling live video streaming"
@@ -86138,7 +86138,7 @@ const EXAMS = {
           "Yes, Longest idle ignores presence state",
           "No, only agents whose presence is set to Available are considered for routing",
           "No, Longest idle only works with Attendant routing enabled",
-          "Yes, but only if they are the single longest-idle agent overall"
+          "Yes, but only if they are the single longest-idle agent overall in the call queue"
         ],
         "correct": 1,
         "explain": "With Longest idle routing, an agent is considered idle only when their presence state is Available; agents with any other presence status don't receive calls until they return to Available."
@@ -86270,7 +86270,7 @@ const EXAMS = {
         "q": "An emergency calling policy is assigned both to a network site and, separately, to an individual user who is physically located at that site. Which policy takes effect for that user?",
         "options": [
           "The policy assigned to the user always wins",
-          "Both policies are merged, taking the most restrictive settings from each",
+          "Both policies are merged, taking the most restrictive settings from each of them",
           "The policy assigned to the network site overrides the one assigned to the user",
           "Neither policy applies; a default policy is used instead"
         ],
@@ -86458,7 +86458,7 @@ const EXAMS = {
         "options": [
           "Full firmware management equivalent to Teams-certified IP phones",
           "None; SIP devices can't be managed from the Teams admin center at all",
-          "Full configuration profile management identical to Android Teams devices",
+          "Full configuration profile management identical to Android Teams devices, including firmware updates",
           "Very limited; all other management must be done through third-party OEM management tools"
         ],
         "correct": 3,
@@ -86554,7 +86554,7 @@ const EXAMS = {
           "On the first weekend after the update is released",
           "Exactly 24 hours after release",
           "Immediately upon release",
-          "The next time the device is manually rebooted"
+          "The next time the device is manually rebooted by an admin"
         ],
         "correct": 0,
         "explain": "When 'As soon as available' is selected for firmware auto-update, the update is applied on the first weekend after the latest update is released, not instantly upon release."
@@ -86763,7 +86763,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "How is a desk automatically checked in under the Teams desk booking autorelease feature, without any manual check-in action by the user?",
         "options": [
-          "Check-in happens automatically at the start time of the reservation regardless of presence",
+          "Check-in happens automatically at the start time of the reservation regardless of presence at the desk",
           "An admin must manually check in each desk every morning",
           "The desk is automatically checked in when a user plugs their laptop into an associated peripheral",
           "The user must open the Teams mobile app and tap Check In"
