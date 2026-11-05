@@ -81143,7 +81143,7 @@ const EXAMS = {
         "options": [
           "Sales Enterprise includes only a limited monthly capacity for these Premium features, so full ongoing use requires Sales Premium licensing",
           "The features must be purchased as a standalone Copilot Studio add-on unrelated to Sales licensing",
-          "Sales Enterprise includes unlimited use of all Premium features at no extra cost",
+          "Sales Enterprise includes unlimited use of all Premium features at no extra cost, so every seller can use them on an ongoing basis without added licensing",
           "These features are unavailable to Sales Enterprise customers under any circumstances"
         ],
         "correct": 0,
@@ -81209,7 +81209,7 @@ const EXAMS = {
           "Configure a separate discount list for duplicate leads",
           "Disable the Power Platform duplicate detection rules for leads",
           "Nothing further is required; the two systems never overlap",
-          "Delete all existing lead records before enabling the feature"
+          "Delete all existing lead records before enabling the feature in Sales Hub"
         ],
         "correct": 1,
         "explain": "Microsoft recommends disabling Power Platform duplicate detection rules for leads once the AI-powered duplicate lead detection feature is enabled, to avoid conflicting matching logic."
@@ -81247,7 +81247,7 @@ const EXAMS = {
         "options": [
           "The organization has not purchased a Sales Premium license",
           "Copilot cannot be used by any custom security role",
-          "The sellers' mailboxes have not been approved for server-side synchronization",
+          "The sellers' mailboxes have not been approved for server-side synchronization in the environment",
           "The custom role is missing the prvIntelligenceUsage privilege under Miscellaneous Privileges"
         ],
         "correct": 3,
@@ -81260,7 +81260,7 @@ const EXAMS = {
         "options": [
           "An application user in Dataverse assigned the AISalesperson security role",
           "A shared team mailbox with Sales Manager privileges",
-          "A guest account in Microsoft Entra with Global Administrator rights",
+          "A guest account in Microsoft Entra with Global Administrator rights in the tenant",
           "A new interactive user account with the System Administrator role"
         ],
         "correct": 0,
@@ -81286,7 +81286,7 @@ const EXAMS = {
         "options": [
           "The fiscal year can be changed at any time by a user with the Salesperson role",
           "Fiscal year only affects the product catalog, not forecasting or goals",
-          "Fiscal year settings automatically sync from the connected Microsoft 365 tenant",
+          "Fiscal year settings automatically sync from the connected Microsoft 365 tenant each time they change",
           "Once saved, the fiscal year start date, period name, and display format cannot be changed"
         ],
         "correct": 3,
@@ -81350,7 +81350,7 @@ const EXAMS = {
         "q": "After enabling the Assistant in Dynamics 365 Sales, several users report that many core Sales features stop working correctly for them. What is a likely cause?",
         "options": [
           "Business process flows were deactivated by the Assistant",
-          "The premium Assistant tier was mistakenly enabled instead of the standard tier",
+          "The premium Assistant tier was mistakenly enabled instead of the standard tier in the environment",
           "Their security roles are missing the Action card and Action card user settings read privileges",
           "The Assistant requires a completely separate Dataverse environment"
         ],
@@ -81428,7 +81428,7 @@ const EXAMS = {
         "q": "Contoso wants distributor customers automatically charged 10% less once they order more than 50 units of a product on a given price list line item. Which feature should be applied to that price list item?",
         "options": [
           "A new unit group with a bulk primary unit",
-          "A separate product family for high-volume buyers",
+          "A separate product family for high-volume buyers, priced 10% below the standard price list",
           "A discount list associating quantity ranges with discount percentages",
           "The Percent of List pricing method"
         ],
@@ -81443,7 +81443,7 @@ const EXAMS = {
           "The price list must be deactivated first",
           "The product and its unit of measure must already be defined in the product catalog",
           "A discount list must be created for every product",
-          "The product must belong to at least two product families"
+          "The product must belong to at least two product families within the product catalog"
         ],
         "correct": 1,
         "explain": "Price lists link units, products, and pricing details together, so units and products must be fully defined in the product catalog before price list items referencing them can be created."
@@ -81541,7 +81541,7 @@ const EXAMS = {
         "options": [
           "Copilot automatically adds 7 default fields to reach the minimum",
           "The configuration saves successfully with only 3 fields",
-          "The Summary tab is removed and only Recent changes remains configurable",
+          "The Summary tab is removed and only Recent changes remains configurable by the admin",
           "The save button stays unavailable because at least 4 fields must be selected"
         ],
         "correct": 3,
@@ -81591,7 +81591,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Before creating an AI agent for the first time, an administrator opens the AI Hub's Prerequisites page. Which three items must be verified or completed there before the Create button activates?",
         "options": [
-          "Business process flow publication, timeline configuration, and duplicate detection rules",
+          "Business process flow publication, timeline configuration, and duplicate detection rules enabled",
           "Fiscal year settings, currency configuration, and sales territories",
           "Product catalog publication, price list activation, and unit group creation",
           "Microsoft Copilot Studio capacity, Move data across regions consent, and AI prompts enabled"
@@ -81685,7 +81685,7 @@ const EXAMS = {
           "Who knows whom; the enhanced tier requires server-side synchronization and a qualifying Sales Premium license",
           "Relationship analytics; the enhanced tier requires a custom security role",
           "The sales accelerator; the enhanced tier requires predictive scoring",
-          "Conversation intelligence; the enhanced tier requires Teams Phone System licensing"
+          "Conversation intelligence; the enhanced tier requires Teams Phone System licensing and a qualifying Sales Premium license"
         ],
         "correct": 0,
         "explain": "Who knows whom surfaces colleagues with existing connections to a lead or contact. Its basic tier works out of the box using Dynamics 365 data, while the enhanced tier draws on Exchange data and requires server-side synchronization plus a qualifying Sales Premium license."
@@ -81773,7 +81773,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A new Dynamics 365 Sales environment includes a default current-month forecast. Which statement about this default forecast is correct?",
         "options": [
-          "It must be manually activated by a System Administrator before any user can see it",
+          "It must be manually activated by a System Administrator before any user can see its pipeline figures",
           "It can't be configured, deleted, or deactivated, and gives basic pipeline visibility with no setup",
           "It can be configured but never deleted or deactivated",
           "It automatically converts into a predictive-only forecast after 90 days"
@@ -81853,7 +81853,7 @@ const EXAMS = {
         "options": [
           "Amount, along with a fiscal year override and a discount list",
           "Count, along with the record type being tracked, contributing columns, and status mapping",
-          "Count, and nothing else since counts don't require status mapping",
+          "Count, and nothing else since counts don't require status mapping or contributing columns to be defined",
           "Amount, along with a currency conversion table only"
         ],
         "correct": 1,
@@ -81908,7 +81908,7 @@ const EXAMS = {
         "q": "A seller selects Qualify on a lead record that has values in the Company Name and Name fields, and does not match any existing account or contact. What happens?",
         "options": [
           "Dynamics 365 closes the lead and creates a new opportunity, a new account, and a new contact",
-          "Dynamics 365 only creates a new opportunity; accounts and contacts must be created manually",
+          "Dynamics 365 only creates a new opportunity; accounts and contacts must be created manually afterward",
           "The lead is deleted and replaced by the new opportunity record",
           "Qualifying a lead requires the seller to manually re-enter all company and contact details"
         ],
@@ -81921,7 +81921,7 @@ const EXAMS = {
         "q": "A seller disqualifies a lead with the reason 'No Longer Interested.' Months later the same contact reaches out with renewed interest. What should the seller do?",
         "options": [
           "Switch to the Closed Leads view, open the lead, and select Reactivate Lead",
-          "Create a brand-new lead record since disqualified leads cannot be reused",
+          "Create a brand-new lead record since disqualified leads cannot be reused or reopened",
           "Contact Microsoft support to restore the deleted lead",
           "Edit the disqualified lead record directly, since it remains editable"
         ],
@@ -81975,7 +81975,7 @@ const EXAMS = {
           "The model cannot be trained reliably because the organization needs at least 40 qualified leads in addition to 40 disqualified leads",
           "The model only requires disqualified leads, so training proceeds normally",
           "The organization must instead enable predictive opportunity scoring, which has no historical data requirement",
-          "The model trains successfully because the combined total of 75 leads exceeds the 40-record minimum"
+          "The model trains successfully because the combined total of 75 leads exceeds the 40-record minimum, so the model can be published as planned"
         ],
         "correct": 0,
         "explain": "Predictive lead scoring requires at least 40 qualified leads and 40 disqualified leads created in the past two years; having only 30 qualified leads falls short even though the disqualified count and combined total are higher."
@@ -81986,7 +81986,7 @@ const EXAMS = {
         "q": "A company sells to both enterprise and small-business segments with very different buying patterns. How can they get more accurate predictive lead scores for each segment?",
         "options": [
           "Create multiple scoring models, each trained on the relevant historical data for a segment",
-          "Predictive scoring only supports one model per environment regardless of segment",
+          "Predictive scoring only supports one model per environment regardless of segment or product line",
           "Use a single model and manually adjust each lead's score afterward",
           "Disable predictive scoring for one segment entirely"
         ],
@@ -82065,7 +82065,7 @@ const EXAMS = {
         "options": [
           "Power BI reports, Excel templates, and Advanced Find queries",
           "Business process flows, the timeline control, and the Assistant",
-          "Sales territories, price lists, and product families",
+          "Sales territories, price lists, and product families configured by the administrator in Sales Hub",
           "Bing public web search, Dataverse records, and administrator-configured knowledge sources"
         ],
         "correct": 3,
@@ -82078,7 +82078,7 @@ const EXAMS = {
         "options": [
           "The lead is automatically handed to a seller regardless of fit",
           "The agent disqualifies the lead and automatically notifies a supervisor",
-          "The lead is placed in an indefinite Draft state with no further action",
+          "The lead is placed in an indefinite Draft state with no further action taken",
           "The agent sends an outreach email to confirm interest before deciding"
         ],
         "correct": 1,
@@ -82169,7 +82169,7 @@ const EXAMS = {
         "options": [
           "The agent can't be deleted once configured; removing it requires contacting Microsoft support",
           "The agent can be deleted directly from the AI Hub with a single click",
-          "Deleting the agent also deletes all historical lead and opportunity records it touched",
+          "Deleting the agent also deletes all historical lead and opportunity records it touched in Dataverse",
           "The agent is automatically removed if left stopped for more than 30 days"
         ],
         "correct": 0,
@@ -82181,7 +82181,7 @@ const EXAMS = {
         "q": "On the Lead research page created by the Sales Qualification Agent, what does the 'Signal strength' indicator communicate to the seller?",
         "options": [
           "The strength of the customer's internet connection during the qualification call",
-          "The dollar value of the opportunity that will be created if the lead is qualified",
+          "The dollar value of the opportunity that will be created if the lead is later qualified by the seller",
           "How complete and reliable the underlying research data was when the agent formed its assessment",
           "Whether the lead's email domain matches a public company website"
         ],
@@ -82196,7 +82196,7 @@ const EXAMS = {
           "Select Reassign to route the lead to a seller based on the configured assignment rules",
           "Manually re-run the BANT evaluation without seller involvement",
           "Convert the lead directly to an invoice",
-          "Permanently delete the lead so it doesn't skew future model training"
+          "Permanently delete the lead so it doesn't skew future model training for the qualification agent"
         ],
         "correct": 0,
         "explain": "Supervisors reviewing the Leads disqualified by AI agent view can select Reassign if they believe the agent's assessment was incorrect, routing the lead to a seller according to the configured assignment rules."
@@ -82305,7 +82305,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "An opportunity has its Revenue field set to User Provided rather than System Calculated. What does this mean for the opportunity's Estimated Revenue?",
         "options": [
-          "It's automatically summed from product line items on a required price list",
+          "It's automatically summed from product line items on a required price list, with no manual entry on the opportunity form",
           "It's manually entered on the opportunity form and doesn't require a price list or product line items",
           "It can only be set by the Sales Research Agent",
           "It's calculated from the account's Annual Revenue field"
@@ -82334,7 +82334,7 @@ const EXAMS = {
           "The opportunity is automatically closed as Lost",
           "A red lock icon appears permanently and cannot be removed",
           "A gray icon appears next to the price; selecting Use Default Price reverts it to the price list value",
-          "The line item is automatically deleted and must be re-added from the price list"
+          "The line item is automatically deleted and must be re-added from the price list to restore the original price"
         ],
         "correct": 2,
         "explain": "When a price is manually overridden, a gray icon appears next to the price field; selecting the back-arrow Use Default Price icon reverts the line item to the original price list value. The system still tracks that an override occurred."
@@ -82386,7 +82386,7 @@ const EXAMS = {
           "That the fiscal year has been finalized for the current period",
           "That Dataverse Search is active and the Bing connection is enabled in environment settings",
           "That all product bundles have been published",
-          "That every seller has a Sales Professional license instead of Sales Enterprise"
+          "That every seller has a Sales Professional license instead of Sales Enterprise assigned to them"
         ],
         "correct": 1,
         "explain": "Dataverse Search (used to query opportunity, contact, and account data) and an enabled Bing connection (used for public web research) are called out as the two prerequisites causing the most common Sales Opportunity Agent activation failures."
@@ -82425,7 +82425,7 @@ const EXAMS = {
           "Identifying stakeholders and flagging relationship gaps",
           "Recognizing common customer objections in email replies and drafting appropriate responses",
           "Scoring opportunities based on likelihood to close",
-          "Delivering a weekly research digest of at-risk opportunities"
+          "Delivering a weekly research digest of at-risk opportunities so sellers can review their open pipeline"
         ],
         "correct": 1,
         "explain": "Objection handling — recognizing objections in customer replies and drafting responses — is a Sales Close Agent capability, along with autonomous outreach and seller hand-off; the other options describe the research-focused Sales Opportunity Agent."
@@ -82437,7 +82437,7 @@ const EXAMS = {
         "options": [
           "The seller must upgrade to a Sales Research Agent license",
           "Each seller must individually provide consent; an administrator cannot grant it on their behalf",
-          "The System Administrator grants blanket consent for the entire organization at once",
+          "The System Administrator grants blanket consent for the entire organization at once from the AI Hub",
           "No consent is required since the agent operates from its own mailbox only"
         ],
         "correct": 1,
@@ -82515,7 +82515,7 @@ const EXAMS = {
         "options": [
           "Fiscal year settings, currency lists, and sales territories",
           "Internal SharePoint documents, public web URLs, and the product catalog",
-          "Power BI dashboards, Advanced Find queries, and Excel templates",
+          "Power BI dashboards, Advanced Find queries, and Excel templates uploaded to the agent",
           "Business process flows, the timeline control, and the Assistant"
         ],
         "correct": 1,
@@ -82713,7 +82713,7 @@ const EXAMS = {
         "q": "A seller launches the Dynamics 365 Sales mobile app on a tablet instead of a phone. What happens to their experience?",
         "options": [
           "The tablet automatically receives the optimized phone layout scaled up",
-          "Push notifications are disabled on tablets but all other functionality works the same",
+          "Push notifications are disabled on tablets but all other functionality works the same as it does on a phone in the app",
           "The app refuses to load on any device other than a phone",
           "The UI falls back to Unified Interface, since the optimized Sales mobile experience is only available on phones"
         ],
@@ -82751,7 +82751,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "When configuring the recipient for a push notification flow in an automated scenario, why is the Microsoft Entra ID object ID often preferred over the user's email address?",
         "options": [
-          "Using an email address triggers duplicate detection rules on the contact table",
+          "Using an email address triggers duplicate detection rules on the contact table for every recipient",
           "It's more reliable in automated scenarios where email addresses may not always be available",
           "Entra ID object IDs are required for server-side synchronization to function",
           "Email addresses aren't supported by the Power Apps Notifications V2 connector at all"
@@ -82831,7 +82831,7 @@ const EXAMS = {
         "options": [
           "Embedded flows are user-initiated and automatically receive the current record as input when a user runs them",
           "Embedded flows never appear in the standard Power Automate designer",
-          "Embedded flows can only be built by developers, while automated flows can be built by anyone",
+          "Embedded flows can only be built by developers, while automated flows can be built by anyone with a Power Automate license",
           "Embedded flows can only read data and can never create or update records"
         ],
         "correct": 0,
@@ -82871,7 +82871,7 @@ const EXAMS = {
           "A Power Apps Component Framework (PCF) control, which requires developer skills to build and deploy",
           "A custom page, since PCF controls cannot be reused across multiple forms",
           "A discount list configured at the product family level",
-          "An embedded canvas app, which is the simplest way to apply a change across 10 forms at once"
+          "An embedded canvas app, which is the simplest way to apply a change across 10 forms at once with low-code tools"
         ],
         "correct": 0,
         "explain": "PCF controls are field-scoped and, once deployed as a solution, can be applied consistently to a compatible field across multiple forms and apps in the environment; building them requires developer skills, unlike embedded canvas apps which low-code makers can build."
