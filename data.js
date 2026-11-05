@@ -105915,7 +105915,7 @@ const EXAMS = {
         "options": [
           "Understand that classic compute clusters cannot read from or write to catalogs stored on default storage; all access to default storage catalogs requires serverless compute",
           "Enable DBFS mounts on the classic cluster",
-          "Nothing extra is needed; classic compute can always read default storage catalogs",
+          "Nothing extra is needed; classic compute can always read default storage catalogs, because serverless and classic clusters share the same access path to every catalog in the workspace",
           "Move the catalog to the Hive metastore"
         ],
         "correct": 0,
@@ -105929,7 +105929,7 @@ const EXAMS = {
           "In Azure Databricks' own Azure subscription, inside the serverless compute plane",
           "On-premises through a self-hosted integration runtime",
           "In the customer's subscription but outside any virtual network",
-          "In the customer's Azure subscription, in a dedicated virtual network"
+          "In the customer's Azure subscription, in a dedicated virtual network that the customer manages"
         ],
         "correct": 0,
         "explain": "With serverless compute, resources run in a serverless compute plane within the Azure Databricks account (Microsoft's subscription), not in the customer's Azure subscription. This differs from classic compute, which provisions resources inside the customer's own subscription."
@@ -105955,7 +105955,7 @@ const EXAMS = {
           "Personal access tokens, because they are tied to a single user",
           "SAS tokens, because they can be scoped to a single container",
           "Azure managed identities, because Azure automatically manages the credential lifecycle with no passwords or secrets to rotate",
-          "Service principals, because they support automatic secret rotation"
+          "Service principals, because they support automatic secret rotation with no passwords or client secrets to manage over the credential's lifecycle"
         ],
         "correct": 2,
         "explain": "Azure managed identities are the recommended authentication mechanism for storage credentials because Azure automatically manages the credential lifecycle — there are no passwords or secrets to rotate, and they support storage accounts protected by network firewalls. Service principals are a legacy alternative that require manual secret management."
@@ -106005,7 +106005,7 @@ const EXAMS = {
         "q": "For interactive Power BI reports where row-level security and column masks defined in Unity Catalog must be enforced per viewer, which authentication approach should be used?",
         "options": [
           "A single service principal for all users",
-          "Personal access tokens shared across the team",
+          "Personal access tokens shared across the team with DirectQuery",
           "Microsoft Entra ID single sign-on (SSO) with DirectQuery",
           "Import mode with a fixed credential"
         ],
@@ -106072,7 +106072,7 @@ const EXAMS = {
           "Use spot instances only for worker nodes, and always use an on-demand instance for the driver node",
           "Disable autoscaling entirely",
           "Use spot instances only for the driver node",
-          "Use spot instances for both driver and worker nodes"
+          "Use spot instances for both driver and worker nodes, since Spark can restart a reclaimed driver on any other available node"
         ],
         "correct": 0,
         "explain": "Spot instances work well for worker nodes because Spark's fault tolerance can retry failed tasks on other nodes if a worker is reclaimed. However, the driver node should always use an on-demand instance — if the driver itself is reclaimed, the entire cluster fails."
@@ -106097,7 +106097,7 @@ const EXAMS = {
         "options": [
           "Photon is not supported on GPU-enabled clusters and must be disabled",
           "Photon must be enabled to accelerate GPU training",
-          "Photon only affects SQL warehouses, so it is irrelevant here",
+          "Photon only affects SQL warehouses, so it is irrelevant here and can stay on",
           "Photon is enabled automatically and cannot be changed"
         ],
         "correct": 0,
@@ -106190,7 +106190,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A team wants a view that returns each user's real email address only if they belong to the 'auditors' group, and 'REDACTED' otherwise. Which Unity Catalog feature and function combination implements this?",
         "options": [
-          "A foreign catalog with REFRESH FOREIGN TABLE",
+          "A foreign catalog with REFRESH FOREIGN TABLE on the 'auditors' group's view",
           "A materialized view with a SCHEDULE clause",
           "A dynamic view using a CASE statement with is_account_group_member()",
           "A streaming table using TRIGGER ON UPDATE"
@@ -106243,7 +106243,7 @@ const EXAMS = {
         "q": "A team needs to query a live PostgreSQL database directly from Azure Databricks, under full Unity Catalog governance and audit logging, without migrating the data. What two objects must they create, in order?",
         "options": [
           "First a connection (storing host/credentials), then a foreign catalog that uses that connection",
-          "First a foreign catalog, then a connection referencing it",
+          "First a foreign catalog, then a connection referencing it, which stores the database's host and credentials",
           "Just a Delta Sharing recipient",
           "First an external volume, then a managed table"
         ],
@@ -106270,7 +106270,7 @@ const EXAMS = {
         "options": [
           "The metastore admin's credentials",
           "A permanent SAS key for the storage account",
-          "A copy of the data pre-filtered in the control plane",
+          "A copy of the data pre-filtered in the control plane and sent to the compute",
           "A scoped, temporary access token and a secure access URL"
         ],
         "correct": 3,
@@ -106284,7 +106284,7 @@ const EXAMS = {
           "Only client-side, in the BI tool",
           "In the Hive metastore during location lookup",
           "On the compute resource itself, after data has been retrieved from storage",
-          "In the cloud storage layer, before any data leaves ADLS Gen2"
+          "In the cloud storage layer, before any data leaves ADLS Gen2 for the compute resource"
         ],
         "correct": 2,
         "explain": "Unity Catalog enforces row- and column-level filtering on the compute resource after data is retrieved from storage — even though storage may return a broader dataset, only the rows/columns the principal is entitled to see are returned in the final result."
@@ -106364,7 +106364,7 @@ const EXAMS = {
         "q": "A team needs to hide a customer table's phone-number column from most users while keeping the table fully queryable and updatable, without creating additional view objects. According to Microsoft's guidance, which approach is now generally preferred?",
         "options": [
           "Create a dynamic view with a CASE expression for every audience",
-          "Duplicate the table once per audience with the sensitive column removed",
+          "Duplicate the table once per audience with the sensitive column removed, then use Attribute-Based Access Control (ABAC) to route each user to the right copy of the table",
           "Use Row and Column Security (a masking function bound directly to the table column) or, for broader scale, Attribute-Based Access Control (ABAC)",
           "Grant SELECT only to the metastore admin group"
         ],
@@ -106392,7 +106392,7 @@ const EXAMS = {
           "The Key Vault is using the Azure RBAC permission model instead of the Vault access policy model",
           "The Key Vault is in a different Azure subscription",
           "The workspace is on the Free Edition",
-          "The secret scope name contains uppercase letters"
+          "The secret scope name contains uppercase letters, which the Key Vault permission model rejects with a 403 error"
         ],
         "correct": 0,
         "explain": "Azure Databricks does not support the RBAC permission model for Key Vault-backed secret scopes — it requires the Vault access policy model. Since Key Vault API version 2026-02-01, new vaults default to RBAC, so this must be explicitly changed to Vault access policy before creating the Databricks scope."
@@ -106416,7 +106416,7 @@ const EXAMS = {
         "q": "A notebook retrieves a secret with dbutils.secrets.get() and then prints the variable's value to the notebook output. What happens?",
         "options": [
           "The command fails with an error",
-          "The notebook is automatically deleted for a security violation",
+          "The notebook is automatically deleted for a security violation, and the event is written to the audit log",
           "Azure Databricks automatically replaces the value with [REDACTED] in the output",
           "The actual secret value is printed in plain text"
         ],
@@ -106428,7 +106428,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Why does Microsoft recommend Azure managed identities over service principals for Unity Catalog storage credentials that access ADLS Gen2?",
         "options": [
-          "Service principals cannot authenticate to Azure Data Lake Storage at all",
+          "Service principals cannot authenticate to Azure Data Lake Storage at all, whereas managed identities can reach storage accounts whether or not any network firewall rules apply",
           "Managed identities eliminate secret rotation and can access storage accounts protected by network firewall rules, which service principals cannot do",
           "Managed identities are faster to authenticate",
           "Managed identities don't require an Azure Databricks access connector"
@@ -106441,7 +106441,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "An Azure Databricks access connector is configured with a system-assigned managed identity. What happens to that identity if the access connector resource is deleted?",
         "options": [
-          "It is converted automatically into a user-assigned managed identity",
+          "It is converted automatically into a user-assigned managed identity, which stays available for later reuse",
           "Azure automatically deletes the system-assigned managed identity along with the connector",
           "It remains active indefinitely until manually removed",
           "It persists and can be reattached to another connector"
@@ -106482,7 +106482,7 @@ const EXAMS = {
         "options": [
           "It can only be used by metastore admins",
           "It only works on external tables",
-          "It automatically overwrites existing manually written comments without review",
+          "It automatically overwrites existing manually written comments without review, and the replaced comments can't be recovered, so tables containing personally identifiable information (PII) must be excluded",
           "AI-generated comments are suggestions that must be reviewed, and should not be relied on for tasks like detecting personally identifiable information (PII)"
         ],
         "correct": 3,
@@ -106578,7 +106578,7 @@ const EXAMS = {
           "Only SQL warehouses support lineage capture; clusters never do",
           "Lineage only works for external tables, not managed tables",
           "Queries must run on Unity Catalog-enabled compute and reference tables using the catalog.schema.table namespace",
-          "Lineage must be manually declared in a YAML configuration file for every table"
+          "Lineage must be manually declared in a YAML configuration file for every table, using the catalog.schema.table namespace"
         ],
         "correct": 2,
         "explain": "Lineage is captured automatically for queries run on Unity Catalog-enabled compute (clusters, SQL warehouses, or jobs) when tables are referenced by their catalog.schema.table namespace. Clusters without Unity Catalog access, or tables accessed by direct file path, do not generate lineage data."
@@ -106589,7 +106589,7 @@ const EXAMS = {
         "q": "What is a key difference in retention between viewing lineage in Catalog Explorer/the lineage API versus querying the system.access.table_lineage system table?",
         "options": [
           "Both retain data for exactly 90 days",
-          "The system tables retain data indefinitely while Catalog Explorer only shows the last 30 days",
+          "The system tables retain lineage data indefinitely, while Catalog Explorer and the lineage API only show events captured in a rolling window covering the last 30 days after September 1, 2024",
           "Neither retains historical data beyond the current session",
           "Catalog Explorer and the lineage API retain lineage events (captured after September 1, 2024) indefinitely, while the lineage system tables retain only a rolling one-year window"
         ],
@@ -106614,7 +106614,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "By default, does Azure Databricks' standard audit logging capture the full text of SQL or Python commands executed in a notebook?",
         "options": [
-          "Only for jobs, never for interactive notebooks",
+          "Only for jobs, never for interactive notebooks, once Verbose Audit Logs are off",
           "Only if the cluster uses dedicated access mode",
           "No — capturing full command text requires enabling Verbose Audit Logs",
           "Yes, always, for every workspace"
@@ -106693,7 +106693,7 @@ const EXAMS = {
         "q": "A team wants to ingest CDC changes from an on-premises SQL Server database using a Lakeflow Connect database connector. What additional infrastructure does this require, compared to a query-based connector against the same database?",
         "options": [
           "A Power BI Premium capacity",
-          "Nothing extra; database connectors and query-based connectors have identical infrastructure requirements",
+          "Nothing extra; database connectors and query-based connectors have identical infrastructure requirements, because both of them query the source tables directly over a standard JDBC connection and don't read the transaction log",
           "A dedicated GPU cluster",
           "An ingestion gateway deployed in the network plus a staging storage volume to buffer captured changes, because the connector reads the transaction log rather than querying tables directly"
         ],
@@ -106774,7 +106774,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A table currently holds 200 GB of data and is expected to grow slowly. According to Databricks guidance, should this table be partitioned?",
         "options": [
-          "Yes, partitioning always improves performance regardless of table size",
+          "Yes, partitioning always improves performance regardless of table size, because Delta tables can't use ingestion time clustering unless a partition column has been defined first",
           "Only if the table has more than 10 columns",
           "Yes, but only if using CSV format",
           "No — Databricks recommends against partitioning tables under 1 TB; unpartitioned Delta tables already benefit from ingestion time clustering"
@@ -106789,7 +106789,7 @@ const EXAMS = {
         "options": [
           "They cannot be indexed",
           "Delta Lake prohibits partitioning on numeric columns",
-          "They are usually stored as strings, which Delta Lake cannot partition on",
+          "They are usually stored as strings, which Delta Lake cannot partition on, so each value has to be cast first",
           "Their high cardinality creates an excessive number of partitions, each containing very little data"
         ],
         "correct": 3,
@@ -106920,7 +106920,7 @@ const EXAMS = {
           "The pipeline fails immediately",
           "The new columns automatically appear in the destination table",
           "The new columns do NOT automatically appear, because include_columns explicitly limits ingestion to the listed columns",
-          "A full refresh is triggered automatically to add the new columns"
+          "A full refresh is triggered automatically to add the new columns, because the destination table's schema must always match the source"
         ],
         "correct": 2,
         "explain": "With include_columns, only the explicitly listed columns are ingested — newly added source columns won't automatically appear in the destination. With exclude_columns instead, new source columns are included by default (since you're only naming exclusions)."
@@ -106930,7 +106930,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "When streaming from a file source in a notebook using spark.readStream, why should you define an explicit schema rather than relying on inferSchema?",
         "options": [
-          "Explicit schemas are required to enable Delta Lake time travel",
+          "Explicit schemas are required to enable Delta Lake time travel on the stream's target, and inferSchema would disable it for the table",
           "Schema inference isn't supported for streaming sources because it would require reading the entire (unbounded) dataset",
           "inferSchema is not a valid option for any Spark DataFrame",
           "inferSchema only works with Parquet files"
@@ -106943,7 +106943,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A Structured Streaming job reads from Kafka with startingOffsets set to 'earliest' and writes to a Delta table with a configured checkpointLocation. After the job runs once and is restarted, from where does it resume reading?",
         "options": [
-          "From the earliest offset again, per the startingOffsets setting",
+          "From the earliest offset again, per the startingOffsets setting, which always takes priority over the checkpoint location",
           "It fails and requires the checkpoint to be manually cleared",
           "From the last processed offset recorded in the checkpoint location, ignoring startingOffsets on restart",
           "From the latest offset, regardless of checkpoint"
@@ -106974,7 +106974,7 @@ const EXAMS = {
         "q": "A source directory is expected to grow from thousands to potentially millions of files over time. Which ingestion approach does Microsoft recommend as the long-term, scalable choice compared to COPY INTO?",
         "options": [
           "Auto Loader (or streaming tables backed by Auto Loader), which discovers files more efficiently and scales without directory-listing overhead",
-          "Continue using COPY INTO regardless of file count, since it scales identically to Auto Loader",
+          "Continue using COPY INTO regardless of file count, since it scales identically to Auto Loader and avoids any directory-listing overhead as the source grows",
           "JDBC batch reads",
           "CREATE OR REPLACE TABLE run nightly"
         ],
@@ -107015,7 +107015,7 @@ const EXAMS = {
           "The entire pipeline fails",
           "The existing record is updated in place without creating a new history version, since last_login is excluded from history tracking",
           "The record is deleted",
-          "A new historical version row is created, as with any other column change"
+          "A new historical version row is created, as with any other column change, since the EXCEPT clause only applies to SCD Type 1 tables"
         ],
         "correct": 1,
         "explain": "TRACK HISTORY ON * EXCEPT (last_login) limits which columns trigger new SCD Type 2 history versions. Changes to excluded columns like last_login update the existing record in place, while changes to any other (tracked) column create a new historical version row."
@@ -107028,7 +107028,7 @@ const EXAMS = {
           "In a column named 'payload_json'",
           "In a column named 'body', with additional Event Hubs-specific metadata columns",
           "Event Hubs cannot be read using a native connector",
-          "In a column named 'value', identical to Kafka"
+          "In a column named 'value', identical to Kafka, with no additional metadata columns"
         ],
         "correct": 1,
         "explain": "The native Event Hubs connector (format 'eventhubs') returns the payload in a 'body' column, unlike the Kafka-compatible interface which returns 'key' and 'value' columns. Azure Event Hubs also exposes a Kafka-compatible endpoint, letting the same Kafka connector and schema (with a 'value' column) be reused if preferred."
@@ -107053,7 +107053,7 @@ const EXAMS = {
         "options": [
           "The entire file is skipped and logged as an error",
           "The schema is never evolved and the stream doesn't fail; the new column's data is captured in the _rescued_data column instead",
-          "The stream fails immediately and must be restarted with an updated schema",
+          "The stream fails immediately and must be restarted with an updated schema, after which the new column's data is stored in the _rescued_data column",
           "The new column is silently added to the target table schema"
         ],
         "correct": 1,
@@ -107064,7 +107064,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In Lakeflow Spark Declarative Pipelines, what happens to a flow's streaming checkpoint if you rename that flow?",
         "options": [
-          "The checkpoint automatically transfers to the new flow name",
+          "The checkpoint automatically transfers to the new flow name, so the renamed flow continues from where it left off in the source",
           "Renaming a flow is not permitted",
           "The checkpoint doesn't carry over — the renamed flow is treated as new and starts processing from the beginning",
           "The pipeline automatically reverts the name back to the original"
@@ -107181,7 +107181,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "When combining two SQL queries with identical schemas, what is the default duplicate-handling behavior of UNION compared to UNION ALL, and how does this differ from PySpark's DataFrame union() method?",
         "options": [
-          "UNION and UNION ALL behave identically in SQL; PySpark's union() removes duplicates",
+          "UNION and UNION ALL behave identically in SQL, with both of them keeping duplicates; PySpark's union() behaves differently and removes duplicates by default",
           "Neither UNION nor PySpark's union() ever removes duplicates",
           "UNION ALL removes duplicates; UNION keeps them",
           "UNION removes duplicates by default; UNION ALL keeps them; PySpark's union() behaves like UNION ALL and keeps duplicates"
@@ -107236,7 +107236,7 @@ const EXAMS = {
           "The MERGE operation fails, since it requires a unique match between source and target rows",
           "All matching source rows are averaged together",
           "The last matching source row silently wins",
-          "Azure Databricks automatically deduplicates the source first"
+          "Azure Databricks automatically deduplicates the source first, keeping one row for each key in the target"
         ],
         "correct": 0,
         "explain": "MERGE operations require a unique match between source and target rows. If multiple source rows match the same target row, the operation fails — source data must be deduplicated before merging."
@@ -107300,7 +107300,7 @@ const EXAMS = {
         "options": [
           "It automatically deletes rows that would violate the constraint",
           "It converts the constraint to a pipeline expectation instead",
-          "Nothing; the constraint is added immediately regardless of existing data",
+          "Nothing; the constraint is added immediately regardless of existing data, and it's only checked against rows written from then on",
           "It verifies all existing rows satisfy the constraint, and the ALTER TABLE operation fails if any rows violate it"
         ],
         "correct": 3,
@@ -107337,7 +107337,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In a Lakeflow Spark Declarative Pipelines pipeline with multiple parallel flows, what happens to the other flows if one flow's expect_or_fail expectation triggers a failure?",
         "options": [
-          "The entire pipeline and all flows stop immediately",
+          "The entire pipeline and all flows stop immediately, since expect_or_fail applies to every flow in the same pipeline run",
           "The failing flow is silently skipped on all future runs",
           "Each flow operates independently — a failure in one flow doesn't cause other flows in the same pipeline to fail",
           "All flows are automatically retried from the beginning"
@@ -107392,7 +107392,7 @@ const EXAMS = {
         "options": [
           "A streaming table configured with AUTO CDC",
           "A notebook-based pipeline, since notebooks give full procedural control over execution flow, error handling, and optimization decisions",
-          "Lakeflow Spark Declarative Pipelines, because expectations can express any custom procedural logic",
+          "Lakeflow Spark Declarative Pipelines, because expectations can express any custom procedural logic, including branching, external API calls, and custom retries",
           "A materialized view with a CASE expression for each branch"
         ],
         "correct": 1,
@@ -107435,7 +107435,7 @@ const EXAMS = {
         "options": [
           "Three separate notebook tasks manually configured with no dependencies",
           "An If/else condition task; the 'Run if' setting on each branch",
-          "A Run Job task; the job-level 'Maximum concurrent runs' setting",
+          "A Run Job task, referencing the upstream task's value as its input array; the job-level 'Maximum concurrent runs' setting controls how many regions run in parallel",
           "A For each task, referencing the upstream task's value as its input array; its own concurrency setting controls how many iterations run in parallel"
         ],
         "correct": 3,
@@ -107448,7 +107448,7 @@ const EXAMS = {
         "options": [
           "A task containing the logic to run, a compute resource to execute it, and a unique job name",
           "A catalog, a schema, and a volume",
-          "A Git repository connection, a service principal, and a schedule",
+          "A Git repository connection, a service principal, a schedule, and a unique job name",
           "A cluster policy, a budget, and a governed tag"
         ],
         "correct": 0,
@@ -107460,7 +107460,7 @@ const EXAMS = {
         "q": "A job task's source is configured as 'Git provider' instead of 'Workspace'. What is a key behavior of this configuration?",
         "options": [
           "Git provider sources cannot be used for production jobs",
-          "Each task in the job can independently reference a different repository and branch",
+          "Each task in the job can independently reference a different repository and branch, and Azure Databricks always runs the latest commit on each one with no snapshot being captured at run time",
           "Git provider sources can only run SQL tasks, never notebooks or scripts",
           "All tasks in the job share the same Git reference, and Azure Databricks captures a snapshot of the code at run time so the job executes against a specific commit"
         ],
@@ -107512,7 +107512,7 @@ const EXAMS = {
         "q": "A workspace has not enabled file events on its external locations. What limitation applies to jobs that use file arrival triggers?",
         "options": [
           "File arrival triggers require classic compute instead of serverless compute",
-          "File arrival triggers only check for new files once per day instead of about once per minute",
+          "File arrival triggers only check for new files once per day instead of about once per minute, and each location can then hold at most 50 files",
           "File arrival triggers are disabled entirely without file events",
           "At most 50 jobs in the workspace can use file arrival triggers, and each monitored storage location can contain at most 10,000 files"
         ],
@@ -107524,7 +107524,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A continuous Lakeflow Job runs on serverless compute and needs to process a Structured Streaming source using a time-based trigger like Trigger.ProcessingTime. What must the team do?",
         "options": [
-          "Nothing; time-based streaming triggers behave identically on serverless compute",
+          "Nothing; time-based streaming triggers behave identically on serverless compute, since continuous jobs on serverless compute support every Structured Streaming trigger, including Trigger.ProcessingTime",
           "Replace the cluster with a SQL warehouse",
           "Switch the job to classic jobs compute, since continuous jobs on serverless compute only support bounded Structured Streaming triggers such as Trigger.AvailableNow",
           "Convert the continuous trigger into a simple scheduled trigger instead"
@@ -107553,7 +107553,7 @@ const EXAMS = {
           "UTC, since it isn't affected by daylight saving time shifts",
           "Whichever time zone the workspace region defaults to",
           "The stakeholders' local time zone, for business alignment",
-          "Any time zone; DST doesn't affect Lakeflow Jobs scheduling"
+          "Any time zone; DST doesn't affect Lakeflow Jobs scheduling at all"
         ],
         "correct": 0,
         "explain": "Time zones that observe daylight saving time can cause an hourly job to skip a run or appear delayed when DST begins or ends. For jobs that must run at exact, consistent absolute intervals, UTC is recommended since it has no DST transitions."
@@ -107590,7 +107590,7 @@ const EXAMS = {
         "q": "What is the default retry behavior when a continuous Lakeflow Job fails, and how does this differ from most standard job configurations?",
         "options": [
           "Both continuous and standard jobs use identical auto-optimized retry behavior by default",
-          "Continuous jobs retry exactly once before permanently stopping, while standard jobs retry indefinitely",
+          "Continuous jobs retry exactly once before permanently stopping, while standard jobs retry indefinitely using an exponential backoff policy unless a different retry policy has been explicitly configured",
           "Continuous jobs automatically retry the entire job using an exponential backoff policy; most other job configurations don't retry failed tasks unless a retry policy is explicitly configured",
           "Continuous jobs never retry automatically, exactly like standard jobs"
         ],
@@ -107615,7 +107615,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Why does Databricks recommend that each team member work in their own Git folder connected to a shared repository, rather than everyone sharing a single Git folder?",
         "options": [
-          "Shared Git folders automatically merge every user's changes without requiring commits",
+          "Shared Git folders automatically merge every user's changes without requiring commits, so a single folder would hide who changed what and make each person's work harder to trace back later on",
           "Only one Git folder is allowed per Azure Databricks workspace",
           "When multiple users share one Git folder, one person's branch switch or Git operation affects everyone using that folder, risking accidental conflicts and disruption",
           "Shared Git folders are read-only in Azure Databricks"
@@ -107630,7 +107630,7 @@ const EXAMS = {
         "options": [
           "The notebook is automatically converted to IPYNB format to preserve outputs",
           "Nothing changes until the notebook is manually refreshed by the user",
-          "The pull operation is blocked until every open copy of the notebook is closed",
+          "The pull operation is blocked until every open copy of the notebook is closed, after which its cell outputs and comments carry over unchanged",
           "The notebook's state resets — cell outputs, comments, and version history for that notebook clear to reflect the updated content"
         ],
         "correct": 3,
@@ -107641,7 +107641,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "During a merge conflict in an Azure Databricks Git folder, which sequence correctly resolves a conflicting file manually?",
         "options": [
-          "Select 'Take all incoming changes' for every conflicting file without reviewing the differences",
+          "Select 'Take all incoming changes' for every conflicting file without reviewing the differences, select Mark As Resolved, then push directly to the protected branch to overwrite the local changes",
           "Push directly to the protected branch and let the remote repository overwrite local changes",
           "Edit the file to remove the <<<<<<< / ======= / >>>>>>> conflict markers while keeping the correct content, select Mark As Resolved, then select Continue Merge",
           "Select Abort immediately, then manually delete the conflicting file from the repository"
@@ -107667,7 +107667,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Why should integration tests for a data pipeline read from a dedicated test schema or catalog rather than production tables?",
         "options": [
-          "Unity Catalog technically blocks any automated test from querying a managed table",
+          "Unity Catalog technically blocks any automated test from querying a managed table, so dedicated test schemas are the only way to run real component interactions",
           "It isolates tests from affecting production data while still validating real component interactions against representative data",
           "Production tables don't support SQL queries",
           "Test schemas always run on a newer Spark runtime version"
@@ -107682,7 +107682,7 @@ const EXAMS = {
         "options": [
           "In the job's YAML configuration file alongside task definitions",
           "In Unity Catalog volumes as serialized Python objects",
-          "Directly inside notebook cells alongside the pipeline logic, for simplicity",
+          "Directly inside notebook cells alongside the pipeline logic, for simplicity, since notebook cells are the only place where automated tests can be run",
           "In separate .py files within a Git folder, outside of notebooks, to enable code reuse and straightforward automated testing"
         ],
         "correct": 3,
@@ -107693,7 +107693,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which file must exist at the root of a Declarative Automation Bundle project, and what does it define?",
         "options": [
-          "pipeline.yml, defining only the bundle's Lakeflow Spark Declarative Pipelines resources",
+          "pipeline.yml, defining only the bundle's Lakeflow Spark Declarative Pipelines resources and leaving its identity and deployment targets to each resource",
           "requirements.txt, listing the project's Python package dependencies",
           "databricks.yml, establishing the bundle's identity and defining or referencing its resources and deployment targets",
           "cluster.json, defining the compute configuration used by every resource"
@@ -107707,7 +107707,7 @@ const EXAMS = {
         "q": "A bundle target is configured with `mode: development`. What behaviors does the Databricks CLI apply automatically when deploying to this target?",
         "options": [
           "It disables the bundle's variables section entirely",
-          "It requires a service principal and validates that the local Git branch matches a specified branch",
+          "It requires a service principal and validates that the local Git branch matches a specified branch, then runs all schedules immediately and blocks concurrent job runs",
           "It deletes any existing production resources with matching names",
           "It prefixes resource names with the deploying user's identity (e.g., [dev username]), pauses all schedules, and enables concurrent job runs"
         ],
@@ -107722,7 +107722,7 @@ const EXAMS = {
           "databricks bundle init, then databricks bundle destroy; locks never occur in bundle deployments",
           "databricks bundle validate, then optionally databricks bundle plan, then databricks bundle deploy; use --force-lock to override a stuck deployment lock",
           "databricks bundle summary, then databricks bundle open; there is no way to resolve lock conflicts",
-          "databricks bundle deploy, then databricks bundle validate; use --skip-lock to resolve conflicts"
+          "databricks bundle deploy, then optionally databricks bundle plan, then databricks bundle validate; use --skip-lock on the first command to resolve any stuck deployment lock conflicts"
         ],
         "correct": 1,
         "explain": "The recommended flow is to validate configuration syntax with bundle validate, optionally preview planned changes with bundle plan, and then apply them with bundle deploy. If a previous deployment was interrupted and left a lock in place, the --force-lock flag on bundle deploy overrides it."
@@ -107732,7 +107732,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A team relies on cluster auto-termination to avoid idle compute costs, but they also run legacy DStreams workloads on that cluster. What should they be aware of?",
         "options": [
-          "Auto-termination fully supports DStreams and will correctly detect DStream activity as non-idle",
+          "Auto-termination fully supports DStreams and will correctly detect DStream activity as non-idle, so the cluster stays running until the workload completes, with no need to change the settings or migrate to Structured Streaming",
           "DStreams workloads automatically disable auto-termination on any cluster that runs them",
           "Auto-termination only applies to SQL warehouses, never to clusters running streaming workloads",
           "Auto-termination doesn't monitor DStreams activity, so the cluster could terminate mid-workload unless auto-termination is disabled or the workload is migrated to Structured Streaming"
@@ -107745,7 +107745,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A team wants to identify which cluster owners are consuming the most Databricks Units (DBUs). Which approach achieves this, and what important constraint applies to cost attribution by tag?",
         "options": [
-          "Query system.billing.usage alone; tags can be applied retroactively to historical usage records at any time",
+          "Query system.billing.usage alone, since it includes an owned_by column for every cluster; tags can be applied retroactively to historical usage records at any time, so cost attribution by tag will still work even if tags are added long after the usage occurred",
           "Join system.billing.usage with system.compute.clusters on cluster_id to attribute usage to the owned_by column; tags must be applied consistently from the start, since they cannot be added retroactively to historical usage",
           "Query system.access.audit for billing information, since billing.usage doesn't track cluster ownership",
           "Cost attribution by owner is only possible through the Azure portal, not through system tables"
@@ -107778,7 +107778,7 @@ const EXAMS = {
           "Repair silently skips any task that previously failed, running only tasks that succeeded the first time",
           "Repair is unavailable because the job has more than one task",
           "Only the failed tasks and their dependents re-run; because the tasks share a job cluster, the repair creates a new cluster instance (e.g., a '_v1' suffix) so original and repaired run settings can be compared",
-          "The entire job re-runs from scratch on a brand-new job, discarding all history of the original failed run"
+          "The entire job re-runs from scratch on a brand-new job, discarding all history of the original failed run; because the tasks share a job cluster, the repair reuses the original cluster instance so that original and repaired run settings stay identical across every task"
         ],
         "correct": 2,
         "explain": "Repair re-runs only the unsuccessful tasks and their dependents (repair requires a job with two or more tasks, so this qualifies). When tasks share a job cluster, the repair run creates a new cluster instance, such as my_job_cluster_v1, allowing you to compare configuration and behavior between the original and repaired runs."
@@ -107789,7 +107789,7 @@ const EXAMS = {
         "q": "In the Spark UI, how do you determine whether a stage is affected by data skew, and what threshold indicates a likely skew problem?",
         "options": [
           "Compare total Input bytes to total Output bytes for the stage; any difference indicates skew",
-          "Skew can only be identified using the query profile for SQL warehouses, never in the Spark UI",
+          "Skew can only be identified using the query profile for SQL warehouses, never in the Spark UI, where a task's Max duration is more than 50% higher than the average for the entire query",
           "Check whether the Shuffle Read column is nonzero; any shuffle read indicates skew",
           "In the stage's Summary Metrics, compare the Max task duration to the 75th percentile duration; if the Max is more than 50% higher than the 75th percentile, skew is likely"
         ],
@@ -107801,7 +107801,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is a key difference between Azure Databricks' automatic disk cache (formerly Delta cache) and Spark's DataFrame .cache() / .persist() methods?",
         "options": [
-          "Disk cache must be manually released with .unpersist(), while Spark cache clears itself automatically",
+          "Disk cache must be manually released with .unpersist(), while Spark cache clears itself automatically as data is read, storing Parquet data files on worker nodes without any explicit management once the cached data is no longer needed by a job",
           "Spark cache only works on SQL warehouses, while disk cache only works on all-purpose clusters",
           "Disk cache automatically caches Parquet data files on worker nodes as data is read, while Spark cache requires explicit management, including calling .unpersist() when the cached data is no longer needed",
           "Disk cache and Spark cache are simply two names for the identical mechanism"
@@ -107814,7 +107814,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What are two prerequisites for streaming Azure Databricks diagnostic logs to Azure Log Analytics?",
         "options": [
-          "The workspace must use classic compute exclusively, and logs are retained for only 24 hours",
+          "The workspace must use classic compute exclusively, and logs are retained for only 24 hours after an event occurs, so they have to be exported on the Premium plan each day",
           "The workspace must be on the Free Edition, and logs appear instantly",
           "The workspace must be on the Azure Databricks Premium plan, and logs typically take about 15 minutes to become available after an event occurs",
           "The workspace must disable Unity Catalog, and logs appear only once per day"
