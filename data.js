@@ -73401,7 +73401,7 @@ const EXAMS = {
         "q": "What is the primary purpose of an item group in Supply Chain Management?",
         "options": [
           "To define the sets of ledger accounts used for accounting entries of products classified into that group",
-          "To control which safety margins apply to a product during master planning",
+          "To control which safety margins apply to a product during master planning for products classified into that group",
           "To define which mobile device menu a warehouse worker can access",
           "To determine the item's costing method for inventory valuation"
         ],
@@ -73439,7 +73439,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "On an item model group, Post physical inventory is selected but Post financial inventory is cleared. What happens when a purchase order for the item is invoice-updated?",
         "options": [
-          "The system posts to both the inventory receipt account and the item consumption account",
+          "The system posts to both the inventory receipt account and the item consumption account for each invoice-updated line",
           "No posting occurs anywhere in the general ledger for the transaction",
           "The system automatically reverses the physical inventory posting from the packing slip",
           "The system posts the value of the items to the item consumption account but not to the inventory receipt account"
@@ -73455,7 +73455,7 @@ const EXAMS = {
           "Simply change the Price field; the system automatically recalculates all existing on-hand issues",
           "Delete and recreate the item so the new price takes effect immediately",
           "Run an inventory close, adjust the on-hand balance to match the new cost, and then activate a new planned cost",
-          "Nothing further is required because Fixed receipt price bypasses inventory close entirely"
+          "Nothing further is required because Fixed receipt price bypasses inventory close entirely and applies the new cost itself"
         ],
         "correct": 2,
         "explain": "If the fixed receipt price changes and all new issue transactions should use the new cost, you must run an inventory close, adjust the on-hand inventory balance to match the new cost, and activate a new planned cost."
@@ -73519,7 +73519,7 @@ const EXAMS = {
         "options": [
           "FIFO; no additional process is required",
           "Moving average; an inventory close is required monthly",
-          "Weighted average; a price activation process replaces inventory close",
+          "Weighted average; a price activation process replaces inventory close at period end to record variances",
           "Standard cost; a price activation process is required to set the cost price used in transactions"
         ],
         "correct": 3,
@@ -73557,7 +73557,7 @@ const EXAMS = {
         "q": "A company needs to reopen an inventory period from three closes ago to correct a posting error. What must they do first?",
         "options": [
           "Delete all inventory transactions for the affected item and re-enter them",
-          "Directly reverse the close from three periods ago; the system automatically cascades the reversal forward",
+          "Directly reverse the close from three periods ago; the system automatically cascades the reversal forward through each later close in a single step",
           "Change the item's inventory model to Standard cost so no close reversal is needed",
           "Reverse each subsequent inventory close one at a time, starting with the most recent, because only the last closed period can be reopened directly"
         ],
@@ -73745,7 +73745,7 @@ const EXAMS = {
           "Tag counting journal; posting it creates a new counting journal based on the tag counting journal lines",
           "Movement journal; posting it requires a manual general ledger offset account",
           "Item arrival journal; posting it registers a purchase order receipt",
-          "Counting journal; posting it directly updates the general ledger with no further review"
+          "Counting journal; posting it directly updates the general ledger with no further review of the tag lines"
         ],
         "correct": 0,
         "explain": "Tag counting journals assign a numbered tag to a count lot; each item number must have a unique set of tags. When the tag counting journal is posted, the system creates a new counting journal based on the tag counting journal lines."
@@ -73777,7 +73777,7 @@ const EXAMS = {
           "The counting reason code cleanup job, which removes unused reason codes",
           "The warehouse management on-hand entries cleanup job, which deletes records where all field values are zero, only below the Location level",
           "The inventory close process, which purges all historical transactions",
-          "The archive historical inventory journal records feature, which moves all journals to Dataverse"
+          "The archive historical inventory journal records feature, which moves all journals to Dataverse and removes zero-value records from both tables"
         ],
         "correct": 1,
         "explain": "The on-hand entries cleanup job, found under Inventory management > Periodic tasks > Clean up, deletes records in the WHSInventReserve and InventSum tables where all field values are zero, and it only deletes records below the Location level."
@@ -73789,7 +73789,7 @@ const EXAMS = {
         "options": [
           "Inventory recalculation, which consolidates historical journals automatically",
           "The inventory journal archival framework that moves historical records to a Dataverse-managed data lake",
-          "The on-hand entries cleanup job, which permanently deletes old journal records",
+          "The on-hand entries cleanup job, which permanently deletes old journal records from the active database each run",
           "Reversing the completed inventory close for prior periods"
         ],
         "correct": 1,
@@ -73816,7 +73816,7 @@ const EXAMS = {
           "The journal must already contain at least one posted line",
           "The item model group must have Financial negative inventory enabled",
           "The Approval workflow field must be set to Yes and an active workflow must be selected",
-          "The journal name must be renamed to match the workflow ID exactly"
+          "The journal name must be renamed to match the workflow ID exactly before any submission"
         ],
         "correct": 2,
         "explain": "To link a workflow to an inventory journal name, you go to Inventory management > Setup > Journal names > Inventory, set Approval workflow to Yes on the General FastTab, and then select the active workflow to use."
@@ -73855,7 +73855,7 @@ const EXAMS = {
         "q": "A company wants to record why a batch is currently unavailable for reservation, picking, or shipping, such as due to a failed quality check. Which feature should be configured on Inventory management > Setup > Batch?",
         "options": [
           "Batch disposition codes, with the Batch disposition status set to Unavailable",
-          "Counting reason codes, with the type set to Mandatory",
+          "Counting reason codes, with the type set to Mandatory for each unavailable batch",
           "Inventory blocking, with the Inventory blocking type set to Manual",
           "Quarantine order statuses, set to Started"
         ],
@@ -73869,7 +73869,7 @@ const EXAMS = {
         "options": [
           "Set the Counting reason code policy to Mandatory on the product; the product-level setting overrides the warehouse-level setting",
           "Create a new reason code group and assign it only to the mobile device menu item",
-          "Set the policy only at the warehouse level, since product-level settings cannot override warehouse settings",
+          "Set the policy only at the warehouse level, since product-level settings cannot override warehouse settings for any hazardous product",
           "Disable reason codes at the warehouse and require them only through inventory blocking"
         ],
         "correct": 0,
@@ -74152,7 +74152,7 @@ const EXAMS = {
         "options": [
           "Demand consolidation, using a consolidation opportunity",
           "Vendor collaboration invoicing",
-          "Purchase order change management",
+          "Purchase order change management, using a change request",
           "RFQ demand consolidation rule reversal"
         ],
         "correct": 0,
@@ -74190,7 +74190,7 @@ const EXAMS = {
         "q": "When creating an RFQ from a purchase requisition rather than manually, what Purchase type is automatically assigned, and can this value be manually selected on a new RFQ?",
         "options": [
           "Purchase requisition type is assigned automatically; this value cannot be selected manually on a new RFQ",
-          "The purchaser must always manually choose the purchase type, even from a requisition",
+          "The purchaser must always manually choose the purchase type, even from a requisition, with no automatic assignment",
           "Purchase agreement type is always assigned automatically regardless of the source",
           "Purchase order type is always assigned automatically regardless of the source"
         ],
@@ -74320,7 +74320,7 @@ const EXAMS = {
         "q": "A purchase order is Approved under change management. The requester needs to make a modification. What must they do, and what happens to the original inventory transactions while the change is pending?",
         "options": [
           "Change management does not allow any modification once a purchase order is Approved",
-          "Directly edit the purchase order lines; inventory transactions update immediately with no workflow required",
+          "Directly edit the purchase order lines; inventory transactions update immediately with no workflow required and the purchase order simply stays Approved",
           "Select Request change and resubmit through workflow; the original inventory transactions remain intact while the change request status is Pending",
           "Cancel and recreate the entire purchase order from scratch"
         ],
@@ -74397,7 +74397,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "On a vendor rebate agreement, the Taken from field is set to Net. What does this mean for the rebate calculation?",
         "options": [
-          "The rebate is calculated based on the item's list price before any discounts",
+          "The rebate is calculated based on the item's list price before any discounts have been applied to the line",
           "The rebate only applies to purchase orders with a negative quantity",
           "The rebate is calculated on the gross freight cost of the shipment",
           "The rebate is calculated based on the item's net price, after other discounts have already been applied"
@@ -74444,7 +74444,7 @@ const EXAMS = {
         "options": [
           "At any time, even after the purchase order has been fully invoiced",
           "Only after the purchase order has been confirmed",
-          "Only when creating a purchase requisition, never on the purchase order directly",
+          "Only when creating a purchase requisition, never on the purchase order directly or at any point during its creation",
           "Only when the purchase order is being created; it cannot be applied after the purchase order already exists"
         ],
         "correct": 3,
@@ -74456,7 +74456,7 @@ const EXAMS = {
         "q": "An intercompany order chain exists between a vendor account and customer account in different legal entities. If a purchase agreement is used for the intercompany purchase order in one legal entity, what happens on the other legal entity's side?",
         "options": [
           "The other legal entity's sales order is unaffected and uses standard trade agreements only",
-          "The intercompany sales agreement must be manually created and manually reconciled with no system synchronization",
+          "The intercompany sales agreement must be manually created and manually reconciled with no system synchronization of fulfillment between them",
           "The corresponding intercompany sales order uses the corresponding intercompany sales agreement, with fulfillment synchronized between them",
           "Only pricing syncs; quantity commitments remain independent between the two agreements"
         ],
@@ -74547,7 +74547,7 @@ const EXAMS = {
         "q": "Before setting up product filters on the Released product details page, what must first be configured on the item's storage dimension group?",
         "options": [
           "Use warehouse management processes must be set to Yes",
-          "The item must belong to a supplementary item group",
+          "The item must belong to a supplementary item group first",
           "Coverage plan by dimension must be selected",
           "The Primary stocking slider must be enabled"
         ],
@@ -74573,7 +74573,7 @@ const EXAMS = {
         "q": "What is a warehouse zone, and how does it relate to a zone group?",
         "options": [
           "A zone defines a work template; a zone group defines a wave template",
-          "A zone is the lowest level of location detail used to track on-hand inventory; a zone group defines mobile device menus",
+          "A zone is the lowest level of location detail used to track on-hand inventory; a zone group defines mobile device menus, and both exist primarily to direct mobile workers",
           "A zone controls costing methods; a zone group controls reservation hierarchies",
           "A zone is a logical or physical grouping of locations within a warehouse; a zone group is a logical grouping of different zones, and both exist primarily for reporting"
         ],
@@ -74743,7 +74743,7 @@ const EXAMS = {
         "options": [
           "The system automatically creates cycle counting work for that location as soon as the threshold is reached",
           "The count is deferred until the next scheduled cycle counting plan batch job runs",
-          "The location is automatically blocked from further picking until manually cleared",
+          "The location is automatically blocked from further picking until manually cleared by a warehouse supervisor",
           "Nothing happens unless a supervisor manually initiates the count"
         ],
         "correct": 0,
@@ -74783,7 +74783,7 @@ const EXAMS = {
           "It allows unlimited duplicate inbound message IDs without any validation",
           "It automatically merges duplicate inbound messages into a single work record",
           "If a duplicate inbound message ID is received, the system rejects the message and displays an error",
-          "It disables the ability to receive duplicate inbound message IDs entirely with no error shown"
+          "It disables the ability to receive duplicate inbound message IDs entirely with no error shown to the sender"
         ],
         "correct": 2,
         "explain": "When Enable inbound message ID is set to Yes, a duplicate inbound message ID received by the system is rejected with an error stating the message already exists; when set to No, duplicate inbound message IDs are allowed."
@@ -74806,7 +74806,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A mobile device menu item is configured with Mode set to Work and Use existing work set to Yes, with Directed by set to System directed. What does this configuration mean for the worker?",
         "options": [
-          "The worker must scan a grouping value, such as a shipment ID, before any work is assigned",
+          "The worker must scan a grouping value, such as a shipment ID, before any work is assigned and then decides in which order to perform it",
           "Supply Chain Management determines both the type of work assigned to the worker and the order in which it should be performed",
           "The worker manually selects which type of work to process and in what order",
           "This configuration only applies to cycle counting work"
@@ -74928,7 +74928,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A coverage group's Positive days field is set to 10 for an item with available inventory and a sales order due to ship in 90 days. What happens if Positive days is set below 90?",
         "options": [
-          "No planned order is generated because on-hand inventory always covers demand regardless of Positive days",
+          "No planned order is generated because on-hand inventory always covers demand regardless of Positive days or due date",
           "The item's coverage group is automatically changed to Manual",
           "The sales order is automatically canceled",
           "A new planned purchase order is generated because the existing inventory falls outside the allowed coverage window"
@@ -74994,7 +74994,7 @@ const EXAMS = {
         "q": "A company uses a two-master-plan strategy. Which plan is used during order simulations and explosions performed from the Items page, and which is used for the standard overnight regeneration run?",
         "options": [
           "Both simulations and regeneration always use the Current dynamic master plan",
-          "The Current static master plan is used for simulations; the Current dynamic master plan is used for regeneration",
+          "The Current static master plan is used for simulations and explosions; the Current dynamic master plan is used for the overnight regeneration run",
           "The Current dynamic master plan is used for simulations and explosions; the Current static master plan is used for the regeneration principle",
           "Both simulations and regeneration always use the Current static master plan"
         ],
@@ -75061,7 +75061,7 @@ const EXAMS = {
           "30 days by default, and it should always match the shortest lead time in the system",
           "100 days by default, and it should be set greater than the total lead time for products in the system",
           "365 days by default, and it cannot be changed",
-          "There is no default value; it must always be manually configured before any planning run"
+          "There is no default value; it must always be manually configured before any planning run in the system"
         ],
         "correct": 1,
         "explain": "The system default value for the coverage time fence is 100 days, but it should be set greater than the total lead time for products in the system so that supply and demand within the true planning horizon are not excluded."
@@ -75117,7 +75117,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A planned order has a status of Approved. What happens to it the next time master planning is run?",
         "options": [
-          "It is deleted just like an Unprocessed order, since master planning always recalculates all orders",
+          "It is deleted just like an Unprocessed order, since master planning always recalculates all orders from scratch",
           "It is treated as fixed and copied from the old plan version to the new one, so it is not changed or deleted",
           "Its status reverts to Unprocessed automatically at the start of every new planning run",
           "It automatically converts into a firmed purchase order without any manual action"
