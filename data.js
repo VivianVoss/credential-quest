@@ -9031,7 +9031,7 @@ const EXAMS = {
           "Automatically shutting down a dev environment overnight and on weekends",
           "Avoiding any use of governance or monitoring tools",
           "Purchasing additional physical on-premises servers",
-          "Running all environments at maximum capacity at all times"
+          "Running all environments at maximum capacity at all times, even on weekends"
         ],
         "correct": 0,
         "explain": "The training's example is a development environment that's automatically shut down overnight and on weekends to reduce unnecessary consumption."
@@ -9188,7 +9188,7 @@ const EXAMS = {
         "q": "Which of the following is explicitly listed among the benefits of the consumption-based pricing model, alongside the ability to add and release resources?",
         "options": [
           "Fixed geographic restrictions on all services",
-          "Guaranteed unlimited free storage",
+          "Guaranteed unlimited free storage for every Azure subscription",
           "Mandatory annual contracts",
           "No upfront costs for hardware or datacenter infrastructure"
         ],
@@ -9242,7 +9242,7 @@ const EXAMS = {
           "Ensuring maximum availability of resources, regardless of disruptions or events",
           "Ensuring only one deployment region is ever used",
           "Ensuring data is encrypted at all times",
-          "Ensuring the lowest possible price for cloud resources"
+          "Ensuring the lowest possible price for cloud resources, regardless of usage or demand"
         ],
         "correct": 0,
         "explain": "High availability is defined as focusing on ensuring maximum availability, regardless of disruptions or events that may occur."
@@ -9391,7 +9391,7 @@ const EXAMS = {
         "q": "According to the training, which statement about Azure resource groups is correct?",
         "options": [
           "Resource groups can be nested inside other resource groups",
-          "Deleting a resource group only deletes the group, not the resources inside it",
+          "Deleting a resource group only deletes the group, not the resources inside it, so those resources keep running",
           "Resource groups can be renamed at any time after creation",
           "A resource can only belong to one resource group at a time, and resource groups can't be nested"
         ],
@@ -9483,7 +9483,7 @@ const EXAMS = {
         "options": [
           "The number of vCPUs",
           "The VM family",
-          "The hardware generation",
+          "The hardware generation of the VM",
           "Support for Premium SSD storage"
         ],
         "correct": 3,
@@ -9654,7 +9654,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "When should you choose Azure Machine Learning over Azure AI services, based on the training's decision guidance?",
         "options": [
-          "When you only need prebuilt AI features exposed through APIs",
+          "When you only need prebuilt AI features exposed through APIs, with no custom training involved",
           "When you need a fully managed SaaS application",
           "When your solution centers only on connected IoT devices",
           "When your scenario requires custom model development, training, and lifecycle management"
@@ -10061,7 +10061,7 @@ const EXAMS = {
         "q": "What does single sign-on (SSO) allow a user to do?",
         "options": [
           "Bypass multifactor authentication permanently",
-          "Automatically become an administrator of every app",
+          "Automatically become an administrator of every app they use",
           "Sign in once and access multiple trusted applications",
           "Register a device without any credentials"
         ],
@@ -10223,7 +10223,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What are the two general forms of encryption described in the training for protecting Azure data?",
         "options": [
-          "Symmetric and asymmetric encryption only",
+          "Symmetric encryption and asymmetric encryption only",
           "Encryption at rest and encryption at start",
           "Compression and encryption",
           "Encryption at rest and encryption in transit"
@@ -10236,7 +10236,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What kind of service is Microsoft Defender for Cloud, according to the training?",
         "options": [
-          "A pure billing and cost management tool",
+          "A pure billing and cost management tool for cloud and hybrid resources",
           "A physical data migration device",
           "A DNS hosting service",
           "A security posture management and threat protection service"
@@ -10319,7 +10319,7 @@ const EXAMS = {
         "q": "What is a \"billing zone\" in Azure, according to the training?",
         "options": [
           "A synonym for a management group",
-          "A billing construct that only applies to storage accounts",
+          "A billing construct that only applies to storage accounts within a single Azure region",
           "The same thing as an availability zone",
           "A geographical grouping of Azure regions used specifically for data-transfer pricing"
         ],
@@ -10403,7 +10403,7 @@ const EXAMS = {
           "To automatically delete unused resources",
           "To provide extra metadata that helps with resource management, cost reporting, and governance",
           "To encrypt the resource",
-          "To physically relocate the resource to a different datacenter"
+          "To physically relocate the resource to a different datacenter for cost reporting and governance"
         ],
         "correct": 1,
         "explain": "Tags provide extra metadata about resources, useful for resource management, cost reporting, operations, security, and governance."
@@ -10491,7 +10491,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "If you set an Azure Policy on a resource group, what happens to resources created within that resource group?",
         "options": [
-          "The policy only applies to resources created before the policy existed",
+          "The policy only applies to resources created before the policy existed in that group",
           "They are exempt from the policy unless manually assigned",
           "Policies never apply to resource groups",
           "They automatically receive the same policy, because policies are inherited"
@@ -10531,7 +10531,7 @@ const EXAMS = {
         "q": "If a resource has a lock applied, can an Azure subscription Owner bypass the lock and delete the resource directly?",
         "options": [
           "No — the lock must be removed first, regardless of RBAC permissions",
-          "Yes, Owners can always bypass any lock",
+          "Yes, Owners can always bypass any lock because of their RBAC permissions",
           "Only during a scheduled maintenance window",
           "Only if the lock was applied more than 30 days ago"
         ],
@@ -10572,7 +10572,7 @@ const EXAMS = {
           "They can only be used inside the Azure portal",
           "Azure PowerShell uses PowerShell commands, while the Azure CLI uses Bash commands",
           "The Azure CLI cannot be scripted, while PowerShell can",
-          "Azure PowerShell only runs on Windows, while the CLI only runs on Linux"
+          "Azure PowerShell only runs on Windows, while the Azure CLI only runs on Linux systems"
         ],
         "correct": 1,
         "explain": "The primary difference is syntax: Azure PowerShell uses PowerShell cmdlets, while the Azure CLI uses Bash-style commands; both are installable cross-platform."
@@ -10677,7 +10677,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What does \"infrastructure as code\" (IaC) mean, according to the training?",
         "options": [
-          "Manually configuring every resource through the portal",
+          "Manually configuring every resource through the portal instead of using code or templates",
           "A synonym for Azure Policy",
           "Writing application code that ignores infrastructure",
           "Managing infrastructure through code and templates instead of manual configuration"
