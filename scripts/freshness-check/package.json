@@ -4,7 +4,8 @@
   "type": "module",
   "description": "CI-only tooling that checks the live Microsoft certification poster and exam pages against data.js and flags/auto-fixes drift. Not part of the shipped site.",
   "scripts": {
-    "check": "node run.mjs"
+    "check": "node run.mjs",
+    "test": "node --test"
   },
   "devDependencies": {
     "playwright": "^1.47.0"

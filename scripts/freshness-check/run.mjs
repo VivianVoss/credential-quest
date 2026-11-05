@@ -103,14 +103,18 @@ async function main() {
   let allCodes = Object.keys((await loadData(DATA_JS_PATH, await fs.readFile(DATA_JS_PATH, 'utf8'))).EXAMS);
   if (onlyCodes) allCodes = allCodes.filter(c => onlyCodes.has(c));
 
+  const unreadableNames = [];
+
   for (const code of allCodes) {
     const currentSource = await fs.readFile(DATA_JS_PATH, 'utf8');
     const { EXAMS } = await loadData(DATA_JS_PATH, currentSource);
     const stored = EXAMS[code];
 
     const live = await scrapeExam(page, stored);
-    const { patches, issues, unverified, deferred } = diffExam(stored, live);
+    const { patches, issues, nameIssues, unverified, deferred } = diffExam(stored, live);
     allDeferred.push(...deferred);
+    allIssues.push(...nameIssues);
+    if (unverified.includes('cert name')) unreadableNames.push(code);
 
     if (patches.length) {
       try {
@@ -140,6 +144,15 @@ async function main() {
   }
 
   await browser.close();
+
+  // One unreadable name is a page hiccup. Most of them means Learn's markup
+  // changed, and a name check that can't read names must not look like a clean run.
+  if (unreadableNames.length > allCodes.length / 2) {
+    allIssues.push({
+      title: 'Freshness check: could not read certification names',
+      body: `No name could be read from the live page for ${unreadableNames.length} of ${allCodes.length} exams, so renames weren't checked for them: ${unreadableNames.join(', ')}.\n\nCheck \`readCertName\` in \`lib.mjs\` against a live page.`
+    });
+  }
 
   // Only write patch-summary.md when there's something to say — the workflow
   // uses this file's mere existence (hashFiles(...) != '') to decide whether
