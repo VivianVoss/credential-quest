@@ -51774,7 +51774,7 @@ const EXAMS = {
           "Rename the branch to include the work item ID",
           "Add the work item ID as a GitHub label",
           "Include 'fixes AB#123' in the commit message or PR description",
-          "Add a GitHub Issue with the same title as the work item"
+          "Add a GitHub Issue with the same title as the work item so the two are matched"
         ],
         "correct": 2,
         "explain": "Azure Boards-GitHub integration supports state transition of work items to a Done or Completed state when a GitHub mention uses fix, fixes, or fixed together with the AB# work item reference."
@@ -51812,7 +51812,7 @@ const EXAMS = {
         "options": [
           "Exporting GitHub Issues to a CSV and importing them into Azure Boards weekly",
           "Mirroring the GitHub repository into Azure Repos",
-          "Granting all stakeholders outside collaborator access to the GitHub repository",
+          "Granting all stakeholders outside collaborator access to the GitHub repository so they can follow commits, PRs, and issues there directly",
           "Bidirectional linking through the Azure Boards App that mirrors GitHub commits, PRs, and issues into Azure Boards work items"
         ],
         "correct": 3,
@@ -51850,7 +51850,7 @@ const EXAMS = {
         "q": "You need release notes to be generated automatically from the commit history of a GitHub repository whenever a new tag is pushed. What is the most appropriate approach described in Microsoft Learn training?",
         "options": [
           "Disable tags and rely solely on branch names for release tracking",
-          "Configure a service hook that emails the team the full git log",
+          "Configure a service hook that emails the team the full git log so someone can write up the release notes by hand",
           "Manually copy commit messages into a wiki page after each release",
           "Automate release notes generation from GitHub repository history using GitHub's release automation features"
         ],
@@ -51865,7 +51865,7 @@ const EXAMS = {
           "Anonymous public repository access",
           "Personal Access Token (PAT) with carefully scoped permissions",
           "SSH key checked into the repository",
-          "Shared username and password stored in a pipeline variable"
+          "Shared username and password stored in a pipeline variable for reuse"
         ],
         "correct": 1,
         "explain": "Personal Access Tokens provide a high security level appropriate for automated integrations like CI/CD when scopes are carefully managed and tokens are rotated regularly, compared to username/password which is discouraged for production use."
@@ -51902,7 +51902,7 @@ const EXAMS = {
         "q": "A compliance auditor asks for proof that every code change can be traced from a requirement, through a bug fix, to the tests that validated it. Which AZ-400 practice area directly addresses this need?",
         "options": [
           "Design and implement source, bug, and quality traceability",
-          "Design a container build strategy",
+          "Design and implement a container build strategy for pipelines",
           "Configure package feed views",
           "Implement Desired State Configuration"
         ],
@@ -51914,7 +51914,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "In a trunk-based development strategy, how do developers typically integrate changes?",
         "options": [
-          "They maintain long-lived branches per feature and merge only at the end of a release",
+          "They maintain long-lived branches per feature and merge only at the end of a release, after all work on that feature has finished",
           "They commit small, frequent changes directly to (or through very short-lived branches off) a single shared trunk/main branch",
           "They freeze the trunk for the entire sprint and only merge on the last day",
           "They fork the repository for every change and never merge back"
@@ -52122,7 +52122,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "You need a deployment to require manual approval from a specific security group before it proceeds to the production stage, defined entirely in YAML rather than the classic release UI. Which feature should you use?",
         "options": [
-          "A build validation branch policy",
+          "A build validation branch policy on the production branch",
           "A self-hosted deployment group",
           "YAML-based environments with checks and approvals",
           "Variable groups linked to Azure Key Vault"
@@ -52149,7 +52149,7 @@ const EXAMS = {
         "q": "In a blue-green deployment, how is the cutover to the new version typically performed with minimal downtime?",
         "options": [
           "Database migrations are run directly against the live production database with no rollback plan",
-          "Users are randomly split 50/50 permanently between two environments",
+          "Users are randomly split 50/50 permanently between two environments, with a router or load balancer keeping half of all traffic on the old (blue) environment for good",
           "The old environment is deleted before the new one is created",
           "Traffic is switched (e.g., via a router, load balancer, or deployment slot swap) from the old (blue) environment to the fully-provisioned new (green) environment"
         ],
@@ -52318,7 +52318,7 @@ const EXAMS = {
         "q": "Your organization needs a documented plan for rapidly deploying an emergency code fix directly to production, bypassing the normal multi-stage validation pipeline, while still maintaining traceability. Which AZ-400 skill area does this scenario map to?",
         "options": [
           "Configure GitHub Advanced Security for GitHub",
-          "Design and implement a versioning strategy for pipeline artifacts",
+          "Design and implement a versioning strategy for pipeline artifacts and releases",
           "Design a hotfix path plan for responding to high-priority code fixes",
           "Design and implement a retention strategy for pipeline artifacts"
         ],
@@ -52359,7 +52359,7 @@ const EXAMS = {
           "The number of parallel jobs a pipeline can run",
           "The proportion of source code exercised by the automated test suite",
           "The size of build artifacts produced",
-          "The number of open work items linked to a build"
+          "The number of open work items linked to a build during each pipeline run"
         ],
         "correct": 1,
         "explain": "Code coverage analysis measures how much of the application's source code is executed by automated tests, helping teams identify untested code paths as part of the pipeline's quality gates."
@@ -52370,7 +52370,7 @@ const EXAMS = {
         "q": "Which approach ensures database schema changes are applied safely and in a controlled, versioned manner as part of a deployment pipeline, rather than being manually run against production?",
         "options": [
           "Implementing a deployment that includes automated database tasks (e.g., versioned migration scripts run as pipeline steps)",
-          "Skipping database changes and only handling them during application startup",
+          "Skipping database changes and only handling them during application startup, with no versioned steps or pipeline tasks for the schema",
           "Storing database credentials directly in the YAML file in plain text",
           "Manually connecting to the production database and running ad hoc SQL"
         ],
@@ -52382,7 +52382,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Which combination of pipeline elements would best implement 'create reusable pipeline elements' for a large organization with many similar microservice pipelines needing shared secrets and build logic?",
         "options": [
-          "A single monolithic pipeline file duplicated and hand-edited per microservice",
+          "A single monolithic pipeline file duplicated and hand-edited per microservice, with its own copy of the build logic and secrets in each repository",
           "YAML templates for shared job/step logic plus variable groups (optionally linked to Key Vault) for shared configuration and secrets",
           "Manually copying build steps between classic UI pipelines",
           "Hardcoding secrets separately into each pipeline's YAML"
@@ -52397,7 +52397,7 @@ const EXAMS = {
         "options": [
           "Avoiding version tags on container images entirely",
           "Deciding how and where container images are built, tagged, scanned, and pushed to a registry as part of the pipeline",
-          "Building a new base OS image from scratch for every single commit",
+          "Building a new base OS image from scratch for every single commit, rather than reusing a shared base image from a registry",
           "Ensuring the container never leaves the developer's laptop"
         ],
         "correct": 1,
@@ -52408,7 +52408,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What is the main advantage of GitHub-hosted runners over self-hosted runners for GitHub Actions workflows?",
         "options": [
-          "They are always faster than self-hosted runners for every workload",
+          "They are always faster than self-hosted runners for every workload, regardless of hardware or network location",
           "They require no infrastructure management since GitHub provisions and maintains the virtual machines",
           "They allow unlimited private network access to on-premises resources",
           "They eliminate the need for workflow YAML files"
@@ -52460,7 +52460,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In a ring-based (progressive exposure) deployment model, what is the defining characteristic of 'Ring 0'?",
         "options": [
-          "It is reserved exclusively for automated load testing, never real users",
+          "It is reserved exclusively for automated load testing, never real users, and validates capacity before any wider release",
           "It targets internal organizational users first, providing a controlled validation environment before wider release",
           "It is the final ring and represents general availability to all users",
           "It only ever receives feature-flag-disabled builds"
@@ -52501,7 +52501,7 @@ const EXAMS = {
         "options": [
           "By modularizing the deployment using linked and nested templates",
           "By converting all parameters into hardcoded values",
-          "By duplicating the entire JSON file for every environment",
+          "By duplicating the entire JSON file for every environment and project",
           "By disabling the resources section"
         ],
         "correct": 0,
@@ -52618,7 +52618,7 @@ const EXAMS = {
         "options": [
           "A single-agent classic pipeline",
           "A pipeline that must run entirely on Microsoft-hosted agents",
-          "A pipeline that only supports GitHub Actions, not Azure Pipelines",
+          "A pipeline that only supports GitHub Actions, not Azure Pipelines, with all of the jobs running in the cloud",
           "A hybrid pipeline using both self-hosted (on-prem) and Microsoft-hosted agents in the same pipeline"
         ],
         "correct": 3,
@@ -52684,7 +52684,7 @@ const EXAMS = {
           "Agent capabilities/demands matching, so the job only runs on agents advertising the required capability",
           "Randomly assigning any available agent in the default pool",
           "Disabling agent pools entirely",
-          "Renaming the pipeline to match the agent's hostname"
+          "Renaming the pipeline to match the agent's hostname, so the job is routed to the agent that shares its name"
         ],
         "correct": 0,
         "explain": "Azure Pipelines lets jobs specify 'demands' that must match capabilities advertised by an agent, ensuring jobs requiring specific installed software or configuration are only scheduled on agents that satisfy those requirements."
@@ -52695,7 +52695,7 @@ const EXAMS = {
         "q": "Why might an organization purchase additional parallel jobs for Azure Pipelines rather than relying on the free tier?",
         "options": [
           "Because parallel jobs are required to use YAML instead of classic pipelines",
-          "Because additional parallel jobs unlock new deployment strategies like blue-green",
+          "Because additional parallel jobs unlock new deployment strategies like blue-green and canary that are otherwise unavailable on the free tier of Azure Pipelines",
           "To increase the number of jobs that can run concurrently across pipelines, reducing queue wait time and improving overall pipeline throughput",
           "Because free tier pipelines cannot use variable groups"
         ],
@@ -52735,7 +52735,7 @@ const EXAMS = {
         "options": [
           "Classic pipelines versus YAML pipelines",
           "Self-hosted package sources versus SaaS-based (cloud-hosted) package sources",
-          "On-premises SQL Server versus Azure SQL Database",
+          "On-premises SQL Server versus Azure SQL Database for storing the package metadata",
           "GitHub Free versus GitHub Enterprise"
         ],
         "correct": 1,
@@ -52760,7 +52760,7 @@ const EXAMS = {
         "q": "When deploying from Azure Pipelines or GitHub Actions to Azure, which identity option lets the pipeline authenticate to Azure resources without storing any long-lived secret, using federated credentials tied to the workflow?",
         "options": [
           "Workload identity federation (OpenID Connect) with a managed identity or service principal",
-          "A shared admin username and password stored as a pipeline variable",
+          "A shared admin username and password stored as a pipeline variable and rotated on a regular schedule",
           "A hardcoded storage account key in the YAML file",
           "An SSH private key committed to the repository"
         ],
@@ -52865,7 +52865,7 @@ const EXAMS = {
         "options": [
           "The DownloadSecureFile@1 task, referencing the file's path via $(<taskName>.secureFilePath)",
           "The PublishSecureFile@1 task with no output variable",
-          "A raw curl command against the Azure DevOps REST API using a hardcoded PAT",
+          "A raw curl command against the Azure DevOps REST API using a hardcoded PAT to fetch the file at runtime",
           "The Bash task with the file content pasted inline as plain text"
         ],
         "correct": 0,
