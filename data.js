@@ -31970,7 +31970,7 @@ const EXAMS = {
         "q": "What three elements combine to form an Azure RBAC role assignment?",
         "options": [
           "A resource group, a region, and a subscription",
-          "A policy definition, an initiative, and an effect",
+          "A policy definition, an initiative, and an enforcement effect",
           "A username, a password, and a tenant ID",
           "A security principal, a role definition, and a scope"
         ],
@@ -32037,7 +32037,7 @@ const EXAMS = {
           "The group inherits the Contributor role on all resource groups and resources in the subscription",
           "The assignment is rejected because roles cannot be assigned above the resource group scope",
           "Only the first resource group created inherits the role",
-          "They are unaffected until the role is explicitly assigned again at each resource group"
+          "They are unaffected until the role is explicitly assigned again at each resource group in the subscription"
         ],
         "correct": 0,
         "explain": "Scopes are structured in a parent-child relationship, so a role assigned at a parent scope such as a subscription is automatically inherited by all child scopes, including resource groups and resources."
@@ -32048,7 +32048,7 @@ const EXAMS = {
         "q": "Azure RBAC is described as an \"allow\" model that also supports NotActions. How are a role's effective permissions calculated when NotActions are present?",
         "options": [
           "Effective permissions equal the Actions operations minus the NotActions operations",
-          "NotActions are added on top of Actions to expand what is allowed",
+          "NotActions are added on top of Actions to expand what is allowed for the assigned principal",
           "NotActions completely override and disable the role",
           "NotActions apply only to custom roles, never to built-in roles"
         ],
@@ -32127,7 +32127,7 @@ const EXAMS = {
         "options": [
           "To enforce multifactor authentication on every sign-in",
           "To let users reset or unlock their own account without contacting the help desk",
-          "To synchronize on-premises Active Directory passwords to the cloud",
+          "To synchronize on-premises Active Directory passwords to the cloud for every user account",
           "To automatically rotate all user passwords every 30 days"
         ],
         "correct": 1,
@@ -32166,7 +32166,7 @@ const EXAMS = {
         "options": [
           "Administrators are exempt from SSPR entirely",
           "A strong two-method authentication policy is always enforced, and the security-question method is unavailable to them",
-          "Administrator accounts can register with only one method, same as regular users",
+          "Administrator accounts can register with only one method, same as regular users, and may also rely on security questions",
           "Administrators may use security questions as their sole authentication method"
         ],
         "correct": 1,
@@ -32179,7 +32179,7 @@ const EXAMS = {
         "options": [
           "Free edition only",
           "Only Microsoft Entra ID P2, never P1",
-          "This scenario is not supported under any edition",
+          "This scenario is not supported under any edition; SSPR requires an active sign-in",
           "Microsoft Entra ID P1 or P2 (or Microsoft 365 Apps for business/Microsoft 365)"
         ],
         "correct": 3,
@@ -32297,7 +32297,7 @@ const EXAMS = {
           "The most recently assigned policy always wins",
           "Azure picks one at random to avoid conflicts",
           "The result is the cumulative most restrictive outcome across all applicable policies",
-          "Only the policy assigned at the narrowest scope applies"
+          "Only the policy assigned at the narrowest scope applies, overriding those at parent scopes"
         ],
         "correct": 2,
         "explain": "Multiple policies can be assigned to a single resource at the same or different scopes, and the net result of layering policy definitions is considered cumulative most restrictive."
@@ -32359,8 +32359,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is the main benefit of grouping several subscriptions under a single management group?",
         "options": [
-          "It removes the need for resource groups within those subscriptions",
-          "It merges the subscriptions into one billing account automatically",
+          "It removes the need for resource groups within those subscriptions, so resources sit directly under the management group",
+          "It merges the subscriptions into one billing account automatically, so that all of their charges appear on a single consolidated invoice",
           "Policies and role assignments applied to the management group are inherited by all subscriptions and resources beneath it",
           "It is required before any virtual network can be created"
         ],
@@ -32375,7 +32375,7 @@ const EXAMS = {
           "It only stores virtual machines",
           "It replaces the need for a subscription",
           "It is a logical container that holds related resources for a solution, which can be managed and deployed together",
-          "It is a billing boundary that cannot contain resources from different regions"
+          "It is a billing boundary that cannot contain resources from different regions, so each region needs its own separate group"
         ],
         "correct": 2,
         "explain": "A resource group is a logical container for resources that are deployed and managed together as part of a solution; a resource can belong to only one resource group at a time."
@@ -32411,7 +32411,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A subscription has Contributor access granted to a group at the subscription scope, but a Deny-effect Azure Policy is assigned at one specific resource group blocking creation of public IP addresses. What happens when a member of that group tries to create a public IP address in that resource group?",
         "options": [
-          "The public IP address is created because Contributor access always overrides policy",
+          "The public IP address is created because Contributor access always overrides policy assigned at a narrower scope",
           "RBAC and Policy cannot both apply to the same resource group",
           "The request is denied, because Azure Policy evaluates resource compliance independently of RBAC permissions",
           "The request succeeds but generates only a warning"
@@ -32427,7 +32427,7 @@ const EXAMS = {
           "An IT administrator account created directly in the tenant",
           "A service principal used by an Azure application",
           "An account from another organization or a Microsoft account that has been invited to collaborate",
-          "A directory-synchronized account from on-premises Active Directory"
+          "A directory-synchronized account from on-premises Active Directory that signs in as a tenant member"
         ],
         "correct": 2,
         "explain": "Guest users exist outside your organization, such as accounts from other cloud providers or Microsoft accounts; their source is listed as Invited user, and this is useful for external vendors or contractors who need temporary access."
@@ -32464,7 +32464,7 @@ const EXAMS = {
         "q": "With standard geo-redundant storage (GRS, not RA-GRS), when can data in the secondary region be read?",
         "options": [
           "Only if Microsoft initiates a failover from the primary to the secondary region",
-          "Never, GRS data in the secondary region cannot be read under any circumstance",
+          "Never, GRS data in the secondary region cannot be read under any circumstance, even after failover",
           "At any time, on demand",
           "Only during scheduled maintenance windows"
         ],
@@ -32478,7 +32478,7 @@ const EXAMS = {
         "options": [
           "The ability to read data from the secondary region at any time, regardless of failover status",
           "Synchronous replication across zones",
-          "Unlimited retention of soft-deleted blobs",
+          "Unlimited retention of soft-deleted blobs in the secondary region, whatever the retention setting",
           "Automatic conversion to Premium performance tier"
         ],
         "correct": 0,
@@ -32582,7 +32582,7 @@ const EXAMS = {
         "options": [
           "Standard priority rehydration, completing within 15 hours",
           "High priority rehydration, typically completing within 1 hour for objects under 10 GB",
-          "Archive tier data cannot be rehydrated faster than 15 hours under any option",
+          "Archive tier data cannot be rehydrated faster than 15 hours under any option or priority setting",
           "Switching the storage account to Premium performance"
         ],
         "correct": 1,
@@ -32607,7 +32607,7 @@ const EXAMS = {
         "q": "What is the primary purpose of a shared access signature (SAS) in Azure Storage?",
         "options": [
           "To encrypt all data at rest automatically",
-          "To register a custom domain name for a storage account",
+          "To register a custom domain name for a storage account so that clients can reach it by a friendly address",
           "To replicate data to a secondary region",
           "To grant restricted, time-limited access to storage resources without sharing the account key"
         ],
@@ -32632,9 +32632,9 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "How does an account SAS differ from a service SAS?",
         "options": [
-          "A service SAS never expires while an account SAS always expires within one hour",
+          "A service SAS never expires while an account SAS always expires within one hour, regardless of the permissions or resources it grants",
           "There is no functional difference between the two",
-          "An account SAS can only be used for read operations",
+          "An account SAS can only be used for read operations, while a service SAS can also write",
           "An account SAS allows access to anything a service SAS allows plus additional resources and abilities, such as creating file systems"
         ],
         "correct": 3,
@@ -32645,7 +32645,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is a key advantage of referencing a stored access policy for a service-level SAS, compared to an ad hoc SAS?",
         "options": [
-          "It automatically extends the SAS expiration indefinitely",
+          "It automatically extends the SAS expiration indefinitely, so clients never need a replacement token after it is issued",
           "It lets you revoke permissions by changing the policy, without having to regenerate the storage account keys",
           "It allows the SAS to bypass HTTPS requirements",
           "It removes the need for a security principal"
@@ -32660,7 +32660,7 @@ const EXAMS = {
         "options": [
           "To account for clock skew between machines, which can otherwise cause intermittent failures in the first few minutes",
           "Because SAS tokens are always backdated by Azure automatically",
-          "To comply with a mandatory Azure regulation",
+          "To comply with a mandatory Azure regulation that requires every SAS to be backdated before it can be issued to clients",
           "To make the SAS valid for a shorter overall duration"
         ],
         "correct": 0,
@@ -32700,7 +32700,7 @@ const EXAMS = {
           "It can only sync with FAT32-formatted volumes",
           "It must be an NTFS-formatted volume and cannot be on the system volume",
           "It can only be configured for read-only access",
-          "It must be on the system volume of the Windows Server"
+          "It must be on the system volume of the Windows Server, not on a separate data volume"
         ],
         "correct": 1,
         "explain": "The server endpoint must be a path on an NTFS-formatted volume on a registered Windows Server, and it cannot be the system volume."
@@ -32713,7 +32713,7 @@ const EXAMS = {
           "It disables synchronization for large files",
           "It stores only recently accessed data on local servers while older, less-used data is transparently kept in Azure Files",
           "It converts Azure file shares into blob containers",
-          "It moves frequently accessed files off the local server entirely"
+          "It moves frequently accessed files off the local server entirely, while older, less-used data stays in the local cache instead"
         ],
         "correct": 1,
         "explain": "Azure File Sync stores only recently accessed data on local servers; with cloud tiering enabled, older or less frequently used data moves to Azure Files while remaining accessible through the local cache."
@@ -32724,7 +32724,7 @@ const EXAMS = {
         "q": "By default, is data stored in an Azure Storage account encrypted at rest?",
         "options": [
           "Yes, Storage Service Encryption is enabled automatically and cannot be disabled",
-          "Only if a customer-managed key is configured first",
+          "Only if a customer-managed key is configured first in the storage account's encryption settings",
           "Only Premium storage accounts are encrypted by default",
           "No, encryption must be manually enabled per blob"
         ],
@@ -32791,7 +32791,7 @@ const EXAMS = {
           "They are the same feature under two different names",
           "Versioning replaces the need for storage account redundancy",
           "Soft delete protects against accidental deletion by retaining deleted blobs for a recovery window, while versioning automatically preserves every prior state of a blob as it is modified",
-          "Soft delete only applies to containers, while versioning only applies to storage accounts"
+          "Soft delete only applies to containers, while versioning only applies to storage accounts, so neither of them can protect an individual blob from deletion or from being overwritten by mistake"
         ],
         "correct": 2,
         "explain": "Soft delete for blobs and containers retains deleted data for a recovery period so it can be restored, whereas blob versioning automatically maintains previous versions of a blob every time it's modified or deleted, allowing restoration of a specific prior version."
@@ -32867,7 +32867,7 @@ const EXAMS = {
         "q": "What is the purpose of an Azure VM extension?",
         "options": [
           "To convert a VM from Standard to Premium storage",
-          "To resize the VM's operating system disk automatically",
+          "To resize the VM's operating system disk automatically whenever its free space falls below a configured threshold",
           "To configure and automate post-deployment tasks on a VM, such as installing and configuring additional software",
           "To create a resource lock on the VM"
         ],
@@ -32893,7 +32893,7 @@ const EXAMS = {
         "q": "What is the purpose of the Auto-shutdown feature on an Azure VM?",
         "options": [
           "To automatically shut down the VM on a defined daily or weekly schedule to save costs",
-          "To automatically back up the VM every night",
+          "To automatically back up the VM every night to a Recovery Services vault on a defined schedule",
           "To automatically apply security patches",
           "To automatically resize the VM under high load"
         ],
@@ -32932,7 +32932,7 @@ const EXAMS = {
         "q": "What does a fault domain in an availability set represent?",
         "options": [
           "A group of nodes that share a common set of hardware, such as a server rack and its power or network switches, representing a physical unit of failure",
-          "A group of virtual machines that are rebooted together during planned maintenance",
+          "A group of virtual machines that are rebooted together during planned maintenance, so that only one such group is taken offline at a time while the others keep running",
           "A logical grouping of resource tags",
           "A boundary used only for billing purposes"
         ],
@@ -32983,7 +32983,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is the difference between Uniform and Flexible orchestration modes in an Azure Virtual Machine Scale Set?",
         "options": [
-          "Uniform mode allows different VM sizes and images per instance, while Flexible mode requires identical instances",
+          "Uniform mode allows different VM sizes and images per instance, while Flexible mode requires identical instances that all share the same base image and configuration across the whole scale set",
           "There is no difference; the names are interchangeable",
           "Uniform mode requires all instances to share the same base image and configuration, while Flexible mode allows VMs to use different images, sizes, or configurations within the same scale set",
           "Flexible mode is only available for Azure Container Instances, not VM scale sets"
@@ -33022,7 +33022,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "How do you scale an Azure App Service application vertically (scale up)?",
         "options": [
-          "By adding more worker instances at the same pricing tier",
+          "By adding more worker instances at the same pricing tier so that the load is spread across them",
           "Vertical scaling is not supported for App Service",
           "By enabling deployment slots",
           "By changing the App Service plan to a different pricing tier with more resources per instance"
@@ -33038,7 +33038,7 @@ const EXAMS = {
           "A read-only snapshot of app logs",
           "A separate live app with its own hostname that can be used to stage changes before swapping into production",
           "A DNS record pointing to the production slot",
-          "A backup copy of the App Service plan's billing configuration"
+          "A backup copy of the App Service plan's billing configuration that can be restored if the plan is changed by mistake"
         ],
         "correct": 1,
         "explain": "Deployment slots are live apps with their own hostnames; app content and configuration can be validated in a staging slot and then swapped with the production slot."
@@ -33063,7 +33063,7 @@ const EXAMS = {
         "options": [
           "Perform the same swap operation again, which restores the previously staged app back into the previous slot",
           "Redeploy the entire application from source control",
-          "Restore the App Service from a full VM backup",
+          "Restore the App Service from a full VM backup of the underlying host taken just before the swap was performed",
           "Delete and recreate the App Service"
         ],
         "correct": 0,
@@ -33089,7 +33089,7 @@ const EXAMS = {
         "options": [
           "Nothing; App Service automatically claims any domain name",
           "Map the custom domain to the App Service app, typically by adding CNAME or A records with your DNS provider or Azure DNS",
-          "Purchase the domain exclusively through Azure DNS",
+          "Purchase the domain exclusively through Azure DNS, because domains registered with other providers cannot be mapped to the app",
           "Enable deployment slots"
         ],
         "correct": 1,
@@ -33127,7 +33127,7 @@ const EXAMS = {
         "q": "What is a key operational advantage of Azure Container Instances compared to deploying a virtual machine to run a single container?",
         "options": [
           "Container Instances only supports Linux containers, never Windows",
-          "Container Instances requires a dedicated App Service plan",
+          "Container Instances requires a dedicated App Service plan, which gives it predictable capacity and a fixed monthly price for each container",
           "Containers must always run inside a Kubernetes cluster",
           "Container Instances lets you run containers without managing the underlying virtual machines, with fast startup and per-second billing"
         ],
@@ -33140,7 +33140,7 @@ const EXAMS = {
         "q": "What do the containers within a single Azure Container Instances container group share?",
         "options": [
           "Nothing; each container in a group is fully isolated",
-          "Only billing, but not networking or storage",
+          "Only billing, but not networking or storage, which each container provisions separately",
           "Only the same container image",
           "A lifecycle, resources such as CPU/memory, a local network, and storage volumes"
         ],
@@ -33154,7 +33154,7 @@ const EXAMS = {
         "options": [
           "Azure Resource Manager templates, Bicep, or YAML files",
           "Only through Azure DevOps pipelines",
-          "Only through the Azure portal wizard",
+          "Only through the Azure portal wizard, never from a template or file",
           "Only Docker Compose files"
         ],
         "correct": 0,
@@ -33166,7 +33166,7 @@ const EXAMS = {
         "q": "How is port mapping handled for containers within the same Azure Container Instances container group?",
         "options": [
           "Port mapping isn't supported because containers in a group share a single port namespace on the shared IP address",
-          "Each container gets its own dedicated public IP and port range",
+          "Each container gets its own dedicated public IP and port range, so the same port number can be reused by every container",
           "Containers in a group cannot expose any ports",
           "Ports must be manually translated using a load balancer"
         ],
@@ -33178,7 +33178,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What is the purpose of Azure Container Registry?",
         "options": [
-          "It is a service used to run one-off Azure Automation runbooks",
+          "It is a service used to run one-off Azure Automation runbooks against container hosts on a schedule",
           "It replaces the need for App Service plans",
           "It performs load balancing for containerized workloads",
           "It is a private registry service used to store and manage container images and related artifacts"
@@ -33205,7 +33205,7 @@ const EXAMS = {
         "q": "An administrator needs to move a virtual machine to a different Azure region. What is the correct approach?",
         "options": [
           "Regions cannot ever be changed; the VM must be deleted with no way to preserve its data",
-          "Use the standard \"Move resource\" action in the portal, which works across regions the same as it does across resource groups",
+          "Use the standard \"Move resource\" action in the portal, which works across regions the same as it does across resource groups, since a VM's region is just a property that the move operation updates in place",
           "Rename the resource group to match the target region",
           "Use a solution such as Azure Resource Mover or redeploy the VM from a template, since VMs cannot simply be moved between regions like they can between resource groups or subscriptions"
         ],
@@ -33233,7 +33233,7 @@ const EXAMS = {
           "Only tags can be updated through redeployment",
           "Azure Resource Manager updates the existing deployed resources to match the new template",
           "The deployment fails because templates cannot be redeployed",
-          "A completely separate, duplicate set of resources is always created"
+          "A completely separate, duplicate set of resources is always created alongside the originals"
         ],
         "correct": 1,
         "explain": "If you only want to make changes to already-deployed resources, you can modify the template used to create them and redeploy it; Resource Manager will change the resources to match the new template."
@@ -33285,7 +33285,7 @@ const EXAMS = {
           "Allow inbound traffic only on port 443",
           "Allow all inbound traffic from the internet",
           "Deny all inbound traffic, except traffic originating from the virtual network and from Azure Load Balancers",
-          "Deny all traffic, including traffic from the same virtual network"
+          "Deny all traffic without exception, including traffic from the same virtual network and from Azure Load Balancers"
         ],
         "correct": 2,
         "explain": "Azure defines three default inbound security rules that deny all inbound traffic except traffic from within the virtual network and from Azure Load Balancers."
@@ -33295,7 +33295,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "By default, what do the default outbound security rules of a network security group allow?",
         "options": [
-          "Outbound traffic only to Azure Load Balancers",
+          "Outbound traffic only to Azure Load Balancers in the same virtual network",
           "Outbound traffic to any destination without restriction",
           "Outbound traffic to the internet and to the virtual network",
           "No outbound traffic of any kind"
@@ -33335,7 +33335,7 @@ const EXAMS = {
         "q": "When a network security group is applied to both a subnet and a network interface, in what order does Azure evaluate the rules for inbound traffic?",
         "options": [
           "Only the subnet's NSG rules are ever evaluated for inbound traffic",
-          "Azure evaluates the network interface rules first, then the subnet rules",
+          "Azure evaluates the network interface's associated NSG rules first, then the subnet's associated NSG rules afterward",
           "Azure evaluates the subnet's associated NSG rules first, then the network interface's associated NSG rules",
           "Rules are evaluated in a random order to improve performance"
         ],
@@ -33350,7 +33350,7 @@ const EXAMS = {
           "Both are evaluated simultaneously and merged",
           "Outbound traffic ignores subnet-level NSGs entirely",
           "Network interface rules first, then subnet rules, the reverse of the inbound evaluation order",
-          "Subnet rules first, then network interface rules, the same order as inbound"
+          "Subnet rules first, then network interface rules, the same order used for the inbound evaluation"
         ],
         "correct": 2,
         "explain": "For outbound traffic, the process is reversed compared to inbound: Azure first evaluates network security group rules associated with the network interface, followed by rules associated with the subnet."
@@ -33426,7 +33426,7 @@ const EXAMS = {
         "q": "Is gateway transit supported for global virtual network peering (peering VNets in different regions), or only for regional peering?",
         "options": [
           "Gateway transit is supported for both regional and global virtual network peering",
-          "Global peering does not support gateway transit under any circumstance",
+          "Global peering does not support gateway transit under any circumstance, even with a VPN gateway",
           "Gateway transit requires ExpressRoute, not VPN Gateway",
           "Only for regional peering within the same region"
         ],
@@ -33467,7 +33467,7 @@ const EXAMS = {
           "Every 60 seconds; HTTP 404 is treated as healthy",
           "Every 15 seconds by default; the instance is healthy only if it responds with HTTP 200 within the timeout period",
           "Once per hour; a TCP handshake alone determines health",
-          "Every 5 seconds; any HTTP response code is considered healthy"
+          "Every 5 seconds by default; any HTTP response code is considered healthy as long as it arrives within the timeout period"
         ],
         "correct": 1,
         "explain": "By default, the load balancer probes an HTTP/HTTPS endpoint every 15 seconds; the instance is considered healthy if it responds with an HTTP 200 within the timeout period (31 seconds by default), and any other status causes the probe to fail."
@@ -33610,7 +33610,7 @@ const EXAMS = {
           "Metrics can only be viewed through the REST API, never in the Azure portal",
           "Metrics are numerical values collected at intervals, while Logs are timestamped records of structured or free-form event data, typically queried in a Log Analytics workspace",
           "Metrics and Logs are two names for the exact same data",
-          "Logs are collected automatically for every resource by default with no configuration needed, while Metrics require manual setup for every resource"
+          "Logs are collected automatically for every resource by default with no configuration needed, while Metrics require manual setup for every resource before any values appear in charts"
         ],
         "correct": 1,
         "explain": "Metrics are numerical values collected at predetermined intervals describing some aspect of a system, while Logs are recorded system events containing a timestamp and structured or free-form data, typically stored and queried in a Log Analytics workspace."
@@ -33636,7 +33636,7 @@ const EXAMS = {
           "Activity logs are a premium feature that requires a separate license",
           "Azure automatically records activity logs for all Azure resources; this data is available at the resource level without extra configuration",
           "Activity logs only capture read operations, never configuration changes",
-          "Activity logs must be manually enabled per resource before any events are recorded"
+          "Activity logs must be manually enabled per resource before any events are recorded, and no data is available at the resource level until then"
         ],
         "correct": 1,
         "explain": "Azure automatically records activity logs for all Azure resources, and this data, such as VM startup or configuration changes, is available at the resource level without additional configuration."
@@ -33688,7 +33688,7 @@ const EXAMS = {
           "A feature exclusive to Azure Kubernetes Service",
           "A predefined set of alert rules based on commonly monitored host metrics, such as CPU, memory, disk, network usage, and VM availability",
           "Alerts that can only be configured after a VM has been deleted",
-          "Custom KQL queries that must be written from scratch for every VM"
+          "Custom KQL queries that must be written from scratch for every VM, with no predefined rules available for CPU, memory, disk, or network usage"
         ],
         "correct": 1,
         "explain": "Recommended alert rules are a predefined set of alert rules based on commonly monitored VM host metrics, including CPU, memory, disk, and network usage levels, as well as VM availability, and can be enabled at VM creation time or afterward."
@@ -33752,7 +33752,7 @@ const EXAMS = {
         "options": [
           "Differential backup",
           "Full backup, followed by incremental backups",
-          "Snapshot-only backup with no full copy",
+          "Snapshot-only backup with no full copy of the data",
           "Transaction log backup"
         ],
         "correct": 1,
@@ -33765,7 +33765,7 @@ const EXAMS = {
         "options": [
           "A differential backup and a full backup cannot be scheduled on the same day, and at most one differential backup can be triggered per day",
           "Differential backups are only supported for Azure Files, not SQL Server",
-          "Differential backups can be triggered as often as every 15 minutes",
+          "Differential backups can be triggered as often as every 15 minutes, and they can be scheduled on the same day as a full backup without restriction",
           "Differential backups replace the need for any full backup entirely"
         ],
         "correct": 0,
@@ -33804,7 +33804,7 @@ const EXAMS = {
         "options": [
           "The existing VM must still exist; Azure Backup takes a snapshot of it before replacing its disks with the selected restore point",
           "No precondition applies; it works even if the VM was deleted",
-          "The original VM must already be deleted; Azure Backup recreates it from scratch",
+          "The original VM must already be deleted; Azure Backup recreates it from scratch using the disks held in the selected restore point",
           "It requires the VM to be encrypted with Azure Disk Encryption"
         ],
         "correct": 0,
@@ -33817,7 +33817,7 @@ const EXAMS = {
         "options": [
           "Cross Region Restore; the Replace existing disks option is not currently supported",
           "Cross Zonal Restore; Create a new VM is not supported",
-          "Cross Subscription Restore; Restore disk is not supported",
+          "Cross Subscription Restore; the Restore disk option is not currently supported for it",
           "Selective disk backup; no options are unsupported"
         ],
         "correct": 0,
@@ -33828,7 +33828,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is a key restore limitation for a virtual machine encrypted with Azure Disk Encryption when using Azure Backup?",
         "options": [
-          "Encrypted VMs can only be restored to the same subscription, never cross-subscription, with no other limitations",
+          "Encrypted VMs can only be restored to the same subscription, never cross-subscription, with no other limitations on file-level or folder-level restores",
           "File-level or folder-level restores aren't supported; the entire VM must be restored, and the Replace existing VM option isn't available",
           "Backup of encrypted VMs requires disabling encryption first",
           "Encrypted VMs cannot be backed up at all"
@@ -33841,7 +33841,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is the primary purpose of Azure Site Recovery?",
         "options": [
-          "To provide DNS name resolution across peered virtual networks",
+          "To provide DNS name resolution across peered virtual networks so that VMs in a primary and a secondary region can find each other by name",
           "To replicate and orchestrate failover of VMs and workloads to a secondary region for business continuity and disaster recovery",
           "To enforce Azure Policy compliance across subscriptions",
           "To manage container image versions"
