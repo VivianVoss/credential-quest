@@ -66549,7 +66549,7 @@ const EXAMS = {
         "options": [
           "It must first pass a Trace Parser performance review",
           "It must be applied to at least one sandbox environment in the same Lifecycle Services project",
-          "It must be uploaded directly to production through Visual Studio",
+          "It must be uploaded directly to production through Visual Studio from the developer's own environment",
           "It must be manually signed by Microsoft support"
         ],
         "correct": 1,
@@ -66576,7 +66576,7 @@ const EXAMS = {
           "Models and packages are interchangeable terms for the same concept",
           "A model is a design-time concept that groups elements, and a package is a deployment and compilation unit that can contain one or more models",
           "A package can contain only a single model",
-          "A model is a deployment and compilation unit, while a package is a design-time grouping of elements"
+          "A model is a deployment and compilation unit, while a package is a design-time grouping of elements such as metadata and source files in Visual Studio"
         ],
         "correct": 1,
         "explain": "A model is a design-time concept that groups elements such as metadata and source files. A package is a deployment and compilation unit that contains one or more models and is used to deploy to runtime environments."
@@ -66639,7 +66639,7 @@ const EXAMS = {
         "q": "A developer is provisioning a new environment by using the Unified Developer Experience (UDE) in the Power Platform admin center. Which statement about UDE developer environments is accurate?",
         "options": [
           "They cannot be used for any X++ development",
-          "They function like traditional one-box (Tier-1) development environments and need no synchronization",
+          "They function like traditional one-box (Tier-1) development environments and need no synchronization of customizations before developers use them",
           "They function more like Tier-2+ environments, run on Azure SQL, and require developers to deploy and synchronize customizations before use",
           "They completely eliminate the need for Visual Studio"
         ],
@@ -66784,7 +66784,7 @@ const EXAMS = {
           "The Resolve Conflicts window",
           "Rollback Entire Changeset",
           "Request Review, from the In Progress Work section of My Work",
-          "Shelvesets only, with no formal tracking"
+          "Shelvesets only, with no formal tracking of the review or its reviewers"
         ],
         "correct": 2,
         "explain": "From My Work in Team Explorer, selecting Request Review on in-progress changes submits a code review; the request appears under Code Reviews for both the requester and the reviewers."
@@ -66866,7 +66866,7 @@ const EXAMS = {
           "All fields on the table",
           "Only the primary key and description fields",
           "Only fields marked mandatory",
-          "Only fields with a label defined"
+          "Only fields with a label defined in the table"
         ],
         "correct": 1,
         "explain": "If you do not define any field groups, by default only data from two fields (the primary key and description fields) is shown, because they're indexed automatically."
@@ -67060,7 +67060,7 @@ const EXAMS = {
         "options": [
           "Overlayering the base method",
           "Adding a brand-new delegate to the base method",
-          "Creating a duplicate method with a different name",
+          "Creating a duplicate method with a different name and an added state parameter",
           "A context class that stores state and implements a dispose pattern for cleanup"
         ],
         "correct": 3,
@@ -67417,7 +67417,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "During a code review, a reviewer notices that a method updates CustTable with no exception handling around the database write. Based on best practice code review guidance, what should the reviewer recommend?",
         "options": [
-          "Remove the ttsbegin/ttscommit transaction block entirely",
+          "Remove the ttsbegin/ttscommit transaction block entirely so the database write commits on its own",
           "Move the logic into a form control's clicked() method",
           "Add exception handling, such as try/catch, around the database write operation",
           "Convert the method into a delegate instead"
@@ -67610,7 +67610,7 @@ const EXAMS = {
           "Manually copy the RDL file to the report server through Remote Desktop",
           "Include the report artifacts in a deployable package and apply it through Lifecycle Services",
           "Publish the report through the Power BI service",
-          "Deploy directly from Visual Studio, since it works in every environment"
+          "Deploy directly from Visual Studio, since it works in every environment, including test, UAT, and production"
         ],
         "correct": 1,
         "explain": "Deploying an SSRS report directly from Visual Studio is intended only for development and testing; test, UAT, and production environments require the report to be included in a deployable package and applied through Lifecycle Services (LCS)."
@@ -67635,7 +67635,7 @@ const EXAMS = {
         "options": [
           "Business document management, which relies on the Electronic reporting framework",
           "Power BI Desktop",
-          "Electronic reporting configuration only, with no template editing",
+          "Electronic reporting configuration only, with no template editing in Word or Excel",
           "The SSRS report designer in Visual Studio"
         ],
         "correct": 0,
@@ -67672,7 +67672,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which framework restricts access to specific rows within a shared table, based on a query and a defined context such as a role or group of roles?",
         "options": [
-          "Table Permissions Framework",
+          "Table Permissions Framework (TPF)",
           "Business document management",
           "SysExtensionSerializer",
           "Extensible Data Security (XDS)"
@@ -67750,7 +67750,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Composite data entities are best suited for which integration scenario?",
         "options": [
-          "Real-time OData synchronous calls from Power BI",
+          "Real-time OData synchronous calls from Power BI and other external client applications",
           "Asynchronous, XML file-based import/export within the Data management workspace",
           "Business events subscriptions",
           "Custom SOAP web service consumption"
@@ -67861,7 +67861,7 @@ const EXAMS = {
           "A security role",
           "A de-normalized view of data spread across multiple normalized tables",
           "A workflow element",
-          "An exact one-to-one copy of a single table"
+          "An exact one-to-one copy of a single table kept separately in the database"
         ],
         "correct": 1,
         "explain": "A data entity is a de-normalized view of data that is spread across multiple normalized tables, simplifying application development, customization, and integration scenarios."
@@ -67886,7 +67886,7 @@ const EXAMS = {
         "options": [
           "A new workflow type",
           "A new aggregate measurement",
-          "A new OAuth application registration",
+          "A new OAuth application registration for the data entity extension",
           "A staging table extension for the corresponding staging table"
         ],
         "correct": 3,
@@ -67991,7 +67991,7 @@ const EXAMS = {
           "The entire data entity becomes unavailable",
           "The entity is automatically deleted",
           "Only that child table (and its child tables) becomes unavailable within the entity, but the overall entity remains available",
-          "Nothing changes, because configuration keys only affect the primary table"
+          "Nothing changes, because configuration keys only affect the primary table, so the child table stays available within the entity"
         ],
         "correct": 2,
         "explain": "If the data entity's configuration key is enabled but a child table's configuration key is disabled, only that table and its children become unavailable in the entity; the overall data entity remains available for use."
@@ -68149,7 +68149,7 @@ const EXAMS = {
         "q": "As a best practice, how should a privilege typically be assigned within the security model?",
         "options": [
           "Through a duty, rather than directly to a role",
-          "Through a workflow approval",
+          "Through a workflow approval, rather than a role",
           "Through a business event",
           "Directly to a role"
         ],
@@ -68164,7 +68164,7 @@ const EXAMS = {
           "OAuth 2.0",
           "SysExtensionSerializer",
           "Extensible Data Security (XDS)",
-          "Table Permissions Framework"
+          "Table Permissions Framework (TPF)"
         ],
         "correct": 2,
         "explain": "XDS policies are enforced regardless of whether data is accessed through the finance and operations apps client, an SSRS report, or other services, restricting rows based on a query and role-based context."
@@ -68266,7 +68266,7 @@ const EXAMS = {
         "q": "According to performance-focused code review guidance, which approach can sometimes be much faster than an 'exist join' when only a single field, such as RecId, needs to be compared?",
         "options": [
           "A nested while loop",
-          "A cross join with no filter",
+          "A cross join with no filter on the field",
           "An 'inner join' on the single field",
           "A composite entity lookup"
         ],
