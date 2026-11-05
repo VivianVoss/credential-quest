@@ -79361,7 +79361,7 @@ const EXAMS = {
         "options": [
           "Extend Microsoft 365 Copilot exclusively and avoid custom agents",
           "Adopt a multi-agent architecture that decomposes responsibilities across specialized agents",
-          "Consolidate all logic into a single agent to minimize orchestration overhead",
+          "Consolidate all logic into a single agent to minimize orchestration overhead across the business functions",
           "Defer any agent architecture decision until the roadmap is finalized"
         ],
         "correct": 1,
@@ -79591,7 +79591,7 @@ const EXAMS = {
           "TCO captures all lifecycle costs, while ROI measures the return generated relative to that investment",
           "TCO and ROI measure the same thing and are interchangeable",
           "ROI is calculated once at project kickoff and never revisited",
-          "TCO only applies to custom agents, while ROI only applies to Copilot extensions"
+          "TCO only applies to custom agents, while ROI only applies to Copilot extensions and the value they return"
         ],
         "correct": 0,
         "explain": "TCO and ROI sit next to each other in an AI business case but answer different questions: TCO totals costs across the AI lifecycle (development, deployment, operational, change management, decommissioning), while ROI measures the value/return generated relative to that cost."
@@ -79684,7 +79684,7 @@ const EXAMS = {
         "options": [
           "To bypass Responsible AI guardrails during outages",
           "To automatically route to a backup model if the primary model fails",
-          "To reduce the number of registered models to exactly one",
+          "To reduce the number of registered models to exactly one primary model",
           "To permanently retire an older model version"
         ],
         "correct": 1,
@@ -79916,7 +79916,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "What best-practice guardrail should an architect apply whenever generative AI orchestration is enabled in Copilot Studio for enterprise scenarios?",
         "options": [
-          "Avoid evaluating cost or performance since generative orchestration has fixed compute cost",
+          "Avoid evaluating cost or performance since generative orchestration has a fixed compute cost across all enterprise answers",
           "Always enable grounding for enterprise answers and use guardrails such as instructions, actions, and topic triggers",
           "Disable all topic triggers to allow unrestricted conversation",
           "Replace all CLU and NLU topics with generative orchestration by default"
@@ -79969,7 +79969,7 @@ const EXAMS = {
         "q": "An architect wants three separate agents — one each for HR, Finance, and Supply Chain — to reference a consistent, standardized set of business data so their outputs remain aligned across domains. Which MCP integration pattern addresses this?",
         "options": [
           "Context-driven reasoning",
-          "Workflow-integrated agents",
+          "Workflow-integrated agents via MCP",
           "Multi-agent collaboration via MCP",
           "Standard NLU orchestration"
         ],
@@ -80035,7 +80035,7 @@ const EXAMS = {
         "q": "Which governance practice is recommended specifically for agents using Computer Use?",
         "options": [
           "Avoid testing UI navigation before production deployment",
-          "Grant unrestricted access to all applications to simplify configuration",
+          "Grant unrestricted access to all applications to simplify agent configuration",
           "Disable logging to reduce storage costs",
           "Limit which apps the agent can access and use least-privilege principles"
         ],
@@ -80305,7 +80305,7 @@ const EXAMS = {
           "To evaluate the cost-to-performance ratio and efficiency of prompting patterns",
           "It is required only for Computer Use agents",
           "Token consumption has no relationship to cost",
-          "Token consumption only matters during initial development, not production"
+          "Token consumption only matters during initial development, not once the agent is in production"
         ],
         "correct": 0,
         "explain": "Monitoring token consumption helps evaluate the cost-to-performance ratio and the efficiency of prompting patterns (e.g., thick vs. thin prompts), which directly affects operating cost."
@@ -80331,7 +80331,7 @@ const EXAMS = {
           "Switch the agent from CLU to standard NLU",
           "Adjust DLP, sensitivity labels, and allowed actions",
           "Disable all monitoring for that agent",
-          "Increase the agent's action permission scope"
+          "Increase the agent's action permission scope to allow more actions"
         ],
         "correct": 1,
         "explain": "For 'Guardrail violations' caused by policy mismatch or missing rules, the recommended tuning strategy is to adjust DLP, sensitivity labels, and allowed actions — tightening rather than loosening controls."
@@ -80369,7 +80369,7 @@ const EXAMS = {
         "options": [
           "Source code compiler warnings",
           "Physical datacenter temperature logs",
-          "Azure subscription billing invoices",
+          "Azure subscription billing invoices and cost allocation reports",
           "Conversation transcripts and intent recognition patterns"
         ],
         "correct": 3,
@@ -80380,7 +80380,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "An architect observes a sudden increase in agent response latency along with reduced model-selection effectiveness. Under Microsoft's monitoring guidance for generative AI, this combination is most closely associated with which category?",
         "options": [
-          "Standard NLU intent matching accuracy",
+          "Standard NLU intent matching accuracy in topic-based conversations",
           "ALM environment promotion",
           "Reliability indicators tied to model-driven behavior shifts",
           "Grounding data cleanliness only"
@@ -80394,7 +80394,7 @@ const EXAMS = {
         "q": "Before beginning AI agent testing, what should a solution architect define first, according to the recommended testing framework?",
         "options": [
           "The agent's final marketing name",
-          "The exact number of test cases regardless of scope",
+          "The exact number of test cases regardless of scope or objective",
           "The production release date only",
           "The testing objective — what the test is meant to validate"
         ],
@@ -80435,7 +80435,7 @@ const EXAMS = {
           "Safety and compliance testing",
           "Usability testing",
           "Performance and reliability testing",
-          "Scenario-based testing"
+          "Scenario-based testing of typical user journeys"
         ],
         "correct": 2,
         "explain": "Performance and reliability testing evaluates agent behavior under different load conditions, including high request volume, long interactions, complex multi-step tasks, and concurrent sessions."
@@ -80542,7 +80542,7 @@ const EXAMS = {
         "options": [
           "One combined environment for all stages",
           "Three: Development, Test (UAT/QA), and Production",
-          "Four: Development, Test, Staging, and Production",
+          "Four: Development, Test (UAT/QA), Staging, and Production",
           "Two: Development and Production"
         ],
         "correct": 1,
@@ -80657,7 +80657,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which of the following is part of the documented ALM governance checklist for Copilot Studio agents before release?",
         "options": [
-          "Marketing campaign approved",
+          "Marketing campaign approved and launch date announced",
           "Executive sponsor's calendar cleared",
           "DLP Policies Applied and Security Review Completed",
           "Agent given a memorable nickname"
@@ -80670,7 +80670,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A critical defect is found in a production agent outside the normal monthly or sprint-based release cadence. What does ALM release management guidance recommend?",
         "options": [
-          "Bypass all testing to release the fix immediately with no rollback plan",
+          "Bypass all testing to release the fix immediately with no rollback plan or any change management plan for users",
           "Disable the agent permanently instead of patching",
           "Wait for the next scheduled monthly release regardless of severity",
           "Use an emergency patch process for critical fixes, with a rollback plan and change management plan for users"
@@ -80755,7 +80755,7 @@ const EXAMS = {
         "options": [
           "Return of sensitive or protected data, or execution of unintended actions",
           "Permanent disabling of the underlying LLM",
-          "Automatic compliance with all Responsible AI principles",
+          "Automatic compliance with all Responsible AI principles for every agent response",
           "Guaranteed improvement in model accuracy"
         ],
         "correct": 0,
@@ -80767,7 +80767,7 @@ const EXAMS = {
         "q": "Which of the following is classified as a 'model behavior vulnerability' rather than a data exposure or identity vulnerability?",
         "options": [
           "Toxicity or harmful content, and biased reasoning producing unfair results",
-          "Excessive permissions allowing the model to access unnecessary data",
+          "Excessive permissions allowing the model to access unnecessary or sensitive data",
           "Unsecured flows calling non-Microsoft endpoints",
           "Weak identity configuration allowing privilege escalation"
         ],
@@ -80793,7 +80793,7 @@ const EXAMS = {
         "q": "Which mitigation directly addresses identity, access, and RBAC gaps in AI agent security design?",
         "options": [
           "Removing access logs to reduce storage costs",
-          "Allowing agents to share a single shared credential across all environments",
+          "Allowing agents to share a single shared credential across all environments, so there are fewer identities to secure and rotate",
           "Disabling multi-factor authentication to simplify agent access",
           "Enforcing least-privilege access for agents and users, using managed identities, and segmenting environments"
         ],
@@ -80807,7 +80807,7 @@ const EXAMS = {
         "options": [
           "Prompt manipulation risks",
           "Agent and workflow-level vulnerabilities",
-          "Data exposure vulnerabilities",
+          "Data exposure and permission vulnerabilities",
           "Model behavior vulnerabilities"
         ],
         "correct": 1,
@@ -80877,7 +80877,7 @@ const EXAMS = {
           "Model and agent behavior evaluation",
           "Fairness and bias review",
           "Data, privacy, and security assessment",
-          "Operational oversight and governance"
+          "Operational oversight and governance review"
         ],
         "correct": 2,
         "explain": "The Data, privacy, and security assessment area validates sensitivity classification of all data sources, data minimization, retention/storage expectations, PII protection, and isolation of confidential data with least-privilege access."
@@ -80901,7 +80901,7 @@ const EXAMS = {
         "q": "When designing security for agents operating across Microsoft clouds, what is the recommended approach to agent identity?",
         "options": [
           "Use only end-user credentials for every agent action",
-          "Share a single identity across all agents and environments for simplicity",
+          "Share a single identity across all agents and environments (prod, pre-prod, dev) for simplicity and easier secret rotation",
           "Assign a unique cloud identity per agent per environment (prod, pre-prod, dev), preferring managed identities",
           "Avoid assigning identities to agents entirely"
         ],
@@ -80916,7 +80916,7 @@ const EXAMS = {
           "Maker, Publisher, Environment Admin, Security Admin",
           "CEO, CFO, CTO, CISO",
           "Sales, Marketing, Finance, Legal",
-          "Developer, Tester, Reviewer, Approver only"
+          "Developer, Tester, Code Reviewer, Release Approver only"
         ],
         "correct": 0,
         "explain": "Separation of duties in agent security design calls for distinct roles — Maker, Publisher, Environment Admin, and Security Admin — with required approvals for publishing to production and changes to high-risk capabilities."
