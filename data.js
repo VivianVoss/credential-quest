@@ -6600,7 +6600,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "According to the module on Power Apps' business value, what is one of the most important business values Power Apps provides to organizations?",
         "options": [
-          "It requires every app to be built by professional developers",
+          "It requires every app to be built by professional developers, keeping app-building away from the people doing the work",
           "It replaces Dataverse as the primary data platform",
           "It puts part of the app-building process in the hands of the people who understand the work best",
           "It eliminates the need for any IT governance"
@@ -6641,7 +6641,7 @@ const EXAMS = {
         "options": [
           "To simulate mouse clicks on legacy desktop applications",
           "To analyze existing process data and produce a visual map of inefficiencies and automation opportunities",
-          "To train AI models that extract data from scanned documents",
+          "To train AI models that extract data from scanned documents and produce a visual map of each one's layout",
           "To manage role-based security for flows"
         ],
         "correct": 1,
@@ -6668,7 +6668,7 @@ const EXAMS = {
           "Secure, external-facing business websites connected to Dataverse",
           "Internal-only model-driven dashboards",
           "AI models for document extraction",
-          "Desktop automation scripts for legacy applications"
+          "Desktop automation scripts for legacy applications connected to Dataverse"
         ],
         "correct": 0,
         "explain": "Power Pages is described as a low-code, SaaS platform for creating, hosting, and administering external-facing business websites that connect to Dataverse."
@@ -6678,7 +6678,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Why is a Power Pages website described as secure by design?",
         "options": [
-          "All data on a Power Pages site is automatically public",
+          "All data on a Power Pages site is automatically public, so there's nothing for visitors to interact with",
           "It has no way for external users to sign in",
           "It cannot be connected to Dataverse",
           "Role-based permissions control what each visitor can see and interact with"
@@ -6691,7 +6691,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which of these is described as a business value use case for Power Pages?",
         "options": [
-          "A Dataverse table used only by internal developers",
+          "A Dataverse table used only by internal developers to record invoices and delivery dates",
           "A supplier portal where vendors submit invoices and confirm delivery dates",
           "A desktop flow that organizes local files",
           "A model-driven dashboard for executive KPIs"
@@ -6707,7 +6707,7 @@ const EXAMS = {
           "It replaces the need for Power Apps and Power Automate entirely",
           "It eliminates the need for role-based security",
           "It gives organizations one trusted, governed place to store and manage the data that powers apps, flows, websites, reports, and agents",
-          "It is only useful for organizations with no existing IT governance"
+          "It is only useful for organizations with no existing IT governance, since it replaces the need to store data for apps, flows, websites, and reports"
         ],
         "correct": 2,
         "explain": "The module states Dataverse's value is providing a single trusted, governed data foundation shared across Power Apps, Power Automate, Power Pages, Power BI, and Copilot Studio agents."
@@ -6720,7 +6720,7 @@ const EXAMS = {
           "Replace Dataverse as the platform's data store",
           "Only operate within Microsoft Teams",
           "Execute actions such as submitting a support ticket or checking order status by triggering Power Automate flows",
-          "Only display static text responses with no data access"
+          "Only display static text responses with no data access, even when a Power Automate flow has been connected to the agent"
         ],
         "correct": 2,
         "explain": "The module explains that agents can execute actions — like submitting a ticket or checking order status — by triggering connected Power Automate flows, going beyond simple question answering."
@@ -6731,7 +6731,7 @@ const EXAMS = {
         "q": "What distinguishes an autonomous agent, as described in the business-value module on Copilot Studio?",
         "options": [
           "It cannot be deployed to Microsoft Teams",
-          "It requires a professional developer to configure every response",
+          "It requires a professional developer to configure every response, and it only takes action when a user asks it to",
           "It can only respond when a user directly asks it a question",
           "It operates proactively in the background, taking a sequence of actions without direct human initiation"
         ],
@@ -6776,7 +6776,7 @@ const EXAMS = {
           "As starting points for human review, not final decisions",
           "As final decisions that cannot be reviewed",
           "As content that bypasses all filtering",
-          "As suggestions only visible to administrators"
+          "As suggestions only visible to administrators for human review"
         ],
         "correct": 0,
         "explain": "The module states Copilot always presents its suggestions as starting points for human review, reflecting Microsoft's human-in-the-loop design commitment."
@@ -6788,7 +6788,7 @@ const EXAMS = {
         "options": [
           "They are only used to build canvas apps, never flows",
           "They replace Dataverse as the primary data store",
-          "They require a professional developer to write custom APIs for every service",
+          "They require a professional developer to write custom APIs for every service, which then read from and write to Dataverse rather than external services",
           "They are the integration layer that lets apps and flows read from, write to, and trigger actions in external services without custom API development"
         ],
         "correct": 3,
@@ -6813,7 +6813,7 @@ const EXAMS = {
         "q": "In Dataverse, which security capability is provided out of the box, in contrast to traditional databases where it typically requires custom scripts and stored procedures?",
         "options": [
           "No security model at all",
-          "A requirement that every user share one login",
+          "A requirement that every user share one login, with access controlled by stored procedures",
           "Role-based access control, row-level, and column-level security",
           "Manual SQL injection prevention only"
         ],
@@ -6864,7 +6864,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "How does Dataverse implement a many-to-many (N:N) relationship, such as technicians being certified on multiple product categories while each category has multiple certified technicians?",
         "options": [
-          "Through a single lookup column on one of the two tables",
+          "Through a single lookup column on one of the two tables, which stores all associations",
           "By duplicating each record in both tables",
           "Through an automatically created intersect table that stores the associations",
           "It is not supported in Dataverse"
@@ -6911,7 +6911,7 @@ const EXAMS = {
           "Show/hide columns, lock/unlock columns, and recommendations",
           "Making a column required",
           "Displaying an error message",
-          "Setting a column value based on a condition"
+          "Setting a column value based on a condition, and making a column required"
         ],
         "correct": 0,
         "explain": "The module's note specifically states that actions such as show/hide columns, lock/unlock columns, and recommendations apply to model-driven apps only, while other business rule actions work in both app types."
@@ -7006,7 +7006,7 @@ const EXAMS = {
           "A fully published canvas app with no table",
           "A draft table with suggested column names, appropriate data types, and sample data",
           "A Power Automate flow only",
-          "Only a blank table with no columns"
+          "Only a blank table with no columns, data types, or sample data, ready for the maker to fill in by hand"
         ],
         "correct": 1,
         "explain": "The module states Copilot interprets the natural-language description and generates a draft table with suggested columns, data types, and sample data that the maker can then refine."
@@ -7152,7 +7152,7 @@ const EXAMS = {
         "q": "What does multifactor authentication (MFA) in Power Platform's security model require, beyond a password?",
         "options": [
           "A different password for every app",
-          "A manually entered security question every login",
+          "A manually entered security question every login, in addition to a different password for each app",
           "A second verification factor, such as a mobile app notification, phone call, or biometric scan",
           "Nothing extra — MFA is the same as a password"
         ],
@@ -7165,7 +7165,7 @@ const EXAMS = {
         "q": "In the Power Platform security model, at which three levels does role-based access control (RBAC) operate?",
         "options": [
           "Only for Copilot Studio agents",
-          "Only at the tenant level",
+          "Only at the tenant level, with no app-level or record-level access",
           "Environment-level, app-level, and record-level access",
           "Only within canvas apps"
         ],
@@ -7177,7 +7177,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What governance principle does the module recommend organizations follow when assigning security roles, to reduce the risk of unauthorized data access?",
         "options": [
-          "Give all users identical permissions for simplicity",
+          "Give all users identical permissions for simplicity, whatever their job function involves or needs them to do",
           "The principle of least privilege — granting only the permissions required for the job function",
           "Assign every user the System Administrator role",
           "Avoid using security roles altogether"
@@ -7190,7 +7190,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A Data Loss Prevention (DLP) policy places Dataverse in the 'Business' connector group and a consumer email service in the 'Non-business' group. What happens to a flow that reads from Dataverse and then sends the data through that consumer email connector?",
         "options": [
-          "The flow is automatically moved to the Blocked group",
+          "The flow is automatically moved to the Blocked group, and the two connectors are then placed in the same group",
           "The DLP policy blocks data from flowing between the two connectors because they are in different groups",
           "The flow runs normally with no restriction",
           "DLP policies only apply to canvas apps, not flows"
@@ -7216,7 +7216,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "What approach do Advanced Connector Policies (ACP) take that differs from the standard Business/Non-business DLP grouping model?",
         "options": [
-          "ACP allows all connectors by default and blocks only named ones",
+          "ACP allows all connectors by default and blocks only named ones, with any newly added connectors being permitted automatically until blocked",
           "ACP takes a default-deny approach, blocking all connectors unless explicitly permitted, including any newly added connectors",
           "ACP applies only to desktop flows",
           "ACP removes the need for any DLP policy"
@@ -7310,7 +7310,7 @@ const EXAMS = {
           "The physical server location of Dataverse",
           "The exact source code of each flow",
           "Which connectors are in active use across flows, useful for validating DLP policy coverage",
-          "The personal email addresses of every maker"
+          "The personal email addresses of every maker, useful for contacting those who need to review DLP policy coverage"
         ],
         "correct": 2,
         "explain": "The module describes the Connectors report as showing which connectors are actively used across flows, which helps administrators confirm DLP policy coverage is complete."
@@ -7362,7 +7362,7 @@ const EXAMS = {
           "The requesting maker's personal identity",
           "A service principal or the pipeline stage owner's identity, not the requesting maker's",
           "No identity is used — deployment is anonymous",
-          "The identity of the environment's first-ever administrator"
+          "The identity of the environment's first-ever administrator, not the requesting maker's"
         ],
         "correct": 1,
         "explain": "The module explains delegated deployments use a service principal or the pipeline stage owner's identity rather than the requesting maker's, so makers can request deployments to sensitive environments without needing direct access themselves."
@@ -7404,7 +7404,7 @@ const EXAMS = {
         "q": "What gives canvas apps their name, according to the module?",
         "options": [
           "They can only be used for drawing applications",
-          "They are generated automatically from a data model",
+          "They are generated automatically from a data model, which draws the controls onto a blank canvas",
           "They require a canvas-shaped screen",
           "They start with a blank canvas where makers place controls exactly where they want them"
         ],
@@ -7445,7 +7445,7 @@ const EXAMS = {
           "Only a Power BI report",
           "A model-driven app instead of a canvas app",
           "A three-screen app: a browse screen, a details screen, and an edit screen",
-          "A single blank screen with no data connection"
+          "A single blank screen with no data connection, plus a separate edit screen for the list"
         ],
         "correct": 2,
         "explain": "The module states that building a canvas app from a SharePoint list (or other supported data source) automatically generates a three-screen app: browse, details, and edit."
@@ -7468,7 +7468,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is the fundamental design principle behind model-driven apps, as opposed to canvas apps?",
         "options": [
-          "Model-driven apps require makers to hand-place every UI control",
+          "Model-driven apps require makers to hand-place every UI control on a blank screen, and the platform generates Dataverse tables from that layout",
           "Model-driven apps only run on mobile devices",
           "Model-driven apps start with the data model in Dataverse, and the platform generates the UI automatically from that model",
           "Model-driven apps cannot use Dataverse"
@@ -7508,7 +7508,7 @@ const EXAMS = {
         "q": "Model-driven apps automatically inherit which of the following from Dataverse, without requiring extra app-level configuration?",
         "options": [
           "Security roles, business unit hierarchies, and row-level access controls",
-          "A fixed app color scheme that cannot be changed",
+          "A fixed app color scheme that cannot be changed, along with the form layouts and page navigation",
           "A requirement to disable all security",
           "Offline mode is never available"
         ],
@@ -7606,7 +7606,7 @@ const EXAMS = {
           "Delete all existing pages in the app",
           "Describe a specialized page in natural language and have an agent build it",
           "Manually code an HTML page from scratch",
-          "Convert the app into a canvas app"
+          "Convert the app into a canvas app using a natural language description"
         ],
         "correct": 1,
         "explain": "The module lists 'Generative page' as a page type that lets makers describe a specialized page they want, with an agent building it."
@@ -7618,7 +7618,7 @@ const EXAMS = {
         "options": [
           "Only the app maker's permissions, applied to every user",
           "It ignores Dataverse entirely and answers from general knowledge",
-          "No restrictions — every user sees all records regardless of role",
+          "No restrictions — every user sees all records regardless of role, since Copilot searches on behalf of the app",
           "The user's security role, so each user only sees records within their access level"
         ],
         "correct": 3,
@@ -7629,7 +7629,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What must a maker do first when creating a model-driven app with Copilot by describing a management scenario like IT service requests?",
         "options": [
-          "Manually build the forms before anything else",
+          "Manually build the forms before anything else, then Copilot generates the app's Dataverse tables from those forms",
           "Disable all security roles",
           "Describe the management scenario, and Copilot generates the relevant Dataverse tables with sample data",
           "Publish the app immediately with no configuration"
@@ -7697,7 +7697,7 @@ const EXAMS = {
           "Eliminating the need for Dataverse",
           "Legacy system modernization — migrating existing React, Angular, or Vue apps to run on Power Platform with governance",
           "Replacing all canvas apps automatically",
-          "Automatically converting Excel files into model-driven apps"
+          "Automatically converting Excel files into model-driven apps, so that spreadsheets run on Power Platform with governance applied"
         ],
         "correct": 1,
         "explain": "The module lists legacy system modernization as a common code app use case: migrating existing custom web apps to Power Platform to gain governance without a full rewrite."
@@ -7721,7 +7721,7 @@ const EXAMS = {
         "q": "Which statement correctly distinguishes canvas apps from model-driven apps in terms of supported data sources?",
         "options": [
           "Canvas apps cannot connect to Dataverse at all",
-          "Model-driven apps can use any data source, while canvas apps are Dataverse-only",
+          "Model-driven apps can use SharePoint, SQL, Dataverse, and 200+ connectors, while canvas apps are restricted to Microsoft Dataverse only",
           "Canvas apps can use SharePoint, SQL, Dataverse, and 200+ connectors, while model-driven apps use Microsoft Dataverse only",
           "Both app types are restricted to Dataverse only"
         ],
@@ -7813,7 +7813,7 @@ const EXAMS = {
         "q": "What is the difference between an attended and an unattended desktop flow, per the module?",
         "options": [
           "Attended flows can only run once per day",
-          "Unattended flows require a logged-in user; attended flows never do",
+          "Unattended flows require a logged-in user and run interactively; attended flows never do, and they always run in the background on a schedule set by the maker",
           "There is no difference between the two",
           "Attended flows require the user to be logged in and can run interactively; unattended flows run in the background without a logged-in user"
         ],
@@ -7843,7 +7843,7 @@ const EXAMS = {
         "q": "From which surfaces can approvers respond to a Power Automate approval request, per the module?",
         "options": [
           "Only through a phone call to IT",
-          "Only from the Power Automate web app",
+          "Only from the Power Automate web app, with Outlook email and Microsoft Teams used for notifications alone",
           "Only from a physical printed form",
           "Outlook email, Microsoft Teams, and the Power Automate mobile and web apps"
         ],
@@ -7998,7 +7998,7 @@ const EXAMS = {
         "q": "What does a 'Parallel branch' control action allow a cloud flow to do?",
         "options": [
           "Run multiple action sequences simultaneously, reducing total execution time",
-          "Convert the flow into a desktop flow",
+          "Convert the flow into a desktop flow, reducing the total number of actions to run",
           "Pause the flow indefinitely",
           "Delete all previous actions"
         ],
@@ -8069,7 +8069,7 @@ const EXAMS = {
         "options": [
           "Scheduling flows to run at specific times",
           "Building a desktop flow by sharing your screen and narrating steps as you perform them",
-          "Translating flow documentation into other languages",
+          "Translating flow documentation into other languages by narrating each of the steps to a shared screen",
           "Recording a video tutorial for other employees only"
         ],
         "correct": 1,
@@ -8083,7 +8083,7 @@ const EXAMS = {
           "It cannot be edited after recording",
           "It is a preview feature that currently supports English and requires screen-sharing and microphone permissions",
           "It supports every language equally with no restrictions",
-          "It replaces the need for Power Automate for Desktop entirely"
+          "It replaces the need for Power Automate for Desktop entirely, and it records steps with no screen-sharing or microphone permissions"
         ],
         "correct": 1,
         "explain": "The module's note states Record with Copilot is a preview feature currently supporting English, requiring screen-sharing permissions and an active microphone."
@@ -8096,7 +8096,7 @@ const EXAMS = {
           "Text mode and Binary mode",
           "Offline mode and Online mode",
           "Visual designer mode and Copilot-assisted mode",
-          "Test mode and Production mode only"
+          "Test mode and Production mode only, with no other mode offered"
         ],
         "correct": 2,
         "explain": "The module describes the designer's two modes: the default visual designer (cards on a canvas) and Copilot-assisted mode, where the Copilot panel is available alongside the visual canvas."
@@ -8107,7 +8107,7 @@ const EXAMS = {
         "q": "What does the Power Automate 'Flow checker' do before a flow is saved?",
         "options": [
           "Converts the flow into a desktop flow",
-          "Automatically publishes the flow to all users",
+          "Automatically publishes the flow to all users, then removes any required fields or expressions that it found to be invalid",
           "Validates the flow configuration, identifying missing required fields or invalid expressions",
           "Deletes the flow if any error is found"
         ],
@@ -8120,7 +8120,7 @@ const EXAMS = {
         "q": "According to the module's testing tip, why should makers use a test SharePoint list or dedicated test mailbox when testing a flow that sends emails or creates records?",
         "options": [
           "To avoid creating real records or sending real emails to customers during development",
-          "Because production systems cannot be accessed during testing",
+          "Because production systems cannot be accessed during testing or at any other point in development",
           "It is not actually recommended by the module",
           "Because test lists run faster than production lists"
         ],
@@ -8146,7 +8146,7 @@ const EXAMS = {
         "q": "What is the purpose of Power Automate's flow template gallery?",
         "options": [
           "To replace the need for connectors",
-          "To permanently lock a flow so it can never be edited",
+          "To permanently lock a flow so it can never be edited, keeping common scenarios the same for every maker",
           "To provide prebuilt starting points for common automation scenarios that makers can customize",
           "To automatically delete unused flows"
         ],
@@ -8158,7 +8158,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A Teams automation scenario needs to notify a channel whenever a project milestone is reached in Dataverse. Which Power Automate integration category does this use case fall under, per the module?",
         "options": [
-          "SharePoint document lifecycle management",
+          "SharePoint document lifecycle management, for posting notifications",
           "Desktop flow web data extraction",
           "Microsoft Teams integration — posting notifications to channels",
           "AI Builder sentiment analysis"
@@ -8199,7 +8199,7 @@ const EXAMS = {
         "options": [
           "Answering employee questions about vacation balances",
           "Answering customer FAQs on a website",
-          "Providing sales reps with product specifications during a call",
+          "Providing sales reps with product specifications during a call, whenever a rep asks the agent a question about a high-priority lead",
           "Monitoring incoming leads, scoring them, and routing high-priority leads to sales reps without human initiation"
         ],
         "correct": 3,
@@ -8236,7 +8236,7 @@ const EXAMS = {
         "q": "By default, within which geographic boundary are a Copilot Studio agent's data and conversation logs stored?",
         "options": [
           "Randomly assigned across all Microsoft data centers",
-          "Always in the United States, regardless of tenant region",
+          "Always in the United States, regardless of tenant region, per the Power Platform data residency model for all environments",
           "Within the geographic region associated with the environment, per the Power Platform data residency model",
           "Only on the local device of each user"
         ],
@@ -8251,7 +8251,7 @@ const EXAMS = {
           "The agent runs as the authenticated user and can only access content that user already has permission to see",
           "The agent bypasses all security to answer faster",
           "The agent uses the app maker's permissions for every user",
-          "The agent always has elevated administrator privileges regardless of the user"
+          "The agent always has elevated administrator privileges regardless of the user, so that it can access all content in SharePoint and Dataverse"
         ],
         "correct": 0,
         "explain": "The module states agents run as the authenticated user, so they can only access content that user already has permission to see — never elevated beyond the user's own access."
@@ -8263,7 +8263,7 @@ const EXAMS = {
         "options": [
           "DLP policies only apply to canvas apps",
           "No, DLP policies only apply to Power Automate flows",
-          "DLP policies apply only to autonomous agents, not conversational ones",
+          "DLP policies apply only to autonomous agents, not conversational ones, which can use any connector as a tool or knowledge source",
           "Yes — if a connector is blocked by a DLP policy, agents cannot use it as a tool or knowledge source"
         ],
         "correct": 3,
@@ -8289,7 +8289,7 @@ const EXAMS = {
         "options": [
           "Filters only apply to autonomous agents",
           "Yes, filters can be fully disabled by any maker",
-          "Only environment administrators can disable it, with no restrictions",
+          "Only environment administrators can disable it, with no restrictions, and makers can then replace it with their own topic-level guardrails for each agent",
           "No — content moderation runs automatically and cannot be disabled by makers, though makers can add supplemental topic-level guardrails"
         ],
         "correct": 3,
@@ -8393,7 +8393,7 @@ const EXAMS = {
           "A deprecated feature no longer supported",
           "A specialized agent that a primary agent can invoke as a tool, enabling multi-agent architectures",
           "A knowledge source type",
-          "A test-only version of an agent used exclusively for evaluation"
+          "A test-only version of an agent used exclusively for evaluation before a primary agent is published to users"
         ],
         "correct": 1,
         "explain": "The module describes child agents as specialized agents a primary agent can invoke as tools, enabling a coordinating agent to route requests to domain-specific specialist agents."
@@ -8418,7 +8418,7 @@ const EXAMS = {
         "options": [
           "There is no difference described in the module",
           "MCP servers cannot expose any operations to agents",
-          "MCP servers require the maker to hardcode a fixed sequence of API calls, exactly like traditional integrations",
+          "MCP servers require the maker to hardcode a fixed sequence of API calls, exactly like traditional integrations, and the orchestrator can't change that sequence at runtime or read the server's declared capabilities",
           "The agent's AI orchestrator dynamically composes the operations it needs at runtime based on the MCP server's declared capabilities, rather than following a maker-hardcoded sequence"
         ],
         "correct": 3,
@@ -8450,7 +8450,7 @@ const EXAMS = {
           "No, MCP connections bypass all governance",
           "DLP only applies to conversational agents, not MCP tool calls",
           "Yes — because MCP connections use Power Platform connectors underneath, they are subject to the same DLP policies as other integrations",
-          "Only third-party MCP servers are subject to DLP, not the Dataverse MCP server"
+          "Only third-party MCP servers are subject to DLP, not the Dataverse MCP server, because Microsoft-built connections sit outside the policies that cover other integrations"
         ],
         "correct": 2,
         "explain": "The module states MCP server connections use Power Platform connectors for underlying connectivity, so they are subject to DLP policies just like any other Power Platform integration."
@@ -8463,7 +8463,7 @@ const EXAMS = {
           "A random sequence chosen each time it runs",
           "A process identical to generative orchestration",
           "An explicitly defined, deterministic sequence of steps that always executes the same way",
-          "A process that only a human can trigger manually, never the agent"
+          "A process that only a human can trigger manually, never the agent, and that varies each time it runs"
         ],
         "correct": 2,
         "explain": "The module describes agent flows as deterministic automation workflows following an explicitly defined sequence, ideal for processes that must always execute in a specific order or apply fixed business rules."
@@ -8475,7 +8475,7 @@ const EXAMS = {
         "options": [
           "Neither — this cannot be automated in Copilot Studio",
           "An agent flow, because business rules must always apply exactly the same way with no variation",
-          "Generative orchestration, because commission calculations vary by conversation",
+          "Generative orchestration, because commission calculations vary by conversation, and the AI can adjust the rates that apply on each run",
           "A child agent only, never a flow"
         ],
         "correct": 1,
@@ -8499,7 +8499,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What can an 'approval gate' within an agent flow do, per the module?",
         "options": [
-          "Only function within canvas apps, not agent flows",
+          "Only function within canvas apps, not agent flows, where a user approves a request in Outlook or Teams",
           "Pause flow execution to request approval from a designated user via Outlook or Teams before continuing",
           "Permanently stop the flow with no way to resume",
           "Remove the need for any human involvement ever"
@@ -8594,7 +8594,7 @@ const EXAMS = {
           "Start with a pilot group of 20–50 users to gather real-world feedback before full rollout",
           "Only deploy agents outside of Power Platform Pipelines",
           "Skip evaluation entirely if the pilot group is small",
-          "Deploy directly to the entire organization with no pilot"
+          "Deploy directly to the entire organization with no pilot, then gather real-world feedback"
         ],
         "correct": 0,
         "explain": "The module recommends deploying with Power Platform Pipelines and starting with a pilot group of 20–50 users to gather feedback before a full rollout."
