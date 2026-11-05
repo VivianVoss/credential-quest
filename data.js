@@ -70796,7 +70796,7 @@ const EXAMS = {
           "Only Rule Item 3 is ever applied because it has no conditions.",
           "Rule items are checked in order; the first matching rule item is applied and evaluation stops.",
           "The rule item lowest in the list is applied first.",
-          "All rule items that match are applied simultaneously."
+          "All rule items that match are applied simultaneously, regardless of their order in the rule list."
         ],
         "correct": 1,
         "difficulty": "medium",
@@ -70808,7 +70808,7 @@ const EXAMS = {
         "q": "A representative working a case wants to quickly find how a similar issue was resolved in the past. Where should the representative look, and what technology powers the suggestions?",
         "options": [
           "The Timeline, powered by Copilot",
-          "The Knowledge Base Search control, powered by Dataverse search",
+          "The Knowledge Base Search control on the case form, powered by Dataverse search",
           "The Related section's Similar cases tab, powered by Relevance search",
           "The Queue Items grid, powered by routing rules"
         ],
@@ -70869,7 +70869,7 @@ const EXAMS = {
         "q": "When defining status reason transitions for an active status reason such as In Progress, what requirement must be met before the transitions can be saved?",
         "options": [
           "Transitions must only be defined for the Resolved status.",
-          "Every active status reason must transition to every other active status reason.",
+          "Every active status reason must transition to every other active status reason on the Case table.",
           "At least one transition path must lead to an inactive status such as Canceled or Resolved.",
           "At least three transition paths must be defined."
         ],
@@ -71078,7 +71078,7 @@ const EXAMS = {
         "type": "single",
         "q": "An organization wants to enable a custom table so that its records can be routed to queues. Where must this configuration be performed?",
         "options": [
-          "It cannot be configured for custom tables",
+          "It cannot be configured for custom tables, only for out-of-the-box tables",
           "The Power Apps app maker portal, under the table's Properties",
           "Customer Service admin center only",
           "The classic Settings area only"
@@ -71177,7 +71177,7 @@ const EXAMS = {
         "q": "Which person is automatically added to a swarm and cannot have this setting edited?",
         "options": [
           "The account owner",
-          "The system administrator",
+          "The system administrator of the environment",
           "The service representative's supervisor",
           "The knowledge manager"
         ],
@@ -71386,7 +71386,7 @@ const EXAMS = {
         "options": [
           "Set the Status Reason to Needs Review and select Mark Complete on the Author stage",
           "Delete the article and recreate it",
-          "Translate the article into all supported languages",
+          "Translate the article into all supported languages and then publish each translated version",
           "Publish the article immediately"
         ],
         "correct": 0,
@@ -71440,7 +71440,7 @@ const EXAMS = {
         "type": "single",
         "q": "An author selects Translate from on a knowledge article and chooses French. What actually happens to the article content as a result of this action?",
         "options": [
-          "Dynamics 365 automatically machine-translates the content into French.",
+          "Dynamics 365 automatically machine-translates the content into French and saves it as a new article with no review needed.",
           "The original article is permanently converted to French.",
           "The article is copied as-is with no language association.",
           "A new major version associated with French is created, but the author must supply the translated text themselves."
@@ -71671,7 +71671,7 @@ const EXAMS = {
         "q": "An organization wants to track how quickly account executives make first contact with new leads, in addition to the case-related KPIs already tracked. What must be done first before a custom KPI can be created for the Lead table?",
         "options": [
           "A new entitlement channel must be created.",
-          "Nothing; custom KPIs work automatically for any table.",
+          "Nothing; custom KPIs work automatically for any table in the environment.",
           "The Lead table must first be enabled for queues.",
           "The Lead table must be enabled for SLAs via the Power Apps maker portal."
         ],
@@ -71845,7 +71845,7 @@ const EXAMS = {
           "Conversations are sent only to supervisors first.",
           "Conversations wait in the queue until end of day.",
           "Conversations are automatically sent to representatives through a screen pop.",
-          "Representatives must manually select conversations from a dashboard."
+          "Representatives must manually select conversations from a dashboard of open work."
         ],
         "correct": 2,
         "difficulty": "easy",
@@ -71933,7 +71933,7 @@ const EXAMS = {
           "It is routed to the default queue of the respective channel type.",
           "The workstream configuration becomes invalid.",
           "It is discarded.",
-          "It stays unassigned indefinitely with no queue."
+          "It stays unassigned indefinitely with no queue until an administrator steps in."
         ],
         "correct": 0,
         "difficulty": "medium",
@@ -71989,7 +71989,7 @@ const EXAMS = {
           "The queue is treated as perpetual, and items are routed to it all day, every day.",
           "Items are never routed to the queue.",
           "The queue automatically inherits the hours of the default queue.",
-          "Items are routed only during business hours defined at the organization level."
+          "Items are routed only during the business hours defined at the organization level."
         ],
         "correct": 0,
         "difficulty": "medium",
@@ -72102,7 +72102,7 @@ const EXAMS = {
         "q": "When defining a skill rating model to represent representative proficiency, what values are required to establish the scale, and what scale is recommended by Microsoft?",
         "options": [
           "A minimum and maximum rating value; a scale of 1 to 10 is recommended",
-          "Only a maximum rating value; a scale of 0 to 5 is recommended",
+          "Only a maximum rating value is needed; a scale of 0 to 5 is recommended",
           "A percentage value only; 0% to 100%",
           "A pass/fail value only"
         ],
@@ -72131,7 +72131,7 @@ const EXAMS = {
         "options": [
           "It remains in the queue until a representative with sufficient proficiency becomes available.",
           "It is automatically escalated to a supervisor.",
-          "It is routed to a representative with a lower proficiency level.",
+          "It is routed to a representative with a lower proficiency level so that the customer isn't left waiting.",
           "It is routed based purely on capacity, ignoring skill entirely."
         ],
         "correct": 0,
@@ -72229,7 +72229,7 @@ const EXAMS = {
         "options": [
           "No; routing is not automatically triggered",
           "Yes, but only for gold customers",
-          "Yes; the case is routed automatically",
+          "Yes; the case is routed automatically on save",
           "Null; routing behavior is undefined"
         ],
         "correct": 0,
@@ -72299,7 +72299,7 @@ const EXAMS = {
         "options": [
           "Any length, alphabetic only",
           "Alphanumeric, between three and eight characters",
-          "Exactly four characters, uppercase only",
+          "Exactly four characters, in uppercase letters only",
           "Numeric only, exactly 5 digits"
         ],
         "correct": 1,
@@ -72442,7 +72442,7 @@ const EXAMS = {
         "q": "An organization needs a group of representatives to have a completely different combination of session templates, channels, and productivity tools than what any of the out-of-the-box default profiles offer, and the out-of-the-box profiles cannot be edited. What should the administrator do?",
         "options": [
           "Use a routing rule set instead of a profile.",
-          "Ask Microsoft support to unlock the default profile for editing.",
+          "Ask Microsoft support to unlock the default profile for editing, then add the required components to it.",
           "Modify one of the default profiles directly.",
           "Create a new agent experience profile with the required components and assign users to it."
         ],
@@ -72657,7 +72657,7 @@ const EXAMS = {
         "type": "single",
         "q": "An administrator remaps a satisfaction metric to a different question partway through a survey's active life. What happens to metrics for responses collected before the remap?",
         "options": [
-          "They are automatically recalculated using the new mapping.",
+          "They are automatically recalculated using the new mapping, along with all new responses.",
           "The survey is automatically unpublished.",
           "They are deleted.",
           "They are unaffected; the new mapping only applies going forward to new responses."
@@ -72813,7 +72813,7 @@ const EXAMS = {
         "options": [
           "A trigger condition expression comparing the survey ID",
           "A capacity profile",
-          "A separate environment for every survey",
+          "A separate environment for every survey in the organization",
           "A manual approval step"
         ],
         "correct": 0,
@@ -72842,7 +72842,7 @@ const EXAMS = {
           "Yes, they can always be removed.",
           "No, they cannot be removed from a survey and must remain in the embed code.",
           "Only Last Name can be removed.",
-          "They are removed automatically if the survey has no other variables."
+          "They are removed automatically if the survey has no other variables defined in it."
         ],
         "correct": 1,
         "difficulty": "medium",
@@ -72853,7 +72853,7 @@ const EXAMS = {
         "type": "single",
         "q": "What is the formula used to calculate an overall Net Promoter Score from a set of Customer Voice survey responses?",
         "options": [
-          "Percentage of Passives minus percentage of Detractors",
+          "Percentage of Passives minus the percentage of Detractors",
           "Percentage of Promoters minus percentage of Detractors",
           "Average of all NPS scores divided by 10",
           "Number of Promoters divided by number of Detractors"
@@ -72951,7 +72951,7 @@ const EXAMS = {
         "type": "single",
         "q": "An organization wants representatives to receive an in-app pop-up notification whenever a case they own is escalated. Which model-driven app capability is designed for this kind of real-time notice?",
         "options": [
-          "A business process flow",
+          "A business process flow on the case",
           "An alert / in-app notification",
           "A personal view",
           "A knowledge article category"
