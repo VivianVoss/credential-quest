@@ -26700,19 +26700,6 @@ const EXAMS = {
       },
       {
         "domain": "Design and implement high availability and disaster recovery (HADR)",
-        "difficulty": "medium",
-        "q": "Which Linux distribution does AZ-120 training say is the only one currently supported for a highly available NFS cluster in SAP HANA scale-out configurations?",
-        "options": [
-          "Ubuntu Server",
-          "SUSE Linux Enterprise Server (SLES)",
-          "Red Hat Enterprise Linux (RHEL)",
-          "Oracle Linux"
-        ],
-        "correct": 1,
-        "explain": "AZ-120 training notes that, at the time of authoring, the highly available NFS cluster for SAP HANA scale-out is supported with SUSE Linux only."
-      },
-      {
-        "domain": "Design and implement high availability and disaster recovery (HADR)",
         "difficulty": "hard",
         "q": "What is a composite SLA, and how is it calculated for two independent, dependent services required for an application to function?",
         "options": [
@@ -86545,19 +86532,6 @@ const EXAMS = {
         ],
         "correct": 3,
         "explain": "By default, device firmware updates are applied 30 days after release; admins can instead choose 'As soon as available' (applied the first weekend after release) or defer 90 days."
-      },
-      {
-        "domain": "Configure and manage Teams Rooms and devices",
-        "difficulty": "medium",
-        "q": "An admin selects 'As soon as available' for Teams device firmware auto-update. When is the update actually applied?",
-        "options": [
-          "On the first weekend after the update is released",
-          "Exactly 24 hours after release",
-          "Immediately upon release",
-          "The next time the device is manually rebooted by an admin"
-        ],
-        "correct": 0,
-        "explain": "When 'As soon as available' is selected for firmware auto-update, the update is applied on the first weekend after the latest update is released, not instantly upon release."
       },
       {
         "domain": "Configure and manage Teams Rooms and devices",
