@@ -2300,7 +2300,7 @@ const EXAMS = {
           "Unstructured data, because JSON has no defined format",
           "Semi-structured data, because the records have some structure but allow variation between instances",
           "Binary data, because JSON files must be interpreted as raw bytes",
-          "Structured data, because JSON always has a fixed schema"
+          "Structured data, because JSON always has a fixed schema that every record must follow, with identical fields"
         ],
         "correct": 1,
         "explain": "Semi-structured data (like JSON) has some structure but allows fields to vary between instances, unlike structured data where every record has identical fields."
@@ -2833,7 +2833,7 @@ const EXAMS = {
         "options": [
           "To minimize data duplication and enforce data integrity",
           "To eliminate the need for primary keys",
-          "To convert relational tables into JSON documents",
+          "To convert relational tables into JSON documents for storage",
           "To increase data duplication for faster reads"
         ],
         "correct": 0,
@@ -2969,7 +2969,7 @@ const EXAMS = {
         "q": "What is a view in a relational database?",
         "options": [
           "A backup snapshot of the database",
-          "A physical copy of a table stored separately",
+          "A physical copy of a table stored separately on disk for reporting",
           "A virtual table based on the results of a SELECT query",
           "An index that speeds up searches"
         ],
@@ -3207,7 +3207,7 @@ const EXAMS = {
         "q": "In Azure SQL Database's serverless configuration, how are compute resources handled?",
         "options": [
           "Serverless is only available for Hyperscale tier databases",
-          "Resources are always pre-allocated at a fixed size and billed hourly regardless of usage",
+          "Resources are always pre-allocated at a fixed size and billed hourly regardless of usage, on a dedicated server you manage yourself",
           "Serverless requires you to manually provision a dedicated VM",
           "Microsoft creates a shared server, and the database automatically scales with resources allocated or deallocated as needed"
         ],
@@ -3312,7 +3312,7 @@ const EXAMS = {
         "options": [
           "The blob must be deleted and re-uploaded",
           "The storage account must be converted to a hierarchical namespace account",
-          "Nothing; Archive tier blobs can be read directly with a few milliseconds of latency",
+          "Nothing; Archive tier blobs can be read directly with a few milliseconds of latency, just like blobs in the Hot or Cool tier",
           "The blob's access tier must be changed to Hot, Cool, or Cold, and the blob must be rehydrated before it can be read"
         ],
         "correct": 3,
@@ -3419,7 +3419,7 @@ const EXAMS = {
         "q": "To create an NFS Azure file share, which storage account configuration is required?",
         "options": [
           "The Cold access tier",
-          "A Hierarchical Namespace-enabled account",
+          "A Hierarchical Namespace-enabled account with no virtual network required",
           "An SSD-tier storage account with a configured virtual network",
           "An Archive-tier account"
         ],
@@ -3457,7 +3457,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "How is data typically structured in Azure Table Storage compared to a relational database?",
         "options": [
-          "It is fully normalized across multiple related tables",
+          "It is fully normalized across multiple related tables, with each entity split between them",
           "It enforces a fixed schema identical across all rows",
           "It requires foreign keys to link rows",
           "It is denormalized, with each row holding the entire data for a logical entity"
@@ -3583,7 +3583,7 @@ const EXAMS = {
           "Cosmos DB for MongoDB, storing data in BSON format queried with MongoDB Query Language (MQL)",
           "Cosmos DB for NoSQL, storing data as JSON documents queried with SQL-like syntax",
           "Cosmos DB for Table, storing data as key-value pairs",
-          "Cosmos DB for Apache Cassandra, storing data in column-family tables queried with CQL"
+          "Cosmos DB for Apache Cassandra, storing data in column-family tables queried with Cassandra Query Language (CQL)"
         ],
         "correct": 0,
         "explain": "Cosmos DB for MongoDB is compatible with MongoDB drivers, stores data in BSON format, and uses MongoDB Query Language (MQL), letting existing MongoDB applications connect with minimal code changes."
@@ -3606,7 +3606,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is the key difference between an ETL and an ELT data ingestion process?",
         "options": [
-          "ETL only works with streaming data, while ELT only works with batch data",
+          "ETL only works with streaming data, while ELT only works with batch data, whichever analytical store the data is loaded into",
           "ELT is used exclusively for relational data warehouses",
           "There is no difference; they are the same process",
           "ETL transforms data before loading it into the analytical store; ELT loads data first and transforms it afterward"
@@ -3869,7 +3869,7 @@ const EXAMS = {
           "Stream processing can process the entire historical dataset at once",
           "Stream processing requires access to years of archived data",
           "Stream processing typically only has access to the most recent data received, or a rolling time window",
-          "There is no difference in data scope between batch and stream processing"
+          "There is no difference in data scope between batch and stream processing, since both can always access the full dataset"
         ],
         "correct": 2,
         "explain": "Stream processing typically only has access to the most recent data or a rolling time window (for example, the last 30 seconds), while batch processing can access the full dataset."
@@ -4040,7 +4040,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "According to the module, what licensing is required to use Copilot capabilities in Power BI, such as generating report pages or DAX measures?",
         "options": [
-          "No license is required; Copilot is always free",
+          "No license is required; Copilot is always free for any Power BI user",
           "Fabric capacity (F2 or higher) or Power BI Premium (P1 or higher)",
           "Any free Power BI account",
           "Azure Databricks Premium tier"
@@ -4079,7 +4079,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What do attribute hierarchies in a Power BI data model let users do, such as viewing total sales by year and then viewing a monthly breakdown?",
         "options": [
-          "Enforce referential integrity between fact and dimension tables",
+          "Enforce referential integrity between fact and dimension tables across the model",
           "Convert semi-structured data into a relational schema",
           "Automatically detect anomalies in streaming data",
           "Drill up and down through aggregated values at different levels of a dimension"
@@ -4120,7 +4120,7 @@ const EXAMS = {
         "options": [
           "Nothing changes in other visualizations",
           "The report must be manually refreshed to reflect the change",
-          "The selection only affects the underlying semantic model, not the visuals",
+          "The selection only affects the underlying semantic model, not the visuals on the same report page",
           "The other visualizations are automatically filtered and highlighted to reflect the selection"
         ],
         "correct": 3,
