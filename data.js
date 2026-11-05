@@ -277,7 +277,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "According to the responsible AI principles, who is ultimately responsible for the actions of an AI system?",
         "options": [
-          "The cloud provider hosting the compute resources",
+          "The cloud provider hosting the compute resources that run the AI solution",
           "No one, because AI decisions are autonomous",
           "The people and organizations that develop and distribute the AI solution",
           "Only the end user who submits prompts"
@@ -291,7 +291,7 @@ const EXAMS = {
         "q": "What is the primary purpose of a content filter in an AI system?",
         "options": [
           "To compress training data before use",
-          "To increase the speed of model inference",
+          "To increase the speed of model inference on every request sent",
           "To mitigate the risk of harmful content generation",
           "To translate prompts into other languages"
         ],
@@ -334,7 +334,7 @@ const EXAMS = {
         "q": "What is the key difference between a large language model (LLM) and a small language model (SLM)?",
         "options": [
           "SLMs require no training data",
-          "SLMs cannot generate natural language at all",
+          "SLMs cannot generate natural language at all, only classify existing text",
           "The volume of training data and number of variables in the model",
           "LLMs can only be used for image generation"
         ],
@@ -389,7 +389,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In a multi-agent system, how do the individual agents typically coordinate work with one another?",
         "options": [
-          "They can only operate completely independently with no communication",
+          "They can only operate completely independently with no communication, each completing its tasks in isolation",
           "They share a single hard-coded script with no independent reasoning",
           "They exchange raw training data directly",
           "They communicate with each other through prompts, using generative AI to determine tasks and responsibilities"
@@ -417,7 +417,7 @@ const EXAMS = {
         "options": [
           "To reduce the number of tokens the model can process",
           "Because language models cannot process more than one prompt per session",
-          "To automatically translate the conversation into other languages",
+          "To automatically translate the conversation into other languages for each new user",
           "To provide ongoing context so the model can build on the conversation consistently"
         ],
         "correct": 3,
@@ -500,7 +500,7 @@ const EXAMS = {
           "To convert text tokens into audio waveforms",
           "Because the order in which tokens appear in a sequence is relevant to how they relate to one another",
           "To assign each token a fixed color value for image generation",
-          "To reduce the number of tokens in the vocabulary"
+          "To reduce the number of tokens in the vocabulary by merging any that tend to appear next to each other"
         ],
         "correct": 1,
         "explain": "Positional encoding indicates where a token appears in the sequence of training text, which matters because token order affects meaning."
@@ -563,7 +563,7 @@ const EXAMS = {
         "q": "When preparing a corpus for statistical text analysis, what is the effect of applying 'stop word removal'?",
         "options": [
           "Words are grouped into three-word phrases called trigrams",
-          "Words are converted to their dictionary base form using linguistic rules",
+          "Words are converted to their dictionary base form using linguistic rules, so 'running' becomes 'run' in text",
           "Common words like 'the', 'a', or 'it' that add little semantic meaning are excluded from analysis",
           "All punctuation is converted into unique tokens"
         ],
@@ -588,7 +588,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In text analysis, what does a 'bigram' refer to during n-gram extraction?",
         "options": [
-          "A numeric identifier assigned to each token",
+          "A numeric identifier assigned to each token in the corpus",
           "A single normalized word token",
           "A three-word phrase used for summarization",
           "A two-word phrase, such as 'artificial intelligence'"
@@ -628,7 +628,7 @@ const EXAMS = {
         "q": "TextRank models a document as a graph in which sentences are nodes and edges are weighted by similarity. What is this algorithm most commonly used for?",
         "options": [
           "Converting speech audio into phonemes",
-          "Encrypting personally identifiable information",
+          "Encrypting personally identifiable information found in the highest-ranked nodes",
           "Extractive text summarization, by selecting the highest-ranked sentences",
           "Generating new images from a text prompt"
         ],
@@ -652,7 +652,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What distinguishes 'extractive' summarization from 'abstractive' summarization?",
         "options": [
-          "Extractive summarization always produces a longer result than the original document",
+          "Extractive summarization always produces a longer result than the original document, while abstractive summarization only ever removes sentences from the source",
           "Extractive summarization can only be performed on images, not text",
           "Extractive summarization selects a subset of the original sentences, while abstractive summarization generates new language to summarize the source",
           "Abstractive summarization never uses AI models"
@@ -706,7 +706,7 @@ const EXAMS = {
         "options": [
           "Speech recognition converts speech to text, while speech synthesis converts text to speech",
           "There is no meaningful difference; they are the same capability",
-          "Speech recognition only works with recorded audio files, never live microphones",
+          "Speech recognition only works with recorded audio files, never live microphones, unlike synthesis",
           "Speech synthesis is used exclusively for translating between languages"
         ],
         "correct": 0,
@@ -719,7 +719,7 @@ const EXAMS = {
         "options": [
           "192 kHz, matching professional studio recording standards",
           "1 kHz, to minimize file size at the cost of all clarity",
-          "There is no standard sampling rate for speech applications",
+          "There is no standard sampling rate for speech applications, since recognition accuracy doesn't depend on audio clarity at all",
           "8 kHz to 16 kHz, because it balances clarity and processing efficiency for speech (versus 44.1 kHz for music)"
         ],
         "correct": 3,
@@ -730,7 +730,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "What do Mel-Frequency Cepstral Coefficients (MFCCs) represent in a speech recognition pipeline?",
         "options": [
-          "The pitch contour used to generate expressive text-to-speech output",
+          "The pitch contour used to generate expressive text-to-speech output, stored as a set of numbers for each sentence in a voice model",
           "The confidence score assigned to a recognized phoneme",
           "A compact set of numbers (often 13 coefficients) that summarize the spectral shape of each audio frame, mimicking human hearing",
           "The final transcribed text output by the decoder"
@@ -756,7 +756,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Why can't an acoustic model alone reliably distinguish between the words 'their' and 'there' in speech recognition?",
         "options": [
-          "Because acoustic models cannot process homophones under any circumstances",
+          "Because acoustic models cannot process homophones under any circumstances, so the words are dropped from the transcript before decoding",
           "Because the two words share identical phonemes, so a language model is needed to resolve the ambiguity using vocabulary and grammar",
           "Because only text-to-speech systems handle homophones",
           "Because 'their' and 'there' are not part of the English phoneme set"
@@ -769,7 +769,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "What does the 'beam search' decoding technique do in a speech recognition pipeline?",
         "options": [
-          "It converts raw audio samples directly into MFCC coefficients",
+          "It converts raw audio samples directly into MFCC coefficients and keeps only the strongest frames at each step",
           "It compresses the final audio output to reduce file size",
           "It generates synthetic training data for acoustic models",
           "It maintains a shortlist of top-scoring partial transcriptions and extends the best candidates at each step"
@@ -830,7 +830,7 @@ const EXAMS = {
           "The rhythm, stress, and intonation patterns that make speech sound natural",
           "The written text before it is normalized",
           "The confidence score of a recognized phoneme",
-          "The list of supported languages for a voice"
+          "The list of supported languages for a voice, along with their regional accents"
         ],
         "correct": 0,
         "explain": "Prosody encompasses pitch contours, duration, intensity, pauses, and stress patterns — the elements that determine how words are said rather than simply which sounds are produced."
@@ -843,7 +843,7 @@ const EXAMS = {
           "They classify an image into a category label",
           "They translate spoken audio into a different language",
           "They convert mel-spectrograms into raw audio waveforms to produce the final synthesized speech",
-          "They detect personally identifiable information in a transcript"
+          "They detect personally identifiable information in a transcript before it's read aloud by a voice"
         ],
         "correct": 2,
         "explain": "Neural vocoders convert mel-spectrograms (generated by an acoustic model) into raw audio waveforms; the module notes a vocoder essentially performs the inverse of what speech recognition does."
@@ -867,7 +867,7 @@ const EXAMS = {
         "q": "In computer vision, what is 'object detection' used for?",
         "options": [
           "Identifying the location of specific objects in an image using bounding boxes",
-          "Classifying individual pixels by the object they belong to",
+          "Classifying individual pixels by the object they belong to, without locating any of the objects",
           "Generating a brand-new image from a text description",
           "Predicting a single overall label for the entire image"
         ],
@@ -881,7 +881,7 @@ const EXAMS = {
         "options": [
           "Semantic segmentation can only be applied to grayscale images",
           "Semantic segmentation is only used for audio processing",
-          "Semantic segmentation predicts a single label for an entire image with no localization",
+          "Semantic segmentation predicts a single label for an entire image with no localization, rather than drawing a bounding box around each object",
           "Semantic segmentation classifies individual pixels according to the object they belong to, rather than just drawing a bounding box"
         ],
         "correct": 3,
@@ -892,7 +892,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "In a digital color image, how are pixel values typically represented?",
         "options": [
-          "As a single grayscale channel only, with no color information possible",
+          "As a single grayscale channel only, with no color information possible in any digital image",
           "As three channels of values representing red, green, and blue (RGB) color hues",
           "As text strings describing each color by name",
           "As a single value between -1 and 1 for the whole image"
@@ -918,7 +918,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "In a convolutional neural network (CNN) used for image classification, what is the purpose of the final output layer's softmax function?",
         "options": [
-          "To detect personally identifiable information in the image",
+          "To detect personally identifiable information in the image data",
           "To produce a probability value for each possible class label",
           "To convert the image into MFCC coefficients",
           "To generate a new image from random noise"
@@ -945,7 +945,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A vision transformer (ViT) processes an image differently from a language transformer processing text. What does the vision transformer extract instead of text-based tokens?",
         "options": [
-          "Named entities detected in an image caption",
+          "Named entities detected in an image caption, which are converted into linear vectors",
           "TF-IDF scores for each pixel",
           "Audio waveforms sampled at 16 kHz",
           "Patches of pixel values from the image, which are converted into linear vectors"
@@ -971,7 +971,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Most modern image-generation models use a technique called diffusion. How does this process work?",
         "options": [
-          "Directly copying pixels from a database of existing images that match the prompt",
+          "Directly copying pixels from a database of existing images that match the prompt, then blending them at each step",
           "Starting with random pixel values and iteratively removing 'noise' to build structure matching the prompt",
           "Applying stemming and lemmatization to the prompt text",
           "Converting the prompt into MFCC coefficients before rendering"
@@ -985,7 +985,7 @@ const EXAMS = {
         "q": "According to the module, what additional factors does video generation need to consider beyond what image generation considers?",
         "options": [
           "The physical behavior of objects and the temporal progression of activity over time",
-          "The number of pixels in a single static frame",
+          "The number of pixels in a single static frame and the resolution of each image over time",
           "The cost of the Azure subscription used",
           "Only the file size of the final output"
         ],
@@ -1013,7 +1013,7 @@ const EXAMS = {
           "A tool that redacts every extracted value automatically",
           "A model that converts extracted text into an audio file",
           "An analytical model that can interpret individual values and map them to specific fields",
-          "A model that detects the primary language of the extracted text only"
+          "A model that detects the primary language of the extracted text only, without interpreting any values"
         ],
         "correct": 2,
         "explain": "OCR is often combined with an analytical model that can interpret individual values in a document and extract specific fields, such as matching receipt text to fields in an expense claim."
@@ -1043,7 +1043,7 @@ const EXAMS = {
           "The model's inability to run on cloud infrastructure",
           "The model's inability to generate any natural language text",
           "The model's inability to access information that wasn't part of its training data",
-          "The model's inability to accept more than one prompt per session"
+          "The model's inability to accept more than one prompt per session without being restarted"
         ],
         "correct": 2,
         "explain": "RAG adds context by retrieving relevant information (such as documents) and including it in the prompt, addressing the fact that a model's training data doesn't include every piece of information an application might need."
@@ -1069,7 +1069,7 @@ const EXAMS = {
           "A response whose answer is based on supplied source content, often with citations back to that content",
           "A response generated entirely without any prompt",
           "A response that only contains numeric data",
-          "A response generated using masked attention exclusively"
+          "A response generated using masked attention exclusively, often with no source content supplied to it at all"
         ],
         "correct": 0,
         "explain": "A grounded response is described as an answer based on supplied source content, and a RAG application can return citations or links so the user can inspect that content."
@@ -1082,7 +1082,7 @@ const EXAMS = {
           "Nothing needs to change, because RAG applications ignore document updates",
           "The documentation and its search index are updated, without needing to retrain the underlying model",
           "The application must be rebuilt from scratch with a new model",
-          "The model's learned parameters are automatically retrained every time a document changes"
+          "The model's learned parameters are automatically retrained every time a document changes in the index"
         ],
         "correct": 1,
         "explain": "RAG doesn't change the language model's learned parameters — it supplies relevant knowledge at run time, so updating the documentation and its index keeps answers current without retraining the model."
@@ -1134,7 +1134,7 @@ const EXAMS = {
           "Whether the image resolution exceeds 1080p",
           "Whether the model's temperature setting is above 0.5",
           "Whether the strongest results are ranked ahead of weaker ones",
-          "Whether the audio sampling rate is 16 kHz"
+          "Whether the audio sampling rate is 16 kHz for each of the retrieved results"
         ],
         "correct": 2,
         "explain": "Retrieval evaluation considers relevance, coverage, ranking (are the strongest results placed ahead of weaker ones), and security/freshness of the content — not audio or image settings, which are unrelated to text retrieval."
@@ -1146,7 +1146,7 @@ const EXAMS = {
         "options": [
           "Whether the response includes an image",
           "Whether each claim in the response is supported by the retrieved content",
-          "Whether the response was generated faster than one second",
+          "Whether the response was generated faster than one second after retrieval",
           "Whether the response uses fewer than 100 tokens"
         ],
         "correct": 1,
@@ -1159,7 +1159,7 @@ const EXAMS = {
         "options": [
           "It never changes behavior after it's deployed",
           "It uses trained models to process inputs and generate outputs such as text, images, or decisions",
-          "It can only run on a user's local device with no cloud connection",
+          "It can only run on a user's local device with no cloud connection, such as a text or image editor",
           "It requires no training data of any kind"
         ],
         "correct": 1,
@@ -1172,7 +1172,7 @@ const EXAMS = {
         "options": [
           "The process of converting a resource group into a subscription",
           "The model applying what it learned during training to new input",
-          "The process of labeling training data by hand",
+          "The process of labeling training data by hand before a model is trained on it",
           "The process of billing an Azure subscription"
         ],
         "correct": 1,
@@ -1199,7 +1199,7 @@ const EXAMS = {
           "A billing container tied to a payment method",
           "A folder used to group related resources",
           "An organization's dedicated and secure home base and identity in Microsoft's cloud",
-          "An individual service instance such as a storage account"
+          "An individual service instance such as a storage account, created in Microsoft's cloud by an organization"
         ],
         "correct": 2,
         "explain": "An Azure tenant is described as an organization's home base and identity in Microsoft's cloud, a dedicated and secure space where the organization's users, groups, and resources live."
@@ -1209,7 +1209,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is the relationship between an Azure subscription and a resource group?",
         "options": [
-          "A resource group is used only for billing, never for organizing resources",
+          "A resource group is used only for billing, never for organizing resources, while a subscription is a folder that holds related resources",
           "A subscription is a billing container that can contain multiple resource groups, which are folders that hold related resources",
           "A resource group can contain many subscriptions",
           "A subscription and a resource group are the same thing"
@@ -1236,7 +1236,7 @@ const EXAMS = {
         "q": "Why might a developer choose to create Azure resources programmatically instead of through the Azure portal?",
         "options": [
           "Because the Azure portal cannot create any AI-related resources",
-          "Because programmatic creation is required before any resource can be deleted",
+          "Because programmatic creation is required before any resource can be deleted from an Azure environment",
           "Because the Azure CLI is the only way to view billing information",
           "To repeat the same setup reliably across environments, automate deployments, and reduce manual errors"
         ],
@@ -1250,7 +1250,7 @@ const EXAMS = {
         "options": [
           "A secret can only be a password, never an API credential",
           "A key is a synonym for a resource group",
-          "A secret is always stored in application code, while a key is never stored anywhere",
+          "A secret is always stored in application code, while a key is never stored anywhere and is generated fresh for each request that is made to an endpoint by the app",
           "A secret is any sensitive value an application must keep hidden, while a key is a specific type of secret that authenticates a request to an endpoint"
         ],
         "correct": 3,
@@ -1275,7 +1275,7 @@ const EXAMS = {
         "q": "What is the main difference between Azure Kubernetes Service (AKS) and Azure App Service for hosting AI applications?",
         "options": [
           "AKS orchestrates large numbers of containers, while App Service hosts web applications, APIs, and background jobs",
-          "AKS is used only for storage, while App Service is used only for networking",
+          "AKS is used only for storage of containers, while App Service is used only for networking between web applications and APIs",
           "App Service can only run on-premises, never in the cloud",
           "AKS and App Service are two names for the exact same underlying service"
         ],
@@ -1302,7 +1302,7 @@ const EXAMS = {
         "options": [
           "A programming language used exclusively for speech synthesis",
           "A single Azure storage account type used only for images",
-          "A billing tool used to estimate Azure subscription costs",
+          "A billing tool used to estimate Azure subscription costs for running AI agents securely",
           "An enterprise-grade platform for developing and operating AI agents securely on Azure"
         ],
         "correct": 3,
@@ -1384,7 +1384,7 @@ const EXAMS = {
         "options": [
           "A local file stored only on the developer's computer",
           "A visual dashboard showing billing information",
-          "The name of the Azure resource group containing the project",
+          "The name of the Azure resource group containing the project that client code belongs to",
           "A unique HTTP address that serves as a service entry point for client application code"
         ],
         "correct": 3,
@@ -1491,7 +1491,7 @@ const EXAMS = {
         "q": "What does 'deploying' a model in Foundry mean?",
         "options": [
           "Taking an AI model and making it available for use in production through a stable, scalable, and secure endpoint",
-          "Converting a chat client into a REST API specification document",
+          "Converting a chat client into a REST API specification document so that applications can call it securely in production",
           "Deleting an unused Foundry project",
           "Uploading raw training data to Azure Blob Storage"
         ],
@@ -1504,7 +1504,7 @@ const EXAMS = {
         "q": "In Foundry, what does a Tokens Per Minute (TPM) allocation control for a model deployment?",
         "options": [
           "The color depth of images generated by a vision model",
-          "The maximum number of Foundry projects allowed per tenant",
+          "The maximum number of Foundry projects allowed per tenant, along with the related rate-limit boundaries on each project",
           "The number of resource groups a subscription can contain",
           "The speed and scale at which the model can process token traffic, along with related rate-limit boundaries"
         ],
@@ -1530,7 +1530,7 @@ const EXAMS = {
         "q": "What is a 'token' in the context of a generative AI model deployment?",
         "options": [
           "The smallest unit of text or data that a generative AI model can process",
-          "A synonym for an Azure subscription key",
+          "A synonym for an Azure subscription key used to call a generative AI model",
           "A unit used only to measure video file size",
           "A synonym for a Foundry resource group"
         ],
@@ -1572,7 +1572,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What best characterizes a 'lightweight client application' as described for building Foundry-based apps?",
         "options": [
-          "A large enterprise application requiring a dedicated backend team and complex UI framework",
+          "A large enterprise application requiring a dedicated backend team and complex UI framework, with most state and processing held locally on the user's device",
           "An application that can only run inside the Foundry portal itself",
           "A small app that primarily collects user input, calls a remote API, and displays results, with minimal local dependencies and mostly server-side state",
           "An application that never requires an internet connection"
@@ -1614,7 +1614,7 @@ const EXAMS = {
           "The model's temperature setting",
           "The agent-id, found in the Playground's code view under the .env variables",
           "The resource group's region name",
-          "The tenant ID of the Azure Active Directory"
+          "The tenant ID of the Azure Active Directory, found on the portal's overview page"
         ],
         "correct": 1,
         "explain": "To call the agent programmatically using Foundry's Project API, you need the agent-id, which can be found in the Playground view of the agent when you select the code view and open the .env variables."
@@ -1757,7 +1757,7 @@ const EXAMS = {
           "Neural voices are always slower than non-neural voices",
           "Neural voices use neural networks that overcome common limitations like poor intonation, resulting in more natural-sounding speech",
           "Neural voices can only speak numbers, not full sentences",
-          "Neural voices require the caller to provide their own recorded audio samples"
+          "Neural voices require the caller to provide their own recorded audio samples, which are replayed word by word to produce the final speech"
         ],
         "correct": 1,
         "explain": "The text-to-speech API includes neural voices that use neural networks to overcome common speech synthesis limitations such as poor intonation, producing more natural-sounding output."
@@ -1782,7 +1782,7 @@ const EXAMS = {
           "It combines everything into one managed service so developers don't need to build and connect the separate pieces themselves",
           "It eliminates the need for a Foundry resource entirely",
           "It removes the need for any generative AI model in the conversation",
-          "It only works with pre-recorded audio files, never live microphones"
+          "It only works with pre-recorded audio files, never live microphones, so developers must still build and connect the separate pieces"
         ],
         "correct": 0,
         "explain": "Instead of building and connecting many separate pieces, the Voice Live API combines speech-to-text, reasoning, and text-to-speech into one managed service, making it easier and faster to build voice experiences."
@@ -1795,7 +1795,7 @@ const EXAMS = {
           "It converts the agent into a video generation tool",
           "It integrates Azure Speech Voice Live directly into the agent definition, reducing the client code required to use it",
           "It disables all text-based interaction with the agent",
-          "It automatically translates the agent's responses into every supported language"
+          "It automatically translates the agent's responses into every supported language, with no change to the agent definition or client code"
         ],
         "correct": 1,
         "explain": "Enabling Voice mode for a Foundry agent integrates Azure Speech Voice Live into the agent definition itself, so speech configuration is encapsulated in the agent and less client code is required."
@@ -1807,7 +1807,7 @@ const EXAMS = {
         "options": [
           "An AI model that can understand and work with more than one type of data at the same time, such as text and images",
           "A model that can only process text, never images",
-          "A model that requires a separate deployment for every input type",
+          "A model that requires a separate deployment for every input type, such as one for text and a different one for images",
           "A model used exclusively for speech-to-speech conversations"
         ],
         "correct": 0,
@@ -1820,7 +1820,7 @@ const EXAMS = {
         "options": [
           "Images cannot be included in the same request as text",
           "Only by first converting the image into an audio file",
-          "Only by uploading the image to a separate Foundry project",
+          "Only by uploading the image to a separate Foundry project beforehand",
           "As a URL or as base64-encoded image data alongside the text input"
         ],
         "correct": 3,
@@ -1845,7 +1845,7 @@ const EXAMS = {
         "q": "What is GPT-Image-1-Mini optimized for, compared to GPT-Image-1.5?",
         "options": [
           "Maximum visual fidelity regardless of cost",
-          "Text-only completions with no image capability",
+          "Text-only completions with no image capability, at a reduced price for each token",
           "Lower latency and reduced cost, at the expense of maximum visual fidelity",
           "Generating only black-and-white images"
         ],
@@ -1857,7 +1857,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What does 'base64' encoding allow you to do when working with image generation APIs?",
         "options": [
-          "Compress an image to reduce its file size with no quality loss",
+          "Compress an image to reduce its file size with no quality loss, ready for upload to any storage",
           "Translate an image's embedded text into another language",
           "Convert binary image data into safe ASCII text so it can be embedded inside JSON or URLs",
           "Convert an image directly into an audio waveform"
@@ -1872,7 +1872,7 @@ const EXAMS = {
         "options": [
           "Support for generating still images only, with no video output",
           "Video-to-video remixing and audio generation, along with improved realism",
-          "The removal of all Responsible AI safeguards",
+          "The removal of all Responsible AI safeguards, along with improved realism in generated video",
           "The ability to generate video from text prompts for the first time"
         ],
         "correct": 1,
@@ -1895,7 +1895,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What does Azure Content Understanding in Foundry Tools do?",
         "options": [
-          "It only converts speech to text, with no support for documents",
+          "It only converts speech to text, with no support for documents, images, or video, and it returns raw transcripts rather than fields",
           "It replaces the need for a Foundry resource entirely",
           "It uses AI to extract structured information from unstructured content such as documents, images, audio, and video",
           "It exclusively generates new images from text prompts"
@@ -1973,7 +1973,7 @@ const EXAMS = {
         "q": "Why must a client application poll the Operation-Location URL after submitting content to Azure Content Understanding for analysis?",
         "options": [
           "Because Azure Content Understanding never returns results programmatically",
-          "Because the analyzer requires the client to resend the same content repeatedly",
+          "Because the analyzer requires the client to resend the same content repeatedly until the job succeeds",
           "Because polling is required only for image-based content, never for documents",
           "Because content analysis is asynchronous, so results are retrieved later once the job succeeds"
         ],
@@ -1988,7 +1988,7 @@ const EXAMS = {
           "Only the sampling rate used to record the audio",
           "Only the file size of the audio recording",
           "Caller, message summary, requested actions, and callback number",
-          "Only the raw audio waveform with no textual output"
+          "Only the raw audio waveform with no textual output of any kind at all"
         ],
         "correct": 2,
         "explain": "The module's voicemail example defines a schema including caller, message summary, requested actions, callback number, and alternative contact details — all extracted as structured data from the audio."
@@ -1999,7 +1999,7 @@ const EXAMS = {
         "q": "What problem does Microsoft Foundry IQ primarily solve for organizations building multiple AI agents?",
         "options": [
           "It only works with a single agent per organization",
-          "It replaces Azure AI Search entirely with a new proprietary database",
+          "It replaces Azure AI Search entirely with a new proprietary database that each agent must host and manage on its own",
           "It avoids the need to build a separate RAG pipeline for every agent by providing a shared, managed knowledge layer",
           "It eliminates the need for any generative AI model"
         ],
@@ -2067,7 +2067,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "How does an agent typically connect to a Foundry IQ knowledge base?",
         "options": [
-          "The knowledge base data is copied directly into the model's training set",
+          "The knowledge base data is copied directly into the model's training set each time that the agent is deployed to production",
           "The knowledge base is exposed as a Model Context Protocol (MCP) tool that the agent can call",
           "The agent must be rewritten in a different programming language",
           "The connection can only be made through the Azure billing portal"
@@ -2134,7 +2134,7 @@ const EXAMS = {
         "q": "What is the purpose of the 'Responses API' referenced throughout the Foundry generative AI modules?",
         "options": [
           "It only supports audio input, never text or images",
-          "It is a deprecated API replaced entirely by the Azure Language SDK",
+          "It is a deprecated API replaced entirely by the Azure Language SDK, which now handles all complete AI interactions instead",
           "It is the modern, unified API within Azure OpenAI for handling complete AI interactions, not just text generation",
           "It is used exclusively for billing and cost management"
         ],
