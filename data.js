@@ -93317,7 +93317,7 @@ const EXAMS = {
           "Compute should always be created fresh for every job and deleted by any team member afterward",
           "Only administrators should create and manage compute resources; data scientists should only use the compute that's made available to them",
           "Compute permissions should not be restricted since Azure automatically caps spending",
-          "Every data scientist should be given Owner access to compute so they can scale it as needed"
+          "Every data scientist should be given Owner access to compute so they can scale it as needed, with no administrator involved in creating or resizing it"
         ],
         "correct": 1,
         "explain": "Because compute can be the most cost-intensive resource, the recommended practice is to restrict creating and managing compute to administrators, while data scientists just consume the available compute to run their workloads."
@@ -93406,7 +93406,7 @@ const EXAMS = {
         "q": "Which statement about Azure Machine Learning registries is correct?",
         "options": [
           "A registry's primary region can be changed at any time after creation",
-          "Registries are used to store transient resources such as running jobs and online endpoint scoring URIs",
+          "Registries are used to store transient resources such as running jobs and online endpoint scoring URIs, not durable assets like models or components",
           "When you create a registry, you define a primary region and additional replication regions, and the primary region can't be changed afterward",
           "Registry names may start with an underscore or hyphen"
         ],
@@ -93451,7 +93451,7 @@ const EXAMS = {
           "Traffic between the workspace and the storage account is not protected by the virtual network, even though the workspace itself is",
           "The workspace fails to start until the storage account is also secured",
           "The private endpoint automatically extends network protection to the storage account as well",
-          "The private endpoint configuration is rejected by Azure until all dependent resources are private"
+          "The private endpoint configuration is rejected by Azure until all dependent resources are private, starting with the default Storage Account"
         ],
         "correct": 0,
         "explain": "Securing a workspace with a private endpoint doesn't secure the whole solution by itself. If the storage account isn't also placed behind the virtual network, traffic between the workspace and storage doesn't benefit from the VNet's protection."
@@ -93583,7 +93583,7 @@ const EXAMS = {
         "q": "What does \"attached compute\" refer to in an Azure Machine Learning workspace?",
         "options": [
           "A synonym for a compute instance used only for notebooks",
-          "A synonym for serverless compute managed entirely by Azure Machine Learning",
+          "A synonym for serverless compute managed entirely by Azure Machine Learning, with no underlying Azure resources to configure or manage",
           "A physical on-premises machine connected over VPN",
           "Attaching other existing Azure compute resources, such as Azure Databricks or Synapse Spark pools, to the workspace"
         ],
@@ -93740,7 +93740,7 @@ const EXAMS = {
           "MLflow is already configured and ready to use, with no manual tracking-URI setup required",
           "MLflow only works with compute clusters, never compute instances",
           "MLflow cannot be used from a compute instance at all",
-          "You must purchase the azureml-mlflow package separately from Azure Marketplace"
+          "You must purchase the azureml-mlflow package separately from Azure Marketplace before tracking any run"
         ],
         "correct": 0,
         "explain": "When running a notebook on a compute instance in the Azure Machine Learning workspace, MLflow is already configured and ready to be used without additional tracking-URI setup."
@@ -93843,7 +93843,7 @@ const EXAMS = {
         "options": [
           "The single best trial's final metric value",
           "The median of the running averages across all training runs",
-          "A fixed absolute threshold configured in advance",
+          "A fixed absolute threshold configured in advance for every trial",
           "The mean of only the two most recent trials"
         ],
         "correct": 1,
@@ -93856,7 +93856,7 @@ const EXAMS = {
         "options": [
           "evaluation_interval, shared by all policies",
           "slack_factor, part of the Bandit policy",
-          "delay_evaluation, part of the Median stopping policy",
+          "delay_evaluation, part of the Median stopping and Bandit policies",
           "truncation_percentage, part of the Truncation selection policy"
         ],
         "correct": 3,
@@ -93867,7 +93867,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "In a sweep job's early termination policy configuration, what does setting evaluation_interval to 2 mean?",
         "options": [
-          "The policy is applied every 2 minutes of wall-clock time",
+          "The policy is applied every 2 minutes of wall-clock time for as long as the job is running",
           "The policy is applied every other time the training script reports the primary metric",
           "Exactly 2 compute nodes are used for the sweep",
           "The policy waits 2 hours before the sweep job starts"
@@ -93909,7 +93909,7 @@ const EXAMS = {
           "SKUs with \"Promo\" appended to the name",
           "SKUs that start with \"B\", such as Standard_B2s",
           "SKUs that include an \"r\" in the name, such as Standard_NC24rs_v3",
-          "SKUs that end in \"s\" only, such as Standard_NC24s_v3"
+          "SKUs that end in \"s\" only, such as the GPU-based Standard_NC24s_v3"
         ],
         "correct": 2,
         "explain": "VM SKUs with an \"r\" in the name, referring to RDMA, contain the InfiniBand hardware required for low-latency, GPU-to-GPU communication; Standard_NC24rs_v3 is InfiniBand-enabled while the otherwise similar Standard_NC24s_v3 is not."
@@ -93920,7 +93920,7 @@ const EXAMS = {
         "q": "What is the primary benefit of using DeepSpeed for a distributed training job in Azure Machine Learning?",
         "options": [
           "It replaces MLflow as the experiment tracking tool",
-          "It disables data parallelism in favor of sequential training",
+          "It disables data parallelism in favor of sequential training runs",
           "It eliminates the need for any GPU compute",
           "Near-linear scalability for increasing model size and GPU count"
         ],
@@ -93958,7 +93958,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A team registers a model in the workspace using the same name as an already-registered model. What happens?",
         "options": [
-          "Registration fails with a duplicate-name error",
+          "Registration fails with a duplicate-name error until the existing model is removed",
           "The previous model version is silently deleted",
           "The registry automatically increments the version number for that model name",
           "A brand-new workspace is created to hold the model"
@@ -93987,7 +93987,7 @@ const EXAMS = {
           "Converting the model's registered files to CSV",
           "Converting the model to ONNX (Open Neural Network Exchange) format",
           "Re-registering the model under a new name",
-          "Moving the model from an online endpoint to a batch endpoint"
+          "Moving the model from an online endpoint to a batch endpoint for scoring"
         ],
         "correct": 1,
         "explain": "You can convert a model to ONNX to try to improve performance; typically, converting to ONNX can double performance."
@@ -94228,7 +94228,7 @@ const EXAMS = {
           "Add the Foundry account resource's managed identity to the Storage Blob Data Reader role on that storage account",
           "Delete and recreate the storage account from inside the Foundry portal",
           "Grant the Owner role to every user in the organization",
-          "Nothing; access is automatically granted to any storage account in the subscription"
+          "Nothing; access is automatically granted to any storage account in the subscription as soon as the Foundry project is created"
         ],
         "correct": 0,
         "explain": "To use resources created outside Foundry, you must grant the Foundry account resource's managed identity appropriate permissions, such as the Storage Blob Data Reader role, on that resource."
@@ -94277,7 +94277,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "An agent needs to hold a friendly, natural conversation answering product questions. Which type of model best fits this task, compared to a reasoning model tuned for math and complex logic?",
         "options": [
-          "A speech-to-text model",
+          "A speech-to-text model, such as Whisper",
           "An embedding-only model",
           "A reasoning model, such as o1",
           "A chat completion model, such as GPT-4"
@@ -94292,7 +94292,7 @@ const EXAMS = {
         "options": [
           "Skipping model selection and using whichever model deploys fastest",
           "A reasoning model, for extra accuracy on simple tasks",
-          "The largest large language model (LLM) available, regardless of cost",
+          "The largest large language model (LLM) available, regardless of cost or request volume",
           "A small language model (SLM), such as Phi-3, if it's good enough for the focused task"
         ],
         "correct": 3,
@@ -94316,7 +94316,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In Microsoft Foundry, when is a new version of an agent created?",
         "options": [
-          "Only when a user manually clicks a \"create version\" button reserved for admins",
+          "Only when a user manually clicks a \"create version\" button reserved for admins in the portal interface",
           "Never; Foundry agents are not versioned",
           "Whenever you create or update an agent, whether through the portal interface or the Python SDK",
           "Only once per calendar month, on a fixed schedule"
@@ -94332,7 +94332,7 @@ const EXAMS = {
           "Store prompts in separate .txt or .md files, referenced by the deployment script",
           "Hardcode prompts as literal values in environment variable names",
           "Store prompts only in the Foundry portal UI, with no source control",
-          "Embed prompts directly as inline strings inside the deployment Python script"
+          "Embed prompts directly as inline strings inside the deployment Python script itself"
         ],
         "correct": 0,
         "explain": "Storing prompts in separate files (such as .txt or .md) is described as better for nontechnical reviewers and gives a clearer version history than embedding prompts as strings inside deployment code."
@@ -94414,7 +94414,7 @@ const EXAMS = {
         "options": [
           "Content filtering can never be disabled for any deployment",
           "Azure AI Content Safety text moderation filters are applied by default and billed separately",
-          "Content filtering is always disabled by default and must be manually enabled",
+          "Content filtering is always disabled by default and must be manually enabled at deployment time",
           "Content filtering only applies to embedding models"
         ],
         "correct": 1,
@@ -94438,7 +94438,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A team deployed two versions of a Foundry agent with different system instructions and wants to run identical test scenarios against both to catch regressions before promoting the newer version. Which capability supports this?",
         "options": [
-          "Deleting the older agent version immediately after deploying the new one",
+          "Deleting the older agent version immediately after deploying the new one so only one remains",
           "Merging both prompt files into a single file with no distinction",
           "Disabling monitoring for the duration of the comparison",
           "Comparing responses across deployed agent versions through the Foundry portal or the SDK"
@@ -94519,7 +94519,7 @@ const EXAMS = {
           "Assign a role such as Foundry Agent Consumer at the scope of that individual agent",
           "This level of granularity isn't possible in Foundry",
           "Assign Foundry Owner at the subscription scope",
-          "Grant access to the entire Foundry project instead"
+          "Grant access to the entire Foundry project instead, so the partner can call that agent's endpoint"
         ],
         "correct": 0,
         "explain": "Role assignments can be scoped to an individual agent rather than the whole project, letting you grant endpoint access to just that agent without exposing every other agent in the project."
@@ -94529,7 +94529,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which Microsoft Foundry evaluator category would you use to check whether an agent's response is grounded in the documents it retrieved from a knowledge base?",
         "options": [
-          "Textual similarity evaluators",
+          "Textual similarity evaluators, such as BLEU",
           "Risk and safety evaluators",
           "RAG evaluators, such as Groundedness",
           "General purpose evaluators"
@@ -94676,7 +94676,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Three human evaluators rate the same agent response very differently for Intent Resolution, not because the response changed, but because they interpret the scoring scale differently. What should the team create to fix this inconsistency?",
         "options": [
-          "A rule that only one evaluator is ever allowed to score responses",
+          "A rule that only one evaluator is ever allowed to score agent responses going forward",
           "A larger evaluation dataset, without changing scoring guidance",
           "Removing manual evaluation entirely in favor of automation only",
           "Detailed evaluation rubrics with concrete example responses at each score level"
@@ -94692,7 +94692,7 @@ const EXAMS = {
           "A schedule trigger that runs nightly regardless of what changed",
           "A pull_request trigger with a paths filter restricted to the prompts/config directories",
           "A push trigger on every branch with no path filter",
-          "A manual workflow_dispatch trigger only, run by hand each time"
+          "A manual workflow_dispatch trigger only, run by hand each time a prompt or config file changes"
         ],
         "correct": 1,
         "explain": "The evaluation workflow trigger is configured as `on: pull_request` with a `paths` filter (for example, prompts/** and config/**), so the workflow only runs automatically when relevant files change."
@@ -94702,7 +94702,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What authentication approach does the recommended GitHub Actions evaluation workflow use to access Microsoft Foundry securely, without storing long-lived secrets in the repository?",
         "options": [
-          "A hardcoded API key committed directly to the repository",
+          "A hardcoded API key committed directly to the repository as plain text",
           "Federated identity credentials tied to the GitHub OIDC issuer",
           "Basic username and password authentication",
           "Disabling authentication entirely for CI workflows"
@@ -94717,7 +94717,7 @@ const EXAMS = {
         "options": [
           "Review the output, investigate why the score dropped, and request changes before merging",
           "Lower the threshold in the evaluation script so the run always passes",
-          "Delete the evaluation results and rerun the workflow repeatedly until it passes",
+          "Delete the evaluation results and rerun the workflow repeatedly until it passes the threshold check",
           "Merge immediately, since only one metric out of several failed"
         ],
         "correct": 0,
@@ -94754,7 +94754,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which statement correctly describes a documented trade-off between generative AI application monitoring metrics?",
         "options": [
-          "Latency and throughput are completely independent and never interact",
+          "Latency and throughput are completely independent and never interact, even when compute resources are exhausted",
           "Increasing throughput always reduces failure rates",
           "A decrease in latency might come at the cost of lower throughput if compute resources are exhausted",
           "Token usage has no relationship to latency or operational cost"
@@ -94826,7 +94826,7 @@ const EXAMS = {
           "A prompt-injection attack in progress",
           "A performance bottleneck specific to the trip-profile-generation step",
           "A data drift issue in the model's training set",
-          "An RBAC misconfiguration on the Foundry project"
+          "An RBAC misconfiguration on the Foundry project that delays the nested span"
         ],
         "correct": 1,
         "explain": "Comparing span durations within a trace reveals performance bottlenecks; a span that consistently takes far longer than its siblings, like trip_profile_generation here, points to where to focus optimization efforts, such as simplifying the schema, using a faster model, or caching."
@@ -94837,7 +94837,7 @@ const EXAMS = {
         "q": "In a RAG system, what does a cosine similarity value near 1 between two text embeddings indicate?",
         "options": [
           "The embedding model failed to process the text",
-          "The two pieces of text are completely unrelated",
+          "The two pieces of text are completely unrelated in meaning",
           "The vectors contain no floating-point values",
           "The two pieces of text are semantically very similar"
         ],
@@ -94904,7 +94904,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A RAG pipeline uses one model for summarization and a different model for generating embeddings, each with different maximum input token limits. What should guide the chosen chunk size?",
         "options": [
-          "Chunk size doesn't matter, since Azure AI Search silently truncates all oversized chunks",
+          "Chunk size doesn't matter, since Azure AI Search silently truncates all oversized chunks before they reach either of the models",
           "Choose a chunk size that satisfies the token limits and performance guidelines of all the models being used, not just one",
           "Always use the largest model's token limit, regardless of the other model's limit",
           "Ignore token limits entirely and chunk purely by document page count"
@@ -94918,7 +94918,7 @@ const EXAMS = {
         "q": "Why is a percentage overlap (for example, 25%) typically applied between adjacent fixed-size chunks in a RAG indexing pipeline?",
         "options": [
           "To maintain continuity and context across chunk boundaries, so meaning that spans two chunks isn't lost",
-          "To intentionally duplicate the entire source document in the index",
+          "To intentionally duplicate the entire source document in the index so every chunk contains all of its content",
           "To reduce the total number of tokens indexed",
           "To disable semantic search on that index"
         ],
@@ -94931,7 +94931,7 @@ const EXAMS = {
         "q": "A document has embedded Markdown heading structure, and the team wants chunks that preserve context and semantic relationships across sentences and paragraphs rather than splitting purely by a fixed character count. Which chunking approach best fits this need?",
         "options": [
           "Fixed-size chunking with no regard for document structure",
-          "A single chunk for the entire document, regardless of size",
+          "A single chunk for the entire document, regardless of size or headings",
           "Random chunking with no defined strategy",
           "Semantic chunking that uses document structure, such as headings"
         ],
@@ -95049,7 +95049,7 @@ const EXAMS = {
         "options": [
           "Synthetic data generation, using a language model or rule-based templates to create task-ready training examples",
           "Waiting indefinitely until enough real production data accumulates",
-          "Skipping fine-tuning entirely in favor of RAG only, with no alternative considered",
+          "Skipping fine-tuning entirely in favor of RAG only, with no alternative considered for the realistic and edge-case scenarios",
           "Using only adversarial prompts as the entire training dataset"
         ],
         "correct": 0,
@@ -95104,7 +95104,7 @@ const EXAMS = {
         "q": "An agency needs its agent to always respond in a specific structured brand voice AND to quote current hotel pricing and availability that changes daily. Which combination of optimization strategies addresses both needs?",
         "options": [
           "Fine-tuning for consistent style and format, combined with RAG for up-to-date factual data",
-          "Prompt engineering alone, since it can access any external data source directly",
+          "Prompt engineering alone, since it can access any external data source directly and enforce any voice",
           "Model distillation alone, without RAG or fine-tuning",
           "Grid sampling combined with an early termination policy"
         ],
