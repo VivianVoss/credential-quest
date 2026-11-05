@@ -119,7 +119,7 @@ function renderHome(){
         <div id="suggestBox"></div>
       </div>
       <div class="err" id="errMsg" style="text-align:center;"></div>
-      <div class="hint">Based on Microsoft's official certification poster, last updated July 2026.</div>
+      <div class="hint">Based on Microsoft's official certification poster. Last checked ${LAST_CHECKED}.</div>
     </div>
 
     <div class="sectionLabel">Popular starting points</div>
@@ -134,7 +134,7 @@ function renderHome(){
     </div>
 
     <div class="sectionLabel">Browse every credential</div>
-    <div class="sectionSub">Straight off Microsoft's official certification poster (aka.ms/CertificationsPoster, last updated July 2026).</div>
+    <div class="sectionSub">Straight off Microsoft's official certification poster (aka.ms/CertificationsPoster). Last checked ${LAST_CHECKED}.</div>
     <div class="filterRow">${filterChips}</div>
     ${grouped}
 

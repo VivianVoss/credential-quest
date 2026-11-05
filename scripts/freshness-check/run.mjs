@@ -17,7 +17,7 @@ import { promisify } from 'node:util';
 import { chromium } from 'playwright';
 import { checkPoster } from './check-poster.mjs';
 import { scrapeExam, diffExam } from './lib.mjs';
-import { applyPatches } from './apply-patches.mjs';
+import { applyPatches, updateLastChecked } from './apply-patches.mjs';
 
 const execFileAsync = promisify(execFile);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -37,7 +37,7 @@ async function checkPosterEdition(textSha256, allIssues, allPatchLines) {
   allPatchLines.push('- Updated the stored poster fingerprint');
   allIssues.push({
     title: `Freshness check: new poster edition (${textSha256.slice(0, 8)})`,
-    body: `The text of the official poster changed since the last run, even if no exam code did.\n\nCompare it with \`CATALOG\` by hand: titles, categories, tiers and the retirement notes in \`check-poster.mjs\`, then update the "last updated" note at the top of \`data.js\`.`
+    body: `The text of the official poster changed since the last run, even if no exam code did.\n\nCompare it with \`CATALOG\` by hand: titles, categories, tiers and the retirement notes in \`check-poster.mjs\`, and update anything that changed.`
   });
 }
 
@@ -144,6 +144,12 @@ async function main() {
   }
 
   await browser.close();
+
+  // Only a full run that could read the poster counts as a check.
+  if (!onlyCodes && !posterResult.error) {
+    const label = await updateLastChecked(DATA_JS_PATH);
+    if (label) allPatchLines.push(`- Updated the site's last checked date to ${label}`);
+  }
 
   // One unreadable name is a page hiccup. Most of them means Learn's markup
   // changed, and a name check that can't read names must not look like a clean run.

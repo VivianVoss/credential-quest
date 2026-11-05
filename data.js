@@ -1,7 +1,7 @@
 /* ---------------------------------------------------------------
    CREDENTIAL QUEST — a free, community-facing companion for the
-   Microsoft Certification Poster (aka.ms/CertificationsPoster,
-   last updated July 2026). CATALOG below lists every credential on
+   Microsoft Certification Poster (aka.ms/CertificationsPoster).
+   CATALOG below lists every credential on
    that poster with its real code/title/category/tier as published
    by Microsoft. EXAMS holds the credentials that have been built
    out into a full study guide + practice quiz: skills-measured
@@ -16,6 +16,9 @@
    catalog with their real code and title only — ask to have one
    built next.
    --------------------------------------------------------------- */
+
+// Set by the monthly freshness check. Shown on the site.
+const LAST_CHECKED = "November 2026";
 
 const CATALOG = [
   // Cloud & AI Platforms — Fundamentals
