@@ -48941,7 +48941,7 @@ const EXAMS = {
           "Domains, Controls, and Subcontrols are interchangeable terms in MCSB",
           "A Domain is a high-level grouping of related Controls, and a Subcontrol is detailed guidance supporting a specific Control",
           "A Subcontrol is a group of Domains, and a Domain contains one Control",
-          "A Control is technology-specific and a Domain is technology-agnostic guidance under a Control"
+          "A Control is technology-specific and a Domain is technology-agnostic guidance under a Control, with a Subcontrol grouping related Domains"
         ],
         "correct": 1,
         "explain": "In MCSB terminology, a Security Domain is a high-level grouping of related controls (e.g., AI Security), a Security Control is a specific technology-agnostic requirement within that domain, and a Security Subcontrol provides detailed implementation guidance supporting that control."
@@ -48991,7 +48991,7 @@ const EXAMS = {
         "q": "When designing a prioritized backup and restore order to support ransomware resiliency, which class of systems should be restored first because nearly all other systems depend on it for authentication and access?",
         "options": [
           "Financial systems",
-          "Product/service enablement systems like factory controls",
+          "Product/service enablement systems like factory controls and line-of-business apps",
           "Security monitoring systems",
           "Identity systems such as Active Directory and Microsoft Entra Connect"
         ],
@@ -49055,7 +49055,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A design review must account for AI systems as part of BCDR planning. Which recommendation specifically addresses validating that a restored AI model has not been compromised or corrupted?",
         "options": [
-          "Rely solely on Microsoft Security Copilot for model validation",
+          "Rely solely on Microsoft Security Copilot for model validation after restoration",
           "Establish baseline model behavior metrics for comparison after restoration",
           "Store all AI training data exclusively in Azure Cosmos DB",
           "Disable AI workloads during any disaster recovery event"
@@ -49162,7 +49162,7 @@ const EXAMS = {
           "Disabling automation rules and relying solely on manual response",
           "Centralized management model using Azure Lighthouse for cross-tenant access",
           "Deploying identical local admin passwords across all tenants",
-          "Distributed deployment model using Azure Arc only"
+          "Distributed deployment model using Azure Arc only, with playbooks copied into each customer tenant"
         ],
         "correct": 1,
         "explain": "In the centralized management model, the service provider maintains automation rules and playbooks in their own tenant and uses Azure Lighthouse for cross-tenant access, protecting intellectual property while serving multiple customers."
@@ -49408,7 +49408,7 @@ const EXAMS = {
         "options": [
           "Only the policy assigned at the lowest scope takes effect",
           "The policies cancel each other out and neither is enforced",
-          "Azure Policy ignores the second policy and logs a conflict error only",
+          "Azure Policy ignores the second policy and logs a conflict error only for review",
           "The result is cumulative most restrictive — the resource is blocked by both"
         ],
         "correct": 3,
@@ -49461,7 +49461,7 @@ const EXAMS = {
           "Azure Policy exemptions",
           "A Microsoft Sentinel workspace",
           "Critical assets, since attack paths terminate at them",
-          "Network security groups on every subnet"
+          "Network security groups on every subnet, since attack paths start there"
         ],
         "correct": 2,
         "explain": "Attack paths terminate at critical assets, so classifying critical assets (predefined like domain controllers, or custom business-critical systems) must happen first for attack path value to be realized."
@@ -49471,7 +49471,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A cybersecurity architect is prioritizing remediation using Exposure Management attack path data and finds a point where multiple attack paths converge before reaching critical assets. What should be prioritized first, and why?",
         "options": [
-          "The asset farthest from any entry point, because it's hardest to reach",
+          "The asset farthest from any entry point, because it's hardest to reach and has the fewest attack paths",
           "Any metric with the lowest weight, because it's the easiest fix",
           "Initiative target scores only, ignoring individual attack paths",
           "The convergence point (choke point), because fixing it can eliminate multiple attack paths at once"
@@ -49537,7 +49537,7 @@ const EXAMS = {
         "q": "In Microsoft Entra Internet Access, a global architect wants a default set of blocking rules that applies to all internet traffic even when no specific Conditional Access policy is linked. What should be configured?",
         "options": [
           "The baseline security profile, which acts as a catch-all at the lowest priority",
-          "A per-application security profile with the highest priority number",
+          "A per-application security profile with the highest priority number, linked through Conditional Access",
           "The compliant network check",
           "A named location in Conditional Access"
         ],
@@ -49549,7 +49549,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In Microsoft Entra Internet Access web content filtering policies, how are priorities evaluated within a security profile?",
         "options": [
-          "Priority 65,000 is evaluated first and the service stops at the first match",
+          "Priority 65,000 is evaluated first and the service stops at the first match, working down through the policies toward priority 100",
           "Priorities are irrelevant; only Conditional Access risk level determines the outcome",
           "All policies are evaluated simultaneously and the least restrictive wins",
           "Priority 100 is the highest priority, and the service evaluates policies in priority order, stopping at the first match"
@@ -49603,7 +49603,7 @@ const EXAMS = {
         "options": [
           "The compliant network check",
           "Private DNS suffix routing",
-          "Quick Access with a single Conditional Access policy applied to all segments",
+          "Quick Access with a single Conditional Access policy applied to all segments, for RDP and the web app alike",
           "Per-app access, where each enterprise application has its own Conditional Access policy"
         ],
         "correct": 3,
@@ -49836,7 +49836,7 @@ const EXAMS = {
         "q": "A document has a sensitivity label with encryption applied, but the current user only has the VIEW usage right, not EXTRACT. What happens when Microsoft 365 Copilot processes a prompt referencing that document?",
         "options": [
           "Copilot fully summarizes and returns the content in its response",
-          "Copilot automatically requests EXTRACT rights on behalf of the user",
+          "Copilot automatically requests EXTRACT rights on behalf of the user and then returns the content",
           "Copilot can reference the item with a link but cannot summarize or return its content",
           "Copilot ignores sensitivity labels entirely"
         ],
@@ -49877,7 +49877,7 @@ const EXAMS = {
           "A system-assigned managed identity on the GitHub runner",
           "Workload identity federation, trusting tokens from GitHub's OIDC issuer",
           "Basic authentication with a service account password",
-          "A shared subscription key stored as a GitHub secret"
+          "A shared subscription key stored as a GitHub secret and rotated on a schedule"
         ],
         "correct": 1,
         "explain": "Workload identity federation establishes a trust relationship between Microsoft Entra ID and an external identity provider (such as GitHub's OIDC issuer), so the external workload exchanges its own token for an Azure access token without any secrets being stored or transmitted."
@@ -49952,7 +49952,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "When designing a retrieval-augmented generation (RAG) solution using Azure OpenAI 'on your data,' how is document-level access control enforced for search results used to ground AI responses?",
         "options": [
-          "All authenticated users see all indexed documents equally",
+          "All authenticated users see all indexed documents equally, with no trimming of search results",
           "Security filters trim search results based on the requesting user's permissions",
           "Access control is not possible in RAG scenarios",
           "Only Global Administrators can query the grounding data"
@@ -50070,7 +50070,7 @@ const EXAMS = {
         "q": "An architect designing OAuth 2.0 authorization for an internal API wants to enforce least privilege at the scope level. Which approach best achieves this, compared to a single broad 'api.access' scope?",
         "options": [
           "Disable scope validation and rely solely on network filtering",
-          "Grant all client applications the same broad scope to simplify management",
+          "Grant all client applications the same broad scope to simplify management, such as a single 'api.access' scope for everything",
           "Use only subscription keys for all authorization decisions",
           "Define granular scopes that map to specific capabilities, such as 'Orders.Read' and 'Orders.Write'"
         ],
