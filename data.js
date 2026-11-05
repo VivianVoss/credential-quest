@@ -98034,7 +98034,7 @@ const EXAMS = {
         "q": "Your application uses the ChatCompletions API and must retain conversational context across turns. What must your code do, that the Responses API would otherwise handle automatically?",
         "options": [
           "Call a separate stateful-session endpoint before each request",
-          "Nothing extra is required; ChatCompletions is stateful by default",
+          "Nothing extra is required; ChatCompletions is stateful by default across turns",
           "Manually track and resend the full message history with each request",
           "Use only the system role for every message"
         ],
@@ -98501,7 +98501,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "In Foundry IQ, how are knowledge bases organized so that they reflect how people actually think about information?",
         "options": [
-          "By the Azure region where the data resides",
+          "By the Azure region where the data resides, such as 'West Europe' or 'East US'",
           "By the underlying storage technology, such as 'SharePoint Site A'",
           "By business domain, such as 'Product Documentation' or 'HR Policies'",
           "Alphabetically by document file name"
@@ -98768,7 +98768,7 @@ const EXAMS = {
           "A vector embedding of the image",
           "An error message if generation failed",
           "The generated image data encoded in Base64",
-          "A publicly hosted CDN link to the image"
+          "A publicly hosted CDN link to the generated image"
         ],
         "correct": 2,
         "explain": "By default, the generate() response returns the image as Base64-encoded data in b64_json, which your application must decode (for example with base64.b64decode) before saving it as a binary image file."
@@ -98804,7 +98804,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "You supply a reference image to the `input_reference` parameter to anchor the first frame of a Sora 2 video. What requirement must that image satisfy?",
         "options": [
-          "It must be smaller than 100 KB",
+          "It must be smaller than 100 KB regardless of the target video size you specify",
           "It must already be an animated GIF",
           "Its resolution must exactly match the target video size you specify",
           "It must have the same aspect ratio as a printed photograph only"
