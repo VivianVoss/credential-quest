@@ -56062,7 +56062,7 @@ const EXAMS = {
         "q": "After the Solution Agent proposes a technology stack in Plans, how can a maker verify that a proposed technology addresses all defined requirements?",
         "options": [
           "There is no way to verify this before building",
-          "Export the plan to Power BI and cross-reference manually",
+          "Export the plan to Power BI and cross-reference manually against the user roles and data tables defined in the plan",
           "Open each user role record individually in Dataverse",
           "Hover over the information icon on a technology tile to see which user roles and data tables it addresses"
         ],
@@ -56280,7 +56280,7 @@ const EXAMS = {
           "Because many-to-many relationships are deprecated",
           "Because the intersect table is a hidden, system-managed table that isn't user-editable",
           "Because intersect tables only apply to virtual tables",
-          "Because Dataverse doesn't support many-to-many relationships"
+          "Because Dataverse doesn't support many-to-many relationships between any two of its tables"
         ],
         "correct": 1,
         "explain": "Many-to-many relationships aren't directly supported by relational databases, so Dataverse uses a hidden intersect table to manage them — it isn't user-editable and doesn't support custom forms or columns."
@@ -56317,7 +56317,7 @@ const EXAMS = {
         "q": "A business rule is configured to show/hide a column and to generate a business recommendation. Where will this rule NOT behave the same way?",
         "options": [
           "In canvas apps, because show/hide columns, enable/disable columns, and business recommendations aren't supported there",
-          "In model-driven apps, because those actions are canvas-only",
+          "In model-driven apps, because show/hide columns, enable/disable columns, and business recommendations are canvas-only actions",
           "It behaves identically in canvas apps and model-driven apps",
           "Neither app type supports these actions"
         ],
@@ -56330,7 +56330,7 @@ const EXAMS = {
         "q": "What must every Dataverse user have before they can access data and run apps in an environment with a database?",
         "options": [
           "At least one assigned security role",
-          "Ownership of at least one team",
+          "Ownership of at least one Dataverse team",
           "A custom connector",
           "A Power BI Pro license"
         ],
@@ -56430,7 +56430,7 @@ const EXAMS = {
         "options": [
           "A rollup column can't trigger workflows or flows and must reference a simple column, not another rollup or complex calculated/formula column",
           "A rollup column can include records related through a many-to-many (N:N) relationship",
-          "A rollup column can reference another rollup column directly",
+          "A rollup column can reference another rollup column directly, and its recalculation can trigger workflows or flows on the table as soon as it updates",
           "A table can have an unlimited number of rollup columns"
         ],
         "correct": 0,
@@ -56454,7 +56454,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "By default, what data type is a table's primary column, and what is it typically labeled?",
         "options": [
-          "A choice column, labeled 'Status'",
+          "A choice column, labeled 'Status' on the table",
           "A lookup column, labeled 'Owner'",
           "A GUID, labeled 'ID'",
           "A single line of text column, labeled 'Name'"
@@ -56467,7 +56467,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A maker wants the primary column of a table to be guaranteed unique across all rows. What should they do?",
         "options": [
-          "Change the primary column's data type to a whole number",
+          "Change the primary column's data type to a whole number instead",
           "Create an alternate key and assign the primary column to it",
           "Enable auditing on the primary column",
           "This is not possible in Dataverse"
@@ -56495,7 +56495,7 @@ const EXAMS = {
         "options": [
           "Input columns for the prompt can include other Prompt columns and Image columns",
           "A table can have an unlimited number of Prompt columns",
-          "Prompt columns run synchronously and block the save operation until complete",
+          "Prompt columns run synchronously and block the save operation until complete, with status/details values written before the save ends",
           "Up to five Prompt columns can be created per table, and Dataverse automatically adds status/details system columns for each one"
         ],
         "correct": 3,
@@ -56559,7 +56559,7 @@ const EXAMS = {
         "q": "Auditing is enabled at the environment level, but a maker also wants to audit changes to a specific column. What must be true first?",
         "options": [
           "Both environment-level and table-level auditing must be enabled before column-level auditing can be enabled",
-          "Only column-level auditing needs to be enabled; other levels are irrelevant",
+          "Only column-level auditing needs to be enabled; other levels are irrelevant to tracking changes on that specific column",
           "The column must first be converted to a Prompt column",
           "Auditing cannot be scoped to individual columns"
         ],
@@ -56691,7 +56691,7 @@ const EXAMS = {
           "A component library",
           "A user-defined function",
           "A named formula defined in App.Formulas",
-          "A collection created with Collect()"
+          "A collection created with Collect() at app start"
         ],
         "correct": 2,
         "explain": "A named formula is defined once in the App.Formulas property and referenced by name anywhere in the app, so updating it in one place updates every control that references it."
@@ -56793,7 +56793,7 @@ const EXAMS = {
         "q": "After generating a page using natural language in a model-driven app, what accessibility-related feature runs automatically and can auto-remediate issues?",
         "options": [
           "The Solution Checker",
-          "The Power Platform admin center compliance scan",
+          "The Power Platform admin center compliance scan, which flags generated code for admins to fix",
           "The Dataverse audit log",
           "The accessibility assistant, which scans the generated code and offers an Auto fix option"
         ],
@@ -56846,7 +56846,7 @@ const EXAMS = {
         "options": [
           "Under Flows > Business process flows, not in Power Automate",
           "Inside AI Hub",
-          "Inside the Power Platform admin center only",
+          "Inside the Power Platform admin center only, not in Power Apps",
           "Exclusively inside Power Automate"
         ],
         "correct": 0,
@@ -56886,7 +56886,7 @@ const EXAMS = {
           "Delete records via voice command",
           "Ask natural-language questions about data they have permission to see, read-only",
           "Bypass security roles to view all data",
-          "Create and update records through natural language chat"
+          "Create and update records through natural language chat on rows they have permission to edit"
         ],
         "correct": 1,
         "explain": "Copilot chat is read-only — users can retrieve and explore data through natural language, but they can't create or update records through it."
@@ -56896,7 +56896,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Copilot chat is enabled at the environment level by a Power Platform administrator, but a specific app should not show it. What can a maker do?",
         "options": [
-          "Nothing — environment settings always override app settings",
+          "Nothing — environment settings always override app settings in the app designer, so Copilot chat stays on for every app",
           "Delete the app and recreate it",
           "Turn off the Copilot control setting for that specific app in the app designer's Settings > Upcoming tab",
           "Disable auditing for the app"
@@ -56910,7 +56910,7 @@ const EXAMS = {
         "q": "An autonomous agent built in Copilot Studio needs to interact with Dataverse data inside a model-driven app and post tasks that require human review. What must the agent be connected to, and where do those review tasks appear?",
         "options": [
           "The Dataverse Web API; tasks appear in the Solution Checker",
-          "The Copilot Studio topics editor; tasks appear in a Power BI dashboard",
+          "The Copilot Studio topics editor; tasks appear in a Power BI dashboard embedded in the app",
           "The Power Automate connector; tasks appear in an email inbox",
           "The Power Apps MCP (Model Context Protocol) server; tasks appear in the app's agent feed"
         ],
@@ -56923,7 +56923,7 @@ const EXAMS = {
         "q": "By default, which security roles can access the agent feed in a model-driven app?",
         "options": [
           "Only the agent's creator",
-          "Basic User and Environment Maker",
+          "Basic User and Environment Maker roles only",
           "All users automatically",
           "System Administrator and System Customizer"
         ],
@@ -56949,7 +56949,7 @@ const EXAMS = {
         "q": "A table has three forms tailored to different security roles. A user's security role doesn't match any of the role-tailored forms. Which form will they see?",
         "options": [
           "No form will be shown",
-          "The System Administrator's default form",
+          "The System Administrator's default form for the table",
           "A randomly selected form",
           "The fallback form designated for the table"
         ],
@@ -56975,7 +56975,7 @@ const EXAMS = {
         "q": "Which of the following is a correct constraint on custom pages in a model-driven app?",
         "options": [
           "It's recommended not to exceed 25 custom pages in a model-driven app, since more can increase first-launch wait time",
-          "Custom pages can only be displayed as a full page, never as a dialog",
+          "Custom pages can only be displayed as a full page, never as a dialog or side pane, which limits where users can open them",
           "Custom pages are less integrated with the app than embedded canvas apps",
           "Custom pages must be built entirely without connectors"
         ],
@@ -57089,7 +57089,7 @@ const EXAMS = {
           "Dual-write",
           "The 'Publish Copilots with AI features' setting",
           "Solution checker enforcement",
-          "Auditing at the environment level"
+          "Auditing at the environment level for that Pages site"
         ],
         "correct": 1,
         "explain": "Before agent features can be used in Power Pages, the tenant admin must turn on the 'Publish Copilots with AI features' setting in the Power Platform admin center."
@@ -57167,7 +57167,7 @@ const EXAMS = {
         "options": [
           "A trigger and one or more actions",
           "A table and a column",
-          "A model and a prompt",
+          "A model and one or more AI prompts",
           "A form and a view"
         ],
         "correct": 0,
@@ -57192,7 +57192,7 @@ const EXAMS = {
         "q": "A flow run fails and the error message contains the word 'Unauthorized' with an error code of 401. What is the most likely fix?",
         "options": [
           "Delete and recreate the entire flow",
-          "Upgrade the Power Automate pricing plan",
+          "Upgrade the Power Automate pricing plan, then resubmit the failed run",
           "Resubmit the run without changes",
           "Fix the connection associated with the failed step, then resubmit"
         ],
@@ -57231,7 +57231,7 @@ const EXAMS = {
         "q": "A user tries to sign in to Power Automate using a personal outlook.com account and cannot proceed. Why?",
         "options": [
           "Personal accounts require enabling AI Builder first",
-          "Outlook.com accounts require a separate Power Automate subscription",
+          "Outlook.com accounts require a separate Power Automate subscription for that personal account",
           "This is a temporary outage unrelated to account type",
           "Personal Microsoft accounts are no longer supported; a work or school account is required"
         ],
@@ -57324,7 +57324,7 @@ const EXAMS = {
           "It disables the trigger entirely",
           "It is the most limiting option — the flow only runs for rows owned by the triggering user",
           "It applies only to organization-owned tables",
-          "It is the default and lets any user's changes trigger the flow"
+          "It is the default and lets any user's changes trigger the flow — the least limiting scope option"
         ],
         "correct": 1,
         "explain": "The User scope option is the most limiting; the flow only runs if the row being modified is owned by the specific user, as opposed to Organization scope which is the default and least limiting."
@@ -57376,7 +57376,7 @@ const EXAMS = {
           "They're marked with a red asterisk; a column set as Business Required on the table drives this",
           "There is no visual indicator for required columns",
           "They're marked in italics; determined by whether the column is a lookup",
-          "They're marked with a blue checkmark; determined by the column's data type"
+          "They're marked with a blue checkmark beside the name; determined by the column's data type on the table"
         ],
         "correct": 0,
         "explain": "Required columns are indicated with a red asterisk next to the column name; a required column is any column on the table set up as Business Required."
@@ -57438,7 +57438,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A business process flow with branches needs to route differently depending on whether a customer prefers a new or pre-owned car AND has a budget above or below $20,000. Which logical operator combination is allowed within a single branching rule?",
         "options": [
-          "AND and OR can both be combined in the same rule",
+          "AND and OR can both be combined in the same rule, in whatever order is needed",
           "Only AND OR only OR — but not a combination of both — within one rule",
           "Only NOT is supported",
           "Branching rules can't use logical operators"
@@ -57452,7 +57452,7 @@ const EXAMS = {
         "q": "Which limit correctly describes business process flow branching guidelines?",
         "options": [
           "A process can span a maximum of 5 unique Dataverse tables, with a maximum of 30 stages and 30 steps per stage",
-          "Branches can merge partially, with some peer branches merging and others ending the process in the same rule",
+          "Branches can merge partially, with some peer branches merging and others ending the process within the same rule",
           "Each branch can be up to 50 levels deep",
           "A process can span unlimited tables but only 5 stages"
         ],
@@ -57490,7 +57490,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "When building a prompt in AI Builder's Prompt Builder, how does a maker add data grounding from Dataverse so the prompt can reference record fields?",
         "options": [
-          "Data grounding is automatic and requires no configuration",
+          "Data grounding is automatic and requires no configuration, since prompts can read all Dataverse tables",
           "By selecting + Add content and choosing Dataverse, then selecting the table and applying filters",
           "By enabling dual-write",
           "By writing raw SQL inside the prompt window"
@@ -57531,7 +57531,7 @@ const EXAMS = {
         "options": [
           "Select Finalize prompt and then Create AI plugin",
           "Convert the prompt to a Dataverse plug-in",
-          "Delete the prompt and rebuild it inside Topics",
+          "Delete the prompt and rebuild it inside Topics manually",
           "Enable dual-write for the environment"
         ],
         "correct": 0,
@@ -57596,7 +57596,7 @@ const EXAMS = {
         "options": [
           "Created in the Power Apps maker portal using a declarative drag-and-drop interface, defined at the table level",
           "Created via C# code, defined at the column level",
-          "Created in Copilot Studio, defined at the connector level",
+          "Created in the Copilot Studio designer using a declarative drag-and-drop interface, defined at the connector level",
           "Created in Power BI, defined at the environment level"
         ],
         "correct": 0,
@@ -57621,7 +57621,7 @@ const EXAMS = {
         "q": "A flow on the free plan triggers again only 5 minutes after its last run, but the plan only allows runs every 15 minutes. What happens?",
         "options": [
           "The run is queued until 15 minutes have passed since the last run",
-          "The trigger silently ignores the event with no record of it",
+          "The trigger silently ignores the event with no record of it in run history",
           "The run fails permanently with an error",
           "The flow is automatically deleted"
         ],
@@ -57648,7 +57648,7 @@ const EXAMS = {
         "options": [
           "By using a separate 'Relate' connector unrelated to Add/Update actions",
           "By using the Compose action",
-          "This can only be done through a Dataverse plug-in",
+          "This can only be done through a Dataverse plug-in written in C# and registered on the Contact table",
           "By updating the lookup column on the record being added or updated to reference the related row"
         ],
         "correct": 3,
@@ -57701,7 +57701,7 @@ const EXAMS = {
           "They are identical to business rules",
           "They can only run inside canvas apps",
           "They automate business processes without requiring user interaction",
-          "They require user interaction to run, like business process flows"
+          "They require user interaction to run, like business process flows do"
         ],
         "correct": 2,
         "explain": "Real-time workflows automate business processes without requiring user interaction, distinct from business rules (validation) and business process flows (guided, user-facing steps)."
@@ -57840,7 +57840,7 @@ const EXAMS = {
         "options": [
           "Only if the approver has a Copilot Studio license",
           "No, only email notifications are supported",
-          "Only for approvals triggered by a Dataverse row trigger",
+          "Only for approvals triggered by a Dataverse row trigger, not for flows started by any other trigger",
           "Yes — notifications can go out by email, the Approvals center, and optionally Microsoft Teams"
         ],
         "correct": 3,
@@ -57853,7 +57853,7 @@ const EXAMS = {
         "options": [
           "They continue running normally at no cost",
           "They run but generate no output",
-          "They automatically convert back to standard cloud flows",
+          "They automatically convert back to standard cloud flows until capacity returns",
           "New agent flow runs are blocked until capacity becomes available"
         ],
         "correct": 3,
