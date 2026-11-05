@@ -47231,7 +47231,7 @@ const EXAMS = {
         "options": [
           "Teams admin center and SharePoint admin center",
           "\"Teams Administrator\" in Entra/Azure portal and \"Teams service admin\" in the Microsoft 365 admin center",
-          "Teams Device Administrator and Skype for Business Administrator",
+          "Teams Device Administrator in Entra and Skype for Business Administrator in the Microsoft 365 admin center portal",
           "Global Administrator and Compliance Administrator"
         ],
         "correct": 1,
@@ -47308,7 +47308,7 @@ const EXAMS = {
         "q": "What does the Microsoft 365 network connectivity test tool flag as a failing threshold for Teams media connectivity?",
         "options": [
           "Jitter above 100ms only",
-          "Any packet loss greater than 0%",
+          "Any packet loss greater than 0%, latency above 500ms, or jitter above 100ms",
           "Packet loss above 1.00%, latency above 100ms, or jitter above 30ms",
           "Latency above 500ms only"
         ],
@@ -47322,7 +47322,7 @@ const EXAMS = {
         "options": [
           "No — it must be explicitly turned on via the Microsoft Defender portal or Set-AtpPolicyForO365 -EnableATPForSPOTeamsODB $true",
           "It is enabled only for Teams, not SharePoint/OneDrive",
-          "Yes, enabled by default for all Defender for Office 365 tenants",
+          "Yes, enabled by default for all Defender for Office 365 tenants, and it can only be turned off with Set-AtpPolicyForO365 -EnableATPForSPOTeamsODB $false",
           "It requires a separate third-party license to enable"
         ],
         "correct": 0,
@@ -47333,7 +47333,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A user in Teams clicks a malicious link flagged by Safe Links from a pinned tab. What happens?",
         "options": [
-          "Teams silently blocks the tab without any user notification",
+          "Teams silently blocks the tab without any user notification, and the option to open in a browser stays available",
           "A warning page appears inside the Teams tab interface, and the option to open in a browser is disabled",
           "The link opens normally in the default browser with no warning",
           "The tab is automatically removed from Teams"
@@ -47388,7 +47388,7 @@ const EXAMS = {
           "The privacy value set by the label remains, but it becomes user-changeable again once the label is removed",
           "The team is deleted",
           "The team automatically becomes Public again",
-          "Privacy settings cannot be locked by a label in the first place"
+          "Privacy settings cannot be locked by a label in the first place, so the value was always user-changeable by team owners"
         ],
         "correct": 0,
         "explain": "Public/Private privacy settings applied via a container-scoped sensitivity label lock the setting — it can only be changed by first removing the sensitivity label; after removal, the privacy value set by the label persists but becomes user-changeable again."
@@ -47398,7 +47398,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Which PowerShell approach is required to enable sensitivity labels for Groups & sites, given that Azure AD/MSOnline PowerShell modules are deprecated?",
         "options": [
-          "Sensitivity labels for Groups & sites cannot be enabled via PowerShell",
+          "Sensitivity labels for Groups & sites cannot be enabled via PowerShell, only through the Microsoft Purview portal settings page",
           "Use the Teams PowerShell module exclusively",
           "Use Microsoft Graph PowerShell to set EnableMIPLabels = True on the Group.Unified directory setting",
           "Use Set-CsTeamsClientConfiguration"
@@ -47424,7 +47424,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "By default, how long is Teams chat, channel, and file data retained if no retention policy is applied?",
         "options": [
-          "90 days for chats, indefinitely for channel messages",
+          "90 days for chats, indefinitely for channel messages, unless a user or admin deletes them first",
           "Indefinitely, unless explicitly deleted by a user, admin, or retention policy",
           "30 days, then automatically purged",
           "7 days for chats only"
@@ -47452,7 +47452,7 @@ const EXAMS = {
         "options": [
           "Retention wins over deletion — the content is never permanently deleted while any applicable policy says to retain it",
           "The most recently created policy always wins",
-          "Explicit policies always override retention policies regardless of scope",
+          "Explicit policies always override retention policies regardless of scope, so the delete-now policy removes the content right away",
           "The shortest deletion period wins, so the content is deleted"
         ],
         "correct": 0,
@@ -47479,7 +47479,7 @@ const EXAMS = {
           "SharePoint and OneDrive, since document content is stored there, not directly in Teams",
           "Microsoft Defender for Cloud Apps as the sole location",
           "Exchange Online only",
-          "No additional locations are needed — Teams alone is sufficient"
+          "No additional locations are needed — Teams alone is sufficient, since documents shared in chat are stored directly in Teams"
         ],
         "correct": 0,
         "explain": "DLP protection for shared documents requires the DLP policy to include SharePoint and OneDrive locations (not just Teams) in order to actually block the document from opening, since document content is stored in those backing services."
@@ -47516,7 +47516,7 @@ const EXAMS = {
         "q": "What is a prerequisite for using Microsoft Purview Information Barriers in Teams?",
         "options": [
           "A Teams Phone Standard license",
-          "Nothing — Information Barriers require no prerequisites",
+          "Nothing — Information Barriers require no prerequisites, since they apply automatically when a policy is created",
           "Disabling all guest access org-wide",
           "Scoped directory search must be enabled first, since Information Barriers rely on it"
         ],
@@ -47529,7 +47529,7 @@ const EXAMS = {
         "q": "An org wants Segment A to be able to communicate with Segment B, but not with any other segment. Which Information Barrier policy type and cmdlet parameter should be used?",
         "options": [
           "A Block policy using -SegmentsBlocked",
-          "Information Barriers cannot restrict communication to specific segments only",
+          "Information Barriers cannot restrict communication to specific segments only, so a Block policy is needed for every other segment",
           "An Allow policy using the -SegmentsAllowed parameter of New-InformationBarrierPolicy",
           "A single bidirectional policy covering all segments at once"
         ],
@@ -47543,7 +47543,7 @@ const EXAMS = {
         "options": [
           "All accounts are processed instantly",
           "50,000 accounts per hour",
-          "500 accounts per hour, with immediate effect",
+          "500 accounts per hour, with immediate effect, since processing starts as soon as the cmdlet has been run by an admin",
           "About 5,000 user accounts per hour, after an initial ~30 minute delay before processing begins"
         ],
         "correct": 3,
@@ -47556,7 +47556,7 @@ const EXAMS = {
         "options": [
           "Only a Teams Phone license is required",
           "No license required for either",
-          "Microsoft Entra ID P2 for both",
+          "Microsoft Entra ID P2 for both, with no alternative for any EDU tenants",
           "Microsoft Entra ID P1 (or Entra ID Basic EDU for naming policy)"
         ],
         "correct": 3,
@@ -47569,7 +47569,7 @@ const EXAMS = {
         "options": [
           "No notifications are sent; groups simply expire silently",
           "30 days before, 15 days before, and 1 day before expiration",
-          "Notifications are sent daily starting 60 days out",
+          "Notifications are sent daily starting 60 days out until the group is renewed",
           "Only a single email sent 7 days before expiration"
         ],
         "correct": 1,
@@ -47595,7 +47595,7 @@ const EXAMS = {
         "options": [
           "It depends on case sensitivity settings",
           "No — custom blocked words use exact word matching, not substring matching, so \"Pilot\" is allowed even though it contains \"lot\"",
-          "Yes, because \"lot\" is a substring of \"Pilot\"",
+          "Yes, because \"lot\" is a substring of \"Pilot\", and custom blocked words are matched anywhere inside a group name, not as exact words",
           "Blocked words only apply to prefixes, never to the group name itself"
         ],
         "correct": 1,
@@ -47609,7 +47609,7 @@ const EXAMS = {
           "Via the Teams activity feed, in addition to email — groups created via Planner or SharePoint are notified only by email",
           "Via a mandatory pop-up when opening any Microsoft 365 app",
           "Via a push notification to their mobile device only",
-          "Only via email — there is no other notification channel"
+          "Only via email — there is no other notification channel, whichever app the group was created in, including Planner and SharePoint"
         ],
         "correct": 0,
         "explain": "If a group was created via Teams, the owner is notified of expiration via the Teams activity feed in addition to email; groups created via Planner/SharePoint/other apps are notified only via email."
@@ -47622,7 +47622,7 @@ const EXAMS = {
           "Global administrator, Group administrator, Partner Tier 2 support, and Intune administrator",
           "Any User Administrator regardless of the group's role assignment",
           "Only Global Administrator can restore any group",
-          "Teams Service Administrator and Teams Device Administrator"
+          "Teams Service Administrator, Teams Device Administrator, Group administrator, and Partner Tier 1 support"
         ],
         "correct": 0,
         "explain": "Global administrator, Group administrator, Partner Tier 2 support, and Intune administrator can restore ANY deleted group; User administrator and Partner Tier 1 support can restore any group EXCEPT those with the Company Administrator role, and a regular user can only restore groups they own."
@@ -47634,7 +47634,7 @@ const EXAMS = {
         "options": [
           "Group policies cannot be assigned to security groups at all",
           "Nested groups always override the parent group's policy",
-          "It automatically cascades to members of nested/child groups",
+          "It automatically cascades to members of nested/child groups at every level of the group",
           "It propagates ONLY to direct members — not to members of nested groups"
         ],
         "correct": 3,
@@ -47647,7 +47647,7 @@ const EXAMS = {
         "options": [
           "The directly-assigned user policy wins; the directly-assigned policy must be removed before the user can inherit the group policy",
           "Both policies apply simultaneously, merging settings",
-          "The group policy always wins over a directly-assigned user policy",
+          "The group policy always wins over a directly-assigned user policy, so the direct assignment is ignored until the user leaves the group",
           "The org-wide global policy always overrides both"
         ],
         "correct": 0,
@@ -47713,7 +47713,7 @@ const EXAMS = {
           "SharePoint files remain — deleting a channel folder doesn't delete the underlying SharePoint library contents",
           "SharePoint files are permanently deleted along with the team",
           "Files are moved automatically to OneDrive",
-          "Only the channel's default folder is deleted, but all other files remain accessible externally"
+          "Only the channel's default folder is deleted, but all other files remain accessible externally through the team's public sharing link"
         ],
         "correct": 0,
         "explain": "When a team is deleted, SharePoint files remain — channel folder deletion doesn't delete the SharePoint library's contents. By contrast, Planner plans and Forms ARE deleted (should be exported/duplicated first to preserve them)."
@@ -47723,7 +47723,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "In the B2B/guest sharing governance chain (Entra ID > M365 admin center > Teams > SharePoint), what happens if guest sharing is disabled at the Entra ID level?",
         "options": [
-          "Only SharePoint sharing is affected; Teams guest access remains unaffected",
+          "Only SharePoint sharing is affected; Teams guest access remains unaffected, since each layer of the chain keeps to its own more permissive setting regardless of Entra ID",
           "It overrides any more permissive sharing setting configured elsewhere in the chain, since Entra ID B2B settings sit at the top of the governance hierarchy",
           "It has no effect on downstream settings",
           "Guest sharing settings in each layer are fully independent of one another"
@@ -47763,7 +47763,7 @@ const EXAMS = {
         "q": "What must be configured in Microsoft Entra cross-tenant access settings to support shared channels with an external organization using B2B direct connect?",
         "options": [
           "B2B direct connect settings, which are distinct from standard B2B collaboration/guest access and default to Block access (inbound/outbound)",
-          "Nothing extra beyond standard B2B collaboration/guest access settings",
+          "Nothing extra beyond standard B2B collaboration/guest access settings, since B2B direct connect inherits those and defaults to Allow access (inbound/outbound)",
           "A dedicated Conditional Access policy per external tenant",
           "Only the SharePoint admin center sharing policy"
         ],
@@ -47789,7 +47789,7 @@ const EXAMS = {
         "q": "Can a OneDrive sharing setting be configured to be more permissive than the SharePoint organization-level sharing setting?",
         "options": [
           "Only if OneDrive has a separate license applied",
-          "This restriction only applies to guest accounts, not anonymous links",
+          "This restriction only applies to guest accounts, not anonymous links, so OneDrive can go beyond the SharePoint org-level setting for those",
           "No — the OneDrive sharing setting cannot exceed the permissiveness of the SharePoint org-level setting",
           "Yes, they are independent settings"
         ],
@@ -47816,7 +47816,7 @@ const EXAMS = {
         "options": [
           "Basic licenses are limited to 5 rooms per organization",
           "Up to 25 Basic licenses per organization; beyond that, additional rooms require Pro licenses",
-          "No limit — Basic licenses can be used for unlimited rooms",
+          "No limit — Basic licenses can be used for unlimited rooms, with Pro licenses being an optional upgrade only",
           "Basic licenses require a minimum of 25 rooms to activate"
         ],
         "correct": 1,
@@ -47828,7 +47828,7 @@ const EXAMS = {
         "q": "What is required for a Microsoft Teams Room to make and receive PSTN calls (dial numbers directly)?",
         "options": [
           "A Teams Rooms Basic license only",
-          "No additional licensing is needed beyond the room account itself",
+          "No additional licensing is needed beyond the room account itself, since a Teams Rooms Basic license already includes a Domestic Calling Plan for each room",
           "Only an Exchange room mailbox is required",
           "A Teams Rooms Pro license plus a Domestic or International Calling Plan (unless using Direct Routing or Operator Connect instead)"
         ],
@@ -47853,7 +47853,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What are the default firmware auto-update deferral options for Teams devices, and which is the default?",
         "options": [
-          "Defer 7 days or defer 14 days, with 7 days as default",
+          "Defer 7 days or defer 14 days, with 7 days as default for all devices",
           "Updates are always manual; there is no auto-update option",
           "Only immediate updates are supported",
           "As soon as available, defer 30 days (default), or defer 90 days"
@@ -47932,7 +47932,7 @@ const EXAMS = {
         "q": "A team is deleted that had a Dataverse for Teams environment. What happens to that environment?",
         "options": [
           "Dataverse for Teams environments cannot be attached to a team in the first place",
-          "It is automatically converted to a standalone Power Apps environment",
+          "It is automatically converted to a standalone Power Apps environment, whether or not a full Dataverse database was added",
           "It persists indefinitely regardless of the team's status",
           "It is deleted along with the team, unless it was upgraded to a full Dataverse database environment first"
         ],
@@ -47959,7 +47959,7 @@ const EXAMS = {
         "options": [
           "A DL created within the last 24 hours",
           "A DL that is on-premises managed, or is nested (has child groups or is a member of another group)",
-          "A DL with a single owner and standard mail-enabled security members",
+          "A DL with a single owner and standard mail-enabled security members, created in Exchange Online within the last year",
           "A DL with fewer than 10 members"
         ],
         "correct": 1,
@@ -47983,7 +47983,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which admin center is used to control default (Planner, Praise, Weather) and external third-party Teams apps org-wide?",
         "options": [
-          "The Power Platform admin center",
+          "The Power Platform admin center, under Environments > App settings",
           "The SharePoint admin center",
           "The Teams admin center exclusively",
           "The Microsoft 365 admin center, under Tenant-wide settings > Apps"
@@ -48075,7 +48075,7 @@ const EXAMS = {
         "q": "Do users need to be voice-enabled to receive calls from a cloud auto attendant versus a cloud call queue?",
         "options": [
           "Voice-enablement is required for both",
-          "Only call queue agents need Teams Phone licensing, not voice-enablement",
+          "Only call queue agents need Teams Phone licensing, not voice-enablement, while auto attendant call recipients need both of them to receive calls",
           "Users do NOT need to be voice-enabled to receive auto attendant calls, but DO need to be voice-enabled to receive call queue calls",
           "Neither requires voice-enablement"
         ],
@@ -48088,7 +48088,7 @@ const EXAMS = {
         "q": "Does Cloud Voicemail require a Teams Phone license or voice-enablement to use?",
         "options": [
           "Only voice-enablement is required, not a license",
-          "Cloud Voicemail requires a separate standalone purchase",
+          "Cloud Voicemail requires a separate standalone purchase, and transcription must then be enabled by an admin for each user individually",
           "No — Cloud Voicemail does not require a Teams Phone license nor voice-enablement, and transcription is enabled by default",
           "Yes, both are mandatory prerequisites"
         ],
@@ -48113,7 +48113,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is the formula for how many Calling Plan user phone numbers a tenant can acquire?",
         "options": [
-          "A fixed cap of 100 numbers regardless of license count",
+          "A fixed cap of 100 numbers regardless of license count, plus 10 additional numbers",
           "Exactly one number per licensed user, no more",
           "(Total Calling Plan licenses × 1.1) + 10 additional numbers",
           "(Total licenses / 2) + 5"
@@ -48142,7 +48142,7 @@ const EXAMS = {
           "Port requests are limited to one number at a time",
           "Port requests cannot include toll-free numbers",
           "Each port request must be for numbers from a single provider and a single number type (user vs. service) only",
-          "Numbers can come from multiple providers and mix user/service types freely"
+          "Numbers can come from multiple providers and mix user/service types freely, as long as they're all in a single country"
         ],
         "correct": 2,
         "explain": "Each port request must be for numbers from a single provider and a single number type only — you cannot mix providers or mix user and service number types within one request."
@@ -48218,7 +48218,7 @@ const EXAMS = {
         "q": "What happens if a user has a dedicated/personal phone number assigned while also being configured for Shared Calling?",
         "options": [
           "The Shared Calling policy has no effect — the user is treated as a standard voice user instead",
-          "Shared Calling and the personal number both work simultaneously with no conflict",
+          "Shared Calling and the personal number both work simultaneously with no conflict, with outbound calls using the shared number",
           "The personal number is automatically removed",
           "This configuration is blocked by the system entirely"
         ],
@@ -48233,7 +48233,7 @@ const EXAMS = {
           "Nothing further is needed",
           "A Teams Rooms Pro license",
           "A funded Pay-As-You-Go Calling Plan license OR Communications Credits",
-          "A Microsoft 365 Copilot license"
+          "A Microsoft 365 Copilot license, or a Teams Rooms Pro license on the account"
         ],
         "correct": 2,
         "explain": "Resource accounts that place outbound PSTN calls need an additional license beyond the base Teams Phone Resource Account license — a funded PAYG Calling Plan or Communications Credits — otherwise outbound calls from those accounts fail."
@@ -48259,7 +48259,7 @@ const EXAMS = {
           "Serial; it disables presence-based routing",
           "Longest Idle; selecting it automatically enables presence-based routing even if the toggle visually appears off",
           "Round Robin; it has no effect on presence settings",
-          "Attendant; presence-based routing is not related to this method"
+          "Attendant; presence-based routing is not related to this method, so the toggle keeps whatever value is shown to the admin"
         ],
         "correct": 1,
         "explain": "Longest Idle routes to the agent idle longest based on Available presence status — selecting this method automatically enables presence-based routing even if the toggle in the interface visually appears off."
@@ -48269,7 +48269,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Which feature is a hard requirement for both compliance recording of call queues and Monitor/Whisper/Barge/Takeover functionality?",
         "options": [
-          "The queue must use the Serial routing method",
+          "The queue must use the Serial routing method for its agents",
           "A minimum of 20 agents must be assigned",
           "Presence-based routing must be disabled",
           "Conference mode must be enabled on the call queue"
@@ -48311,7 +48311,7 @@ const EXAMS = {
           "SIP Gateway or Teams Rooms Basic",
           "Purchasing a Microsoft Calling Plan, or using existing on-premises telephony via Direct Routing",
           "VoIP passthrough or satellite calling",
-          "Only Microsoft Calling Plans — no alternative exists"
+          "Only Microsoft Calling Plans — no alternative exists, since Direct Routing is limited to on-premises calls between sites"
         ],
         "correct": 1,
         "explain": "Connecting Phone System to PSTN has exactly two methods: purchasing a Microsoft Calling Plan, or using existing on-premises telephony infrastructure via Direct Routing."
@@ -48322,7 +48322,7 @@ const EXAMS = {
         "q": "What is required for a Teams Room to have PSTN dial-out voice capability configured via PowerShell?",
         "options": [
           "Room accounts cannot be voice-enabled at all",
-          "Manual dialing only; PSTN cannot be configured via PowerShell for rooms",
+          "Manual dialing only; PSTN cannot be configured via PowerShell for rooms, so numbers must be entered on the device itself",
           "The Set-CsPhoneNumberAssignment cmdlet with -EnterpriseVoiceEnabled $true and a PhoneNumberType parameter",
           "The New-CsOnlinePSTNGateway cmdlet exclusively"
         ],
@@ -48335,7 +48335,7 @@ const EXAMS = {
         "q": "Which roles can access the Teams usage reports in the Teams admin center?",
         "options": [
           "Teams Device Administrator only",
-          "Only Global Administrator",
+          "Only Global Administrator, with no access for Global reader or Teams admin",
           "Any licensed Teams user",
           "Global admin, Global reader, Teams admin, or Skype for Business admin"
         ],
@@ -48386,7 +48386,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "How frequently is Adoption Score updated, and what time window does it reflect?",
         "options": [
-          "Updated in real-time, reflecting only the current day",
+          "Updated in real-time, reflecting only the current day and none of the trailing days",
           "Updated daily, reflecting the trailing 28 days (including the current day)",
           "Updated monthly, reflecting the trailing year",
           "Updated weekly, reflecting the trailing 90 days"
@@ -48426,7 +48426,7 @@ const EXAMS = {
         "q": "In the Microsoft 365 network connectivity dashboard, what does a network assessment score of 80 or above represent?",
         "options": [
           "\"Meets recommendations\" — a healthy baseline above which regular connectivity complaints shouldn't occur",
-          "The maximum possible score, which is 80, not 100",
+          "The maximum possible score, which is 80, not 100, so regular connectivity complaints shouldn't occur at this level",
           "A failing score requiring immediate remediation",
           "A score reserved only for Teams Rooms devices"
         ],
@@ -48438,7 +48438,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "For Teams specifically, how is the network quality score derived from UDP metrics in the connectivity dashboard?",
         "options": [
-          "A single instantaneous UDP latency reading is used directly as the score",
+          "A single instantaneous UDP latency reading is used directly as the score, and the jitter and packet loss values from the previous 3 days are only displayed for reference",
           "The score is a simple average of the last 30 days with no weighting",
           "Only packet loss is measured; jitter and latency are ignored for Teams",
           "The median (P50) of UDP latency, jitter, and packet loss over the previous 3 days is converted to a mean opinion score (1-5), then mapped to the 0-100 scale"
@@ -48479,7 +48479,7 @@ const EXAMS = {
         "options": [
           "The Web client produces Debug logs only; desktop clients produce Debug, Media, and Desktop logs",
           "Only Media logs are produced by any client",
-          "The Web client produces all three log types just like desktop clients",
+          "The Web client produces all three log types just like desktop clients: Debug, Media, and Desktop logs",
           "The Web client produces no logs at all"
         ],
         "correct": 0,
@@ -48492,7 +48492,7 @@ const EXAMS = {
         "options": [
           "All CPUs have it on by default",
           "Apple M1, Intel Xeon, Intel i9 (except U/G7/M/MQ series), and 6th-gen+ Intel i7 (except U/G7/M/MQ series)",
-          "Media logging cannot be enabled on any CPU by default",
+          "Media logging cannot be enabled on any CPU by default, so the diagnostics setting must always be turned on by hand by each user",
           "Only ARM-based processors"
         ],
         "correct": 1,
@@ -48506,7 +48506,7 @@ const EXAMS = {
           "Restart the Mac; no manual cache deletion is possible",
           "Delete the AppData folder while Teams is running",
           "Quit Teams (Cmd+Q), then run: rm -r ~/Library/Application Support/Microsoft/Teams",
-          "Use Disk Utility to reformat the Teams cache partition"
+          "Use Disk Utility to reformat the Teams cache partition after quitting Teams with Cmd+Q"
         ],
         "correct": 2,
         "explain": "On Mac, quit Teams first via Cmd+Q, then run rm -r ~/Library/Application\\ Support/Microsoft/Teams to clear the cache; clearing cache never causes user data loss, but Teams takes longer to restart afterward while cache rebuilds."
@@ -48623,7 +48623,7 @@ const EXAMS = {
           "Immediately reinstall the desktop client without further diagnosis",
           "Compare the user's Teams version against a colleague's version",
           "Have the user try the Teams web app in a browser — if the browser works, the issue is scoped to the desktop client; if the browser also fails, check Microsoft 365 admin center service health",
-          "Ask the user to restart their computer and see if that resolves it, with no further steps"
+          "Ask the user to restart their computer and see if that resolves it, with no further steps; if the issue remains, reinstall the desktop client, since service health is only relevant to admins and not to individual user reports"
         ],
         "correct": 2,
         "explain": "To isolate desktop-client-specific vs. service-wide issues, have the user try the Teams web app in a browser (e.g., Edge) — if the browser works, the problem is scoped to the desktop client; if the browser also fails, check Microsoft 365 admin center service health."
@@ -48649,7 +48649,7 @@ const EXAMS = {
           "16 GB minimum is mandatory for any Teams usage",
           "8 GB total, since Teams needs a dedicated 4 GB on top of other system requirements",
           "RAM is irrelevant to Teams performance",
-          "2 GB total, since Teams uses very little memory"
+          "2 GB total, since Teams uses very little memory and leaves room for other system needs"
         ],
         "correct": 1,
         "explain": "Teams' minimum requirement is 4.0 GB RAM, but because this 4 GB is needed ON TOP OF other system requirements, the practical recommended minimum for a user's whole machine is 8 GB RAM."
