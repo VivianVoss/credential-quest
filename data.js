@@ -25469,7 +25469,7 @@ const EXAMS = {
         "q": "Which term describes the classical migration approach, where a heterogeneous system copy is performed first and an SAP upgrade follows afterward as a separate step?",
         "options": [
           "A downtime-optimized DMO",
-          "A one-step migration (DMO with system move option)",
+          "A one-step migration (DMO with system move option) using a single tool",
           "A two-step migration (lift and shift followed by DMO)",
           "A zero-downtime migration"
         ],
@@ -25482,7 +25482,7 @@ const EXAMS = {
         "q": "In the DMO vs. classical migration comparison, which statement about migration expertise requirements is accurate?",
         "options": [
           "Both approaches mandate identical certification requirements",
-          "DMO requires mandatory OS/DB certification, while classical migration does not",
+          "DMO requires mandatory OS/DB certification, while classical migration does not mandate it (though it's highly recommended)",
           "Neither approach requires OS/DB expertise",
           "Classical migration requires mandatory OS/DB certification, while DMO does not mandate it (though it's recommended)"
         ],
@@ -25507,7 +25507,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "During export/import, how many SAP application servers can be used to parallelize the process under DMO, compared to classical migration?",
         "options": [
-          "DMO allows unlimited application servers, while classical migration allows only one",
+          "DMO permits unlimited application servers for export/import, while classical migration allows only one application server",
           "Both are restricted to exactly two application servers",
           "DMO permits only one application server for export/import, while classical migration allows multiple application servers",
           "Both permit unlimited application servers"
@@ -25573,7 +25573,7 @@ const EXAMS = {
         "q": "Which set of tasks is used to translate business requirements into governance for SAP workloads on Azure, organizing management groups, subscriptions, and resource groups?",
         "options": [
           "Configuring Pacemaker and STONITH",
-          "Designing an Azure Site Recovery plan",
+          "Designing an Azure Site Recovery plan for SAP",
           "Building a DMO comparison table",
           "Designing an Azure landing zone for SAP"
         ],
@@ -25613,7 +25613,7 @@ const EXAMS = {
         "options": [
           "Design and configure ExpressRoute for hybrid connectivity",
           "Configure an Azure fence agent",
-          "Configure Write Accelerator for HANA log volumes",
+          "Configure Write Accelerator for HANA log volumes on M-series SAP database virtual machines",
           "Design and implement integration of data management services such as data archiving"
         ],
         "correct": 3,
@@ -25663,7 +25663,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which of these is explicitly listed as a task for identifying target infrastructure requirements before migrating SAP to Azure?",
         "options": [
-          "Monitor networking by using Azure Network Watcher",
+          "Monitor networking by using Azure Network Watcher and Azure Monitor after migration",
           "Assess constraints imposed by subscription models and quota limits",
           "Configure Pacemaker and STONITH",
           "Manage backups by using Azure Backup"
@@ -25676,7 +25676,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Alongside specifying an Azure support plan, which other task in the migration domain relates directly to cost planning?",
         "options": [
-          "Design service endpoints for Azure Storage",
+          "Design service endpoints for Azure Storage accounts",
           "Perform backup and restore",
           "Configure Write Accelerator",
           "Identify cost implications for target workloads"
@@ -25692,7 +25692,7 @@ const EXAMS = {
           "Configure clustering for SQL",
           "Identify software licensing requirements for target workloads",
           "Configure Azure Monitor for SAP solutions",
-          "Design a backup strategy to meet SLA requirements"
+          "Design a backup strategy to meet SLA requirements for target workloads"
         ],
         "correct": 1,
         "explain": "The study guide's migration domain explicitly lists 'Identify software licensing requirements for target workloads' as a target-infrastructure requirement."
@@ -26276,7 +26276,7 @@ const EXAMS = {
         "options": [
           "Write latency against Azure premium disks",
           "Network bandwidth between subnets",
-          "CPU utilization on the application tier",
+          "CPU utilization on the application tier VMs",
           "Read throughput for backup jobs"
         ],
         "correct": 0,
@@ -26287,7 +26287,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "When multiple Azure Premium SSDs are striped together (for example with Windows Storage Spaces or Linux LVM/MDADM) and Write Accelerator is required, how must it be enabled?",
         "options": [
-          "Write Accelerator is enabled automatically for the entire striped volume as one operation",
+          "Write Accelerator is enabled automatically for the entire striped volume as one operation across all disks",
           "Write Accelerator cannot be used with striped volumes",
           "All disks in the striped volume must be enabled or disabled for Write Accelerator in separate steps",
           "Only the first disk in the stripe needs Write Accelerator enabled"
@@ -26431,7 +26431,7 @@ const EXAMS = {
         "q": "Which of these is a named skill under 'Design and implement a compute solution for SAP workloads' relating to selecting the right VM for a workload?",
         "options": [
           "Configure Write Accelerator",
-          "Design name resolution for integration with Azure DNS",
+          "Design name resolution for integration with Azure DNS across SAP virtual networks",
           "Choose an SAP-certified Azure virtual machine for a given SAP workload",
           "Design and implement volumes by using Azure Files"
         ],
@@ -26482,7 +26482,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What is the primary purpose of the STONITH fencing mechanism used by Pacemaker on Linux SAP clusters?",
         "options": [
-          "To balance network load across cluster nodes",
+          "To balance network load across cluster nodes when a node stops responding",
           "To prevent cluster file corruption by shutting down a failed node",
           "To back up cluster configuration files",
           "To encrypt data in transit between cluster nodes"
@@ -26627,7 +26627,7 @@ const EXAMS = {
         "options": [
           "Azure Site Recovery orchestration",
           "A Pacemaker framework with a STONITH fencing agent device",
-          "Windows Server Failover Clustering with Cloud Witness",
+          "Windows Server Failover Clustering with Cloud Witness across both cluster VMs",
           "SIOS DataKeeper Cluster Edition alone"
         ],
         "correct": 1,
@@ -26651,7 +26651,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "When configuring SAP HANA System Replication with automatic failover, why must the VM SKU be identical for the primary and secondary virtual machines?",
         "options": [
-          "Different SKUs are technically incompatible with HANA replication network protocols",
+          "Different SKUs are technically incompatible with HANA replication network protocols used between the primary and secondary VMs",
           "The scenario is designed for a hot-standby secondary that must handle the full production load identically upon failover",
           "Azure enforces identical SKUs for all VMs in the same virtual network",
           "It's only a licensing requirement, not a technical one"
@@ -26690,7 +26690,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "How does AZ-120 training describe achieving high availability for SAP HANA scale-out configurations on Azure?",
         "options": [
-          "Relying exclusively on manual failover procedures",
+          "Relying exclusively on manual failover procedures performed on each SAP HANA node",
           "Relying on Azure Front Door health probes",
           "Relying on Windows Server Failover Clustering only",
           "Relying on Azure VM service healing and restarting the SAP HANA instance"
@@ -26848,7 +26848,7 @@ const EXAMS = {
         "options": [
           "Accelerated Networking is incompatible with any Azure Site Recovery scenario",
           "ASR doesn't support replicating the Accelerated Networking configuration setting on Azure virtual machines",
-          "ASR requires Accelerated Networking to be enabled on all replicated VMs",
+          "ASR requires Accelerated Networking to be enabled on all replicated VMs before replication to the target region begins",
           "ASR automatically enables Accelerated Networking after failover"
         ],
         "correct": 1,
@@ -27042,7 +27042,7 @@ const EXAMS = {
         "q": "Which maintain-domain skill involves adjusting a running SAP VM's size to better match actual workload demand?",
         "options": [
           "Optimize performance and costs by resizing Azure virtual machines",
-          "Configure the Azure VM extension for SAP solutions",
+          "Configure the Azure VM extension for SAP solutions on each SAP virtual machine",
           "Choose an SAP-certified Azure virtual machine",
           "Design and implement caching for disks"
         ],
@@ -27054,7 +27054,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which technique does the study guide list for improving data performance while also reducing costs on aging SAP data?",
         "options": [
-          "Enable Accelerated Networking on all VMs",
+          "Enable Accelerated Networking on all VMs in the SAP landscape",
           "Configure an Azure fence agent",
           "Design Azure landing zones for SAP",
           "Optimize data performance by using archiving"
@@ -27067,7 +27067,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which maintain-domain skill focuses on monitoring the health of clustered SAP components, such as Pacemaker or WSFC clusters, using Azure Monitor?",
         "options": [
-          "Monitor storage by using Azure Monitor",
+          "Monitor storage by using Azure Monitor across all SAP disks",
           "Monitor high availability by using Azure Monitor",
           "Perform backup and restore",
           "Configure Write Accelerator"
@@ -27109,7 +27109,7 @@ const EXAMS = {
           "Optimize performance and costs of SAP application servers and databases",
           "Design and implement network security",
           "Configure encryption for storage, disks, and data",
-          "Automate a deployment by using the SAP Deployment Automation Framework"
+          "Automate a deployment by using the SAP Deployment Automation Framework (SDAF)"
         ],
         "correct": 0,
         "explain": "The study guide separately lists 'Optimize performance and costs of SAP application servers and databases' from VM resizing, storage cost optimization, and archiving, reflecting an application/database-tier optimization focus."
@@ -27186,7 +27186,7 @@ const EXAMS = {
         "options": [
           "Monitor Azure virtual machines by using Azure Monitor",
           "Optimize storage costs",
-          "Analyze and optimize network performance",
+          "Analyze and optimize network performance for SAP workloads",
           "Optimize data performance by using archiving"
         ],
         "correct": 0,
