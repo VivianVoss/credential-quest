@@ -4463,7 +4463,7 @@ const EXAMS = {
           "To encrypt the password so it can be decrypted later during sign-in",
           "To ensure two users with the same password produce different hashes, defeating precomputed rainbow table attacks",
           "To reduce the amount of storage needed for the password database",
-          "To make the hash reversible so the original password can be recovered if needed"
+          "To make the hash reversible so the original password can be recovered if a user forgets it and contacts the help desk"
         ],
         "correct": 1,
         "explain": "Salting adds a unique random value to each password before hashing so that identical passwords produce different hashes, making precomputed rainbow tables ineffective since attackers would need a separate table per salt. Hashing remains one-way and isn't reversible even with a salt, and salting isn't about encryption or storage efficiency."
@@ -4580,7 +4580,7 @@ const EXAMS = {
           "The trust automatically expires after a single sign-in session",
           "The trust only works if both organizations use the exact same identity provider software",
           "The trust is one-directional; the partner organization would need a separate trust configured to access the first organization's resources",
-          "The trust is automatically bidirectional, so both organizations can access each other's resources"
+          "The trust is automatically bidirectional, so both organizations can access each other's resources without any further configuration on either side"
         ],
         "correct": 2,
         "explain": "The module explicitly states that trust relationships aren't automatically bidirectional - if Organization A trusts Organization B, that doesn't mean Organization B automatically trusts Organization A; a two-way trust must be explicitly configured. Federation works across different vendors and platforms via standard protocols, and trust relationships are ongoing configurations, not single-session grants."
@@ -4629,9 +4629,9 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which of the following is an example of a workload identity in Microsoft Entra ID?",
         "options": [
-          "A security group containing employees",
+          "A security group containing employees who need access to a storage account",
           "A device joined to Microsoft Entra ID",
-          "A guest user invited via B2B collaboration",
+          "A guest user invited via B2B collaboration to work with files in a SharePoint site",
           "A managed identity used by an Azure virtual machine to access a storage account"
         ],
         "correct": 3,
@@ -4644,7 +4644,7 @@ const EXAMS = {
         "options": [
           "It is automatically converted into a user-assigned managed identity",
           "Nothing changes; the identity remains available for reassignment",
-          "It must be deleted manually because its lifecycle is independent of the resource",
+          "It must be deleted manually by an administrator because its lifecycle is independent of the resource it was enabled on",
           "It is automatically deleted, because a system-assigned managed identity's lifecycle is tied to the resource"
         ],
         "correct": 3,
@@ -4752,8 +4752,8 @@ const EXAMS = {
         "options": [
           "Device-bound passkeys are less phishing-resistant than synced passkeys",
           "Device-bound passkeys' private keys never leave the physical device (e.g., a FIDO2 security key); synced passkeys' private keys are synced across devices via a cloud provider like iCloud Keychain",
-          "Synced passkeys require a hardware security key, while device-bound passkeys work only inside Microsoft Authenticator",
-          "Synced passkeys can only be used for secondary authentication, never as a primary method"
+          "Synced passkeys' private keys are stored on a single hardware security key and never leave it; device-bound passkeys' private keys are copied across devices and work only inside Microsoft Authenticator",
+          "Synced passkeys can only be used for secondary authentication, never as a primary method, while device-bound passkeys can only be used as the primary method"
         ],
         "correct": 1,
         "explain": "Device-bound passkeys (FIDO2 security keys, passkeys in Authenticator) keep the private key on one device; synced passkeys sync the private key across a user's devices through a cloud passkey provider such as Apple iCloud Keychain or Google Password Manager."
@@ -4795,7 +4795,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "An organization enables Microsoft Entra security defaults on a newly created tenant. Which of the following is NOT something security defaults enforce?",
         "options": [
-          "Requiring all users to register for multifactor authentication",
+          "Requiring all users to register for multifactor authentication so they can respond to MFA prompts when needed",
           "Requiring administrators to perform multifactor authentication",
           "Granular, condition-based policies that vary MFA requirements by user risk level or location",
           "Blocking legacy authentication protocols"
@@ -4822,7 +4822,7 @@ const EXAMS = {
         "q": "A user's phone, which held their only registered MFA method, is lost, and they have no other authentication methods available to sign in. Which Microsoft Entra capability is designed to help them regain access in this specific total-lockout scenario?",
         "options": [
           "Password writeback",
-          "Self-service password reset (SSPR)",
+          "Self-service password reset (SSPR), using a registered sign-in method",
           "Conditional Access session controls",
           "Microsoft Entra account recovery, using identity verification"
         ],
@@ -4875,7 +4875,7 @@ const EXAMS = {
         "options": [
           "They are evaluated with AND logic -- all configured assignments must be satisfied to trigger the policy",
           "Only the first matching condition is evaluated, and the rest are ignored",
-          "They are evaluated with OR logic -- any one condition being true triggers the policy",
+          "They are evaluated with OR logic -- any one condition being true triggers the policy, even if the others are not met",
           "Administrators must manually choose either AND or OR logic when creating the policy"
         ],
         "correct": 0,
@@ -5021,7 +5021,7 @@ const EXAMS = {
         "q": "In Microsoft Entra ID Governance's approach to AI agent identity lifecycle, what happens to sponsorship of an agent identity if its human sponsor leaves the organization?",
         "options": [
           "Sponsorship automatically transfers to the sponsor's manager, ensuring continuous human oversight",
-          "The agent continues operating with no sponsor until an admin manually assigns one",
+          "The agent continues operating with no accountable sponsor until an admin notices and manually assigns one",
           "The agent identity is immediately and permanently deleted",
           "The agent's permissions are automatically elevated to compensate"
         ],
@@ -5168,7 +5168,7 @@ const EXAMS = {
         "q": "Azure DDoS Protection defends resources at which network layers, and what additional service is needed to protect against application-layer (layer 7) attacks such as HTTP floods?",
         "options": [
           "Layers 5 and 6; add Azure Bastion",
-          "Layers 3 through 7; no additional service is needed",
+          "Layers 3 through 7; no additional service is ever needed",
           "Layers 3 and 4; add a Web Application Firewall (WAF)",
           "Layer 7 only; add Azure Firewall"
         ],
@@ -5195,7 +5195,7 @@ const EXAMS = {
         "options": [
           "A service that only filters outbound SMTP traffic",
           "A managed, cloud-based, stateful network security service best deployed on a centralized virtual network",
-          "A distributed, per-subnet traffic filter with no built-in high availability",
+          "A distributed, per-subnet traffic filter with no built-in high availability, deployed on every virtual network",
           "A browser-based tool for connecting to VMs without exposing RDP/SSH"
         ],
         "correct": 1,
@@ -5261,7 +5261,7 @@ const EXAMS = {
           "It requires a site-to-site VPN gateway",
           "It travels over the Azure backbone network, not the public internet",
           "It always routes over the public internet",
-          "It's only supported within the same Azure region"
+          "It's only supported between virtual networks in the same Azure region"
         ],
         "correct": 1,
         "explain": "Traffic between peered virtual networks uses the Azure backbone network rather than the public internet, keeping it private and low-latency. Global virtual network peering also supports connecting VNets across different Azure regions."
@@ -5272,9 +5272,9 @@ const EXAMS = {
         "q": "How does an Azure network security group (NSG) decide whether to allow or deny a piece of traffic?",
         "options": [
           "It evaluates rules by priority using source, source port, destination, destination port, and protocol, stopping at the first match",
-          "It uses machine learning to predict intent",
+          "It uses machine learning to predict intent from the source, the destination, and past traffic patterns",
           "It checks only the destination port",
-          "It always applies the rule with the highest priority number first"
+          "It always applies the rule with the highest priority number first, then continues through every remaining rule and combines their results"
         ],
         "correct": 0,
         "explain": "NSG rules are evaluated in priority order (lower number = higher priority) using five properties: source, source port, destination, destination port, and protocol. Once traffic matches a rule, processing stops and no further rules are evaluated."
@@ -5286,7 +5286,7 @@ const EXAMS = {
         "options": [
           "Yes, they can be freely deleted at any time",
           "Yes, but only by a Global Administrator",
-          "No, and there is no way to change their effective behavior",
+          "No, and there is no way to change their effective behavior, because any new rules are evaluated after them",
           "No, but they can be overridden by creating new rules with a higher priority (lower priority number)"
         ],
         "correct": 3,
@@ -5358,7 +5358,7 @@ const EXAMS = {
           "Authentication is via NSGs; authorization is via Azure Bastion",
           "Authentication and authorization are both handled by Azure Firewall",
           "Authentication is via Microsoft Entra ID; authorization is via Azure RBAC or Key Vault access policy",
-          "Authentication and authorization are both handled by the Microsoft cloud security benchmark"
+          "Authentication and authorization are both handled by the Microsoft cloud security benchmark's controls"
         ],
         "correct": 2,
         "explain": "Access to Key Vault requires authentication, which establishes caller identity via Microsoft Entra ID, and authorization, which determines allowed operations via Azure role-based access control (RBAC) or Key Vault access policy."
@@ -5401,7 +5401,7 @@ const EXAMS = {
         "q": "What does 'shift-left security' mean in the context of Defender for DevOps?",
         "options": [
           "Disabling security scans in production environments",
-          "Moving all security responsibility to the operations team after deployment",
+          "Moving all security responsibility to the operations team after deployment, so developers no longer have to think about it",
           "Shifting monitoring from cloud to on-premises tools",
           "Moving security checks earlier in the development lifecycle so issues are caught while code is still being written"
         ],
@@ -5439,10 +5439,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In Microsoft Defender for Cloud, what is the correct relationship between a policy definition, a security initiative, and an assignment?",
         "options": [
-          "An assignment is a rule; policy definitions are only documentation",
+          "An assignment is a rule about a specific condition; policy definitions are only documentation that describes it and have no effect on resources",
           "A policy definition is a rule about a specific condition; a security initiative groups related policy definitions; the initiative or policy is then assigned to a scope of resources",
           "Initiatives and assignments are the same thing",
-          "A security initiative is a single rule; a policy definition groups initiatives together"
+          "A security initiative is a single rule about a specific condition; a policy definition groups related initiatives together; the policy then takes effect without being assigned to any scope"
         ],
         "correct": 1,
         "explain": "A policy definition is a rule about a specific security condition. A security initiative groups related policy definitions toward a goal. To take effect, definitions or initiatives are assigned to a scope such as a subscription or resource group."
@@ -5467,7 +5467,7 @@ const EXAMS = {
         "options": [
           "Which Azure region the resource is located in",
           "How urgently the identified issue should be addressed, based on exposure risk",
-          "The cost of remediating the issue",
+          "The cost of remediating the issue, based on the time and resources the fix requires",
           "How long the recommendation has existed"
         ],
         "correct": 1,
@@ -5564,8 +5564,8 @@ const EXAMS = {
         "options": [
           "To encrypt secrets and certificates",
           "To collect and correlate log data and security events from across an organization's digital environment to surface potential threats",
-          "To automatically execute remediation playbooks without human review",
-          "To provide RDP/SSH access to virtual machines"
+          "To automatically execute remediation playbooks without human review, replacing the need for security analysts to investigate incidents themselves",
+          "To provide RDP/SSH access to virtual machines through a browser without exposing their public IP addresses"
         ],
         "correct": 1,
         "explain": "A SIEM collects log data from across an organization, such as firewalls, servers, identity systems, and endpoints, consolidates it, and correlates it to surface potential security threats and generate alerts."
@@ -5576,7 +5576,7 @@ const EXAMS = {
         "q": "In SOAR, what is the difference between 'orchestration' and 'automation'?",
         "options": [
           "Orchestration only applies to email security; automation only applies to endpoint security",
-          "Orchestration is about log collection; automation is about alert correlation",
+          "Orchestration is about log collection across security tools and systems; automation is about alert correlation for the events that were collected",
           "Orchestration and automation mean the same thing in SOAR",
           "Orchestration connects different security tools to work together; automation handles repetitive response tasks without manual effort"
         ],
@@ -5591,7 +5591,7 @@ const EXAMS = {
           "A predefined sequence of automated actions triggered by a specific alert or incident type",
           "A dashboard showing secure score trends",
           "A quarterly compliance report",
-          "A manual troubleshooting guide for analysts to read"
+          "A manual troubleshooting guide for analysts to read and follow step by step during each incident"
         ],
         "correct": 0,
         "explain": "A playbook is a predefined sequence of automated actions triggered by a specific alert or incident type, for example automatically disabling a flagged account, notifying the security team, and opening a ticket."
@@ -5604,7 +5604,7 @@ const EXAMS = {
           "Requiring manual log review for every event",
           "Grouping related alerts from multiple sources into a single, enriched incident with a severity score",
           "Disabling alerting entirely during business hours",
-          "Sending every individual alert directly to end users"
+          "Sending every individual alert directly to end users so they can review and close each one on their own"
         ],
         "correct": 1,
         "explain": "Modern SIEM/SOAR platforms address alert fatigue through incident grouping (correlating related alerts into one case), severity scoring, and automatic enrichment with context, so analysts review fewer, higher-quality incidents instead of a flood of individual alerts."
@@ -5616,8 +5616,8 @@ const EXAMS = {
         "options": [
           "A scalable, cloud-native SIEM and SOAR solution that provides threat detection, investigation, hunting, and response",
           "A certificate management service",
-          "A network security group management tool",
-          "A VM connectivity service that avoids exposing public IPs"
+          "A network security group management tool for reviewing inbound and outbound rules across subscriptions",
+          "A VM connectivity service that avoids exposing public IPs by letting administrators reach machines over RDP and SSH from a browser"
         ],
         "correct": 0,
         "explain": "Microsoft Sentinel is a scalable, cloud-native SIEM and SOAR solution, providing AI-powered analytics and threat intelligence for detection, investigation, hunting, and response across multicloud and multiplatform environments."
@@ -5795,7 +5795,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What technique does Microsoft Defender for Office 365's Safe Attachments feature use to detect malware in email attachments?",
         "options": [
-          "It requires the recipient to manually scan each file",
+          "It requires the recipient to manually scan each file with local antivirus software before opening the attachment",
           "It relies solely on file extension filtering",
           "It opens files in a virtual environment to observe their behavior, a process known as detonation",
           "It blocks all attachments regardless of content"
@@ -5823,7 +5823,7 @@ const EXAMS = {
         "options": [
           "SaaS application data",
           "Email and collaboration tools",
-          "On-premises Active Directory domain controllers",
+          "On-premises Active Directory domain controllers and the AD FS servers that handle sign-in for the organization",
           "Enterprise endpoints such as laptops, phones, tablets, PCs, access points, routers, and firewalls"
         ],
         "correct": 3,
@@ -5881,7 +5881,7 @@ const EXAMS = {
         "options": [
           "Signals from on-premises Active Directory and Microsoft Entra ID identity infrastructure",
           "Email attachments and links",
-          "Network traffic at the DDoS protection layer",
+          "Network traffic at the DDoS protection layer of the organization's Azure virtual networks",
           "Kubernetes cluster configurations"
         ],
         "correct": 0,
@@ -5960,7 +5960,7 @@ const EXAMS = {
           "Only the Global Administrator role",
           "Global Reader or Security Reader in Microsoft Entra ID",
           "Any user with a Microsoft 365 consumer account",
-          "Any user on the same virtual network as the tenant"
+          "Any user on the same virtual network as the tenant's resources"
         ],
         "correct": 1,
         "explain": "To access the Microsoft Defender portal, a user must be assigned an appropriate role such as Global Reader or Administrator, Security Reader or Administrator, or Security Operator in Microsoft Entra ID."
@@ -5986,7 +5986,7 @@ const EXAMS = {
           "To publish audit reports and compliance-related information about how Microsoft cloud services protect customer data",
           "To provide a portal where end users request Microsoft 365 licenses",
           "To manage Conditional Access policies across Microsoft Entra ID",
-          "To let administrators configure sensitivity labels for their organization"
+          "To let administrators configure sensitivity labels for their organization and publish them to users across Microsoft 365 apps"
         ],
         "correct": 0,
         "explain": "STP is Microsoft's public site for publishing audit reports and compliance-related whitepapers about how Microsoft cloud services protect data and how customers can manage cloud data security and compliance. The other options describe unrelated Purview or Entra capabilities."
@@ -6010,7 +6010,7 @@ const EXAMS = {
         "q": "According to Microsoft's privacy principles, which statement is true about how Microsoft uses customer data?",
         "options": [
           "Microsoft's subcontractors have unrestricted access to all customer data they can reach",
-          "Microsoft may use customer data for advertiser-supported marketing research without notice",
+          "Microsoft may use customer data for advertiser-supported marketing research without notice, provided that it removes customer names first",
           "Microsoft uses customer data only to provide the services the customer has chosen, and only with the customer's agreement",
           "Customers must contact Microsoft support before they can access or modify their own data"
         ],
@@ -6051,7 +6051,7 @@ const EXAMS = {
           "A calculation that helps an organization understand its overall compliance posture by measuring progress on improvement actions",
           "The percentage of DLP alerts that have been marked as false positives",
           "The number of retention labels currently published to users",
-          "A count of how many sensitivity labels have been applied across the tenant"
+          "A count of how many sensitivity labels have been applied across the tenant, used to show how much content has been classified so far"
         ],
         "correct": 0,
         "explain": "The compliance score is a key Compliance Manager feature that helps organizations understand their compliance posture by measuring how they are progressing with improvement actions relevant to their regulations, standards, or policies."
@@ -6092,7 +6092,7 @@ const EXAMS = {
         "q": "What are Sensitive Information Types (SITs) in Microsoft Purview?",
         "options": [
           "A category of retention labels used only for regulatory records",
-          "AI models that learn to recognize contracts and invoices based on training samples",
+          "AI models that learn to recognize content such as contracts and invoices based on training samples, rather than matching defined patterns",
           "Pattern-based classifiers that detect sensitive information, such as social security numbers or credit card numbers, in content",
           "User accounts that have been flagged by Insider Risk Management as high risk"
         ],
@@ -6172,7 +6172,7 @@ const EXAMS = {
           "The label is ignored because 'Groups & sites' labels cannot be applied to Microsoft 365 groups",
           "The label encrypts every document inside the group using the group owner's key",
           "The label controls access to the container itself, but documents inside are not automatically labeled",
-          "All individual documents in the group are automatically labeled with the same sensitivity label"
+          "All individual documents in the group are automatically labeled with the same sensitivity label as the group"
         ],
         "correct": 2,
         "explain": "Labels with the 'Groups & sites' scope protect content by controlling access to the container — Teams, Microsoft 365 groups, SharePoint sites, Viva Engage communities, or Loop workspaces — where documents are stored. This configuration doesn't result in the individual documents being automatically labeled."
@@ -6211,7 +6211,7 @@ const EXAMS = {
           "Escalation of insider risk cases to eDiscovery",
           "Approval of Compliance Manager improvement actions",
           "Copying sensitive items to removable media such as a USB drive",
-          "Changes to Microsoft Entra Conditional Access policies"
+          "Changes to Microsoft Entra Conditional Access policies made by administrators"
         ],
         "correct": 2,
         "explain": "Endpoint DLP audits and manages activities users take on sensitive items physically stored on Windows or macOS devices, including creating, renaming, or printing items, copying to removable media or network shares, and accessing items through unallowed apps or browsers."
@@ -6239,7 +6239,7 @@ const EXAMS = {
         "q": "What is the primary purpose of Microsoft Purview Insider Risk Management?",
         "options": [
           "To publish audit reports about how Microsoft protects customer data in the cloud",
-          "To calculate an organization's overall compliance score against regulatory templates",
+          "To calculate an organization's overall compliance score against regulatory templates and improvement actions",
           "To detect, investigate, and act on risky or malicious activities originating from within the organization",
           "To encrypt emails and documents based on their sensitivity label"
         ],
@@ -6297,8 +6297,8 @@ const EXAMS = {
         "q": "What does Microsoft Purview Communication Compliance help an organization do?",
         "options": [
           "Scan Microsoft cloud infrastructure for physical security certifications",
-          "Automatically encrypt all internal Teams messages using sensitivity labels",
-          "Generate the organization's compliance score based on completed improvement actions",
+          "Automatically encrypt all internal Teams messages using sensitivity labels, so that they cannot be read by anyone outside each conversation",
+          "Generate the organization's compliance score based on completed improvement actions — such as those tied to regulations or standards — and track how it changes over time",
           "Detect, capture, and act on inappropriate messages — such as harassment or inappropriate sharing of sensitive information — that could lead to compliance incidents"
         ],
         "correct": 3,
@@ -6309,7 +6309,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What is eDiscovery, in the context of Microsoft Purview?",
         "options": [
-          "The process of classifying documents using sensitive information types",
+          "The process of classifying documents using sensitive information types so that they can be labeled and protected",
           "The process of identifying and delivering electronic information that can be used as evidence in legal cases",
           "The process of scanning devices for malware",
           "The process of calculating an organization's compliance score"
@@ -6337,7 +6337,7 @@ const EXAMS = {
         "q": "Which of the following is a Microsoft Purview eDiscovery (Premium) feature, and not part of the base (non-premium) eDiscovery capabilities?",
         "options": [
           "Placing a hold on content locations to preserve data",
-          "Searching content stored in Exchange, SharePoint, and OneDrive",
+          "Searching content stored in Exchange, SharePoint, and OneDrive for items relevant to a legal case",
           "Exporting search results to a local computer",
           "Review sets that support tagging, filtering, and predictive coding of collected content"
         ],
@@ -6375,7 +6375,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What is a key difference between retention policies and retention labels in Microsoft Purview Data Lifecycle Management?",
         "options": [
-          "Retention labels can only be applied by end users, while retention policies can only be applied by administrators",
+          "Retention labels can only be applied by end users, while retention policies can only be applied by administrators to Microsoft 365 locations",
           "Retention labels expire after 180 days, while retention policies never expire",
           "Retention policies only support deletion, while retention labels only support retention",
           "Retention policies apply the same settings at a site or mailbox level, while retention labels apply settings at an individual item level"
@@ -6388,10 +6388,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A SharePoint site contains documents that should mostly be retained for 5 years, but a specific subset of documents must be retained for 10 years. What is the most efficient way to configure this in Microsoft Purview?",
         "options": [
-          "Apply two separate retention policies to the same site, one for 5 years and one for 10 years",
+          "Apply two separate retention policies to the same site, one for 5 years and one for 10 years, and let SharePoint work out on its own which period belongs to each document in the site",
           "Apply a single retention label to the entire site, since sites can only have one label",
           "Apply a retention policy to the site with a 5-year retention period, and apply a retention label with a 10-year period to the specific documents that need longer retention",
-          "This scenario isn't possible; the whole site must use a single retention period"
+          "This scenario isn't possible; the whole site must use a single retention period, so the 10-year documents would have to be kept on a different site"
         ],
         "correct": 2,
         "explain": "It's more efficient to apply a retention policy to the whole site for the common 5-year period, then apply a retention label with a 10-year setting to the specific items that need to be kept longer. Retention labels apply at the individual item level and can extend retention beyond a site-wide policy default for those items."
@@ -6403,7 +6403,7 @@ const EXAMS = {
         "options": [
           "It automatically converts a retention label into a regulatory record after one year",
           "It defines the encryption key used to protect content classified with a sensitivity label",
-          "It calculates the compliance score contribution of retention-related improvement actions",
+          "It calculates the compliance score contribution of retention-related improvement actions for each location and user",
           "It publishes retention labels to specific locations and users, controlling who can apply the labels and where"
         ],
         "correct": 3,
@@ -6414,7 +6414,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What distinguishes an item labeled as a 'record' in Microsoft Purview Records Management from an item with an ordinary retention label?",
         "options": [
-          "Records are never subject to any retention period and are kept forever automatically",
+          "Records are never subject to any retention period and are kept forever automatically, with no disposition review or proof of disposition at the end",
           "Records are only used for content stored in Exchange mailboxes",
           "Records have specific restrictions on allowed actions, have their activities logged, and provide proof of disposition at the end of retention",
           "Records can be freely edited by any user regardless of permissions"
@@ -6428,7 +6428,7 @@ const EXAMS = {
         "q": "What makes a 'regulatory record' different from a standard record in Microsoft Purview Records Management?",
         "options": [
           "A regulatory label can never be removed once applied, and its retention period can't be shortened",
-          "Regulatory records can only be created for Teams messages, not documents or email",
+          "Regulatory records can only be created for Teams messages, not for documents or email stored in other workloads",
           "Regulatory records don't require any retention label to be configured",
           "Regulatory records are automatically deleted after 180 days regardless of policy"
         ],
