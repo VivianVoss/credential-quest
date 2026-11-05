@@ -34050,7 +34050,7 @@ const EXAMS = {
         "q": "In Dual (composite) storage mode, how does Power BI decide whether to answer a query from the imported cache or from a live query to the source?",
         "options": [
           "It always uses the cached copy",
-          "The report author must manually choose per visual",
+          "The report author must manually choose per visual which storage method each query should use",
           "It always queries the source live",
           "Power BI automatically chooses whichever method answers the query most efficiently"
         ],
@@ -34231,7 +34231,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "After changing a column's data type from text to whole number, several rows show an Error value instead of a number. What is the most likely cause?",
         "options": [
-          "The data source privacy level is set to Private",
+          "The data source privacy level is set to Private, which blocks conversion of those rows",
           "The column was accidentally deleted",
           "The query failed to fold to the source",
           "Those rows contained values that could not be converted to the target type"
@@ -34468,7 +34468,7 @@ const EXAMS = {
           "The table must first be merged with a fact table",
           "Disconnected tables aren't used to propagate filters; they only supply selectable values that a measure formula reads",
           "It is a temporary object removed after publish",
-          "Power BI does not allow relationships to any calculated table"
+          "Power BI does not allow relationships to any calculated table, including tables created by what-if parameters in the model"
         ],
         "correct": 1,
         "explain": "A what-if parameter table is intentionally left disconnected because its purpose is only to provide selectable values for a DAX formula, not to filter other tables via a relationship."
@@ -34595,7 +34595,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A Sales table has both an OrderDate and a ShipDate column, and both need active, simultaneous relationships to date data. What is the recommended modeling approach?",
         "options": [
-          "Create one date table with two active relationships to Sales",
+          "Create one date table with two active relationships to Sales, one on each date column",
           "Use a single inactive relationship and ignore ShipDate",
           "Create two separate date tables, each with its own active relationship to Sales",
           "Merge OrderDate and ShipDate into one column"
@@ -34621,7 +34621,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What visual indicator distinguishes an active relationship from an inactive relationship in the Power BI model diagram?",
         "options": [
-          "Active relationships show an arrow; inactive show a circle",
+          "Active relationships show an arrow; inactive ones show a circle on the line",
           "Active relationships are drawn as solid lines; inactive as dotted lines",
           "There is no visual difference",
           "Active is blue; inactive is red"
@@ -34766,7 +34766,7 @@ const EXAMS = {
         "options": [
           "It applies the filter to every table in the model",
           "It preserves, or intersects with, the existing filter context on that column instead of overwriting it",
-          "It removes all existing filters before applying the new one",
+          "It removes all existing filters before applying the new one, so only the Boolean filter argument remains in effect",
           "It ignores the new filter entirely"
         ],
         "correct": 1,
@@ -34897,7 +34897,7 @@ const EXAMS = {
           "Summing a column for display in a single visual",
           "Formatting a number as currency",
           "Creating a role-playing date table by duplicating an existing date table's data",
-          "Applying conditional formatting to a table visual"
+          "Applying conditional formatting to a table visual based on the values in each row"
         ],
         "correct": 2,
         "explain": "Calculated tables can duplicate or transform existing model data to produce an entirely new table, such as a second date table used for a role-playing dimension."
@@ -34908,7 +34908,7 @@ const EXAMS = {
         "q": "Why do calculated tables increase a model's storage size and refresh time even when the model's main fact tables use DirectQuery?",
         "options": [
           "Calculated table data is always imported into the model, regardless of the storage mode used by other tables",
-          "Calculated tables are recalculated on every visual interaction",
+          "Calculated tables are recalculated on every visual interaction, so they keep sending new queries to the source",
           "Calculated tables automatically use DirectQuery too",
           "Calculated tables can't be used at all in a DirectQuery model"
         ],
@@ -34949,7 +34949,7 @@ const EXAMS = {
           "Remove unnecessary columns and rows, and reduce granularity by aggregating data to a higher level",
           "Add more bookmarks and custom tooltips",
           "Switch every table to DirectQuery",
-          "Add more calculated columns and more relationships"
+          "Add more calculated columns and more relationships so that each visual has less work to do at query time"
         ],
         "correct": 0,
         "explain": "Removing unneeded rows and columns and reducing granularity, such as aggregating to day level instead of exact timestamp, are core techniques for shrinking model size and improving performance."
@@ -35012,7 +35012,7 @@ const EXAMS = {
         "q": "What must be true about the 'from' and 'to' columns before a relationship can be created between two tables?",
         "options": [
           "Both columns must be marked as measures",
-          "Both tables must use the same storage mode in every case",
+          "Both tables must use the same storage mode in every case, such as Import or DirectQuery",
           "Their data types must be equivalent and the columns must contain matching values",
           "The columns must both be hidden from the Fields pane"
         ],
@@ -35065,7 +35065,7 @@ const EXAMS = {
         "options": [
           "Switching all cross-filter directions to Both",
           "Increasing the number of active relationships",
-          "Adding more calculated columns for convenience",
+          "Adding more calculated columns for convenience in report and measure authoring",
           "Removing columns not used in any relationship, measure, or report visual"
         ],
         "correct": 3,
@@ -35377,7 +35377,7 @@ const EXAMS = {
         "options": [
           "When non-numeric filters or measure filters are applied to the visual",
           "When the report has more than one page",
-          "When the visual is a table instead of a chart",
+          "When the selected visual is a table instead of a bar, column, or line chart",
           "When the model uses DirectQuery"
         ],
         "correct": 0,
@@ -35521,7 +35521,7 @@ const EXAMS = {
           "Use Copilot to summarize the underlying semantic model",
           "Q&A visual",
           "Narrative visual",
-          "Use Copilot to create a new report page"
+          "Use Copilot to create a new report page from the semantic model"
         ],
         "correct": 0,
         "explain": "This Copilot capability generates a natural-language summary describing the structure and content of the underlying semantic model itself, rather than generating report visuals."
@@ -35675,7 +35675,7 @@ const EXAMS = {
         "q": "In static row-level security, how is the filter typically defined for a role such as 'Game' that should only see rows where Department equals 'Game'?",
         "options": [
           "A workspace-level setting",
-          "A DAX expression using USERPRINCIPALNAME()",
+          "A DAX expression using USERPRINCIPALNAME() to match each signed-in user's department",
           "A DAX filter expression using a fixed value, such as [Department] = \"Game\"",
           "An M query parameter"
         ],
@@ -35727,7 +35727,7 @@ const EXAMS = {
         "q": "After publishing a report with RLS roles to the Power BI service, what additional step is required before RLS actually restricts any real users?",
         "options": [
           "Re-importing the semantic model",
-          "Nothing further is needed; RLS applies automatically to everyone",
+          "Nothing further is needed; RLS applies automatically to everyone in the workspace as soon as the report and its roles are published",
           "Changing the workspace type to Premium Per User",
           "Adding members, such as users or security groups, to each role from the semantic model's Security settings in the workspace"
         ],
@@ -35807,7 +35807,7 @@ const EXAMS = {
           "A single workspace can publish an unlimited number of apps",
           "Each workspace can publish only one workspace app, and its content must originate from that same workspace",
           "Apps can include content from any number of different workspaces",
-          "Apps update automatically the instant workspace content changes, with no publish step"
+          "Apps update automatically the instant workspace content changes, with no publish step or action from the app owner"
         ],
         "correct": 1,
         "explain": "A workspace can publish only a single workspace app, sourced entirely from that workspace's own content; updates require deliberately republishing the app."
@@ -35843,7 +35843,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "When a report is shared via item-level sharing, what happens to the underlying semantic model's data if no row-level security is applied?",
         "options": [
-          "Recipients only ever see the report and never the underlying data",
+          "Recipients only ever see the report and never the underlying data, even when no RLS has been configured",
           "Item-level sharing automatically applies RLS by default",
           "Recipients also gain access to the full underlying semantic model data, unless RLS restricts it",
           "The semantic model becomes read-only for everyone"
