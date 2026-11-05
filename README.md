@@ -48,8 +48,10 @@ Then open `index.html`:
 
 A monthly [GitHub Action](.github/workflows/freshness-check.yml) checks two things against the live Microsoft sources:
 
-1. **Does the poster still list exactly these 56 credentials?** New or retired codes get filed as a GitHub issue for review.
-2. **Has anything drifted on an existing exam's live page?** Level, beta status, or a domain's weight percentage — mechanical field changes get auto-patched and opened as a pull request. A domain being added or removed (which means the question pool itself needs new content, not just a data edit) gets filed as an issue instead of silently patched.
+1. **Does the poster still list exactly these 56 credentials?** New or retired codes get filed as a GitHub issue for review, and so does a new poster edition, even if no code changed.
+2. **Has anything drifted on an existing exam's live page?** Level, beta status, or a domain's weight percentage — mechanical field changes get auto-patched, merged and deployed. Changes dated in the future wait until they take effect. A domain being added or removed (which means the question pool itself needs new content, not just a data edit) gets filed as an issue instead of silently patched.
+
+Each full run ends with a digest issue assigned to the repo owner, listing what needs attention. If a month passes with no digest, the check itself has stopped.
 
 See [`scripts/freshness-check/`](scripts/freshness-check/) for the implementation, or trigger a manual run (optionally scoped to specific codes) via the workflow's "Run workflow" button on GitHub.
 
