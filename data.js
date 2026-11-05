@@ -75479,7 +75479,7 @@ const EXAMS = {
         "options": [
           "Always select the 'All Fields' tracking type for every table",
           "Track only tables that already have default dimensions assigned",
-          "Disable the change log entirely on any table with more than 1,000 records",
+          "Disable the change log entirely on any table with more than 1,000 records and rely on manual reviews of the posted entries instead",
           "Avoid logging ledger entries and posted documents, and prefer tracking system fields like Created By and Created Date"
         ],
         "correct": 3,
@@ -75490,7 +75490,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A company enables a retention policy to automatically purge old Change Log Entries every night. Which statement correctly describes a requirement for the automatic job queue entry to actually delete the data?",
         "options": [
-          "Every user in the company must be assigned the SUPER permission set",
+          "Every user in the company must be assigned the SUPER permission set before the job queue entry can run",
           "The Manual toggle on the retention policy must be turned on",
           "The table must first be added to a configuration package",
           "The job queue entry must run as a user who has both Read and Delete permission on the affected table"
@@ -75573,7 +75573,7 @@ const EXAMS = {
         "q": "A customer wants sales invoice numbering to restart from 00001 at the start of every fiscal year, while continuing to use a single number series code. How should this be configured?",
         "options": [
           "Set the Date Order field to prevent numbers from being reused",
-          "Create a No. Series Relationship pointing to a second series",
+          "Create a No. Series Relationship pointing to a second series that starts again at 00001 each fiscal year",
           "Add a new No. Series Line to the same series, each with its own Starting Date and Starting No.",
           "Turn on Allow Gaps in Nos. for the series"
         ],
@@ -75642,7 +75642,7 @@ const EXAMS = {
         "q": "When migrating business data from an external accounting product such as QuickBooks, what does Business Central rely on to handle the format conversion during the Data Migration assisted setup?",
         "options": [
           "Manual re-keying of every record",
-          "A default configuration package from the CRONUS demo company",
+          "A default configuration package taken from the CRONUS demo company",
           "The Adjust Cost - Item Entries report",
           "A dedicated extension built for that specific external product"
         ],
@@ -75709,7 +75709,7 @@ const EXAMS = {
           "The Change Global Dimensions wizard",
           "The Workflow Events page",
           "The Assisted Setup guide for approval workflows",
-          "The Data Migration assisted setup"
+          "The Data Migration assisted setup guide for business data"
         ],
         "correct": 2,
         "explain": "Assisted Setup for approval workflows guides the user through basic settings such as the approver, the amount limit, and when the approval is due; more advanced settings are preset on the resulting workflow and can be edited later."
@@ -75787,7 +75787,7 @@ const EXAMS = {
           "Sequential, because it doesn't lock any tables",
           "Parallel, because it can run even while other users are actively connected to the database",
           "Parallel, because it splits the update across multiple background sessions and completes faster on large databases",
-          "Sequential, because it always completes fastest regardless of database size"
+          "Sequential, because it always completes fastest regardless of database size and never blocks other connected users"
         ],
         "correct": 2,
         "explain": "Parallel processing splits the dimension change into multiple background transactions and is recommended for large databases or many posted entries, because it completes fastest. Sequential runs as a single transaction that locks tables and blocks other users, and may not even be able to complete on very large databases. Parallel processing also requires that there isn't more than one active database session when it starts."
@@ -75864,7 +75864,7 @@ const EXAMS = {
         "options": [
           "A company using a General Journal Template of type Assets",
           "A company using a Fixed allocation account",
-          "A company using the Inherit from parent destination account type only",
+          "A company using the Inherit from parent destination account type only, with the split typed in by hand",
           "A company using a Variable allocation account driven by statistical accounts and dimensions"
         ],
         "correct": 3,
@@ -75890,7 +75890,7 @@ const EXAMS = {
         "options": [
           "Because it's needed to enable the Adjust Cost - Item Entries report",
           "Because a blank general business posting group disables VAT calculation",
-          "Because it's required for every combination regardless of whether inventory is used",
+          "Because it's required for every combination regardless of whether inventory is used or any customer or vendor is involved",
           "Because item journal postings with no customer or vendor involved need that combination to find the correct accounts"
         ],
         "correct": 3,
@@ -75943,7 +75943,7 @@ const EXAMS = {
           "It requires every transaction in that currency to be re-posted",
           "It creates a job queue entry that automatically updates the currency's exchange rate daily",
           "It disables the Update Exchange Rates action permanently",
-          "It immediately locks the currency card from further manual edits"
+          "It immediately locks the currency card from further manual edits until the service is turned off again"
         ],
         "correct": 1,
         "explain": "After you select Enabled on the Currency Exch. Rate Service page, job queue entries are created for a daily update of exchange rates; you're prompted to open the Job Queue Entries page to review them."
@@ -75992,7 +75992,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A financial report calculates profit margin by department dimension, something that can't be produced directly from the chart of accounts alone. Which two components together define a financial report in Business Central?",
         "options": [
-          "A depreciation book and a posting group",
+          "A depreciation book and an FA posting group",
           "A permission set and a security filter",
           "A row definition and a column definition",
           "A configuration package and a worksheet"
@@ -76021,7 +76021,7 @@ const EXAMS = {
           "No — a closed fiscal year permanently blocks any further posting to it",
           "Only through a configuration package, never through a journal",
           "Yes — the entries post and are flagged with the Prior-Year Entry checkbox, which is hidden by default",
-          "Only if the fiscal year is reopened first, which Business Central allows"
+          "Only if the fiscal year is reopened first, which Business Central allows from the Accounting Periods page"
         ],
         "correct": 2,
         "explain": "Although a fiscal year is closed, you can still post general ledger entries to it; those entries are shown as posted to a closed fiscal year with the Prior-Year Entry check box selected (not displayed on the page by default). A closed fiscal year itself can never be reopened, which is why you must always keep at least one open year."
@@ -76257,7 +76257,7 @@ const EXAMS = {
         "q": "When a company sets up multiple depreciation books, what does Microsoft recommend regarding how a given FA posting type integrates with the general ledger?",
         "options": [
           "No depreciation book should ever integrate with the general ledger",
-          "Every depreciation book should integrate every FA posting type with the general ledger",
+          "Every depreciation book should integrate every FA posting type with the general ledger, so each posting reaches the ledger once for every single book",
           "Each FA posting type should integrate with the general ledger exactly once, whether through a single book or split across several books",
           "Only the first depreciation book created is allowed to integrate with the general ledger"
         ],
@@ -76353,7 +76353,7 @@ const EXAMS = {
         "options": [
           "Configure the conversion only on the vendor card, not the item card",
           "Set the Base Unit of Measure to the individual piece, then add a BOX unit of measure with a conversion quantity of 12",
-          "Set the Base Unit of Measure to BOX and leave no other units configured",
+          "Set the Base Unit of Measure to BOX and leave no other units configured, then enter fractions of a box on every sales line",
           "Create two separate items, one for boxes and one for pieces"
         ],
         "correct": 1,
@@ -76429,7 +76429,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "An item already has posted transactions under the FIFO costing method, but the company now wants to switch it to Standard costing. What must the consultant do?",
         "options": [
-          "Change the Default Costing Method field on Inventory Setup, which retroactively updates all items",
+          "Change the Default Costing Method field on Inventory Setup, which retroactively updates all items and their posted entries to Standard",
           "Create a new item using the Standard costing method, since the costing method can't be changed on an item with posted entries",
           "Run the Adjust Cost - Item Entries report to reassign the costing method",
           "Simply change the Costing Method field on the existing item card"
@@ -76456,7 +76456,7 @@ const EXAMS = {
         "q": "How can stockkeeping units be created for an existing item without entering them manually one by one?",
         "options": [
           "By running the Create Stockkeeping Unit function on the item card",
-          "Only by importing them through a configuration package",
+          "Only by importing them through a configuration package built in Excel",
           "By enabling Automatic Cost Adjustment on Inventory Setup",
           "By creating a new item variant"
         ],
@@ -76481,7 +76481,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "On the Purchases & Payables Setup page, what does setting the Discount Posting field to Line Discounts (rather than All Discounts) mean for how discounts post at invoice time?",
         "options": [
-          "Only invoice discounts will post, and line discounts are ignored",
+          "Only invoice discounts will post, and line discounts are ignored when the invoice is posted",
           "Neither line nor invoice discounts will post",
           "Both line and invoice discounts will post",
           "Line discounts will post when the invoice is posted, but invoice discounts will not"
@@ -76497,7 +76497,7 @@ const EXAMS = {
           "It checks all applicable line discounts and automatically applies the single best (highest) discount percentage",
           "It ignores line discounts and falls back to the item's regular Unit Cost",
           "It applies every eligible discount cumulatively",
-          "It prompts the user to manually pick one of the applicable discounts before the line can be saved"
+          "It prompts the user to manually pick one of the applicable discounts before the line can be saved on the purchase order"
         ],
         "correct": 0,
         "explain": "When a purchase order is created for a vendor, Business Central checks which line discounts apply based on the order's conditions and automatically selects and applies the best (highest) discount percentage to the Line Discount % field."
@@ -76537,7 +76537,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A company wants to discount many related hardware items at once for a customer, without setting up a separate line discount entry for every individual item. What should the consultant configure?",
         "options": [
-          "A separate Sales Price line for every item and customer combination",
+          "A separate Sales Price line for every item and customer combination, maintained one by one for each item",
           "A single Customer Invoice Discount covering all hardware sales",
           "A Stockkeeping Unit shared across all hardware items",
           "An Item Discount Group assigned to each relevant item, with the discount defined once on the group"
@@ -76550,7 +76550,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Can sales line discounts and sales invoice discounts both apply to the same sales document?",
         "options": [
-          "No, only one discount type can ever apply per document",
+          "No, only one discount type can ever apply per sales document",
           "Yes, the two types can be combined on the same document",
           "Only for purchase documents, not sales documents",
           "Only if the customer belongs to a Customer Price Group"
@@ -76604,7 +76604,7 @@ const EXAMS = {
         "options": [
           "No — profile-level page customization is only available to SUPER users and has no effect on layout either",
           "No — page customization only changes layout; the relevant permission sets or user groups must still be applied separately to secure data access",
-          "Yes — customizing pages for a profile automatically restricts data access for all users of that profile",
+          "Yes — customizing pages for a profile automatically restricts data access for all users of that profile, so no permission sets need to be applied",
           "Yes, but only if the customization also modifies a security filter at the same time"
         ],
         "correct": 1,
@@ -76719,7 +76719,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A company wants to guarantee that a sales order can't be shipped until a customer's required prepayment has actually been received and applied. Which setting enforces this?",
         "options": [
-          "Prepmt. Auto Update Frequency set to Never",
+          "Prepmt. Auto Update Frequency set to Never, on Sales & Receivables Setup",
           "Posted Prepmt. Inv. Nos. left blank",
           "Check Prepmt. when Posting, on Sales & Receivables Setup",
           "Allow Multiple Posting Groups"
@@ -76748,7 +76748,7 @@ const EXAMS = {
           "Use the Reverse Transaction function on the same entry",
           "Edit the dimension value directly on the General Ledger Entries page",
           "Use the Correct Dimensions action on the General Ledger Entries page to open the Draft Dimension Correction page",
-          "Delete the entry and repost the original invoice with the correct dimension"
+          "Delete the entry and repost the original invoice with the correct dimension value from the General Ledger Entries page"
         ],
         "correct": 2,
         "explain": "The Correct Dimensions action, available from General Ledger Entries, opens the Draft Dimension Correction page, letting you edit, add, or remove dimension values on posted entries without needing to touch or repost the source document."
@@ -76823,7 +76823,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A cash receipt journal line is entered with the full payment amount and needs to be applied across several different customer invoices at once during posting. Which sequence of actions accomplishes this?",
         "options": [
-          "Enter the Applies-to Doc. No. field once and it automatically splits across every open invoice",
+          "Enter the Applies-to Doc. No. field once and it automatically splits across every open invoice according to each invoice's due date",
           "Select Apply Entries, choose the lines to apply to, then use Set Applies-to ID and enter an Amount to Apply on each line",
           "Use the Correct Dimensions action to distribute the payment",
           "Post the journal first, then use Reverse Transaction to split the payment afterward"
@@ -76863,7 +76863,7 @@ const EXAMS = {
         "q": "A bank statement line shows an amount that doesn't match any open bank account ledger entry, and the transaction can't be applied. What should be done so the bank reconciliation can still be posted while keeping the correct G/L bank balance?",
         "options": [
           "Set the line's Type to Difference and add a matching Difference line so the Total Difference field balances",
-          "Force-apply the line to the nearest matching ledger entry regardless of amount",
+          "Force-apply the line to the nearest matching ledger entry regardless of amount so the Total Difference field balances",
           "Change the Statement Ending Balance to match Business Central's figure",
           "Delete the bank statement line entirely"
         ],
@@ -77051,7 +77051,7 @@ const EXAMS = {
           "Get Recurring Purchase Lines",
           "Copy G/L Register to Journal, from the Posted General Journal page",
           "Correct Dimensions, from the General Ledger Entries page",
-          "Reverse Transaction, from the General Ledger Entries page"
+          "Reverse Transaction, from a line on the General Ledger Entries page"
         ],
         "correct": 1,
         "explain": "Copy G/L Register to Journal, available on the Posted General Journal page, copies all the lines from a selected G/L register into a target general journal in one action, using parameters such as Target Journal Template/Batch, Replace Posting Date, Replace Document No., and Reverse Sign."
