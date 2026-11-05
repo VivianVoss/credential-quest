@@ -107965,8 +107965,8 @@ const EXAMS = {
         "q": "A production agentic loop built on Agents v1 logs run.status == \"failed\" with last_error.code == \"context_length_exceeded\" after a research thread has accumulated over a hundred messages of market data. What should the team do to prevent recurrence?",
         "options": [
           "Apply a context management strategy, such as sliding-window retention, selective summarization, or importance-weighted pruning, before the thread grows further",
-          "Retry the run with exponential backoff, the same as a rate_limit_exceeded error",
-          "Switch the loop to poll for the requires_action status instead of failed",
+          "Retry the run with exponential backoff, the same as a rate_limit_exceeded error, because the context window limit resets on its own once the service recovers from load",
+          "Switch the loop to poll for the requires_action status instead of failed, so the oversized thread is handed back to the caller to resubmit in smaller pieces",
           "Increase Automatic Cost Adjustment frequency on the thread"
         ],
         "correct": 0,
@@ -107978,8 +107978,8 @@ const EXAMS = {
         "q": "A team is migrating a stateful agentic loop from the Foundry Agents v1 (Assistants-style) API to the Agents v2 Responses API. Which statement correctly describes how tool-call handling changes?",
         "options": [
           "Agents v2 removes run-status polling entirely: responses.create() is synchronous and tool calls appear as typed items in response.output that the caller executes and feeds into the next responses.create() call",
-          "Agents v2 requires strictly more status polling than v1 because it adds a ninth run status",
-          "Agents v2 keeps the requires_action status but renames the submit_tool_outputs_and_poll() method",
+          "Agents v2 requires strictly more status polling than v1 because it adds a ninth run status that callers must check after every tool call before they can send results back to the run",
+          "Agents v2 keeps the requires_action status but renames the submit_tool_outputs_and_poll() method, so existing polling loops carry over unchanged and tool results are still submitted against the same run identifier",
           "Agents v2 removes function/tool calling support in favor of MCP-only tool access"
         ],
         "correct": 0,
@@ -108023,7 +108023,7 @@ const EXAMS = {
           "Reflection cycle count should be fixed at exactly 2 regardless of workload",
           "Customer-facing chat: max 1 reflection cycle; diagnostic support: 2-3 validated cycles; batch classification: no reflection, optimize prompts for single-pass accuracy",
           "All three workloads should use the same 3-5 cycle iterative refinement pattern for consistency",
-          "Customer-facing chat: 2-3 reflection cycles; diagnostic support: no reflection; batch classification: max 1 reflection cycle"
+          "Customer-facing chat: 2-3 validated reflection cycles; diagnostic support: no reflection, rely on a single pass; batch classification: max 1 reflection cycle per item processed"
         ],
         "correct": 1,
         "explain": "Latency-sensitive workflows get at most one reflection cycle, accuracy-critical workflows like diagnostic support get 2-3 cycles validated by external checks, and cost-constrained high-volume batch processing skips reflection entirely and instead optimizes single-pass prompts."
@@ -108090,8 +108090,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Per the guidance on when custom Cosmos DB persistence is still needed alongside Agents v2 managed history, which scenario explicitly still requires a custom store?",
         "options": [
-          "Any agent that never exceeds a few thousand tokens of context",
-          "A simple multi-turn conversational agent using conversation-based history",
+          "Any agent that never exceeds a few thousand tokens of context, since short histories are dropped automatically",
+          "A simple multi-turn conversational agent, since conversation-based history can't retain earlier turns within a single thread",
           "Cross-session memory of user preferences and past decisions, since conversations don't persist across explicit deletion",
           "A single-turn stateless classification agent"
         ],
@@ -108105,8 +108105,8 @@ const EXAMS = {
         "options": [
           "It only affects token cost, not coordination complexity",
           "It grows quadratically, since a flat pattern can require managing up to N(N-1)/2 relationships among N agents",
-          "It stays constant regardless of agent count",
-          "It decreases because more agents share the workload"
+          "It stays constant regardless of agent count, since group chat routes every message through one shared channel",
+          "It decreases because more agents share the workload, so each new peer reduces the number of relationships to manage"
         ],
         "correct": 1,
         "explain": "Flat orchestration patterns exhibit quadratic coordination overhead growth as agent count increases, alongside unpredictable cascading failures and unclear ownership for cross-domain conflicts - the reasons production systems move to hierarchical control structures."
@@ -108155,8 +108155,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "According to the architecture-selection guidance, when is a supervisor pattern the preferred choice over hub-and-spoke or hierarchical orchestration?",
         "options": [
-          "When there are clear, stable organizational boundaries between agent clusters",
-          "When the workflow is mostly deterministic with a known, static invocation sequence",
+          "When there are clear, stable organizational boundaries between agent clusters that each own a separate domain",
+          "When the workflow is mostly deterministic with a known, static invocation sequence that rarely changes between runs",
           "When agent quality or output reliability is uncertain and outputs need validation before downstream consumption",
           "When there is only a single agent in the system"
         ],
@@ -108170,8 +108170,8 @@ const EXAMS = {
         "options": [
           "A supervisor quality gate where a maker agent produces output and a checker agent validates it",
           "Fan-out/fan-in execution using asyncio.gather with quorum policies",
-          "Central orchestrator delegates to specialized spoke agents registered as tools",
-          "Linear prompt-chaining where one agent's output becomes the next agent's input"
+          "Central orchestrator delegates to specialized spoke agents registered as tools on a shared hub",
+          "Linear prompt-chaining where one agent's output becomes the next agent's input with no validation step"
         ],
         "correct": 0,
         "explain": "Maker-checker is documented as the vocabulary term for a supervisor quality gate: a maker agent produces output, and a checker agent validates it before it proceeds downstream."
@@ -108181,8 +108181,8 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Contoso Capital must demonstrate to regulators, via explicit execution traces, that compliance checks always run immediately after risk assessment. Which orchestration framework's control-flow model is specifically highlighted as providing this kind of auditable, explicit evidence?",
         "options": [
-          "AutoGen, because of its round-robin group chat",
-          "Microsoft Agent Framework, because it uses implicit conversation-based control flow",
+          "AutoGen, because its round-robin group chat fixes the speaker order so every compliance step is guaranteed to follow the risk step in sequence",
+          "Microsoft Agent Framework, because it uses implicit conversation-based control flow that records every branch as a regulator-ready audit log entry",
           "LangGraph, because it models workflows as explicit state graphs with conditional edges that make every execution path visible and debuggable",
           "CrewAI, because of its role-based abstraction"
         ],
@@ -108238,8 +108238,8 @@ const EXAMS = {
         "q": "In an enterprise A2A agent ecosystem on Azure, what does an agent use to advertise its capabilities so other agents and clients can discover it?",
         "options": [
           "A hardcoded endpoint list shared via email",
-          "A Key Vault secret containing its full API schema",
-          "An Azure Function trigger with no discovery metadata",
+          "A Key Vault secret containing its full API schema and endpoint address",
+          "An Azure Function trigger with no discovery metadata attached to it",
           "An authenticated agent card served at the agentCard/v0.3 endpoint"
         ],
         "correct": 3,
@@ -108263,9 +108263,9 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A discovery registry has just failed three consecutive queries within 60 seconds. According to the registry-resilience pattern described, what happens next?",
         "options": [
-          "The registry automatically fails over to a different cloud provider",
+          "The registry automatically fails over to a different cloud provider, and the routing service resumes live queries against the replica straight away",
           "The routing service immediately shuts down all agent traffic",
-          "All agent registrations are permanently deleted and must re-register manually",
+          "All agent registrations are permanently deleted and must re-register manually before the routing service will accept new queries, preventing stale entries from being served",
           "A circuit breaker opens: the routing service serves all requests from cache for 5 minutes without attempting further registry queries, preventing retry storms"
         ],
         "correct": 3,
@@ -108302,8 +108302,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "When calling Azure AI Content Safety's Prompt Shields shieldPrompt API to pre-screen an uploaded document independently of any live user message, what does the API return, and how should the documents parameter be used?",
         "options": [
-          "An automatic redaction of the offending text with no detection signal returned",
-          "A 0-100 severity score in the user_prompt field only",
+          "An automatic redaction of the offending text with no detection signal returned; pass the untrusted content in the documents parameter alongside a live user message",
+          "A 0-100 severity score per analyzed item in the user_prompt field only; pass the untrusted content in user_prompt and leave the documents parameter empty when scanning a document",
           "A list of every individual word flagged as unsafe",
           "A boolean attackDetected flag per analyzed item; pass the untrusted content in the documents parameter and leave user_prompt empty when scanning a document on its own"
         ],
@@ -108345,9 +108345,9 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A team is designing a custom guardrail to block a lengthy, evolving compliance policy document from being violated in agent outputs, where the policy language is nuanced and changes periodically. Which detection mechanism from the custom guardrail design pattern best fits this requirement, and why?",
         "options": [
-          "Regex/lexical matching, because it is the fastest and simplest option",
+          "Regex/lexical matching, because it is the fastest and simplest option and hardcoded rules capture nuanced, periodically changing policy language very well",
           "No automated detection — rely entirely on manual clinician review",
-          "An LLM-as-judge on every single output regardless of cost, because accuracy always outweighs cost",
+          "An LLM-as-judge on every single output regardless of cost, because accuracy always outweighs cost and a fixed judge prompt never needs updating",
           "A retrieval-grounded check that compares agent output against the policy document using vector search, because the policy is lengthy and evolving"
         ],
         "correct": 3,
@@ -108372,8 +108372,8 @@ const EXAMS = {
         "q": "Which Microsoft Foundry tool automates adversarial testing across responsible-AI risk categories using PyRIT-based attack strategies, and what is its key output metric?",
         "options": [
           "The AI Red Teaming Agent; the key metric is Attack Success Rate (ASR), the percentage of attacks that successfully elicited an undesirable response",
-          "Azure Machine Learning Data Assets; the metric is dataset lineage depth",
-          "Azure AI Content Safety Prompt Shields; the metric is a 0-100 severity score",
+          "Azure Machine Learning Data Assets; the key metric is dataset lineage depth, the number of transformations between raw and curated test data",
+          "Azure AI Content Safety Prompt Shields; the key metric is a 0-100 severity score, the average harm level assigned to each attack that the shield blocked during testing",
           "Azure API Center; the metric is API call volume"
         ],
         "correct": 0,
@@ -108384,10 +108384,10 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A team must decide whether to fine-tune a model for a clinical reasoning agent or continue optimizing prompts. They have 8,000 labeled, clinician-reviewed examples, a system prompt that has grown past 4,000 tokens and keeps growing, and a strict P95 latency SLA the long prompt is violating. Per the fine-tune-versus-prompt-optimize decision framework, what should they do?",
         "options": [
-          "Fine-tune only if fewer than 100 examples are available, otherwise keep prompting",
+          "Fine-tune only if fewer than 100 examples are available, otherwise keep prompting, since large labeled sets and long system prompts are better served by further prompt optimization",
           "Fine-tune, because the scenario hits multiple fine-tuning criteria: consistent task structure, prompt-length pressure, strict latency requirements, and ample high-quality labeled data",
           "Stay with prompt engineering, since fine-tuning is always riskier",
-          "Neither — switch to a completely different base model family with no further prompt or fine-tuning work"
+          "Neither — switch to a completely different base model family with no further prompt or fine-tuning work, because labeled data and prompt-length pressure both signal that the current model is unsuitable"
         ],
         "correct": 1,
         "explain": "The decision framework favors fine-tuning when several criteria combine: highly consistent task structure, system prompt exceeding roughly 2,000 tokens and still growing, a strict latency SLA the long prompt violates, and 500+ (here 8,000) high-quality labeled examples — all of which this scenario satisfies."
@@ -108440,8 +108440,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which is the recommended Azure hosting option for an MCP server when the primary goal is direct, recommended-path integration with Foundry Agent Service using event-driven, stateless tools with per-invocation pricing?",
         "options": [
-          "An on-premises virtual machine with no autoscaling",
-          "Azure Kubernetes Service (AKS) with a custom CNI and Istio service mesh",
+          "An on-premises virtual machine with no autoscaling, which bills per invocation and connects natively to Foundry Agent Service",
+          "Azure Kubernetes Service (AKS) with a custom CNI and Istio service mesh, which maps each pod directly to per-invocation MCP tools",
           "A static website hosted on Azure Blob Storage",
           "Azure Functions with the MCP extension, which maps function triggers directly to MCP tools exposed at /runtime/webhooks/mcp"
         ],
@@ -108453,10 +108453,10 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Different clinicians using the same clinical agent have different access scopes to patient portals and SharePoint resources behind an MCP server. Which MCP authentication pattern authorizes downstream resource access based on the calling user's own identity rather than the agent's or a shared service identity?",
         "options": [
-          "Managed Identity, which grants the agent or project identity uniform access to all callers",
+          "Managed Identity, which grants the agent or project identity uniform access to all callers, so each clinician's own portal and SharePoint scopes are applied automatically on every MCP invocation",
           "API key authentication stored in Key Vault",
           "OAuth identity passthrough, where Foundry Agent Service generates a per-user consent link, stores that user's token, and uses it for all subsequent MCP invocations on their behalf",
-          "OAuth 2.0 client credentials flow (service-to-service)"
+          "OAuth 2.0 client credentials flow (service-to-service), where one shared application token issued by Entra is reused for every clinician's MCP invocation on their behalf"
         ],
         "correct": 2,
         "explain": "OAuth identity passthrough is per-user and interactive: the first time a specific user interacts with an agent calling the MCP server, Foundry generates a consent link, the user signs in via Entra, and their token is stored and reused — so downstream resources authorize based on the calling user's identity, satisfying least-privilege and per-user audit requirements that Managed Identity alone cannot."
@@ -108496,10 +108496,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A drug-interaction MCP tool has three healthy instances reporting P95 latencies of 450ms, 380ms, and 520ms. Under latency-based routing, which instance is selected for the next invocation, and what must happen before latency ranking is applied?",
         "options": [
-          "The 520ms instance is selected because higher latency indicates more thorough processing",
+          "The 520ms instance is selected because higher latency indicates more thorough processing, after unhealthy instances are excluded from the candidate list",
           "Unhealthy instances are filtered out first, then among the remaining healthy/degraded instances, the one with the lowest P95 (380ms) is selected",
           "The instance is chosen at random regardless of latency",
-          "All three instances are called simultaneously and the fastest response is used, discarding the other two results"
+          "All three instances are called simultaneously and the fastest response is used, discarding the other two results, so no health filtering or P95 ranking is needed first"
         ],
         "correct": 1,
         "explain": "Latency-based routing first filters to instances with healthy or degraded status, then ranks the remaining viable instances by ascending P95 latency and selects the best (380ms) — ensuring the fastest selected instance can actually complete the request successfully."
@@ -108509,9 +108509,9 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "When rolling out a new MCP tool version as a canary deployment, what is the recommended progression of traffic weight described in the module, and what should trigger an immediate rollback to 0% canary weight?",
         "options": [
-          "Start at 50% canary immediately; roll back only if the canary completely stops responding",
+          "Start at 50% canary immediately, hold for 24 hours, then move straight to 100%; roll back only if the canary completely stops responding, since minor increases in error rate or latency are expected during a rollout",
           "Start at 100% canary and reduce only if clinicians complain",
-          "There is no recommended progression; weights are set once and never adjusted",
+          "There is no recommended progression; weights are set once and never adjusted, and rollback is handled by redeploying the previous version in the next scheduled release window",
           "Start at 5% canary, monitor for 24 hours, then gradually increase to 25%, 50%, and 100%; roll back to 0% immediately if canary metrics degrade significantly (e.g., materially higher error rate or latency)"
         ],
         "correct": 3,
@@ -108548,9 +108548,9 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A clinician searches a drug formulary index for \"atorvastatin contraindications\" where exact drug names and NDC codes matter most, while a separate clinical-guidelines index uses varied clinical language for the same concepts. How should hybrid search vector-query weights typically be tuned for each index?",
         "options": [
-          "The formulary index should disable BM25 entirely and use vector search only",
+          "The formulary index should disable BM25 entirely and use vector search only, while the guidelines index should favor keyword matching (e.g., vector weight ~0.3)",
           "The formulary index should favor keyword matching (e.g., vector weight ~0.3) while the guidelines index should favor semantic matching (e.g., vector weight ~0.7)",
-          "Both indexes should use identical 0.5/0.5 keyword/vector weighting for consistency",
+          "Both indexes should use identical 0.5/0.5 keyword/vector weighting for consistency, since exact drug names and varied clinical language respond the same way to hybrid search",
           "Vector weighting has no effect on retrieval quality in Azure AI Search"
         ],
         "correct": 1,
@@ -108600,9 +108600,9 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "After reranking a set of clinical documents by relevance, the top 3 results all turn out to be near-duplicate excerpts from the same guideline. Which technique is described for correcting this by balancing relevance against novelty when selecting the final context set?",
         "options": [
-          "Reciprocal Rank Fusion (RRF)",
+          "Reciprocal Rank Fusion (RRF), which merges rankings from multiple retrievers by summing their reciprocal rank scores",
           "BM25 re-scoring",
-          "Increasing k_nearest_neighbors on the vector query",
+          "Increasing k_nearest_neighbors on the vector query, which retrieves more candidates so that near-duplicate excerpts are pushed out of the final set",
           "Maximum Marginal Relevance (MMR), which penalizes candidates that are highly similar to already-selected documents"
         ],
         "correct": 3,
@@ -108613,8 +108613,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which two metrics are described for offline evaluation of reranking quality against a labeled dataset of query-relevance judgments?",
         "options": [
-          "Token count and embedding dimensionality",
-          "Number of documents in the index and index size in gigabytes",
+          "Token count and embedding dimensionality of each reranked result set",
+          "Number of documents in the index and index size in gigabytes after reranking",
           "CPU utilization and memory footprint",
           "Normalized Discounted Cumulative Gain (nDCG) and Mean Reciprocal Rank (MRR)"
         ],
@@ -108627,8 +108627,8 @@ const EXAMS = {
         "q": "A set of clinical guideline PDFs has clear section headers (Indications, Dosing, Contraindications), while a separate set of physician case notes is continuous narrative prose with no formatting markers. Which chunking strategies are the best fit for each, respectively?",
         "options": [
           "Structural chunking (splitting at detected section boundaries) for the formatted guidelines; semantic chunking (detecting topic shifts via embedding similarity between adjacent sentences) for the unstructured case notes",
-          "Hierarchical parent-child chunking for both, since it always outperforms other strategies regardless of content type",
-          "Semantic chunking for the guidelines and structural chunking for the notes — the reverse of the correct pairing",
+          "Hierarchical parent-child chunking for both, since it always outperforms other strategies regardless of content type and preserves section headers and narrative flow equally well across every document format",
+          "Semantic chunking (detecting topic shifts via embedding similarity between adjacent sentences) for the formatted guidelines; structural chunking (splitting at detected section boundaries) for the unstructured case notes",
           "Fixed-size chunking for both, since uniform size is always simplest"
         ],
         "correct": 0,
@@ -108682,10 +108682,10 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "When an application uses the Foundry Responses API in stateless mode (client.agents.responses.create()) rather than server-managed Conversations, what is the application responsible for on every call?",
         "options": [
-          "Nothing — the runtime automatically accumulates and injects all prior conversation history regardless of mode",
+          "Nothing — the runtime automatically accumulates and injects all prior conversation history regardless of mode, so the application only sends the newest user message on each call",
           "Deleting all prior context after each call, since stateless mode disables memory features entirely",
           "Including the full conversation history it wants the agent to see on every call, since the runtime does not accumulate history between calls in stateless mode — the application owns working memory entirely",
-          "Only sending a session ID; the server reconstructs history from that ID automatically in stateless mode"
+          "Only sending a session ID; the server reconstructs history from that ID automatically in stateless mode, so the application never has to assemble or resend earlier turns and working memory stays on the server side"
         ],
         "correct": 2,
         "explain": "In stateless mode, the application must include the full context it wants the agent to see with every call, since the runtime doesn't accumulate history between calls — giving the application explicit, granular control over exactly what enters working memory each time, as opposed to server-managed Conversations, which accumulate history automatically."
@@ -108696,9 +108696,9 @@ const EXAMS = {
         "q": "A simple clinical documentation assistant only records what a clinician dictates during a single session, with no need to recall prior visits or recognize cross-session patterns. Per the memory-architecture-by-agent-type guidance, which memory tiers does it need?",
         "options": [
           "Episodic memory only, with no working memory",
-          "Semantic memory only, since pattern recognition is always required",
+          "Semantic memory only, since pattern recognition is always required even for a single-session, linear recording task",
           "Working memory only — episodic and semantic memory aren't needed for a single-session, linear recording task",
-          "All three: working, episodic, and semantic"
+          "All three: working, episodic, and semantic, since every clinical agent must recall prior visits across sessions"
         ],
         "correct": 2,
         "explain": "A documentation assistant that records a single linear session needs only working memory; episodic and semantic memory address cross-session recall and pattern recognition needs that this agent type doesn't have, and adding them would be over-engineering."
@@ -108721,8 +108721,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Under the tiered memory retention policy, a patient hasn't had a visit in 30 months. What retention tier does this fall into, and what action does the policy apply?",
         "options": [
-          "Tier 2 (Semi-active) — no action is taken until 36 months of inactivity",
-          "Immediate permanent deletion, since inactivity beyond 24 months requires expunging all data",
+          "Tier 2 (Semi-active) — no action is taken until 36 months of inactivity, at which point memories move to cold storage tiers with longer retrieval latency",
+          "Immediate permanent deletion, since inactivity beyond 24 months requires expunging all data and healthcare retention minimums only apply to records of patients who have visited within the last two years",
           "Tier 1 (Active) — retain all memories at full detail with no changes",
           "Tier 3 (Inactive, 24+ months) — archive memories to cold storage tiers with longer retrieval latency, since most healthcare systems retain records for 6-7 years and deletion isn't yet appropriate"
         ],
@@ -108734,10 +108734,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A patient's documented penicillin allergy is 4 years old, tagged critical: true with importance 10, and the patient hasn't visited in 18 months. What happens to this memory during the scheduled automated pruning job?",
         "options": [
-          "It is deleted because it's older than 12 months",
+          "It is deleted because it's older than 12 months, since the pruning job applies one age cutoff to every memory regardless of any critical tag or importance score",
           "It survives indefinitely — memories tagged critical (e.g., adverse drug reactions, allergies, major diagnoses) are explicitly exempted from pruning regardless of age or importance decay",
           "It is deleted because the patient is inactive",
-          "It gets summarized into a lower-importance semantic memory and then deleted after 6 months"
+          "It gets summarized into a lower-importance semantic memory and then deleted after 6 months, because importance decay over 4 years outweighs the critical tag once the patient has been inactive this long"
         ],
         "correct": 1,
         "explain": "Critical memories (adverse drug reactions, allergies, major diagnoses, documented treatment refusals) are tagged critical: true during creation and are explicitly filtered out of the pruning query, so they're never discarded by the automated pruning job regardless of age or importance decay."
@@ -108775,8 +108775,8 @@ const EXAMS = {
         "options": [
           "10 seconds minus 12 seconds, which is undefined",
           "12 seconds, roughly the maximum of the two runtimes, since they execute concurrently",
-          "1 second, regardless of individual agent runtime",
-          "22 seconds, the sum of both runtimes, same as sequential"
+          "1 second, regardless of individual agent runtime, since asyncio removes all waiting time",
+          "22 seconds, the sum of both runtimes, same as sequential, since gather awaits each task in turn"
         ],
         "correct": 1,
         "explain": "Parallel fan-out/fan-in execution completes in roughly the time of the slowest agent (12 seconds here) rather than the sum of all agents' runtimes (22 seconds sequential), because asyncio.gather runs the tasks concurrently and waits at a synchronization barrier."
@@ -108787,9 +108787,9 @@ const EXAMS = {
         "q": "Contoso Capital requires that at least two of three parallel market-analysis sub-agents (equities, fixed income, derivatives) succeed for compliance reasons, but doesn't need all three. Which partial-failure policy implements this requirement, as opposed to fail-fast or best-effort?",
         "options": [
           "Round-robin, which cycles through agents sequentially until one succeeds",
-          "Fail-fast, which aborts on the first failure regardless of how many other agents succeed",
+          "Fail-fast, which aborts on the first failure regardless of how many other agents succeed, returning an error status as soon as any one of the three sub-agents is unavailable",
           "Minimum-quorum, which requires a configurable threshold of successful agents (here, 2 of 3) before proceeding, returning an insufficient_quorum status if the threshold isn't met",
-          "Best-effort, which proceeds with whatever results are available with no minimum threshold"
+          "Best-effort, which proceeds with whatever results are available with no minimum threshold, returning an insufficient_quorum status only if every one of the three sub-agents fails to respond"
         ],
         "correct": 2,
         "explain": "Minimum-quorum requires counting successful results from asyncio.gather and comparing against a configurable threshold (2 of 3 here); if the threshold isn't met, the workflow returns an insufficient_quorum status rather than either aborting on any single failure (fail-fast) or accepting any partial result with no floor (best-effort)."
@@ -108816,8 +108816,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A Foundry deployment handles 1,000 tokens per minute of quota, and each parallel agent invocation uses roughly 500 tokens. If a workflow spawns four agent tasks concurrently, what mechanism is described to prevent throttling, and what would the correct configuration be?",
         "options": [
-          "Switching from asyncio.gather to asyncio.wait removes all quota constraints automatically",
-          "There is no way to limit concurrency in asyncio; all four agents must always run simultaneously",
+          "Switching from asyncio.gather to asyncio.wait removes all quota constraints automatically, so all four tasks can run at once and the Foundry deployment scales its token-per-minute allocation to match the demand",
+          "There is no way to limit concurrency in asyncio; all four agents must always run simultaneously, and the deployment retries any throttled calls until the quota window resets",
           "An asyncio.Semaphore configured to allow at most 2 concurrent agents, so the third and fourth tasks wait until a slot is released, keeping simultaneous token usage within the 1,000-token-per-minute quota",
           "Reducing the number of messages per thread, which has no relationship to concurrent request quota"
         ],
@@ -108829,9 +108829,9 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A workflow has a 60-second total deadline and runs two sequential rounds: round one runs two agents in parallel, and round two runs one agent that depends on round one's output. How should the per-agent timeouts be allocated, per the deadline-propagation guidance?",
         "options": [
-          "Timeouts are only relevant for single-agent workflows, not multi-round orchestration",
+          "Timeouts are only relevant for single-agent workflows, not multi-round orchestration, so agents in both rounds should run without limits until the workflow-level deadline fires",
           "Give round one's agents 60 seconds each and round two's agent 0 seconds",
-          "Give every agent the full 60 seconds regardless of round, since asyncio manages contention automatically",
+          "Give every agent the full 60 seconds regardless of round, since asyncio manages contention automatically and cancels any agent that would push the workflow past its deadline, so no buffer for overhead is needed",
           "Divide the total deadline across the sequential rounds plus a buffer for orchestration overhead — e.g., about 25 seconds for round one, 25 seconds for round two, leaving roughly 10 seconds of buffer"
         ],
         "correct": 3,
@@ -108843,9 +108843,9 @@ const EXAMS = {
         "q": "Which asyncio synchronization primitive is described as an \"all-or-nothing\" barrier that blocks until every spawned task completes (or raises), versus the primitive that can return as soon as just one task completes?",
         "options": [
           "asyncio.gather is the all-or-nothing barrier; asyncio.wait(..., return_when=asyncio.FIRST_COMPLETED) can return after just one task finishes",
-          "asyncio.Lock is the all-or-nothing barrier; asyncio.Semaphore returns after one task finishes",
+          "asyncio.Lock is the all-or-nothing barrier; asyncio.Semaphore(..., return_when=asyncio.FIRST_COMPLETED) can return after just one task finishes",
           "asyncio.create_task blocks until all tasks complete; asyncio.gather never blocks",
-          "Both asyncio.gather and asyncio.wait always block until every task completes with no configurable behavior"
+          "Both asyncio.gather and asyncio.wait always block until every task completes with no configurable behavior; only asyncio.Lock can return after one task finishes"
         ],
         "correct": 0,
         "explain": "asyncio.gather provides an all-or-nothing synchronization barrier that waits for every task. asyncio.wait offers more flexible completion criteria — with return_when=asyncio.FIRST_COMPLETED it returns as soon as one task finishes (useful for racing redundant providers), and with FIRST_EXCEPTION it supports fail-fast behavior."
@@ -108857,8 +108857,8 @@ const EXAMS = {
         "options": [
           "The W3C Trace Context standard, propagated via the traceparent HTTP header carrying the trace ID, parent span ID, and trace flags",
           "The HTTP/2 standard, propagated via the :status pseudo-header",
-          "There is no standard for this; each agent must maintain its own separate trace ID",
-          "The OAuth 2.0 standard, propagated via the Authorization header"
+          "There is no standard for this; each agent must maintain its own separate trace ID and correlate them later using log timestamps",
+          "The OAuth 2.0 standard, propagated via the Authorization header carrying the bearer token, client ID, and the parent span's scope claims"
         ],
         "correct": 0,
         "explain": "The W3C Trace Context standard propagates span context across agent boundaries via the traceparent header (00-{trace-id}-{parent-span-id}-{trace-flags}). The receiving agent extracts this context and creates a child span sharing the same trace ID, unifying all agents' spans into one correlated trace."
@@ -108881,10 +108881,10 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A team wants \"tail-based\" sampling behavior — retaining 100% of error traces and high-latency traces while sampling only a small percentage of successful traces — using the OpenTelemetry Python SDK. Why is a Sampler the wrong tool for this, and what should be used instead for evaluating and forwarding spans after completion?",
         "options": [
-          "A Sampler is correct and sufficient; SpanProcessor is unrelated to sampling decisions",
+          "A Sampler is correct and sufficient: should_sample() fires after the span completes, when final attributes like error status and duration are available, while a SpanProcessor's on_end() method fires at span start and is unrelated to sampling decisions",
           "Sampler.should_sample() fires at span start, before status and duration are known, so it can't evaluate error/latency after the fact; a SpanProcessor's on_end() method fires after the span completes, when final attributes like error status and duration are available",
           "Tail-based sampling is only possible using Azure Functions triggers, never within the OpenTelemetry SDK itself",
-          "Neither Sampler nor SpanProcessor can access span duration; only external log analysis can compute tail-based sampling"
+          "Neither Sampler nor SpanProcessor can access span duration; only external log analysis can compute tail-based sampling, because OpenTelemetry discards status and timing data once a span ends, so error and latency decisions must be rebuilt later from exported application log entries"
         ],
         "correct": 1,
         "explain": "Sampler.should_sample() runs at span start, before the span's final error status or duration is known, making it unsuitable for tail-based decisions. A SpanProcessor's on_end() callback fires after the span completes, when error status and duration are available, so it can evaluate and forward completed spans for tail-based alerting/filtering (with the OpenTelemetry Collector's tail-sampling processor recommended for full drop/keep sampling at scale)."
@@ -108896,8 +108896,8 @@ const EXAMS = {
         "options": [
           "Instrument agent entry/exit points, LLM API calls, tool invocations, and agent-to-agent calls; avoid instrumenting individual loop iterations, variable assignments, and internal helper functions",
           "Instrument only the final output of the entire multi-agent workflow as a single span",
-          "Instrument every variable assignment for maximum visibility; avoid instrumenting LLM calls since they're already logged by the model provider",
-          "Instrument internal helper functions exclusively, since entry/exit points add no diagnostic value"
+          "Instrument every variable assignment for maximum visibility; avoid instrumenting LLM calls since they're already logged by the model provider, and avoid tool invocations since agent entry/exit points already capture them",
+          "Instrument internal helper functions and individual loop iterations exclusively, since agent entry/exit points, LLM API calls, and agent-to-agent calls add no diagnostic value of their own"
         ],
         "correct": 0,
         "explain": "Instrumentation should focus on semantic boundaries — agent entry/exit points, LLM API calls, tool invocations, and agent-to-agent calls — each representing distinct operations with their own latency and failure characteristics. Internal loop iterations, variable assignments, and helper functions create span clutter without diagnostic value."
@@ -108908,9 +108908,9 @@ const EXAMS = {
         "q": "A routing agent's baseline distribution sends about 75% (±8%) of traffic to a product search agent, established from a 14-day rolling average. Following the behavioral-baseline anomaly detection guidance, at what deviation would this trigger a critical (as opposed to warning) alert?",
         "options": [
           "Any deviation at all from exactly 75%",
-          "Deviations are never alerted on; only absolute counts matter",
+          "Deviations are never alerted on; only absolute counts of routed requests over the 14-day window matter",
           "A shift of roughly 3 standard deviations (3σ) from baseline, versus 2σ for a warning-level alert",
-          "Only if the routing agent goes offline completely"
+          "Only if the routing agent goes offline completely, since a shift in traffic share is never treated as critical"
         ],
         "correct": 2,
         "explain": "Behavioral baselines define alert thresholds at 2σ (warning — unusual but not necessarily actionable) and 3σ (critical — highly unusual, requires investigation), calculated from rolling mean and standard deviation over the baseline window."
@@ -108965,8 +108965,8 @@ const EXAMS = {
         "options": [
           "Token usage metrics",
           "System-level metrics, which measure whether the customer's complete journey and end-to-end goal were actually accomplished",
-          "Component-level metrics, since they measure whether each agent executed its task correctly",
-          "Model deployment version metrics"
+          "Component-level metrics, since they measure whether each agent executed its task correctly and returned accurate data to the caller",
+          "Model deployment version metrics, which show whether every agent in the journey ran the expected release"
         ],
         "correct": 1,
         "explain": "System-level metrics measure end-to-end customer outcomes (did the customer accomplish their goal?), not just individual component correctness. A technically correct component response can still contribute to a failed system-level outcome if orchestration or downstream handling breaks the journey."
@@ -109045,9 +109045,9 @@ const EXAMS = {
         "q": "A team calibrates their task-completion LLM judge against 50-100 human-labeled examples and finds a Cohen's kappa of 0.62, with analysis showing the judge over-weights polite language regardless of whether requirements were actually met. What threshold of agreement is cited as indicating the judge is reliable enough for production, and what fixed the low score in the example?",
         "options": [
           "Kappa above 0.7 indicates good agreement; revising the rubric to explicitly state \"ignore politeness, focus only on whether requirements were met\" raised kappa from 0.62 to 0.78",
-          "Cohen's kappa doesn't apply to LLM-as-judge calibration, only to human-to-human agreement",
+          "Cohen's kappa doesn't apply to LLM-as-judge calibration, only to human-to-human agreement, so the team should instead compare raw percentage agreement against a 0.62 target with no rubric change",
           "Kappa above 0.3 is always sufficient; no rubric changes were needed",
-          "The fix was to increase the judge model's temperature to reduce bias"
+          "Kappa above 0.5 indicates good agreement; the fix was to increase the judge model's temperature to reduce the politeness bias, which raised kappa from 0.62 to 0.78"
         ],
         "correct": 0,
         "explain": "Cohen's kappa above 0.7 indicates good agreement between the judge and human labels. In the example, revising the rubric to explicitly instruct the judge to ignore politeness and focus solely on whether requirements were met raised kappa from a moderate 0.62 to a strong 0.78."
@@ -109058,8 +109058,8 @@ const EXAMS = {
         "q": "When running multi-judge consensus evaluation (e.g., GPT-4o, GPT-4o-mini, and Claude 3.5 Sonnet judging the same interaction), what triggers a case to be flagged for mandatory human review?",
         "options": [
           "Only when every judge scores exactly 0",
-          "Multi-judge consensus never requires human review since averaging always resolves disagreement",
-          "Whenever all three judges give the exact same score",
+          "Multi-judge consensus never requires human review since averaging always resolves disagreement between the individual judge scores",
+          "Whenever all three judges give the exact same score, since identical results suggest that the judges are not independent",
           "A score spread greater than 3 points between judges, since high disagreement signals evaluation uncertainty"
         ],
         "correct": 3,
@@ -109130,10 +109130,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A CI/CD pipeline runs the Microsoft Foundry Evaluation SDK against a synthetic test suite before every deployment, comparing results to a gold baseline with configured thresholds (e.g., no more than a 2-percentage-point drop in task completion rate). What is this pattern called, and what happens if a candidate version breaches a threshold?",
         "options": [
-          "Nothing happens automatically; thresholds are informational only and require a human to manually stop the pipeline every time",
+          "Nothing happens automatically; thresholds are informational only and require a human to manually stop the pipeline every time, so a regressed version can still reach production unless someone steps in",
           "A deployment gate — the pipeline blocks deployment (nonzero exit code) when a threshold is breached, preventing quality regressions from reaching production",
           "A blue-green swap — the new version silently replaces the old version regardless of scores",
-          "A canary deployment — traffic is always still sent to the new version regardless of evaluation results"
+          "A canary deployment — traffic is always still sent to the new version regardless of evaluation results, with the gold baseline only used to compare metrics after release"
         ],
         "correct": 1,
         "explain": "This is a CI/CD quality/deployment gate: the evaluation job runs after build and before deploy, and a failing comparison against the gold baseline's thresholds causes the check script to exit with a nonzero code, halting the workflow and blocking deployment of a regressed version automatically."
@@ -109173,8 +109173,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A semantic cache similarity threshold is set far too low (e.g., 0.80). What problem does this create, versus setting it far too high (e.g., 0.98)?",
         "options": [
-          "Too low causes cache entries to expire instantly; too high causes them to never expire",
-          "Too low always improves accuracy with no downside; too high has no effect on caching behavior at all",
+          "Too low causes cache entries to expire instantly, before any similar question arrives; too high causes them to never expire, so old answers remain in Redis indefinitely",
+          "Too low always improves accuracy with no downside, because more questions match stored answers; too high has no effect on caching behavior at all, since every cached entry is compared the same way regardless",
           "Threshold value has no effect on cache correctness, only on Redis memory usage",
           "Too low produces false hits, where dissimilar questions incorrectly return a cached response meant for a different question; too high misses legitimate cache opportunities, reducing the hit rate"
         ],
@@ -109188,8 +109188,8 @@ const EXAMS = {
         "options": [
           "Dependency tagging (invalidate all entries tagged with the changed product ID) combined with cascading invalidation (also invalidate the dependent recommendation agent's cache when its upstream data source changes)",
           "Deleting the entire cache for all agents whenever any single product changes",
-          "Only time-based TTL expiration, since dependency tracking is unnecessary for pricing data",
-          "Disabling caching for the pricing agent permanently, while cascading invalidation is left undefined for other agents"
+          "Only time-based TTL expiration, since dependency tracking is unnecessary for pricing data and short lifetimes on each agent's cache will remove stale recommendations soon enough",
+          "Disabling caching for the pricing agent permanently, while cascading invalidation is left undefined for other agents, so the recommendation agent's cache keeps serving entries until each one naturally reaches the end of its configured lifetime"
         ],
         "correct": 0,
         "explain": "Dependency tagging associates cached entries with the data entities they reference (e.g., product IDs), so a product price change invalidates just the tagged entries. Cascading invalidation extends this across agent dependencies — since the recommendation agent's cache depends on pricing data, its cache must also be invalidated when pricing changes, preventing stale cross-agent recommendations."
@@ -109251,8 +109251,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Under the audit decision taxonomy for regulated multi-agent decisions, what distinguishes \"regulated\" decisions (e.g., fraud investigations, account closures for compliance reasons) from merely \"auditable\" decisions (e.g., standard refund exceptions)?",
         "options": [
-          "Regulated decisions require no human review at all, unlike auditable decisions which always require review",
-          "Auditable decisions are retained forever with no defined retention period, while regulated decisions expire after 30 days",
+          "Regulated decisions require no human review at all, unlike auditable decisions which always require review and a quarterly sampling report",
+          "Auditable decisions are retained forever with no defined retention period, while regulated decisions expire after 30 days once the compliance review has been closed",
           "Regulated decisions are logged only to standard application logs with no audit database entry",
           "Regulated decisions require enhanced documentation with legal review and extended retention of 7+ years, with compliance review on every instance"
         ],
@@ -109264,10 +109264,10 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A compliance auditor wants proof that human oversight of agent decisions is \"meaningful\" rather than a rubber stamp. Which evidence is specifically cited as demonstrating this, based on Adventure Works' reviewer rejection rates and audit practices?",
         "options": [
-          "A 100% approval rate across all reviewers, showing agents are highly accurate",
+          "A 100% approval rate across all reviewers, backed by reviewer training and compliance team spot-checks — showing agents are highly accurate and that reviewers agree with every recommendation they assess",
           "A policy stating that human review is optional and can be skipped for efficiency",
           "Rejection rates of 12-15% across reviewers, backed by comprehensive approval cards, compliance team spot-checks, and reviewer training — showing reviewers genuinely assess decisions and have real authority to override the agent",
-          "The complete absence of any reversal or rejection records, proving the system never makes mistakes"
+          "The complete absence of any reversal or rejection records across reviewers, backed by comprehensive approval cards and compliance team spot-checks — proving the system never makes mistakes and that agent recommendations can be trusted without being overridden"
         ],
         "correct": 2,
         "explain": "A near-100% approval rate would actually suggest reviewers are rubber-stamping rather than genuinely scrutinizing decisions. Rejection rates of 12-15%, combined with comprehensive approval cards, spot-checks, and reviewer training, are cited as evidence that oversight is substantive and reviewers have real, exercised authority to override agent recommendations."
@@ -109292,8 +109292,8 @@ const EXAMS = {
         "options": [
           "A customer typing an invalid credit card number",
           "A pricing agent model deployment change that introduced new output formatting behavior (adding currency symbols to prices), several services upstream of where the failure was observed",
-          "The payment agent's error-handling code, which should have caught the malformed values",
-          "A Redis cache eviction policy misconfiguration"
+          "The payment agent's error-handling code, which should have caught the malformed values and retried them, making the agent that reported the failure the true origin of the checkout problem described here",
+          "A Redis cache eviction policy misconfiguration that discarded current price entries, several services upstream of where the failure was observed"
         ],
         "correct": 1,
         "explain": "The root cause was the pricing agent's model deployment change, which altered output formatting (adding currency symbols) several services upstream of the payment agent where the failure surfaced — illustrating why root cause analysis in multi-agent systems must look beyond the agent that reports the error."
@@ -109345,8 +109345,8 @@ const EXAMS = {
         "options": [
           "Syntax-analyzer, style-checker, and security-scanner deploy in parallel first; the orchestrator deploys only after all three succeed; reporting deploys last",
           "Reporting deploys first since it's the ultimate consumer of the pipeline's output",
-          "All four agents deploy simultaneously because GitHub Actions resolves dependency order automatically without configuration",
-          "The orchestrator deploys first, then the three specialist agents deploy in parallel, then reporting"
+          "All four agents deploy simultaneously because GitHub Actions resolves dependency order automatically without any configuration in the workflow file",
+          "The orchestrator deploys first, then the three specialist agents deploy in parallel once it succeeds, then reporting deploys last, since a job's needs entries run after the job itself"
         ],
         "correct": 0,
         "explain": "The dependency manifest expresses orchestrator: depends_on: [syntax-analyzer, style-checker, security-scanner] and reporting: depends_on: [orchestrator]. GitHub Actions enforces this with the needs keyword: independent specialist agents deploy in parallel, the orchestrator's job needs all three to succeed first, and reporting's job needs the orchestrator and deploys last."
@@ -109356,10 +109356,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Fabrikam's compatibility-validation GitHub Actions job compares an updated agent's tool schema against the baseline before allowing deployment. Which change would this validation correctly classify as a breaking change that blocks deployment?",
         "options": [
-          "Adding a new optional parameter to an existing tool",
+          "Adding a new optional parameter with a default value to an existing tool",
           "Increasing a tool's configured response timeout value",
           "Changing an existing required tool parameter from a string type to an integer type",
-          "Adding a brand-new tool that no dependent agent currently calls"
+          "Adding a brand-new tool that no dependent agent currently calls or has declared in its schema"
         ],
         "correct": 2,
         "explain": "Adding optional parameters is safe, but changing required parameter types (or removing tools) are breaking changes that require coordinated updates across dependent agents before deployment can proceed."
@@ -109370,8 +109370,8 @@ const EXAMS = {
         "q": "Fabrikam's security-scanner canary is routed 5% of production traffic for 24 hours. The quality gate compares canary vulnerability-detection accuracy against the stable baseline, with a documented failure threshold of missing 15% more vulnerabilities than production. After 24 hours, the canary is missing 18% more vulnerabilities than the baseline. Per the canary quality-gate design, what should happen next?",
         "options": [
           "Increase canary traffic to 25% since the difference is only marginally above target",
-          "Immediately switch to a blue-green deployment to force full traffic onto the canary",
-          "Continue monitoring for another 24 hours at 5% before making a decision",
+          "Immediately switch to a blue-green deployment to force full traffic onto the canary, so that accuracy can be measured at full production load",
+          "Continue monitoring for another 24 hours at 5% before making a decision, since one day of data is too short to confirm the canary breach",
           "The quality gate fails: stop the rollout and trigger an automatic rollback, since the canary breached the defined degradation threshold"
         ],
         "correct": 3,
@@ -109396,8 +109396,8 @@ const EXAMS = {
         "q": "Fabrikam wants to activate a new advanced_security_scan capability first for internal testing, then for a small set of beta customers, then for all customers — without redeploying the orchestrator code at each stage. Which mechanism, stored in Azure App Configuration, provides this level of control?",
         "options": [
           "Feature flags checked per tenant at runtime, decoupling code deployment from feature activation",
-          "Blue-green environment switching via Azure Traffic Manager",
-          "A dependency manifest enforcing deployment order via the needs keyword",
+          "Blue-green environment switching via Azure Traffic Manager, moving each customer group between two deployments",
+          "A dependency manifest enforcing deployment order via the needs keyword in the workflow file for each stage",
           "Canary deployment with traffic-weight adjustments"
         ],
         "correct": 0,
@@ -109408,10 +109408,10 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "A Fabrikam engineer queries role assignments for the development environment's orchestrator managed identity scoped to the production resource group and gets an empty result — the identity has zero assigned roles there. What does this confirm about Fabrikam's multi-environment design?",
         "options": [
-          "There is a misconfiguration that must be fixed before the dev identity can function",
+          "There is a misconfiguration that must be fixed before the dev identity can function, because every managed identity needs matching role assignments in all environments",
           "The development environment's managed identity was accidentally deleted",
           "Each environment has its own isolated Key Vault and RBAC assignments, so a development environment compromise cannot expose production secrets",
-          "Azure RBAC role assignments always default to empty and must be manually queried to activate"
+          "Azure RBAC role assignments always default to empty and must be manually queried to activate, so the dev identity will gain its roles after this first query"
         ],
         "correct": 2,
         "explain": "Fabrikam never shares Key Vaults across environments; each environment gets its own Key Vault with environment-appropriate RBAC. The empty query result for a dev identity against the production resource group is expected — it confirms the isolation is working as designed."
@@ -109453,9 +109453,9 @@ const EXAMS = {
         "q": "A Fabrikam developer builds and tests an agent in a Microsoft Foundry project, where it shares the project's default agent identity along with several other in-development agents. The developer then publishes the agent as an agent application. In production, tool calls that worked fine during development start failing with authorization errors. What is the most likely cause, and what should the developer do?",
         "options": [
           "Publishing creates a new, distinct agentIdentityId for the agent, but doesn't transfer RBAC permissions from the shared project identity — the developer must explicitly reassign roles on every downstream resource to the new agentIdentityId",
-          "Publishing revokes all RBAC roles by design; the developer must file a support ticket to have Microsoft re-provision access",
+          "Publishing revokes all RBAC roles by design and locks the shared project identity; the developer must file a support ticket to have Microsoft re-provision access on each downstream resource and then wait for the agent's token to be reissued by the service",
           "Published agents can no longer use managed identity and must switch to API-key authentication",
-          "The agent's managed identity token cache expired and simply needs to be refreshed by restarting the container"
+          "The agent's managed identity token cache expired during publishing and simply needs to be refreshed by restarting the container, after which the shared project identity's existing role assignments on every downstream resource apply again"
         ],
         "correct": 0,
         "explain": "Before publishing, all in-development agents in a project share a common project identity. Publishing creates a dedicated agentIdentityId unique to that agent for isolation, but this doesn't automatically carry over RBAC role assignments — the developer must locate the new agentIdentityId (via JSON View in the Foundry portal) and explicitly reassign roles on Cosmos DB, Storage, Key Vault, and Azure OpenAI."
@@ -109466,9 +109466,9 @@ const EXAMS = {
         "q": "Fabrikam's ingestion agent must read a developer's private GitHub repository to run a code review, respecting exactly that developer's own GitHub permissions — not a broader, service-level scope. Which authentication pattern is appropriate?",
         "options": [
           "Key-based fallback authentication stored in application code for simplicity",
-          "OAuth2 authorization code flow with PKCE, since GitHub always requires interactive user consent for every single request",
+          "OAuth2 authorization code flow with PKCE, since GitHub always requires interactive user consent for every single request the ingestion agent makes on the developer's behalf",
           "On-behalf-of (OBO) token exchange, so the downstream resource enforces the calling user's own permissions and the audit log shows the user as the actor",
-          "Managed identity, since it's the baseline pattern for all agent-to-service connections"
+          "Managed identity, since it's the baseline pattern for all agent-to-service connections and its service-level scope always matches each developer's own permissions"
         ],
         "correct": 2,
         "explain": "Managed identity grants the agent's service-level access, which may be broader than the user's own permissions — a privilege-escalation risk when the agent must respect a specific user's boundaries. OBO exchanges the user's token for a downstream-resource-scoped token, so the resource enforces the user's actual permissions and audit logs record the user as the actor."
@@ -109479,9 +109479,9 @@ const EXAMS = {
         "q": "Fabrikam wants an agent to gain temporary elevated access to non-anonymized source code only when explicitly requested and approved, never as a standing grant. Which Azure capability, and what duration range, fits this just-in-time access pattern?",
         "options": [
           "Azure Privileged Identity Management (PIM), activating an eligible role for a limited duration of 1-4 hours after approval",
-          "A permanent Key Vault Secrets Officer role assignment on the agent's managed identity",
+          "A permanent Key Vault Secrets Officer role assignment on the agent's managed identity, reviewed by approvers every 1-4 hours while the agent is running",
           "Azure API Management rate limiting with a 429 response on excess requests",
-          "OAuth2 authorization code flow with a 90-day refresh token"
+          "OAuth2 authorization code flow with a 90-day refresh token, issued after approval and renewed automatically until it's revoked"
         ],
         "correct": 0,
         "explain": "PIM defines an eligible role assignment that isn't active by default. When the agent needs sensitive access, it requests activation; designated approvers review the request, and if approved, the role activates for a limited duration (1-4 hours) before automatically revoking, creating an audit trail even if the agent itself is fully compromised."
@@ -109508,8 +109508,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Fabrikam is choosing between storing a credential as a Key Vault secret versus a Key Vault certificate for mutual TLS authentication between two internal agent services. Why does the guidance recommend certificates over secrets for this specific scenario?",
         "options": [
-          "Certificates are required by Azure for any resource using managed identity",
-          "Secrets cannot be rotated at all, while certificates rotate automatically with zero configuration",
+          "Certificates are required by Azure for any resource using managed identity, and Key Vault blocks secrets from being read by internal agent services once mutual TLS is enabled on either one",
+          "Secrets cannot be rotated at all, while certificates rotate automatically with zero configuration, and because certificates are stored in plain text they're easy for both services to read and compare at runtime",
           "Certificates are cheaper to store in Key Vault than plain-text secrets",
           "Certificates provide non-repudiation — the private key never leaves the HSM-backed Key Vault — plus automated renewal through integrated CAs, which shared secrets can't offer"
         ],
@@ -109534,8 +109534,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Fabrikam's Kubernetes NetworkPolicy configuration denies all pod-to-pod traffic by default in the agents namespace, then adds a policy allowing ingress to specialist agents (security-scanner, style-checker, syntax-analyzer) only from the orchestrator pod on port 8000. Under this configuration, what happens if the compromised security-scanner tries to directly call the style-checker?",
         "options": [
-          "The call succeeds because NetworkPolicy only restricts ingress from outside the cluster, not pod-to-pod traffic within it",
-          "The call succeeds because both pods share the agents namespace",
+          "The call succeeds because NetworkPolicy only restricts ingress from outside the cluster, not pod-to-pod traffic within it, so the deny-all default has no effect between specialist pods in the namespace",
+          "The call succeeds because both pods share the agents namespace, and the allow-list policy only applies to traffic that crosses a namespace boundary on port 8000",
           "The call is blocked only if Azure Private Link is also configured",
           "The call is blocked, because the allow-list policy only permits ingress to specialist pods from the orchestrator pod — there's no rule permitting specialist-to-specialist traffic"
         ],
@@ -109590,9 +109590,9 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "In Fabrikam's code review pipeline, the preprocessing agent describes identical code changes as \"experimental\" when submitted by junior developers and \"innovative\" when submitted by senior developers. By the time the final recommendation reaches the developer, systematic disparities appear to originate from the code itself. What does this scenario illustrate about bias in multi-agent systems, and where does the actual root cause lie?",
         "options": [
-          "This can only be detected by examining the final recommendation agent's behavior in isolation",
+          "This can only be detected by examining the final recommendation agent's behavior in isolation, because each upstream agent operates on raw input, so its framing is discarded before reaching the next stage and can't contribute to the disparity",
           "This is normal variance in language model output with no systematic cause",
-          "The bias originates in the final recommendation agent alone, since that's where the disparity is observed",
+          "The bias originates in the final recommendation agent alone, since that's where the disparity is observed: each upstream agent passes its input through unchanged, so the disparity is introduced at the last stage rather than being carried forward from any earlier judgment",
           "Bias compounds through agent chains: because each downstream agent operates on the preprocessing agent's framed output rather than raw input, the initial framing bias is amplified at each subsequent stage rather than isolated to one judgment"
         ],
         "correct": 3,
@@ -109603,10 +109603,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Fabrikam defines its \"consistency\" fairness metric using a probe set of 50 code samples submitted monthly with varying developer metadata. Per this operational definition, when does consistency hold?",
         "options": [
-          "When at least 50% of probe submissions receive different quality ratings across contexts",
+          "When at least 50% of probe submissions receive different quality ratings across contexts for a given probe sample",
           "When the quality rating variance stays within 5% across different submission contexts for a given probe sample",
           "Consistency isn't measurable and is treated as a qualitative judgment only",
-          "When all 50 probe samples receive an identical numeric quality score regardless of code content"
+          "When all 50 probe samples receive an identical numeric quality score regardless of code content or submission context"
         ],
         "correct": 1,
         "explain": "Consistency is defined as the percentage of probe submissions where quality rating variance stays within 5% across different developer-metadata contexts — a concrete, measurable target that enables monthly metric reviews to detect when bias has entered the system."
@@ -109616,8 +109616,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Fabrikam's weekly disparity-testing job processes 20 recent code submissions twice — once with original developer metadata and once with all author context stripped — then compares final recommendation vectors using cosine similarity. Per the detection design, what similarity score triggers a manual-review flag?",
         "options": [
-          "Similarity scores aren't used; only exact numeric match triggers review",
-          "Any score below 0.50",
+          "Similarity scores aren't used; only an exact numeric match between the two recommendation vectors triggers review by an engineer",
+          "Any score below 0.50, since recommendations for identical code are expected to differ by up to half of the vector",
           "Any score below 0.95, since identical code should produce recommendations with similarity at or above that level",
           "Any score above 0.95, since high similarity indicates the agents are colluding"
         ],
@@ -109629,8 +109629,8 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A bias detection alert fires because the security-analyzer's risk rating differs between two functionally identical code submissions. Fabrikam's engineers first bypass the preprocessing agent and send raw code directly to the quality-assessment agent for replay, and the bias disappears. What does this replay result indicate?",
         "options": [
-          "The security-analyzer's confidence calculation is miscalibrated and unrelated to preprocessing",
-          "The quality-assessment agent's own logic is the bias source",
+          "The security-analyzer's confidence calculation is miscalibrated and unrelated to preprocessing — since the alert fired on its risk rating, the bias originated in how it scored the code, and the replay disparity disappearing is only a coincidence of timing",
+          "The quality-assessment agent's own logic is the bias source — since it received the replayed code directly, its handling of raw input removed a disparity that it had introduced itself on the earlier run",
           "No conclusion can be drawn from a single replay test",
           "The preprocessing agent is the bias source — since removing it from the pipeline eliminates the disparity, the bias originated in how it normalized or framed the code before downstream agents ever saw it"
         ],
@@ -109699,8 +109699,8 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Fabrikam's security-analyzer version manifest documents a change from gpt-4o (2024-08-06) to gpt-4.1 (2025-04-14) along with a system prompt rewrite affecting 35% of the prompt text. Per the tiered approval-gate design, which approval path applies?",
         "options": [
-          "Automated gates only, since both changes passed unit tests and contract tests",
-          "No approval gate applies to system prompt changes, only to tool configuration changes",
+          "Automated gates only, since both changes passed unit tests and contract tests, and model version upgrades are objective criteria that evaluation baselines can verify without human review",
+          "No approval gate applies to system prompt changes, only to tool configuration changes, so the prompt rewrite can ship automatically while the model upgrade goes through contract tests before being released to tenants",
           "Customer approval only, skipping the manual product-owner review entirely",
           "Manual approval, since both a model version upgrade and a system prompt rewrite exceeding 20% of the text are explicitly listed as changes requiring human review beyond automated gates"
         ],
@@ -109712,8 +109712,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Version 2.3 of Fabrikam's security-analyzer is approved and deploys immediately to Tier 1 (aggressive adopter) tenants. No issues surface in telemetry. Per the rollout-tier design, when do Tier 2 (standard adopter) and Tier 3 (conservative adopter) tenants receive version 2.3?",
         "options": [
-          "Tier 2 receives it after 30 days; Tier 3 never receives version upgrades automatically",
-          "Both tiers receive it only after the version is manually re-approved by the customer success team, regardless of elapsed time",
+          "Tier 2 receives it after 30 days of validation in Tier 1; Tier 3 never receives version upgrades automatically and must request each one",
+          "Both tiers receive it only after the version is manually re-approved by the customer success team, regardless of elapsed time or Tier 1 telemetry results",
           "Tier 2 and Tier 3 both receive it immediately alongside Tier 1",
           "Tier 2 receives it after a 7-day validation period with no issues in Tier 1; Tier 3 receives it after 30 days of validation across Tiers 1 and 2"
         ],
@@ -109725,10 +109725,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "An enterprise customer requests a 90-day pin to security-analyzer version 2.2 while they complete their own testing cycle. During the pin period, a critical CVE is discovered affecting version 2.2. Per Fabrikam's pinning policy, what happens?",
         "options": [
-          "The pin holds for the full 90 days regardless of the CVE, since the customer explicitly requested stability",
+          "The pin holds for the full 90 days regardless of the CVE, since the customer explicitly requested stability, and the tenant is notified of the CVE details so that it can plan its own upgrade once the pin period has ended",
           "Fabrikam has no mechanism to override an active version pin under any circumstances",
           "The force-upgrade-on-critical-cve security exception automatically lifts the pin and upgrades the tenant to a patched version within 24 hours, with the tenant notified of the forced upgrade and the CVE details",
-          "The customer must manually approve the upgrade before Fabrikam can act, even for a critical CVE"
+          "The customer must manually approve the upgrade before Fabrikam can act, even for a critical CVE, so the pin stays in place until the tenant has signed off on a patched version within the following 24 hours"
         ],
         "correct": 2,
         "explain": "Version pins can be held for up to 90 days, but the pinning_policy's security_exception (force-upgrade-on-critical-cve) overrides pins automatically: a critical CVE triggers a forced upgrade to a patched version within 24 hours, with the tenant notified of both the upgrade and the justifying CVE."
@@ -109753,8 +109753,8 @@ const EXAMS = {
         "options": [
           "Both receive HTTP 429",
           "The burst tenant receives HTTP 429 (rate limit, retry after the interval); the monthly-exhausted tenant receives HTTP 403 (quota exhausted until reset)",
-          "Both receive HTTP 200 with a warning header, since llm-token-limit only logs violations without blocking",
-          "The burst tenant receives HTTP 403; the monthly-exhausted tenant receives HTTP 429"
+          "Both receive HTTP 200 with a warning header, since llm-token-limit only logs violations without blocking, leaving each tenant's requests to continue until the next reset interval",
+          "The burst tenant receives HTTP 403 (quota exhausted until reset); the monthly-exhausted tenant receives HTTP 429 (rate limit, retry after the interval)"
         ],
         "correct": 1,
         "explain": "The llm-token-limit policy enforces two distinct controls: tokens-per-minute prevents burst spikes and returns 429 with a Retry-After header when exceeded; token-quota enforces the monthly ceiling and returns 403 once the tenant's full monthly allocation is exhausted, blocking further requests until the quota resets."
@@ -109764,10 +109764,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Fabrikam reserves 60% of shared Azure OpenAI capacity for Premium tier, 30% for Standard, and 10% for Developer tier. During a period when total demand is well below the deployment's TPM limit, how does a Developer tier tenant's access to quota behave?",
         "options": [
-          "The Developer tenant receives zero quota until Premium and Standard tenants are fully idle",
+          "The Developer tenant receives zero quota until Premium and Standard tenants are fully idle — lower tiers are only served from unused capacity, so any activity in higher tiers blocks it regardless of total demand",
           "The Developer tenant can use more than its 10% reservation when demand is below capacity — reservation enforcement (throttling lower tiers to their percentage) only activates once total demand approaches the deployment's TPM limit",
           "Reservation percentages apply only to storage costs, not to model token quota",
-          "The Developer tenant is hard-capped at exactly 10% of total quota at all times, even when capacity is abundant"
+          "The Developer tenant is hard-capped at exactly 10% of total quota at all times, even when capacity is abundant — reservation enforcement runs continuously, so requests above that percentage are throttled however far total demand sits below the deployment's TPM limit"
         ],
         "correct": 1,
         "explain": "During normal operation, when demand is below capacity, all tiers can access the full quota pool — a Developer tenant can use more than 10% if it's available. Only when total demand approaches the TPM limit does reservation enforcement activate, throttling Standard and (most aggressively) Developer tier requests to stay within their reserved percentages."
@@ -109792,8 +109792,8 @@ const EXAMS = {
         "options": [
           "The pinned tenant's request is served normally (with a deprecation warning noting the deletion date), while the new, unpinned tenant's request is rejected with HTTP 410 Gone and migration instructions",
           "Both requests are rejected with HTTP 410 Gone",
-          "Both requests succeed identically with no distinction made between pinned and unpinned tenants",
-          "The pinned tenant is rejected since pins don't apply during deprecation windows"
+          "Both requests succeed identically with no distinction made between pinned and unpinned tenants, and each response carries a deprecation warning noting the deletion date until the endpoint is removed",
+          "The pinned tenant is rejected with HTTP 410 Gone since pins don't apply during deprecation windows, while the new, unpinned tenant's request is served normally with a deprecation warning noting the deletion date and a link to migration instructions"
         ],
         "correct": 0,
         "explain": "Graceful deprecation checks for an active version pin: pinned tenants continue to be served (with a deprecation warning noting the deletion date) to avoid abrupt disruption during their migration window, while new/unpinned callers receive HTTP 410 Gone with structured migration guidance — the replacement endpoint, a migration guide link, breaking changes, and a support contact."
