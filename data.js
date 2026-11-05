@@ -87025,7 +87025,7 @@ const EXAMS = {
         "q": "A company already uses Dynamics 365 Customer Service for all of its CRM and case management, and now wants to add full contact center (CCaaS) capabilities without operating a separate application. Which deployment model should the company use?",
         "options": [
           "Microsoft Contact Center AI overlay",
-          "Standalone deployment",
+          "Standalone deployment linked to Customer Service",
           "Embedded within Dynamics 365 Customer Service",
           "Contact Center Accelerate Program"
         ],
@@ -87347,7 +87347,7 @@ const EXAMS = {
           "The representative's presence is set to Busy-DND and they stop receiving new work items",
           "The capacity profile resets immediately regardless of the reset frequency setting",
           "The representative is automatically signed out of the workspace",
-          "The oldest active conversation is automatically reassigned to another representative"
+          "The oldest active conversation is automatically reassigned to another representative in the queue"
         ],
         "correct": 0,
         "explain": "When assignment blocking is enabled and the work item limit is reached, the representative doesn't receive new work items and their presence is automatically set to Busy-DND."
@@ -87384,7 +87384,7 @@ const EXAMS = {
         "q": "An organization only needs SMS, social, Teams, and custom channels for its contact center, without voice. Which license covers these channels as a standalone option?",
         "options": [
           "Contact Center Add-on",
-          "Dynamics 365 Customer Service Enterprise",
+          "Dynamics 365 Customer Service Enterprise license",
           "Dynamics 365 Contact Center",
           "Dynamics 365 Contact Center Digital Messaging"
         ],
@@ -87692,7 +87692,7 @@ const EXAMS = {
         "q": "A customer dials a service representative's personal phone number directly through an inbound profile. What happens to this call?",
         "options": [
           "It's automatically transferred to the default voice queue",
-          "It's rejected unless the representative also has an outbound profile configured",
+          "It's rejected unless the representative also has an outbound profile configured in the same workstream",
           "It bypasses unified routing entirely and isn't tracked in unified routing historical analytics",
           "It's evaluated by unified routing like any other inbound call"
         ],
@@ -87967,7 +87967,7 @@ const EXAMS = {
           "The routing engine skips them for new work item assignment",
           "Their capacity profile is automatically reset",
           "They're automatically set to the Offline presence",
-          "They continue to receive new work items as normal"
+          "They continue to receive new work items as normal throughout the break"
         ],
         "correct": 0,
         "explain": "Shift-based routing checks each representative's shift status before assigning work; representatives in non-support activities like breaks or training are skipped for new assignments."
@@ -88181,7 +88181,7 @@ const EXAMS = {
         "q": "For collecting a customer's account PIN during a voice interaction, which input approach does the guidance recommend to minimize authentication bypass risk?",
         "options": [
           "Speech recognition only",
-          "A combination of speech and DTMF",
+          "A combination of speech and DTMF input",
           "Real-time translation",
           "DTMF only, with no speech fallback"
         ],
@@ -88259,7 +88259,7 @@ const EXAMS = {
         "q": "A customer declines the recording consent prompt during a call that later escalates to a representative. What happens to transcription for the remainder of the call?",
         "options": [
           "The call is automatically disconnected",
-          "Transcription starts fresh once the representative joins, regardless of the earlier decline",
+          "Transcription starts fresh once the representative joins, regardless of the earlier decline and persists through any transfers",
           "Transcription continues only if the customer previously consented; the decline persists through transfers and consults",
           "The representative can manually override the customer's decision at any time"
         ],
@@ -88273,7 +88273,7 @@ const EXAMS = {
         "options": [
           "Copilot provides real-time assistance during active conversations, while autonomous agents operate independently in the background",
           "Copilot is only available for voice channels, while autonomous agents work across all channels",
-          "Copilot operates independently of active conversations, while autonomous agents assist representatives live",
+          "Copilot operates independently of active conversations, while autonomous agents assist representatives live by suggesting responses",
           "Copilot requires Copilot Credits, while autonomous agents don't"
         ],
         "correct": 0,
@@ -88354,7 +88354,7 @@ const EXAMS = {
         "q": "What connection does the Service Operations Agent require in order to access and manage a Dynamics 365 Contact Center environment?",
         "options": [
           "A direct SQL connection to Dataverse",
-          "A Channel Integration Framework adapter",
+          "A Channel Integration Framework adapter for Dataverse",
           "A Power BI Premium capacity connection",
           "A Dataverse connection through the MCP server"
         ],
@@ -88503,7 +88503,7 @@ const EXAMS = {
           "The work item is discarded",
           "Overflow settings apply as normal",
           "Overflow settings are ignored, and the work item is assigned directly",
-          "The work item waits indefinitely for overflow rules to trigger"
+          "The work item waits indefinitely for overflow rules to trigger in the fallback queue"
         ],
         "correct": 2,
         "explain": "The fallback queue overrides overflow settings — when a work item lands there because of an error or unmatched rules, overflow conditions are ignored and the item is assigned directly, to prevent it from getting stuck."
@@ -88529,7 +88529,7 @@ const EXAMS = {
           "In Conversation orchestration, using an AI-powered playbook",
           "In the queue's overflow settings",
           "In the capacity profile settings",
-          "In the workstream's work classification rules"
+          "In the workstream's work classification rules for incoming items"
         ],
         "correct": 0,
         "explain": "Immediate overflow (a preview feature) is configured in Conversation orchestration using an AI-powered playbook that evaluates 'If no service representative is available' and acts right away, rather than in the queue's own overflow settings."
@@ -88554,7 +88554,7 @@ const EXAMS = {
         "options": [
           "The queue of the first matching rule in the list",
           "The queue with the lowest current wait time",
-          "The queue of the last matching rule in the list",
+          "The queue of the last matching rule in the rule list",
           "Both queues receive a copy of the work item"
         ],
         "correct": 0,
@@ -88670,7 +88670,7 @@ const EXAMS = {
         "q": "A user has both the Customer Service Representative role (mapped to a profile with rank 1) and the Omnichannel agent role (mapped to a profile with rank 2). Which experience profile does the user get?",
         "options": [
           "Both profiles are merged into one combined experience",
-          "The rank 2 profile, since Omnichannel agent is a more specific role",
+          "The rank 2 profile, since Omnichannel agent is a more specific role than Customer Service Representative",
           "The rank 1 profile, since the application links the higher-ranked profile to the user",
           "The default profile, since multiple role mappings create a conflict"
         ],
@@ -88878,7 +88878,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Representatives report that internal knowledge search returns too many irrelevant results in a large knowledge base. Which setting should an administrator change to improve precision?",
         "options": [
-          "Increase the search results display count",
+          "Increase the search results display count so more articles appear",
           "Set search mode to \"all\" so every keyword must match",
           "Enable the Feedback toggle",
           "Enable suggest-as-you-type"
