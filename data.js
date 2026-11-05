@@ -45583,7 +45583,7 @@ const EXAMS = {
         "q": "You create a custom OneLake security role that restricts a user to only the Orders table. The user was previously given the 'Read all Apache Spark and subscribe to events' sharing permission on the lakehouse. What must you also do?",
         "options": [
           "Grant the user the ReadWrite permission instead of Read",
-          "Nothing further is needed once the custom role is created",
+          "Nothing further is needed once the custom role is created, because it replaces the user's earlier sharing permission",
           "Delete the DefaultReader role entirely from the lakehouse",
           "Remove the user from the automatically created DefaultReader role, or they will still see all data through it"
         ],
@@ -45608,7 +45608,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "How does dynamic data masking (DDM) protect a column in a Fabric warehouse?",
         "options": [
-          "It encrypts the column values at rest so they cannot be read even by administrators",
+          "It encrypts the column values at rest so they cannot be read even by administrators or other privileged users",
           "It moves sensitive columns to a separate, access-restricted table automatically",
           "It physically deletes sensitive values from the table",
           "It obscures column values in query results at query time without changing the underlying stored data"
@@ -45637,7 +45637,7 @@ const EXAMS = {
           "No one; masks cannot be bypassed",
           "Only the Fabric tenant administrator",
           "Users with the CONTROL permission: Admins, Members, and Contributors",
-          "Any user with Read item permission"
+          "Any user with Read item permission on the warehouse that holds the masked column"
         ],
         "correct": 2,
         "explain": "By default, only users with the CONTROL permission (Admins, Members, and Contributors) can view unmasked data. To let a specific non-admin user see real values, you must grant them the UNMASK permission."
@@ -45675,7 +45675,7 @@ const EXAMS = {
         "options": [
           "The label must be manually reapplied to every downstream item",
           "Only Power BI reports inherit labels; other item types do not",
-          "The label stays only on the lakehouse; downstream items are never labeled",
+          "The label stays only on the lakehouse; downstream items are never labeled, leaving the semantic model and report with no protection",
           "Downstream inheritance automatically propagates the Confidential label to the SQL analytics endpoint, semantic model, and report"
         ],
         "correct": 3,
@@ -45702,7 +45702,7 @@ const EXAMS = {
           "It prevents users from saving Power BI items without applying a sensitivity label",
           "It automatically certifies every new item",
           "It disables sharing for unlabeled items only",
-          "It forces every item into the Highly Confidential category"
+          "It forces every item into the Highly Confidential category when it is saved to a workspace"
         ],
         "correct": 0,
         "explain": "When mandatory labeling is enabled, users can't save Power BI items without applying a label, which prevents unlabeled content from reaching consumers (support for non-Power BI Fabric items is limited)."
@@ -45766,7 +45766,7 @@ const EXAMS = {
         "options": [
           "Tabular Model Definition Language (TMDL) text files",
           "An encrypted .pbism blob",
-          "A single binary .pbix file",
+          "A single binary .pbix file containing the full report and model",
           "A compiled .dll assembly"
         ],
         "correct": 0,
@@ -45778,7 +45778,7 @@ const EXAMS = {
         "q": "Why do teams prefer .pbip over .pbix for source control?",
         "options": [
           ".pbip files are smaller in size only",
-          ".pbip files can be edited directly by end users in Power BI service",
+          ".pbip files can be edited directly by end users in Power BI service without Power BI Desktop",
           ".pbip stores definitions as plain text so standard diff tools show exactly what changed",
           ".pbip removes the need for a semantic model entirely"
         ],
@@ -45857,7 +45857,7 @@ const EXAMS = {
         "options": [
           "One stage, additional stages require a separate license",
           "Two stages fixed, cannot be changed",
-          "Five stages by default, customizable up to 20",
+          "Five stages by default (Development, Test, Staging, UAT, Production), customizable up to 20",
           "Three stages by default (Development, Test, Production), customizable between two and 10"
         ],
         "correct": 3,
@@ -45973,7 +45973,7 @@ const EXAMS = {
         "q": "What is the defining characteristic of a OneLake shortcut?",
         "options": [
           "It references data in external or other Fabric storage so it appears as a folder without copying the data",
-          "It physically copies external data into the lakehouse on a schedule",
+          "It physically copies external data into the lakehouse on a schedule and stores the copy as a folder in OneLake",
           "It is only usable for Azure Data Lake Storage, not other Fabric items",
           "It requires the source data to be converted to Delta format first"
         ],
@@ -46090,7 +46090,7 @@ const EXAMS = {
         "q": "In PySpark, how should you combine multiple filter conditions to avoid operator precedence issues, such as filtering to year 2024 AND amount greater than 0?",
         "options": [
           "Wrap each condition in parentheses and use & for AND, | for OR",
-          "Use 'and'/'or' keywords directly on column expressions",
+          "Use 'and'/'or' keywords directly on column expressions inside .filter()",
           "Use SQL WHERE syntax inside .filter() without any operators",
           "Chain multiple .select() calls"
         ],
@@ -46221,7 +46221,7 @@ const EXAMS = {
         "options": [
           "A snapshot of a table frozen at creation time",
           "A visual dashboard embedded in the warehouse item",
-          "A materialized, physically stored copy of query results refreshed nightly",
+          "A materialized, physically stored copy of query results refreshed nightly from all of its underlying source tables",
           "A named SELECT statement stored as a database object that always reflects the current state of source tables"
         ],
         "correct": 3,
@@ -46246,7 +46246,7 @@ const EXAMS = {
         "q": "When is materializing a transformation into a table generally preferred over defining it as a view?",
         "options": [
           "When the transformation is expensive to compute, produces a large result, or is queried frequently by dashboards",
-          "When the transformation is simple and consumers always need the latest data",
+          "When the transformation is simple and consumers always need the latest data from the source tables on every single query",
           "Tables should always be preferred over views in every scenario",
           "Only when row-level security is required"
         ],
@@ -46274,7 +46274,7 @@ const EXAMS = {
           "It replaces the need for a SQL analytics endpoint",
           "It exists only to enforce row-level security",
           "It stores measurable, quantitative events or transactions, typically with foreign keys to dimension tables",
-          "It stores descriptive attributes about a business entity, like product name or customer address"
+          "It stores descriptive attributes about a business entity, like product name or customer address for filtering"
         ],
         "correct": 2,
         "explain": "In a star schema, fact tables store measurable transactional data (such as sales amounts) along with foreign keys linking to dimension tables, which store descriptive attributes like product, customer, or date details."
@@ -46284,7 +46284,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What does 'denormalizing' data typically mean when preparing data for analytics in a lakehouse or warehouse?",
         "options": [
-          "Splitting a table into more granular normalized tables to reduce redundancy",
+          "Splitting a table into more granular normalized tables to reduce redundancy across the reporting model",
           "Converting a table to a different storage format like Parquet",
           "Removing all null values from a table",
           "Combining or flattening related tables so fewer joins are needed for reporting and query performance"
@@ -46325,7 +46325,7 @@ const EXAMS = {
         "options": [
           "Manually messaging every workspace admin",
           "Re-creating the dataset from source to guarantee freshness",
-          "Querying the XMLA endpoint of every workspace",
+          "Querying the XMLA endpoint of every workspace and comparing the semantic models by hand",
           "Searching the OneLake catalog's Explore tab, filtered by endorsement and domain"
         ],
         "correct": 3,
@@ -46349,7 +46349,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In Lakehouse explorer, what does adding a 'reference lakehouse' let you do?",
         "options": [
-          "Automatically apply the same sensitivity label to both lakehouses",
+          "Automatically apply the same sensitivity label to both lakehouses and to their downstream items",
           "Convert a warehouse into a lakehouse",
           "Browse and manage tables across multiple lakehouses side by side in the same explorer pane",
           "Permanently merge two lakehouses into one item"
@@ -46365,7 +46365,7 @@ const EXAMS = {
           "A warehouse provides full T-SQL transactional capabilities for creating, querying, and transforming data, whereas the lakehouse's SQL analytics endpoint is read-only",
           "Warehouses cannot use views or stored procedures",
           "A warehouse cannot be queried with T-SQL at all",
-          "A lakehouse supports write access through its SQL analytics endpoint, but a warehouse does not"
+          "A lakehouse supports full T-SQL write access through its SQL analytics endpoint for inserts, updates, and deletes, whereas a warehouse is limited to read-only queries"
         ],
         "correct": 0,
         "explain": "A Fabric warehouse provides full T-SQL transactional capabilities, including inserts, updates, and deletes, while a lakehouse's SQL analytics endpoint only supports read-only T-SQL querying of its Delta tables."
@@ -46376,7 +46376,7 @@ const EXAMS = {
         "q": "When loading data into a Fabric warehouse, which loading strategies are commonly used to handle changing source data over time?",
         "options": [
           "Full loads, incremental loads, and slowly changing dimension (SCD) patterns",
-          "Loading is limited to a single one-time bulk import",
+          "Loading is limited to a single one-time bulk import with no later updates allowed",
           "Only full loads are supported",
           "Only Dataflows Gen2 can load a warehouse"
         ],
@@ -46389,7 +46389,7 @@ const EXAMS = {
         "q": "Can a Dataflow Gen2 be included as a step within a Data Factory pipeline in Fabric?",
         "options": [
           "Only if the dataflow has no data destination configured",
-          "No, dataflows and pipelines are entirely separate and cannot interact",
+          "No, dataflows and pipelines are entirely separate and cannot interact in Fabric",
           "Only warehouses can trigger dataflows, not pipelines",
           "Yes, by adding a Dataflow Gen2 activity to the pipeline's orchestration"
         ],
@@ -46440,7 +46440,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "How does Direct Lake mode differ fundamentally from both Import and DirectQuery?",
         "options": [
-          "It copies data into the model like Import, but refreshes automatically like DirectQuery",
+          "It copies data into the model like Import, but refreshes automatically like DirectQuery, translating every query into source SQL whenever the copied data is out of date",
           "It only works with data sources outside of Fabric",
           "It requires a scheduled refresh just like Import mode",
           "It reads Delta tables directly from OneLake into memory, without copying data (unlike Import) and without translating queries into source SQL (unlike DirectQuery)"
@@ -46482,7 +46482,7 @@ const EXAMS = {
           "Yes, refresh must be scheduled just like Import mode",
           "No — when the underlying Delta tables update, the model reflects those changes without a scheduled refresh",
           "Only if query scaleout is enabled",
-          "Only if the large semantic model storage format is disabled"
+          "Only if the large semantic model storage format is disabled, because that format is what keeps a model up to date"
         ],
         "correct": 1,
         "explain": "Unlike Import mode, Direct Lake doesn't require you to schedule a refresh — because it reads Delta tables directly, the model automatically reflects changes when the underlying Delta tables update."
@@ -46508,7 +46508,7 @@ const EXAMS = {
           "It removes the 10-GB upload limit; the new maximum equals the Fabric capacity size or a limit set by the capacity admin",
           "It removes all limits on the number of tables",
           "It only affects DirectQuery models, not Import models",
-          "It removes the 1-GB limit; the new maximum is always unlimited"
+          "It removes the 1-GB limit; the new maximum is always unlimited, regardless of the Fabric capacity size or any capacity admin setting"
         ],
         "correct": 0,
         "explain": "By default Power BI limits model uploads to 10 GB; enabling the large semantic model storage format lets models grow beyond that on refresh, up to the Fabric capacity size or a limit set by the capacity administrator."
@@ -46519,7 +46519,7 @@ const EXAMS = {
         "q": "Is the large semantic model storage format something you need to manually enable for a Direct Lake model?",
         "options": [
           "No — Direct Lake models automatically enable this setting; only Import mode models require manual enablement",
-          "Yes, it must always be manually enabled regardless of storage mode",
+          "Yes, it must always be manually enabled regardless of storage mode, including for Direct Lake and Import mode models",
           "It is only relevant to DirectQuery models",
           "It cannot be used with Direct Lake models at all"
         ],
@@ -46637,7 +46637,7 @@ const EXAMS = {
         "options": [
           "No, OLS can only be configured through the Fabric REST API",
           "Yes, but only for calculated columns",
-          "Yes, entirely through the Modeling tab",
+          "Yes, entirely through the Modeling tab by setting table and column permissions to None or Read for each role",
           "No — you must use an external tool such as Tabular Editor connected via the Analysis Services engine"
         ],
         "correct": 3,
@@ -46714,7 +46714,7 @@ const EXAMS = {
         "q": "What does the DAX function KEEPFILTERS do differently from a plain filter argument inside CALCULATE?",
         "options": [
           "It converts row context into filter context",
-          "It removes all existing filters before applying the new one",
+          "It removes all existing filters before applying the new one, so slicers and other visuals no longer affect the result",
           "It preserves existing filter context (from slicers or other visuals) instead of replacing it with the new filter",
           "It only works with iterator functions"
         ],
@@ -46741,7 +46741,7 @@ const EXAMS = {
         "options": [
           "To a Power Query computed column (M) during data load, or to the source query/view",
           "Into a calculation group calculation item",
-          "It must remain a DAX calculated column with no alternative",
+          "It must remain a DAX calculated column with no alternative, since only DAX can combine text columns",
           "Into a dynamic format string"
         ],
         "correct": 0,
