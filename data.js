@@ -39989,7 +39989,7 @@ const EXAMS = {
         "options": [
           "Microsoft Entra hybrid join",
           "Co-management",
-          "Microsoft Entra join",
+          "Microsoft Entra join (cloud-only join)",
           "Device registration (workplace join)"
         ],
         "correct": 3,
@@ -40028,7 +40028,7 @@ const EXAMS = {
         "options": [
           "It removes the device from on-premises Active Directory",
           "It requires Microsoft Entra Connect to synchronize on-premises AD objects to Microsoft Entra ID",
-          "It is the only join type supported for iOS and Android devices",
+          "It is the only join type supported for iOS and Android devices that need to reach corporate resources",
           "It doesn't support Conditional Access"
         ],
         "correct": 1,
@@ -40081,7 +40081,7 @@ const EXAMS = {
           "Storing BitLocker recovery keys",
           "Automatically adding or removing devices or users based on defined rule attributes",
           "Manually assigning devices one at a time",
-          "Creating a static list of Autopilot hardware hashes"
+          "Creating a static list of Autopilot hardware hashes that administrators upload and maintain by hand"
         ],
         "correct": 1,
         "explain": "Dynamic groups use membership rules based on device or user attributes to automatically maintain group membership, which Intune then uses for policy targeting."
@@ -40093,7 +40093,7 @@ const EXAMS = {
         "options": [
           "A dynamic membership rule that evaluates device properties such as displayName or deviceOwnership",
           "A static group updated manually every week",
-          "An assignment filter applied only to a compliance policy",
+          "An assignment filter applied only to a compliance policy, leaving the group itself with no membership rule",
           "A Conditional Access session control"
         ],
         "correct": 0,
@@ -40168,7 +40168,7 @@ const EXAMS = {
         "q": "Which Android Enterprise enrollment profile creates an isolated work profile on an employee's personal device, keeping personal and corporate data separate?",
         "options": [
           "Fully managed",
-          "Corporate-owned, work profile",
+          "Corporate-owned devices with a work profile (COPE)",
           "Dedicated",
           "Personally-owned devices with work profile (BYOD)"
         ],
@@ -40196,7 +40196,7 @@ const EXAMS = {
           "Apple Business Manager and VPP",
           "Samsung Knox Mobile Enrollment and Google Zero Touch",
           "Windows Autopilot and ESP",
-          "Group Policy and Configuration Manager"
+          "Group Policy and Configuration Manager task sequences"
         ],
         "correct": 1,
         "explain": "Samsung Knox Mobile Enrollment and Google Zero Touch both let corporate Android devices automatically enroll in Intune at first boot."
@@ -40207,7 +40207,7 @@ const EXAMS = {
         "q": "What is the purpose of Intune enrollment restrictions?",
         "options": [
           "To assign apps to Autopilot devices",
-          "To create Conditional Access session controls",
+          "To create Conditional Access session controls that limit what users can do once they are signed in to apps",
           "To rotate BitLocker recovery keys",
           "To control which device platforms, OS versions, or ownership types are allowed to enroll"
         ],
@@ -40221,7 +40221,7 @@ const EXAMS = {
         "options": [
           "The device's platform or OS version doesn't meet an assigned enrollment restriction",
           "A compliance policy grace period expired",
-          "The Autopilot deployment profile has too short a device name template",
+          "The Autopilot deployment profile has too short a device name template to fit the device's serial number",
           "A firewall policy conflicts with a security baseline"
         ],
         "correct": 0,
@@ -40246,7 +40246,7 @@ const EXAMS = {
         "q": "What does Intune's multi-admin approval feature require before a sensitive change, such as a script or Autopilot profile change, takes effect?",
         "options": [
           "A new scope tag",
-          "A device compliance recheck",
+          "A device compliance recheck on every affected device",
           "An Azure subscription upgrade",
           "Sign-off from a second authorized administrator"
         ],
@@ -40271,7 +40271,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which three categories do Intune compliance policy settings fall into?",
         "options": [
-          "Update rings, feature updates, and quality updates",
+          "Update rings, feature updates, and quality update settings",
           "Device health, device security, and system security",
           "Network, storage, and battery",
           "App protection, MAM, and MDM"
@@ -40285,7 +40285,7 @@ const EXAMS = {
         "q": "By default, what happens immediately after a compliance policy is assigned and a device fails to meet it?",
         "options": [
           "The device is automatically retired",
-          "Conditional Access blocks the user's account across the whole tenant",
+          "Conditional Access blocks the user's account across the whole tenant until an administrator clears the device status",
           "Compliance evaluation begins immediately, but enforcement actions wait until the configured grace period expires",
           "The device is immediately wiped"
         ],
@@ -40313,7 +40313,7 @@ const EXAMS = {
           "Azure Monitor",
           "Microsoft Entra ID, for use by Conditional Access",
           "Windows Update for Business",
-          "Microsoft Defender for Cloud Apps only"
+          "Microsoft Defender for Cloud Apps only, for session policies"
         ],
         "correct": 1,
         "explain": "Intune reports device compliance status to Microsoft Entra ID, which Conditional Access policies use to grant or deny access to resources."
@@ -40323,7 +40323,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which statement about Conditional Access and compliance policies is correct?",
         "options": [
-          "Compliance policies replace the need for Conditional Access",
+          "Compliance policies replace the need for Conditional Access by blocking noncompliant sign-ins on their own",
           "Conditional Access only works with unmanaged (BYOD) devices",
           "Compliance policies alone block access to resources",
           "Conditional Access policies use the compliance status reported by Intune to grant or deny access"
@@ -40352,7 +40352,7 @@ const EXAMS = {
           "It manages Microsoft 365 Apps update channels",
           "It automatically manages and rotates the local administrator account password on each device",
           "It replaces BitLocker for disk encryption",
-          "It configures Wi-Fi profiles for kiosk devices"
+          "It configures Wi-Fi profiles for kiosk devices, keeping their wireless network passwords out of users' reach"
         ],
         "correct": 1,
         "explain": "Windows LAPS automatically randomizes and rotates the local administrator account password on managed devices, storing it securely in Microsoft Entra ID or Active Directory."
@@ -40390,7 +40390,7 @@ const EXAMS = {
         "options": [
           "Dedicated enrollment profile",
           "Corporate-owned work profile enrollment",
-          "Fully managed enrollment",
+          "Fully managed enrollment combined with app protection policies on every personal phone",
           "Device registration (workplace join) combined with app protection policies"
         ],
         "correct": 3,
@@ -40404,7 +40404,7 @@ const EXAMS = {
           "Integration between Intune and Apple Business Manager",
           "A Samsung Knox token",
           "Windows Autopilot registration",
-          "A Google Zero Touch account"
+          "A Google Zero Touch account connected to the Intune tenant"
         ],
         "correct": 0,
         "explain": "Corporate or automated enrollment for Apple devices requires connecting Intune to Apple Business Manager to synchronize the device list and enrollment profiles."
@@ -40428,7 +40428,7 @@ const EXAMS = {
         "q": "A help desk technician should manage compliance policies and Conditional Access only for devices in the Europe region, without seeing devices from other regions. Which Intune features together achieve this?",
         "options": [
           "Scope tags applied to the Europe devices and policies, plus an RBAC role scoped to that tag",
-          "A single global Endpoint Security Manager role",
+          "A single global Endpoint Security Manager role assigned to the technician across all regions and devices",
           "Enrollment restrictions only",
           "Dynamic groups only"
         ],
@@ -40453,8 +40453,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is a key difference between a Windows Autopilot deployment profile and a device preparation policy?",
         "options": [
-          "Device preparation policies always require a hardware hash, deployment profiles never do",
-          "Device preparation policies apply only to self-deploying mode",
+          "Device preparation policies always require a hardware hash, deployment profiles never do, so only deployment profiles work for unregistered devices",
+          "Device preparation policies apply only to self-deploying mode, while deployment profiles apply only to user-driven mode",
           "Deployment profiles only work with macOS",
           "Deployment profiles configure the traditional Autopilot OOBE experience, while device preparation policies use a newer, leaner provisioning flow"
         ],
@@ -40609,7 +40609,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which two network connection types can be used in a Windows 365 provisioning policy?",
         "options": [
-          "On-premises VPN only and dial-up",
+          "On-premises VPN only and a dial-up link for each Cloud PC",
           "Bluetooth tethering and satellite",
           "Microsoft-hosted network and Azure network connection",
           "IPv6-only and IPv4-only"
@@ -40675,7 +40675,7 @@ const EXAMS = {
         "q": "Which specialty device platforms are explicitly supported with dedicated Intune device configuration profiles?",
         "options": [
           "PlayStation and Xbox consoles",
-          "Raspberry Pi and Arduino boards",
+          "Raspberry Pi and Arduino boards, plus other hobbyist hardware",
           "Microsoft Teams Rooms, HoloLens 2, and Zebra devices",
           "Smart TVs from any vendor"
         ],
@@ -40726,7 +40726,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which validation methods can an Endpoint Privilege Management elevation rule use to identify an approved application?",
         "options": [
-          "Group Policy version and OU",
+          "Group Policy version, OU path, and domain membership",
           "IP address and MAC address",
           "File hash, publisher certificate, and file path",
           "BitLocker key ID"
@@ -40740,7 +40740,7 @@ const EXAMS = {
         "q": "What is the Enterprise App Catalog in Microsoft Intune?",
         "options": [
           "A store for BitLocker recovery keys",
-          "A catalog of Conditional Access policy templates",
+          "A catalog of Conditional Access policy templates that Microsoft curates for common device access scenarios",
           "A list of Autopilot hardware hashes",
           "A curated collection of prepackaged, ready-to-deploy Win32 applications maintained by Microsoft"
         ],
@@ -40831,7 +40831,7 @@ const EXAMS = {
         "q": "Which remote action performs a full factory reset, suitable for redeploying a device to a brand-new user or selling it as refurbished?",
         "options": [
           "Reset (Windows 'Reset this PC')",
-          "Retire and re-enroll",
+          "Retire and re-enroll (company data only)",
           "Wipe",
           "Retire"
         ],
@@ -40908,7 +40908,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "How can an administrator collect detailed diagnostic logs from a specific managed Windows device without physically touching it?",
         "options": [
-          "Manually walk the user through Event Viewer over the phone",
+          "Manually walk the user through Event Viewer over the phone and copy down each error",
           "Use the 'Collect diagnostics' remote action from the Intune admin center",
           "Ask the user to email screenshots",
           "Wait for the next compliance check"
@@ -40950,7 +40950,7 @@ const EXAMS = {
           "A macOS profile",
           "An iOS/iPadOS profile",
           "The specialty devices profile type, which covers Teams Rooms, HoloLens 2, and Zebra devices",
-          "A standard Windows device configuration profile only"
+          "A standard Windows device configuration profile only, which treats Teams Rooms like any ordinary desktop PC"
         ],
         "correct": 2,
         "explain": "Intune provides a dedicated specialty devices configuration profile category that includes support for Microsoft Teams Rooms systems, along with HoloLens 2 and Zebra devices."
@@ -40975,7 +40975,7 @@ const EXAMS = {
         "options": [
           "Wipe the device",
           "Collect diagnostics using Intune's diagnostics remote action",
-          "Rotate the local administrator password",
+          "Rotate the local administrator password using the Windows LAPS remote action",
           "Retire the device"
         ],
         "correct": 1,
@@ -40987,7 +40987,7 @@ const EXAMS = {
         "q": "Which Intune policy type is used specifically to configure real-time protection settings for Microsoft Defender Antivirus?",
         "options": [
           "Antivirus policy (Endpoint security)",
-          "Update ring policy",
+          "Update ring policy (Windows Update for Business)",
           "App protection policy",
           "Compliance policy"
         ],
@@ -41027,7 +41027,7 @@ const EXAMS = {
         "options": [
           "Windows Autopatch policy",
           "Attack surface reduction (ASR) policy",
-          "App configuration policy",
+          "App configuration policy (managed apps)",
           "Compliance policy"
         ],
         "correct": 1,
@@ -41053,7 +41053,7 @@ const EXAMS = {
         "options": [
           "The setting is left blank",
           "The compliance policy value takes precedence",
-          "The configuration profile value always wins",
+          "The configuration profile value takes precedence",
           "Whichever policy was created first wins"
         ],
         "correct": 1,
@@ -41092,8 +41092,8 @@ const EXAMS = {
         "options": [
           "Defender for Endpoint replaces Intune entirely",
           "Intune can deploy EDR onboarding policies and use Defender threat and risk signals in compliance and app protection policies",
-          "Defender for Endpoint only works with Configuration Manager",
-          "Intune cannot integrate with any Mobile Threat Defense partner"
+          "Defender for Endpoint only works with Configuration Manager, so Intune plays no part in EDR onboarding",
+          "Intune cannot integrate with any Mobile Threat Defense partner, so Defender risk signals never reach compliance and app protection policies"
         ],
         "correct": 1,
         "explain": "Integrating Defender for Endpoint with Intune enables EDR onboarding through policy and lets device risk signals from Defender feed into compliance and app protection policy decisions."
@@ -41104,7 +41104,7 @@ const EXAMS = {
         "q": "Which Intune capability lets features like EDR onboarding, security tasks, and controlled configuration (preview) become available in the Endpoint security node?",
         "options": [
           "Creating a dynamic device group",
-          "Deploying a Cloud PKI certificate profile",
+          "Deploying a Cloud PKI certificate profile to enrolled devices",
           "Enabling Windows Autopatch",
           "Integrating Microsoft Defender for Endpoint with Intune"
         ],
@@ -41129,7 +41129,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which endpoint security policy type restricts which applications are allowed to run on a Windows device, blocking anything not explicitly trusted?",
         "options": [
-          "Disk encryption policy",
+          "Disk encryption policy (BitLocker)",
           "Firewall policy",
           "Account protection policy",
           "App Control for Business policy"
@@ -41156,7 +41156,7 @@ const EXAMS = {
         "q": "Which endpoint security policy types are supported on macOS through Intune?",
         "options": [
           "Antivirus, disk encryption (FileVault), firewall, and endpoint detection and response",
-          "Attack surface reduction and App Control for Business",
+          "Attack surface reduction, App Control for Business, account protection, and local user group membership",
           "Account protection only",
           "Only compliance and app protection policies"
         ],
@@ -41285,7 +41285,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What does the Hotpatch capability, configured alongside Windows Autopatch, primarily provide?",
         "options": [
-          "A method to skip feature updates entirely",
+          "A method to skip feature updates entirely so devices stay on one Windows version indefinitely",
           "The ability to install certain security updates without requiring a device restart",
           "A way to permanently disable Windows Update",
           "A replacement for BitLocker encryption"
@@ -41312,7 +41312,7 @@ const EXAMS = {
         "q": "How can an administrator manage Android device OS updates through Intune besides configuration profiles?",
         "options": [
           "BitLocker recovery key rotation",
-          "Windows Autopatch rings",
+          "Windows Autopatch rings for Android devices",
           "Group Policy analytics",
           "Firmware-over-the-air (FOTA) deployments"
         ],
@@ -41363,7 +41363,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "When configuring a Win32 app in Intune, what does the 'installation context' setting (system vs. user) control?",
         "options": [
-          "Whether detection uses a file or registry rule",
+          "Whether detection uses a file or registry rule to confirm the app is present after it installs",
           "Whether the app supersedes an older version",
           "Whether the app installs with system-wide rights or within the signed-in user's rights",
           "Whether the app is required or available"
@@ -41376,7 +41376,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is the purpose of a Win32 app detection rule in Intune?",
         "options": [
-          "To determine which processor architecture the device uses",
+          "To determine which processor architecture the device uses, so that Intune can choose the matching installer package for it",
           "To decide whether the app is required or available",
           "To configure Quiet Time settings",
           "To let Intune verify the app actually installed successfully, rather than relying only on the installer's return code"
@@ -41390,7 +41390,7 @@ const EXAMS = {
         "q": "Which type of Win32 app detection rule is generally considered the most reliable for MSI-based installers?",
         "options": [
           "File detection rule",
-          "A script with no rule at all",
+          "A custom script with no rule at all",
           "MSI product code detection rule",
           "Registry detection rule"
         ],
@@ -41418,7 +41418,7 @@ const EXAMS = {
           "As a hard failure requiring reinstallation",
           "It must be treated as an unknown error",
           "As a soft failure that Intune treats as a successful install pending restart",
-          "As the default success code equivalent to 0"
+          "As the default success code equivalent to 0, so Intune never needs to schedule a restart"
         ],
         "correct": 2,
         "explain": "Configuring 3010 as a soft failure tells Intune the install succeeded but needs a restart, so it schedules a restart rather than retrying the installation."
@@ -41430,7 +41430,7 @@ const EXAMS = {
         "options": [
           "It sets the app's return code behavior",
           "It restricts the app to a specific device architecture",
-          "It automatically uninstalls an older version of the app",
+          "It automatically uninstalls an older version of the app before the newer target version is installed on the device",
           "It ensures a prerequisite, like the .NET Framework, installs automatically before the target app installs"
         ],
         "correct": 3,
@@ -41444,7 +41444,7 @@ const EXAMS = {
           "Force system-context installation only",
           "Automatically uninstall an older version of an app and install a newer version in its place",
           "Bypass detection rules entirely",
-          "Chain an unlimited number of prerequisite installs"
+          "Chain an unlimited number of prerequisite installs so they finish before the main app on each device"
         ],
         "correct": 1,
         "explain": "Supersedence configures a newer app version to replace an older one, so Intune automatically uninstalls the old version before installing the new one."
@@ -41482,7 +41482,7 @@ const EXAMS = {
         "options": [
           "The Autopilot ESP log",
           "The BitLocker event log",
-          "The Group Policy operational log",
+          "The Group Policy operational event log",
           "The IntuneManagementExtension log"
         ],
         "correct": 3,
@@ -41495,7 +41495,7 @@ const EXAMS = {
         "options": [
           "A Microsoft Store app",
           "A web link app",
-          "A managed Google Play app",
+          "A managed Google Play app or Microsoft Store app",
           "A Win32 or line-of-business (LOB) app"
         ],
         "correct": 3,
@@ -41519,7 +41519,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which tool can be used, alongside or instead of Intune, to customize which Microsoft 365 Apps components and settings are installed as part of a Windows Autopilot deployment?",
         "options": [
-          "The Win32 Content Prep Tool",
+          "The Microsoft Win32 Content Prep Tool",
           "Group Policy analytics",
           "The Office Deployment Tool (ODT)",
           "Windows Autopatch"
@@ -41545,7 +41545,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which Intune capability lets an admin apply granular policy settings to specific Office apps, such as disabling macros or blocking specific add-ins?",
         "options": [
-          "Compliance policies",
+          "Compliance policies assigned to Office apps and add-ins",
           "Office/Microsoft 365 Apps configuration policies",
           "Autopilot deployment profiles",
           "Firewall policies"
@@ -41586,8 +41586,8 @@ const EXAMS = {
         "options": [
           "A set of features to publish, configure, secure, and update mobile apps at the application layer, without necessarily managing the whole device",
           "A Windows-only capability",
-          "Full control over device-wide settings such as Wi-Fi profiles and disk encryption",
-          "A replacement for Conditional Access"
+          "Full control over device-wide settings such as Wi-Fi profiles and disk encryption, managing the entire physical device rather than only the apps and data inside it",
+          "A replacement for Conditional Access that decides who can sign in to corporate resources"
         ],
         "correct": 0,
         "explain": "MAM focuses on securing and managing apps and the data inside them, in contrast to MDM, which manages the entire physical device."
@@ -41612,7 +41612,7 @@ const EXAMS = {
         "options": [
           "Data relocation (leakage prevention), access requirements, and conditional launch",
           "Disk encryption, firewall, and antivirus",
-          "Detection rules, requirement rules, and dependencies",
+          "Detection rules (install verification), requirement rules, and dependencies on other apps",
           "Update rings, feature updates, and quality updates"
         ],
         "correct": 0,
@@ -41651,7 +41651,7 @@ const EXAMS = {
         "options": [
           "App-based Conditional Access using app protection policies",
           "Windows Autopatch",
-          "Device-based Conditional Access only",
+          "Device-based Conditional Access only, using compliance policies",
           "Windows Hello for Business"
         ],
         "correct": 0,
@@ -41688,7 +41688,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which two technologies can administrators combine to automate repetitive Intune management tasks such as bulk device queries and policy provisioning?",
         "options": [
-          "Group Policy and WMI filters",
+          "Group Policy objects and WMI filters",
           "BitLocker and TPM",
           "PowerShell and Microsoft Graph",
           "Autopilot and ESP"
@@ -41728,7 +41728,7 @@ const EXAMS = {
         "q": "Which Intune capability lets an administrator extend or customize compliance evaluation logic beyond built-in settings by running a custom script on the device?",
         "options": [
           "Custom compliance policies using PowerShell scripts",
-          "App configuration policies",
+          "App configuration policies using XML configuration files",
           "Security baselines",
           "Windows Autopatch"
         ],
@@ -41742,7 +41742,7 @@ const EXAMS = {
         "options": [
           "Manually reviewing every audit log line by line",
           "Physically replacing faulty hardware",
-          "Automatically purchasing new device licenses",
+          "Automatically purchasing new device licenses whenever the tenant's enrolled device count starts to run short",
           "Investigating device or security issues and surfacing prioritized, AI-generated recommendations"
         ],
         "correct": 3,
@@ -41808,7 +41808,7 @@ const EXAMS = {
           "Cloud PKI monitoring",
           "Intune reporting with workbooks and dashboards",
           "Enterprise App Catalog",
-          "Windows Autopatch dashboard"
+          "Windows Autopatch dashboard and its update reports"
         ],
         "correct": 1,
         "explain": "Intune's reporting capability includes customizable workbooks and dashboards, along with the ability to export report data for offline analysis."
@@ -41858,7 +41858,7 @@ const EXAMS = {
         "q": "Before deploying a new Remediation script package broadly, what does Microsoft recommend as a best practice?",
         "options": [
           "Assign it to a small pilot group of devices first and review results in Endpoint Analytics",
-          "Deploy it to all devices simultaneously to gather maximum data quickly",
+          "Deploy it to all devices simultaneously to gather maximum data quickly and fix issues everywhere at once",
           "Disable Endpoint Analytics before deployment",
           "Skip testing, since detection scripts can't cause harm"
         ],
@@ -41884,7 +41884,7 @@ const EXAMS = {
         "q": "Which Intune and Microsoft 365 admin resource shows planned service changes, incidents, and advisories affecting Intune, helping admins anticipate tenant-wide issues?",
         "options": [
           "Windows Autopatch dashboard",
-          "Endpoint Analytics dashboard",
+          "Endpoint Analytics dashboard and startup scores",
           "Message center and service health dashboard",
           "Enterprise App Catalog"
         ],
@@ -41898,7 +41898,7 @@ const EXAMS = {
         "options": [
           "Windows Autopatch pilot ring",
           "Alerts and notifications for policy and compliance changes",
-          "BitLocker recovery key rotation",
+          "BitLocker recovery key rotation after every compliance failure",
           "Group Policy analytics"
         ],
         "correct": 1,
