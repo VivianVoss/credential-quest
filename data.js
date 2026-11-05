@@ -8965,7 +8965,7 @@ const EXAMS = {
           "A resource lock"
         ],
         "correct": 2,
-        "explain": "The high-availability unit describes SLAs as the uptime guarantees that are part of Azure's agreement with customers, unrelated to resource locks or management groups."
+        "explain": "A service-level agreement (SLA) is Microsoft's formal commitment to a level of uptime or performance for a service. Management groups, Conditional Access policies, and resource locks are governance and access controls, not guarantees."
       },
       {
         "domain": "Describe cloud concepts",
@@ -11386,13 +11386,13 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Does a shared mailbox in Exchange Online require its own license to be created and used?",
         "options": [
-          "Yes, but only if it exceeds 50 GB",
-          "No, shared mailboxes don't require a separate license unless users access them with mobile devices",
+          "Yes, but only if it is accessed from a mobile device",
+          "No, unless it exceeds 50 GB or needs features such as litigation hold",
           "Yes, every shared mailbox always requires a full license",
           "No, shared mailboxes never require a license under any circumstance, even above 50 GB or when placed on litigation hold"
         ],
         "correct": 1,
-        "explain": "Shared mailboxes, used for scenarios like support@contoso.com, don't require a separate license unless a user accesses them from a mobile device, which does require a license."
+        "explain": "A shared mailbox needs no license of its own up to 50 GB. It does need one to go over 50 GB, or for features such as in-place archive or litigation hold. People who open it need their own Exchange Online license."
       },
       {
         "domain": "Identify the core features and objects of Microsoft 365 services",
@@ -11492,15 +11492,15 @@ const EXAMS = {
       {
         "domain": "Identify the core features and objects of Microsoft 365 services",
         "difficulty": "hard",
-        "q": "Which Microsoft Entra capability provides visibility into who has access to what across cloud environments including Azure, AWS, and Google Cloud, helping identify over-permissioned accounts?",
+        "q": "Which Microsoft capability provides visibility into who has access to what across cloud environments including Azure, AWS, and Google Cloud, helping identify over-permissioned accounts?",
         "options": [
           "Microsoft Entra ID Protection",
           "Conditional Access",
           "Microsoft Entra Verified ID",
-          "Microsoft Entra Permissions Management"
+          "Microsoft Defender for Cloud (CIEM)"
         ],
         "correct": 3,
-        "explain": "Microsoft Entra Permissions Management gives security teams visibility into user and app permissions across multi-cloud environments (Azure, AWS, Google Cloud) and helps enforce least privilege by identifying over-permissioned accounts."
+        "explain": "Cloud infrastructure entitlement management (CIEM) in Microsoft Defender for Cloud shows who or what has access to resources across Azure, AWS, and Google Cloud and helps enforce least privilege. Microsoft Entra Permissions Management used to fill this role, but it was retired on November 1, 2025."
       },
       {
         "domain": "Identify the core features and objects of Microsoft 365 services",
@@ -11851,15 +11851,15 @@ const EXAMS = {
       {
         "domain": "Understand data protection and governance tasks for Microsoft 365 and Copilot",
         "difficulty": "medium",
-        "q": "According to the training, does Microsoft 365 Copilot transmit organizational data outside the tenant or to non-Microsoft services during normal operation?",
+        "q": "How is organizational data protected when Microsoft 365 Copilot uses it during normal operation?",
         "options": [
-          "Yes, but only for users without a Copilot license",
-          "No, but only if the tenant disables Microsoft Graph",
-          "No, Copilot operates within Microsoft Purview compliance boundaries and does not transmit data outside the tenant",
-          "Yes, all Copilot prompts are copied to a public web index for every user, and no tenant setting can stop that from happening"
+          "It is protected only for users without a Copilot license",
+          "It is protected only if the tenant disables Microsoft Graph",
+          "Enterprise data protection applies, and prompts and responses don't train foundation models",
+          "It isn't, because all Copilot prompts are copied to a public web index for every user, and no tenant setting can stop that from happening"
         ],
         "correct": 2,
-        "explain": "Copilot operates entirely within Microsoft Purview compliance boundaries, meaning it doesn't transmit data outside the organization's tenant or to non-Microsoft services."
+        "explain": "Prompts and responses are covered by enterprise data protection, the same contractual terms as email in Exchange and files in SharePoint, and they aren't used to train foundation models. Data can still leave the tenant in defined cases: Anthropic models run as a Microsoft subprocessor, and web search queries go to Bing."
       },
       {
         "domain": "Understand data protection and governance tasks for Microsoft 365 and Copilot",
@@ -13783,15 +13783,15 @@ const EXAMS = {
       {
         "domain": "Implement secure software development and compliance",
         "difficulty": "hard",
-        "q": "Which API is used to query the audit log on GitHub Enterprise Server, and what is a key limitation of that API?",
+        "q": "Which API is used to query the audit log on GitHub Enterprise Server, and how do you include Git events such as pushes?",
         "options": [
           "The REST API, which only returns billing data for the enterprise's organizations",
           "The Webhooks API, which requires a paid add-on",
-          "The GraphQL API, which does not include Git events like pushes and pulls",
+          "The REST API, by adding include=git or include=all to the request",
           "The SCIM API, which cannot filter by date"
         ],
         "correct": 2,
-        "explain": "On GitHub Enterprise Server, audit log data is retrieved via the GraphQL API, retained up to 120 days, but it does not include Git events such as pushes and pulls."
+        "explain": "On GitHub Enterprise Server, you query the audit log with the REST API. Add include=git to search Git events such as cloning, fetching, and pushing, or include=all to get both web and Git events. Audit logs are kept indefinitely unless an enterprise owner sets a retention period."
       },
       {
         "domain": "Implement secure software development and compliance",
@@ -14186,15 +14186,15 @@ const EXAMS = {
       {
         "domain": "Manage GitHub Actions",
         "difficulty": "easy",
-        "q": "What is GitHub's recommended default workflow permission setting for security, versus the platform's actual out-of-the-box default?",
+        "q": "What is GitHub's recommended default workflow permission setting for security, and what is the out-of-the-box default for a new enterprise?",
         "options": [
           "Read and Write is recommended for security, and it is also GitHub's actual default",
           "Admin is both recommended and default",
           "There is no configurable default",
-          "Read-only is recommended for security, but GitHub's default is Read and Write"
+          "Read-only is recommended for security, and new enterprises default to read-only"
         ],
         "correct": 3,
-        "explain": "GitHub sets workflow permissions to Read and Write by default, but enterprises should restrict this to Read-only unless write access is explicitly required, to prevent unauthorized modifications."
+        "explain": "Enterprises and organizations created on or after February 2, 2023 default the GITHUB_TOKEN to read-only access; older ones default to read and write. Keep it read-only unless write access is explicitly required, to prevent unauthorized modifications."
       },
       {
         "domain": "Manage GitHub Actions",
@@ -14242,11 +14242,11 @@ const EXAMS = {
         "options": [
           "Only enterprise-wide",
           "Only repository and organization, never enterprise or environment",
-          "Enterprise, organization, repository, and environment",
+          "Organization, repository, and environment",
           "Only per individual user"
         ],
         "correct": 2,
-        "explain": "GitHub allows managing secrets at four levels: enterprise, organization, repository, and environment."
+        "explain": "GitHub Actions secrets can be stored at the organization, repository, or repository environment level."
       },
       {
         "domain": "Manage GitHub Actions",
@@ -14519,7 +14519,7 @@ const EXAMS = {
           "Windows runner minutes are the cheapest per minute of any supported operating system"
         ],
         "correct": 0,
-        "explain": "Documented per-minute pricing shows Linux at $0.008 per minute, Windows at $0.016 per minute, and macOS at $0.08 per minute; macOS costs significantly more per minute than Linux."
+        "explain": "Documented per-minute pricing for standard runners is $0.006 for Linux 2-core, $0.010 for Windows 2-core, and $0.062 for macOS, so macOS costs significantly more per minute than Linux."
       },
       {
         "domain": "Manage GitHub Actions",
@@ -14580,11 +14580,11 @@ const EXAMS = {
         "options": [
           "Packages require entirely separate, manually configured permissions",
           "Packages are always public regardless of repository visibility or any access settings",
-          "Packages inherit the visibility and permissions assigned at the repository level",
+          "Repository-scoped packages inherit the repository's visibility and permissions",
           "Packages have no relationship to repository permissions"
         ],
         "correct": 2,
-        "explain": "Packages published through GitHub inherit the visibility and permissions assigned at the repository level, so granting a user read access to the repository also grants them read access to its packages."
+        "explain": "A repository-scoped package inherits the permissions and visibility of its repository. Packages in registries that support granular permissions are scoped to an account or organization, so their access can be set separately."
       },
       {
         "domain": "Monitor and optimize GitHub usage",
@@ -15407,9 +15407,9 @@ const EXAMS = {
         "q": "Which pair lets you pass a value from one step to a later step in the same job?",
         "options": [
           "GITHUB_OUTPUT (with a step id) and the steps context",
-          "GITHUB_STEP_SUMMARY and GITHUB_ENV",
+          "GITHUB_STEP_SUMMARY and GITHUB_WORKFLOW",
           "GITHUB_WORKSPACE (with a step id) and the GITHUB_SHA variable",
-          "GITHUB_PATH and GITHUB_ENV"
+          "GITHUB_PATH and GITHUB_REF"
         ],
         "correct": 0,
         "explain": "A step writes name=value to GITHUB_OUTPUT and defines an id; later steps read it via ${{ steps.<id>.outputs.<name> }}."
@@ -16429,15 +16429,15 @@ const EXAMS = {
       {
         "domain": "Manage GitHub Actions for the enterprise",
         "difficulty": "medium",
-        "q": "Which allowed-actions policy option is the most restrictive?",
+        "q": "Which repository-level GitHub Actions setting is the most restrictive?",
         "options": [
           "Allow only actions created by GitHub",
           "Allow only Marketplace actions by verified creators, plus the organization's own",
           "Allow all actions and reusable workflows",
-          "Block all actions except those on an explicit allowlist"
+          "Disable GitHub Actions, so that no workflows run"
         ],
         "correct": 3,
-        "explain": "Blocking all actions except those explicitly allowlisted is the strictest policy option, permitting only specifically approved actions and reusable workflows to run."
+        "explain": "Disabling GitHub Actions for a repository is the strictest setting, because no workflows run at all. The other options still let some actions and reusable workflows run."
       },
       {
         "domain": "Manage GitHub Actions for the enterprise",
@@ -16520,15 +16520,15 @@ const EXAMS = {
       {
         "domain": "Manage GitHub Actions for the enterprise",
         "difficulty": "medium",
-        "q": "An enterprise wants log retention for its audit logs to meet a 90-day compliance requirement. Where is this configured?",
+        "q": "An enterprise on GitHub Enterprise Cloud needs audit log events kept for 90 days to meet a compliance requirement. Where is this configured?",
         "options": [
           "In each repository's Actions settings, where every repository sets its own audit log retention period",
           "Only GitHub Support can change retention",
-          "Organization Settings > Security > Audit Log retention settings (or via the API)",
+          "Nowhere: the audit log already covers the last 180 days of events",
           "Inside each workflow YAML file"
         ],
         "correct": 2,
-        "explain": "Log retention periods (for example, 30 or 90 days, or a custom period) can be configured in the organization's audit log settings or programmatically via the API to meet compliance needs."
+        "explain": "The GitHub Enterprise Cloud audit log lists events from the last 180 days, so a 90-day requirement needs no setting. Git events are kept for only seven days, and you can stream events to an external system to keep them longer."
       },
       {
         "domain": "Manage GitHub Actions for the enterprise",
@@ -16858,15 +16858,15 @@ const EXAMS = {
       {
         "domain": "Secure and optimize automation",
         "difficulty": "medium",
-        "q": "Which action policy setting reduces risk from unverified third-party actions by requiring human sign-off before they're used?",
+        "q": "Which action policy setting reduces risk from unverified third-party actions?",
         "options": [
-          "Requiring reviewers to approve unverified actions before they can be adopted in workflows",
+          "Allowing only actions from verified creators or an explicit list",
           "Disabling all code review entirely",
           "Automatically allowing all Marketplace actions, including unverified ones, to be adopted in workflows",
           "Removing the concept of actions altogether"
         ],
         "correct": 0,
-        "explain": "Organizations can require a designated reviewer to approve any newly introduced, unverified third-party action before it becomes usable in workflows, adding a human control point."
+        "explain": "The policy that allows your own actions plus selected others lets you allow Marketplace actions by verified creators and list other specific actions, so anything else is blocked."
       },
       {
         "domain": "Secure and optimize automation",
@@ -21709,11 +21709,11 @@ const EXAMS = {
         "options": [
           "Set-AzWvdWorkspace -RdpSettings",
           "New-AzWvdHostPool -RdpProperty",
-          "Set-RdsHostPool -CustomRdpProperty",
+          "Update-AzWvdHostPool -CustomRdpProperty",
           "Update-AzWvdSessionHost -Rdp"
         ],
         "correct": 2,
-        "explain": "You customize RDP properties in Azure Virtual Desktop using the -CustomRdpProperty parameter in the Set-RdsHostPool cmdlet."
+        "explain": "You customize RDP properties in Azure Virtual Desktop using the -CustomRdpProperty parameter of the Update-AzWvdHostPool cmdlet."
       },
       {
         "domain": "Plan and implement an Azure Virtual Desktop infrastructure",
@@ -21748,11 +21748,11 @@ const EXAMS = {
         "options": [
           "There is no way to reset all properties at once; clear each one by hand",
           "Delete and recreate the host pool",
-          "Run Set-RdsHostPool with -CustomRdpProperty set to an empty string",
+          "Run Update-AzWvdHostPool with -CustomRdpProperty set to an empty string",
           "Run Remove-AzWvdHostPool"
         ],
         "correct": 2,
-        "explain": "You can reset all custom RDP properties for a host pool by running Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty \"\" with an empty string."
+        "explain": "You can remove all custom RDP properties from a host pool by running Update-AzWvdHostPool -Name <hostpoolname> -ResourceGroupName <resourcegroupname> -CustomRdpProperty \"\" with an empty string."
       },
       {
         "domain": "Plan and implement an Azure Virtual Desktop infrastructure",
@@ -23874,15 +23874,15 @@ const EXAMS = {
       {
         "domain": "Implement tool use and environment interaction",
         "difficulty": "medium",
-        "q": "In a custom agent file such as .github/agents/security-reviewer.agent.md, what does the applyTo field configure?",
+        "q": "In a path-specific custom instructions file such as .github/instructions/security.instructions.md, what does the applyTo field configure?",
         "options": [
           "The MCP registry URL",
-          "Which files or directories the agent focuses on",
-          "Which users or teams in the organization can invoke the agent",
+          "Which files or directories the instructions apply to",
+          "Which users or teams in the organization can use the instructions",
           "The agent's memory expiration policy for stored facts"
         ],
         "correct": 1,
-        "explain": "Inside a custom agent file, applyTo limits which files or directories the agent focuses on, while tools defines what actions it can perform."
+        "explain": "In a path-specific instructions file, the applyTo frontmatter uses glob syntax to set which files or directories the instructions apply to. It isn't a property of custom agent files."
       },
       {
         "domain": "Implement tool use and environment interaction",
@@ -26051,15 +26051,15 @@ const EXAMS = {
       {
         "domain": "Design and implement an infrastructure to support SAP workloads on Azure",
         "difficulty": "hard",
-        "q": "Ultra SSD storage offers what IOPS and throughput characteristics, regardless of disk size, per AZ-120 training?",
+        "q": "What are the maximum IOPS and throughput of a single Ultra Disk?",
         "options": [
           "900 MBps and 20,000 IOPS per disk",
-          "2,000 MBps and 160,000 IOPS per disk",
+          "10,000 MBps and 400,000 IOPS per disk",
           "4,000 MBps and 4,000 IOPS per disk",
           "60 MBps and 500 IOPS per disk"
         ],
         "correct": 1,
-        "explain": "AZ-120 training states Ultra SSD storage offers 2,000 MBps and 160,000 IOPS per disk, regardless of the disk's size."
+        "explain": "An Ultra Disk supports up to 400,000 IOPS and 10,000 MB/s per disk. You set capacity, IOPS, and throughput individually, and IOPS are limited to 1,000 per GiB, so the limits you can reach depend on disk size."
       },
       {
         "domain": "Design and implement an infrastructure to support SAP workloads on Azure",
@@ -26844,15 +26844,15 @@ const EXAMS = {
       {
         "domain": "Design and implement high availability and disaster recovery (HADR)",
         "difficulty": "medium",
-        "q": "What known limitation does AZ-120 training call out regarding Azure Site Recovery and Accelerated Networking?",
+        "q": "What does Azure Site Recovery support for Accelerated Networking on Azure virtual machines?",
         "options": [
           "Accelerated Networking is incompatible with any Azure Site Recovery scenario",
-          "ASR doesn't support replicating the Accelerated Networking configuration setting on Azure virtual machines",
+          "It's supported, but the recovery VM can use it only if the source VM does",
           "ASR requires Accelerated Networking to be enabled on all replicated VMs before replication to the target region begins",
           "ASR automatically enables Accelerated Networking after failover"
         ],
         "correct": 1,
-        "explain": "AZ-120 DR training explicitly notes that, at the time of authoring, ASR doesn't yet support the replication of the Accelerated Networking configuration setting in Azure virtual machines."
+        "explain": "The Azure Site Recovery support matrix lists accelerated networking as supported. You can enable it on the recovery VM only if it's also enabled on the source VM."
       },
       {
         "domain": "Design and implement high availability and disaster recovery (HADR)",
@@ -28958,15 +28958,15 @@ const EXAMS = {
       {
         "domain": "Secure, optimize, and deploy database solutions",
         "difficulty": "medium",
-        "q": "For continuous backup mode, what are the two available retention tiers, and which one is free?",
+        "q": "For continuous backup mode, what are the available retention tiers, and which one has no backup storage charge?",
         "options": [
           "Continuous (1 day) free and Continuous (7 days) paid",
           "Continuous (30 days), which is free, and Continuous (90 days), which incurs additional cost",
-          "Both tiers are always free",
-          "Continuous (7 days), which is free, and Continuous (30 days), which incurs additional cost"
+          "All tiers are always free",
+          "7 days (no backup storage charge), plus charged 30-day and 35-day tiers"
         ],
         "correct": 3,
-        "explain": "Continuous backup offers a free Continuous (7 days) tier and a paid Continuous (30 days) tier, both allowing point-in-time restore to any moment within the retention window."
+        "explain": "Continuous backup offers 7-day, 30-day, and 35-day tiers, all allowing point-in-time restore within the retention window. The 7-day tier has no backup storage charge, the 30-day and 35-day tiers do, and every restore is charged."
       },
       {
         "domain": "Secure, optimize, and deploy database solutions",
@@ -28974,12 +28974,12 @@ const EXAMS = {
         "q": "Which of the following is a documented limitation of continuous backup mode?",
         "options": [
           "It cannot be combined with point-in-time restore, so an account in this mode can only be recovered by asking Azure support to restore its latest periodic backup copy",
-          "Multi-region write accounts and accounts using customer-managed keys are not supported, and it cannot coexist with Azure Synapse Link in the same account",
+          "API for Cassandra isn't supported, and you can't restore into a region where the source account didn't exist",
           "It only works with the MongoDB API",
-          "It fully supports customer-managed keys (CMK) and multi-region write accounts"
+          "It can't restore deleted databases or containers"
         ],
         "correct": 1,
-        "explain": "Continuous backup mode has several documented limitations, including no support for multi-region write accounts or customer-managed keys, and it cannot be enabled in the same account as Azure Synapse Link."
+        "explain": "Continuous backup doesn't support API for Cassandra, and the restored account must be in a region where the source account existed. Accounts with multi-region writes or customer-managed keys can use it."
       },
       {
         "domain": "Secure, optimize, and deploy database solutions",
@@ -30025,7 +30025,7 @@ const EXAMS = {
           "Read role is sufficient for all alert types, since anyone who can view the code can modify its alerts"
         ],
         "correct": 0,
-        "explain": "By default, Code scanning and Dependabot alerts can be seen and modified by anyone with the Write repository role, while Secret scanning alerts require the Admin repository role, unless access is explicitly granted to other users or teams."
+        "explain": "By default, Code scanning and Dependabot alerts can be seen and modified by anyone with the Write repository role, while the Secret scanning alert list requires the Admin repository role. Writers and maintainers can only see secret scanning alerts for their own commits."
       },
       {
         "domain": "Describe GitHub Security suites, features, and ecosystem",
@@ -31029,15 +31029,15 @@ const EXAMS = {
       {
         "domain": "Configure and use Code Security (formerly Code Scanning with CodeQL)",
         "difficulty": "easy",
-        "q": "When uploading SARIF results via GitHub Actions using the upload-sarif action, what are the maximum supported results per upload and maximum compressed file size?",
+        "q": "When uploading SARIF results via GitHub Actions using the upload-sarif action, what are the maximum supported results per run and maximum compressed file size?",
         "options": [
           "A maximum of 10 results and 1 KB",
           "Unlimited results per upload and a 10 MB limit for the uncompressed SARIF file only",
-          "A maximum of 5,000 results per upload and 10 MB for the gzip-compressed SARIF file",
-          "A maximum of 100,000 results per upload and 1 GB for the gzip-compressed SARIF file"
+          "25,000 results per run (top 5,000 included) and 10 MB for the gzip-compressed file",
+          "A maximum of 100,000 results per run and 1 GB for the gzip-compressed SARIF file"
         ],
         "correct": 2,
-        "explain": "SARIF upload via GitHub Actions supports a maximum of 5,000 results per upload (any excess are ignored) and a maximum size of 10 MB for the gzip-compressed SARIF file."
+        "explain": "A SARIF file can contain up to 25,000 results per run, and only the top 5,000, prioritized by severity, are included. The maximum size of a gzip-compressed SARIF file is 10 MB, and a file over a limit is rejected."
       },
       {
         "domain": "Configure and use Code Security (formerly Code Scanning with CodeQL)",
@@ -31603,13 +31603,13 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "According to the GHAS administration module's role/permission table, what access is required to view Secret Scanning and Dependabot alerts by default?",
         "options": [
-          "Read access is sufficient for both alert types by default",
-          "Repository administrators and organization owners",
+          "Read access is sufficient for both alert types by default, with no further role needed",
+          "Write access for Dependabot alerts, admin access for secret scanning alerts",
           "Any authenticated GitHub user",
           "Only users with a Copilot subscription assigned by the organization"
         ],
         "correct": 1,
-        "explain": "The minimum roles and permissions table shows that Secret Scanning alerts and Dependabot alerts require repository administrator or organization owner access by default, while Code Scanning alerts require only Write permission."
+        "explain": "Anyone with write, maintain, or admin access can view Dependabot alerts. The full secret scanning alert list is limited to repository admins, organization owners, and security managers; writers and maintainers can only see secret scanning alerts for their own commits."
       },
       {
         "domain": "GitHub Security suites administration",
@@ -32463,13 +32463,13 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "With standard geo-redundant storage (GRS, not RA-GRS), when can data in the secondary region be read?",
         "options": [
-          "Only if Microsoft initiates a failover from the primary to the secondary region",
+          "Only after a customer-managed or Microsoft-managed failover to the secondary",
           "Never, GRS data in the secondary region cannot be read under any circumstance, even after failover",
           "At any time, on demand",
           "Only during scheduled maintenance windows"
         ],
         "correct": 0,
-        "explain": "With GRS, data replicated to the secondary region is available to be read only if Microsoft initiates a failover from the primary region to the secondary region; RA-GRS is required to read the secondary region at any time."
+        "explain": "With GRS, data in the secondary region can be read only after a failover, whether customer-managed or Microsoft-managed; RA-GRS is required to read the secondary region at any time."
       },
       {
         "domain": "Implement and manage storage",
@@ -33465,12 +33465,12 @@ const EXAMS = {
         "q": "For an HTTP health probe with default settings, how often does Azure Load Balancer probe the endpoint, and what response indicates health?",
         "options": [
           "Every 60 seconds; HTTP 404 is treated as healthy",
-          "Every 15 seconds by default; the instance is healthy only if it responds with HTTP 200 within the timeout period",
+          "Every 15 seconds by default (5 in the portal); healthy only if it responds with HTTP 200 within the timeout period",
           "Once per hour; a TCP handshake alone determines health",
           "Every 30 seconds by default; any HTTP response code is considered healthy as long as it arrives within the timeout period"
         ],
         "correct": 1,
-        "explain": "By default, the load balancer probes an HTTP/HTTPS endpoint every 15 seconds; the instance is considered healthy if it responds with an HTTP 200 within the timeout period (31 seconds by default), and any other status causes the probe to fail."
+        "explain": "The default interval is 15 seconds when you deploy with ARM templates, the REST API, the Azure CLI, or PowerShell; the Azure portal defaults to 5 seconds. An HTTP/HTTPS instance is healthy only if it responds with HTTP 200 within the timeout period (30 seconds, or the interval if that's shorter), and any other status fails the probe."
       },
       {
         "domain": "Implement and manage virtual networking",
@@ -35375,13 +35375,13 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Under what condition does the Analyze feature's 'Explain the increase' option fail to work on a selected data point?",
         "options": [
-          "When non-numeric filters or measure filters are applied to the visual",
+          "When measure filters or non-numeric measures are used in the visual",
           "When the report has more than one page",
           "When the selected data point is the last one in the visual's series of values",
-          "When the model uses DirectQuery"
+          "When the model uses Import storage mode"
         ],
         "correct": 0,
-        "explain": "The Analyze feature explicitly does not work if the visual has non-numeric filters and/or measure filters applied to it."
+        "explain": "The Analyze feature doesn't support scenarios such as measure filters and non-numeric measures. It also isn't supported on models that use row-level security or DirectQuery."
       },
       {
         "domain": "Visualize and analyze the data",
@@ -36119,10 +36119,10 @@ const EXAMS = {
           "Automatic attack disruption (threat containment)",
           "SOC optimization recommendations",
           "Device group ranking",
-          "Custom data collection (aggregated reporting)"
+          "Custom data collection rules"
         ],
         "correct": 3,
-        "explain": "Advanced hunting's event data can be extended with additional event properties by turning on aggregated reporting, which is part of configuring custom data collection in Defender for Endpoint."
+        "explain": "Custom data collection expands telemetry beyond the default configuration. You define rules with filters for specific events, and the events go to Microsoft Sentinel for hunting and investigation. Aggregated reporting is a separate feature."
       },
       {
         "domain": "Manage a security operations environment",
@@ -36842,7 +36842,7 @@ const EXAMS = {
       {
         "domain": "Manage a security operations environment",
         "difficulty": "medium",
-        "q": "In Microsoft Sentinel, which analytics rule condition operator lets you match an incident property only when the value has changed away from what it previously was?",
+        "q": "In Microsoft Sentinel, which automation rule condition operator lets you match an incident property only when the value has changed away from what it previously was?",
         "options": [
           "\"Equals\" (available only on the create trigger)",
           "\"Contains\" (a partial-text match condition, available only on alert-create triggers)",
@@ -37453,7 +37453,7 @@ const EXAMS = {
       {
         "domain": "Respond to security incidents",
         "difficulty": "hard",
-        "q": "An analyst runs Search-UnifiedAuditLog to export audit results to CSV. What Purview Audit tier limitation affects how many rows can be exported from the portal UI for Audit (Standard) versus Audit (Premium)?",
+        "q": "An analyst exports audit search results to CSV from the Microsoft Purview portal. What Audit tier limit applies to how many rows can be exported for Audit (Standard) versus Audit (Premium)?",
         "options": [
           "Standard allows unlimited exports, while Premium is capped at 50,000",
           "Up to 50,000 rows for Standard, up to 1,000,000 rows for Premium",
@@ -40830,13 +40830,13 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which remote action performs a full factory reset, suitable for redeploying a device to a brand-new user or selling it as refurbished?",
         "options": [
-          "Reset (Windows 'Reset this PC')",
+          "Autopilot Reset",
           "Retire and re-enroll (company data only)",
           "Wipe",
           "Retire"
         ],
-        "correct": 0,
-        "explain": "Reset triggers a complete factory reset using Windows' Reset This PC feature, removing all data, apps, and customizations so the device returns to a like-new state."
+        "correct": 2,
+        "explain": "Wipe restores a device to its factory settings and removes all data, apps, and settings, which suits redeploying it to a new user or selling it. Retire removes only company data, and Autopilot Reset returns the device to a configured, IT-approved state."
       },
       {
         "domain": "Manage and maintain devices",
@@ -41417,11 +41417,11 @@ const EXAMS = {
         "options": [
           "As a hard failure requiring reinstallation",
           "It must be treated as an unknown error",
-          "As a soft failure that Intune treats as a successful install pending restart",
+          "As a soft reboot, which Intune treats as a successful install that needs a restart",
           "As the default success code equivalent to 0, so Intune never needs to schedule a restart"
         ],
         "correct": 2,
-        "explain": "Configuring 3010 as a soft failure tells Intune the install succeeded but needs a restart, so it schedules a restart rather than retrying the installation."
+        "explain": "Setting 3010 to the Soft reboot code type tells Intune the install succeeded but needs a restart to finish. A soft reboot code lets the next Win32 app install and notifies the user, while a hard reboot code blocks further installs until the device restarts."
       },
       {
         "domain": "Manage and secure applications",
@@ -42456,7 +42456,7 @@ const EXAMS = {
       {
         "domain": "Secure identity and access",
         "difficulty": "medium",
-        "q": "There are three types of service principal objects in Microsoft Entra ID. Which of the following is one of them?",
+        "q": "There are three types of service principal objects in Microsoft Entra ID. Which option lists them?",
         "options": [
           "User, group, and contact",
           "Application, managed identity, and legacy",
@@ -42630,10 +42630,10 @@ const EXAMS = {
           "Peering supports transitive routing by default across all peered networks",
           "VPN Gateway setup is always faster than peering",
           "Peering traffic is routed over the public internet while VPN Gateway traffic never leaves Azure, so peering needs a custom IPsec/IKE policy and VPN Gateway does not use one",
-          "Peering has no bandwidth limitations and provides software-level encryption recommendations, while VPN Gateway bandwidth varies by SKU and supports custom IPsec/IKE policy"
+          "Peering adds no bandwidth restriction and needs no gateway, while VPN Gateway bandwidth varies by SKU and it supports custom IPsec/IKE policy"
         ],
         "correct": 3,
-        "explain": "The comparison table shows virtual network peering has no bandwidth limitations (software-level encryption is recommended) while VPN Gateway bandwidth varies based on gateway SKU and supports a custom IPsec/IKE policy; peering connections are also non-transitive by default."
+        "explain": "Peering adds no extra bandwidth restriction and needs no gateway or encryption, while VPN Gateway bandwidth varies by gateway SKU and it supports a custom IPsec/IKE policy. Peering connections are also non-transitive by default."
       },
       {
         "domain": "Secure networking",
@@ -46091,7 +46091,7 @@ const EXAMS = {
         "options": [
           "Wrap each condition in parentheses and use & for AND, | for OR",
           "Use 'and'/'or' keywords directly on column expressions inside .filter()",
-          "Use SQL WHERE syntax inside .filter() without any operators",
+          "Separate the conditions with commas inside a single .filter() call",
           "Chain multiple .select() calls"
         ],
         "correct": 0,
@@ -46638,10 +46638,10 @@ const EXAMS = {
           "No, OLS can only be configured through the Fabric REST API",
           "Yes, but only for calculated columns",
           "Yes, entirely through the Modeling tab by setting table and column permissions to None or Read for each role",
-          "No — you must use an external tool such as Tabular Editor connected via the Analysis Services engine"
+          "Yes, with a script in TMDL view, or with an external tool such as Tabular Editor"
         ],
         "correct": 3,
-        "explain": "You can't configure OLS natively in Power BI Desktop; instead you use an external tool like Tabular Editor, which connects to the Analysis Services engine powering the model, to set table/column permissions to None or Read for each role."
+        "explain": "You can define OLS in Power BI Desktop with a script in TMDL view, or with an external tool such as Tabular Editor, by setting table or column permissions to None or Read for each role. There's no Modeling tab setting for it."
       },
       {
         "domain": "Implement and manage semantic models",
@@ -47320,13 +47320,13 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "By default, is Safe Attachments protection enabled for SharePoint, OneDrive, and Microsoft Teams?",
         "options": [
-          "No — it must be explicitly turned on via the Microsoft Defender portal or Set-AtpPolicyForO365 -EnableATPForSPOTeamsODB $true",
+          "Yes, the Built-in protection preset turns it on for organizations with Defender for Office 365",
           "It is enabled only for Teams, not SharePoint/OneDrive",
           "Only in tenants with a Microsoft Entra ID P2 license, where it turns on by itself once the first Safe Attachments policy is created for mail",
           "It requires a separate third-party license to enable"
         ],
         "correct": 0,
-        "explain": "Safe Attachments for SharePoint, OneDrive, and Microsoft Teams is NOT enabled by default and must be turned on, either via the Defender portal toggle or the PowerShell cmdlet Set-AtpPolicyForO365 -EnableATPForSPOTeamsODB $true."
+        "explain": "In organizations with Defender for Office 365, the Built-in protection preset security policy turns on Safe Attachments for SharePoint, OneDrive, and Microsoft Teams. Admins can change it in the Safe Attachments global settings or with Set-AtpPolicyForO365 -EnableATPForSPOTeamsODB."
       },
       {
         "domain": "Configure and manage a Teams environment",
@@ -47711,12 +47711,12 @@ const EXAMS = {
         "q": "What happens to a team's SharePoint files when the team itself is deleted?",
         "options": [
           "SharePoint files remain — deleting a channel folder doesn't delete the underlying SharePoint library contents",
-          "SharePoint files are permanently deleted along with the team",
+          "SharePoint files are deleted with the team, but can be restored with the group for 30 days",
           "Files are moved automatically to OneDrive",
           "The files are moved to the group mailbox of the team, where only former team owners can open them until the mailbox is removed"
         ],
-        "correct": 0,
-        "explain": "When a team is deleted, SharePoint files remain — channel folder deletion doesn't delete the SharePoint library's contents. By contrast, Planner plans and Forms ARE deleted (should be exported/duplicated first to preserve them)."
+        "correct": 1,
+        "explain": "Deleting a team also deletes its files, because the team's Microsoft 365 group and SharePoint site go with it. The group can be restored for 30 days by default, and a site under retention isn't deleted until the retention period ends."
       },
       {
         "domain": "Configure and manage a Teams environment",
@@ -47985,11 +47985,11 @@ const EXAMS = {
         "options": [
           "The Power Platform admin center, in the settings of the tenant default environment",
           "The SharePoint admin center",
-          "The Teams admin center exclusively",
+          "The Teams admin center, on the Manage apps page",
           "The Microsoft 365 admin center, under Tenant-wide settings > Apps"
         ],
-        "correct": 3,
-        "explain": "The Microsoft 365 admin center controls default/external Teams apps under Tenant-wide settings > Apps — toggling default apps on/off, and controlling whether external apps and sideloading are allowed."
+        "correct": 2,
+        "explain": "You manage default and third-party apps for Teams on the Manage apps page in the Teams admin center. The integrated apps portal in the Microsoft 365 admin center only affects how cross-application apps appear in Outlook and the Microsoft Copilot application, not in Teams."
       },
       {
         "domain": "Manage teams, channels, chats, and apps",
@@ -48306,15 +48306,15 @@ const EXAMS = {
       {
         "domain": "Manage meetings and calling",
         "difficulty": "medium",
-        "q": "What are the two exclusive methods for connecting Teams Phone System to the PSTN?",
+        "q": "Which pair lists two of the supported ways to connect Teams Phone to the PSTN?",
         "options": [
           "SIP Gateway or Teams Rooms Basic",
-          "Purchasing a Microsoft Calling Plan, or using existing on-premises telephony via Direct Routing",
+          "A Microsoft Calling Plan, or existing on-premises telephony via Direct Routing",
           "VoIP passthrough or satellite calling",
           "A VPN tunnel from each Teams client straight to the carrier, or call forwarding through Exchange Online mailbox rules at each site"
         ],
         "correct": 1,
-        "explain": "Connecting Phone System to PSTN has exactly two methods: purchasing a Microsoft Calling Plan, or using existing on-premises telephony infrastructure via Direct Routing."
+        "explain": "Teams Phone can connect to the PSTN through a Microsoft Calling Plan, Operator Connect, Teams Phone Mobile, or Direct Routing, which uses existing on-premises telephony."
       },
       {
         "domain": "Manage meetings and calling",
@@ -49874,7 +49874,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A CI/CD pipeline running in GitHub Actions needs to deploy to Azure without storing any long-lived client secrets or certificates. Which capability should the architect design into the solution?",
         "options": [
-          "A system-assigned managed identity on the GitHub runner",
+          "A system-assigned managed identity on the GitHub-hosted runner",
           "Workload identity federation, trusting tokens from GitHub's OIDC issuer",
           "Basic authentication with a service account password",
           "A shared subscription key stored as a GitHub secret and rotated on a schedule"
@@ -51860,15 +51860,15 @@ const EXAMS = {
       {
         "domain": "Design and implement processes and communications",
         "difficulty": "hard",
-        "q": "For GitHub authentication into Azure Boards integrations, which method is recommended as most secure for automated, unattended integrations such as CI/CD, versus interactive user connections?",
+        "q": "When you connect Azure Boards to GitHub.com, which authentication option does Microsoft recommend?",
         "options": [
           "Anonymous public repository access",
-          "Personal Access Token (PAT) with carefully scoped permissions",
+          "A GitHub.com user account",
           "SSH key checked into the repository",
           "Shared username and password stored in a pipeline variable for reuse"
         ],
         "correct": 1,
-        "explain": "Personal Access Tokens provide a high security level appropriate for automated integrations like CI/CD when scopes are carefully managed and tokens are rotated regularly, compared to username/password which is discouraged for production use."
+        "explain": "For GitHub.com connections, the recommended option is a GitHub.com user account. A personal access token (PAT) is also supported, and GitHub Enterprise Server connections prefer OAuth."
       },
       {
         "domain": "Design and implement processes and communications",
@@ -53617,7 +53617,7 @@ const EXAMS = {
       {
         "domain": "Design, implement, and manage connectivity services",
         "difficulty": "medium",
-        "q": "Which point-to-site authentication method is supported only for the OpenVPN protocol on Windows and requires the Azure VPN Client?",
+        "q": "Which point-to-site authentication method is supported only for the OpenVPN protocol and requires the Azure VPN Client?",
         "options": [
           "RADIUS authentication",
           "Preshared key authentication",
@@ -53625,7 +53625,7 @@ const EXAMS = {
           "Native Microsoft Entra ID authentication"
         ],
         "correct": 3,
-        "explain": "Native Microsoft Entra ID authentication for point-to-site VPN is supported only for the OpenVPN protocol on Windows and requires use of the Azure VPN Client, enabling conditional access and MFA."
+        "explain": "Native Microsoft Entra ID authentication for point-to-site VPN is supported only for the OpenVPN protocol and requires the Azure VPN Client, enabling conditional access and MFA."
       },
       {
         "domain": "Design, implement, and manage connectivity services",
@@ -55096,10 +55096,10 @@ const EXAMS = {
           "Microsoft Defender for Identity sensor",
           "AD FS federation servers",
           "Microsoft Entra Cloud Sync provisioning agent only, installed on a member server in the domain",
-          "The Microsoft Entra Password Protection proxy and DC agent installed on domain controllers"
+          "The DC agent on domain controllers and the proxy service on a domain-joined machine"
         ],
         "correct": 3,
-        "explain": "Extending Password Protection on-premises requires installing the proxy service and DC agent so domain controllers can evaluate password changes against the same banned password lists used in the cloud."
+        "explain": "Extending Password Protection on-premises requires the DC agent on domain controllers, which evaluates password changes, and the proxy service on a domain-joined machine, which forwards policy requests to Microsoft Entra ID."
       },
       {
         "domain": "Implement and manage Microsoft Entra identity and access",
@@ -56431,10 +56431,10 @@ const EXAMS = {
           "A rollup column can't trigger workflows or flows and must reference a simple column, not another rollup or complex calculated/formula column",
           "A rollup column can include records related through a many-to-many (N:N) relationship",
           "A rollup column can reference another rollup column directly, and its recalculation can trigger workflows or flows on the table as soon as it updates",
-          "A table can have an unlimited number of rollup columns"
+          "A rollup column recalculates in real time whenever a related row changes"
         ],
         "correct": 0,
-        "explain": "Rollup columns can't trigger workflows or flows, can't reference another rollup column or a complex calculated/formula column (must reference a simple column), and are capped at 10 per table and 100 per organization."
+        "explain": "Rollup columns can't trigger workflows or flows, can't reference another rollup column or a complex calculated/formula column (must reference a simple column), can roll up only over 1:N relationships, and update through a recurring job."
       },
       {
         "domain": "Create a foundation for intelligent applications",
@@ -57439,7 +57439,7 @@ const EXAMS = {
         "q": "A business process flow with branches needs to route differently depending on whether a customer prefers a new or pre-owned car AND has a budget above or below $20,000. Which logical operator combination is allowed within a single branching rule?",
         "options": [
           "AND and OR can both be combined in the same rule, in whatever order is needed",
-          "Only AND OR only OR — but not a combination of both — within one rule",
+          "Either AND or OR, but not a combination of both, within one rule",
           "Only NOT is supported",
           "Branching rules can't use logical operators"
         ],
@@ -57504,12 +57504,12 @@ const EXAMS = {
         "q": "Which Power Automate action, from the AI Builder connector, is used to consume a previously saved grounded prompt inside a cloud flow?",
         "options": [
           "Start and wait for an approval",
-          "Create text with GPT using a prompt",
+          "Run a prompt",
           "Get a row by ID",
           "List rows"
         ],
         "correct": 1,
-        "explain": "To use a grounded prompt in a cloud flow, you add the AI Builder action 'Create text with GPT using a prompt' and select your saved prompt."
+        "explain": "To use a prompt in a cloud flow, you add the AI Builder action Run a prompt and select your saved prompt."
       },
       {
         "domain": "Build business application logic and automation",
@@ -57527,15 +57527,15 @@ const EXAMS = {
       {
         "domain": "Build business application logic and automation",
         "difficulty": "hard",
-        "q": "In Copilot Studio, after finalizing a prompt built with data grounding, what must a maker do before the prompt's content-generation behavior can be added to a custom copilot's Topics?",
+        "q": "In Copilot Studio, how do you add a grounded prompt's content-generation behavior to a topic in an agent?",
         "options": [
-          "Select Finalize prompt and then Create AI plugin",
+          "Select Add node, then Add a tool > New prompt",
           "Convert the prompt to a Dataverse plug-in",
           "Delete the prompt and rebuild it inside Topics manually",
           "Enable dual-write for the environment"
         ],
         "correct": 0,
-        "explain": "After testing the grounded prompt in Copilot Studio, the maker selects Finalize prompt and then Create AI plugin so the prompt can be used as an action within Topics."
+        "explain": "In the topic, select Add node, then Add a tool > New prompt, to add the prompt as a step in the topic."
       },
       {
         "domain": "Build business application logic and automation",
@@ -60716,13 +60716,13 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Is self-service password reset (SSPR) enabled for all users in a Microsoft Entra tenant by default?",
         "options": [
-          "Yes, but only for users assigned an admin role",
-          "No, SSPR is not enabled by default and must be turned on by an admin",
+          "Yes, but only for guest users",
+          "No, an admin must turn it on for users",
           "Yes, it is enabled by default for all licensed users and needs no admin setup",
           "It is only available if Conditional Access is disabled"
         ],
         "correct": 1,
-        "explain": "SSPR is not enabled on a tenant by default; an administrator must configure and enable it for the desired scope of users."
+        "explain": "SSPR isn't enabled for users by default; an administrator must enable it for the desired scope of users. Administrator accounts follow a separate two-gate reset policy."
       },
       {
         "domain": "Govern and secure Microsoft 365 tenants and workloads",
@@ -62506,12 +62506,12 @@ const EXAMS = {
         "q": "Which statement best describes \"inclusiveness\" as a Responsible AI principle?",
         "options": [
           "AI systems must be free of charge for all users",
-          "AI systems must be designed to avoid perpetuating biases present in training data",
+          "AI systems should empower everyone and accommodate diverse needs",
           "AI systems must be available in every country simultaneously on the same release date",
           "AI systems must generate responses in multiple languages by default"
         ],
         "correct": 1,
-        "explain": "Inclusiveness means AI systems must be designed to avoid perpetuating biases present in training data."
+        "explain": "Inclusiveness means AI systems should empower everyone and accommodate diverse needs, such as accessibility, language variation, and different levels of technical skill. Avoiding bias falls under the fairness principle."
       },
       {
         "domain": "Understand generative AI fundamentals",
@@ -68717,9 +68717,9 @@ const EXAMS = {
       {
         "domain": "Describe Business Central",
         "difficulty": "medium",
-        "q": "What is the primary purpose of the 'process of bringing an app to AppSource' content that developers are expected to know for Business Central?",
+        "q": "Which step is part of bringing a Business Central app to AppSource?",
         "options": [
-          "Understanding the technical and marketing validation an app must pass before it can be published to AppSource",
+          "Passing the technical and marketing validation required before it can be published",
           "Configuring SQL Server clustered indexes for on-premises deployments before an app can be published to AppSource",
           "Configuring Azure Active Directory conditional access policies",
           "Designing RDLC report layouts"
@@ -70160,11 +70160,11 @@ const EXAMS = {
         "options": [
           "The SQL Server connection string",
           "The Azure subscription ID",
-          "The Application Insights resource's instrumentation key",
+          "The resource's connection string or instrumentation key",
           "The tenant's Microsoft Entra ID application client secret"
         ],
         "correct": 2,
-        "explain": "After creating an Application Insights resource in Azure (which is assigned an instrumentation key), you enter that instrumentation key on the Application Insights Key page for the environment in the Business Central administration center, which triggers a required environment restart."
+        "explain": "After creating an Application Insights resource in Azure, you enter its connection string or instrumentation key for the environment in the Business Central administration center, which triggers a required environment restart. Microsoft recommends the connection string, because support for instrumentation key ingestion ended on March 31, 2025."
       },
       {
         "domain": "Work with development tools",
@@ -70424,15 +70424,15 @@ const EXAMS = {
       {
         "domain": "Integrate Business Central with other applications",
         "difficulty": "hard",
-        "q": "Which statement correctly reflects a difference between regular OData web services and the Business Central API, as covered in the 'Work with the API' training module's learning objectives?",
+        "q": "Which statement correctly reflects a difference between regular OData web services and the Business Central API?",
         "options": [
           "The API can only be used for read operations, never for create or update",
-          "The API and OData web services are functionally identical with no meaningful differences, so the module has no need to define any difference between them",
+          "The API and OData web services are functionally identical with no meaningful differences, so either one can be swapped for the other in any integration",
           "OData supports OAuth authentication while the API only supports Basic authentication",
-          "The module explicitly covers defining the difference between regular OData web services and the API, and working around API limits"
+          "API pages are versioned and built for integration, while OData services can expose UI pages that change between updates"
         ],
         "correct": 3,
-        "explain": "The 'Work with the API' module's stated learning objectives include defining the difference between regular OData web services and the API, working around API limits, creating new APIs, and reading/updating/creating data through the API — including OData bound actions."
+        "explain": "API pages are versioned, webhook-supported REST services built for reliable integration, and they're the preferred way to integrate with Business Central. OData web services can expose UI pages, whose fields can change between updates."
       },
       {
         "domain": "Integrate Business Central with other applications",
@@ -75860,12 +75860,12 @@ const EXAMS = {
       {
         "domain": "Configure financials",
         "difficulty": "medium",
-        "q": "Which company allocates rent expense to multiple department dimensions using a distribution that changes over time, based on the square footage each department occupies, rather than a fixed percentage?",
+        "q": "A company allocates rent expense to multiple department dimensions using a distribution that changes over time, based on the square footage each department occupies, rather than a fixed percentage. What should it use?",
         "options": [
-          "A company using a General Journal Template of type Assets",
-          "A company using a Fixed allocation account",
-          "A company using the Inherit from parent destination account type only, with the split typed in by hand",
-          "A company using a Variable allocation account driven by statistical accounts and dimensions"
+          "A General Journal Template of type Assets",
+          "A Fixed allocation account",
+          "The Inherit from parent destination account type only, with the split typed in by hand",
+          "A Variable allocation account driven by statistical accounts and dimensions"
         ],
         "correct": 3,
         "explain": "Variable allocation accounts recalculate the percentage split from a data source that changes over time — using a combination of dimensions and statistical accounts — which fits a scenario where floor footage per department shifts. A Fixed allocation only changes when the setup itself is edited."
@@ -83715,7 +83715,7 @@ const EXAMS = {
       {
         "domain": "Create apps by using Microsoft Power Apps",
         "difficulty": "hard",
-        "q": "A maker wants to embed a canvas app on the web client of an Account main form, alongside two other already-embedded canvas apps. Will a fourth embedded canvas app be allowed on that same form for the Web client?",
+        "q": "A maker wants to embed a canvas app on the web client of an Account main form that already has three enabled embedded canvas apps. Will this fourth embedded canvas app be allowed on that form for the Web client?",
         "options": [
           "No, only three embedded canvas apps can be enabled per form for the Web client type",
           "No, only one embedded canvas app is ever allowed per form",
@@ -88260,11 +88260,11 @@ const EXAMS = {
         "options": [
           "The call is automatically disconnected",
           "Transcription starts fresh once the representative joins, regardless of the earlier decline, and it persists through any transfers",
-          "Transcription continues only if the customer previously consented; the decline persists through transfers and consults",
+          "The call isn't recorded or transcribed, and that choice persists through transfers and consults",
           "The representative can manually override the customer's decision at any time"
         ],
         "correct": 2,
-        "explain": "When a customer declines consent, recording stops immediately and no transcript is generated; if the call later escalates, transcription continues only if the customer previously consented, and this behavior persists through transfers and consults."
+        "explain": "When a customer declines consent, recording stops immediately and the call isn't recorded or transcribed. That choice carries over when the call escalates to a representative, and through transfers and consults."
       },
       {
         "domain": "Configure agents and AI capabilities",
@@ -89405,10 +89405,10 @@ const EXAMS = {
       {
         "domain": "Build Microsoft Power Platform solutions",
         "difficulty": "hard",
-        "q": "A design calls for complex, variable multi-currency price-list calculations on Dynamics 365 Sales opportunities. Per Microsoft's configure-vs-code guidance, what should the developer do first?",
+        "q": "A design calls for complex, variable multi-currency price-list invoice calculations in Dynamics 365 Sales. Per Microsoft's configure-vs-code guidance, what should the developer do first?",
         "options": [
           "Implement the calculation entirely in a canvas app using Power Fx",
-          "Build a custom invoice calculation engine using plug-ins on the opportunity table",
+          "Build a custom invoice calculation engine using plug-ins on the Dataverse invoice table",
           "Evaluate and use the built-in Dynamics 365 Sales capabilities for this scenario",
           "Create a custom connector to an external pricing engine"
         ],
@@ -95515,12 +95515,12 @@ const EXAMS = {
         "q": "By default, how often does Azure SQL Managed Instance take differential backups, and how often does it take transaction log backups?",
         "options": [
           "Differential weekly; log backups hourly",
-          "Differential every 24 hours; log backups every 30-60 minutes",
-          "Differential every 12 hours; log backups every 5-10 minutes",
+          "Differential every 24 hours; log backups about every 30-60 minutes",
+          "Differential every 12 hours; log backups about every 10 minutes",
           "Differential every hour; log backups every hour"
         ],
         "correct": 2,
-        "explain": "Azure SQL Managed Instance follows the same automatic backup schedule as Azure SQL Database: full backups weekly, differential backups every 12 hours, and transaction log backups every 5-10 minutes depending on log activity. This schedule cannot be adjusted."
+        "explain": "Azure SQL Managed Instance takes full backups weekly, differential backups every 12 hours (the docs list 12 or 24), and transaction log backups approximately every 10 minutes, depending on compute size and database activity. You can change retention and backup storage redundancy, but not the backup schedule."
       },
       {
         "domain": "Plan and implement data platform resources",
@@ -96279,7 +96279,7 @@ const EXAMS = {
           "A rebuild automatically enables Query Store on the database that holds the index",
           "A rebuild can never be performed online",
           "A rebuild also updates the statistics on the index, while a reorganize does not",
-          "A rebuild uses less transaction log space than a reorganize"
+          "A rebuild needs no extra disk space, unlike a reorganize"
         ],
         "correct": 2,
         "explain": "An index rebuild also causes the statistics on that index to be updated as a side effect, which can further improve query performance. A reorganize, by contrast, only defragments and compacts the leaf level and does not update statistics."
@@ -96809,13 +96809,13 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "What is the maximum number of tags supported per Azure resource, and what important restriction applies to tag values?",
         "options": [
-          "Up to 15 tags per resource; tag values are stored as plain text and should never contain sensitive information",
+          "Up to 50 tags per resource; tag values are stored as plain text and should never contain sensitive information",
           "Up to 5 tags per resource; tags are visible only to subscription owners and never appear in cost reports or exported templates",
-          "Up to 50 tags per resource; tag values are automatically encrypted",
+          "Up to 15 tags per resource; tag values are automatically encrypted",
           "Unlimited tags; tags can safely store credentials"
         ],
         "correct": 0,
-        "explain": "Azure supports up to 15 tags per resource. Tags are stored as plain text and can be exposed through cost reports, deployment histories, exported templates, and monitoring logs, so sensitive values should never be placed in tags."
+        "explain": "Most Azure resources support up to 50 tag name-value pairs; a few resource types support only 15. Tags are stored as plain text and can be exposed through cost reports, deployment histories, exported templates, and monitoring logs, so sensitive values should never be placed in tags."
       },
       {
         "domain": "Configure and manage automation of tasks",
@@ -99694,10 +99694,10 @@ const EXAMS = {
           "Azure's built-in DNS requires a paid tier for zone hosting before any AD DS domain can use it",
           "Azure's built-in DNS doesn't support Dynamic DNS updates and SRV records that AD DS requires",
           "Azure's built-in DNS only resolves public internet names",
-          "Azure's built-in DNS cannot be reached from an ExpressRoute connection"
+          "Azure's built-in DNS works only with Linux virtual machines"
         ],
         "correct": 1,
-        "explain": "Azure's built-in DNS doesn't support the dynamic updates and SRV resource records that AD DS depends on, so you must run the Windows Server DNS role (or another compatible DNS solution such as Azure private DNS zones) to support the domain."
+        "explain": "Azure's built-in DNS doesn't support the dynamic updates and SRV resource records that AD DS depends on, so you must run the Windows Server DNS role or another compatible DNS server to support the domain."
       },
       {
         "domain": "Deploy and manage AD DS",
@@ -103510,7 +103510,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "In Reciprocal Rank Fusion, using the standard constant k = 60, what RRF score would a document ranked #1 in full-text search but absent from the vector search results receive?",
         "options": [
-          "1/60 = 0.0167 approximately, using only the full-text term since the vector term contributes 0",
+          "1/(60+1) = 0.0164 approximately, because only the full-text term contributes",
           "0, because it must appear in both lists to receive any score, so the full-text rank is discarded",
           "1/(60+1) + 1/(60+1) = 0.0328",
           "2/60 = 0.0333"
