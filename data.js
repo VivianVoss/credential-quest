@@ -44081,7 +44081,7 @@ const EXAMS = {
           "A resource can belong to multiple resource groups simultaneously",
           "Each resource can be a member of only one resource group at a time",
           "Resource groups can be freely renamed after creation",
-          "Resource groups can be nested inside other resource groups"
+          "Resource groups can be nested inside other resource groups in a hierarchy"
         ],
         "correct": 1,
         "explain": "The Design for resource groups unit states each resource must be in one, and only one, resource group, resource groups can't be nested, and they can't be renamed."
@@ -44146,7 +44146,7 @@ const EXAMS = {
           "Yes, always",
           "Only for tags in the 'functional' category",
           "No, tags applied to a resource group are not inherited by its resources",
-          "Only if the resources were created after the tag was applied"
+          "Only if the resources were created after the tag was applied to the group"
         ],
         "correct": 2,
         "explain": "The Design for resource tags unit explicitly states that tags can be applied to a resource group, but tags applied to a resource group aren't inherited by the resources within it."
@@ -44182,7 +44182,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A user is assigned the Contributor role at the subscription scope and also the Reader role directly on one resource group within that subscription. What are the user's effective permissions on that resource group?",
         "options": [
-          "Reader only, because the more restrictive assignment wins",
+          "Reader only, because the more restrictive assignment wins when two role assignments overlap on a scope",
           "The user has no access due to a conflict",
           "Contributor, because Azure RBAC is an additive model and the Reader assignment adds nothing new",
           "Azure prevents this combination of assignments"
@@ -44197,7 +44197,7 @@ const EXAMS = {
         "options": [
           "Azure Policy with a remediation/tagging effect",
           "Microsoft Entra Conditional Access",
-          "Azure RBAC with a custom role",
+          "Azure RBAC with a custom role for tagging resources",
           "Azure Monitor alert rules"
         ],
         "correct": 0,
@@ -44261,7 +44261,7 @@ const EXAMS = {
         "q": "In a Microsoft Entra business-to-business (B2B) scenario, who is responsible for managing the credentials and password lifecycle of an invited external guest user?",
         "options": [
           "Nobody — B2B guest accounts never expire",
-          "The host organization's IT department",
+          "The host organization's IT department, as for any internal account",
           "Microsoft support",
           "The guest user's own organization or identity provider"
         ],
@@ -44390,7 +44390,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In a Microsoft Entra access review, who decides which type of reviewer (resource owner, delegate, or end-user self-attestation) is used, and can this choice be changed later?",
         "options": [
-          "The reviewer chooses their own type at review time, and it can be changed anytime",
+          "The reviewer chooses their own type at review time, and it can be changed anytime during the review period",
           "The creator of the access review decides, and this setting cannot be changed after the review starts",
           "Only end-user self-attestation is ever used",
           "Microsoft Entra automatically assigns reviewers based on role"
@@ -44456,7 +44456,7 @@ const EXAMS = {
         "q": "Why does Microsoft recommend using separate Key Vaults per application rather than one shared vault for an entire organization?",
         "options": [
           "Shared vaults are more expensive",
-          "Separate vaults are required for regulatory compliance in every region",
+          "Separate vaults are required for regulatory compliance in every region, whichever secrets or applications a vault contains",
           "To reduce the 'blast radius' of a security event by limiting what secrets a compromised application can access",
           "Azure limits each vault to one secret"
         ],
@@ -44664,7 +44664,7 @@ const EXAMS = {
         "q": "A team needs geo-redundant (GRS or GZRS) Azure file shares. Which performance tier must they use?",
         "options": [
           "Premium (SSD-backed) shares only",
-          "Either SSD or HDD shares support geo-redundancy equally",
+          "Either SSD or HDD shares support geo-redundancy equally, so the performance tier makes no difference",
           "Geo-redundancy isn't available for Azure Files at all",
           "HDD-backed shares, since geo-redundant options are only available for HDD file shares"
         ],
@@ -44860,7 +44860,7 @@ const EXAMS = {
         "options": [
           "RTO only applies to the database tier",
           "20 minutes, because the overall RTO is determined by the slowest component to recover",
-          "Five minutes, since that's the database component",
+          "Five minutes, since that's the database component that the application servers depend on",
           "12.5 minutes, the average of the two"
         ],
         "correct": 1,
@@ -45170,7 +45170,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which delivery model in Azure Event Grid lets a subscriber application connect and read events at its own pace using queue-like semantics, useful when the consumer can't expose a public endpoint?",
         "options": [
-          "Polling delivery over HTTP only",
+          "Polling delivery over plain HTTP only",
           "Pull delivery (namespace topics)",
           "Push delivery (classic model)",
           "Broadcast delivery"
@@ -45274,7 +45274,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which Azure hybrid connectivity option sends encrypted traffic over the public internet, while another dedicated option uses a private connection through a connectivity provider that never touches the public internet?",
         "options": [
-          "Both ExpressRoute and VPN Gateway always use the public internet",
+          "Both ExpressRoute and VPN Gateway always use the public internet (encrypted), and neither of them offers a private, non-internet connection",
           "Neither service can be combined for failover",
           "Azure VPN Gateway sends traffic over the public internet (encrypted); Azure ExpressRoute uses a private, non-internet connection",
           "Azure Virtual WAN replaces the need for either VPN Gateway or ExpressRoute"
