@@ -2,7 +2,7 @@
 
 **Live at [mscredentialquest.com](https://mscredentialquest.com)**
 
-A free, community-facing Microsoft certification study companion — every credential from Microsoft's official [certification poster](https://aka.ms/CertificationsPoster) (July 2026 edition), with a Learn-grounded skills breakdown and a practice quiz for each one.
+A free, community-facing Microsoft certification study companion — every credential from Microsoft's official [certification poster](https://aka.ms/CertificationsPoster), with a Learn-grounded skills breakdown and a practice quiz for each one.
 
 **56 of 56 poster credentials are fully built out**, spanning Cloud & AI Platforms, AI Business Solutions, Security, and GitHub — roughly 7,700 original practice questions in total.
 

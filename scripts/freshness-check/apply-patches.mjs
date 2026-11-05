@@ -134,6 +134,19 @@ function verifyOnlyIntendedChanges(oldSource, newSource, code, patches) {
     .finally(() => Promise.all([fs.unlink(tmpOld).catch(() => {}), fs.unlink(tmpNew).catch(() => {})]));
 }
 
+// Records the month of the latest full check, for the date shown on the site.
+// Returns the new label, or null when it's already current.
+export async function updateLastChecked(dataJsPath, now = new Date()) {
+  const label = now.toLocaleDateString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+  const source = await fs.readFile(dataJsPath, 'utf8');
+  const re = /^const LAST_CHECKED = "([^"]*)";$/m;
+  const match = source.match(re);
+  if (!match) throw new Error('Could not find LAST_CHECKED in data.js');
+  if (match[1] === label) return null;
+  await fs.writeFile(dataJsPath, source.replace(re, `const LAST_CHECKED = "${label}";`));
+  return label;
+}
+
 export async function applyPatches(dataJsPath, code, patches) {
   if (!patches.length) return;
   const oldSource = await fs.readFile(dataJsPath, 'utf8');
