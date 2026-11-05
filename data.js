@@ -50304,7 +50304,7 @@ const EXAMS = {
         "options": [
           "A resource lock",
           "A managed identity for the Azure resource",
-          "An app registration with a client secret",
+          "An app registration with a client secret embedded in the app",
           "A guest user account"
         ],
         "correct": 1,
@@ -50331,7 +50331,7 @@ const EXAMS = {
           "An app registration defines the application object (globally), while the enterprise application is the local service principal instance used to assign access in the tenant",
           "There is no difference, they are the same object",
           "App registrations cannot request permissions",
-          "Enterprise applications are only for Azure resources, app registrations are only for SaaS"
+          "Enterprise applications are only for Azure resources, app registrations are only for SaaS, so each one is created in a different tenant and they never reference a shared application object"
         ],
         "correct": 0,
         "explain": "The app registration creates the application object, while the corresponding enterprise application (service principal) is the tenant-local representation used to configure access, assignment, and consent."
@@ -50536,7 +50536,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A Bicep template deploys a storage account without required encryption settings. What is the most proactive control to stop this from being deployed to a production subscription?",
         "options": [
-          "Reviewing Defender for Cloud recommendations weekly",
+          "Reviewing Defender for Cloud recommendations weekly and fixing noncompliant resources afterward",
           "A resource lock applied after deployment",
           "Enabling soft delete on the storage account",
           "An Azure Policy definition with a deny effect assigned at the target scope"
@@ -50564,7 +50564,7 @@ const EXAMS = {
         "options": [
           "Managed identity with RBAC-based Key Vault access instead of storing a secret",
           "Disabling authentication entirely",
-          "A shared account with a static password",
+          "A shared account with a static password stored in the application's configuration file",
           "Basic auth over HTTP"
         ],
         "correct": 0,
@@ -50641,7 +50641,7 @@ const EXAMS = {
         "q": "An organization wants malware scanning enabled in Defender for Storage but needs to control scanning costs on very large storage accounts. What should be configured?",
         "options": [
           "Switch to Defender for Containers",
-          "Disable Defender for Storage entirely",
+          "Disable Defender for Storage entirely and rely on manual file checks to keep costs down",
           "Enable only firewall rules",
           "Malware scanning with capacity/cost controls (per-account scanning limits)"
         ],
@@ -50655,7 +50655,7 @@ const EXAMS = {
         "options": [
           "Basic authentication",
           "Anonymous access",
-          "SQL authentication only",
+          "SQL authentication only, keeping SQL native logins",
           "Microsoft Entra ID-only authentication"
         ],
         "correct": 3,
@@ -50838,7 +50838,7 @@ const EXAMS = {
           "Azure Policy combined with Defender for Cloud recommendations",
           "Disabling DNS",
           "Enabling Shared Key access",
-          "Manually checking each resource"
+          "Manually checking each resource in every subscription on a recurring schedule"
         ],
         "correct": 0,
         "explain": "Eliminating public exposure of PaaS services at scale is enforced using Azure Policy and Defender for Cloud, rather than manual, resource-by-resource checks."
@@ -50876,7 +50876,7 @@ const EXAMS = {
         "options": [
           "Row-level security",
           "Defender for Storage malware scanning",
-          "Storage firewall rules",
+          "Storage firewall rules that allow only the gateway's public IP address",
           "Stronger IPsec/IKE policies and gateway SKU/security hardening"
         ],
         "correct": 3,
@@ -50901,7 +50901,7 @@ const EXAMS = {
         "q": "A financial services company must retain SQL Managed Instance audit logs differently than Azure SQL Database due to regulatory rules. What must be configured?",
         "options": [
           "Disabling auditing on SQL MI",
-          "The same audit policy applied identically to both without changes",
+          "The same audit policy applied identically to both without changes, using the Azure SQL Database settings",
           "SQL Managed Instance-specific auditing settings, distinct from Azure SQL Database auditing",
           "Row-level security only"
         ],
@@ -50913,7 +50913,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which access governance approach should storage account owners apply to eliminate account-key-based access in favor of identity-based, least-privilege access?",
         "options": [
-          "A single shared account key rotated yearly",
+          "A single shared account key rotated yearly and given to every application",
           "Microsoft Entra ID managed identities with RBAC on the storage account",
           "Public anonymous read access",
           "Disabling all authentication"
@@ -51070,7 +51070,7 @@ const EXAMS = {
         "q": "For a highly regulated workload, which Azure VM disk encryption approach lets an organization supply and control its own encryption key material via Key Vault, applied at the host level?",
         "options": [
           "No encryption, relying on network isolation",
-          "BitLocker configured manually inside the guest OS only",
+          "BitLocker configured manually inside the guest OS only, with the keys kept on each VM",
           "Default platform-managed encryption only",
           "Encryption at host with customer-managed keys using Disk Encryption Sets"
         ],
@@ -51189,7 +51189,7 @@ const EXAMS = {
           "Microsoft Entra integration with Kubernetes RBAC",
           "Storage account firewall",
           "Azure Firewall rules only",
-          "PIM eligible role assignments only"
+          "PIM eligible role assignments only, without Kubernetes RBAC"
         ],
         "correct": 0,
         "explain": "Implementing security controls for AKS includes configuring Microsoft Entra integration and Kubernetes RBAC for API server authentication and authorization."
@@ -51225,7 +51225,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "For an Azure Function app that must never be reachable from the public internet but still needs to authenticate securely to other Azure resources, which two controls should be combined?",
         "options": [
-          "Shared Key access on the storage account backing the function",
+          "Shared Key access on the storage account backing the function, plus a public endpoint",
           "VNet integration/private endpoints together with a managed identity",
           "Disabling authentication for performance",
           "Public anonymous access with a static API key"
@@ -51345,7 +51345,7 @@ const EXAMS = {
           "EASM and CSPM cannot be integrated",
           "By disabling CSPM once EASM is enabled",
           "Integrating EASM findings with Defender CSPM for attack path analysis",
-          "By exporting EASM data to Key Vault only"
+          "By exporting EASM data to Key Vault only, where it is stored separately from CSPM findings"
         ],
         "correct": 2,
         "explain": "EASM findings are integrated with Defender CSPM for attack path analysis, giving a combined outside-in and inside-out view of exploitable exposure."
@@ -51382,7 +51382,7 @@ const EXAMS = {
         "q": "Configuring Microsoft Defender Vulnerability Management for Azure VMs requires selecting a scanning method appropriate to which factor?",
         "options": [
           "The VM's geographic region only",
-          "The storage account replication type",
+          "The storage account replication type (e.g., LRS vs. GRS) in the subscription",
           "The Key Vault SKU",
           "The Defender for Servers plan tier (e.g., Plan 1 vs. Plan 2)"
         ],
@@ -51407,7 +51407,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What is the first step in setting up Microsoft Sentinel for an organization's security operations?",
         "options": [
-          "Configure Web Application Firewall",
+          "Configure Web Application Firewall rules for the organization",
           "Enable Dynamic Data Masking",
           "Create and connect a Microsoft Sentinel workspace",
           "Deploy Azure Bastion"
@@ -51447,7 +51447,7 @@ const EXAMS = {
         "q": "Which Sentinel connectors are used to bring in log data from Azure resources such as activity logs and Microsoft 365 services?",
         "options": [
           "The CEF connector only",
-          "The syslog connector only",
+          "The syslog connector only, forwarded from Linux log servers",
           "Custom log tables only",
           "Microsoft data connectors for Azure resources"
         ],
@@ -51461,7 +51461,7 @@ const EXAMS = {
         "options": [
           "Windows Event Forwarding",
           "A CEF connector only",
-          "A custom log table with no DCR",
+          "A custom log table with no DCR or parsing configured",
           "A Data Collection Rule (DCR) for Syslog"
         ],
         "correct": 3,
@@ -51486,7 +51486,7 @@ const EXAMS = {
         "q": "Which two commonly collected Windows log types does Sentinel make easy to ingest using the Windows Events data connectors and data collection rules, optionally including Windows Event Forwarding?",
         "options": [
           "Windows security events and Sysmon",
-          "Only firewall logs",
+          "Only firewall logs, with no security events or Sysmon",
           "Only DNS logs",
           "Only IIS logs"
         ],
