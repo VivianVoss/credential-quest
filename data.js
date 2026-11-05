@@ -29928,9 +29928,9 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A private repository belongs to an organization that has NOT purchased GitHub Advanced Security. Which security features are available on that repository?",
         "options": [
-          "Only code scanning is available",
+          "Only code scanning is available, while secret scanning and dependency review are not",
           "Only secret scanning is available",
-          "Code scanning, secret scanning, and dependency review are all available",
+          "Code scanning, secret scanning, and dependency review are all available at no cost",
           "None of code scanning, secret scanning, or dependency review are available"
         ],
         "correct": 3,
@@ -29980,9 +29980,9 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "How does a 'prevention-first' security strategy differ from a traditional 'gate-based' strategy?",
         "options": [
-          "There is no meaningful difference between the two approaches",
+          "There is no meaningful difference between the two approaches, because both integrate security throughout the SDLC and both run their tests at the same late checkpoint",
           "Gate-based strategies eliminate the need for code scanning",
-          "Prevention-first only runs scans after deployment, while gate-based runs scans continuously",
+          "Prevention-first only runs scans after deployment, once code has reached production, while gate-based runs scans continuously at every step of the SDLC, so that it never becomes a bottleneck",
           "Prevention-first integrates security throughout the SDLC, while gate-based treats security as a separate checkpoint late in the process, often becoming a bottleneck"
         ],
         "correct": 3,
@@ -29995,8 +29995,8 @@ const EXAMS = {
         "options": [
           "To group related security alerts into coordinated remediation efforts so teams can reduce security debt at scale",
           "To automatically delete vulnerable repositories",
-          "To manage billing for GitHub Actions minutes",
-          "To replace the need for code scanning entirely"
+          "To manage billing for GitHub Actions minutes across repositories that are running scheduled security scans at scale",
+          "To replace the need for code scanning entirely by having security teams review each repository's code by hand"
         ],
         "correct": 0,
         "explain": "Security Campaigns help organizations reduce security debt at scale by grouping related alerts into coordinated remediation efforts, letting security teams assign campaigns, track progress, and collaborate with developers."
@@ -30006,9 +30006,9 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What does GitHub Copilot Autofix do?",
         "options": [
-          "Automatically rotates leaked secrets",
+          "Automatically rotates leaked secrets and updates each service that used them, without involving any developers",
           "Deletes dependencies with known vulnerabilities",
-          "Automatically merges all pull requests without review",
+          "Automatically merges all pull requests without review, once a code scanning alert has been closed by the developer involved",
           "Provides targeted recommendations and suggested code changes to help developers remediate code scanning alerts"
         ],
         "correct": 3,
@@ -30021,8 +30021,8 @@ const EXAMS = {
         "options": [
           "Admin role for Secret Scanning alerts; Write role for Code Scanning and Dependabot alerts",
           "Only organization owners can see any alerts",
-          "Write role for all three alert types",
-          "Read role is sufficient for all alert types"
+          "Write role for all three alert types, with Admin role needed only to change the alert settings on the repository",
+          "Read role is sufficient for all alert types, since anyone who can view the code can modify its alerts"
         ],
         "correct": 0,
         "explain": "By default, Code scanning and Dependabot alerts can be seen and modified by anyone with the Write repository role, while Secret scanning alerts require the Admin repository role, unless access is explicitly granted to other users or teams."
@@ -30034,8 +30034,8 @@ const EXAMS = {
         "options": [
           "Alerts automatically resolve themselves over time",
           "Increased remediation effort, reputational damage, regulatory noncompliance, and potential financial loss",
-          "GitHub disables the repository automatically",
-          "No consequence, since alerts are purely informational"
+          "GitHub disables the repository automatically once the number of open alerts has passed an organization-wide limit",
+          "No consequence, since alerts are purely informational and don't reflect any real risk of exploitation, cost, or noncompliance"
         ],
         "correct": 1,
         "explain": "Ignoring alerts can lead to exploitation by malicious actors, increased remediation efforts impacting timelines, reputational damage, regulatory noncompliance, and financial losses."
@@ -30058,8 +30058,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "By default, a contributor without Admin or Write access cannot see security alerts for a repository. How can an administrator grant that access?",
         "options": [
-          "By making the repository public",
-          "It cannot be granted; only default roles can view alerts",
+          "By making the repository public, since alerts on public repositories can be viewed and modified by anyone with an account",
+          "It cannot be granted; only default roles can view alerts, so the contributor must be promoted to Admin or Write on the repo",
           "By disabling branch protection",
           "By modifying the repository's 'Access to alerts' settings to add specific people or teams"
         ],
@@ -30072,8 +30072,8 @@ const EXAMS = {
         "q": "Which set of capabilities belongs to GitHub Code Security, as opposed to Secret Protection or Supply Chain Security?",
         "options": [
           "Audit log streaming and SAML SSO enforcement",
-          "Dependabot alerts, security updates, and dependency graph",
-          "Secret scanning, push protection, and custom patterns",
+          "Dependabot alerts, Dependabot security updates, and the dependency graph, plus SBOM exports",
+          "Secret scanning, push protection, and custom patterns with validity checks on each alert",
           "Code scanning, Copilot Autofix, dependency review, and security campaigns"
         ],
         "correct": 3,
@@ -30096,8 +30096,8 @@ const EXAMS = {
         "q": "In the traditional 'security as a gate' SDLC scenario, at what stage do security tests typically occur, causing delays?",
         "options": [
           "During the quality assurance (QA) phase, late in the development process",
-          "Only during production incidents",
-          "During initial project planning",
+          "Only during production incidents, after the software has already been released",
+          "During initial project planning, before any of the application code has been written",
           "Immediately after every commit"
         ],
         "correct": 0,
@@ -30239,9 +30239,9 @@ const EXAMS = {
         "q": "What does push protection do?",
         "options": [
           "Automatically deletes repositories with vulnerabilities",
-          "Blocks all pushes to the default branch",
+          "Blocks all pushes to the default branch until a repository administrator has reviewed them, whether or not any secrets are present in the commits",
           "Scans pushes for highly identifiable secrets before they are added to the repository, prompting contributors to remove or bypass",
-          "Only works after a secret has already been merged"
+          "Only works after a secret has already been merged, opening an alert so that contributors can remove it from the repository's history"
         ],
         "correct": 2,
         "explain": "Push protection prevents secret leaks by scanning code on commit and blocking a push if a secret is present, prompting the contributor in their IDE or CLI with remediation guidance."
@@ -30252,9 +30252,9 @@ const EXAMS = {
         "q": "What is the default state of push protection for users on public repositories?",
         "options": [
           "Only available with a paid add-on",
-          "Disabled by default and cannot be enabled",
+          "Disabled by default and cannot be enabled for public repositories by any user",
           "On by default, automatically protecting against accidental secret commits",
-          "Only works for organization-owned repositories"
+          "Only works for organization-owned repositories, so personal projects are left out"
         ],
         "correct": 2,
         "explain": "Push protection for users is on by default for public projects, automatically protecting contributors from accidentally committing secrets to public repositories across GitHub."
@@ -30264,9 +30264,9 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is the purpose of 'validity checks' in secret scanning?",
         "options": [
-          "They verify the syntax of a regex pattern",
+          "They verify the syntax of a regex pattern before it's added as a custom pattern for the secret scanning of a repository",
           "They validate a user's two-factor authentication",
-          "They check whether the repository is public or private",
+          "They check whether the repository is public or private, helping teams prioritize remediation of alerts in public code first",
           "They determine whether an exposed token is still active, helping teams prioritize remediation of active secrets"
         ],
         "correct": 3,
@@ -30305,8 +30305,8 @@ const EXAMS = {
         "options": [
           "Delete the files after every scan",
           "Create a .github/secret_scanning.yml file using the paths-ignore key to list excluded paths",
-          "Rename the files with a .ignore extension",
-          "Secret scanning cannot exclude any files"
+          "Rename the files with a .ignore extension so that secret scanning treats them as excluded paths",
+          "Secret scanning cannot exclude any files, so test fixtures must be moved to a separate repository"
         ],
         "correct": 1,
         "explain": "You can create a .github/secret_scanning.yml file in your repository and use paths-ignore followed by the paths you want to exclude from secret scanning."
@@ -30344,8 +30344,8 @@ const EXAMS = {
         "options": [
           "Unlimited patterns everywhere",
           "Up to 500 custom patterns per organization/enterprise, and up to 100 per private repository",
-          "Exactly 10 patterns per repository",
-          "50 patterns total across the entire GitHub platform"
+          "Exactly 10 patterns per repository, and up to 100 per organization or enterprise account in total",
+          "50 patterns total across the entire GitHub platform, shared between all organizations and repositories"
         ],
         "correct": 1,
         "explain": "Secret scanning supports up to 500 custom patterns for each organization or enterprise account, and up to 100 custom patterns per private repository."
@@ -30420,8 +30420,8 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What is the recommended first remediation step for a compromised GitHub personal access token found by secret scanning?",
         "options": [
-          "Disable two-factor authentication",
-          "Ignore it since PATs expire automatically",
+          "Disable two-factor authentication on the account, then rename the token so that it can't be used by anyone",
+          "Ignore it since PATs expire automatically, and update any services that used the old token when it stops working",
           "Rename the repository",
           "Delete the compromised token, create a new one, and update any services that used the old token"
         ],
@@ -30472,8 +30472,8 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "As part of enterprise enforcement policies, organizations are advised to restrict push protection bypass privileges to which groups?",
         "options": [
-          "No one; bypass should never be restricted",
-          "All repository contributors equally",
+          "No one; bypass should never be restricted, because secret exposure decisions are best left to individual developers",
+          "All repository contributors equally, so that nobody is blocked from pushing their work while waiting on a review",
           "Only the CEO",
           "Security managers, dedicated security review teams, or approved custom roles"
         ],
@@ -30498,8 +30498,8 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What happens when a secret matching a partnered service provider's pattern is detected in a public repository?",
         "options": [
-          "Nothing happens unless the repository owner manually checks",
-          "The repository is automatically made private",
+          "Nothing happens unless the repository owner manually checks the alerts and contacts the provider directly about it",
+          "The repository is automatically made private by GitHub until the provider has revoked the secret or issued a new one",
           "The commit history is permanently deleted",
           "GitHub notifies the service provider (if partnered), who can revoke or reissue the secret"
         ],
@@ -30511,10 +30511,10 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "After remediating a secret scanning alert, how do you formally resolve it in the GitHub UI?",
         "options": [
-          "Rename the branch containing the secret",
+          "Rename the branch containing the secret, then wait for the alert list to refresh and show the alert as closed by itself",
           "Select the alert from the list and choose an appropriate reason from the 'Close as' drop-down menu",
           "Delete the repository and recreate it",
-          "Secret scanning alerts auto-resolve after 30 days"
+          "Secret scanning alerts auto-resolve after 30 days, so no further action in the alert list or its menus is needed from you"
         ],
         "correct": 1,
         "explain": "After completing remediation steps, you resolve the alert by selecting it from the Secret scanning alerts list and choosing an appropriate reason from the 'Close as' drop-down menu."
@@ -30538,9 +30538,9 @@ const EXAMS = {
         "q": "What does the 'Non-provider patterns' setting in Secret Protection do?",
         "options": [
           "Automatically generates new secrets",
-          "Only applies to GitHub Enterprise Server",
+          "Only applies to GitHub Enterprise Server, where it scans for formats from non-partnered providers",
           "Scans for custom or non-partnered secret formats beyond the standard provider patterns",
-          "Disables all partner-provided detection patterns"
+          "Disables all partner-provided detection patterns so that only your own custom patterns are used"
         ],
         "correct": 2,
         "explain": "Non-provider patterns scan for custom or non-partnered secret formats beyond the standard patterns provided by GitHub partners."
@@ -30563,10 +30563,10 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "An organization wants specific security reviewers—without granting them full administrative rights—to be able to approve or deny push protection bypass requests. What should they do?",
         "options": [
-          "Grant the reviewers Write access to every repository",
+          "Grant the reviewers Write access to every repository, which lets them approve or deny any bypass request on code that they can modify directly",
           "Create custom organization roles with the 'Review and manage Secret Scanning bypass requests' permission",
           "Disable push protection entirely",
-          "Make the reviewers organization owners"
+          "Make the reviewers organization owners, since only owners can hold the permission to review and manage bypass requests for Secret Scanning"
         ],
         "correct": 1,
         "explain": "Organizations can create custom roles with the 'Review and manage Secret Scanning bypass requests' permission, allowing designated security reviewers to approve or deny bypass requests without granting broader administrative permissions."
@@ -30577,8 +30577,8 @@ const EXAMS = {
         "q": "What is the dependency graph?",
         "options": [
           "A summary of a repository's manifest and lock files that identifies its dependencies and dependents",
-          "A chart of contributor commit activity",
-          "A visualization of GitHub Actions workflow runs",
+          "A chart of contributor commit activity that identifies which developers depend on each other's work in a repository",
+          "A visualization of GitHub Actions workflow runs that shows which jobs depend on one another and which ones ran first",
           "A log of push protection bypass events"
         ],
         "correct": 0,
@@ -30655,8 +30655,8 @@ const EXAMS = {
         "q": "What is a Software Bill of Materials (SBOM)?",
         "options": [
           "A record of GitHub Actions billing minutes used",
-          "A list of all commits made in the last 30 days",
-          "A financial invoice for GitHub Advanced Security licensing",
+          "A list of all commits made in the last 30 days, along with the author and associated information such as branches",
+          "A financial invoice for GitHub Advanced Security licensing that itemizes each seat, version, and license billed to the organization",
           "A formal, machine-readable inventory of a project's dependencies and associated information such as versions and licenses"
         ],
         "correct": 3,
@@ -30707,9 +30707,9 @@ const EXAMS = {
         "q": "Under which circumstances are Dependabot alerts generated for a repository?",
         "options": [
           "Only once per year during an audit",
-          "Only for repositories with more than 1,000 stars",
+          "Only for repositories with more than 1,000 stars, when a maintainer has opted in to the GitHub Advisory Database",
           "When a new advisory is added to the GitHub Advisory Database, or when the dependency graph for a repository changes",
-          "Only when a developer manually requests a scan"
+          "Only when a developer manually requests a scan from the repository's Security tab, regardless of any advisory or graph changes"
         ],
         "correct": 2,
         "explain": "Dependabot alerts are generated for vulnerable dependencies when a new advisory is added to the GitHub Advisory Database, or when the dependency graph for a repository changes."
@@ -30721,8 +30721,8 @@ const EXAMS = {
         "options": [
           "Only the repository creator",
           "Repository administrators, organization owners, and people with write or maintain access, plus explicitly granted users/teams",
-          "Nobody; alerts must always be manually shared",
-          "Anyone on the internet, since alerts are always public"
+          "Nobody; alerts must always be manually shared by an organization owner with each user or team that needs to see them",
+          "Anyone on the internet, since alerts are always public, whether the repository is public or private and whatever access a person holds"
         ],
         "correct": 1,
         "explain": "Repository administrators, organization owners, and people with write or maintain access to a repository can view and update dependencies, as well as any users and teams explicitly granted access."
@@ -30733,9 +30733,9 @@ const EXAMS = {
         "q": "Which pieces of metadata does a Dependabot alert include?",
         "options": [
           "Severity rating/CVSS metrics, CWE weaknesses, CVE ID, and GHSA ID",
-          "The developer's IP address",
+          "The developer's IP address, commit author email, and machine name",
           "Only the package name",
-          "Only a link to the pull request"
+          "Only a link to the pull request and the name of the affected file"
         ],
         "correct": 0,
         "explain": "Dependabot alerts include a severity rating and CVSS base metrics, CWE-identified weaknesses, a CVE ID from the CVE system, and a GHSA ID referencing the specific GitHub Security Advisory."
@@ -30771,8 +30771,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which of the following is a valid step in the recommended process to resolve a Dependabot alert?",
         "options": [
-          "Ignore alerts with a CVSS score below 10",
-          "Disable all Dependabot alerts organization-wide",
+          "Ignore alerts with a CVSS score below 10, and close the automated security update pull request without reviewing it",
+          "Disable all Dependabot alerts organization-wide, then review the alert details and re-enable the alerts one at a time",
           "Review the alert details and, if available, review and merge the automated security update pull request",
           "Immediately delete the entire repository"
         ],
@@ -30785,8 +30785,8 @@ const EXAMS = {
         "q": "How does the 'grouped security updates' feature behave when opening pull requests?",
         "options": [
           "It groups dependencies from different directories within the same package ecosystem into a single PR, but never groups across ecosystems or with version updates",
-          "It groups dependencies across different package ecosystems into one PR",
-          "It only ever creates one PR per repository, regardless of ecosystem",
+          "It groups dependencies across different package ecosystems into one PR, and also combines those security updates with any pending version updates for the repository",
+          "It only ever creates one PR per repository, regardless of ecosystem or directory, and that PR is replaced whenever a new security update is released",
           "It disables Dependabot alerts entirely"
         ],
         "correct": 0,
@@ -30797,9 +30797,9 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "How is a Dependabot security update's 'compatibility score' calculated?",
         "options": [
-          "It's based solely on the number of GitHub stars the dependency has",
+          "It's based solely on the number of GitHub stars the dependency has, with more popular packages receiving higher percentages on each PR",
           "It's a random number generated for each PR",
-          "It's manually assigned by GitHub support staff",
+          "It's manually assigned by GitHub support staff after they've tested the same security update in other public repositories",
           "It's the percentage of CI runs that passed when the same security update was applied in other public repositories"
         ],
         "correct": 3,
@@ -30837,8 +30837,8 @@ const EXAMS = {
         "q": "How does Dependabot determine when a new version update is available, and what does it NOT rely on?",
         "options": [
           "It relies on GitHub Copilot suggestions only",
-          "It relies exclusively on the dependency graph and CVE data",
-          "It requires manual triggering for every check",
+          "It relies exclusively on the dependency graph and CVE data from the GitHub Advisory Database, and version updates do not read the manifest file at all",
+          "It requires manual triggering for every check, and it compares the commit history of each dependency rather than its version numbers",
           "It uses semantic versioning (MAJOR.MINOR.PATCH) from the manifest file, and version updates do not use the dependency graph"
         ],
         "correct": 3,
@@ -30849,10 +30849,10 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Are Dependabot version updates automatically enabled when a repository is forked and includes a dependabot.yml file?",
         "options": [
-          "Only if the fork has more stars than the original",
+          "Only if the fork has more stars than the original repository that the dependabot.yml file came from",
           "No; version updates are not automatically enabled on forks, as a safeguard against unintended behavior",
           "Only on GitHub Enterprise Server",
-          "Yes, always, with no exceptions"
+          "Yes, always, with no exceptions, since a fork inherits every dependabot.yml setting from its parent"
         ],
         "correct": 1,
         "explain": "Dependabot version updates aren't automatically enabled on forks. This safeguard prevents fork owners from unintentionally enabling version updates when they pull changes including a dependabot.yml file from the original repository."
@@ -30875,10 +30875,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "By default, what does the dependency-review-action check do if it discovers any vulnerable packages in a pull request?",
         "options": [
-          "It silently logs the finding with no other effect",
+          "It silently logs the finding with no other effect, so a pull request can't be blocked even when the check is marked as required",
           "It deletes the vulnerable dependency automatically",
           "The check fails, which can block the pull request from merging if the repository requires the check to pass",
-          "It automatically merges the pull request anyway"
+          "It automatically merges the pull request anyway, adding a comment that lists each vulnerable package that was found in the changes"
         ],
         "correct": 2,
         "explain": "By default, the dependency-review-action check fails if it discovers any vulnerable packages; a failed check blocks a pull request from merging when the repository owner requires the dependency review check to pass."
@@ -30915,8 +30915,8 @@ const EXAMS = {
         "q": "How can an organization enforce that dependency review results must pass before a pull request can be merged into main?",
         "options": [
           "Disable pull requests entirely",
-          "Set the repository to private",
-          "Dependency review results cannot be enforced; they are informational only",
+          "Set the repository to private, which automatically adds 'dependency-review' as a required status check before merging into main",
+          "Dependency review results cannot be enforced; they are informational only, so a branch protection rule can't include them as a check",
           "Add a branch protection rule on main requiring the 'dependency-review' status check to pass before merging"
         ],
         "correct": 3,
@@ -30929,8 +30929,8 @@ const EXAMS = {
         "options": [
           "To analyze source code using CodeQL (or other tools) to find security vulnerabilities and coding errors",
           "To enforce two-factor authentication",
-          "To automatically compress repository storage",
-          "To manage GitHub organization billing"
+          "To automatically compress repository storage by detecting unused source files and removing them from the code base",
+          "To manage GitHub organization billing by finding unused seats and flagging the code that drives storage costs"
         ],
         "correct": 0,
         "explain": "Code scanning uses CodeQL to analyze code in a repository to find security vulnerabilities and coding errors, displaying alerts in the Security tab."
@@ -30940,10 +30940,10 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What are the three main ways to set up CodeQL analysis for code scanning?",
         "options": [
-          "Manual upload, email submission, and phone support",
+          "Manual upload through the Security tab, email submission to GitHub, and phone support",
           "Only through the mobile app",
           "Default setup, advanced setup, and running the CodeQL CLI in an external CI system",
-          "Only via GitHub Copilot chat"
+          "Only via GitHub Copilot chat, which writes a workflow file on request and runs it for you"
         ],
         "correct": 2,
         "explain": "The three main ways to set up CodeQL analysis are: default setup (quick, GitHub-managed configuration), advanced setup (a customizable workflow file), or running the CodeQL CLI directly in an external CI system and uploading results."
@@ -30979,9 +30979,9 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What core concept underlies how CodeQL analyzes a codebase?",
         "options": [
-          "It requires manually annotating every function",
+          "It requires manually annotating every function, then runs those annotations as tests on each pull request in the repository",
           "It treats code like data, extracting a relational database representation that queries can be run against",
-          "It only performs simple keyword text searches",
+          "It only performs simple keyword text searches across the source files, matching known vulnerable function names in order",
           "It relies exclusively on runtime testing"
         ],
         "correct": 1,
@@ -30992,10 +30992,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "How does CodeQL's extraction strategy differ between compiled languages (like Java or C++) and interpreted languages (like Python or JavaScript)?",
         "options": [
-          "Interpreted languages require a build command but compiled languages do not",
+          "Interpreted languages require a build command that CodeQL monitors, while compiled languages are extracted directly from source code without any build step taking place first",
           "For compiled languages, CodeQL may need to monitor the build process; for interpreted languages, it extracts directly from source code without a build step",
           "CodeQL only supports interpreted languages",
-          "There is no difference; extraction is identical for all languages"
+          "There is no difference; extraction is identical for all languages, because CodeQL always monitors a build process before it reads the source code of a project"
         ],
         "correct": 1,
         "explain": "For compiled languages, CodeQL often needs to understand how the project builds and may monitor the build process, while for interpreted languages CodeQL extracts information directly from source code without requiring a separate build command."
@@ -31032,9 +31032,9 @@ const EXAMS = {
         "q": "When uploading SARIF results via GitHub Actions using the upload-sarif action, what are the maximum supported results per upload and maximum compressed file size?",
         "options": [
           "A maximum of 10 results and 1 KB",
-          "Unlimited results and unlimited file size",
+          "Unlimited results per upload and a 10 MB limit for the uncompressed SARIF file only",
           "A maximum of 5,000 results per upload and 10 MB for the gzip-compressed SARIF file",
-          "A maximum of 100,000 results and 1 GB"
+          "A maximum of 100,000 results per upload and 1 GB for the gzip-compressed SARIF file"
         ],
         "correct": 2,
         "explain": "SARIF upload via GitHub Actions supports a maximum of 5,000 results per upload (any excess are ignored) and a maximum size of 10 MB for the gzip-compressed SARIF file."
@@ -31057,8 +31057,8 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What are the two categories of severity levels shown for code scanning alerts?",
         "options": [
-          "Only a single 'severity' field with values Pass/Fail",
-          "1 through 10 numeric scale only",
+          "Only a single 'severity' field with values Pass/Fail, reported separately for build alerts and for security alerts",
+          "A 1 through 10 numeric scale for alert severity and a separate A through F letter grade for security severity levels",
           "Green, Yellow, Red only",
           "Alert severity levels (Error, Warning, Note) and security severity levels (Critical, High, Medium, Low)"
         ],
@@ -31070,9 +31070,9 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "By default, which severity levels cause a pull request check to fail for code scanning?",
         "options": [
-          "No alerts ever cause check failures by default",
+          "No alerts ever cause check failures by default, whatever their alert severity or security severity",
           "Only Note-level alerts",
-          "All alerts regardless of severity",
+          "All alerts regardless of severity, including Note, Warning, and Low-level alerts",
           "Alert severity of Error, or security severity of Critical or High"
         ],
         "correct": 3,
@@ -31083,8 +31083,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Is a GitHub Copilot Autofix suggestion automatically applied to fix a code scanning alert?",
         "options": [
-          "Autofix only works on Secret Scanning alerts, not code scanning",
-          "Yes, it is applied and merged automatically with no review",
+          "Autofix only works on Secret Scanning alerts, not code scanning, so there are no suggested changes to apply to this alert",
+          "Yes, it is applied and merged automatically with no review, as long as the pull request's required tests have passed first",
           "Only if the repository has fewer than 10 contributors",
           "No; Autofix suggestions must be reviewed, tested, and approved like any other code change before being committed"
         ],
@@ -31111,8 +31111,8 @@ const EXAMS = {
         "options": [
           "It allows each language's analysis to run in parallel, improving performance and ensuring full language coverage",
           "It disables analysis for all but one language",
-          "It forces sequential analysis, which is always faster",
-          "It removes the need for a CodeQL database entirely"
+          "It forces sequential analysis, which is always faster, because each language reuses the results from the one that ran before",
+          "It removes the need for a CodeQL database entirely by running each language's queries directly against the raw source files"
         ],
         "correct": 0,
         "explain": "Using a language matrix optimizes CodeQL to run each language's analysis in parallel rather than sequentially, which speeds up multi-language repository scans and is the recommended configuration."
@@ -31122,10 +31122,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "For compiled languages with a non-standard build process, what does GitHub recommend instead of relying on the autobuild step?",
         "options": [
-          "Switching the entire project to an interpreted language",
+          "Switching the entire project to an interpreted language so that no build step needs to run before analysis",
           "Configuring an explicit build step within the code scanning workflow file that runs before analysis",
           "Running the scan only once per year",
-          "Disabling code scanning entirely for that language"
+          "Disabling code scanning entirely for that language and relying on a manual security review before analysis"
         ],
         "correct": 1,
         "explain": "GitHub recommends configuring an explicit build step within the code scanning workflow file rather than relying on autobuild, since autobuild behavior varies by OS and can produce unreliable results for compiled languages."
@@ -31174,9 +31174,9 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "How can you prevent a code scan from being triggered on pull requests that only change Markdown or text files?",
         "options": [
-          "Disable pull requests for the repository",
+          "Disable pull requests for the repository and push changes to Markdown or text files directly to the default branch instead",
           "Use on:pull_request:paths-ignore in the workflow file to exclude specific file patterns like '**/*.md'",
-          "It's not possible to skip scans based on file type",
+          "It's not possible to skip scans based on file type, because code scanning always runs on each pull_request event in the workflow",
           "Delete the .md files from the repository"
         ],
         "correct": 1,
@@ -31187,10 +31187,10 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What does GHSA ID refer to in the context of GitHub's security ecosystem?",
         "options": [
-          "A hash of the repository's source code",
+          "A hash of the repository's source code, used as a unique identifier when reporting alerts",
           "A unique identifier for an advisory in the GitHub Advisory Database",
           "A GitHub Sponsors Account ID",
-          "A GitHub Support Agent identifier"
+          "A GitHub Support Agent identifier that is attached to each entry in the database"
         ],
         "correct": 1,
         "explain": "GHSA ID is the identifier for a specific advisory in the GitHub Advisory Database, included as metadata on Dependabot alerts alongside the CVE ID and CWE."
@@ -31214,9 +31214,9 @@ const EXAMS = {
         "q": "What is the purpose of GitHub Security Advisories?",
         "options": [
           "To privately collaborate on a fix, clearly communicate vulnerability details, and document mitigation steps before disclosure",
-          "To publicly shame developers who introduce vulnerabilities",
+          "To publicly shame developers who introduce vulnerabilities, by listing their names and commits in a public record before any fix has been released",
           "To automatically generate marketing content",
-          "To replace SECURITY.md files entirely"
+          "To replace SECURITY.md files entirely by publishing a repository's reporting policy and contacts in one place, without any private collaboration"
         ],
         "correct": 0,
         "explain": "GitHub security advisories let you privately collaborate on fixes, clearly communicate vulnerability details, and document mitigation steps, managing the process from disclosure through publication."
@@ -31226,9 +31226,9 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What information should a well-written security advisory include?",
         "options": [
-          "Only a marketing summary of the product",
+          "Only a marketing summary of the product and a list of its most recent releases",
           "Affected versions, severity, patch status, and CVE references",
-          "The full commit history of the repository",
+          "The full commit history of the repository, along with every contributor's name",
           "Only the reporter's name"
         ],
         "correct": 1,
@@ -31279,9 +31279,9 @@ const EXAMS = {
         "q": "In CodeQL path queries, what do the terms 'source' and 'sink' refer to?",
         "options": [
           "Source is a possible starting point where data enters, and sink is a possible endpoint where that data is used, potentially unsafely",
-          "Source and sink both refer to database tables only",
+          "Source and sink both refer to database tables only, marking where CodeQL reads its extracted data and where it writes query results",
           "They are unrelated legacy terms with no current meaning",
-          "Source is where code is stored; sink is where it's deployed"
+          "Source is where code is stored in the repository, and sink is where that code is deployed, potentially to an unsafe production environment"
         ],
         "correct": 0,
         "explain": "In a path query, the source represents where potentially tainted data originates and the sink represents where it ends up being used; the query models data-flow steps that link them, useful for detecting vulnerabilities like unsanitized input reaching a dangerous function."
@@ -31304,8 +31304,8 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Which of the following would appear in the 'Prevention' view of Security Overview?",
         "options": [
-          "The list of all organization members",
-          "Total number of repositories in the organization",
+          "The list of all organization members and the pull request reviews that each member has completed before merge",
+          "Total number of repositories in the organization, along with how many of them have had alerts opened after merging",
           "The organization's billing history",
           "Secret scanning push protection events and vulnerabilities fixed during pull request review before merge"
         ],
@@ -31344,8 +31344,8 @@ const EXAMS = {
         "q": "What does 'shifting left' mean in the context of GHAS security operations?",
         "options": [
           "Changing the default branch name",
-          "Moving security testing to occur even later in the release cycle",
-          "Relocating repositories to a different data center",
+          "Moving security testing to occur even later in the release cycle, so that push protection, dependency scanning, and analysis all run after code has reached production",
+          "Relocating repositories to a different data center so that analysis runs closer to developers, reducing the time taken by scanning before each merge is completed",
           "Moving vulnerability prevention earlier in the development process, through mechanisms like push protection, dependency scanning, and pre-merge analysis"
         ],
         "correct": 3,
@@ -31356,8 +31356,8 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What key advantage do repository rulesets offer over traditional branch protection rules?",
         "options": [
-          "Rulesets are only available on GitHub Enterprise Server",
-          "Rulesets can only apply to a single branch at a time, unlike protection rules",
+          "Rulesets are only available on GitHub Enterprise Server, where they replace protection rules and are visible only to administrators with read access to settings",
+          "Rulesets can only apply to a single branch at a time, unlike protection rules, and each one must be deleted rather than disabled when it's no longer needed by administrators",
           "Rulesets eliminate the need for any bypass permissions",
           "Multiple rulesets can be layered together and toggled on/off (enabled, disabled, or evaluate) without deletion, and are visible to anyone with read access"
         ],
@@ -31370,9 +31370,9 @@ const EXAMS = {
         "q": "When multiple rulesets and branch protection rules apply to the same branch with conflicting requirements, which setting wins?",
         "options": [
           "GitHub aggregates all applicable rules and applies the most restrictive setting",
-          "The least restrictive setting always wins",
+          "The least restrictive setting always wins, so that a single rule can't block the entire branch",
           "Only the most recently created rule applies",
-          "Rulesets are ignored if branch protection rules exist"
+          "Rulesets are ignored if branch protection rules exist on the same branch, whichever is stricter"
         ],
         "correct": 0,
         "explain": "GitHub aggregates all applicable rules — branch protection, tag protection, and multiple rulesets — and applies the most restrictive setting across all of them."
@@ -31396,9 +31396,9 @@ const EXAMS = {
         "q": "What best practice is recommended when dismissing a code scanning alert that doesn't need a code change?",
         "options": [
           "Only dismiss alerts with Critical severity",
-          "Delete the alert history entirely so it cannot be audited",
+          "Delete the alert history entirely so it cannot be audited, and remove any comments about who reviewed the decision or whether it's temporary or permanent",
           "Choose the dismissal reason carefully and add a comment explaining why, who reviewed it, and whether the decision is temporary or permanent",
-          "Dismiss silently with no explanation"
+          "Dismiss silently with no explanation, since the dismissal reason is not stored and reviewers can see the same code"
         ],
         "correct": 2,
         "explain": "Because the dismissal reason becomes part of the security record, you should choose it carefully and add a comment capturing why no code change is needed, who reviewed the decision, and whether it's temporary, supporting future audits and compliance reviews."
@@ -31447,9 +31447,9 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "An organization wants a single governance mechanism to enforce consistent status checks (e.g., both dependency review AND code scanning) across many repositories, layered with existing per-repo branch protections. What should they use?",
         "options": [
-          "Individually configure branch protection on every repository with no central mechanism",
+          "Individually configure branch protection on every repository with no central mechanism, so that each repository's maintainers choose which of the required status checks should apply",
           "Organization-level repository rulesets that apply the required status checks across selected repositories, layered with existing rules so the most restrictive setting applies",
-          "Disable branch protection everywhere to simplify configuration",
+          "Disable branch protection everywhere to simplify configuration, and rely on required status checks defined in each repository's own workflow files instead",
           "Rely solely on SECURITY.md documentation"
         ],
         "correct": 1,
@@ -31486,9 +31486,9 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is the value of a CodeQL data-flow alert in security operations?",
         "options": [
-          "It reports only how many lines of code exist in a file",
+          "It reports only how many lines of code exist in a file, helping teams estimate how long a security review of each area will take",
           "It measures GitHub Actions billing minutes consumed",
-          "It only reports style/formatting issues",
+          "It only reports style/formatting issues, helping teams keep code consistent across entry points without reviewing any sensitive data",
           "It shows how data moves through the code, helping identify entry points for attacks and areas that leak sensitive information"
         ],
         "correct": 3,
@@ -31512,8 +31512,8 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "An organization enforces a policy requiring both Secret Protection push protection AND Code Security scanning results as required checks across all repositories in a business unit, with only security managers able to bypass. What GHAS capability combination best achieves this?",
         "options": [
-          "Manually emailing each repository owner with instructions",
-          "Disabling all bypass options entirely with no exceptions possible",
+          "Manually emailing each repository owner with instructions on which status checks to require, and asking them to restrict bypass to security managers themselves",
+          "Disabling all bypass options entirely with no exceptions possible, including for security managers, and relying on each repository's own required status checks to stop any secrets",
           "Organization-wide security configurations combined with rulesets requiring the relevant status checks, plus delegated bypass restricted to security managers",
           "A single branch protection rule on one repository"
         ],
@@ -31525,8 +31525,8 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What is the effect of enabling GitHub Advanced Security at the organization level?",
         "options": [
-          "It has no effect until manually enabled per-repository afterward",
-          "It only enables GHAS for the organization's public repositories",
+          "It has no effect until manually enabled per-repository afterward, even for the private and internal repositories in the organization",
+          "It only enables GHAS for the organization's public repositories, leaving private and internal repositories as they were before",
           "It automatically turns on GitHub Advanced Security for all private and internal repositories in the organization",
           "It disables Dependabot for the organization"
         ],
@@ -31539,8 +31539,8 @@ const EXAMS = {
         "q": "What licensing consequence occurs when GHAS is enabled for an organization's repositories?",
         "options": [
           "No licensing impact whatsoever",
-          "The organization automatically loses its GitHub Enterprise Cloud subscription",
-          "Only the organization owner counts against the license",
+          "The organization automatically loses its GitHub Enterprise Cloud subscription and moves to a separate per-repository plan",
+          "Only the organization owner counts against the license, however many committers contribute to its repositories",
           "Committers to the organization's repositories use seats on the GitHub Advanced Security license"
         ],
         "correct": 3,
@@ -31578,8 +31578,8 @@ const EXAMS = {
         "q": "If an enterprise-level security policy conflicts with an organization-level setting, which one takes precedence?",
         "options": [
           "The enterprise-level policy overrides the organization-level setting, and org owners cannot change locked settings",
-          "The organization-level setting always wins",
-          "The most recently modified setting wins regardless of level",
+          "The organization-level setting always wins, and enterprise owners can't change settings that an org owner has locked",
+          "The most recently modified setting wins regardless of level, so org owners can undo any enterprise setting by saving a change",
           "Neither applies; only repository-level settings matter"
         ],
         "correct": 0,
@@ -31590,8 +31590,8 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Where should a repository-level SECURITY.md file be placed for GitHub to recognize it?",
         "options": [
-          "In a hidden .security folder only",
-          "It must be embedded in the README.md file directly",
+          "In a hidden .security folder only, which GitHub reads automatically for each repo",
+          "It must be embedded in the README.md file directly, in a section of its own",
           "Only in a folder named 'legal'",
           "In the root, docs, or .github folder of the repository"
         ],
@@ -31603,10 +31603,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "According to the GHAS administration module's role/permission table, what access is required to view Secret Scanning and Dependabot alerts by default?",
         "options": [
-          "Read access is sufficient for both",
+          "Read access is sufficient for both alert types by default",
           "Repository administrators and organization owners",
           "Any authenticated GitHub user",
-          "Only users with a Copilot subscription"
+          "Only users with a Copilot subscription assigned by the organization"
         ],
         "correct": 1,
         "explain": "The minimum roles and permissions table shows that Secret Scanning alerts and Dependabot alerts require repository administrator or organization owner access by default, while Code Scanning alerts require only Write permission."
@@ -31616,10 +31616,10 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "At which three levels can Security Overview be viewed?",
         "options": [
-          "Only at the global GitHub.com level",
+          "Only at the global GitHub.com level, across all organizations on the platform",
           "Only at the individual user level",
           "Organization level, team level, and repository level",
-          "Only at the billing account level"
+          "Only at the billing account level, grouped by subscription"
         ],
         "correct": 2,
         "explain": "Security Overview can be viewed at the organization level (aggregate and repository-specific info, filterable by feature), team level (repos where the team has admin privileges), and repository level (which features are enabled and configuration options)."
@@ -31644,8 +31644,8 @@ const EXAMS = {
         "options": [
           "Never specify a permissions key at all",
           "Grant the least privilege required for the workflow to complete successfully",
-          "Always grant every permission scope to avoid failures",
-          "Always use an organization owner's personal access token instead"
+          "Always grant every permission scope to avoid failures, then scope access down only if a job is compromised",
+          "Always use an organization owner's personal access token instead of GITHUB_TOKEN for each workflow"
         ],
         "correct": 1,
         "explain": "As a security best practice, you should always grant the least privilege required, using the permissions key to explicitly scope down GITHUB_TOKEN access for a workflow or individual job."
@@ -31669,9 +31669,9 @@ const EXAMS = {
         "q": "What is a key limitation of the audit log GraphQL API compared to the REST API?",
         "options": [
           "The GraphQL API does not include Git events (such as pushes and pulls), while the REST API does (for up to 7 days)",
-          "GraphQL supports Git events like pushes and pulls, but REST does not",
+          "GraphQL supports Git events like pushes and pulls for up to 7 days, but REST does not include Git events at all (only settings changes)",
           "GraphQL cannot be used at all for audit logs",
-          "REST API access requires no authentication token"
+          "REST API access requires no authentication token, while the GraphQL API can only be used by organization owners for up to 7 days"
         ],
         "correct": 0,
         "explain": "The REST API can monitor Git events (push, pull, merge) for up to 7 days in addition to settings/permission changes, while the GraphQL API monitors settings and permission changes but does NOT include Git events."
@@ -31683,8 +31683,8 @@ const EXAMS = {
         "options": [
           "Only physical printers",
           "SIEM platforms and cloud storage such as Splunk, Datadog, AWS S3, and Azure Event Hubs",
-          "Only GitHub's internal dashboard, with no external streaming supported",
-          "Only local text files on the admin's laptop"
+          "Only GitHub's internal dashboard, with no external streaming supported to any SIEM platform or cloud storage service",
+          "Only local text files on the admin's laptop, which are then uploaded to cloud storage by hand"
         ],
         "correct": 1,
         "explain": "You can stream audit logs in real time to destinations such as Splunk, Datadog, AWS S3, or Azure Event Hubs, enabling long-term storage and SIEM integration."
@@ -31695,9 +31695,9 @@ const EXAMS = {
         "q": "What is the GitHub REST API's default rate limit for authenticated requests versus unauthenticated requests?",
         "options": [
           "5,000 requests per hour authenticated, 60 requests per hour unauthenticated",
-          "Unlimited for both authenticated and unauthenticated",
+          "Unlimited for both authenticated and unauthenticated requests, with no hourly cap at all",
           "1,000,000 requests per hour authenticated",
-          "100 requests per hour for both"
+          "100 requests per hour for both authenticated and unauthenticated requests"
         ],
         "correct": 0,
         "explain": "The default GitHub API rate limits are 60 requests per hour for unauthenticated requests and 5,000 requests per hour for authenticated requests (GitHub App limits vary by installation)."
@@ -31733,8 +31733,8 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "An enterprise owner sets the enterprise-level GHAS policy to 'Disabled for all organizations.' An organization owner within that enterprise had previously enabled GHAS on several repositories. What is the effect?",
         "options": [
-          "The enterprise policy has no effect on already-configured organizations",
-          "All previously enabled GHAS features are instantly and permanently deleted, including historical alert data",
+          "The enterprise policy has no effect on already-configured organizations, since organization-level settings override enterprise settings, so repository administrators can continue enabling Advanced Security features on additional repositories as before",
+          "All previously enabled GHAS features are instantly and permanently deleted, including historical alert data, and the enterprise-level policy prevents any repository in the organization from retaining its existing security configuration or alert history",
           "The organization owner's account is suspended",
           "The enterprise-level policy overrides organization and repository settings; however, disallowing Advanced Security for an organization prevents new enablement but does not disable features already enabled on repositories"
         ],
@@ -31760,9 +31760,9 @@ const EXAMS = {
         "q": "An organization is rolling out GitHub Advanced Security and wants every newly created private or internal repository to automatically inherit GHAS settings without manual steps. What should the organization owner configure?",
         "options": [
           "Rename every new repository to include 'GHAS' in the title",
-          "Nothing can be automated; every new repository requires manual enablement",
+          "Nothing can be automated; every new repository requires manual enablement under GitHub Advanced Security in that repository's own settings by an administrator afterward",
           "Select the 'Automatically enable for new private and internal repositories' checkbox under GitHub Advanced Security in organization settings",
-          "Enable GHAS individually after each repository reaches 100 commits"
+          "Enable GHAS individually after each repository reaches 100 commits, since the organization settings page only applies to repositories with an existing history"
         ],
         "correct": 2,
         "explain": "To automatically enable GitHub Advanced Security on new private and internal repositories added to the organization, select the 'Automatically enable for new private and internal repositories' checkbox under GitHub Advanced Security in organization settings."
@@ -31785,8 +31785,8 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "What is the purpose of the qlpack.yml file at the root of a custom CodeQL query pack?",
         "options": [
-          "It is a legacy file with no functional purpose in current CodeQL versions",
-          "It stores the GitHub Actions billing configuration for the repository",
+          "It is a legacy file with no functional purpose in current CodeQL versions, kept only so that older query suites can still find the pack's root directory when they run",
+          "It stores the GitHub Actions billing configuration for the repository, telling CodeQL which runners to use when compiling queries and how long results are kept",
           "It defines branch protection rules for the repository",
           "It provides metadata telling CodeQL how to compile queries in the pack, what libraries the pack depends on, and where to find query suite definitions"
         ],
