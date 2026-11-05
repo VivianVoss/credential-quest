@@ -1,3 +1,5 @@
+import { createHash } from 'node:crypto';
+
 // Problem A: does the official poster still list exactly the credentials in
 // CATALOG? Pure text-diffing, no browser needed — the poster is a static PDF.
 //
@@ -13,11 +15,18 @@ const KNOWN_NON_CREDENTIAL_CODES = new Set([
 
 const POSTER_URL = 'https://arch-center.azureedge.net/Credentials/Certification-Poster_en-us.pdf';
 
+// Fingerprints the poster's text, not the PDF bytes, so a re-export with
+// identical content doesn't read as a new edition. Whitespace is collapsed
+// so a different pdftotext version doesn't either.
+function fingerprint(text) {
+  return createHash('sha256').update(text.replace(/\s+/g, ' ').trim()).digest('hex');
+}
+
 export async function checkPoster(catalog, execFileAsync) {
   const tmpPath = '/tmp/freshness-check-poster.pdf';
   const res = await fetch(POSTER_URL);
   if (!res.ok) {
-    return { error: `Could not download poster PDF (HTTP ${res.status})`, added: [], removed: [] };
+    return { error: `Could not download poster PDF (HTTP ${res.status})`, added: [], removed: [], textSha256: null };
   }
   const buf = Buffer.from(await res.arrayBuffer());
   const fs = await import('node:fs/promises');
@@ -35,5 +44,5 @@ export async function checkPoster(catalog, execFileAsync) {
   const added = [...found].filter(c => !catalogCodes.has(c)).sort();
   const removed = [...catalogCodes].filter(c => !found.has(c)).sort();
 
-  return { error: null, added, removed };
+  return { error: null, added, removed, textSha256: fingerprint(stdout) };
 }

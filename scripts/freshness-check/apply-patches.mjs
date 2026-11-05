@@ -57,6 +57,30 @@ function applyOnePatch(block, patch) {
   throw new Error(`Unknown patch field: ${patch.field}`);
 }
 
+// A beta flip also has to reach the "(beta)" suffix on the cert name and the
+// exam's CATALOG entry, or the site keeps showing the old status.
+function withoutBetaSuffix(text) {
+  return text.replace(/\s*\(beta\)/i, '');
+}
+
+function patchCertName(block, patch) {
+  if (patch.field !== 'beta' || patch.to !== false) return block;
+  return block.replace(/("?cert"?\s*:\s*")([^"]*)"/, (_, prefix, cert) => `${prefix}${withoutBetaSuffix(cert)}"`);
+}
+
+function patchCatalogBeta(source, code, patches) {
+  const patch = patches.find(p => p.field === 'beta');
+  if (!patch) return source;
+  const lineRe = new RegExp(`^.*\\{ code:"${code}".*$`, 'm');
+  if (!lineRe.test(source)) throw new Error(`Could not find ${code} in CATALOG`);
+  return source.replace(lineRe, line => {
+    if (patch.to === false) {
+      return line.replace(/, beta:true/, '').replace(/title:"([^"]*)"/, (_, title) => `title:"${withoutBetaSuffix(title)}"`);
+    }
+    return line.includes('beta:true') ? line : line.replace(/ \},?\s*$/, m => `, beta:true${m}`);
+  });
+}
+
 // Structural self-check: re-parse old vs new data.js as real JS and confirm
 // every exam/field is identical except the patches we meant to apply.
 function verifyOnlyIntendedChanges(oldSource, newSource, code, patches) {
@@ -66,10 +90,12 @@ function verifyOnlyIntendedChanges(oldSource, newSource, code, patches) {
   return fs.writeFile(tmpOld, oldSource + '\nmodule.exports = { CATALOG, EXAMS };')
     .then(() => fs.writeFile(tmpNew, newSource + '\nmodule.exports = { CATALOG, EXAMS };'))
     .then(() => {
-      const before = req(tmpOld).EXAMS[code];
+      const oldData = req(tmpOld);
+      const newData = req(tmpNew);
       delete req.cache[req.resolve(tmpOld)];
       delete req.cache[req.resolve(tmpNew)];
-      const after = req(tmpNew).EXAMS[code];
+      const before = oldData.EXAMS[code];
+      const after = newData.EXAMS[code];
 
       const beforeJson = JSON.stringify(before);
       const afterJson = JSON.stringify(after);
@@ -79,7 +105,10 @@ function verifyOnlyIntendedChanges(oldSource, newSource, code, patches) {
       const expected = JSON.parse(beforeJson);
       for (const p of patches) {
         if (p.field === 'level') expected.level = p.to;
-        else if (p.field === 'beta') expected.beta = p.to;
+        else if (p.field === 'beta') {
+          expected.beta = p.to;
+          if (p.to === false) expected.cert = withoutBetaSuffix(expected.cert);
+        }
         else if (p.field.startsWith('domains[')) {
           const d = expected.domains.find(d => d.name === p.domainName);
           if (!d) throw new Error(`Verify: domain "${p.domainName}" not found in expected structure`);
@@ -89,6 +118,17 @@ function verifyOnlyIntendedChanges(oldSource, newSource, code, patches) {
       }
       if (JSON.stringify(expected) !== afterJson) {
         throw new Error(`Verification failed for ${code}: patched file doesn't match expected result. Aborting, no changes written.`);
+      }
+
+      const betaPatch = patches.find(p => p.field === 'beta');
+      const expectedCatalog = oldData.CATALOG.map(entry => {
+        if (entry.code !== code || !betaPatch) return entry;
+        const { beta, ...rest } = entry;
+        if (betaPatch.to) return { ...rest, beta: true };
+        return { ...rest, title: withoutBetaSuffix(rest.title) };
+      });
+      if (JSON.stringify(expectedCatalog) !== JSON.stringify(newData.CATALOG)) {
+        throw new Error(`Verification failed for ${code}: CATALOG changed unexpectedly. Aborting, no changes written.`);
       }
     })
     .finally(() => Promise.all([fs.unlink(tmpOld).catch(() => {}), fs.unlink(tmpNew).catch(() => {})]));
@@ -100,9 +140,9 @@ export async function applyPatches(dataJsPath, code, patches) {
   const { start, end, block } = findExamBlock(oldSource, code);
 
   let newBlock = block;
-  for (const patch of patches) newBlock = applyOnePatch(newBlock, patch);
+  for (const patch of patches) newBlock = patchCertName(applyOnePatch(newBlock, patch), patch);
 
-  const newSource = oldSource.slice(0, start) + newBlock + oldSource.slice(end);
+  const newSource = patchCatalogBeta(oldSource.slice(0, start) + newBlock + oldSource.slice(end), code, patches);
   await verifyOnlyIntendedChanges(oldSource, newSource, code, patches);
   await fs.writeFile(dataJsPath, newSource);
 }
