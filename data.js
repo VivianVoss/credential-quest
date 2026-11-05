@@ -47322,7 +47322,7 @@ const EXAMS = {
         "options": [
           "No — it must be explicitly turned on via the Microsoft Defender portal or Set-AtpPolicyForO365 -EnableATPForSPOTeamsODB $true",
           "It is enabled only for Teams, not SharePoint/OneDrive",
-          "Yes, enabled by default for all Defender for Office 365 tenants, and it can only be turned off with Set-AtpPolicyForO365 -EnableATPForSPOTeamsODB $false",
+          "Only in tenants with a Microsoft Entra ID P2 license, where it turns on by itself once the first Safe Attachments policy is created for mail",
           "It requires a separate third-party license to enable"
         ],
         "correct": 0,
@@ -47398,7 +47398,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Which PowerShell approach is required to enable sensitivity labels for Groups & sites, given that Azure AD/MSOnline PowerShell modules are deprecated?",
         "options": [
-          "Sensitivity labels for Groups & sites cannot be enabled via PowerShell, only through the Microsoft Purview portal settings page",
+          "Use Set-UnifiedGroup in Exchange Online PowerShell on each group in turn, since that cmdlet turns on the tenant-wide label feature",
           "Use the Teams PowerShell module exclusively",
           "Use Microsoft Graph PowerShell to set EnableMIPLabels = True on the Group.Unified directory setting",
           "Use Set-CsTeamsClientConfiguration"
@@ -47529,7 +47529,7 @@ const EXAMS = {
         "q": "An org wants Segment A to be able to communicate with Segment B, but not with any other segment. Which Information Barrier policy type and cmdlet parameter should be used?",
         "options": [
           "A Block policy using -SegmentsBlocked",
-          "Information Barriers cannot restrict communication to specific segments only, so a Block policy is needed for every other segment",
+          "An Allow policy using the -SegmentsBlocked parameter, since that parameter lists the segments a policy is allowed to reach",
           "An Allow policy using the -SegmentsAllowed parameter of New-InformationBarrierPolicy",
           "A single bidirectional policy covering all segments at once"
         ],
@@ -47713,7 +47713,7 @@ const EXAMS = {
           "SharePoint files remain — deleting a channel folder doesn't delete the underlying SharePoint library contents",
           "SharePoint files are permanently deleted along with the team",
           "Files are moved automatically to OneDrive",
-          "Only the channel's default folder is deleted, but all other files remain accessible externally through the team's public sharing link"
+          "The files are moved to the group mailbox of the team, where only former team owners can open them until the mailbox is removed"
         ],
         "correct": 0,
         "explain": "When a team is deleted, SharePoint files remain — channel folder deletion doesn't delete the SharePoint library's contents. By contrast, Planner plans and Forms ARE deleted (should be exported/duplicated first to preserve them)."
@@ -47959,7 +47959,7 @@ const EXAMS = {
         "options": [
           "A DL created within the last 24 hours",
           "A DL that is on-premises managed, or is nested (has child groups or is a member of another group)",
-          "A DL with a single owner and standard mail-enabled security members, created in Exchange Online within the last year",
+          "A cloud-managed DL with a single owner and only UserMailbox and MailUser members, created in Exchange Online within the last year",
           "A DL with fewer than 10 members"
         ],
         "correct": 1,
@@ -47983,7 +47983,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which admin center is used to control default (Planner, Praise, Weather) and external third-party Teams apps org-wide?",
         "options": [
-          "The Power Platform admin center, under Environments > App settings",
+          "The Power Platform admin center, in the settings of the tenant default environment",
           "The SharePoint admin center",
           "The Teams admin center exclusively",
           "The Microsoft 365 admin center, under Tenant-wide settings > Apps"
@@ -48311,7 +48311,7 @@ const EXAMS = {
           "SIP Gateway or Teams Rooms Basic",
           "Purchasing a Microsoft Calling Plan, or using existing on-premises telephony via Direct Routing",
           "VoIP passthrough or satellite calling",
-          "Only Microsoft Calling Plans — no alternative exists, since Direct Routing is limited to on-premises calls between sites"
+          "A VPN tunnel from each Teams client straight to the carrier, or call forwarding through Exchange Online mailbox rules at each site"
         ],
         "correct": 1,
         "explain": "Connecting Phone System to PSTN has exactly two methods: purchasing a Microsoft Calling Plan, or using existing on-premises telephony infrastructure via Direct Routing."
@@ -48322,7 +48322,7 @@ const EXAMS = {
         "q": "What is required for a Teams Room to have PSTN dial-out voice capability configured via PowerShell?",
         "options": [
           "Room accounts cannot be voice-enabled at all",
-          "Manual dialing only; PSTN cannot be configured via PowerShell for rooms, so numbers must be entered on the device itself",
+          "Set-Mailbox with the -EnableRoomMailboxAccount parameter, since the room mailbox settings also control PSTN dial-out for the room",
           "The Set-CsPhoneNumberAssignment cmdlet with -EnterpriseVoiceEnabled $true and a PhoneNumberType parameter",
           "The New-CsOnlinePSTNGateway cmdlet exclusively"
         ],
@@ -48426,7 +48426,7 @@ const EXAMS = {
         "q": "In the Microsoft 365 network connectivity dashboard, what does a network assessment score of 80 or above represent?",
         "options": [
           "\"Meets recommendations\" — a healthy baseline above which regular connectivity complaints shouldn't occur",
-          "The maximum possible score, which is 80, not 100, so regular connectivity complaints shouldn't occur at this level",
+          "The lowest score the dashboard can show for a connected office, so the office should be treated as a priority for remediation",
           "A failing score requiring immediate remediation",
           "A score reserved only for Teams Rooms devices"
         ],
