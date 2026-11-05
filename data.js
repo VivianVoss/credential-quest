@@ -64330,7 +64330,7 @@ const EXAMS = {
         "q": "Which of the following best distinguishes generative AI from traditional AI systems?",
         "options": [
           "Traditional AI produces new content such as text and images, while generative AI only classifies existing data",
-          "Generative AI requires a custom model built for every prediction task, while traditional AI always uses pretrained models",
+          "Generative AI requires a custom model built for every prediction task, while traditional AI always uses pretrained models that respond to prompts rather than analyzing data or existing patterns",
           "Generative AI produces new content in response to prompts, while traditional AI is primarily designed to analyze data, classify information, or make predictions from existing patterns",
           "There is no meaningful difference between the two terms"
         ],
@@ -64397,7 +64397,7 @@ const EXAMS = {
           "Detecting fraudulent transactions using anomaly detection",
           "Classifying support tickets into predefined categories",
           "Automatically drafting localized product descriptions for 20 markets",
-          "Forecasting next quarter's sales using historical trends"
+          "Forecasting next quarter's sales using historical trends across 20 markets"
         ],
         "correct": 2,
         "explain": "Drafting new localized content is a generative task; fraud detection, forecasting, and classification are traditional/predictive AI tasks."
@@ -64408,7 +64408,7 @@ const EXAMS = {
         "q": "Scenario: A telecom company wants Copilot to summarize prior customer interactions and draft empathetic support responses inside its CRM to speed up resolution. Which combination of Microsoft solutions matches this scenario as described in training content?",
         "options": [
           "GitHub Copilot and Power Platform Copilot",
-          "Dynamics 365 Copilot alone, with no additional services",
+          "Dynamics 365 Copilot alone, with no additional services such as Azure OpenAI or Copilot Studio",
           "Azure Document Intelligence and Copilot in SharePoint",
           "Copilot in Dynamics 365 Customer Service, Azure OpenAI Service, and Copilot Studio"
         ],
@@ -64475,7 +64475,7 @@ const EXAMS = {
           "Both are billed exclusively on a token basis",
           "Microsoft 365 Copilot uses predictable subscription-based pricing, while Azure AI typically uses pay-as-you-go, token-based billing",
           "Azure AI has no cost associated with model training",
-          "Microsoft 365 Copilot requires customers to manage their own compute infrastructure"
+          "Microsoft 365 Copilot requires customers to manage their own compute infrastructure, while Azure AI is billed as a flat per-user subscription"
         ],
         "correct": 1,
         "explain": "Microsoft 365 Copilot uses predictable, subscription-based per-user pricing, while Azure AI's cost model is pay-as-you-go and token-based, scaling with usage volume and prompt complexity."
@@ -64511,7 +64511,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Scenario: A company currently pays a predictable per-user subscription for Microsoft 365 Copilot. Leadership is now considering building a custom multilingual support chatbot on Azure AI. What cost-model shift should leadership expect?",
         "options": [
-          "Costs remain subscription-based and predictable, identical to Copilot",
+          "Costs remain subscription-based and predictable, identical to Copilot, whatever the chatbot's usage volume",
           "Azure AI eliminates the need to consider infrastructure cost entirely",
           "Azure AI cannot be used alongside Microsoft 365 Copilot",
           "Costs shift toward pay-as-you-go, token-based billing tied to usage volume and prompt complexity"
@@ -64524,7 +64524,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which of the following is a genuine challenge of using generative AI in business, rather than a benefit?",
         "options": [
-          "Faster content creation",
+          "Faster content creation for marketing teams",
           "Fabricated or incorrect responses",
           "Scalability",
           "Automation of routine tasks"
@@ -64537,7 +64537,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Why do generative AI models sometimes produce fabrications, or confidently stated but incorrect information?",
         "options": [
-          "Because fabrication is a deliberate creativity feature that can be turned off",
+          "Because fabrication is a deliberate creativity feature that can be turned off whenever accurate output is needed",
           "Because fabrication only occurs when a model has too much grounding data",
           "Because the models intentionally test user attentiveness",
           "Because the models predict likely language patterns rather than verifying facts against a source of truth"
@@ -64565,7 +64565,7 @@ const EXAMS = {
         "options": [
           "That fact-checking layers remove the need for grounding or RAG entirely",
           "That fabrications only occur when a model is undertrained on marketing content",
-          "That reliability issues cannot be solved and generative AI should be abandoned in regulated scenarios",
+          "That reliability issues cannot be solved and generative AI should be abandoned in regulated scenarios, even after adding a fact-checking layer",
           "That a challenge such as fabrication can become an opportunity for innovation, and even a new revenue stream, when addressed proactively"
         ],
         "correct": 3,
@@ -64578,7 +64578,7 @@ const EXAMS = {
         "options": [
           "Using only diffusion models, since they are unaffected by bias",
           "Building inclusive AI systems and adopting strong governance frameworks",
-          "Avoiding any human review of AI-influenced decisions to reduce cost",
+          "Avoiding any human review of AI-influenced decisions to reduce cost and delays",
           "Increasing the number of tokens processed per request"
         ],
         "correct": 1,
@@ -64668,7 +64668,7 @@ const EXAMS = {
         "q": "Without grounding, which business risk is explicitly identified in training content?",
         "options": [
           "Guaranteed model accuracy",
-          "Elimination of the need for human oversight",
+          "Elimination of the need for human oversight in AI-generated business content",
           "Reduced compliance risk",
           "Compliance failure resulting in legal penalties and reputational damage"
         ],
@@ -64694,7 +64694,7 @@ const EXAMS = {
         "q": "Which of the following is part of building 'data readiness' for trustworthy AI, per training content?",
         "options": [
           "Disabling data governance to accelerate deployment",
-          "Relying exclusively on third-party data with no internal validation",
+          "Relying exclusively on third-party data with no internal validation, classification, or labeling of any kind",
           "Eliminating all unstructured data from the organization",
           "Data inventory and classification, accessibility, metadata and labeling, governance, and feedback loops"
         ],
@@ -64735,7 +64735,7 @@ const EXAMS = {
           "Reduced need for encryption",
           "Bias, breaches, and compliance failures",
           "Improved stakeholder confidence",
-          "Elimination of governance requirements"
+          "Elimination of governance requirements entirely"
         ],
         "correct": 1,
         "explain": "Training content explicitly links weak data and security practices in AI systems to bias, breaches, and compliance failures, which can lead to financial penalties, reputational damage, and loss of stakeholder confidence."
@@ -64786,7 +64786,7 @@ const EXAMS = {
         "options": [
           "Avoiding AI investment until regulations change",
           "Relying solely on generative AI for all predictive tasks",
-          "Using Foundry Tools pre-built models exclusively",
+          "Using Foundry Tools pre-built models exclusively, even though no off-the-shelf model addresses its needs",
           "Building a custom machine learning model tailored to its specialized compliance requirements"
         ],
         "correct": 3,
@@ -64800,7 +64800,7 @@ const EXAMS = {
           "Manually reviewing every customer email one at a time",
           "Automatically drafting personalized responses across thousands of customer interactions at once",
           "Reducing the number of products a company offers",
-          "Hiring additional staff to handle a fixed volume of routine tasks"
+          "Hiring additional staff to handle a fixed volume of routine tasks by working through them by hand"
         ],
         "correct": 1,
         "explain": "Automatically drafting personalized responses across thousands of interactions at once demonstrates generative AI's scalability, since it can handle volume that would be impractical to address manually or by simply adding headcount."
@@ -64877,7 +64877,7 @@ const EXAMS = {
         "options": [
           "Eliminating the need for any operational monitoring",
           "Generating content using pretrained models rather than building models from the ground up",
-          "Building custom models from scratch for every use case",
+          "Building custom models from scratch for every use case rather than using pretrained models",
           "Replacing data scientists entirely with business users"
         ],
         "correct": 1,
@@ -64890,7 +64890,7 @@ const EXAMS = {
         "options": [
           "A fine-tuned custom model with high setup complexity",
           "A pre-built, general-purpose model offering fast deployment with limited customization",
-          "A model that requires structured internal compliance data before first use",
+          "A model that requires structured internal compliance data before first use in production",
           "A diffusion model designed for image generation"
         ],
         "correct": 1,
@@ -65128,7 +65128,7 @@ const EXAMS = {
           "Eliminating the need for any employee training",
           "Replacing human decision-making entirely",
           "Boosting productivity by automating repetitive tasks",
-          "Removing the need for enterprise data governance"
+          "Removing the need for enterprise data governance policies"
         ],
         "correct": 2,
         "explain": "Boosting productivity by automating repetitive tasks is one of Copilot's three core organizational benefits identified in training content, alongside improved decision quality and strengthened governance."
@@ -65258,7 +65258,7 @@ const EXAMS = {
           "Sales forecasting maps to Excel Copilot",
           "Policy and compliance documentation maps to Word Copilot",
           "Meeting follow-ups map to Teams Copilot",
-          "Customer support summaries map to Copilot Chat"
+          "Customer support summaries map to Microsoft 365 Copilot Chat"
         ],
         "correct": 1,
         "explain": "The business process mapping table pairs policy and compliance documentation with Word Copilot, which generates consistent, compliant drafts based on existing templates."
@@ -65385,7 +65385,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which of the following is described as a safety practice built into Copilot to prevent harmful or inappropriate content?",
         "options": [
-          "Unrestricted data access across all organizational systems",
+          "Unrestricted data access across all organizational systems so outputs can be checked against every source",
           "Mandatory fine-tuning of every response",
           "Safety filters that block offensive or unsafe language and explain the reasoning behind outputs",
           "Token-based billing"
@@ -65399,7 +65399,7 @@ const EXAMS = {
         "q": "Which statement best reflects how Copilot's governance relates to Azure AI governance?",
         "options": [
           "Copilot operates within a unified governance framework across Microsoft 365 and Azure AI, ensuring consistent security and compliance",
-          "Copilot and Azure AI operate under entirely separate, unrelated governance frameworks",
+          "Copilot and Azure AI operate under entirely separate, unrelated governance frameworks, with no shared security or compliance controls at all",
           "Governance only applies to on-premises deployments",
           "Copilot has no governance controls; only Azure AI does"
         ],
@@ -65452,7 +65452,7 @@ const EXAMS = {
         "options": [
           "Only when accessed from a mobile device",
           "Only for E5 subscribers",
-          "Yes, it always requires a separate add-on license",
+          "Yes, it always requires a separate add-on license on top of the Microsoft 365 subscription",
           "No, it is available at no additional cost with an eligible Microsoft 365 subscription"
         ],
         "correct": 3,
@@ -65608,7 +65608,7 @@ const EXAMS = {
         "options": [
           "When outputs must be grounded in proprietary organizational data",
           "When the task is well-defined and common across industries, requiring fast time-to-value and predictable cost",
-          "When the task involves niche, domain-specific formatting requiring high precision",
+          "When the task involves niche, domain-specific formatting requiring high precision and training on your own examples",
           "When the task requires deep creativity and reasoning over highly varied inputs"
         ],
         "correct": 1,
@@ -65672,7 +65672,7 @@ const EXAMS = {
         "q": "Scenario: A manufacturer starts with pay-as-you-go pricing to pilot Azure Vision on one production line, proves a 40% reduction in inspection time, then expands to five lines. What cost strategy does training content recommend next?",
         "options": [
           "Cancel the AI investment since it already succeeded",
-          "Remain on pay-as-you-go indefinitely regardless of scale",
+          "Remain on pay-as-you-go indefinitely regardless of scale or how stable usage becomes across lines",
           "Switch to a pre-paid plan to lock in discounted, predictable pricing as usage stabilizes",
           "Switch exclusively to a fine-tuned custom model"
         ],
@@ -65685,7 +65685,7 @@ const EXAMS = {
         "q": "Which of the following is listed as a cost optimization strategy for scaling AI responsibly?",
         "options": [
           "Avoid reserved capacity even for steady, predictable workloads",
-          "Always default to the largest available model regardless of task complexity",
+          "Always default to the largest available model regardless of task complexity or usage cost",
           "Avoid tracking usage to reduce administrative overhead",
           "Right-size models to match task complexity and monitor usage with real-time alerts"
         ],
@@ -65859,7 +65859,7 @@ const EXAMS = {
           "Eliminating all manual review, removing human oversight, automating hiring",
           "Reducing headcount, increasing marketing spend, expanding office space",
           "Accelerating personal productivity, improving processes, driving functional transformation",
-          "Lowering software licensing costs, consolidating vendors, reducing meetings"
+          "Lowering software licensing costs, consolidating technology vendors, reducing internal meetings"
         ],
         "correct": 2,
         "explain": "Training content describes Copilot and AI agents transforming work in three key ways: accelerating personal productivity, improving processes, and driving functional transformation."
@@ -65960,7 +65960,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Which of the following is identified as a 'buy' scenario in the technology strategy build-versus-buy decision framework?",
         "options": [
-          "The organization has extensive in-house machine learning expertise it wants to leverage for a custom model",
+          "The organization has extensive in-house machine learning expertise it wants to leverage for a custom model tailored to its own data and long-term priorities",
           "The organization's data is highly proprietary and sensitive with complex compliance needs",
           "The organization needs speed to value using a standard capability, such as search or RAG, already available through a platform like Microsoft Foundry",
           "The organization requires unique intellectual property and long-term differentiation"
@@ -65973,7 +65973,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which practice is recommended to keep AI data trustworthy on an ongoing basis, rather than as a one-time setup task?",
         "options": [
-          "Freezing the training dataset permanently after initial deployment",
+          "Freezing the training dataset permanently after initial deployment so that no labeling or retraining is ever required",
           "Avoiding any data governance to accelerate time to market",
           "Disabling monitoring once a model reaches production",
           "Labeling and annotating datasets, creating feedback loops, and monitoring for data drift with periodic retraining"
