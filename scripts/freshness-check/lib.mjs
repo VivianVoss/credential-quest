@@ -34,6 +34,17 @@ function normalizeText(s) {
     .trim();
 }
 
+// Reduces a certification name to the words that identify it, so only a real
+// rename reads as a difference: case, punctuation and a "(beta)" suffix don't
+// count.
+export function normalizeCertName(name) {
+  return name
+    .replace(/\(beta\)\s*$/i, '')
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, ' ')
+    .trim();
+}
+
 // Study guides can publish a future outline early ("Skills measured as of
 // November 16, 2026"). Returns that date, or null when the guide has none.
 export function extractEffectiveDate(studyGuideText) {
@@ -49,10 +60,10 @@ async function loadMainText(page, url, attempts = 3) {
   let lastError;
   for (let attempt = 1; attempt <= attempts; attempt++) {
     try {
-      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+      const response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
       const main = page.locator('main').first();
       await main.waitFor({ timeout: 15000 });
-      return await main.innerText();
+      return { text: await main.innerText(), found: response.status() < 400 };
     } catch (e) {
       lastError = e;
       if (attempt < attempts) await new Promise(r => setTimeout(r, attempt * 5000));
@@ -110,15 +121,23 @@ export function extractDomains(studyGuideText) {
   return domains.length ? domains : null;
 }
 
+// The page's only h1 is the certification name, on every template in use.
+async function readCertName(page) {
+  const h1 = await page.locator('main h1').first().textContent({ timeout: 5000 }).catch(() => null);
+  return h1?.trim() || null;
+}
+
 export async function scrapeExam(page, exam) {
-  const result = { code: exam.code, level: null, beta: null, domains: null, effectiveDate: null, error: null };
+  const result = { code: exam.code, certName: null, level: null, beta: null, domains: null, effectiveDate: null, error: null };
   try {
-    const certText = await loadMainText(page, exam.certUrl);
+    const { text: certText, found } = await loadMainText(page, exam.certUrl);
+    // A 404 page has an h1 too ("404 - Page not found"), which isn't a rename.
+    if (found) result.certName = await readCertName(page);
     const titleText = certText.slice(0, 300);
     result.level = extractLevel(certText);
     if (certText.length >= MIN_PAGE_TEXT_LENGTH) result.beta = extractBeta(certText, titleText);
 
-    const guideText = await loadMainText(page, exam.studyGuideUrl);
+    const { text: guideText } = await loadMainText(page, exam.studyGuideUrl);
     result.domains = extractDomains(guideText);
     result.effectiveDate = extractEffectiveDate(guideText);
   } catch (e) {
@@ -127,20 +146,46 @@ export async function scrapeExam(page, exam) {
   return result;
 }
 
+// A rename is filed, never patched: it can also change the exam's title and
+// its CATALOG entry, and the new name can imply a different tier. The title
+// is specific to the rename because issues are de-duplicated by exact title,
+// so a shared "needs attention" title would hide it behind any open issue for
+// the same exam.
+function certNameIssue(stored, liveName) {
+  return {
+    title: `Freshness check: ${stored.code} certification name changed to "${liveName}"`,
+    body:
+      `The name on Microsoft Learn no longer matches \`cert\` in \`data.js\`.\n\n` +
+      `- Stored: ${stored.cert}\n` +
+      `- Live: ${liveName}\n` +
+      `- Page: ${stored.certUrl}\n\n` +
+      `This wasn't patched automatically. Check by hand:\n\n` +
+      `- \`cert\` and \`title\` on ${stored.code} in \`EXAMS\`\n` +
+      `- \`title\` and \`tier\` on its \`CATALOG\` entry, against the poster`
+  };
+}
+
 // Diffs a live scrape against the stored exam data. Returns:
 //   patches   – confident, mechanical field updates (safe to auto-apply)
 //   issues    – structural changes that need human/LLM judgment
+//   nameIssues – {title, body} for a renamed certification (filed, not patched)
 //   unverified – fields the scraper couldn't confirm this run (informational only)
 //   deferred  – outline changes that aren't in effect yet (reported, not applied)
 export function diffExam(stored, live, now = new Date()) {
   const patches = [];
   const issues = [];
+  const nameIssues = [];
   const unverified = [];
   const deferred = [];
 
   if (live.error) {
     issues.push(`Could not load live pages for ${stored.code}: ${live.error}`);
-    return { patches, issues, unverified, deferred };
+    return { patches, issues, nameIssues, unverified, deferred };
+  }
+
+  if (live.certName === null) unverified.push('cert name');
+  else if (normalizeCertName(live.certName) !== normalizeCertName(stored.cert)) {
+    nameIssues.push(certNameIssue(stored, live.certName));
   }
 
   if (live.level === null) unverified.push('level');
@@ -201,5 +246,5 @@ export function diffExam(stored, live, now = new Date()) {
     }
   }
 
-  return { patches, issues, unverified, deferred };
+  return { patches, issues, nameIssues, unverified, deferred };
 }

@@ -4,10 +4,10 @@ name: Freshness check
 # for drift against data.js. Mechanical field changes (level, beta status, a
 # weight percentage on an unchanged domain) get auto-patched, merged and
 # deployed. Outline changes dated in the future wait until they take effect.
-# Anything structural (a domain added/removed, a brand-new poster
-# credential, a page the scraper couldn't parse) gets filed as an issue
-# instead — those need real content judgment, not just a data patch. Each
-# full run ends with a digest issue assigned to the repo owner.
+# Anything structural (a domain added/removed, a renamed certification, a
+# brand-new poster credential, a page the scraper couldn't parse) gets filed
+# as an issue instead — those need real content judgment, not just a data
+# patch. Each full run ends with a digest issue assigned to the repo owner.
 # See scripts/freshness-check/ for the implementation.
 
 on:
