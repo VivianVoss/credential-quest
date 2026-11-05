@@ -36116,7 +36116,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "You need custom telemetry beyond the default event set collected from onboarded devices for deeper investigations. Which Defender for Endpoint capability provides this?",
         "options": [
-          "Automatic attack disruption",
+          "Automatic attack disruption (threat containment)",
           "SOC optimization recommendations",
           "Device group ranking",
           "Custom data collection (aggregated reporting)"
@@ -36145,7 +36145,7 @@ const EXAMS = {
           "Live response command log only",
           "The Purview audit log exclusively",
           "Advanced hunting DeviceEvents where ActionType ends with \"Audited\"",
-          "The Microsoft Sentinel MITRE ATT&CK matrix only"
+          "The Microsoft Sentinel MITRE ATT&CK matrix only, listed by technique ID"
         ],
         "correct": 2,
         "explain": "Detections for ASR rules in Audit mode appear in Windows Event Viewer (specific event IDs) and in advanced hunting, for example DeviceEvents | where ActionType startswith \"Asr\" | where ActionType endswith \"Audited\"."
@@ -36171,7 +36171,7 @@ const EXAMS = {
           "ASR rules only affect Linux devices in this configuration",
           "ASR rules cannot function because Defender Antivirus must be active",
           "ASR rules work identically regardless of AV mode",
-          "ASR rules automatically switch to Warn mode"
+          "ASR rules automatically switch to Warn mode while Defender Antivirus is Passive"
         ],
         "correct": 1,
         "explain": "ASR rules require Microsoft Defender Antivirus to be enabled and running in Active mode; they do not function when Defender Antivirus is Passive, Passive with EDR in Block Mode, in limited periodic scanning, or Off."
@@ -36300,7 +36300,7 @@ const EXAMS = {
         "options": [
           "The Incidents page only, per single incident",
           "The central Automation page, not the analytics rule wizard",
-          "Only inside the specific analytics rule's wizard",
+          "Only inside the specific analytics rule's wizard, once per rule",
           "The MITRE ATT&CK page"
         ],
         "correct": 1,
@@ -36324,7 +36324,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "In a Microsoft Sentinel automation rule, a playbook action takes 90 seconds to complete. According to the documented execution timing rules, when does the automation rule advance to its next action?",
         "options": [
-          "Exactly two minutes after the playbook began, regardless of completion",
+          "Exactly two minutes after the playbook began, regardless of completion of the playbook action",
           "Only after the entire incident is closed",
           "Up to two minutes after the playbook began, but no more than 10 seconds after it completes",
           "Immediately after the playbook is triggered, without waiting"
@@ -36363,7 +36363,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which Microsoft Sentinel automation rule use case is best suited for automatically closing incidents generated during a scheduled penetration test, without writing a playbook?",
         "options": [
-          "A near-real-time (NRT) analytics rule",
+          "A near-real-time (NRT) analytics rule that runs once every minute",
           "A time-limited incident suppression rule with an expiration date",
           "A Fusion advanced multistage attack detection rule",
           "A custom log table ingestion rule"
@@ -36376,7 +36376,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What is the primary purpose of specifying Microsoft Sentinel roles such as Microsoft Sentinel Reader, Responder, and Contributor?",
         "options": [
-          "To determine which analytics rule templates are visible in the Content hub",
+          "To determine which analytics rule templates are visible in the Content hub for a given user or group",
           "To control what actions a user can take within the Sentinel workspace via role-based access control",
           "To configure which MITRE ATT&CK techniques are tracked",
           "To set data retention periods for ingested tables"
@@ -36392,7 +36392,7 @@ const EXAMS = {
           "Retention settings cannot be configured per table",
           "Data can be managed across Analytics, Data lake, and XDR tiers with differing retention",
           "Data lake tier data is always deleted after 30 days with no option to extend",
-          "All ingested data must use a single retention period across the entire workspace"
+          "All ingested data must use a single retention period across the entire workspace and all tiers"
         ],
         "correct": 1,
         "explain": "Microsoft Sentinel supports managing data retention across multiple tiers—Analytics, Data lake, and XDR—each with its own retention characteristics, rather than one fixed retention setting for the whole workspace."
@@ -36415,7 +36415,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "When building a custom Microsoft Sentinel workbook query, what does Microsoft recommend using instead of querying a single built-in table directly, so the workbook supports current and future data sources?",
         "options": [
-          "A hardcoded table name with no filters",
+          "A hardcoded table name with no filters in the workbook query",
           "A raw CommonSecurityLog query only",
           "The MITRE ATT&CK matrix API",
           "An Advanced Security Information Model (ASIM) parser"
@@ -36509,7 +36509,7 @@ const EXAMS = {
           "Azure Policy and resource diagnostic settings",
           "SOC optimization and MITRE ATT&CK matrix",
           "Live response and device groups",
-          "Windows Event Forwarding and Group Policy"
+          "Windows Event Forwarding and Group Policy objects"
         ],
         "correct": 0,
         "explain": "Collection of Azure activities into Microsoft Sentinel is configured using Azure Policy (to enforce diagnostic settings at scale) together with per-resource diagnostic settings that route logs to the workspace."
@@ -36548,7 +36548,7 @@ const EXAMS = {
           "Only through the Microsoft Graph Security API",
           "From the advanced hunting query editor or the custom detection rules list",
           "From the ASR rules configuration page",
-          "Only from the Microsoft Sentinel Automation page"
+          "Only from the Microsoft Sentinel Automation page, after saving the tested query"
         ],
         "correct": 1,
         "explain": "Custom detection rules in Microsoft Defender XDR can be created either directly from the advanced hunting query editor after testing a query, or from the custom detection rules list."
@@ -36561,7 +36561,7 @@ const EXAMS = {
           "The rule will bypass RBAC permissions",
           "The rule may time out and fail to run reliably at its scheduled interval",
           "The rule will be moved to Audit mode",
-          "The rule will automatically be converted to a Fusion rule"
+          "The rule will automatically be converted to a Fusion rule at its next interval"
         ],
         "correct": 1,
         "explain": "Optimizing queries used in custom detection rules is important to avoid time-outs and ensure efficiency, since these rules run automatically at regular intervals against potentially large datasets."
@@ -36779,7 +36779,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "Configuring email notifications, alert tuning/suppression, and threat analytics subscriptions are all part of which broader SC-200 skill area?",
         "options": [
-          "Detecting threats using the Microsoft Sentinel platform",
+          "Detecting threats using the Microsoft Sentinel platform and Microsoft Defender XDR",
           "Investigating Microsoft 365 activities to identify threats",
           "Managing security incidents by using case management",
           "Configuring automation for Microsoft Defender XDR and Microsoft Sentinel"
@@ -36832,7 +36832,7 @@ const EXAMS = {
         "q": "An automation rule in Microsoft Sentinel is created directly from the Incidents page for a single recurring noisy incident. What does the resulting rule automatically suggest by default?",
         "options": [
           "A suppression (closing) action and an expiration date",
-          "Immediate deletion of the underlying analytics rule",
+          "Immediate deletion of the underlying analytics rule itself",
           "A change to the device group ranking",
           "A brand-new Fusion detection rule"
         ],
@@ -36845,7 +36845,7 @@ const EXAMS = {
         "q": "In Microsoft Sentinel, which analytics rule condition operator lets you match an incident property only when the value has changed away from what it previously was?",
         "options": [
           "\"Equals\" (available only on the create trigger)",
-          "\"Contains\" (available only on alert-create triggers)",
+          "\"Contains\" (a partial-text match condition, available only on alert-create triggers)",
           "\"Starts with\" (used only for Tag conditions)",
           "\"Changed from\" (a state-change condition, available on the incident update trigger)"
         ],
@@ -36897,7 +36897,7 @@ const EXAMS = {
         "q": "An analyst needs to investigate and remediate an entity that Microsoft Purview identified as potentially compromised, based on data loss prevention or insider risk signals surfaced in an incident. Which portal experience surfaces this?",
         "options": [
           "The Microsoft Sentinel MITRE ATT&CK page",
-          "Only the standalone Purview compliance portal, disconnected from incidents",
+          "Only the standalone Purview compliance portal, disconnected from incidents and from other Defender product signals",
           "The unified Microsoft Defender incident, which correlates Purview signals alongside other Defender products",
           "The Live response command console"
         ],
@@ -36938,7 +36938,7 @@ const EXAMS = {
           "Immediately delete the activity policy",
           "Convert the policy into an ASR rule",
           "Notify the user and/or suspend the user pending further action",
-          "Ignore the alert since Tor traffic is always benign"
+          "Ignore the alert since Tor traffic is always benign and keep the user active"
         ],
         "correct": 2,
         "explain": "When an alert from a risky-IP activity policy (such as Tor sign-ins) looks like a genuine violation, the recommended response is to contain risk—for example, notifying the user to confirm intent, or suspending the user until the situation is resolved."
@@ -36961,7 +36961,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which remediation step is required for a cloud-based password reset to also clear the \"Leaked credentials\" user risk for an on-premises hybrid identity?",
         "options": [
-          "Automatic attack disruption must be turned off",
+          "Automatic attack disruption must be turned off first",
           "The user must be moved to a new device group",
           "Multifactor authentication must be disabled",
           "Password hash synchronization (PHS) must be enabled"
@@ -37067,7 +37067,7 @@ const EXAMS = {
         "options": [
           "SOC optimization recommendations",
           "Incident expansion / alert grouping logic",
-          "The Ungrouped devices default group",
+          "The Ungrouped devices default group for endpoints",
           "Live response library management"
         ],
         "correct": 1,
@@ -37092,7 +37092,7 @@ const EXAMS = {
         "q": "During an incident investigation in the Microsoft Defender portal, an analyst selects a compromised device node and chooses \"View blast radius.\" What does this show?",
         "options": [
           "An interactive graph of possible propagation paths from that node toward predefined critical assets",
-          "A static list of MITRE ATT&CK technique IDs with no visualization",
+          "A static list of MITRE ATT&CK technique IDs with no visualization of any paths toward critical assets",
           "The device's Live response command history only",
           "A list of every ASR rule currently enabled on the device"
         ],
@@ -37260,7 +37260,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "An analyst wants to run a custom PowerShell script on a compromised endpoint during a live investigation. Which of these is a required prerequisite?",
         "options": [
-          "The device must belong to the Ungrouped devices group",
+          "The device must belong to the Ungrouped devices group in the portal",
           "The device must be in Audit mode for ASR rules",
           "Live response must be disabled for servers",
           "The script must first be uploaded to the live response library"
@@ -37353,7 +37353,7 @@ const EXAMS = {
         "options": [
           "Live response library",
           "Purview Audit (Search-UnifiedAuditLog / Audit search UI)",
-          "Content search in eDiscovery only",
+          "Content search in eDiscovery only (mailbox and site items)",
           "Microsoft Sentinel MITRE ATT&CK page"
         ],
         "correct": 1,
@@ -37455,7 +37455,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "An analyst runs Search-UnifiedAuditLog to export audit results to CSV. What Purview Audit tier limitation affects how many rows can be exported from the portal UI for Audit (Standard) versus Audit (Premium)?",
         "options": [
-          "Standard allows unlimited exports, Premium is capped at 50,000",
+          "Standard allows unlimited exports, while Premium is capped at 50,000",
           "Up to 50,000 rows for Standard, up to 1,000,000 rows for Premium",
           "Exports are not supported in either tier",
           "Both tiers are capped at 10,000 rows"
@@ -37471,7 +37471,7 @@ const EXAMS = {
           "Only one alert can ever belong to a single incident",
           "Alerts are shown in chronological order by default, illustrating how the attack played out over time",
           "The Alerts tab hides the entities involved in each alert",
-          "Alerts can only be viewed in the Azure portal, never in the Defender portal"
+          "Alerts can only be viewed in the Azure portal, never in the Defender portal or on the incident's own Alerts tab"
         ],
         "correct": 1,
         "explain": "The Alerts tab within an incident shows alerts in chronological order by default so analysts can see how the attack progressed over time, including severity, involved entities, and the source product for each alert."
@@ -37483,7 +37483,7 @@ const EXAMS = {
         "options": [
           "The unified incident with its attack story graph",
           "The Purview Content search tool alone",
-          "A single isolated Defender for Office 365 alert",
+          "A single isolated Defender for Office 365 phishing alert",
           "A single ASR rule audit log entry"
         ],
         "correct": 0,
@@ -37495,7 +37495,7 @@ const EXAMS = {
         "q": "Which tab on an incident page specifically lists mailboxes identified to be part of or related to the incident, with a link to further Explorer details for Defender for Office 365?",
         "options": [
           "The Activities tab",
-          "The Investigations tab",
+          "The Investigations tab of the incident page",
           "The Similar incidents tab",
           "The Mailboxes view under Assets"
         ],
@@ -37546,7 +37546,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which Microsoft Defender for Cloud Apps action would an analyst take on a compromised OAuth-connected third-party app discovered during an incident investigation?",
         "options": [
-          "Ignore it since third-party OAuth apps can't be investigated",
+          "Ignore it since third-party OAuth apps can't be investigated or restricted in Defender for Cloud Apps",
           "Convert it into a Sentinel playbook",
           "Immediately delete the tenant's Microsoft Entra ID",
           "Review the app in Connected Apps / App connectors and revoke or restrict its permissions"
@@ -37560,7 +37560,7 @@ const EXAMS = {
         "q": "What does \"agentic AI\" investigation support in Microsoft Defender XDR, delivered through embedded Security Copilot, primarily help analysts do?",
         "options": [
           "Get real-time, incident-specific insights and recommended next steps while investigating",
-          "Fully replace the need for a human analyst to close any incident",
+          "Fully replace the need for a human analyst to close any incident or approve any remediation step",
           "Automatically rewrite all Sentinel analytics rules",
           "Bypass RBAC permissions for faster access"
         ],
@@ -37574,7 +37574,7 @@ const EXAMS = {
         "options": [
           "Similar alerts, entities, and other incident properties",
           "Only the assigned owner",
-          "Only the incident's creation timestamp",
+          "Only the incident's creation timestamp and severity level",
           "Only the incident's tags"
         ],
         "correct": 0,
@@ -37587,7 +37587,7 @@ const EXAMS = {
         "options": [
           "Only the analyst's name",
           "A closing reason and comment explaining why it was a false positive",
-          "Nothing; closed incidents don't require documentation",
+          "Nothing; closed incidents don't require documentation for tuning or reporting",
           "The incident's device group rank"
         ],
         "correct": 1,
@@ -37715,7 +37715,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "In a KQL hunting query, you see `AuditLogs | where OperationName == \"Add user\" | project AddedTime = TimeGenerated, user = ... | join (AzureActivity | where OperationName == \"Create role assignment\" | project ..., user = Caller) on user`. What security scenario is this query designed to detect?",
         "options": [
-          "A user logging in from two countries in an impossible timeframe",
+          "A user logging in from two countries in an impossible timeframe shortly after account creation",
           "A mailbox rule forwarding email externally",
           "A device running an ASR rule in Audit mode",
           "A newly created user account making Azure RBAC role assignment changes shortly after creation"
@@ -37728,7 +37728,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "In Microsoft Defender XDR, what is the main difference between guided mode and advanced mode when using advanced hunting?",
         "options": [
-          "Guided mode only searches Microsoft Sentinel data, never Defender data",
+          "Guided mode only searches Microsoft Sentinel data, never Defender data, while advanced mode only searches Defender data",
           "Guided mode uses a query builder for those unfamiliar with KQL, while advanced mode lets you write KQL directly",
           "Advanced mode has a 24-hour data limit while guided mode has 30 days",
           "Guided mode cannot be used to create custom detection rules"
@@ -37756,7 +37756,7 @@ const EXAMS = {
         "options": [
           "Windows Event Forwarding",
           "Graph-based hunting (hunting graphs)",
-          "The Purview Content search tool",
+          "The Purview Content search tool for eDiscovery",
           "The SOC optimization page"
         ],
         "correct": 1,
@@ -37782,7 +37782,7 @@ const EXAMS = {
         "options": [
           "Non-Microsoft sources, since custom graphs are powered by Microsoft Fabric",
           "Only Windows Event Forwarding logs",
-          "No other sources; custom graphs are restricted to Sentinel data lake only",
+          "No other sources; custom graphs are restricted to the Sentinel data lake only",
           "Only Purview eDiscovery holds"
         ],
         "correct": 0,
@@ -38003,7 +38003,7 @@ const EXAMS = {
         "options": [
           "Results are permanently deleted",
           "Queries are blocked until after the next 15-minute cycle",
-          "The query automatically switches to guided mode",
+          "The query automatically switches to guided mode to reduce CPU use",
           "The tenant is billed extra for overage"
         ],
         "correct": 1,
