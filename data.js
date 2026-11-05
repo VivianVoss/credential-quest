@@ -53231,7 +53231,7 @@ const EXAMS = {
         "options": [
           "It is secure by default and closed to inbound traffic unless an NSG explicitly allows it",
           "It does not support availability zones",
-          "It is dynamically allocated by default",
+          "It is dynamically allocated by default and open to inbound traffic until an NSG explicitly blocks it",
           "It cannot be used with Application Gateway or Azure Firewall"
         ],
         "correct": 0,
@@ -53437,7 +53437,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Which statement about Azure NAT Gateway is correct?",
         "options": [
-          "It requires a user-defined route to redirect outbound traffic from the subnet",
+          "It requires a user-defined route to redirect outbound traffic from the subnet before any outbound flows can use it",
           "A single NAT gateway can span multiple virtual networks",
           "NAT gateway only supports TCP traffic, not UDP",
           "Once configured, it takes precedence over other outbound connectivity methods and requires no user-defined routes"
@@ -53971,7 +53971,7 @@ const EXAMS = {
         "q": "An Application Gateway request routing rule binds together which three elements?",
         "options": [
           "A listener, a backend server pool, and backend HTTP settings",
-          "A TLS certificate, a listener, and a rewrite rule set",
+          "A TLS certificate, a frontend listener, and a URL rewrite rule set",
           "A frontend IP, a backend pool, and a NAT rule",
           "A listener, a health probe, and a WAF policy"
         ],
@@ -54025,7 +54025,7 @@ const EXAMS = {
           "IP address, then port, then protocol",
           "Path, then host, then protocol",
           "HTTP protocol, then frontend host, then path",
-          "Host, then TLS certificate, then protocol"
+          "Frontend host, then TLS certificate, then protocol"
         ],
         "correct": 2,
         "explain": "The Azure Front Door routing algorithm first matches based on HTTP protocol, then frontend host, then Path; Standard and Premium tiers also support a Rules Engine for more complex routing conditions."
@@ -54037,7 +54037,7 @@ const EXAMS = {
         "options": [
           "By periodically sending synthetic HTTP/HTTPS health probe requests to each configured backend",
           "By using BGP route advertisements from each backend region",
-          "By randomly distributing requests among all configured backends",
+          "By randomly distributing requests among all configured backends without checking backend health",
           "By checking Azure Monitor alert states only"
         ],
         "correct": 0,
@@ -54050,7 +54050,7 @@ const EXAMS = {
         "options": [
           "Front Door is a global service, while Application Gateway is a regional service",
           "Only Application Gateway supports health probes",
-          "Front Door is regional, while Application Gateway is global",
+          "Front Door is a regional service, while Application Gateway is a global edge service",
           "Both services operate only at a regional scope"
         ],
         "correct": 0,
@@ -54074,7 +54074,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is the primary function of a virtual network service endpoint?",
         "options": [
-          "It fully replaces the resource's public endpoint so the resource no longer has any IP address",
+          "It fully replaces the resource's public endpoint so the resource no longer has any IP address, leaving your VNet as the only route to the service",
           "It assigns a private IP address directly on the PaaS resource itself",
           "It encrypts all data at rest within the PaaS service",
           "It extends your VNet's private address space and identity to the Azure service, giving it a direct, optimized route over the Azure backbone"
@@ -54204,7 +54204,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In a hub-and-spoke architecture using Azure DNS Private Resolver, what does the private resolver hosted in the hub VNet use as its forwarder to resolve Azure platform resource names?",
         "options": [
-          "The on-premises DNS server directly",
+          "The on-premises DNS server directly over the VPN link",
           "A public internet DNS root server",
           "The Azure-provided DNS address, 168.63.129.16",
           "An Azure Firewall FQDN application rule"
@@ -54233,7 +54233,7 @@ const EXAMS = {
           "The Private DNS zone names for the relevant Azure services",
           "ExpressRoute Microsoft peering",
           "A public A record in Azure public DNS",
-          "A virtual network service endpoint policy"
+          "A virtual network service endpoint policy for the relevant Azure services"
         ],
         "correct": 0,
         "explain": "In the central DNS resolution architecture, the hub virtual network must be linked to the Private DNS zone names for the Azure services in use, such as privatelink.blob.core.windows.net, for correct name resolution."
@@ -54246,7 +54246,7 @@ const EXAMS = {
           "Allow all inbound traffic by default",
           "Deny all inbound traffic except traffic from the virtual network and from Azure load balancers",
           "Allow only RDP and SSH by default",
-          "Deny all traffic including traffic from within the virtual network"
+          "Deny all traffic including traffic from within the virtual network and from Azure load balancers"
         ],
         "correct": 1,
         "explain": "Azure defines default inbound security rules for a network security group that deny all inbound traffic except traffic originating from within the virtual network and from Azure load balancers."
