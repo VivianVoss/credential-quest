@@ -89299,7 +89299,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A model-driven app form must show a dynamic notification to the user based on a condition — a capability that Dataverse business rules do not support. What should the developer implement instead?",
         "options": [
-          "A classic workflow",
+          "A classic workflow running in the background",
           "A business rule scope change",
           "A synchronous plug-in",
           "Client script (JavaScript/TypeScript)"
@@ -89384,7 +89384,7 @@ const EXAMS = {
           "The manager must be a member of the same Dataverse team as the report",
           "The manager must be in the same business unit as the report, or in the parent business unit of the report's business unit",
           "The manager must hold the System Administrator role",
-          "The manager must have explicit row-level sharing on each record"
+          "The manager must have explicit row-level sharing on each record, granted by the report before any hierarchy access applies"
         ],
         "correct": 1,
         "explain": "The manager hierarchy grants access only when the manager is within the same business unit as the report, or in the parent business unit of the report's business unit."
@@ -89408,7 +89408,7 @@ const EXAMS = {
         "q": "A design calls for complex, variable multi-currency price-list calculations on Dynamics 365 Sales opportunities. Per Microsoft's configure-vs-code guidance, what should the developer do first?",
         "options": [
           "Implement the calculation entirely in a canvas app using Power Fx",
-          "Build a custom invoice calculation engine using plug-ins",
+          "Build a custom invoice calculation engine using plug-ins on the opportunity table",
           "Evaluate and use the built-in Dynamics 365 Sales capabilities for this scenario",
           "Create a custom connector to an external pricing engine"
         ],
@@ -89423,7 +89423,7 @@ const EXAMS = {
           "The policy only applies to newly created apps, never existing ones",
           "Nothing changes until the maker manually republishes the app",
           "The app is evaluated against the new policy and, if it violates it, put into a suspended or quarantined state",
-          "The app's connector is automatically swapped for an approved alternative"
+          "The app's connector is automatically swapped for an approved alternative, so the app keeps working with no maker action"
         ],
         "correct": 2,
         "explain": "When a data policy changes, Power Platform cascades the configuration to environments, evaluates existing apps, flows, and chatbots against it, and puts any that violate the policy into a suspended or quarantined state; violating connections are also disabled."
@@ -89435,7 +89435,7 @@ const EXAMS = {
         "options": [
           "Hard-code service credentials inside the plug-in assembly",
           "Call GetOrganizationService on the IOrganizationServiceFactory obtained from the IServiceProvider",
-          "Instantiate a new ServiceClient with a connection string and an explicit OAuth login prompt",
+          "Instantiate a new ServiceClient with a connection string and an explicit OAuth login prompt in Execute",
           "Call HttpClient.GetAsync against the OData v4 endpoint with a bearer token"
         ],
         "correct": 1,
@@ -89473,7 +89473,7 @@ const EXAMS = {
         "q": "Two managed solutions are installed in the same environment and both customize the same component. According to Dataverse solution layering, which one takes effect at runtime?",
         "options": [
           "The first managed solution installed always wins",
-          "Dataverse blocks the second installation until the conflict is resolved manually",
+          "Dataverse blocks the second installation until the conflict is resolved manually by removing the customization from one of the two solutions",
           "Both are applied simultaneously with no defined precedence",
           "The one installed most recently sits above the other in the managed layers, so it wins (or a merge is applied for mergeable components)"
         ],
@@ -89486,7 +89486,7 @@ const EXAMS = {
         "q": "An administrator uninstalls the topmost managed solution layer that was customizing a form. What happens to that form's behavior?",
         "options": [
           "The form is permanently deleted",
-          "The environment reverts to the unmanaged layer's version of the form",
+          "The environment reverts to the unmanaged layer's version of the form, skipping all lower managed layers",
           "Nothing changes until the environment is restarted",
           "The managed solution layer below it (or the system layer default if none remain) takes effect"
         ],
@@ -89540,7 +89540,7 @@ const EXAMS = {
           "Environment variables will be permanently lost on export",
           "Git will refuse to store binary .zip files entirely",
           "Diffs will only show that something in the solution changed, not exactly which component or setting changed",
-          "The solution will fail to import into any other environment"
+          "The solution will fail to import into any other environment because Git alters the packed .zip file on each commit"
         ],
         "correct": 2,
         "explain": "A solution .zip file packs everything into one large file; checked into source control as-is, it can only reveal that something changed, not what changed within each component — hence the practice of unpacking the solution into separate files first."
@@ -89629,7 +89629,7 @@ const EXAMS = {
         "q": "Besides the solution itself, what other environment-specific configuration can a Power Platform pipeline deploy?",
         "options": [
           "The tenant's Microsoft Entra ID directory",
-          "Individual users' personal view and dashboard preferences",
+          "Individual users' personal view, chart, and dashboard preferences",
           "Only the solution's customizations.xml file",
           "Connections, connection references, and environment variables"
         ],
@@ -89641,7 +89641,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A professional developer wants to list available pipeline stages and trigger a solution deployment programmatically rather than clicking through the pipelines UI. What should they use?",
         "options": [
-          "A classic workflow triggered on solution import",
+          "A classic workflow triggered on solution import into each stage",
           "A canvas app formula referencing Office365Users",
           "The Dataverse Web API's WhoAmI request",
           "The Power Platform CLI, using the pac pipeline command group"
@@ -89657,7 +89657,7 @@ const EXAMS = {
           "Reuse an existing interactive administrator's refresh token in the function's configuration",
           "Create an application user for that Entra app registration in the environment and assign it only the minimal custom security role(s) it needs",
           "Disable security roles for the environment entirely while the function runs",
-          "Grant the app registration the System Administrator security role so it never hits a permission error"
+          "Grant the app registration the System Administrator security role so it never hits a permission error, whichever tables the function ends up touching"
         ],
         "correct": 1,
         "explain": "A service principal calling Dataverse needs a dedicated, unlicensed application user created for its Microsoft Entra app registration in the environment; per the principle of least privilege, it should be assigned only the custom security role(s) covering the operations it actually performs, not broad roles like System Administrator."
@@ -89698,7 +89698,7 @@ const EXAMS = {
         "q": "A JavaScript library containing an OnLoad handler for the account table needs the same behavior on both the main account form and a quick create account form. What must the developer do?",
         "options": [
           "Use a business rule instead, since only business rules apply across forms",
-          "Nothing; registering the handler once applies it to every form for that table automatically",
+          "Nothing; registering the handler once applies it to every form for that table automatically, including any quick create forms added later",
           "Register the event handler separately on each form, since event handlers can run on multiple forms but must be registered on each one",
           "Rename the function so it registers itself automatically on all forms"
         ],
@@ -89739,7 +89739,7 @@ const EXAMS = {
           "executionContext.getEventSource() returns a reference to the object that triggered the event",
           "Xrm.Page.getAttribute() always returns only the changed field",
           "formContext.data.entity.getId() identifies the triggering field",
-          "There is no supported way to determine the triggering control"
+          "There is no supported way to determine the triggering control, so every field needs its own handler"
         ],
         "correct": 0,
         "explain": "The execution context's getEventSource method returns a reference to the control or object that triggered the event, letting a single generic handler interrogate at runtime which field caused it to run instead of requiring one handler per field."
@@ -89762,7 +89762,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A developer wants to change the underlying value of the account number column from a script, not just style the field's visual appearance on the form. Which formContext object should the code target?",
         "options": [
-          "formContext.process, since column values are part of the business process flow",
+          "formContext.process, since column values are part of the business process flow and are stored with each stage of the active process",
           "formContext.ui, since it holds one control reference per instance of the attribute on the form",
           "formContext.ui.navigation, since navigation items store column values",
           "formContext.data, since it holds the single underlying attribute value that formContext.ui's multiple controls all reference"
@@ -89802,7 +89802,7 @@ const EXAMS = {
         "q": "Two separately authored JavaScript web resources on the same form both define a function named handleValidation(). What happens, and what coding practice is recommended to prevent it?",
         "options": [
           "The form throws a compile-time error and refuses to save",
-          "Dataverse blocks the second web resource from loading; use unique solution names to avoid this",
+          "Dataverse blocks the second web resource from loading at form open; use unique solution names for each web resource library to avoid this error",
           "Whichever function loads last is the one the form actually uses; use a unique function name prefix or a namespace object for your functions",
           "Both functions run in an undefined order every time; there is no recommended mitigation"
         ],
@@ -89860,7 +89860,7 @@ const EXAMS = {
           "Pending changes are discarded automatically before OnSelect runs",
           "Any pending changes on the form data are saved first, and only then is the OnSelect logic executed",
           "The command is disabled until the user manually saves",
-          "The OnSelect formula runs immediately, before any pending form changes are saved"
+          "The OnSelect formula runs immediately, before any pending form changes are saved, so it patches stale data"
         ],
         "correct": 1,
         "explain": "When a user selects a Power Fx-driven command, any pending changes on the form data are saved first, and the OnSelect logic then executes afterward — ensuring the command operates against a consistent, saved state of the data."
@@ -89872,7 +89872,7 @@ const EXAMS = {
         "options": [
           "Self.Selected.State for a single row, and Self.Selected.Unsaved for multiple rows",
           "Self.Selected.Item for a single selected row, and Self.Selected.AllItems for the full table of selected rows",
-          "There is no way to distinguish single vs. multiple row selection in command Power Fx",
+          "There is no way to distinguish single vs. multiple row selection in command Power Fx, so both must run the same logic",
           "Self.Selected.Item is used for both cases interchangeably"
         ],
         "correct": 1,
@@ -89886,7 +89886,7 @@ const EXAMS = {
           "Command Power Fx cannot reference any data source at all",
           "SharePoint can be used, but only in the Visible property, never OnSelect",
           "Currently, Microsoft Dataverse is the only data source available to use in command logic",
-          "No limitation; any connector available in a canvas app can be used in command Power Fx"
+          "No limitation; any connector available in a canvas app can be used in command Power Fx logic"
         ],
         "correct": 2,
         "explain": "As documented, Microsoft Dataverse is currently the only data source available for use in Power Fx command logic on the command bar — other connectors used in canvas apps aren't available here."
@@ -89909,7 +89909,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "In a PCF component's ControlManifest.Input.xml, a property is defined with of-type=\"Whole.None\", usage=\"input\", and default-value=\"40\". What would be different if usage were changed to \"output\" instead?",
         "options": [
-          "Nothing changes; default-value applies identically to all usage types",
+          "Nothing changes; default-value applies identically to all usage types, so the property would still start at 40 in model-driven apps",
           "Changing usage never affects other attributes on the same property",
           "The property would automatically become bound instead of output",
           "In model-driven apps, default-value is only allowed on properties with a usage type of input, so it would no longer be valid"
@@ -89925,7 +89925,7 @@ const EXAMS = {
           "Add a <uses-feature name=\"WebAPI\" required=\"true\" /> element inside the manifest's <feature-usage> node",
           "Set the component's usage attribute to \"WebAPI\"",
           "Add a new <resx> resource pointing to a WebAPI.json file",
-          "Nothing; Web API access is always available with no declaration required"
+          "Nothing; Web API access is always available with no declaration required in the component's manifest file"
         ],
         "correct": 0,
         "explain": "Device, Utility, and WebAPI features must be explicitly declared in the manifest's feature-usage node using a uses-feature element (for example, <uses-feature name=\"WebAPI\" required=\"true\" />) before a component can use that framework feature."
@@ -89988,7 +89988,7 @@ const EXAMS = {
         "q": "A plug-in needs to log both the pre-change and post-change values of a record for custom auditing, without issuing an extra Retrieve request through the Organization service. What should it use?",
         "options": [
           "PreEntityImages and PostEntityImages registered on the step",
-          "The Depth property of the execution context",
+          "The Depth property of the execution context, which tracks nesting",
           "SharedVariables",
           "The ITracingService"
         ],
@@ -90059,7 +90059,7 @@ const EXAMS = {
           "Microsoft Entra ID handles authentication (verifying identity), while Dataverse security roles govern authorization (what the authenticated identity can do)",
           "Authorization is configured entirely within the OAuth app registration's redirect URI",
           "Both authentication and authorization are handled entirely by OAuth 2.0 scopes",
-          "Dataverse security roles handle authentication, and Entra ID handles authorization"
+          "Dataverse security roles handle authentication (verifying identity), while Microsoft Entra ID handles all authorization (what the authenticated identity can do)"
         ],
         "correct": 0,
         "explain": "Authentication — verifying who the user or process is — is handled by Microsoft Entra ID; authorization — what that authenticated identity may do inside Dataverse — is governed separately by Dataverse security roles assigned to the user or application user."
@@ -90071,7 +90071,7 @@ const EXAMS = {
         "options": [
           "It requires the app to be registered as a certified connector",
           "It requires an Application User associated with the Entra ID app registration, and S2S authentication does not require Dataverse API delegated permissions",
-          "It requires the app registration to request delegated user_impersonation permission, and no application user is needed",
+          "It requires the app registration to request delegated user_impersonation permission, and no application user is needed, since the service always acts as a user",
           "It requires a Basic authentication username and password stored in the app"
         ],
         "correct": 1,
@@ -90083,7 +90083,7 @@ const EXAMS = {
         "q": "An integration service account needs to create Dataverse records that show a specific end user as the actual originator of the action, for auditing, even though the service account technically executes the Web API call. Which header and field pairing supports this?",
         "options": [
           "There is no supported mechanism for this scenario",
-          "Send a Prefer: odata.track-changes header; the record's owninguser field records the real actor",
+          "Send a Prefer: odata.track-changes header with the target user's Entra ID object ID; the record's owninguser field will show who actually performed the operation",
           "Send an X-API-Key header; the modifiedby field records the real actor",
           "Send a CallerObjectId header with the target user's Entra ID object ID; the record's createdonbehalfby field will show who actually performed the operation"
         ],
@@ -90109,7 +90109,7 @@ const EXAMS = {
         "q": "A custom connector wraps an Azure Function that expects its key as a 'code' query string parameter, matching the Azure Functions default template. Which custom connector authentication type, and which configuration, fits this scenario?",
         "options": [
           "OAuth 2.0 with a Generic provider",
-          "No authentication, since Azure Functions handles security itself",
+          "No authentication, since Azure Functions handles security itself, so the connector never passes a key",
           "API Key authentication, with the parameter name set to code and parameter location set to Query",
           "Windows authentication with an on-premises gateway"
         ],
@@ -90294,7 +90294,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A flow triggers on 'row modified' for the Project table and, later in the flow, updates that same row's Status column. To avoid an infinite trigger loop, what guidance applies to the trigger's Select columns setting?",
         "options": [
-          "Use the Filter rows option instead, since Select columns can never cause loops",
+          "Use the Filter rows option instead, since Select columns can never cause loops even when the flow updates a listed column",
           "Set the trigger's scope to User to prevent loops",
           "Make sure the columns the flow itself updates later aren't included in the Select columns filter that starts the trigger",
           "Select columns should always be left blank to avoid any filtering"
@@ -90308,7 +90308,7 @@ const EXAMS = {
         "q": "A maker wants a Dataverse trigger to only fire for Project rows that are over budget, and considers either an OData Filter rows expression on the trigger or a Condition action as the first step inside the flow. Which approach is described as more efficient?",
         "options": [
           "Using the trigger's Filter rows OData expression, since it prevents the flow from running at all for non-matching rows",
-          "Using a Condition action as the first step, since it's evaluated locally",
+          "Using a Condition action as the first step, since it's evaluated locally inside the flow run and avoids filtering on the trigger",
           "Both approaches have identical performance characteristics",
           "Neither approach is supported for Dataverse triggers"
         ],
@@ -90334,9 +90334,9 @@ const EXAMS = {
         "q": "A flow is configured with Run as set to Modifying user, and its Dataverse Add a new row action has Use invoker's connection enabled on the Settings tab. What privilege must the flow owner hold for this to work, and what is the effect?",
         "options": [
           "The flow owner must hold the Act on Behalf of Another User privilege (included by default in the Delegate security role); the created row will show the user who actually triggered the flow as its creator, not the flow owner",
-          "This configuration is only valid for flows triggered by a Power Apps button",
+          "This configuration is only valid for flows triggered by a Power Apps button, and the created row will show the flow owner as its creator rather than the user who selected that button",
           "No special privilege is needed; any flow owner can do this",
-          "The flow owner must be a System Administrator, and the row will always show the flow owner as creator regardless of this setting"
+          "The flow owner must be a System Administrator (the Delegate security role is not sufficient for this); the created row will always show the flow owner as its creator, not the user who actually triggered the flow, regardless of this setting"
         ],
         "correct": 0,
         "explain": "Running Dataverse actions as a different user (via Run as plus Use invoker's connection) requires the flow owner to hold the Act on Behalf of Another User Dataverse privilege — included in the Delegate security role by default — and results in the action's records reflecting the actual triggering/modifying user instead of the flow owner."
@@ -90427,7 +90427,7 @@ const EXAMS = {
           "The child flow must use the Manually trigger a flow trigger, and both the parent and child flow must be part of the same solution for the child to be selectable",
           "Child flows don't require any specific trigger type",
           "The child flow must use a Timer trigger, and solutions aren't relevant",
-          "The child flow must use an automated Dataverse trigger, and both flows can live in any solution"
+          "The child flow must use an automated Dataverse trigger, and the parent and child flow can live in any solution or outside a solution for the child to be selectable"
         ],
         "correct": 0,
         "explain": "A child flow must use the Manually trigger a flow trigger, and the Run a Child Flow action only lists child flows that the maker has access to and that are located in a solution, so both the parent and child flow need to live together in a solution."
@@ -90453,7 +90453,7 @@ const EXAMS = {
           "Require a Microsoft Entra ID token for the trigger, configured to restrict access to specific users or principals in the tenant",
           "Rotate the flow's name weekly",
           "Switch the trigger to a Timer trigger instead",
-          "Nothing; the generated URL is inherently unguessable and sufficient on its own"
+          "Nothing; the generated URL is inherently unguessable and sufficient on its own, so no tenant-level restriction on callers is ever needed"
         ],
         "correct": 0,
         "explain": "To secure a When an HTTP request is received trigger beyond relying on URL secrecy, Microsoft's guidance is to require a Microsoft Entra ID token for authentication, configurable to restrict invocation to any authenticated tenant user or to specific users/principals."
@@ -90476,7 +90476,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Before an application can query change data for a table, what must be configured on that table in the Power Apps maker portal?",
         "options": [
-          "An alternate key must be defined on the table",
+          "An alternate key must be defined on the table so changed rows can be identified",
           "The Track changes flag must be turned on under the table's Advanced options",
           "The table's ownership type must be set to Organization",
           "The table must be converted to a virtual table"
@@ -90503,7 +90503,7 @@ const EXAMS = {
         "q": "An app issues its very first change-tracking request against the accounts table (no prior delta token). What does the response contain?",
         "options": [
           "Only the count of matching rows",
-          "An empty result set until a delta token is manually created",
+          "An empty result set until a delta token is manually created and passed in on the next change-tracking request",
           "The entire current data set matching the query, plus an @odata.deltaLink value to use for the next request",
           "Only the rows that changed in the last 24 hours"
         ],
@@ -90518,7 +90518,7 @@ const EXAMS = {
           "Deleted rows are never included in delta responses",
           "It's simply omitted from the response entirely",
           "As an object with an @odata.context ending in $deletedEntity, an id, and a reason of \"deleted\"",
-          "As a normal row object with all columns set to null"
+          "As a normal row object in the value array, with all of its columns set to null and no id or reason"
         ],
         "correct": 2,
         "explain": "Deleted rows show up explicitly in the delta response value array as objects whose @odata.context ends in $deletedEntity, carrying the row's id and a reason of \"deleted\", rather than being silently left out."
@@ -90568,7 +90568,7 @@ const EXAMS = {
         "q": "A developer tries to define an alternate key on a virtual table that surfaces data from an external system. What happens?",
         "options": [
           "It works exactly like on a standard table",
-          "Virtual tables require alternate keys to be created before any data provider can be configured",
+          "Virtual tables require alternate keys to be created before any data provider can be configured for the external system that holds the data",
           "The alternate key is created but silently ignored at runtime",
           "Alternate keys aren't supported on virtual tables, because Dataverse can't enforce uniqueness on data that lives in another system"
         ],
@@ -90581,7 +90581,7 @@ const EXAMS = {
         "q": "A column used in an alternate key contains a value with a forward slash (/) character for some rows. What happens when a client tries to retrieve, update, or upsert a record using that alternate key value?",
         "options": [
           "Only the update operation fails; retrieve and upsert still work",
-          "The operation succeeds normally; special characters are automatically escaped",
+          "The operation succeeds normally; special characters are automatically escaped by Dataverse",
           "Dataverse blocks the alternate key from ever being created",
           "Retrieve (GET), update, and upsert (PATCH) actions using that key value don't work"
         ],
@@ -90596,7 +90596,7 @@ const EXAMS = {
           "Define key values in an EntityKeyMetadata instance, then submit them with the CreateEntityKey request",
           "Use SetStateRequest with a custom state code",
           "Modify the table's PrimaryIdAttribute directly",
-          "Call CreateAttributeRequest with IsPrimaryKey set to true"
+          "Call CreateAttributeRequest with IsPrimaryKey set to true on each column that should form the alternate key"
         ],
         "correct": 0,
         "explain": "To define an alternate key in code, you populate an EntityKeyMetadata instance with the key columns and then submit a CreateEntityKey request, passing the table name and the EntityKeyMetadata, to create the key."
@@ -90661,7 +90661,7 @@ const EXAMS = {
           "They should only ever be included in the data-to-save portion, never used to identify the record",
           "They must be omitted from the request entirely and set afterward with a separate Update call",
           "They should not be included in the data-to-save portion of the request if they're already used to identify the record via the alternate key",
-          "They should be duplicated in both the key-identifying portion of the request and the data-to-save portion"
+          "They should be duplicated in both the key-identifying portion of the request and the data-to-save portion so that Dataverse can compare the two"
         ],
         "correct": 2,
         "explain": "Guidance for composing Upsert requests is that when alternate key values are used to identify the record, that same data shouldn't also be duplicated in the portion of the request representing the data to save."
@@ -90871,7 +90871,7 @@ const EXAMS = {
         "q": "Who can configure Content Security Policy settings for code apps?",
         "options": [
           "Any user the app is shared with",
-          "The app's end users, per session",
+          "The app's end users, per browser session",
           "An administrator of the environment",
           "Only Microsoft Support"
         ],
@@ -90884,7 +90884,7 @@ const EXAMS = {
         "q": "You update code app CSP directives through the REST API by sending only one changed directive. What's the risk?",
         "options": [
           "The change applies only to canvas apps",
-          "The request succeeds but changes nothing",
+          "The request succeeds but changes nothing in the app's CSP",
           "The change applies only after 30 days",
           "The update replaces the entire directive collection"
         ],
@@ -90897,7 +90897,7 @@ const EXAMS = {
         "q": "A developer's locally running code app fails to connect in Microsoft Edge. Which restriction is a likely cause?",
         "options": [
           "The browser blocks requests from public origins to local endpoints",
-          "Code apps can't run on a developer's machine",
+          "Code apps can't run on a developer's machine, even for local testing",
           "Local Play needs a canvas app license",
           "Edge doesn't support TypeScript"
         ],
@@ -90923,7 +90923,7 @@ const EXAMS = {
         "q": "What does the Dataverse SDK for Python client require for authentication?",
         "options": [
           "A SAS token",
-          "A username and password in the URL",
+          "A username and password embedded in the request URL",
           "An Azure Identity TokenCredential implementation",
           "A plug-in assembly key"
         ],
@@ -90962,7 +90962,7 @@ const EXAMS = {
         "q": "What does Power Platform managed identity for plug-ins rely on?",
         "options": [
           "Basic authentication over HTTPS",
-          "A shared key stored in Dataverse",
+          "A shared key stored in Dataverse and rotated by an environment administrator",
           "A certificate uploaded to each plug-in step",
           "Federated identity credentials on a managed identity or app registration"
         ],
@@ -91000,7 +91000,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "When is an MCP server a better fit than adding an API directly to each Copilot Studio agent?",
         "options": [
-          "When you need to add extra context on when to invoke each tool",
+          "When you need to add extra context on when to invoke each tool for a single agent",
           "When one agent needs one simple call",
           "When many agents need centrally managed tools they can discover automatically",
           "When a topic must call the tool directly"
