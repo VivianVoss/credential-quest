@@ -563,7 +563,7 @@ const EXAMS = {
         "q": "When preparing a corpus for statistical text analysis, what is the effect of applying 'stop word removal'?",
         "options": [
           "Words are grouped into three-word phrases called trigrams",
-          "Words are converted to their dictionary base form using linguistic rules, so 'running' becomes 'run' in text",
+          "Words are converted to their dictionary base form using linguistic rules, so 'running' becomes 'run'",
           "Common words like 'the', 'a', or 'it' that add little semantic meaning are excluded from analysis",
           "All punctuation is converted into unique tokens"
         ],
@@ -1159,7 +1159,7 @@ const EXAMS = {
         "options": [
           "It never changes behavior after it's deployed",
           "It uses trained models to process inputs and generate outputs such as text, images, or decisions",
-          "It can only run on a user's local device with no cloud connection, such as a text or image editor",
+          "It can only run on a user's local device with no cloud connection, and never calls a hosted model",
           "It requires no training data of any kind"
         ],
         "correct": 1,
@@ -1872,7 +1872,7 @@ const EXAMS = {
         "options": [
           "Support for generating still images only, with no video output",
           "Video-to-video remixing and audio generation, along with improved realism",
-          "The removal of all Responsible AI safeguards, along with improved realism in generated video",
+          "The removal of all Responsible AI safeguards from generated video, so any prompt is now accepted",
           "The ability to generate video from text prompts for the first time"
         ],
         "correct": 1,
@@ -1988,7 +1988,7 @@ const EXAMS = {
           "Only the sampling rate used to record the audio",
           "Only the file size of the audio recording",
           "Caller, message summary, requested actions, and callback number",
-          "Only the raw audio waveform with no textual output of any kind at all"
+          "Only the raw audio waveform, with no text or structured fields returned"
         ],
         "correct": 2,
         "explain": "The module's voicemail example defines a schema including caller, message summary, requested actions, callback number, and alternative contact details — all extracted as structured data from the audio."
@@ -3606,7 +3606,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is the key difference between an ETL and an ELT data ingestion process?",
         "options": [
-          "ETL only works with streaming data, while ELT only works with batch data, whichever analytical store the data is loaded into",
+          "ETL only works with streaming data sources, while ELT only works with scheduled batch data from relational systems",
           "ELT is used exclusively for relational data warehouses",
           "There is no difference; they are the same process",
           "ETL transforms data before loading it into the analytical store; ELT loads data first and transforms it afterward"
@@ -6678,7 +6678,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Why is a Power Pages website described as secure by design?",
         "options": [
-          "All data on a Power Pages site is automatically public, so there's nothing for visitors to interact with",
+          "All data on a Power Pages site is automatically public, so visitors never need to sign in to see it",
           "It has no way for external users to sign in",
           "It cannot be connected to Dataverse",
           "Role-based permissions control what each visitor can see and interact with"
@@ -6707,7 +6707,7 @@ const EXAMS = {
           "It replaces the need for Power Apps and Power Automate entirely",
           "It eliminates the need for role-based security",
           "It gives organizations one trusted, governed place to store and manage the data that powers apps, flows, websites, reports, and agents",
-          "It is only useful for organizations with no existing IT governance, since it replaces the need to store data for apps, flows, websites, and reports"
+          "It is only useful for organizations with no existing IT governance, since its data for apps, flows, websites, and reports has no security controls applied"
         ],
         "correct": 2,
         "explain": "The module states Dataverse's value is providing a single trusted, governed data foundation shared across Power Apps, Power Automate, Power Pages, Power BI, and Copilot Studio agents."
@@ -7445,7 +7445,7 @@ const EXAMS = {
           "Only a Power BI report",
           "A model-driven app instead of a canvas app",
           "A three-screen app: a browse screen, a details screen, and an edit screen",
-          "A single blank screen with no data connection, plus a separate edit screen for the list"
+          "A single blank screen with no data connection, leaving the maker to add every control by hand"
         ],
         "correct": 2,
         "explain": "The module states that building a canvas app from a SharePoint list (or other supported data source) automatically generates a three-screen app: browse, details, and edit."
@@ -7508,7 +7508,7 @@ const EXAMS = {
         "q": "Model-driven apps automatically inherit which of the following from Dataverse, without requiring extra app-level configuration?",
         "options": [
           "Security roles, business unit hierarchies, and row-level access controls",
-          "A fixed app color scheme that cannot be changed, along with the form layouts and page navigation",
+          "A fixed app color scheme that cannot be changed by makers, administrators, or any custom theme",
           "A requirement to disable all security",
           "Offline mode is never available"
         ],
@@ -10403,7 +10403,7 @@ const EXAMS = {
           "To automatically delete unused resources",
           "To provide extra metadata that helps with resource management, cost reporting, and governance",
           "To encrypt the resource",
-          "To physically relocate the resource to a different datacenter for cost reporting and governance"
+          "To physically relocate the resource to a different datacenter when its region runs short of capacity"
         ],
         "correct": 1,
         "explain": "Tags provide extra metadata about resources, useful for resource management, cost reporting, operations, security, and governance."
@@ -11389,7 +11389,7 @@ const EXAMS = {
           "Yes, but only if it exceeds 50 GB",
           "No, shared mailboxes don't require a separate license unless users access them with mobile devices",
           "Yes, every shared mailbox always requires a full license",
-          "No, shared mailboxes never require a license under any circumstance, including when users open them on mobile devices"
+          "No, shared mailboxes never require a license under any circumstance, even above 50 GB or when placed on litigation hold"
         ],
         "correct": 1,
         "explain": "Shared mailboxes, used for scenarios like support@contoso.com, don't require a separate license unless a user accesses them from a mobile device, which does require a license."
@@ -11856,7 +11856,7 @@ const EXAMS = {
           "Yes, but only for users without a Copilot license",
           "No, but only if the tenant disables Microsoft Graph",
           "No, Copilot operates within Microsoft Purview compliance boundaries and does not transmit data outside the tenant",
-          "Yes, all Copilot prompts are sent to third-party AI vendors by default unless an administrator turns this off in the tenant"
+          "Yes, all Copilot prompts are copied to a public web index for every user, and no tenant setting can stop that from happening"
         ],
         "correct": 2,
         "explain": "Copilot operates entirely within Microsoft Purview compliance boundaries, meaning it doesn't transmit data outside the organization's tenant or to non-Microsoft services."
@@ -12112,7 +12112,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "An admin uses Microsoft Purview Data Explorer and discovers that health data is primarily concentrated in a specific Teams channel. What should this discovery prompt the admin to do?",
         "options": [
-          "Ignore it, since Data Explorer only reports on SharePoint sites",
+          "Ignore it, since Teams channels sit outside any Purview policy",
           "Disable Microsoft Teams tenant-wide",
           "Delete the Teams channel immediately",
           "Review access controls and sharing policies for that channel"
@@ -12307,7 +12307,7 @@ const EXAMS = {
         "q": "Why might pay-as-you-go billing for Copilot queries against SharePoint be riskier for cost predictability than the monthly per-user model, according to the training?",
         "options": [
           "SharePoint cannot be used with the pay-as-you-go model at all",
-          "Pay-as-you-go billing for SharePoint is capped automatically at $100 per month, which stops Copilot for every team at that limit",
+          "Pay-as-you-go billing for SharePoint charges every user a higher flat monthly rate than per-user licensing, whatever their usage",
           "Teams working with document-heavy SharePoint libraries under pay-as-you-go could generate sudden, unpredictable cost surges",
           "Pay-as-you-go always costs less regardless of usage"
         ],
@@ -14815,7 +14815,7 @@ const EXAMS = {
           "Convert all users to billing managers",
           "Disable the entire organization's billing dashboard",
           "Audit inactive users and reclaim or reallocate their unused seats",
-          "Purchase additional prepaid seats without auditing usage for future hires"
+          "Purchase additional prepaid seats for future hires without auditing current usage"
         ],
         "correct": 2,
         "explain": "A best practice for license usage management is to reclaim unused seats by identifying inactive users and freeing up licenses for reallocation, reducing unnecessary cost."
@@ -16122,7 +16122,7 @@ const EXAMS = {
           "By printing ::error file={name},line={line}::{message} to stdout, which GitHub parses into an annotation",
           "By calling the GitHub REST API directly with no workflow command",
           "Workflow commands cannot include a file or line",
-          "By writing to a special errors.yml file in the workspace, which GitHub parses into an annotation after the job"
+          "By writing the file and line to GITHUB_STEP_SUMMARY, which GitHub parses into an annotation at that location"
         ],
         "correct": 0,
         "explain": "Workflow commands such as ::error:: accept optional parameters like file and line, and printing the formatted string produces an annotation displayed in the run's UI at that location."
@@ -16432,7 +16432,7 @@ const EXAMS = {
         "q": "Which allowed-actions policy option is the most restrictive?",
         "options": [
           "Allow only actions created by GitHub",
-          "Allow only actions created within the organization's own repositories",
+          "Allow only Marketplace actions by verified creators, plus the organization's own",
           "Allow all actions and reusable workflows",
           "Block all actions except those on an explicit allowlist"
         ],
@@ -16522,7 +16522,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "An enterprise wants log retention for its audit logs to meet a 90-day compliance requirement. Where is this configured?",
         "options": [
-          "It cannot be configured; retention is fixed at 30 days for everyone, including enterprise accounts",
+          "In each repository's Actions settings, where every repository sets its own audit log retention period",
           "Only GitHub Support can change retention",
           "Organization Settings > Security > Audit Log retention settings (or via the API)",
           "Inside each workflow YAML file"
@@ -16913,7 +16913,7 @@ const EXAMS = {
         "q": "A workflow currently grants GITHUB_TOKEN broad read/write permissions by default and calls several third-party actions. Which combination of changes best improves its security posture without breaking functionality?",
         "options": [
           "Disable the workflow",
-          "Switch every action to a Docker container action, keep the broad default permissions, and rebuild the images at the workflow level for each job",
+          "Switch every action to a Docker container action, keep the broad default permissions, and rebuild each image on every run",
           "Set default permissions to read-only at the workflow level, elevate specific jobs' permissions only as needed, and pin third-party actions to commit SHAs",
           "Remove all permissions entirely so the token can't be used at all, and leave third-party actions on their current tags so that existing job steps carry on exactly as they do today"
         ],
@@ -17091,7 +17091,7 @@ const EXAMS = {
         "options": [
           "Adversarial debiasing and testing with balanced demographic samples",
           "Removing the model's chat interface",
-          "Increasing the model's context window size and removing demographic data",
+          "Increasing the model's context window size and raising its response speed",
           "Disabling all logging for the model"
         ],
         "correct": 0,
@@ -17222,7 +17222,7 @@ const EXAMS = {
           "That they must be understandable and interpretable, with honesty about capabilities and limitations",
           "That they must never be audited",
           "That their source code must always be open-source",
-          "That they should hide their decision-making process to protect trade secrets, while being honest about pricing"
+          "That they should hide their decision-making process from users and regulators to protect the vendor's trade secrets"
         ],
         "correct": 0,
         "explain": "Transparency emphasizes that AI systems must be understandable and interpretable; creators should explain how systems operate, justify design choices, and be honest about capabilities and limitations."
@@ -17545,7 +17545,7 @@ const EXAMS = {
         "q": "How can a developer cycle through multiple alternative suggestions that Copilot offers for a complex snippet?",
         "options": [
           "Multiple suggestions are not supported",
-          "By disabling and re-enabling the extension each time, using Alt+] to do so",
+          "By disabling and re-enabling the extension each time a new suggestion is needed",
           "By selecting the light bulb icon or using Alt+] (Option+] on Mac)",
           "By restarting VS Code"
         ],
@@ -17806,7 +17806,7 @@ const EXAMS = {
         "options": [
           "Via Homebrew (brew install copilot-cli) or the official install script",
           "It cannot be installed on macOS or Linux",
-          "By compiling it manually from source every time, using the official install script",
+          "By compiling it manually from source every time a new release is published",
           "Only through the Microsoft Store"
         ],
         "correct": 0,
@@ -18480,7 +18480,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Why might a developer choose few-shot prompting over zero-shot prompting when asking Copilot to generate a function that must handle multiple time-of-day greeting scenarios?",
         "options": [
-          "Zero-shot prompting always produces better results for every scenario, so few-shot is never useful, except when a developer wants to reduce manual testing of edge cases",
+          "Zero-shot prompting always produces better results for every scenario, so few-shot is never useful, even for functions with many edge cases to handle",
           "Few-shot prompting excels at generating sophisticated implementations that handle multiple scenarios and edge cases, reducing manual testing",
           "Few-shot prompting disables the toxicity filter",
           "Few-shot prompting is required before Copilot can be installed"
@@ -18768,7 +18768,7 @@ const EXAMS = {
         "options": [
           "Organization Settings > Copilot > Content exclusion",
           "A personal GitHub profile README",
-          "The organization's billing page only, under Content exclusion",
+          "The organization's billing page only, alongside its payment settings",
           "GitHub Discussions settings"
         ],
         "correct": 0,
@@ -18818,7 +18818,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "In VS Code and Visual Studio, which specific Copilot Chat interaction is noted as NOT respecting content exclusions?",
         "options": [
-          "The command palette's Explain This command used in a question",
+          "The Explain This command run from the VS Code command palette",
           "Using the @github chat participant in a question",
           "Automated test generation only",
           "Standard inline code completions only"
@@ -18846,7 +18846,7 @@ const EXAMS = {
         "options": [
           "Content exclusions only work for public repositories",
           "Content exclusions apply to all GitHub users worldwide automatically",
-          "Yes, content exclusions are enforced globally for anyone who can view the repository, whichever organization they belong to or configured the settings",
+          "Yes, content exclusions are enforced globally for anyone who can view the repository, regardless of which organization they belong to",
           "No; content exclusion settings apply only to members of the organization that configured them, not to anyone else with file access"
         ],
         "correct": 3,
@@ -18884,7 +18884,7 @@ const EXAMS = {
         "q": "Where does an individual paying for their own Copilot Pro license (not org-provided) manage the 'Suggestions matching public code' toggle?",
         "options": [
           "Personal account Settings > Copilot > Features > Privacy",
-          "The repository's branch protection rules, under Settings > Copilot",
+          "The repository's branch protection rules, in the repository's Settings",
           "The organization's audit log",
           "GitHub Marketplace billing page"
         ],
@@ -19548,7 +19548,7 @@ const EXAMS = {
           "Hosting a Codespace directly on the device",
           "Receiving a push notification when someone mentions your username",
           "Editing branch protection rules offline",
-          "Running GitHub Actions workflows natively on the phone's CPU when mentioned"
+          "Running GitHub Actions workflows natively on the phone's own CPU and battery"
         ],
         "correct": 1,
         "explain": "GitHub Mobile lets you receive a push notification when someone mentions your username, along with reviewing issues and pull requests, so you can stay responsive away from your desktop."
@@ -20286,7 +20286,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What triggers a GitHub Actions workflow to run?",
         "options": [
-          "Only a direct API call from Microsoft Support, made on request after a push or a pull request",
+          "Only a direct API call made by Microsoft Support after the repository owner opens a ticket",
           "A change to the repository's star count",
           "Deleting the .gitignore file",
           "An event, such as a push, pull request, issue creation, a schedule, or a manual trigger"
@@ -25137,7 +25137,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "By default, do GitHub Automations act on events triggered by users without write access?",
         "options": [
-          "Only if explicitly configured to allow it, which is the default, so that events from users without write access are acted on",
+          "Only in public repositories, where events from users without write access are acted on by default",
           "Yes, always",
           "No, automations ignore events triggered by users without write access by default",
           "Only on weekends"
@@ -29980,7 +29980,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "How does a 'prevention-first' security strategy differ from a traditional 'gate-based' strategy?",
         "options": [
-          "There is no meaningful difference between the two approaches, because both integrate security throughout the SDLC and both run their tests at the same late checkpoint",
+          "There is no meaningful difference between the two approaches, because both place their security tests at the same late checkpoint just before software is released to production",
           "Gate-based strategies eliminate the need for code scanning",
           "Prevention-first only runs scans after deployment, once code has reached production, while gate-based runs scans continuously at every step of the SDLC, so that it never becomes a bottleneck",
           "Prevention-first integrates security throughout the SDLC, while gate-based treats security as a separate checkpoint late in the process, often becoming a bottleneck"
@@ -30538,7 +30538,7 @@ const EXAMS = {
         "q": "What does the 'Non-provider patterns' setting in Secret Protection do?",
         "options": [
           "Automatically generates new secrets",
-          "Only applies to GitHub Enterprise Server, where it scans for formats from non-partnered providers",
+          "Only applies to GitHub Enterprise Server, and has no effect on any repository hosted on GitHub.com",
           "Scans for custom or non-partnered secret formats beyond the standard provider patterns",
           "Disables all partner-provided detection patterns so that only your own custom patterns are used"
         ],
@@ -30981,7 +30981,7 @@ const EXAMS = {
         "options": [
           "It requires manually annotating every function, then runs those annotations as tests on each pull request in the repository",
           "It treats code like data, extracting a relational database representation that queries can be run against",
-          "It only performs simple keyword text searches across the source files, matching known vulnerable function names in order",
+          "It only performs simple keyword text searches across the source files, matching known vulnerable function names",
           "It relies exclusively on runtime testing"
         ],
         "correct": 1,
@@ -31125,7 +31125,7 @@ const EXAMS = {
           "Switching the entire project to an interpreted language so that no build step needs to run before analysis",
           "Configuring an explicit build step within the code scanning workflow file that runs before analysis",
           "Running the scan only once per year",
-          "Disabling code scanning entirely for that language and relying on a manual security review before analysis"
+          "Disabling code scanning entirely for that language and relying on periodic manual security reviews instead"
         ],
         "correct": 1,
         "explain": "GitHub recommends configuring an explicit build step within the code scanning workflow file rather than relying on autobuild, since autobuild behavior varies by OS and can produce unreliable results for compiled languages."
@@ -31372,7 +31372,7 @@ const EXAMS = {
           "GitHub aggregates all applicable rules and applies the most restrictive setting",
           "The least restrictive setting always wins, so that a single rule can't block the entire branch",
           "Only the most recently created rule applies",
-          "Rulesets are ignored if branch protection rules exist on the same branch, whichever is stricter"
+          "Rulesets are ignored if branch protection rules exist on the same branch, even when they are stricter"
         ],
         "correct": 0,
         "explain": "GitHub aggregates all applicable rules — branch protection, tag protection, and multiple rulesets — and applies the most restrictive setting across all of them."
@@ -31488,7 +31488,7 @@ const EXAMS = {
         "options": [
           "It reports only how many lines of code exist in a file, helping teams estimate how long a security review of each area will take",
           "It measures GitHub Actions billing minutes consumed",
-          "It only reports style/formatting issues, helping teams keep code consistent across entry points without reviewing any sensitive data",
+          "It only reports style/formatting issues, helping teams keep indentation, naming, and layout consistent across every file in the code",
           "It shows how data moves through the code, helping identify entry points for attacks and areas that leak sensitive information"
         ],
         "correct": 3,
@@ -33467,7 +33467,7 @@ const EXAMS = {
           "Every 60 seconds; HTTP 404 is treated as healthy",
           "Every 15 seconds by default; the instance is healthy only if it responds with HTTP 200 within the timeout period",
           "Once per hour; a TCP handshake alone determines health",
-          "Every 5 seconds by default; any HTTP response code is considered healthy as long as it arrives within the timeout period"
+          "Every 30 seconds by default; any HTTP response code is considered healthy as long as it arrives within the timeout period"
         ],
         "correct": 1,
         "explain": "By default, the load balancer probes an HTTP/HTTPS endpoint every 15 seconds; the instance is considered healthy if it responds with an HTTP 200 within the timeout period (31 seconds by default), and any other status causes the probe to fail."
@@ -35377,7 +35377,7 @@ const EXAMS = {
         "options": [
           "When non-numeric filters or measure filters are applied to the visual",
           "When the report has more than one page",
-          "When the selected visual is a table instead of a bar, column, or line chart",
+          "When the selected data point is the last one in the visual's series of values",
           "When the model uses DirectQuery"
         ],
         "correct": 0,
@@ -38191,7 +38191,7 @@ const EXAMS = {
         "options": [
           "The person who signs up for the Microsoft Entra tenant",
           "A user chosen at random by Microsoft",
-          "The first user assigned an Microsoft 365 license in that new tenant",
+          "The first user assigned a Microsoft 365 license in that new tenant",
           "The Billing Administrator"
         ],
         "correct": 0,
@@ -39190,7 +39190,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is the significance of ownership on a per-enterprise-application basis?",
         "options": [
-          "Application ownership requires an Microsoft Entra ID Premium P2 license, and each owner can then manage all enterprise applications in the tenant",
+          "Application ownership requires a Microsoft Entra ID Premium P2 license, and each owner can then manage all enterprise applications in the tenant",
           "Only one owner is allowed per application at any time",
           "A single owner is automatically granted Global Administrator",
           "An owner can manage only the specific enterprise applications they own, such as a Salesforce app, without affecting others"
@@ -39362,7 +39362,7 @@ const EXAMS = {
           "To manage administrative units",
           "To reset user passwords in bulk",
           "To discover and analyze cloud app usage, including shadow IT, across the organization",
-          "To configure Microsoft Entra Connect sync rules for cloud app usage across the entire organization"
+          "To configure Microsoft Entra Connect sync rules that decide which on-premises users appear in each cloud app"
         ],
         "correct": 2,
         "explain": "Cloud Discovery in Defender for Cloud Apps analyzes traffic logs to discover and assess cloud applications being used across the organization, including unsanctioned shadow IT apps."
@@ -41495,7 +41495,7 @@ const EXAMS = {
         "options": [
           "A Microsoft Store app",
           "A web link app",
-          "A managed Google Play app or Microsoft Store app",
+          "A managed Google Play app or an Apple VPP app",
           "A Win32 or line-of-business (LOB) app"
         ],
         "correct": 3,
@@ -45170,7 +45170,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which delivery model in Azure Event Grid lets a subscriber application connect and read events at its own pace using queue-like semantics, useful when the consumer can't expose a public endpoint?",
         "options": [
-          "Polling delivery over plain HTTP only",
+          "Webhook delivery to a public HTTPS endpoint",
           "Pull delivery (namespace topics)",
           "Push delivery (classic model)",
           "Broadcast delivery"
@@ -55704,7 +55704,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A phishing simulation campaign run through Attack simulation training shows a high click-through rate in the Finance department. What is the recommended next step covered by the training campaign management skill?",
         "options": [
-          "Escalate directly to Microsoft Support without further tenant action, as the same simulation workflow cannot follow up with users who clicked",
+          "Escalate directly to Microsoft Support without further tenant action, since Attack simulation training cannot follow up with users who clicked",
           "Delete the Finance department's mailboxes",
           "Disable Safe Links for the whole tenant",
           "Assign targeted training content to the users who clicked or entered credentials, as part of the same simulation workflow"
@@ -63173,7 +63173,7 @@ const EXAMS = {
           "Adding the conversation to a Copilot Notebook",
           "Disabling Copilot Memory",
           "Immediately deleting the conversation",
-          "Printing the conversation to paper only and filing it"
+          "Printing the conversation to paper and filing the copy"
         ],
         "correct": 0,
         "explain": "Users can save a conversation to a Copilot Notebook, a flexible workspace to organize, edit, and build on thoughts over time."
@@ -67060,7 +67060,7 @@ const EXAMS = {
         "options": [
           "Overlayering the base method",
           "Adding a brand-new delegate to the base method",
-          "Creating a duplicate method with a different name and an added state parameter",
+          "Creating a duplicate of the base method under a different name with no parameters",
           "A context class that stores state and implements a dispose pattern for cleanup"
         ],
         "correct": 3,
@@ -73401,7 +73401,7 @@ const EXAMS = {
         "q": "What is the primary purpose of an item group in Supply Chain Management?",
         "options": [
           "To define the sets of ledger accounts used for accounting entries of products classified into that group",
-          "To control which safety margins apply to a product during master planning for products classified into that group",
+          "To control which safety margins and coverage settings master planning applies to the released products assigned to that group",
           "To define which mobile device menu a warehouse worker can access",
           "To determine the item's costing method for inventory valuation"
         ],
@@ -74783,7 +74783,7 @@ const EXAMS = {
           "It allows unlimited duplicate inbound message IDs without any validation",
           "It automatically merges duplicate inbound messages into a single work record",
           "If a duplicate inbound message ID is received, the system rejects the message and displays an error",
-          "It disables the ability to receive duplicate inbound message IDs entirely with no error shown to the sender"
+          "It silently discards any duplicate inbound message ID, so no error is raised or recorded anywhere in the system"
         ],
         "correct": 2,
         "explain": "When Enable inbound message ID is set to Yes, a duplicate inbound message ID received by the system is rejected with an error stating the message already exists; when set to No, duplicate inbound message IDs are allowed."
@@ -76537,7 +76537,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A company wants to discount many related hardware items at once for a customer, without setting up a separate line discount entry for every individual item. What should the consultant configure?",
         "options": [
-          "A separate Sales Price line for every item and customer combination, maintained one by one for each item",
+          "A separate Sales Price line for every item and customer combination, updated by hand whenever the discount changes",
           "A single Customer Invoice Discount covering all hardware sales",
           "A Stockkeeping Unit shared across all hardware items",
           "An Item Discount Group assigned to each relevant item, with the discount defined once on the group"
@@ -88259,7 +88259,7 @@ const EXAMS = {
         "q": "A customer declines the recording consent prompt during a call that later escalates to a representative. What happens to transcription for the remainder of the call?",
         "options": [
           "The call is automatically disconnected",
-          "Transcription starts fresh once the representative joins, regardless of the earlier decline and persists through any transfers",
+          "Transcription starts fresh once the representative joins, regardless of the earlier decline, and it persists through any transfers",
           "Transcription continues only if the customer previously consented; the decline persists through transfers and consults",
           "The representative can manually override the customer's decision at any time"
         ],
@@ -90596,7 +90596,7 @@ const EXAMS = {
           "Define key values in an EntityKeyMetadata instance, then submit them with the CreateEntityKey request",
           "Use SetStateRequest with a custom state code",
           "Modify the table's PrimaryIdAttribute directly",
-          "Call CreateAttributeRequest with IsPrimaryKey set to true on each column that should form the alternate key"
+          "Call CreateAttributeRequest with IsPrimaryId set to true on each column that should form the alternate key"
         ],
         "correct": 0,
         "explain": "To define an alternate key in code, you populate an EntityKeyMetadata instance with the key columns and then submit a CreateEntityKey request, passing the table name and the EntityKeyMetadata, to create the key."
@@ -106364,7 +106364,7 @@ const EXAMS = {
         "q": "A team needs to hide a customer table's phone-number column from most users while keeping the table fully queryable and updatable, without creating additional view objects. According to Microsoft's guidance, which approach is now generally preferred?",
         "options": [
           "Create a dynamic view with a CASE expression for every audience",
-          "Duplicate the table once per audience with the sensitive column removed, then use Attribute-Based Access Control (ABAC) to route each user to the right copy of the table",
+          "Duplicate the table once per audience with the sensitive column removed, then grant each group SELECT on its own copy and sync the copies with scheduled jobs",
           "Use Row and Column Security (a masking function bound directly to the table column) or, for broader scale, Attribute-Based Access Control (ABAC)",
           "Grant SELECT only to the metastore admin group"
         ],
@@ -106428,7 +106428,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Why does Microsoft recommend Azure managed identities over service principals for Unity Catalog storage credentials that access ADLS Gen2?",
         "options": [
-          "Service principals cannot authenticate to Azure Data Lake Storage at all, whereas managed identities can reach storage accounts whether or not any network firewall rules apply",
+          "Service principals cannot authenticate to Azure Data Lake Storage at all, which leaves managed identities as the only credential type Unity Catalog accepts",
           "Managed identities eliminate secret rotation and can access storage accounts protected by network firewall rules, which service principals cannot do",
           "Managed identities are faster to authenticate",
           "Managed identities don't require an Azure Databricks access connector"
@@ -106589,7 +106589,7 @@ const EXAMS = {
         "q": "What is a key difference in retention between viewing lineage in Catalog Explorer/the lineage API versus querying the system.access.table_lineage system table?",
         "options": [
           "Both retain data for exactly 90 days",
-          "The system tables retain lineage data indefinitely, while Catalog Explorer and the lineage API only show events captured in a rolling window covering the last 30 days after September 1, 2024",
+          "The system tables retain lineage events (captured after September 1, 2024) indefinitely, while Catalog Explorer and the lineage API retain only a rolling window of the last 30 days",
           "Neither retains historical data beyond the current session",
           "Catalog Explorer and the lineage API retain lineage events (captured after September 1, 2024) indefinitely, while the lineage system tables retain only a rolling one-year window"
         ],
@@ -107789,7 +107789,7 @@ const EXAMS = {
         "q": "In the Spark UI, how do you determine whether a stage is affected by data skew, and what threshold indicates a likely skew problem?",
         "options": [
           "Compare total Input bytes to total Output bytes for the stage; any difference indicates skew",
-          "Skew can only be identified using the query profile for SQL warehouses, never in the Spark UI, where a task's Max duration is more than 50% higher than the average for the entire query",
+          "Skew can only be identified using the query profile for SQL warehouses, never in the Spark UI; it's likely if a task's Max duration is more than 50% higher than the query's average",
           "Check whether the Shuffle Read column is nonzero; any shuffle read indicates skew",
           "In the stage's Summary Metrics, compare the Max task duration to the 75th percentile duration; if the Max is more than 50% higher than the 75th percentile, skew is likely"
         ],
@@ -107801,7 +107801,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is a key difference between Azure Databricks' automatic disk cache (formerly Delta cache) and Spark's DataFrame .cache() / .persist() methods?",
         "options": [
-          "Disk cache must be manually released with .unpersist(), while Spark cache clears itself automatically as data is read, storing Parquet data files on worker nodes without any explicit management once the cached data is no longer needed by a job",
+          "Disk cache must be manually released with .unpersist() when the cached data is no longer needed, while Spark cache clears itself automatically and stores Parquet data files on worker nodes without any explicit management",
           "Spark cache only works on SQL warehouses, while disk cache only works on all-purpose clusters",
           "Disk cache automatically caches Parquet data files on worker nodes as data is read, while Spark cache requires explicit management, including calling .unpersist() when the cached data is no longer needed",
           "Disk cache and Spark cache are simply two names for the identical mechanism"
@@ -107814,7 +107814,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What are two prerequisites for streaming Azure Databricks diagnostic logs to Azure Log Analytics?",
         "options": [
-          "The workspace must use classic compute exclusively, and logs are retained for only 24 hours after an event occurs, so they have to be exported on the Premium plan each day",
+          "The workspace must use classic compute exclusively, and logs are retained for only 24 hours after an event occurs, so they have to be exported to storage each day",
           "The workspace must be on the Free Edition, and logs appear instantly",
           "The workspace must be on the Azure Databricks Premium plan, and logs typically take about 15 minutes to become available after an event occurs",
           "The workspace must disable Unity Catalog, and logs appear only once per day"
@@ -108181,7 +108181,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Contoso Capital must demonstrate to regulators, via explicit execution traces, that compliance checks always run immediately after risk assessment. Which orchestration framework's control-flow model is specifically highlighted as providing this kind of auditable, explicit evidence?",
         "options": [
-          "AutoGen, because its round-robin group chat fixes the speaker order so every compliance step is guaranteed to follow the risk step in sequence",
+          "AutoGen, because its round-robin group chat transcript alone counts as regulator-approved proof that every compliance step followed the risk step",
           "Microsoft Agent Framework, because it uses implicit conversation-based control flow that records every branch as a regulator-ready audit log entry",
           "LangGraph, because it models workflows as explicit state graphs with conditional edges that make every execution path visible and debuggable",
           "CrewAI, because of its role-based abstraction"
@@ -108843,7 +108843,7 @@ const EXAMS = {
         "q": "Which asyncio synchronization primitive is described as an \"all-or-nothing\" barrier that blocks until every spawned task completes (or raises), versus the primitive that can return as soon as just one task completes?",
         "options": [
           "asyncio.gather is the all-or-nothing barrier; asyncio.wait(..., return_when=asyncio.FIRST_COMPLETED) can return after just one task finishes",
-          "asyncio.Lock is the all-or-nothing barrier; asyncio.Semaphore(..., return_when=asyncio.FIRST_COMPLETED) can return after just one task finishes",
+          "asyncio.Lock is the all-or-nothing barrier; asyncio.Semaphore can return after just one task finishes, whichever of the spawned tasks completes first",
           "asyncio.create_task blocks until all tasks complete; asyncio.gather never blocks",
           "Both asyncio.gather and asyncio.wait always block until every task completes with no configurable behavior; only asyncio.Lock can return after one task finishes"
         ],
@@ -109292,7 +109292,7 @@ const EXAMS = {
         "options": [
           "A customer typing an invalid credit card number",
           "A pricing agent model deployment change that introduced new output formatting behavior (adding currency symbols to prices), several services upstream of where the failure was observed",
-          "The payment agent's error-handling code, which should have caught the malformed values and retried them, making the agent that reported the failure the true origin of the checkout problem described here",
+          "The payment agent's error-handling code, which should have caught the malformed values and retried them, making the agent that reported the failure the true origin of the checkout problem",
           "A Redis cache eviction policy misconfiguration that discarded current price entries, several services upstream of where the failure was observed"
         ],
         "correct": 1,
