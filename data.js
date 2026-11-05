@@ -21265,7 +21265,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A user connects to Azure Virtual Desktop from behind a symmetric NAT that blocks direct UDP connectivity. Which RDP Shortpath mechanism allows the session to still use a UDP transport?",
         "options": [
-          "RDP Shortpath for managed networks only",
+          "RDP Shortpath for managed networks only, using a direct UDP connection",
           "Automatic fallback to RDP Multipath",
           "Azure Private Link",
           "RDP Shortpath for public networks using TURN relay"
@@ -21410,7 +21410,7 @@ const EXAMS = {
         "options": [
           "Provisioned billing based on the amount of storage requested",
           "Free for the first 5 TB",
-          "Pay-as-you-go based on transactions only",
+          "Pay-as-you-go based on transactions only, with no charge for storage",
           "Per-user licensing fee"
         ],
         "correct": 0,
@@ -21448,7 +21448,7 @@ const EXAMS = {
         "q": "A company has a Light workload with more than 200 users needing FSLogix profile storage. What does Microsoft recommend?",
         "options": [
           "Azure Blob storage exclusively",
-          "Standard file shares only, regardless of scale",
+          "Standard file shares only, regardless of scale, kept together on a single share",
           "Premium file shares, or standard file shares split across multiple shares",
           "Local disks on each session host"
         ],
@@ -21528,7 +21528,7 @@ const EXAMS = {
           "It queries hosts that allow new connections, then randomly selects among the half with the fewest sessions",
           "It picks the host with the lowest IP address",
           "It saturates one host completely before moving to the next",
-          "It always sends the session to the host with the most existing sessions"
+          "It always sends the session to the host with the most existing sessions, filling that host before using any other"
         ],
         "correct": 0,
         "explain": "The breadth-first method queries session hosts that allow new connections, then selects a session host randomly from half the set of session hosts with the least number of sessions."
@@ -21540,7 +21540,7 @@ const EXAMS = {
         "options": [
           "Only to the host with 11 sessions",
           "Only to the host with 19 sessions",
-          "Evenly split across all nine hosts regardless of load",
+          "Evenly split across all nine hosts regardless of load or session count",
           "Randomly to any of the five hosts with the fewest sessions (11–15)"
         ],
         "correct": 3,
@@ -21603,7 +21603,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "When using automated session-host scaling tools, Microsoft recommends a lower VM ceiling per subscription per region than the general recommendation. What is that lower limit and why?",
         "options": [
-          "5,000 VMs, no change from the general recommendation",
+          "5,000 VMs, no change from the general recommendation for static deployments",
           "10,000 VMs, matching the host pool session host limit",
           "1,000 VMs, because of storage account throttling",
           "2,500 VMs, because VM status interaction consumes more resources"
@@ -21746,7 +21746,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "How do you reset ALL custom RDP properties for a host pool back to their defaults using PowerShell?",
         "options": [
-          "There is no way to reset all properties at once",
+          "There is no way to reset all properties at once; clear each one by hand",
           "Delete and recreate the host pool",
           "Run Set-RdsHostPool with -CustomRdpProperty set to an empty string",
           "Run Remove-AzWvdHostPool"
@@ -21761,7 +21761,7 @@ const EXAMS = {
         "options": [
           "Only access via the web client",
           "Access to Windows 10/11 Enterprise desktops and apps",
-          "Nothing — a separate AVD license is always required",
+          "Nothing — a separate per-user AVD license is always required",
           "Access to Windows Server RDS desktops only"
         ],
         "correct": 1,
@@ -21915,7 +21915,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "If you configure Azure VM Image Builder to build an image using an existing virtual network, how does it connect to the build VM instead of using a public IP?",
         "options": [
-          "It still requires a public IP regardless",
+          "It still requires a public IP regardless of the virtual network used",
           "Via a site-to-site VPN",
           "Via ExpressRoute only",
           "Via Azure Private Link, avoiding a public IP address requirement"
@@ -22112,7 +22112,7 @@ const EXAMS = {
         "options": [
           "Pass-through authentication (PTA) and Federation (AD FS)",
           "None of the methods avoid storing hashes",
-          "All three methods equally avoid storing hashes",
+          "All three methods equally avoid storing hashes in the cloud",
           "Password hash synchronization only"
         ],
         "correct": 0,
@@ -22126,7 +22126,7 @@ const EXAMS = {
           "AD DS, Microsoft Entra ID, and Microsoft Entra Domain Services",
           "LDAP, Kerberos, and NTLM",
           "Google Workspace, Okta, and Ping Identity",
-          "On-premises only, no cloud identity is supported"
+          "On-premises only, no cloud identity is supported on session hosts"
         ],
         "correct": 0,
         "explain": "The AZ-140 skills measured list selecting an identity scenario for Azure Virtual Desktop as including Active Directory Domain Services (AD DS), Microsoft Entra ID, and Microsoft Entra Domain Services."
@@ -22281,7 +22281,7 @@ const EXAMS = {
         "options": [
           "Inside the FSLogix profile container",
           "As a startup script referenced from or included in the golden image, run at first boot",
-          "Inside the golden image itself, onboarded before capture",
+          "Inside the golden image itself, onboarded before capture so every provisioned host inherits it",
           "Manually run once per year by an administrator"
         ],
         "correct": 1,
@@ -22448,7 +22448,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "An organization wants users on a Windows 10 Enterprise multi-session pooled host pool to sync OneDrive for Business without duplicate sync conflicts. Which capability should the admin plan for specifically?",
         "options": [
-          "Disabling OneDrive entirely on pooled hosts",
+          "Disabling OneDrive entirely on pooled session hosts",
           "OneDrive support for multisession environments",
           "Assigning personal desktops to every user",
           "Using ODFC containers instead of OneDrive"
@@ -22474,7 +22474,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What file format do FSLogix containers use to hold user profile data?",
         "options": [
-          "SQL database files",
+          "SQL database files stored on the file share",
           "PST files",
           "VHD(X) virtual hard disk files",
           "ZIP archives"
@@ -22490,7 +22490,7 @@ const EXAMS = {
           "No, it replaced VHD-based containers entirely",
           "No, it is an optional configuration that can be applied to profile or ODFC containers",
           "Yes, but only for personal desktops",
-          "Yes, it is a third container type alongside Profile and ODFC"
+          "Yes, it is a third container type alongside Profile and ODFC, configured separately from both of them"
         ],
         "correct": 1,
         "explain": "Cloud Cache isn't a type of container; it's an optional configuration for profile and ODFC container types, primarily used to mitigate intermittent connectivity problems with remote storage."
@@ -22567,7 +22567,7 @@ const EXAMS = {
         "options": [
           "ODFC containers should never be used",
           "Hold all profile and ODFC content in the same VHD(x) file, unless otherwise configured",
-          "Always separate them into two distinct VHD(x) files",
+          "Always separate them into two distinct VHD(x) files, one for profile data and one for Office data",
           "Profile containers should be disabled in favor of ODFC only"
         ],
         "correct": 1,
@@ -22644,7 +22644,7 @@ const EXAMS = {
         "q": "What is the main purpose of the Start VM on Connect feature in Azure Virtual Desktop?",
         "options": [
           "To automatically resize VMs based on load",
-          "To automatically install updates when a user connects",
+          "To automatically install updates when a user connects to their session host",
           "To force multifactor authentication at connect time",
           "To reduce costs by powering on session host VMs only when users need them"
         ],
@@ -22670,7 +22670,7 @@ const EXAMS = {
         "q": "In a pooled host pool, when does Start VM on Connect power on an additional session host VM?",
         "options": [
           "Only during scheduled ramp-up hours",
-          "Every time any user connects, regardless of capacity",
+          "Every time any user connects, regardless of the capacity on the VMs that are already running",
           "Only when no VMs are turned on, or when the first active VM reaches its session limit",
           "Never — pooled host pools don't support this feature"
         ],
@@ -22722,7 +22722,7 @@ const EXAMS = {
         "q": "Can Start VM on Connect be enabled at the same time a new host pool is created?",
         "options": [
           "No, it can never be enabled after host pool creation either",
-          "Yes, it's a checkbox in the host pool creation wizard",
+          "Yes, it's a checkbox in the host pool creation wizard that is off by default",
           "Yes, but only via ARM templates",
           "No — you can only configure Start VM on Connect on an existing host pool"
         ],
@@ -22750,7 +22750,7 @@ const EXAMS = {
           "No — you must choose one version to use with a given host pool",
           "Yes, but only in preview regions",
           "This only applies to personal host pools",
-          "Yes, they can be mixed freely"
+          "Yes, they can be mixed freely on the session hosts of a host pool"
         ],
         "correct": 0,
         "explain": "You have to choose whether you want to use app attach or MSIX app attach with a host pool; you can't use both versions with the same host pool."
@@ -22786,7 +22786,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "What is the minimum RBAC role required, at the resource group scope, to add MSIX images for app attach?",
         "options": [
-          "Owner is always required",
+          "Owner is always required on the resource group",
           "Reader",
           "Desktop Virtualization Contributor",
           "Desktop Virtualization User"
@@ -22890,7 +22890,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which minimum FSLogix version/hotfix is required to support the new Microsoft Teams app when using FSLogix profile management?",
         "options": [
-          "Any FSLogix version works with no minimum",
+          "Any FSLogix version works with no minimum version required",
           "FSLogix 1.0",
           "FSLogix 2201",
           "FSLogix 2210 hotfix 3 (2.9.8716.30241) or later"
@@ -22929,7 +22929,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What does Microsoft recommend regarding the Log Analytics workspace used for Azure Virtual Desktop monitoring?",
         "options": [
-          "Use only the default workspace created automatically for the subscription",
+          "Use only the default workspace created automatically for the subscription, so AVD data sits alongside all other workloads",
           "Share it with all other Azure workloads in the tenant",
           "Use a designated, dedicated workspace for AVD session hosts to ensure counters/events are collected only from AVD",
           "Log Analytics is not compatible with AVD monitoring"
@@ -22982,7 +22982,7 @@ const EXAMS = {
         "q": "Can you use both native autoscale and Azure Automation/Logic Apps-based scaling on the same host pool at the same time?",
         "options": [
           "No — you must use one method or the other on a given host pool",
-          "Yes, they work together seamlessly",
+          "Yes, they work together seamlessly on the same host pool at all times",
           "Only if the host pool is personal, not pooled",
           "Only during preview periods"
         ],
@@ -23061,7 +23061,7 @@ const EXAMS = {
         "options": [
           "Breadth-first, to keep access times fast by distributing users",
           "Random selection",
-          "Depth-first, to consolidate sessions quickly",
+          "Depth-first, to consolidate sessions quickly onto as few VMs as possible",
           "Round-robin"
         ],
         "correct": 0,
@@ -23086,7 +23086,7 @@ const EXAMS = {
         "q": "What is the purpose of an exclusion tag, such as 'excludeFromScaling', on a session host VM in a scaling plan?",
         "options": [
           "It permanently deletes the VM from the host pool",
-          "It forces the VM to always stay powered on regardless of setting",
+          "It forces the VM to always stay powered on regardless of setting, even outside the plan's peak hours",
           "It prevents autoscale from starting, stopping, or changing the drain mode of that specific VM",
           "It excludes the VM from billing"
         ],
