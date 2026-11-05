@@ -19249,7 +19249,7 @@ const EXAMS = {
           "A local-only backup utility",
           "A programming language for writing automated tests",
           "A cloud-based platform built on Git that adds collaboration tools, automation, and a web interface",
-          "A replacement for Git that does not use version control"
+          "A replacement for Git that does not use version control, adding only a web interface and automation for sharing files"
         ],
         "correct": 2,
         "explain": "GitHub is a cloud-based platform that uses Git, a distributed version control system, at its core, and adds a website, command-line tools, and collaboration features."
@@ -19260,7 +19260,7 @@ const EXAMS = {
         "q": "What does cloning a repository do?",
         "options": [
           "Permanently deletes the remote repository",
-          "Publishes your local files to GitHub Pages",
+          "Publishes your local files to GitHub Pages as a remote website",
           "Converts a private repository to public",
           "Creates a local copy of a remote repository on your computer"
         ],
@@ -19275,7 +19275,7 @@ const EXAMS = {
           "A file that lists project contributors",
           "A type of pull request",
           "A named series of linked commits that lets you work on changes without affecting the default branch",
-          "A backup copy of the entire GitHub organization"
+          "A backup copy of the entire GitHub organization that lets you restore any repository to an earlier state"
         ],
         "correct": 2,
         "explain": "A branch is a named series of linked commits; it's a safe place to experiment with changes without affecting the default branch until you merge."
@@ -19442,7 +19442,7 @@ const EXAMS = {
         "q": "In Git's file-state model, what distinguishes a \"staged\" file from a \"committed\" file?",
         "options": [
           "There is no difference; the terms are interchangeable",
-          "Staged files are stored only on the remote, committed files only locally",
+          "Staged files are stored only on the remote, committed files only locally, so a commit must be pushed before it's saved in the repository's database",
           "A staged file cannot be edited again, while a committed file can",
           "A staged file has changes added to the index ready to be committed, while a committed file is already saved in the repository's database"
         ],
@@ -19482,7 +19482,7 @@ const EXAMS = {
         "options": [
           "Convert the branch into a new repository",
           "Revert the merge automatically",
-          "Immediately create a duplicate branch with the same name",
+          "Immediately create a duplicate branch with the same name, to keep a record of the merged work available",
           "Delete the branch to keep the repository clean and avoid using outdated branches"
         ],
         "correct": 3,
@@ -19535,7 +19535,7 @@ const EXAMS = {
           "A collapsible detail area with a title and content you choose",
           "A saved reply",
           "A Markdown table",
-          "A syntax-highlighted code block"
+          "A syntax-highlighted code block with a title and language you choose"
         ],
         "correct": 0,
         "explain": "The /details slash command inserts a collapsible detail area where you choose the title and content."
@@ -19548,7 +19548,7 @@ const EXAMS = {
           "Hosting a Codespace directly on the device",
           "Receiving a push notification when someone mentions your username",
           "Editing branch protection rules offline",
-          "Running GitHub Actions workflows natively on the phone's CPU"
+          "Running GitHub Actions workflows natively on the phone's CPU when mentioned"
         ],
         "correct": 1,
         "explain": "GitHub Mobile lets you receive a push notification when someone mentions your username, along with reviewing issues and pull requests, so you can stay responsive away from your desktop."
@@ -19561,7 +19561,7 @@ const EXAMS = {
           "The remote named origin",
           "The most recent commit of the currently checked-out branch",
           "The staging area",
-          "The very first commit ever made in the repository"
+          "The very first commit ever made in the repository's default branch"
         ],
         "correct": 1,
         "explain": "The most recent commit on a branch is called the head, and the head of the current branch is named HEAD."
@@ -19585,7 +19585,7 @@ const EXAMS = {
         "q": "What does the hidden .git directory at the top of a working tree contain?",
         "options": [
           "Only the most recent commit's files",
-          "Configuration for GitHub Actions runners only",
+          "Configuration for GitHub Actions runners only, and none of the project's history",
           "The complete history and metadata Git uses to manage the project",
           "A cached copy of the GitHub website"
         ],
@@ -19623,7 +19623,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A developer forks a public repository on GitHub rather than cloning it directly. After cloning their fork locally, what does the remote named \"origin\" point to, and what term is commonly used for the original source repository they forked from?",
         "options": [
-          "\"origin\" always points to the original upstream repository regardless of forking",
+          "\"origin\" always points to the original upstream repository regardless of forking; their own fork is commonly called the \"downstream\" repository",
           "\"origin\" points to GitHub.com itself, not any specific repository",
           "Forking removes the need for any remotes entirely",
           "\"origin\" points to their own fork; the original repository they forked from is commonly called the \"upstream\" repository"
@@ -19652,7 +19652,7 @@ const EXAMS = {
           "Git ignores timestamps and content entirely, relying only on file size",
           "Git requires the developer to manually confirm whether content changed",
           "Git hashes the file's contents and compares the result to the previous hash; if the hash is unchanged, Git knows the content hasn't changed even if the timestamp has",
-          "Git always treats a timestamp change as a content change requiring a new commit"
+          "Git always treats a timestamp change as a content change requiring a new commit, comparing the file's modification time to the one recorded in the previous commit, regardless of hashes"
         ],
         "correct": 2,
         "explain": "One advantage of Git's use of hashes is that it can tell whether a file has changed by hashing its contents and comparing that to the previous hash; if the hash is the same despite a changed timestamp, Git knows the contents haven't changed."
@@ -19717,7 +19717,7 @@ const EXAMS = {
           "Information about previous commits, such as timestamp, author, and commit message",
           "The contents of the .gitignore file",
           "The list of GitHub organization members",
-          "A live list of currently open pull requests"
+          "A live list of currently open pull requests, with their timestamp, author, and title"
         ],
         "correct": 0,
         "explain": "The git log command allows you to see information about previous commits, printing details like their timestamp, author, and commit message."
@@ -19819,7 +19819,7 @@ const EXAMS = {
         "q": "What is the purpose of \"starring\" a repository on GitHub?",
         "options": [
           "To save it to your personal list of favorites and show appreciation to the maintainers",
-          "To delete the repository from search results",
+          "To delete the repository from search results and hide it from your personal list of favorites",
           "To automatically request write access",
           "To permanently fork the repository"
         ],
@@ -19831,7 +19831,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What are GitHub Feature Previews used for?",
         "options": [
-          "To preview how a Markdown README will render before committing",
+          "To preview how a Markdown README will render before committing and give feedback on it",
           "To try out experimental features before they're officially released and give feedback",
           "To preview a pull request diff before merging",
           "To preview repository billing charges"
@@ -19857,7 +19857,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What is a .gitignore file used for?",
         "options": [
-          "Storing repository secrets in plain text",
+          "Storing repository secrets in plain text so that they aren't included in any commits or pushes",
           "Defining branch protection rules",
           "Instructing Git to ignore specified files and paths so they aren't included in commits",
           "Listing all repository collaborators"
@@ -19872,7 +19872,7 @@ const EXAMS = {
         "options": [
           "Root directory only — other locations are ignored",
           "Alphabetical order of file path",
-          "docs directory, then root, then .github directory",
+          "docs directory, then the repository root, then the .github directory",
           ".github directory, then the repository root, then the docs directory"
         ],
         "correct": 3,
@@ -19886,7 +19886,7 @@ const EXAMS = {
           "It disables the need for a LICENSE file",
           "It automatically grants admin access to all GitHub users",
           "It lets you quickly set up a new project with a predefined, repeatable file structure and configuration",
-          "It converts the new repository to Enterprise-only visibility"
+          "It converts the new repository to Enterprise-only visibility, with every file and configuration setting locked by the template"
         ],
         "correct": 2,
         "explain": "Templates let teams create discoverable, consistently structured repositories quickly, an approach the repository management skill area highlights for organizing and maintaining repositories."
@@ -19897,7 +19897,7 @@ const EXAMS = {
         "q": "Which repository insight graphs are available to help track project health, according to the GitHub introduction module (for example under GitHub Pro/Team)?",
         "options": [
           "Pulse, contributors, traffic, commits, code frequency, network, and forks",
-          "CPU usage, RAM usage, and disk I/O",
+          "CPU usage, RAM usage, disk I/O, build times, and runner network traffic",
           "Stock price and revenue",
           "Employee headcount"
         ],
@@ -19911,7 +19911,7 @@ const EXAMS = {
         "options": [
           "Scans common package manifests (like package.json or requirements.txt) to recursively track all of a project's dependencies",
           "Lists all GitHub Actions billing charges",
-          "Displays a chart of lines of code written per contributor",
+          "Displays a chart of lines of code written per contributor, recursively tracking every commit to files like package.json or requirements.txt",
           "Shows a timeline of merged pull requests only"
         ],
         "correct": 0,
@@ -19923,7 +19923,7 @@ const EXAMS = {
         "q": "What happens to settings when a repository contains multiple .gitignore files in different folders?",
         "options": [
           "Settings are inherited from parent directories, with a subfolder's .gitignore taking precedence over the parent's for that folder and its subfolders",
-          ".gitignore files can only exist in the repository root; nested ones are ignored",
+          ".gitignore files can only exist in the repository root; nested ones are ignored, so a subfolder can't change or take precedence over the settings of its parent folder",
           "Multiple .gitignore files cause Git to throw an error",
           "The most recently modified .gitignore file always wins across the whole repo"
         ],
@@ -19962,7 +19962,7 @@ const EXAMS = {
         "q": "A repository has README.md files in its root, in .github, and in docs. Which one does GitHub render as the repository's landing page, and why does this priority order matter for discoverability?",
         "options": [
           "The one in .github wins, because GitHub checks .github first, then root, then docs — useful to know when consolidating repository metadata into a hidden folder",
-          "The one in docs always wins because GitHub treats docs as the canonical documentation folder",
+          "The one in docs always wins because GitHub treats docs as the canonical documentation folder, then checks root, then .github — useful to know when moving metadata into a hidden folder",
           "GitHub picks randomly among the three each page load",
           "GitHub concatenates all three READMEs together"
         ],
@@ -19976,7 +19976,7 @@ const EXAMS = {
         "options": [
           "Disabling the Issues tab to reduce noise",
           "A large number of branches and a high commit count",
-          "Renaming the default branch to something unique per repository",
+          "Renaming the default branch to something unique per repository, along with a large number of branches and a high commit count",
           "A descriptive repository name, a concise description, a proper license, and a README.md landing page"
         ],
         "correct": 3,
@@ -20000,7 +20000,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What are GitHub Issues primarily used for?",
         "options": [
-          "Storing encrypted secrets for GitHub Actions",
+          "Storing encrypted secrets for GitHub Actions used by a project",
           "Tracking ideas, feedback, tasks, or bugs related to a project",
           "Hosting a project's static website",
           "Managing organization billing"
@@ -20015,7 +20015,7 @@ const EXAMS = {
         "options": [
           "A mechanism to signal that commits from one branch are ready to be reviewed and merged into another branch",
           "An automatic security scan report",
-          "A request to download a repository's release binary",
+          "A request to download a repository's release binary from one branch after it's been reviewed by the maintainers of that branch",
           "A request sent to GitHub Support for account help"
         ],
         "correct": 0,
@@ -20026,7 +20026,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What are GitHub Discussions best suited for, compared to Issues?",
         "options": [
-          "Tracking bugs that must be fixed before the next release",
+          "Tracking bugs that must be fixed before the next release, such as code defects found during a review",
           "Managing branch protection rules",
           "Conversations not necessarily tied to code, such as Q&A, ideas, or general feedback",
           "Recording GitHub Actions billing usage"
@@ -20042,7 +20042,7 @@ const EXAMS = {
           "Publicize and host a static website directly from a repository on GitHub.com",
           "Track project billing across an organization",
           "Automatically merge pull requests",
-          "Encrypt secrets used by GitHub Actions"
+          "Encrypt secrets used by GitHub Actions directly from a repository on GitHub.com"
         ],
         "correct": 0,
         "explain": "GitHub Pages is a static site-hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub.com and can publish them as a website."
@@ -20053,7 +20053,7 @@ const EXAMS = {
         "q": "What is a Gist on GitHub?",
         "options": [
           "A type of GitHub Enterprise license",
-          "A full backup of an entire organization's repositories",
+          "A full backup of an entire organization's repositories, stored as one mini Git repository that can be shared in a lightweight way",
           "A lightweight way to share code snippets or small pieces of information, essentially a mini Git repository",
           "A required file for enabling GitHub Actions"
         ],
@@ -20067,7 +20067,7 @@ const EXAMS = {
         "options": [
           "Secret Gists are automatically deleted after 30 days",
           "Yes, secret Gists can only be viewed by the Gist's author",
-          "Yes, secret Gists are fully private and require authentication",
+          "Yes, secret Gists are fully private and require authentication, so nobody can open one without being signed in as the author",
           "No — anyone with the URL can access a secret Gist even though it isn't searchable or publicly listed"
         ],
         "correct": 3,
@@ -20143,7 +20143,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What does a branch protection rule requiring status checks typically enforce before a pull request can be merged?",
         "options": [
-          "That the pull request has at least 100 comments",
+          "That the pull request has at least 100 comments from reviewers who've passed a training check",
           "That the pull request author has 2FA disabled",
           "That the repository is public",
           "That checks such as CI builds, linters, or automated tests pass successfully"
@@ -20156,7 +20156,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is the difference between GitHub's global search and a repository's context search (for example on the Issues tab)?",
         "options": [
-          "Context search covers all repositories on GitHub while global search covers only one",
+          "Context search covers all repositories on GitHub (code, issues, users, Marketplace), while global search covers only the current repository and exposes type-specific filters",
           "Context search cannot use any filter syntax",
           "Global search only works for organization owners",
           "Global search spans all of GitHub (code, issues, users, Marketplace); context search is scoped to the current repository and type, exposing type-specific filters"
@@ -20171,7 +20171,7 @@ const EXAMS = {
         "options": [
           "Closed issues with no label at all",
           "Open issues labeled 'bug' that do not yet have a linked pull request",
-          "Every issue mentioning the word 'bug' in comments only",
+          "Every issue mentioning the word 'bug' in comments only, whether or not it's open or linked",
           "All pull requests regardless of status"
         ],
         "correct": 1,
@@ -20198,7 +20198,7 @@ const EXAMS = {
           "There is no functional difference between the two",
           "Saved replies can only be used by repository admins to close issues",
           "An issue template prompts contributors to supply structured information up front when opening an issue, while a saved reply is a prewritten message you insert into a comment",
-          "Issue templates are configured per user account, while saved replies are configured per repository"
+          "Issue templates are configured per user account and inserted into a comment on request, while saved replies are configured per repository and shown to contributors when they open a new issue"
         ],
         "correct": 2,
         "explain": "Issue templates prompt users to fill in specific fields when creating an issue so maintainers get complete information from the start, whereas saved replies are prewritten messages a user inserts to quickly respond to existing issues or pull requests."
@@ -20211,7 +20211,7 @@ const EXAMS = {
           "The reviewer is automatically re-notified but the approval still counts",
           "The new commit is silently rejected by GitHub",
           "The prior approval is dismissed and the pull request needs to be reviewed and approved again before it can merge",
-          "The pull request merges automatically because it was already approved once"
+          "The pull request merges automatically because it was already approved once, and the prior approval is carried over to the new commits that were pushed"
         ],
         "correct": 2,
         "explain": "The 'Dismiss stale pull request approvals when new commits are pushed' branch protection option means that pushing a new commit after approval invalidates the prior approval, requiring a fresh review before merge."
@@ -20286,7 +20286,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What triggers a GitHub Actions workflow to run?",
         "options": [
-          "Only a direct API call from Microsoft Support",
+          "Only a direct API call from Microsoft Support, made on request after a push or a pull request",
           "A change to the repository's star count",
           "Deleting the .gitignore file",
           "An event, such as a push, pull request, issue creation, a schedule, or a manual trigger"
@@ -20301,7 +20301,7 @@ const EXAMS = {
         "options": [
           "Only if the repository has fewer than 10 contributors",
           "Only during a 30-day trial period",
-          "No, all repositories are billed per minute regardless of visibility",
+          "No, all repositories are billed per minute regardless of visibility, with the same rates for all GitHub-hosted runners",
           "Yes, GitHub Actions usage is free for public repositories with unlimited minutes on GitHub-hosted runners"
         ],
         "correct": 3,
@@ -20328,7 +20328,7 @@ const EXAMS = {
           "A local-only IDE extension",
           "A static site generator",
           "A fully configured development environment hosted in the cloud",
-          "A billing tool for tracking Actions minutes"
+          "A billing tool for tracking Actions minutes used by each development environment"
         ],
         "correct": 2,
         "explain": "GitHub Codespaces is a fully configured development environment hosted in the cloud, giving you a personal virtual machine with compute and terminal access from any device."
@@ -20365,7 +20365,7 @@ const EXAMS = {
         "q": "In a GitHub Actions workflow, what is the relationship between a job and a step?",
         "options": [
           "A job can only ever contain exactly one step",
-          "Jobs and steps are interchangeable terms for the same concept",
+          "Jobs and steps are interchangeable terms for the same concept, and each one can be either a shell script or an action run on any runner",
           "A job is a collection of steps that run on the same runner; each step is a shell script or an action that gets executed",
           "A step contains multiple jobs that always run in parallel"
         ],
@@ -20405,7 +20405,7 @@ const EXAMS = {
         "options": [
           "Code scanning requires GitHub Advanced Security even on public repositories",
           "Code scanning is available for all public repositories for free; private repositories need GitHub Advanced Security enabled by the organization",
-          "Code scanning is free for all repositories, public and private, on every plan",
+          "Code scanning is free for all repositories, public and private, on every plan, with GitHub Advanced Security only needed for organizations on GitHub Enterprise Server",
           "Code scanning is only available on GitHub Enterprise Server"
         ],
         "correct": 1,
@@ -20418,7 +20418,7 @@ const EXAMS = {
         "options": [
           "Enterprise adds personalized code suggestions based on an organization's private/internal codebase and deeper GitHub Enterprise Cloud integration, on top of everything in Business",
           "Business has no security or policy controls at all",
-          "Business includes personalized suggestions from private code while Enterprise does not",
+          "Business includes personalized suggestions from an organization's private/internal codebase while Enterprise does not, since Enterprise only adds deeper GitHub Enterprise Cloud integration on top of what individual developers get",
           "Enterprise is only available to individual developers, not organizations"
         ],
         "correct": 0,
@@ -20432,7 +20432,7 @@ const EXAMS = {
           "github.dev requires a paid plan while Codespaces is always free",
           "github.dev can only open private repositories",
           "github.dev has no associated compute, so you can't build/run code or use a terminal, while Codespaces provides a dedicated VM with full compute and terminal access",
-          "Codespaces has no extension support while github.dev supports all VS Code extensions"
+          "Codespaces has no extension support while github.dev supports all VS Code extensions, and github.dev provides a dedicated VM with full compute and terminal access for building and running code"
         ],
         "correct": 2,
         "explain": "github.dev opens instantly and lets you navigate, edit, and commit code, but has no associated compute resources, so you can't build/run code or use an integrated terminal; GitHub Codespaces provides a dedicated VM to run and debug applications with full terminal access."
@@ -20443,7 +20443,7 @@ const EXAMS = {
         "q": "What happens to files outside the /workspaces directory when you fully rebuild a GitHub Codespace?",
         "options": [
           "They are preserved indefinitely regardless of rebuild",
-          "The entire Codespace, including /workspaces, is permanently deleted",
+          "The entire Codespace, including /workspaces, is permanently deleted, along with your repository clone and any changes",
           "Rebuilding only affects billing, not any files",
           "They are cleared, while changes inside /workspaces (including your repository clone) are preserved"
         ],
@@ -20510,7 +20510,7 @@ const EXAMS = {
           "Only when a release tag is created",
           "Only on a fixed daily schedule, never on push or pull request",
           "Pushes to protected branches and pull requests raised against the default branch",
-          "Only when a repository administrator manually clicks 'Scan now'"
+          "Only when a repository administrator manually clicks 'Scan now' on the default branch or a pull request"
         ],
         "correct": 2,
         "explain": "In the default CodeQL analysis workflow, code scanning is configured to analyze code each time you push a change to any protected branch or raise a pull request against the default branch."
@@ -20560,7 +20560,7 @@ const EXAMS = {
         "q": "What does a built-in GitHub Projects workflow do when configured for \"Item added to project\"?",
         "options": [
           "It can automatically set the new item's status, such as Status: Todo",
-          "It automatically merges any linked pull request",
+          "It automatically merges any linked pull request and sets its status to Done",
           "It sends the item to GitHub Support",
           "It automatically deletes the item after 30 days"
         ],
@@ -20587,7 +20587,7 @@ const EXAMS = {
         "options": [
           "Neither version supports any automation",
           "Projects supports the GraphQL ProjectsV2 API, GitHub Actions, and webhook events, while Projects (Classic) only offered column presets",
-          "Projects (Classic) supports GraphQL automation while Projects does not",
+          "Projects (Classic) supports the GraphQL ProjectsV2 API and GitHub Actions automation while Projects does not, since Projects only offers column presets for added issues",
           "Projects (Classic) requires GitHub Enterprise while Projects does not"
         ],
         "correct": 1,
@@ -20650,7 +20650,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A GitHub Projects current chart is built showing the number of items assigned to each individual, filtered to only the 'documentation' label. What kind of chart is this, and what distinguishes it from a historical chart?",
         "options": [
-          "There is no distinction between current and historical charts in GitHub Projects",
+          "There is no distinction between current and historical charts in GitHub Projects, since every chart visualizes present-state items and shows time-based trends like a burn-up over the same date range by default",
           "It's a current chart, which visualizes present-state Project items (optionally filtered); a historical chart instead shows time-based trends like a burn-up over a date range",
           "Current charts cannot use filters, unlike historical charts",
           "It's a historical chart because it uses a filter"
@@ -20665,7 +20665,7 @@ const EXAMS = {
         "options": [
           "Enable the built-in 'Item added to project' workflow and set its value to Status: Todo",
           "This can only be done manually by dragging each issue",
-          "Use the GraphQL ProjectsV2 API with a personal access token",
+          "Use the GraphQL ProjectsV2 API with a personal access token, since built-in workflows can't set a status",
           "Write a custom GitHub Actions workflow from scratch"
         ],
         "correct": 0,
@@ -20731,7 +20731,7 @@ const EXAMS = {
           "Required reviewers for pull requests that change specific files or paths",
           "Repository visibility settings",
           "Two-factor authentication requirements",
-          "GitHub Actions billing limits"
+          "GitHub Actions billing limits for pull requests that change specific files"
         ],
         "correct": 0,
         "explain": "A CODEOWNERS file lets you assign individuals or teams as code owners for specific paths; they're then required as reviewers for pull requests touching those paths."
@@ -20743,7 +20743,7 @@ const EXAMS = {
         "options": [
           "It only scans private repositories, never public ones",
           "It automatically encrypts the entire repository",
-          "It disables all pull requests until secrets are removed",
+          "It disables all pull requests until secrets are removed, with an alert sent to whoever committed tokens or credentials to the repo",
           "It detects tokens, credentials, and secrets committed to the repo, with push protection enabled by default"
         ],
         "correct": 3,
@@ -20757,7 +20757,7 @@ const EXAMS = {
           "It notifies only GitHub Support, not the repository owner",
           "It deletes the vulnerable file from the repository",
           "It can automatically open a pull request to update the dependency to a safe version",
-          "It disables the repository until the issue is fixed"
+          "It disables the repository until the issue is fixed by a contributor updating the dependency"
         ],
         "correct": 2,
         "explain": "Dependabot scans for dependency alerts and can automatically create pull requests so a contributor can validate the update and merge it, automating the remediation of vulnerable dependencies."
@@ -20780,7 +20780,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What is the purpose of Enterprise Managed Users (EMU)?",
         "options": [
-          "To disable two-factor authentication requirements enterprise-wide",
+          "To disable two-factor authentication requirements enterprise-wide, letting developers sign in with accounts from their own personal providers",
           "To replace the need for any repository permission levels",
           "To let an organization provision and centrally control developer identities through its own identity provider",
           "To automatically grant every user admin rights"
@@ -20861,7 +20861,7 @@ const EXAMS = {
           "Give every member billing manager rights by default",
           "Grant every member admin access by default to maximize collaboration speed",
           "Use a default read permission model and grant write access selectively, following the principle of least privilege",
-          "Disable all default permissions and require manual approval for every action"
+          "Disable all default permissions and require manual approval for every action, granting read access selectively as members request it"
         ],
         "correct": 2,
         "explain": "The recommendation is to use a default read permission model and grant write access selectively, adhering to the principle of least privilege to balance security and collaboration."
@@ -20886,7 +20886,7 @@ const EXAMS = {
         "options": [
           "Neither; SAML SSO cannot be scoped at all",
           "Team-level SSO, which doesn't exist as an enforcement scope",
-          "Enterprise-level SSO, since it removes users immediately across all organizations",
+          "Enterprise-level SSO, since it removes users immediately across all organizations, which is the lowest-risk way of rolling out SAML SSO to active enterprise members",
           "Organization-level SSO, since it's lower setup complexity and immediately removes only noncompliant org members rather than deferring removal enterprise-wide"
         ],
         "correct": 3,
@@ -20900,7 +20900,7 @@ const EXAMS = {
           "Read — the more restrictive permission always wins",
           "None — conflicting permissions cancel each other out",
           "Write — GitHub applies the highest level of access granted to the user from any combined source",
-          "The repository owner must manually resolve the conflict before either applies"
+          "The repository owner must manually resolve the conflict before either applies, and the user has no access to it until they do so"
         ],
         "correct": 2,
         "explain": "When permission sources are combined — team membership, direct collaborator status, and organization defaults — GitHub applies the highest level of access granted to the user, so Write access as a direct collaborator would take precedence over inherited Read access."
@@ -20923,7 +20923,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "Without SCIM integration, what specific gap exists in an organization's SAML SSO-based access management?",
         "options": [
-          "SAML SSO only works for Enterprise Managed Users, never regular members",
+          "SAML SSO only works for Enterprise Managed Users, never regular members, so accounts outside of the identity provider's directory can't be signed in at all",
           "SAML SSO cannot authenticate any users at all without SCIM",
           "SAML SSO requires a paid GitHub Copilot license to function",
           "SAML SSO alone doesn't support automatic deprovisioning of organization members when they leave the identity provider's directory"
@@ -20950,7 +20950,7 @@ const EXAMS = {
         "q": "What is GitHub Sponsors?",
         "options": [
           "A way to financially support the people who build and maintain open-source projects",
-          "A marketplace for buying private repositories",
+          "A marketplace for buying private repositories from the people who build and maintain them",
           "A feature for renaming organizations",
           "A tool for scheduling GitHub Actions runs"
         ],
@@ -20963,7 +20963,7 @@ const EXAMS = {
         "q": "What is InnerSource?",
         "options": [
           "A synonym for GitHub Sponsors",
-          "A GitHub feature that makes all private repositories public automatically",
+          "A GitHub feature that makes all private repositories public automatically, inside and outside a single company",
           "The practice of applying open-source patterns to projects with a limited audience, such as inside a single company",
           "A required file in every repository"
         ],
@@ -20975,7 +20975,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What must you do first to contribute a code change to someone else's public repository that you don't have write access to?",
         "options": [
-          "Request that the repository be transferred to your account",
+          "Request that the repository be transferred to your account so that you have write access",
           "Ask GitHub Support to grant you admin rights",
           "Delete the original repository",
           "Fork the repository to create your own copy where you can make changes"
@@ -20991,7 +20991,7 @@ const EXAMS = {
           "A billing dashboard for Codespaces usage",
           "A directory of GitHub employees",
           "A place to discover and use GitHub Apps and Actions that extend GitHub's functionality",
-          "A store for purchasing physical GitHub merchandise only"
+          "A store for purchasing physical GitHub merchandise only, with no way to add GitHub Apps or Actions"
         ],
         "correct": 2,
         "explain": "The GitHub Marketplace is where users can discover and add GitHub Apps and Actions that extend and integrate with the GitHub platform."
@@ -21041,7 +21041,7 @@ const EXAMS = {
         "q": "How does GitHub recommend measuring the success of an InnerSource program, according to the guidance on metrics?",
         "options": [
           "Success cannot be meaningfully measured for InnerSource programs",
-          "Only measure total lines of code written by each individual employee",
+          "Only measure total lines of code written by each individual employee, and judge each one against absolute numbers rather than targets or team-level process",
           "Only track how many repositories exist in the organization",
           "Measure process (like code review turnaround time) and teams rather than individuals, and measure against targets rather than absolutes"
         ],
@@ -21055,7 +21055,7 @@ const EXAMS = {
         "options": [
           "Select Details on the failing check to learn more, and use comments to ask maintainers for guidance if the fix isn't clear",
           "Email the maintainer privately to demand an urgent fix",
-          "Immediately close the pull request and abandon the contribution",
+          "Immediately close the pull request and abandon the contribution, then open a new one and ask the maintainers to bypass the failing check for you",
           "Force-push over the maintainers' branch to bypass the check"
         ],
         "correct": 0,
@@ -21069,7 +21069,7 @@ const EXAMS = {
           "Internal, which is visible only to members of the enterprise that owns the repository and requires GitHub Enterprise",
           "There is no distinct visibility level for InnerSource; only public or private exist",
           "Public, since InnerSource is a form of open source",
-          "Private, since it hides the repository from absolutely everyone including coworkers"
+          "Private, since it hides the repository from absolutely everyone including coworkers, and it's the only level available to GitHub Enterprise customers"
         ],
         "correct": 0,
         "explain": "Internal repository visibility is only available to GitHub Enterprise customers and is specifically recommended for InnerSource projects, since it's visible only to members of the enterprise that owns the repository, unlike fully public or narrowly private repositories."
