@@ -103904,7 +103904,7 @@ const EXAMS = {
         "options": [
           "Assign every developer the Admin workspace role",
           "Turn off Git integration for the workspace",
-          "Create a single deployment pipeline stage shared by all developers",
+          "Create a single deployment pipeline stage shared by all developers, and keep working in the same live workspace",
           "Branch out to a new, isolated workspace connected to a dedicated Git branch for feature work"
         ],
         "correct": 3,
@@ -104099,7 +104099,7 @@ const EXAMS = {
           "Column-level security",
           "Row-level security using a filter predicate and a security policy",
           "Dynamic data masking",
-          "A Viewer workspace role for each user"
+          "A Viewer workspace role for each salesperson querying the Sales table"
         ],
         "correct": 1,
         "explain": "Row-level security binds a filter predicate (an inline table-valued function) to the table via a security policy, so the SQL engine transparently filters rows per user."
@@ -104109,7 +104109,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A workspace Admin finds that a row-level security predicate is filtering rows out of their own query results. What is the most likely cause?",
         "options": [
-          "RLS automatically exempts Admins, so this can't happen",
+          "RLS automatically exempts Admins, so this can't happen and the rows must be missing from the table itself",
           "The filter predicate function doesn't include an explicit condition granting admin-level visibility",
           "The security policy's STATE is set to OFF",
           "RLS can't be applied to tables that Admins query"
@@ -104191,7 +104191,7 @@ const EXAMS = {
           "Grant every Finance user the Fabric admin role",
           "Delegate the Certification tenant setting to the Finance domain admin",
           "Disable certification tenant-wide",
-          "Create a brand-new tenant setting just for Finance"
+          "Create a brand-new tenant setting just for Finance semantic model certifiers"
         ],
         "correct": 1,
         "explain": "Certain tenant settings, including Certification, can be delegated so domain admins can override them for their own domain — letting departments manage their own specifics."
@@ -104202,7 +104202,7 @@ const EXAMS = {
         "q": "Which statement about Fabric tenant settings is accurate?",
         "options": [
           "They restrict row-level data access automatically",
-          "They can only ever be enabled or disabled for the whole tenant, with no in-between",
+          "They can only ever be enabled or disabled for the whole tenant, with no in-between for security groups or delegated domain admins",
           "They control feature availability in the UI but are governance policies, not a substitute for real data security",
           "Changes always apply instantly across the tenant"
         ],
@@ -104424,7 +104424,7 @@ const EXAMS = {
           "Connect only the Development workspace to Git, and use deployment pipelines to promote to Test and Production",
           "Replace deployment pipelines with item permissions",
           "Disable Git integration entirely and rely only on manual copies",
-          "Connect all three stage workspaces to the same Git branch"
+          "Connect all three stage workspaces to the same Git branch, and let each stage sync from it instead of using deployment pipelines"
         ],
         "correct": 0,
         "explain": "One common pattern connects only the Development workspace to Git for version control, while deployment pipelines handle promotion to Test and Production, avoiding sync conflicts across multiple connected stages."
@@ -104475,7 +104475,7 @@ const EXAMS = {
         "options": [
           "Remove them from the lakehouse's built-in DefaultReader role",
           "Assign them the Admin workspace role",
-          "Enable dynamic data masking on the two tables",
+          "Enable dynamic data masking on the two tables in the lakehouse",
           "Grant them the UNMASK permission"
         ],
         "correct": 0,
@@ -104518,7 +104518,7 @@ const EXAMS = {
         "options": [
           "A deployment pipeline stage",
           "A KQL query editor",
-          "A Spark cluster manager",
+          "A Spark cluster manager for notebooks and Spark jobs",
           "A cloud-based ETL tool using Power Query Online"
         ],
         "correct": 3,
@@ -104571,7 +104571,7 @@ const EXAMS = {
           "A Delete data activity",
           "A Get metadata activity",
           "A Data Flow activity that runs a Dataflow Gen2",
-          "A Copy Data activity alone"
+          "A Copy Data activity alone for each of the data sources"
         ],
         "correct": 2,
         "explain": "A Data Flow activity incorporates a Dataflow Gen2 (with its Power Query transformation steps) into pipeline orchestration, unlike Copy Data which doesn't transform data."
@@ -104832,7 +104832,7 @@ const EXAMS = {
         "q": "In a dimensional model load, why are dimension tables typically loaded before fact tables?",
         "options": [
           "Loading order has no effect on correctness",
-          "Dimension tables are always smaller and faster to load",
+          "Dimension tables are always smaller and faster to load, so loading them first simply shortens the overall run time",
           "Fact tables don't require any dimension data",
           "Fact tables reference dimension records through surrogate keys, so dimensions must exist first"
         ],
@@ -104887,7 +104887,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What is the primary purpose of an Eventstream in Microsoft Fabric?",
         "options": [
-          "To store historical Delta tables",
+          "To store historical Delta tables for later batch reporting",
           "To run scheduled T-SQL scripts",
           "To manage workspace permissions",
           "To ingest, transform, and route real-time streaming data"
@@ -104940,7 +104940,7 @@ const EXAMS = {
         "q": "When using the Union transformation in Eventstream to combine two event streams, what happens to fields that don't match (same name and data type) between them?",
         "options": [
           "They're dropped and not included in the output",
-          "They're routed to a separate error stream",
+          "They're routed to a separate error stream for review",
           "They're automatically converted to match",
           "The eventstream fails to run"
         ],
@@ -105175,7 +105175,7 @@ const EXAMS = {
         "options": [
           "Whether the item has a sensitivity label applied",
           "Whether the cancellation was intentional, or caused by a timeout or capacity limit",
-          "Whether V-Order is enabled on the destination table",
+          "Whether V-Order is enabled on the destination table that the pipeline activity writes to",
           "Whether Git integration is connected"
         ],
         "correct": 1,
@@ -105279,7 +105279,7 @@ const EXAMS = {
         "options": [
           "The rerun fails again — Activator works best for coordination and cleanup actions, not as a substitute for fixing the root cause",
           "The rerun escalates automatically to the Fabric admin",
-          "The rerun succeeds because Activator automatically fixes schema issues",
+          "The rerun succeeds because Activator automatically fixes schema issues, so it can safely be relied on in place of fixing the root cause",
           "The rerun automatically pauses the capacity"
         ],
         "correct": 0,
@@ -105310,7 +105310,7 @@ const EXAMS = {
         "options": [
           "Activator only works with Eventstreams",
           "Activator replaces the need for any other monitoring",
-          "Activator doesn't consume any capacity units, unlike Schedule failures",
+          "Activator doesn't consume any capacity units when it responds to job events, unlike Schedule failures",
           "Activator can automatically run a Fabric activity as a response, not just send a notification"
         ],
         "correct": 3,
@@ -105360,7 +105360,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What happens when CU consumption exceeds a Fabric capacity's limit?",
         "options": [
-          "All workspaces on the capacity are immediately deleted",
+          "All workspaces on the capacity are immediately deleted by Fabric",
           "Fabric automatically upgrades the SKU for you",
           "Nothing; consumption is unlimited by default",
           "Fabric throttles background jobs to protect the platform"
@@ -105414,7 +105414,7 @@ const EXAMS = {
         "options": [
           "Applies row-level security",
           "Consolidates many small Parquet files into fewer, larger files",
-          "Removes old, unreferenced Parquet files",
+          "Removes old, unreferenced Parquet files past the retention period",
           "Deletes the transaction log"
         ],
         "correct": 1,
@@ -105427,7 +105427,7 @@ const EXAMS = {
         "options": [
           "It only removes V-Order metadata",
           "It removes old Parquet data files but leaves the transaction logs intact",
-          "It removes the transaction logs but leaves Parquet files intact",
+          "It removes the transaction logs but leaves the old Parquet data files intact",
           "It removes both Parquet files and transaction logs"
         ],
         "correct": 1,
@@ -105453,7 +105453,7 @@ const EXAMS = {
         "options": [
           "It succeeds only when run from Spark, not SQL",
           "It fails, because the underlying data files for that point in time were already removed by VACUUM",
-          "It succeeds because transaction logs alone are enough for time travel",
+          "It succeeds because transaction logs alone are enough for time travel, even after VACUUM removes the data files",
           "Retention is automatically extended to allow it"
         ],
         "correct": 1,
@@ -105561,7 +105561,7 @@ const EXAMS = {
         "q": "Which KQL practice reduces the amount of data scanned earliest in a query for the best performance?",
         "options": [
           "Running joins before applying any filters",
-          "Applying summarize before any where clause",
+          "Applying summarize before any where clause, so that later operators see fewer rows",
           "Filtering with where as early as possible, especially with time-based filters",
           "Always selecting all columns first"
         ],
@@ -105586,7 +105586,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which KQL practice specifically reduces resource usage when working with wide tables that have many columns?",
         "options": [
-          "Always using limit instead of project",
+          "Always using limit instead of project on wide tables with many columns",
           "Using project to select only needed columns early in the query",
           "Using summarize before project",
           "Avoiding where clauses"
@@ -105665,7 +105665,7 @@ const EXAMS = {
         "q": "A dataflow that normally completes in 4 minutes suddenly takes 20 minutes but still ultimately succeeds. What monitoring best practice does this scenario highlight?",
         "options": [
           "Establish a monitoring baseline so deviations — even in successful runs — can be investigated promptly",
-          "Ignore it, since successful runs never need investigation",
+          "Ignore it, since successful runs never need investigation, however much their duration differs from normal",
           "Only monitor failed runs, never successful ones",
           "Disable monitoring for activities that eventually succeed"
         ],
