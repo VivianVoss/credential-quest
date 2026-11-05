@@ -11270,7 +11270,7 @@ const EXAMS = {
         "q": "A user reports being blocked from signing in due to a phishing-resistant MFA policy that requires FIDO2 keys or Microsoft Authenticator with number matching. What should an administrator check first, according to the recommended troubleshooting steps?",
         "options": [
           "The sign-in logs to confirm the failed attempts and which policy triggered the block",
-          "Immediately disable the Conditional Access policy tenant-wide",
+          "Immediately disable the Conditional Access policy tenant-wide so the user can sign in again",
           "The organization's domain verification records",
           "The user's SharePoint site permissions"
         ],
@@ -11348,7 +11348,7 @@ const EXAMS = {
         "q": "Which limitation applies to group-based licensing in the Microsoft 365 admin center, according to the training?",
         "options": [
           "It supports a maximum of 20 groups per license assignment and does not support nested groups",
-          "It requires PowerShell and cannot be configured in the admin center UI",
+          "It requires PowerShell and cannot be configured in the admin center UI, so every assignment must be scripted",
           "It can only be used for security groups, never Microsoft 365 groups",
           "It automatically removes licenses from users who leave the organization"
         ],
@@ -11389,7 +11389,7 @@ const EXAMS = {
           "Yes, but only if it exceeds 50 GB",
           "No, shared mailboxes don't require a separate license unless users access them with mobile devices",
           "Yes, every shared mailbox always requires a full license",
-          "No, shared mailboxes never require a license under any circumstance"
+          "No, shared mailboxes never require a license under any circumstance, including when users open them on mobile devices"
         ],
         "correct": 1,
         "explain": "Shared mailboxes, used for scenarios like support@contoso.com, don't require a separate license unless a user accesses them from a mobile device, which does require a license."
@@ -11399,7 +11399,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "When an Exchange Online license is assigned to a new user, what happens automatically?",
         "options": [
-          "The user is automatically added to Privileged Identity Management",
+          "The user is automatically added to Privileged Identity Management with a default role",
           "A SharePoint site is created for the user",
           "A Copilot Studio environment is created for the user",
           "A mailbox is automatically provisioned for the user with a default quota"
@@ -11444,7 +11444,7 @@ const EXAMS = {
         "options": [
           "To automatically assign SharePoint site ownership based on department",
           "To restrict system access to authorized users based on their organizational role, following least privilege",
-          "To grant every administrator full Global Administrator access for consistency",
+          "To grant every administrator full Global Administrator access for consistency across all Microsoft 365 workloads",
           "To eliminate the need for Conditional Access policies"
         ],
         "correct": 1,
@@ -11644,7 +11644,7 @@ const EXAMS = {
           "Purview cannot detect or flag violations caused by AI tools like Copilot",
           "Purview automatically deletes any Copilot-generated content",
           "Purview can flag this as a policy violation, including violations initiated by AI tools",
-          "Purview only monitors human-authored content, not AI-generated content"
+          "Purview only monitors human-authored content, not AI-generated content such as Copilot summaries"
         ],
         "correct": 2,
         "explain": "The training explains that Purview can flag policy violations including those initiated by AI tools such as Copilot, since AI-enhanced productivity tools must still operate within established data governance boundaries."
@@ -11655,7 +11655,7 @@ const EXAMS = {
         "q": "What can an administrator configure in Microsoft Purview to restrict Copilot from processing or displaying documents labeled 'Highly Confidential'?",
         "options": [
           "A Data Loss Prevention (DLP) policy",
-          "A SharePoint site template",
+          "A SharePoint site template for confidential documents",
           "A Teams meeting policy",
           "A Conditional Access policy"
         ],
@@ -11667,7 +11667,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "A user who typically opens a handful of confidential files per week suddenly opens dozens in a single day from an unfamiliar device outside working hours. What does Microsoft Purview do with this kind of behavior?",
         "options": [
-          "Only logs it if the files are stored in Exchange Online",
+          "Only logs it if the confidential files are stored in Exchange Online",
           "Flags it for review as a deviation from expected baseline behavior",
           "Ignores it unless the user explicitly reports it",
           "Automatically deletes the user's account"
@@ -11733,7 +11733,7 @@ const EXAMS = {
         "q": "Using Microsoft Purview Data Explorer, an admin discovers that several documents containing credit card numbers in SharePoint are also accessible to external users. What capability of Data Explorer made this discovery possible?",
         "options": [
           "It scans for sensitive info types and can flag documents that are also accessible to external users",
-          "It requires the documents to first be manually labeled by the document owner",
+          "It requires the documents to first be manually labeled by the document owner before they can be scanned at all",
           "It only scans email, not SharePoint content",
           "It automatically deletes any document containing a credit card number"
         ],
@@ -11762,7 +11762,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which tools does the training identify as ways for administrators to identify and troubleshoot oversharing in SharePoint at scale?",
         "options": [
-          "Only manual inspection of each individual file by an administrator",
+          "Only manual inspection of each individual file by an administrator, site by site",
           "The Exchange admin center's mail flow rules",
           "The Copilot Scheduler",
           "Sharing reports, plus PowerShell and Microsoft Graph API for automated audits"
@@ -11777,7 +11777,7 @@ const EXAMS = {
         "options": [
           "A replacement for Microsoft Purview Compliance Manager",
           "A paid add-on providing advanced governance features such as restricted site access and inactivity alerts",
-          "A free built-in feature available to every SharePoint tenant by default",
+          "A free built-in feature available to every SharePoint tenant by default, with no add-on or extra licensing needed",
           "A tool exclusively for managing Exchange mailboxes"
         ],
         "correct": 1,
@@ -11816,7 +11816,7 @@ const EXAMS = {
         "options": [
           "Yes, but only for PowerPoint files",
           "No, but only if the tenant has disabled Copilot entirely",
-          "Yes, Copilot can always bypass folder-level permissions for summarization",
+          "Yes, Copilot can always bypass folder-level permissions for summarization, even when the user can't open the document",
           "No, Copilot can't access, summarize, or reference content the signed-in user doesn't already have permission to see"
         ],
         "correct": 3,
@@ -11856,7 +11856,7 @@ const EXAMS = {
           "Yes, but only for users without a Copilot license",
           "No, but only if the tenant disables Microsoft Graph",
           "No, Copilot operates within Microsoft Purview compliance boundaries and does not transmit data outside the tenant",
-          "Yes, all Copilot prompts are sent to third-party AI vendors by default"
+          "Yes, all Copilot prompts are sent to third-party AI vendors by default unless an administrator turns this off in the tenant"
         ],
         "correct": 2,
         "explain": "Copilot operates entirely within Microsoft Purview compliance boundaries, meaning it doesn't transmit data outside the organization's tenant or to non-Microsoft services."
@@ -11868,7 +11868,7 @@ const EXAMS = {
         "options": [
           "A partial summary with financial figures redacted",
           "An error stating that Copilot is disabled tenant-wide",
-          "A full summary of the finance report, since Copilot has organization-wide access",
+          "A full summary of the finance report, since Copilot has organization-wide access to SharePoint",
           "That no such file can be found, because the user doesn't have permission to access it"
         ],
         "correct": 3,
@@ -11911,7 +11911,7 @@ const EXAMS = {
         "options": [
           "An admin correctly assigning a Copilot license to a new user",
           "A user forgetting their password and being locked out",
-          "A scheduled backup of SharePoint content to Azure",
+          "A scheduled backup of SharePoint content to Azure, run by administrators for routine data protection",
           "The unauthorized movement of sensitive data from within the organization to an external location"
         ],
         "correct": 3,
@@ -11925,7 +11925,7 @@ const EXAMS = {
           "That the mobile app's source code is uploaded to SharePoint",
           "That transcription is disabled tenant-wide",
           "That Microsoft Search is configured so only content the user has permission to see is included in results",
-          "That every user in the tenant is granted Global Administrator access"
+          "That every user in the tenant is granted Global Administrator access so Copilot Chat can search across all three apps"
         ],
         "correct": 2,
         "explain": "For cross-app search in Copilot Chat, admins must ensure Microsoft Search is properly configured so only content the requesting user has permission to see is included, and that any connected data sources use properly configured Graph connectors."
@@ -11988,7 +11988,7 @@ const EXAMS = {
         "q": "By setting organization-wide sharing limits in the SharePoint Admin Center, what can an administrator do to reduce oversharing risk?",
         "options": [
           "Disable anonymous links and enforce stricter sharing policies",
-          "Convert all document libraries into read-only archives",
+          "Convert all document libraries across the tenant into read-only archives",
           "Automatically delete all externally shared files",
           "Remove all SharePoint sites older than one year"
         ],
@@ -12057,7 +12057,7 @@ const EXAMS = {
         "q": "Besides reducing risk, what business benefit does Data Lifecycle Management provide by ensuring information is kept only as long as necessary?",
         "options": [
           "It saves storage costs and supports compliance and eDiscovery needs",
-          "It increases the number of required Copilot licenses",
+          "It increases the number of required Copilot licenses across the organization",
           "It automatically upgrades all users to E5 licenses",
           "It disables Conditional Access policies"
         ],
@@ -12100,7 +12100,7 @@ const EXAMS = {
         "q": "In Microsoft Purview Data Explorer, which of the following can an admin use to narrow down search results to just the sensitive files they're concerned about?",
         "options": [
           "Only the file owner's job title",
-          "Filters are not available in Data Explorer",
+          "Filters are not available in Data Explorer, so admins must open each file",
           "Filters based on location, sensitivity label, and content type",
           "Only the file's creation date"
         ],
@@ -12112,7 +12112,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "An admin uses Microsoft Purview Data Explorer and discovers that health data is primarily concentrated in a specific Teams channel. What should this discovery prompt the admin to do?",
         "options": [
-          "Ignore it, since Data Explorer only reports on SharePoint",
+          "Ignore it, since Data Explorer only reports on SharePoint sites",
           "Disable Microsoft Teams tenant-wide",
           "Delete the Teams channel immediately",
           "Review access controls and sharing policies for that channel"
@@ -12141,7 +12141,7 @@ const EXAMS = {
           "The Copilot Scheduler",
           "Detailed audit trails and case management tools",
           "Microsoft Entra Verified ID",
-          "SharePoint sharing reports only"
+          "SharePoint sharing reports only, reviewed by site owners"
         ],
         "correct": 1,
         "explain": "Insider Risk Management's detailed audit trails and case management tools enable both proactive risk mitigation and post-incident analysis, helping organizations protect valuable data assets over time."
@@ -12181,7 +12181,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "Which three components does the training describe as working together to power Microsoft 365 Copilot's architecture?",
         "options": [
-          "Microsoft Sentinel, Defender for Endpoint, and Defender for Identity",
+          "Microsoft Sentinel, Microsoft Defender for Endpoint, and Microsoft Defender for Identity",
           "SharePoint, OneDrive, and Exchange Online only",
           "Compliance Manager, Data Explorer, and eDiscovery",
           "Microsoft Graph, an orchestration service, and large language models (LLMs)"
@@ -12236,7 +12236,7 @@ const EXAMS = {
           "The agent is scoped to the entire tenant by default",
           "The agent is scoped to the content within that site and is set as the site's default agent",
           "The agent can never be replaced by a custom agent",
-          "The agent requires a separate Copilot Studio license to function"
+          "The agent requires a separate Copilot Studio license to function on the site it was created for"
         ],
         "correct": 1,
         "explain": "When Copilot automatically creates a ready-made agent for a new SharePoint site, the agent is scoped to that site's content and assigned as the site's default agent, though a site owner or admin can later set a custom agent as the default instead."
@@ -12266,7 +12266,7 @@ const EXAMS = {
           "One universal plan that includes everything",
           "Two: free and paid only",
           "Three: free Copilot chat, the paid Microsoft 365 Copilot plan, and Copilot Studio",
-          "Four: Personal, Family, Business, and Enterprise only"
+          "Four: Personal, Family, Business, and Enterprise only, with no free Copilot chat plan"
         ],
         "correct": 2,
         "explain": "The training describes three plan categories: the free Copilot chat experience (no organizational data access), the paid Microsoft 365 Copilot plan (integrated across apps, grounded in Graph data), and Copilot Studio (for building and managing agents)."
@@ -12296,7 +12296,7 @@ const EXAMS = {
           "No, because free Copilot Chat doesn't work inside any Microsoft 365 app",
           "No, free Copilot Chat provides web-grounded responses only, without a Microsoft 365 data connection",
           "Yes, but only for Global Administrators",
-          "Yes, it fully accesses Graph data by default"
+          "Yes, it fully accesses Graph data by default, including the emails, files, and meetings of every signed-in user"
         ],
         "correct": 1,
         "explain": "Free Copilot Chat provides basic conversational AI with web-grounded responses only; it doesn't connect to organizational Microsoft Graph data such as emails, files, or meetings the way the paid Microsoft 365 Copilot plan does."
@@ -12307,7 +12307,7 @@ const EXAMS = {
         "q": "Why might pay-as-you-go billing for Copilot queries against SharePoint be riskier for cost predictability than the monthly per-user model, according to the training?",
         "options": [
           "SharePoint cannot be used with the pay-as-you-go model at all",
-          "Pay-as-you-go billing for SharePoint is capped automatically at $100 per month",
+          "Pay-as-you-go billing for SharePoint is capped automatically at $100 per month, which stops Copilot for every team at that limit",
           "Teams working with document-heavy SharePoint libraries under pay-as-you-go could generate sudden, unpredictable cost surges",
           "Pay-as-you-go always costs less regardless of usage"
         ],
@@ -12321,7 +12321,7 @@ const EXAMS = {
         "options": [
           "Tenant-wide controls apply to all apps and users at once, while granular controls allow enabling/disabling features per app, feature, or group",
           "There is no difference between the two",
-          "Granular controls require a separate Azure subscription, while tenant-wide controls are free",
+          "Granular controls require a separate Azure subscription, while tenant-wide controls are free and included with every Microsoft 365 subscription for all users",
           "Tenant-wide controls only apply to Outlook, while granular controls only apply to Teams"
         ],
         "correct": 0,
@@ -12332,7 +12332,7 @@ const EXAMS = {
         "difficulty": "hard",
         "q": "A healthcare provider disabled Copilot tenant-wide during an initial compliance review, then re-enabled it and used group-based licensing to grant access first to the Finance and Operations teams. What does this case study illustrate?",
         "options": [
-          "That Teams transcription must always be enabled for Copilot to work at all",
+          "That Teams transcription must always be enabled for Copilot to work at all in a regulated healthcare organization",
           "That Copilot cannot legally be used by healthcare organizations",
           "That tenant-wide disabling permanently deletes all Copilot licenses",
           "A phased rollout combining licensing, policies, and governance practices to manage risk during adoption"
@@ -12384,7 +12384,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "What is a key risk of group-based Copilot licensing that administrators must actively manage?",
         "options": [
-          "Group-based licensing cannot be combined with individual license assignment",
+          "Group-based licensing cannot be combined with individual license assignment, so every user must be covered by a group",
           "Groups automatically expire after 30 days",
           "If someone leaves the company but isn't removed from the group, they continue consuming a license unnecessarily",
           "Group-based licensing disables MFA for all members"
@@ -12496,7 +12496,7 @@ const EXAMS = {
         "difficulty": "easy",
         "q": "What does the training recommend admins do periodically with saved Copilot prompts to prevent clutter and reliance on outdated instructions?",
         "options": [
-          "Delete every prompt after 24 hours regardless of use",
+          "Delete every prompt after 24 hours regardless of use, even prompts the team relies on",
           "Automatically convert unused prompts into agents",
           "Never delete any prompt under any circumstances",
           "Review prompts quarterly and archive any that are no longer in active use"
@@ -12649,7 +12649,7 @@ const EXAMS = {
         "options": [
           "No, agent creation and management require distinct Copilot Studio licensing and the correct Power Platform environment role",
           "No, agent building requires a Global Administrator role instead of any licensing",
-          "Yes, Copilot Chat access and agent-building rights are the same entitlement",
+          "Yes, Copilot Chat access and agent-building rights are the same entitlement, so no Copilot Studio licensing or environment role is needed",
           "Yes, but only on weekdays"
         ],
         "correct": 0,
@@ -12758,7 +12758,7 @@ const EXAMS = {
         "difficulty": "medium",
         "q": "An admin notices that an agent was granted read/write permissions to a SharePoint library but, in practice, only ever retrieves files without making changes. What operational insight does this represent, and what action might it prompt?",
         "options": [
-          "A compliance violation that must be reported to Compliance Manager",
+          "A compliance violation that must be reported to Compliance Manager before the agent can run again",
           "A billing insight that requires immediately deleting the agent",
           "An error indicating the agent's Copilot license has expired",
           "A permission usage insight that might prompt scaling the agent's access back to read-only"
